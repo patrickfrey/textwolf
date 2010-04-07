@@ -5,19 +5,39 @@
 #include <stack>
 #include <map>
 #include <exception>
-#undef LOWLEVEL_DEBUG
+#define LOWLEVEL_DEBUG
+#ifdef LOWLEVEL_DEBUG
+#include <iostream>
+#endif
 
 namespace textwolf {
 
-struct Exception                                          {const char* msg; Exception( const char* p_msg):msg(p_msg){};};
-struct ExceptionDimOutOfRange:public Exception            {ExceptionDimOutOfRange():Exception("DimOutOfRange"){};};
-struct ExceptionStateNumbersNotAscending:public Exception {ExceptionStateNumbersNotAscending():Exception("StateNumbersNotAscending"){};};
-struct ExceptionInvalidParam:public Exception             {ExceptionInvalidParam():Exception("InvalidParam"){};};
-struct ExceptionInvalidState:public Exception             {ExceptionInvalidState():Exception("InvalidState"){};};
-struct ExceptionIllegalParam:public Exception             {ExceptionIllegalParam():Exception("IllegalParam"){};};
-struct ExceptionIllegalAttributeName:public Exception     {ExceptionIllegalAttributeName():Exception("IllegalAttributeName"){};};
-struct ExceptionOutOfMem:public Exception                 {ExceptionOutOfMem():Exception("OutOfMem"){};};
-struct ExceptionUnknown:public Exception                  {ExceptionUnknown():Exception("Unknown"){};};
+struct throws_exception
+{
+   enum Cause
+   {
+      Unknown, DimOutOfRange, StateNumbersNotAscending, InvalidParam,
+      InvalidState, IllegalParam, IllegalAttributeName, OutOfMem
+   };
+};
+struct exception   :public std::exception
+{
+   typedef throws_exception::Cause Cause; 
+   throws_exception::Cause cause;
+   
+   exception (Cause p_cause) throw()                    :cause(p_cause) {};
+   exception (const exception& orig) throw()            :cause(orig.cause) {};
+   exception& operator= (const exception& orig) throw() {cause=orig.cause; return *this;};
+   virtual ~exception() throw() {};
+   virtual const char* what() const throw()
+   {
+      static const char* nameCause[ 8] = { 
+         "Unknown","DimOutOfRange","StateNumbersNotAscending","InvalidParam",
+         "InvalidState","IllegalParam","IllegalAttributeName","OutOfMem"
+      };
+      return nameCause[ (unsigned int) cause];
+   };
+};
 
 /**
 * character map for fast typing of a character byte
@@ -177,7 +197,7 @@ struct UTF8
       unsigned int rt;
       if (bufsize < 8) return 0;
       if (chr <= 127) {
-         buf[0] = chr;
+         buf[0] = (char)(unsigned char)chr;
          return 1;
       }
       unsigned int pp,sf;
@@ -187,7 +207,7 @@ struct UTF8
             rt = pp+1;
             while (pp > 0)
             {
-               buf[pp--] = (chr & B00111111) | B10000000;
+               buf[pp--] = (char)(unsigned char)((chr & B00111111) | B10000000);
                chr >>= 6;
             }
             unsigned char HB = (unsigned char)(B11111111 << (8-rt));
@@ -198,7 +218,7 @@ struct UTF8
       rt = pp+1;
       while (pp > 0)
       {
-         buf[pp--] = (chr & B00111111) | B10000000;
+         buf[pp--] = (char)(unsigned char)((chr & B00111111) | B10000000);
          chr >>= 6;
       }
       unsigned char HB = (unsigned char)(B11111111 << (8-rt));
@@ -312,7 +332,7 @@ public:
 /**
 * with this class we build up the XML element scanner state machine in a descriptive way
 */ 
-class ScannerStatemachine
+class ScannerStatemachine :public throws_exception
 {
 public:
    enum Constant   {MaxNofStates=128};
@@ -335,9 +355,9 @@ public:
          for (unsigned int ii=0; ii<NofControlCharacter; ii++) next[ii] = -1;
       };
    };
-   Element* get( int stateIdx)
+   Element* get( int stateIdx) throw(exception)
    {
-      if ((unsigned int)stateIdx>size) throw( ExceptionInvalidState()); 
+      if ((unsigned int)stateIdx>size) throw exception(InvalidState); 
       return tab + stateIdx;
    };
 
@@ -345,52 +365,52 @@ private:
    Element tab[ MaxNofStates];
    unsigned int size;
 
-   void newState( int stateIdx)
+   void newState( int stateIdx) throw(exception)
    {
-      if (size != (unsigned int)stateIdx) throw( ExceptionStateNumbersNotAscending());
-      if (size >= MaxNofStates) throw( ExceptionDimOutOfRange());
+      if (size != (unsigned int)stateIdx) throw exception( StateNumbersNotAscending);
+      if (size >= MaxNofStates) throw exception( DimOutOfRange);
       size++;
    };
-   void addOtherTransition( int nextState)
+   void addOtherTransition( int nextState) throw(exception)
    {
-      if (size == 0) throw (ExceptionInvalidState());
-      if (nextState < 0 || nextState > MaxNofStates) throw (ExceptionInvalidParam());
+      if (size == 0) throw exception( InvalidState);
+      if (nextState < 0 || nextState > MaxNofStates) throw exception( InvalidParam);
       for (unsigned int inputchr=0; inputchr<NofControlCharacter; inputchr++)
       {
          if (tab[ size-1].next[ inputchr] == -1) tab[ size-1].next[ inputchr] = (unsigned char)nextState;
       }
    };
-   void addTransition( ControlCharacter inputchr, int nextState)
+   void addTransition( ControlCharacter inputchr, int nextState) throw(exception)
    {
-      if (size == 0) throw (ExceptionInvalidState());
-      if ((unsigned int)inputchr >= (unsigned int)NofControlCharacter) throw (ExceptionInvalidParam());
-      if (nextState < 0 || nextState > MaxNofStates) throw (ExceptionInvalidParam());
-      if (tab[ size-1].next[ inputchr] != -1) throw (ExceptionInvalidParam());
-      if (size == 0) throw (ExceptionInvalidState());
+      if (size == 0) throw exception( InvalidState);
+      if ((unsigned int)inputchr >= (unsigned int)NofControlCharacter)  throw exception( InvalidParam);
+      if (nextState < 0 || nextState > MaxNofStates)  throw exception( InvalidParam);
+      if (tab[ size-1].next[ inputchr] != -1)  throw exception( InvalidParam);
+      if (size == 0)  throw exception( InvalidState);
       tab[ size-1].next[ inputchr] = (unsigned char)nextState;
    };
-   void addTransition( ControlCharacter inputchr)
+   void addTransition( ControlCharacter inputchr) throw(exception)
    {
       addTransition( inputchr, size-1);
    };
-   void addAction( int action_op, int action_arg=0)
+   void addAction( int action_op, int action_arg=0) throw(exception)
    {
-      if (size == 0) throw (ExceptionInvalidState());
-      if (tab[ size-1].action.op != -1) throw (ExceptionInvalidState());
+      if (size == 0) throw exception( InvalidState);
+      if (tab[ size-1].action.op != -1) throw exception( InvalidState);
       tab[ size-1].action.op = action_op;
       tab[ size-1].action.arg = action_arg;
    };
-   void addMiss( int error)
+   void addMiss( int error) throw(exception)
    {
-      if (size == 0) throw (ExceptionInvalidState());
-      if (tab[ size-1].missError != -1) throw (ExceptionInvalidState());
+      if (size == 0) throw exception( InvalidState);
+      if (tab[ size-1].missError != -1) throw exception( InvalidState);
       tab[ size-1].missError = error;
    };
-   void addFallback( int stateIdx)
+   void addFallback( int stateIdx) throw(exception)
    {
-      if (size == 0) throw (ExceptionInvalidState());
-      if (tab[ size-1].fallbackState != -1) throw (ExceptionInvalidState());
-      if (stateIdx < 0 || stateIdx > MaxNofStates) throw (ExceptionInvalidParam());
+      if (size == 0) throw exception( InvalidState);
+      if (tab[ size-1].fallbackState != -1) throw exception( InvalidState);
+      if (stateIdx < 0 || stateIdx > MaxNofStates) throw exception( InvalidParam);
       tab[ size-1].fallbackState = stateIdx;      
    };
 public:
@@ -430,22 +450,21 @@ public:
    };
    enum Error
    {
-      Ok,ErrMemblockTooSmall,ErrExpectedOpenTag,ErrUnexpectedState,
-      ErrExpectedXMLTag,ErrSyntaxString,ErrUnexpectedEndOfText,ErrOutputBufferTooSmall,
-      ErrSyntaxToken,ErrStringExceedsLine,ErrEntityEncodesCntrlChar,ErrExpectedIdentifier,
-      ErrUndefinedCharacterEntity,ErrInternalErrorSTM,ErrExpectedTagEnd,ErrExpectedEqual,
-      ErrExpectedTagAttribute,ErrExpectedCDATATag,ErrInternal,
-      ErrDimOutOfRange, ErrStateNumbersNotAscending, ErrInvalidParam, ErrInvalidState
+      Ok,ErrMemblockTooSmall, ErrExpectedOpenTag, ErrUnexpectedState,
+      ErrExpectedXMLTag, ErrSyntaxString, ErrUnexpectedEndOfText, ErrOutputBufferTooSmall,
+      ErrSyntaxToken, ErrStringExceedsLine, ErrEntityEncodesCntrlChar, ErrExpectedIdentifier,
+      ErrExpectedToken, ErrUndefinedCharacterEntity, ErrInternalErrorSTM, ErrExpectedTagEnd,
+      ErrExpectedEqual, ErrExpectedTagAttribute, ErrExpectedCDATATag, ErrInternal
    };
    static const char* getErrorString( Error ee)
    {
-      enum Constant {NofErrors=19};
+      enum Constant {NofErrors=20};
       static const char* sError[NofErrors]
       = {0,"MemblockTooSmall","ExpectedOpenTag","UnexpectedState",
          "ExpectedXMLTag","SyntaxString","UnexpectedEndOfText","OutputBufferTooSmall",
          "SyntaxToken","StringExceedsLine","EntityEncodesCntrlChar","ExpectedIdentifier",
-         "UndefinedCharacterEntity","InternalErrorSTM","ExpectedTagEnd","ExpectedEqual",
-         "ExpectedTagAttribute","ExpectedCDATATag","Internal"
+         "ExpectedIdentifier", "UndefinedCharacterEntity","InternalErrorSTM","ExpectedTagEnd",
+         "ExpectedEqual", "ExpectedTagAttribute","ExpectedCDATATag","Internal"
       };
       return sError[(unsigned int)ee];
    };
@@ -680,7 +699,7 @@ public:
          {
             if (outputSize == 0)
             {
-               error = ErrExpectedIdentifier; return false;
+               error = ErrExpectedToken; return false;
             }
             return true;
          }
@@ -691,12 +710,16 @@ public:
       for (;;)
       {
          ControlCharacter ch;
-         while ((ch=src.control()) == Any || ch==Equal || ch==Slash || ch==Exclam || ch==Questm || ch==Sq || ch==Dq || ch==Osb || ch==Csb || ch==Amp) src.skip();
-
-         if (outputSize == 0)
+         if ((ch=src.control()) == Any || ch==Equal || ch==Slash || ch==Exclam || ch==Questm || ch==Sq || ch==Dq || ch==Osb || ch==Csb || ch==Amp)
          {
-            error = ErrExpectedIdentifier; return false;
+            src.skip();
          }
+         else
+         {
+            error = ErrExpectedToken; 
+            return false;
+         }
+         while ((ch=src.control()) == Any || ch==Equal || ch==Slash || ch==Exclam || ch==Questm || ch==Sq || ch==Dq || ch==Osb || ch==Csb || ch==Amp) src.skip();
          return true;
       }
    };
@@ -729,11 +752,16 @@ public:
       for (;;)
       {
          ControlCharacter ch;
-         while ((ch=src.control()) == Any || ch == Amp) src.skip();
-         if (outputSize == 0)
+         if ((ch=src.control()) == Any || ch == Amp) 
          {
-            error = ErrExpectedIdentifier; return false;
+            src.skip(); 
          }
+         else
+         {
+            error = ErrExpectedIdentifier; 
+            return false;
+         }
+         while ((ch=src.control()) == Any || ch == Amp) (src.skip());
          return true;
       }
    };   
@@ -891,14 +919,14 @@ public:
       do
       {
          #ifdef LOWLEVEL_DEBUG
-         printf( "STATE %s\n", getStateString( state));
+         std::cout << "STATE " << getStateString( state) << std::endl;
          #endif
       
          ScannerStatemachine::Element* sd = getState();
          if (sd->action.op != -1)
          {
             #ifdef LOWLEVEL_DEBUG
-            printf( "ACTION %s\n", getActionString( (STMAction)sd->action.op));
+            std::cout << "ACTION " << getActionString( (STMAction)sd->action.op) << std::endl;
             #endif
             switch ((STMAction)(sd->action.op))
             {
@@ -976,7 +1004,7 @@ public:
          }
          ControlCharacter ch = src.control();
          #ifdef LOWLEVEL_DEBUG
-         printf( "GET %s\n", controlCharacterName(ch));
+         std::cout << "GET " << controlCharacterName(ch) << std::endl;
          #endif
 
          if (sd->next[ ch] != -1) 
@@ -1107,7 +1135,7 @@ public:
 }; 
 
 template <class CharSet_=charset::UTF8>
-class XMLPathSelectAutomaton
+class XMLPathSelectAutomaton :public throws_exception
 {
 public:
    XMLPathSelectAutomaton() {};
@@ -1206,7 +1234,7 @@ public:
       int typeidx;
       int cnt;
 
-      Core()                      :follow(false),x(-1),typeidx(-1),cnt(-1) {};
+      Core()                      :follow(false),x(-1),typeidx(0),cnt(-1) {};
       Core( const Core& orig)     :mask(orig.mask),follow(orig.follow),x(orig.x),typeidx(orig.typeidx),cnt(orig.cnt) {};
    };
 
@@ -1215,16 +1243,16 @@ public:
       Core core;
       unsigned int keysize;
       char* key;
+      const char* srckey;
       int next;
       int link;
             
-      State()                        :keysize(0),key(0),next(-1),link(-1) {};
-      State( const State& orig)      :core(orig.core),keysize(orig.keysize),key(0),next(orig.next),link(orig.link)
+      State()                        :keysize(0),key(0),srckey(0),next(-1),link(-1) {};
+      State( const State& orig)      :core(orig.core),keysize(orig.keysize),key(0),srckey(orig.srckey),next(orig.next),link(orig.link)
       {
          if (orig.key && orig.keysize)
          {
-            key = new (std::nothrow) char[ keysize];
-            if (!key) throw( ExceptionOutOfMem());
+            key = new char[ keysize];
             for (unsigned int ii=0; ii<keysize; ii++) key[ii]=orig.key[ii];
             key[ keysize] = 0;
          }
@@ -1237,13 +1265,12 @@ public:
       
       void defNext( Operation op, unsigned int p_keysize, const char* p_key, int p_next, bool p_follow=false) 
       {
-         if (p_next < 0) throw(ExceptionIllegalParam());
          core.mask.seekop( op);
          if (p_key)
          {
+            srckey = p_key;
             core.x = hash(p_key,keysize=p_keysize);
-            key = new (std::nothrow) char[ keysize];
-            if (!key) throw( ExceptionOutOfMem());
+            key = new char[ keysize];
             for (unsigned int ii=0; ii<keysize; ii++) key[ii]=p_key[ii];
          }
          next = p_next;
@@ -1251,7 +1278,6 @@ public:
       };      
       void defOutput( const Mask& mask, int p_typeidx, bool p_follow=false, int p_cnt=-1)
       {
-         if (p_typeidx < 0) throw(ExceptionIllegalParam());
          core.mask.join( mask);
          core.typeidx = p_typeidx;
          if (p_cnt >= 0) core.cnt = p_cnt;
@@ -1259,7 +1285,6 @@ public:
       };
       void defLink( int p_link)
       {
-         if (p_link < 0) throw(ExceptionIllegalParam());
          link = p_link;
       };
    };
@@ -1275,7 +1300,7 @@ public:
    };
    
 private:      
-   int defNext( int stateidx, Operation op, unsigned int keysize, const char* key, bool follow=false)
+   int defNext( int stateidx, Operation op, unsigned int keysize, const char* key, bool follow=false) throw(exception)
    {
       try
       {
@@ -1285,8 +1310,6 @@ private:
             stateidx = states.size();
             states.push_back( state);
          }
-         if ((unsigned int)stateidx >= states.size()) throw ExceptionIllegalParam();
-
          Hash x = hash( key, keysize);
          for (int ee=stateidx; ee != -1; stateidx=ee,ee=states[ee].link)
          {
@@ -1309,14 +1332,14 @@ private:
       }
       catch (std::bad_alloc)
       {
-         throw( ExceptionOutOfMem());
+         throw exception( OutOfMem);
       }
       catch (...)
       {
-         throw( ExceptionUnknown()); 
+         throw exception( Unknown); 
       };
    };   
-   int defOutput( int stateidx, unsigned short pushOpMask, int typeidx, bool follow=false, int cnt=-1)
+   int defOutput( int stateidx, unsigned short pushOpMask, int typeidx, bool follow=false, int cnt=-1) throw(exception)
    {
       try
       {
@@ -1326,7 +1349,7 @@ private:
             stateidx = states.size();
             states.push_back( state);
          }
-         if ((unsigned int)stateidx >= states.size()) throw ExceptionIllegalParam();
+         if ((unsigned int)stateidx >= states.size()) throw exception( IllegalParam);
          
          if (!states[stateidx].isempty())
          {
@@ -1338,16 +1361,16 @@ private:
       }
       catch (std::bad_alloc)
       {
-         throw( ExceptionOutOfMem());
+         throw exception( OutOfMem);
       }
       catch (...)
       {
-         throw( ExceptionUnknown()); 
+         throw exception( Unknown); 
       };
    };
    
 public:
-   struct PathElement
+   struct PathElement :throws_exception
    {
    private:
       enum {MaxSize=1024};
@@ -1376,13 +1399,16 @@ public:
          };
          return *this;
       }
-      PathElement& doSelect( Operation op, const char* value)
+      PathElement& doSelect( Operation op, const char* value) throw(exception)
       {
          if (xs != 0)
          {
             char buf[ 1024];
             XMLScanner<char*>::size_type size;
-            if (!XMLScanner<char*>::getTagName<CharSet_>( value, buf, sizeof(buf), &size)) throw(ExceptionIllegalAttributeName());
+            if (!XMLScanner<char*>::getTagName<CharSet_>( value, buf, sizeof(buf), &size))
+            {
+               throw exception( IllegalAttributeName);
+            }
             stateidx = xs->defNext( stateidx, op, size, buf, follow);
          }
          return doSelect( op);
@@ -1404,7 +1430,7 @@ public:
          }
          return *this;
       };
-      PathElement& push( int typeidx)
+      PathElement& push( int typeidx) throw(exception)
       {
          if (xs != 0) stateidx = xs->defOutput( stateidx, pushOpMask, typeidx, follow, count);
          return *this;
@@ -1416,19 +1442,19 @@ public:
       PathElement( const PathElement& orig)                          :xs(orig.xs),stateidx(orig.stateidx),count(orig.count),follow(orig.follow),pushOpMask(orig.pushOpMask) {};
 
       //corresponds to "//" in abbreviated syntax of XPath
-      PathElement& operator --(int)                                     {return doFollow();};
+      PathElement& operator --(int)                                                     {return doFollow();};
       //find tag
-      PathElement& operator []( const char* name)                       {return doSelect( Tag, name);};
+      PathElement& operator []( const char* name) throw(exception)                      {return doSelect( Tag, name);};
       //find tag with one attribute
-      PathElement& operator ()( const char* name)                       {return doSelect( Attribute, name);};
+      PathElement& operator ()( const char* name) throw(exception)                      {return doSelect( Attribute, name);};
       //find tag with one attribute
-      PathElement& operator ()( const char* name, const char* value)    {return doSelect( Attribute, name).doSelect( ThisAttributeValue, value);};
+      PathElement& operator ()( const char* name, const char* value) throw(exception)   {return doSelect( Attribute, name).doSelect( ThisAttributeValue, value);};
       //define maximum element count to push
-      PathElement& operator /(int cnt)                                  {doCount(cnt);};
+      PathElement& operator /(int cnt)   throw(exception)                               {doCount(cnt);};
       //define element type to push
-      PathElement& operator =(int type)                                 {return push( type);};
+      PathElement& operator =(int type)  throw(exception)                               {return push( type);};
       //grab content
-      PathElement& operator ()()                                        {return doSelect(Content);};
+      PathElement& operator ()()  throw(exception)                                      {return doSelect(Content);};
    };
    PathElement operator*()
    {      
@@ -1445,7 +1471,7 @@ template <
       class OutputCharSet_=charset::UTF8,          //Character set encoding of the output, printed as string of the item type of the character set
       class EntityMap=std::map<const char*,UChar>  //< STL like map from ASCII const char* to UChar
 >
-class XMLPathSelect
+class XMLPathSelect :public throws_exception
 {
 public:
    typedef XMLPathSelectAutomaton<OutputCharSet_> Automaton;
@@ -1500,13 +1526,17 @@ private:
 
    void expand( int stateidx)
    {
-      context.scope.mask.join( atm->states[ stateidx].core.mask);
-      if (atm->states[ stateidx].core.follow) 
+      while (stateidx!=-1)
       {
-         context.scope.followMask.join( atm->states[ stateidx].core.mask);
-         follows.push_back( tokens.size());
+         context.scope.mask.join( atm->states[ stateidx].core.mask);
+         if (atm->states[ stateidx].core.follow) 
+         {
+            context.scope.followMask.join( atm->states[ stateidx].core.mask);
+            follows.push_back( tokens.size());
+         }
+         tokens.push_back( Token(atm->states[ stateidx], stateidx));
+         stateidx = atm->states[ stateidx].link;
       }
-      tokens.push_back( Token(atm->states[ stateidx], stateidx));
    };
 
    //declares the currently processed element of the XMLScanner input. By calling fetch we get the output elements from it
@@ -1551,6 +1581,12 @@ private:
          if (tokenidx >= context.scope.range.tokenidx_to) return 0;
 
          const Token& tk = tokens[ tokenidx];
+         #ifdef LOWLEVEL_DEBUG
+         if (tk.core.x != -1)
+         {
+            std::cout << "[?] STATE " << tk.stateidx << ":" << (tk.core.x!=-1?atm->states[ tk.stateidx].srckey:"()") << " => " << atm->states[ tk.stateidx].next << std::endl;
+         }
+         #endif
          if (tk.core.cnt != 0 && tk.core.mask.matches( context.type))
          {
             if (tk.core.x != -1)
@@ -1562,6 +1598,9 @@ private:
                   const State& st = atm->states[ tk.stateidx];
                   if (st.keysize == context.keysize && st.key != 0 && memcmp( st.key, context.key, context.keysize) == 0)
                   {
+                     #ifdef LOWLEVEL_DEBUG
+                     std::cout << "=> STATE " << st.next << std::endl;
+                     #endif
                      expand( st.next);
                      if (tk.core.cnt > 0) tokens[ tokenidx].core.cnt--;
                   };
@@ -1570,6 +1609,9 @@ private:
             if (tk.core.typeidx != 0)
             {
                if (tk.core.cnt > 0) tokens[ tokenidx].core.cnt--;
+               #ifdef LOWLEVEL_DEBUG
+               std::cout << ">> TOKEN " << tk.core.typeidx << std::endl;
+               #endif               
                return tk.core.typeidx;
             }
          }
@@ -1600,6 +1642,7 @@ private:
                if (ii < context.scope.range.followidx)
                {
                   type = match( follows[ ii]);
+                  context.scope_iter ++;
                }
                else
                {
@@ -1609,11 +1652,18 @@ private:
             }
          }
       }
+      else
+      {
+         context.key = 0;
+      }
       return type;
    };
 
 public:
-   XMLPathSelect( Automaton* p_atm, InputIterator& src, char* outputBuf, unsigned int outputBufSize, EntityMap* entityMap=0)  :scan(src,outputBuf,outputBufSize,entityMap),atm(p_atm) {};
+   XMLPathSelect( Automaton* p_atm, InputIterator& src, char* outputBuf, unsigned int outputBufSize, EntityMap* entityMap=0)  :scan(src,outputBuf,outputBufSize,entityMap),atm(p_atm)
+   {
+      if (atm->states.size() > 0) expand(0);
+   };
    XMLPathSelect( const XMLPathSelect& o)                                                                                     :scan(o.scan),atm(o.atm) {};
 
    //STL conform input iterator for the output of this XMLScanner:   
@@ -1642,7 +1692,7 @@ public:
       Element element;
       ThisXMLPathSelect* input;
 
-      void skip()
+      void skip() throw(exception)
       {
          try
          {
@@ -1676,11 +1726,11 @@ public:
          }
          catch (std::bad_alloc)
          {
-            throw (ExceptionOutOfMem());
+            throw exception( OutOfMem);
          }
          catch (...)
          {
-            throw( ExceptionUnknown()); 
+            throw exception( Unknown); 
          };
       };
       bool compare( const iterator& iter) const

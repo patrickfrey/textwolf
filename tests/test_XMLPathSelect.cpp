@@ -2,8 +2,7 @@
 #include <iostream>
 #include <map>
 
-//GCC
-//compile: g++ -c -o test_XMLPathSelect.o -g -fstrict-aliasing -pedantic -Wall -Wunused -Wno-import -Wformat -Wformat-y2k -Wformat-nonliteral -Wformat-security -Wformat-y2k -Wswitch-enum -Wunknown-pragmas -Wfloat-equal -Wundef -Wshadow -Wpointer-arith -Wcast-qual -Wcast-align -Wwrite-strings -Wmissing-noreturn -Wno-multichar -Wparentheses -Wredundant-decls -Winline -Wdisabled-optimization -Wno-long-long -Werror -Wfatal-errors -I../include test_XMLPathSelect.cpp
+//compile: g++ -c -o test_XMLPathSelect.o -g -fstrict-aliasing -pedantic -Wall -Wunused -Wno-import -Wformat -Wformat-y2k -Wformat-nonliteral -Wformat-security -Wformat-y2k -Wswitch-enum -Wunknown-pragmas -Wfloat-equal -Wundef -Wshadow -Wpointer-arith -Wcast-qual -Wcast-align -Wwrite-strings -Wmissing-noreturn -Wno-multichar -Wparentheses -Wredundant-decls -Winline -Wdisabled-optimization -Wno-long-long -Werror -Wfatal-errors test_XMLPathSelect.cpp
 //link     g++ -lc -o test_XMLPathSelect test_XMLPathSelect.o
 
 using namespace textwolf;
@@ -36,15 +35,15 @@ int main( int, const char**)
             std::cerr << "FAILED " << itr->content << std::endl;
             exit( 1);
          }
-         std::cout << "Element " << itr->type << ": " << std::string( itr->content, itr->size);
+         std::cout << "Element " << itr->type << ": " << std::string( itr->content, itr->size).c_str();
       }
       
       std::cerr << "OK" << std::endl;
       exit( 0);
    }
-   catch (Exception ee)
+   catch (exception ee)
    {
-      std::cerr << "ERROR " << ee.msg << std::endl;
+      std::cerr << "ERROR " << ee.what() << std::endl;
       exit( 1);
    };
 }
