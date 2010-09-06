@@ -7,7 +7,7 @@
 
 using namespace textwolf;
 
-static const char* simpleXmple = "<?xml charset=isolatin-1?><note id=1 t=2 g=\"zu\"><stag value='500'/> \n<to>Frog</to>\n<from>Bird</from><body>Hello world!</body>\n</note>";
+static const char* simpleXmple = "<?xml charset=isolatin-1?><AA>aa 12</AA><BB>bb 13</BB><CC>cc 14</CC>";
 
 int main( int, const char**)
 { 
@@ -16,10 +16,9 @@ int main( int, const char**)
       char* src = const_cast<char*>( simpleXmple);
       typedef XMLPathSelectAutomaton<charset::UTF8> Automaton;
       Automaton atm;
-      (*atm)["stag"]("value","500")();
-      (*atm)["note"]("id");
-      (*atm)["note"]("id", "1");
-      (*atm)--["stag"]();
+      (*atm)["AA"] = 12;
+      (*atm)["BB"] = 13;
+      (*atm)--["CC"] = 14;
 
       enum {outputBufSize=4096};
       char outputBuf[ outputBufSize];
@@ -35,7 +34,7 @@ int main( int, const char**)
             std::cerr << "FAILED " << itr->content << std::endl;
             exit( 1);
          }
-         std::cout << "Element " << itr->type << ": " << std::string( itr->content, itr->size).c_str();
+         std::cout << "Element " << itr->type << ": " << std::string( itr->content, itr->size).c_str() << std::endl;
       }
       
       std::cerr << "OK" << std::endl;

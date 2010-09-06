@@ -5,10 +5,15 @@
 #include <stack>
 #include <map>
 #include <exception>
-#define LOWLEVEL_DEBUG
-#ifdef LOWLEVEL_DEBUG
+#undef LOWLEVEL_DEBUG_SCANNER
+#define LOWLEVEL_DEBUG_XMLSEL
+#ifdef LOWLEVEL_DEBUG_XMLSEL
 #include <iostream>
 #endif
+#ifdef LOWLEVEL_DEBUG_SCANNER
+#include <iostream>
+#endif
+
 
 namespace textwolf {
 
@@ -23,7 +28,7 @@ struct throws_exception
 struct exception   :public std::exception
 {
    typedef throws_exception::Cause Cause; 
-   throws_exception::Cause cause;
+   Cause cause;
    
    exception (Cause p_cause) throw()                    :cause(p_cause) {};
    exception (const exception& orig) throw()            :cause(orig.cause) {};
@@ -276,6 +281,10 @@ public:
    {
       skip();
    };
+   TextScanner( const TextScanner& orig)       :val(orig.val),cur(orig.cur),state(orig.state)
+   {
+      for (unsigned int ii=0; ii<sizeof(buf); ii++) buf[ii]=orig.buf[ii];
+   };
    
    UChar chr()
    {
@@ -301,11 +310,13 @@ public:
       static ControlCharMap controlCharMap;
       return controlCharMap[ (unsigned char)cur];
    };
+   
    char ascii()
    {
       return cur>=0?cur:0;
    };
-   void skip()
+   
+   TextScanner& skip()
    {
       if (state == 1)
       {
@@ -321,11 +332,12 @@ public:
          buf[ii] = *input;
          input++;
       }
-      cur = CharSet::achar(buf); 
+      cur = CharSet::achar(buf);
+      return *this;
    };
    
-   TextScanner& operator ++()     {skip(); return *this;}   
-   TextScanner& operator ++(int)  {skip(); return *this;}   
+   TextScanner& operator ++()     {return skip();};
+   TextScanner operator ++(int)   {TextScanner tmp(*this); skip(); return tmp;};
 };
 
 
@@ -918,14 +930,14 @@ public:
       
       do
       {
-         #ifdef LOWLEVEL_DEBUG
+         #ifdef LOWLEVEL_DEBUG_SCANNER
          std::cout << "STATE " << getStateString( state) << std::endl;
          #endif
       
          ScannerStatemachine::Element* sd = getState();
          if (sd->action.op != -1)
          {
-            #ifdef LOWLEVEL_DEBUG
+            #ifdef LOWLEVEL_DEBUG_SCANNER
             std::cout << "ACTION " << getActionString( (STMAction)sd->action.op) << std::endl;
             #endif
             switch ((STMAction)(sd->action.op))
@@ -945,6 +957,9 @@ public:
                   }
                   if (!print(0)) return ErrorOccurred;
                   rt = (ElementType)sd->action.arg;
+                  #ifdef LOWLEVEL_DEBUG_SCANNER
+                  std::cout << "RETURN TOKEN " << outputBuf << std::endl;
+                  #endif
                   break;
 
                case ReturnIdentifier:
@@ -958,6 +973,9 @@ public:
                   }
                   if (!print(0)) return ErrorOccurred;
                   rt = (ElementType)sd->action.arg;
+                  #ifdef LOWLEVEL_DEBUG_SCANNER
+                  std::cout << "RETURN IDENTIFIER " << outputBuf << std::endl;
+                  #endif
                   break;
 
                case ReturnSQString:
@@ -970,6 +988,9 @@ public:
                      if (!skipString( Sq)) return ErrorOccurred;
                   }
                   if (!print(0)) return ErrorOccurred;
+                  #ifdef LOWLEVEL_DEBUG_SCANNER
+                  std::cout << "RETURN SQSTRING " << outputBuf << std::endl;
+                  #endif
                   rt = (ElementType)sd->action.arg;
                   break;
 
@@ -983,6 +1004,9 @@ public:
                      if (!skipString( Dq)) return ErrorOccurred;
                   }
                   if (!print(0)) return ErrorOccurred;
+                  #ifdef LOWLEVEL_DEBUG_SCANNER
+                  std::cout << "RETURN DQSTRING " << outputBuf << std::endl;
+                  #endif
                   rt = (ElementType)sd->action.arg;
                   break;
                
@@ -1003,7 +1027,7 @@ public:
             }
          }
          ControlCharacter ch = src.control();
-         #ifdef LOWLEVEL_DEBUG
+         #ifdef LOWLEVEL_DEBUG_SCANNER
          std::cout << "GET " << controlCharacterName(ch) << std::endl;
          #endif
 
@@ -1055,6 +1079,8 @@ public:
          {};
          Element( const End&)          :type(Exit),content(0),size(0)
          {};
+         Element( const Element& orig) :type(orig.type),content(orig.content),size(orig.size)
+         {};
       };
       typedef Element value_type;
       typedef size_type difference_type;
@@ -1066,7 +1092,7 @@ public:
       Element element;
       ThisXMLScanner* input;
 
-      void skip( unsigned short mask=0xFFFF)
+      iterator& skip( unsigned short mask=0xFFFF)
       {
          if (input != 0)
          {
@@ -1074,6 +1100,7 @@ public:
             element.content = input->getItem();
             element.size = input->getItemSize();
          }
+         return *this;
       };
       bool compare( const iterator& iter) const
       {
@@ -1117,8 +1144,8 @@ public:
       {
          return &element;
       };
-      iterator& operator++()     {skip(); return *this;};
-      iterator& operator++(int)  {skip(); return *this;};
+      iterator& operator++()     {return skip();};
+      iterator operator++(int)   {iterator tmp(*this); skip(); return tmp;};      
 
       bool operator==( const iterator& iter) const   {return compare( iter);};
       bool operator!=( const iterator& iter) const   {return !compare( iter);};
@@ -1243,18 +1270,21 @@ public:
       Core core;
       unsigned int keysize;
       char* key;
-      const char* srckey;
+      char* srckey;
       int next;
       int link;
             
       State()                        :keysize(0),key(0),srckey(0),next(-1),link(-1) {};
-      State( const State& orig)      :core(orig.core),keysize(orig.keysize),key(0),srckey(orig.srckey),next(orig.next),link(orig.link)
+      State( const State& orig)      :core(orig.core),keysize(orig.keysize),key(0),srckey(0),next(orig.next),link(orig.link)
       {
          if (orig.key && orig.keysize)
          {
+            unsigned int ii;
+            srckey = new char[ strlen(orig.srckey)+1];
+            for (ii=0; orig.srckey[ii]!=0; ii++) srckey[ii]=orig.srckey[ii];
+            srckey[ ii] = 0;
             key = new char[ keysize];
-            for (unsigned int ii=0; ii<keysize; ii++) key[ii]=orig.key[ii];
-            key[ keysize] = 0;
+            for (ii=0; ii<keysize; ii++) key[ii]=orig.key[ii];
          }
       };
       ~State()
@@ -1263,15 +1293,18 @@ public:
       };
       bool isempty()                 {return key==0&&core.typeidx==0;};
       
-      void defNext( Operation op, unsigned int p_keysize, const char* p_key, int p_next, bool p_follow=false) 
+      void defNext( Operation op, unsigned int p_keysize, const char* p_key, const char* p_srckey, int p_next, bool p_follow=false) 
       {
          core.mask.seekop( op);
          if (p_key)
          {
-            srckey = p_key;
+            unsigned int ii;
             core.x = hash(p_key,keysize=p_keysize);
+            srckey = new char[ strlen(p_srckey)+1];
+            for (ii=0; p_srckey[ii]!=0; ii++) srckey[ii]=p_srckey[ii];
+            srckey[ ii] = 0;
             key = new char[ keysize];
-            for (unsigned int ii=0; ii<keysize; ii++) key[ii]=p_key[ii];
+            for (ii=0; ii<keysize; ii++) key[ii]=p_key[ii];
          }
          next = p_next;
          core.follow = p_follow; 
@@ -1300,7 +1333,7 @@ public:
    };
    
 private:      
-   int defNext( int stateidx, Operation op, unsigned int keysize, const char* key, bool follow=false) throw(exception)
+   int defNext( int stateidx, Operation op, unsigned int keysize, const char* key, const char* srckey, bool follow=false) throw(exception)
    {
       try
       {
@@ -1326,7 +1359,7 @@ private:
          {
             states.push_back( state);
             unsigned int lastidx = states.size()-1;
-            states[ stateidx].defNext( op, keysize, key, lastidx, follow); 
+            states[ stateidx].defNext( op, keysize, key, srckey, lastidx, follow); 
             return stateidx=lastidx;
          }
       }
@@ -1339,7 +1372,8 @@ private:
          throw exception( Unknown); 
       };
    };   
-   int defOutput( int stateidx, unsigned short pushOpMask, int typeidx, bool follow=false, int cnt=-1) throw(exception)
+
+   int defOutput( int stateidx, const Mask& pushOpMask, int typeidx, bool follow=false, int cnt=-1) throw(exception)
    {
       try
       {
@@ -1409,7 +1443,7 @@ public:
             {
                throw exception( IllegalAttributeName);
             }
-            stateidx = xs->defNext( stateidx, op, size, buf, follow);
+            stateidx = xs->defNext( stateidx, op, size, buf, value, follow);
          }
          return doSelect( op);
       };
@@ -1520,7 +1554,17 @@ private:
       unsigned int scope_iter;              //position of currently visited token in the active scope
       
       Context()                                                                         :type(XMLScannerBase::Content),key(0),keysize(0),x(-1) {};
-      void init( XMLScannerBase::ElementType p_type, const char* p_key, int p_keysize)  {type=p_type;key=p_key;keysize=p_keysize;x=-1;scope_iter=scope.range.tokenidx_from;};
+      void init( XMLScannerBase::ElementType p_type, const char* p_key, int p_keysize)
+      {
+         type = p_type;
+         key = p_key;
+         keysize = p_keysize;
+         x = -1;
+         scope_iter = scope.range.tokenidx_from;
+         #ifdef LOWLEVEL_DEBUG_XMLSEL
+         std::cout << "[!context] " << XMLScannerBase::getElementTypeName(p_type) << " " << p_key << std::endl;
+         #endif
+      };
    };
    Context context;
 
@@ -1528,14 +1572,19 @@ private:
    {
       while (stateidx!=-1)
       {
-         context.scope.mask.join( atm->states[ stateidx].core.mask);
-         if (atm->states[ stateidx].core.follow) 
+         const State& st = atm->states[ stateidx];
+         #ifdef LOWLEVEL_DEBUG_XMLSEL
+            if (st.core.x != -1) std::cout << "[!expand] STATE " << stateidx << ":" << st.srckey << (st.core.follow?" --":" ") << "> " << st.next << std::endl;
+            if (st.core.typeidx != 0) std::cout << "[!expand] FETCH " << st.core.typeidx << std::endl;
+         #endif
+         context.scope.mask.join( st.core.mask);
+         if (st.core.follow) 
          {
-            context.scope.followMask.join( atm->states[ stateidx].core.mask);
+            context.scope.followMask.join( st.core.mask);
             follows.push_back( tokens.size());
          }
-         tokens.push_back( Token(atm->states[ stateidx], stateidx));
-         stateidx = atm->states[ stateidx].link;
+         tokens.push_back( Token( st, stateidx));
+         stateidx = st.link;
       }
    };
 
@@ -1581,12 +1630,6 @@ private:
          if (tokenidx >= context.scope.range.tokenidx_to) return 0;
 
          const Token& tk = tokens[ tokenidx];
-         #ifdef LOWLEVEL_DEBUG
-         if (tk.core.x != -1)
-         {
-            std::cout << "[?] STATE " << tk.stateidx << ":" << (tk.core.x!=-1?atm->states[ tk.stateidx].srckey:"()") << " => " << atm->states[ tk.stateidx].next << std::endl;
-         }
-         #endif
          if (tk.core.cnt != 0 && tk.core.mask.matches( context.type))
          {
             if (tk.core.x != -1)
@@ -1598,9 +1641,6 @@ private:
                   const State& st = atm->states[ tk.stateidx];
                   if (st.keysize == context.keysize && st.key != 0 && memcmp( st.key, context.key, context.keysize) == 0)
                   {
-                     #ifdef LOWLEVEL_DEBUG
-                     std::cout << "=> STATE " << st.next << std::endl;
-                     #endif
                      expand( st.next);
                      if (tk.core.cnt > 0) tokens[ tokenidx].core.cnt--;
                   };
@@ -1609,9 +1649,6 @@ private:
             if (tk.core.typeidx != 0)
             {
                if (tk.core.cnt > 0) tokens[ tokenidx].core.cnt--;
-               #ifdef LOWLEVEL_DEBUG
-               std::cout << ">> TOKEN " << tk.core.typeidx << std::endl;
-               #endif               
                return tk.core.typeidx;
             }
          }
@@ -1656,6 +1693,9 @@ private:
       {
          context.key = 0;
       }
+      #ifdef LOWLEVEL_DEBUG_XMLSEL
+      std::cout << "[!fetch] " << type << std::endl;
+      #endif
       return type;
    };
 
@@ -1681,6 +1721,7 @@ public:
          
          Element()                     :error(0),eof(false),type(0),content(0),size(0) {};
          Element( const End&)          :error(0),eof( true),type(0),content(0),size(0) {};
+         Element( const Element& orig) :error(orig.error),eof(orig.eof),type(orig.type),content(orig.content),size(orig.size) {};
       };
       typedef Element value_type;
       typedef unsigned int difference_type;
@@ -1692,7 +1733,7 @@ public:
       Element element;
       ThisXMLPathSelect* input;
 
-      void skip() throw(exception)
+      iterator& skip() throw(exception)
       {
          try
          {
@@ -1706,13 +1747,13 @@ public:
                      if (et == XMLScannerBase::Exit)
                      {
                         element.eof = true;
-                        return;
+                        return *this;
                      }
                      if (et == XMLScannerBase::ErrorOccurred)
                      {
                         element.error = true;
                         (void)input->scan.getError( &element.content);
-                        return;
+                        return *this;
                      }
                      input->initProcessElement( et, input->scan.getItem(), input->scan.getItemSize());
                   }
@@ -1723,6 +1764,7 @@ public:
                element.content = input->context.key;
                element.size = input->context.keysize;
             }
+            return *this;
          }
          catch (std::bad_alloc)
          {
@@ -1732,6 +1774,7 @@ public:
          {
             throw exception( Unknown); 
          };
+         return *this;
       };
       bool compare( const iterator& iter) const
       {
@@ -1741,6 +1784,7 @@ public:
       void assign( const iterator& orig)
       {
          input = orig.input;
+         element.error = orig.element.error;
          element.eof = orig.element.eof;
          element.type = orig.element.type;
          element.content = orig.element.content;
@@ -1770,8 +1814,8 @@ public:
       {
          return &element;
       };
-      iterator& operator++()     {skip(); return *this;};
-      iterator& operator++(int)  {skip(); return *this;};
+      iterator& operator++()     {return skip();};
+      iterator operator++(int)   {iterator tmp(*this); skip(); return tmp;};
 
       bool operator==( const iterator& iter) const   {return compare( iter);};
       bool operator!=( const iterator& iter) const   {return !compare( iter);};
