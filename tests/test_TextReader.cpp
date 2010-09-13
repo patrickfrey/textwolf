@@ -1,8 +1,7 @@
 #include "textwolf.hpp"
 #include <iostream>
 
-//GCC
-//compile: g++ -c -o test_TextScanner.o -g -fstrict-aliasing -pedantic -Wall -Wunused -Wno-import -Wformat -Wformat-y2k -Wformat-nonliteral -Wformat-security -Wformat-y2k -Wswitch-enum -Wunknown-pragmas -Wfloat-equal -Wundef -Wshadow -Wpointer-arith -Wcast-qual -Wcast-align -Wwrite-strings -Wmissing-noreturn -Wno-multichar -Wparentheses -Wredundant-decls -Winline -Wdisabled-optimization -Wno-long-long -Werror -Wfatal-errors -I../include test_TextScanner.cpp
+//compile: g++ -c -o test_TextScanner.o -g -fstrict-aliasing -pedantic -Wall -Wunused -Wno-import -Wformat -Wformat-y2k -Wformat-nonliteral -Wformat-security -Wformat-y2k -Wswitch-enum -Wunknown-pragmas -Wfloat-equal -Wundef -Wshadow -Wpointer-arith -Wcast-qual -Wcast-align -Wwrite-strings -Wmissing-noreturn -Wno-multichar -Wparentheses -Wredundant-decls -Winline -Wdisabled-optimization -Wno-long-long -Werror -Wfatal-errors test_TextScanner.cpp
 //link     g++ -lc -o test_TextScanner test_TextScanner.o
 
 using namespace textwolf;
@@ -141,12 +140,12 @@ static const char* testAll()
       };
    };
    static Error error;
-   if (error.get( "IsoLatin1", *TextScannerTest< CharSet_IsoLatin1 >())
-   ||  error.get( "UCS2BE",    *TextScannerTest< CharSet_UCS2BE    >())
-   ||  error.get( "UCS2LE",    *TextScannerTest< CharSet_UCS2LE    >())
-   ||  error.get( "UCS4BE",    *TextScannerTest< CharSet_UCS4BE    >())
-   ||  error.get( "UCS4LE",    *TextScannerTest< CharSet_UCS4LE    >())
-   ||  error.get( "UTF8",      *TextScannerTest< CharSet_UTF8      >())) return *error;
+   if (error.get( "IsoLatin1", *TextScannerTest< charset::IsoLatin1 >())
+   ||  error.get( "UCS2BE",    *TextScannerTest< charset::UCS2BE    >())
+   ||  error.get( "UCS2LE",    *TextScannerTest< charset::UCS2LE    >())
+   ||  error.get( "UCS4BE",    *TextScannerTest< charset::UCS4BE    >())
+   ||  error.get( "UCS4LE",    *TextScannerTest< charset::UCS4LE    >())
+   ||  error.get( "UTF8",      *TextScannerTest< charset::UTF8      >())) return *error;
    return 0;
 }
 
