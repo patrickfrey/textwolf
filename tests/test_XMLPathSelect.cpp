@@ -36,7 +36,7 @@ int main( int, const char**)
       MyXMLPathSelect::iterator itr=xs.begin(),end=xs.end();
       for (; itr!=end && !itr->error; itr++)
       {         
-         std::cout << "Element " << itr->type << ": " << std::string( itr->content, itr->size).c_str() << std::endl;
+         std::cout << "Element " << itr->type << ": " << itr->content << std::endl;
       }
       
       //[5] handle a possible error
