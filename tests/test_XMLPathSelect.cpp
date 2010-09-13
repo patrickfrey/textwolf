@@ -7,38 +7,49 @@
 
 using namespace textwolf;
 
-static const char* simpleXmple = "<?xml charset=isolatin-1?><AA>aa 12</AA><BB>bb 13</BB><CC>cc 14</CC>";
-
 int main( int, const char**)
 { 
    try 
    {
-      char* src = const_cast<char*>( simpleXmple);
+      //[1] define the source iterator
+      char* src = const_cast<char*>
+      (
+         "<?xml charset=isolatin-1?>"
+         "<AA>aa 12</AA><z><AA>_aa _12</AA></z>"
+         "<BB>bb 13</BB>"
+         "<CC>cc 14</CC>"
+         "<X><Y><CC>_CC _14</CC></Y></X>" 
+      );
+
+      //[2] creating the automaton
       typedef XMLPathSelectAutomaton<charset::UTF8> Automaton;
       Automaton atm;
       (*atm)["AA"] = 12;
       (*atm)["BB"] = 13;
       (*atm)--["CC"] = 14;
 
-      enum {outputBufSize=4096};
-      char outputBuf[ outputBufSize];
-
+      //[3] define the XML Path selection by the automaton over the source iterator
       typedef XMLPathSelect<char*> MyXMLPathSelect; 
-      MyXMLPathSelect xs( &atm, src, outputBuf, outputBufSize);
+      MyXMLPathSelect xs( &atm, src);
 
-      MyXMLPathSelect::iterator itr,end;
-      for (itr=xs.begin(),end=xs.end(); itr!=end; itr++)
+      //[4] iterating through the produced elements and printing them
+      MyXMLPathSelect::iterator itr=xs.begin(),end=xs.end();
+      for (; itr!=end && !itr->error; itr++)
       {         
-         if (itr->error)
-         {
-            std::cerr << "FAILED " << itr->content << std::endl;
-            exit( 1);
-         }
          std::cout << "Element " << itr->type << ": " << std::string( itr->content, itr->size).c_str() << std::endl;
       }
       
-      std::cerr << "OK" << std::endl;
-      exit( 0);
+      //[5] handle a possible error
+      if (itr != end && itr->error)
+      {
+         std::cerr << "FAILED " << itr->content << std::endl;
+         exit( 1);
+      } 
+      else
+      {
+         std::cerr << "OK" << std::endl;
+         exit( 0);
+      }
    }
    catch (exception ee)
    {

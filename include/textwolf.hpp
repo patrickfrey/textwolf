@@ -6,7 +6,7 @@
 #include <map>
 #include <exception>
 #undef LOWLEVEL_DEBUG_SCANNER
-#define LOWLEVEL_DEBUG_XMLSEL
+#undef LOWLEVEL_DEBUG_XMLSEL
 #ifdef LOWLEVEL_DEBUG_XMLSEL
 #include <iostream>
 #endif
@@ -22,7 +22,8 @@ struct throws_exception
    enum Cause
    {
       Unknown, DimOutOfRange, StateNumbersNotAscending, InvalidParam,
-      InvalidState, IllegalParam, IllegalAttributeName, OutOfMem
+      InvalidState, IllegalParam, IllegalAttributeName, OutOfMem,
+      ArrayBoundsReadWrite
    };
 };
 struct exception   :public std::exception
@@ -36,9 +37,10 @@ struct exception   :public std::exception
    virtual ~exception() throw() {};
    virtual const char* what() const throw()
    {
-      static const char* nameCause[ 8] = { 
+      static const char* nameCause[ 9] = { 
          "Unknown","DimOutOfRange","StateNumbersNotAscending","InvalidParam",
-         "InvalidState","IllegalParam","IllegalAttributeName","OutOfMem"
+         "InvalidState","IllegalParam","IllegalAttributeName","OutOfMem",
+         "ArrayBoundsReadWrite"
       };
       return nameCause[ (unsigned int) cause];
    };
@@ -576,13 +578,15 @@ public:
       if (nn == 0) error = ErrOutputBufferTooSmall;
       return nn;     
    };
+   
    bool push( UChar ch)
    {
       unsigned int nn = print( ch);
       outputSize += nn; 
       return (nn != 0);     
    };
-   bool parseEntity()
+   
+   static unsigned char HEX( unsigned char ch)
    {
       struct HexCharMap :public CharMap<unsigned char, 0xFF>
       {
@@ -594,7 +598,41 @@ public:
          };
       };
       static HexCharMap hexCharMap;
-      
+      return hexCharMap[ch];
+   };
+   
+   static UChar parseStaticNumericEntityValue( InputReader& ir)
+   {
+      signed long long value = 0;
+      unsigned char ch = ir.ascii();
+      unsigned int base;
+      if (ch != '#') return 0;
+      ir.skip();
+      ch = ir.ascii();
+      if (ch == 'x')
+      {
+         ir.skip();
+         ch = ir.ascii();
+         base = 16;
+      }
+      else
+      {
+         base = 10;
+      }
+      while (ch != ';')
+      {
+         unsigned char chval = HEX(ch);
+         if (value >= base) return 0;
+         value = value * base + chval;
+         if (value >= (1LL << (8*sizeof(UChar)))) return 0;
+         ir.skip();
+         ch = ir.ascii();
+      }
+      return (UChar)value;
+   }
+
+   bool parseEntity()
+   {      
       unsigned char ch;
       unsigned char chval;
       int base;
@@ -617,8 +655,8 @@ public:
             {
                src.skip();
                ch = src.ascii();
-               chval = hexCharMap[ ch];
-               if (chval == HexCharMap::nullvalue)
+               chval = HEX( ch);
+               if (chval == 0xFF)
                {
                   ebuf[ ee++] = 'x'; base = -1; break;
                }
@@ -629,9 +667,9 @@ public:
             }
             else
             {
-               chval = hexCharMap[ ch];
+               chval = HEX( ch);
                base = 10;
-               if (chval == HexCharMap::nullvalue || chval >= base)
+               if (chval == 0xFF || chval >= base)
                {
                   base = -1;
                }
@@ -647,8 +685,8 @@ public:
                while (ee < 16)
                {
                   ch = src.ascii();
-                  chval = hexCharMap[ ch];
-                  if (chval == HexCharMap::nullvalue || value >= base) break;
+                  chval = HEX( ch);
+                  if (chval == 0xFF || chval >= base) break;
                   value = value * base + chval;
                   ebuf[ ee++] = ch;
                   src.skip();
@@ -693,6 +731,7 @@ public:
       if (!push('&')) return false;
       return true;
    };
+   
    bool parseToken()
    {
       for (;;)
@@ -717,6 +756,30 @@ public:
          }
       }
    };
+
+   static bool parseStaticToken( InputReader ir, char* buf, size_type bufsize, size_type* p_outputBufSize)
+   {
+      for (;;)
+      {
+         ControlCharacter ch;
+         size_type ii=0;
+         while ((ch=ir.control()) == Any || ch==Equal || ch==Slash || ch==Exclam || ch==Questm || ch==Sq || ch==Dq || ch==Osb || ch==Csb || ch==Amp)
+         {
+            UChar pc = (ch==Amp)?parseStaticNumericEntityValue( ir):ir.ascii();
+            unsigned int chlen = OutputCharSet::print( pc, buf+ii, bufsize-ii);
+            if (chlen == 0 || pc == 0)
+            {
+               *p_outputBufSize = ii;
+               return false; 
+            }
+            ii += chlen;
+            ir.skip();
+         }
+         *p_outputBufSize = ii;
+         return true;
+      }      
+   };
+   
    bool skipToken()
    {
       for (;;)
@@ -889,21 +952,26 @@ private:
    size_type outputSize;
    
 public:
-   XMLScanner( InputIterator& p_src, char* p_outputBuf, size_type p_outputBufSize, EntityMap* p_entityMap=0)
-         :state(START),error(Ok),src(p_src),entityMap(p_entityMap),outputBuf(p_outputBuf),outputBufSize(p_outputBufSize),outputSize(0)
-   {};
+   XMLScanner( InputIterator& p_src, size_type p_outputBufSize, EntityMap* p_entityMap=0)
+         :state(START),error(Ok),src(p_src),entityMap(p_entityMap),outputBuf(0),outputBufSize(p_outputBufSize),outputSize(0)
+   {
+      if (outputBufSize) outputBuf = new (std::nothrow) char[ outputBufSize];
+      if (!outputBuf) outputBufSize = 0;
+   };
+   
    XMLScanner( XMLScanner& o)
-         :state(o.state),error(o.error),src(o.src),entityMap(o.entityMap),outputBuf(o.outputBuf),outputBufSize(o.outputBufSize),outputSize(o.outputSize)
-   {};
+         :state(o.state),error(o.error),src(o.src),entityMap(o.entityMap),outputBuf(0),outputBufSize(o.outputBufSize),outputSize(o.outputSize)
+   {
+      if (outputBufSize) outputBuf = new (std::nothrow) char[ outputBufSize];
+      if (!outputBuf) outputBufSize = 0;
+      unsigned int ii;
+      for (ii=0; ii<o.outputSize; ii++) outputBuf[ii] = o.outputBuf[ii];
+   };
 
    template <class CharSet>
    static bool getTagName( const char* src, char* p_outputBuf, size_type p_outputBufSize, size_type* p_outputSize)
    {
-      bool rt;
-      XMLScanner<const char*, charset::UTF8, CharSet> scanner( src, p_outputBuf, p_outputBufSize);
-      rt = scanner.parseToken();
-      *p_outputSize = scanner.getItemSize();
-      return rt;
+      return XMLScanner<const char*, charset::UTF8, CharSet>::parseStaticToken( src, p_outputBuf, p_outputBufSize, p_outputSize);
    }
    
    char* getItem() const {return outputBuf;};
@@ -1165,7 +1233,20 @@ template <class CharSet_=charset::UTF8>
 class XMLPathSelectAutomaton :public throws_exception
 {
 public:
-   XMLPathSelectAutomaton() {};
+   enum {defaultMemUsage=4*1024,defaultMaxDepth=32,defaultMaxTokenSize=1024};
+   unsigned int memUsage;
+   unsigned int maxDepth;   
+   unsigned int maxScopeStackSize;
+   unsigned int maxFollows;
+   unsigned int maxTokens;
+   unsigned int maxTokenSize;
+
+public:
+   XMLPathSelectAutomaton()
+         :memUsage(defaultMemUsage),maxDepth(defaultMaxDepth),maxTokenSize(defaultMaxTokenSize)
+   {
+      if (!setMemUsage( memUsage, maxDepth, maxTokenSize)) throw exception( DimOutOfRange);
+   };
 
    typedef int Hash;
    typedef XMLPathSelectAutomaton<CharSet_> ThisXMLPathSelectAutomaton;
@@ -1321,6 +1402,7 @@ public:
          link = p_link;
       };
    };
+   std::vector<State> states;   
          
    struct Token
    {
@@ -1331,7 +1413,55 @@ public:
       Token( const Token& orig)                     :core(orig.core),stateidx(orig.stateidx) {};
       Token( const State& state, int p_stateidx)    :core(state.core),stateidx(p_stateidx) {};
    };
-   
+
+   struct Scope
+   {
+      Mask mask;
+      Mask followMask;
+      struct Range
+      {
+         unsigned int tokenidx_from;
+         unsigned int tokenidx_to;
+         unsigned int followidx;
+         
+         Range()                            :tokenidx_from(0),tokenidx_to(0),followidx(0) {};
+         Range( const Scope& orig)          :tokenidx_from(orig.tokenidx_from),tokenidx_to(orig.tokenidx_to),followidx(orig.followidx) {};
+      };
+      Range range;
+      
+      Scope( const Scope& orig)             :mask(orig.mask),followMask(orig.followMask),range(orig.range) {};
+      Scope& operator =( const Scope& orig) {mask=orig.mask; followMask=orig.followMask; range=orig.range; return *this;};
+      Scope()                               {};  
+   };
+
+   bool setMemUsage( unsigned int p_memUsage, unsigned int p_maxDepth, unsigned int p_maxTokenSize)
+   {
+      maxTokenSize = p_maxTokenSize;
+      memUsage = p_memUsage;
+      maxDepth = p_maxDepth;
+      maxScopeStackSize = maxDepth;
+      if (p_memUsage < maxTokenSize)
+      {
+         maxTokenSize = 0;
+      }
+      else
+      {
+         p_memUsage -= maxTokenSize;
+      }
+      if (p_memUsage < maxScopeStackSize * sizeof(Scope))
+      {
+         maxScopeStackSize = 0;
+      }
+      else
+      {
+         p_memUsage -= maxScopeStackSize * sizeof(Scope);
+      }
+      maxFollows = (p_memUsage / sizeof(unsigned int)) / 32 + 2;
+      p_memUsage -= sizeof(unsigned int) * maxFollows;
+      maxTokens = p_memUsage / sizeof(Token);
+      return (maxScopeStackSize != 0 && maxTokens != 0 && maxFollows != 0);
+   };
+
 private:      
    int defNext( int stateidx, Operation op, unsigned int keysize, const char* key, const char* srckey, bool follow=false) throw(exception)
    {
@@ -1494,8 +1624,6 @@ public:
    {      
       return PathElement( this);
    };
-
-   std::vector<State> states;
 };
 
 
@@ -1519,30 +1647,52 @@ private:
    typedef typename Automaton::Token Token;
    typedef typename Automaton::Hash Hash;
    typedef typename Automaton::State State;
+   typedef typename Automaton::Scope Scope;
    
-   struct Scope
+   //static array of POD types. I decided to implement it on my own
+   template <typename Element>
+   class Array :public throws_exception
    {
-      Mask mask;
-      Mask followMask;
-      struct Range
+      Element* m_ar;
+      unsigned int m_size;
+      unsigned int m_maxSize;
+   public:
+      Array( unsigned int p_maxSize) :m_size(0),m_maxSize(p_maxSize)
       {
-         unsigned int tokenidx_from;
-         unsigned int tokenidx_to;
-         unsigned int followidx;
-         
-         Range()                            :tokenidx_from(0),tokenidx_to(0),followidx(0) {};
-         Range( const Scope& orig)          :tokenidx_from(orig.tokenidx_from),tokenidx_to(orig.tokenidx_to),followidx(orig.followidx) {};
+         m_ar = new (std::nothrow) Element[ m_maxSize];
+         if (m_ar == 0) throw exception( OutOfMem);
       };
-      Range range;
-      
-      Scope( const Scope& orig)             :mask(orig.mask),followMask(orig.followMask),range(orig.range) {};
-      Scope& operator =( const Scope& orig) {mask=orig.mask; followMask=orig.followMask; range=orig.range; return *this;};
-      Scope()                               {};  
+      ~Array()
+      {
+         if (m_ar) delete [] m_ar;
+      };
+      void push_back( const Element& elem)
+      {
+         if (m_size == m_maxSize) throw exception( OutOfMem);
+         m_ar[ m_size++] = elem;
+      };
+      Element& operator[]( unsigned int idx)
+      {
+         if (idx >= m_size) throw exception( ArrayBoundsReadWrite);
+         return m_ar[ idx];
+      };
+      void resize( unsigned int p_size)
+      {
+         if (p_size > m_size) throw exception( ArrayBoundsReadWrite);
+         m_size = p_size;
+      };
+      Element& pop()
+      {
+         if (m_size == 0) throw exception( ArrayBoundsReadWrite);
+         return m_ar[ --m_size];
+      };
+      unsigned int size() const  {return m_size;};
+      bool empty() const         {return m_size==0;};
    };
-      
-   std::stack<Scope> scopestk;              //stack of scopes opened
-   std::vector<unsigned int> follows;       //indices of tokens active in all descendant scopes
-   std::vector<Token> tokens;               //list of waiting tokens
+   
+   Array<Scope> scopestk;                   //stack of scopes opened
+   Array<unsigned int> follows;             //indices of tokens active in all descendant scopes
+   Array<Token> tokens;                     //list of waiting tokens
    
    struct Context
    {
@@ -1602,11 +1752,11 @@ private:
       context.scope.range.followidx = follows.size();
       
       context.init( type, key, keysize);
-      
+
       if (type == XMLScannerBase::OpenTag) 
       {
          //first step of open scope saves the context context on stack
-         scopestk.push( context.scope);
+         scopestk.push_back( context.scope);
          context.scope.mask = context.scope.followMask;
          context.scope.mask.match( XMLScannerBase::OpenTag);
          //... we reset the mask but ensure that this 'OpenTag' is processed for sure
@@ -1615,8 +1765,7 @@ private:
       {
          if (!scopestk.empty())
          {
-            context.scope = scopestk.top();
-            scopestk.pop();
+            context.scope = scopestk.pop();
             follows.resize( context.scope.range.followidx);
             tokens.resize( context.scope.range.tokenidx_to);
          }
@@ -1676,7 +1825,9 @@ private:
             else 
             {
                unsigned int ii = context.scope_iter - context.scope.range.tokenidx_to;
-               if (ii < context.scope.range.followidx)
+               //we match all follows that are not yet been checked in the current scope
+               if (ii < context.scope.range.followidx
+               &&  context.scope.range.tokenidx_from > follows[ ii])
                {
                   type = match( follows[ ii]);
                   context.scope_iter ++;
@@ -1700,11 +1851,11 @@ private:
    };
 
 public:
-   XMLPathSelect( Automaton* p_atm, InputIterator& src, char* outputBuf, unsigned int outputBufSize, EntityMap* entityMap=0)  :scan(src,outputBuf,outputBufSize,entityMap),atm(p_atm)
+   XMLPathSelect( Automaton* p_atm, InputIterator& src, EntityMap* entityMap=0)  :scan(src,p_atm->maxTokenSize,entityMap),atm(p_atm),scopestk(p_atm->maxScopeStackSize),follows(p_atm->maxFollows),tokens(p_atm->maxTokens)
    {
       if (atm->states.size() > 0) expand(0);
    };
-   XMLPathSelect( const XMLPathSelect& o)                                                                                     :scan(o.scan),atm(o.atm) {};
+   XMLPathSelect( const XMLPathSelect& o)                                                                                     :scan(o.scan),atm(o.atm),scopestk(o.maxScopeStackSize),follows(o.maxFollows),tokens(o.maxTokens) {};
 
    //STL conform input iterator for the output of this XMLScanner:   
    struct End {};
