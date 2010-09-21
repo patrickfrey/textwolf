@@ -1233,7 +1233,7 @@ template <class CharSet_=charset::UTF8>
 class XMLPathSelectAutomaton :public throws_exception
 {
 public:
-   enum {defaultMemUsage=4*1024,defaultMaxDepth=32,defaultMaxTokenSize=1024};
+   enum {defaultMemUsage=3*1024,defaultMaxDepth=32,defaultMaxTokenSize=1024};
    unsigned int memUsage;
    unsigned int maxDepth;   
    unsigned int maxScopeStackSize;
