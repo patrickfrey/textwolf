@@ -275,7 +275,7 @@ public:
          (*this)  (0,EndOfText)  (1,31,Cntrl)      (5,Undef)         (33,127,Any)   (128,255,Undef) 
                   ('\t',Space)   ('\r',EndOfLine)  ('\n',EndOfLine)  (' ',Space)    ('&',Amp)
                   ('<',Lt)       ('=',Equal)       ('>',Gt)          ('/',Slash)    ('!',Exclam)
-                  ('?',Questm)   ('\'',Sq)         ('\"',Dq)         ('[',Osb)      (']',Osb);         
+                  ('?',Questm)   ('\'',Sq)         ('\"',Dq)         ('[',Osb)      (']',Osb);
       };
    };
    
@@ -477,7 +477,7 @@ public:
       = {0,"MemblockTooSmall","ExpectedOpenTag","UnexpectedState",
          "ExpectedXMLTag","SyntaxString","UnexpectedEndOfText","OutputBufferTooSmall",
          "SyntaxToken","StringExceedsLine","EntityEncodesCntrlChar","ExpectedIdentifier",
-         "ExpectedIdentifier", "UndefinedCharacterEntity","InternalErrorSTM","ExpectedTagEnd",
+         "ExpectedToken", "UndefinedCharacterEntity","InternalErrorSTM","ExpectedTagEnd",
          "ExpectedEqual", "ExpectedTagAttribute","ExpectedCDATATag","Internal"
       };
       return sError[(unsigned int)ee];
@@ -528,8 +528,8 @@ public:
          [ XTAGAVSQ ].action(ReturnSQString,HeaderAttribValue)(EndOfLine,Cntrl,Space,XTAGAISK)(Questm,XTAGEND).miss(ErrExpectedTagAttribute)
          [ XTAGAVDQ ].action(ReturnDQString,HeaderAttribValue)(EndOfLine,Cntrl,Space,XTAGAISK)(Questm,XTAGEND).miss(ErrExpectedTagAttribute)
          [ CONTENT  ](EndOfText,EXIT)(EndOfLine)(Cntrl)(Space)(Lt,XMLTAG).fallback(TOKEN)
-         [ TOKEN    ].action(ReturnToken,Content)(EndOfLine)(EndOfText,EXIT)(Cntrl)(Space)(Lt,XMLTAG).fallback(TOKEN)
-         [ XMLTAG   ](EndOfLine)(Cntrl)(Space)(Slash,CLOSETAG).fallback(OPENTAG)
+         [ TOKEN    ].action(ReturnToken,Content)(EndOfText,EXIT)(EndOfLine,Cntrl,Space,CONTENT)(Lt,XMLTAG).fallback(TOKEN)
+         [ XMLTAG   ](EndOfLine)(Cntrl)(Space)(Questm,XTAG)(Slash,CLOSETAG).fallback(OPENTAG)
          [ OPENTAG  ].action(ReturnIdentifier,OpenTag)(EndOfLine,Cntrl,Space,TAGAISK)(Slash,TAGCLIM)(Gt,CONTENT).miss(ErrExpectedTagAttribute)
          [ CLOSETAG ].action(ReturnIdentifier,CloseTag)(EndOfLine,Cntrl,Space,TAGCLSK)(Gt,CONTENT).miss(ErrExpectedTagEnd)
          [ TAGCLSK  ](EndOfLine)(Cntrl)(Space)(Gt,CONTENT).miss(ErrExpectedTagEnd)
@@ -737,7 +737,7 @@ public:
       for (;;)
       {
          ControlCharacter ch;
-         while ((ch=src.control()) == Any || ch==Equal || ch==Slash || ch==Exclam || ch==Questm || ch==Sq || ch==Dq || ch==Osb || ch==Csb) 
+         while ((ch=src.control()) == Any || ch==Equal || ch==Slash || ch==Exclam || ch==Questm || ch==Sq || ch==Dq || ch==Osb || ch==Csb || ch==Undef) 
          {
             push( src.chr());
             src.skip();
@@ -1554,6 +1554,7 @@ public:
             case Content:              pushOpMask.match( XMLScannerBase::Content); 
                                        break;
             case Tag:                  pushOpMask.match( XMLScannerBase::Content); 
+                                       pushOpMask.match( XMLScannerBase::OpenTag); 
                                        pushOpMask.match( XMLScannerBase::TagAttribName); 
                                        pushOpMask.match( XMLScannerBase::TagAttribValue); 
                                        break;
@@ -1608,8 +1609,8 @@ public:
       };
 
    public:
-      PathElement()                                                  :xs(0),stateidx(0),count(-1),follow(false),pushOpMask(0) {}; 
-      PathElement( XMLPathSelectAutomaton* p_xs, int p_stateidx=0)   :xs(p_xs),stateidx(p_stateidx),count(-1),follow(false),pushOpMask(0) {};
+      PathElement()                                                  :xs(0),stateidx(0),count(-1),follow(false),pushOpMask(0) {};
+      PathElement( XMLPathSelectAutomaton* p_xs, int p_stateidx=0)   :xs(p_xs),stateidx(p_stateidx),count(-1),follow(false),pushOpMask(0) {doSelect(Tag);};
       PathElement( const PathElement& orig)                          :xs(orig.xs),stateidx(orig.stateidx),count(orig.count),follow(orig.follow),pushOpMask(orig.pushOpMask) {};
 
       //corresponds to "//" in abbreviated syntax of XPath
@@ -1997,4 +1998,3 @@ public:
 
 } //namespace textwolf
 #endif 
-
