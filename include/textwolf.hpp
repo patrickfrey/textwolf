@@ -1567,13 +1567,20 @@ public:
       {
          if (xs != 0)
          {
-            char buf[ 1024];
-            XMLScanner<char*>::size_type size;
-            if (!XMLScanner<char*>::getTagName<CharSet_>( value, buf, sizeof(buf), &size))
+            if (value)
             {
-               throw exception( IllegalAttributeName);
+               char buf[ 1024];
+               XMLScanner<char*>::size_type size;
+               if (!XMLScanner<char*>::getTagName<CharSet_>( value, buf, sizeof(buf), &size))
+               {
+                  throw exception( IllegalAttributeName);
+               }
+               stateidx = xs->defNext( stateidx, op, size, buf, value, follow);
             }
-            stateidx = xs->defNext( stateidx, op, size, buf, value, follow);
+            else
+            {
+               stateidx = xs->defNext( stateidx, op, 0, 0, 0, follow);
+            }
          }
          return doSelect( op);
       };
@@ -1726,7 +1733,8 @@ private:
          #ifdef LOWLEVEL_DEBUG_XMLSEL
             if (st.core.x != -1) std::cout << "[!expand] STATE " << stateidx << ":" << st.srckey << (st.core.follow?" --":" ") << "> " << st.next << std::endl;
             if (st.core.typeidx != 0) std::cout << "[!expand] FETCH " << st.core.typeidx << std::endl;
-         #endif
+            std::cout << "[!mask] " << context.scope.mask.pos << "/" << context.scope.mask.neg << " JOIN " << st.core.mask.pos << "/" << st.core.mask.neg << std::endl;
+         #endif         
          context.scope.mask.join( st.core.mask);
          if (st.core.follow) 
          {
@@ -1794,6 +1802,11 @@ private:
                      if (tk.core.cnt > 0) tokens[ tokenidx].core.cnt--;
                   };
                }
+            }
+            else
+            {
+               expand( atm->states[ tk.stateidx].next);
+               if (tk.core.cnt > 0) tokens[ tokenidx].core.cnt--;               
             }
             if (tk.core.typeidx != 0)
             {
