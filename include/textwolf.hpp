@@ -528,7 +528,7 @@ public:
          [ XTAGAVSQ ].action(ReturnSQString,HeaderAttribValue)(EndOfLine,Cntrl,Space,XTAGAISK)(Questm,XTAGEND).miss(ErrExpectedTagAttribute)
          [ XTAGAVDQ ].action(ReturnDQString,HeaderAttribValue)(EndOfLine,Cntrl,Space,XTAGAISK)(Questm,XTAGEND).miss(ErrExpectedTagAttribute)
          [ CONTENT  ](EndOfText,EXIT)(EndOfLine)(Cntrl)(Space)(Lt,XMLTAG).fallback(TOKEN)
-         [ TOKEN    ].action(ReturnToken,Content)(EndOfText,EXIT)(EndOfLine,Cntrl,Space,CONTENT)(Lt,XMLTAG).fallback(TOKEN)
+         [ TOKEN    ].action(ReturnToken,Content)(EndOfText,EXIT)(EndOfLine,Cntrl,Space,CONTENT)(Lt,XMLTAG).fallback(CONTENT)
          [ XMLTAG   ](EndOfLine)(Cntrl)(Space)(Questm,XTAG)(Slash,CLOSETAG).fallback(OPENTAG)
          [ OPENTAG  ].action(ReturnIdentifier,OpenTag)(EndOfLine,Cntrl,Space,TAGAISK)(Slash,TAGCLIM)(Gt,CONTENT).miss(ErrExpectedTagAttribute)
          [ CLOSETAG ].action(ReturnIdentifier,CloseTag)(EndOfLine,Cntrl,Space,TAGCLSK)(Gt,CONTENT).miss(ErrExpectedTagEnd)
@@ -546,7 +546,7 @@ public:
          [ CDATA    ].action(ExpectIdentifierCDATA)(Osb,CDATA1).miss(ErrExpectedCDATATag)
          [ CDATA1   ](Csb,CDATA2).other(CDATA1)
          [ CDATA2   ](Csb,CDATA3).other(CDATA1)
-         [ CDATA3   ](Gt,CONTENT).other(CDATA1)        
+         [ CDATA3   ](Gt,CONTENT).other(CDATA1)
          [ EXIT     ].action(ReturnEOF);
       };
    };
@@ -915,31 +915,91 @@ public:
    }; 
    bool pushPredefinedEntity( const char* str)
    {
-      if (strcmp( str, "quot") == 0) push( '"');
-      else if (strcmp( str, "amp") == 0) push( '&');
-      else if (strcmp( str, "apos") == 0) push( '\'');
-      else if (strcmp( str, "lt") == 0) push( '<');
-      else if (strcmp( str, "gt") == 0) push( '>');
-      else
+      switch (str[0])
       {
-         error = ErrUndefinedCharacterEntity;
-         return false;
+         case 'q':
+            if (str[1] == 'u' && str[2] == 'o' && str[3] == 't' && str[4] == '\0')
+            {
+               push( '\"');
+               return true;
+            }
+            break;
+
+         case 'a':
+            if (str[1] == 'm')
+            {
+               if (str[2] == 'p' && str[3] == '\0')
+               {
+                  push( '&');
+                  return true;
+               }
+            }
+            else if (str[1] == 'p')
+            {
+               if (str[2] == 'o' && str[3] == 's' && str[4] == '\0')
+               {
+                  push( '\'');
+                  return true;
+               }
+            }
+            break;
+
+         case 'l':
+            if (str[1] == 't' && str[2] == '\0')
+            {
+               push( '<');
+               return true;
+            }
+            break;
+
+         case 'g':
+            if (str[1] == 't' && str[2] == '\0')
+            {
+               push( '>');
+               return true;
+            }
+            break;
+
+         case 'n':
+            if (str[1] == 'b' && str[2] == 's' && str[3] == 'p' && str[4] == '\0')
+            {
+               push( ' ');
+               return true;
+            }
+            break;
       }
-      return true;
+      return false;
    };
    bool pushEntity( const char* str)
    {
-      if (entityMap == 0) return pushPredefinedEntity( str);
-      EntityMapIterator itr = entityMap->find( str);
-      if (itr == entityMap->end()) return pushPredefinedEntity( str);
-
-      UChar ch = itr->second;
-      if (ch < 32)
+      if (pushPredefinedEntity( str))
       {
-         error = ErrEntityEncodesCntrlChar; return false;
+         return true;
+      }
+      else if (entityMap)
+      {
+         EntityMapIterator itr = entityMap->find( str);
+         if (itr == entityMap->end())
+         {
+            error = ErrUndefinedCharacterEntity;
+            return false;
+         }
+         else
+         {
+            UChar ch = itr->second;
+            if (ch < 32)
+            {
+               error = ErrEntityEncodesCntrlChar;
+               return false;
+            }
+            return push( ch);
+         }
+      }
+      else
+      {
+         error = ErrEntityEncodesCntrlChar;
          return false;
       }
-      return push( ch);
    };
    
 private:
