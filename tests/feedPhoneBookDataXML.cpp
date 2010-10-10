@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <errno.h>
 
-//compile: g++ -c -o feedPhoneBookDataXML.o -g -fstrict-aliasing -pedantic -Wall -Wunused -Wno-import -Wformat -Wformat-y2k -Wformat-nonliteral -Wformat-security -Wformat-y2k -Wswitch-enum -Wunknown-pragmas -Wfloat-equal -Wundef -Wshadow -Wpointer-arith -Wcast-qual -Wcast-align -Wwrite-strings -Wmissing-noreturn -Wno-multichar -Wparentheses -Wredundant-decls -Winline -Wdisabled-optimization -Wno-long-long -Werror -Wfatal-errors feedPhoneBookDataXML.cpp
+//compile: g++ -c -o feedPhoneBookDataXML.o -g -O5 -fstrict-aliasing -pedantic -Wall -Wunused -Wno-import -Wformat -Wformat-y2k -Wformat-nonliteral -Wformat-security -Wformat-y2k -Wswitch-enum -Wunknown-pragmas -Wfloat-equal -Wundef -Wshadow -Wpointer-arith -Wcast-qual -Wcast-align -Wwrite-strings -Wmissing-noreturn -Wno-multichar -Wparentheses -Wredundant-decls -Wdisabled-optimization -Wno-long-long -Werror -Wfatal-errors feedPhoneBookDataXML.cpp
 //link     g++ -lc -o feedPhoneBookDataXML feedPhoneBookDataXML.o
 
 using namespace textwolf;
@@ -51,7 +51,7 @@ struct Input
       void skip()                         {ch=input->getchar();};                                
       iterator& operator++()              {skip(); return *this;};
       iterator operator++(int)            {iterator tmp(*this); skip(); return tmp;};
-      char operator*()                    {return ch;};            
+      char operator*()                    {return ch;};
    };
    iterator begin()                       {iterator rt(this); rt.skip(); return rt;};
    iterator end()                         {return iterator();};
@@ -71,7 +71,7 @@ int main( int argc, const char** argv)
       else if (argc > 2)
       {
          fprintf( stderr, "too many arguments");
-         exit(1);
+         return 1;
       }
       else
       {
@@ -86,16 +86,16 @@ int main( int argc, const char** argv)
          Name, Vorname, Strasse, PLZ, Gemeinde, Tel, Fax, Titel, Sparte, Doc
       };      
       Automaton atm;
-      (*atm)["doc"]["name"] = Name;
-      (*atm)["doc"]["vorname"] = Vorname;
-      (*atm)["doc"]["strasse"] = Strasse;
-      (*atm)["doc"]["plz"] = PLZ;
-      (*atm)["doc"]["gemeinde"] = Gemeinde;
-      (*atm)["doc"]["tel"] = Tel;
-      (*atm)["doc"]["fax"] = Fax;
-      (*atm)["doc"]["titel"] = Titel;
-      (*atm)["doc"]["sparte"] = Sparte;
-      (*atm) = Doc;
+      (*atm)["docs"]["doc"]["name"] = Name;
+      (*atm)["docs"]["doc"]["vorname"] = Vorname;
+      (*atm)["docs"]["doc"]["strasse"] = Strasse;
+      (*atm)["docs"]["doc"]["plz"] = PLZ;
+      (*atm)["docs"]["doc"]["gemeinde"] = Gemeinde;
+      (*atm)["docs"]["doc"]["tel"] = Tel;
+      (*atm)["docs"]["doc"]["fax"] = Fax;
+      (*atm)["docs"]["doc"]["titel"] = Titel;
+      (*atm)["docs"]["doc"]["sparte"] = Sparte;
+      (*atm)["docs"] = Doc;
       unsigned int docCnt = 0;
 
       //[3] define the XML Path selection by the automaton over the source iterator. 
@@ -125,18 +125,18 @@ int main( int argc, const char** argv)
       if (itr != end && itr->error)
       {
          std::cerr << "FAILED " << itr->content << std::endl;
-         exit( 1);
+         return 1;
       } 
       else
       {
          std::cerr << "OK" << std::endl;
-         exit( 0);
+         return 0;
       }
    }
    catch (exception ee)
    {
       std::cerr << "ERROR " << ee.what() << std::endl;
-      exit( 1);
+      return 1;
    };
 }
 

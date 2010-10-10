@@ -20,6 +20,7 @@ int main( int, const char**)
          "<TT i='9'><v>9</v></TT>"
          "<TT><AA><BB>10</BB></AA></TT>"
          "<TT><AA>11</AA></TT>"
+         "<TT><AA>&#65;Z&amp;&lt;&gt;&apos;&nbsp;&quot;Z</AA></TT>"         
          "<AA z='4' t='4'>12 12 12</AA>"
          "<BB>13 13</BB>"
          "<CC z='4'>14</CC>" 
@@ -60,18 +61,18 @@ int main( int, const char**)
       if (itr != end && itr->error)
       {
          std::cerr << "FAILED " << itr->content << std::endl;
-         exit( 1);
+         return 1;
       } 
       else
       {
          std::cerr << "OK" << std::endl;
-         exit( 0);
+         return 0;
       }
    }
    catch (exception ee)
    {
       std::cerr << "ERROR " << ee.what() << std::endl;
-      exit( 1);
+      return 1;
    };
 }
 

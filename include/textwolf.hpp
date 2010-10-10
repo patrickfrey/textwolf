@@ -5,6 +5,8 @@
 #include <stack>
 #include <map>
 #include <exception>
+#include <string.h>
+
 #undef LOWLEVEL_DEBUG_SCANNER
 #undef LOWLEVEL_DEBUG_XMLSEL
 #ifdef LOWLEVEL_DEBUG_XMLSEL
@@ -13,7 +15,6 @@
 #ifdef LOWLEVEL_DEBUG_SCANNER
 #include <iostream>
 #endif
-
 
 namespace textwolf {
 
@@ -26,6 +27,7 @@ struct throws_exception
       ArrayBoundsReadWrite
    };
 };
+
 struct exception   :public std::exception
 {
    typedef throws_exception::Cause Cause; 
@@ -49,7 +51,7 @@ struct exception   :public std::exception
 /**
 * character map for fast typing of a character byte
 */
-template <typename RESTYPE, RESTYPE nullvalue_>
+template <typename RESTYPE, RESTYPE nullvalue_, int RANGE=256>
 class CharMap
 {
 public:
@@ -57,9 +59,9 @@ public:
    enum Constant {nullvalue=nullvalue_};
    
 private:
-   RESTYPE ar[ 256];
+   RESTYPE ar[ RANGE];
 public:
-   CharMap()                                                                         {for (unsigned int ii=0; ii<256; ii++) ar[ii]=(valuetype)nullvalue;};
+   CharMap()                                                                         {for (unsigned int ii=0; ii<RANGE; ii++) ar[ii]=(valuetype)nullvalue;};
    CharMap& operator()( unsigned char from, unsigned char to, valuetype value)       {for (unsigned int ii=from; ii<=to; ii++) ar[ii]=value; return *this;};
    CharMap& operator()( unsigned char at, valuetype value)                           {ar[at] = value; return *this;};
    valuetype operator []( unsigned char ii) const                                    {return ar[ii];};
@@ -277,7 +279,7 @@ public:
                   ('<',Lt)       ('=',Equal)       ('>',Gt)          ('/',Slash)    ('!',Exclam)
                   ('?',Questm)   ('\'',Sq)         ('\"',Dq)         ('[',Osb)      (']',Osb);
       };
-   };
+   };   
    
    TextScanner( const Iterator& p_iterator)    :input(p_iterator),val(0),cur(0),state(0)
    {
@@ -307,13 +309,13 @@ public:
       return val;
    };
    
-   ControlCharacter control()
+   ControlCharacter control() const
    {
       static ControlCharMap controlCharMap;
       return controlCharMap[ (unsigned char)cur];
    };
    
-   char ascii()
+   char ascii() const
    {
       return cur>=0?cur:0;
    };
@@ -440,7 +442,7 @@ public:
                                     ControlCharacter inputchr2, 
                                     ControlCharacter inputchr3, int ns)     {addTransition(inputchr1,ns); addTransition(inputchr2,ns); addTransition(inputchr3,ns); return *this;};
    ScannerStatemachine& operator()( ControlCharacter inputchr)              {addTransition(inputchr); return *this;};
-   ScannerStatemachine& action( int aa, int arg=0)                          {addAction(aa,arg); return *this;};
+   ScannerStatemachine& action( int aa, int arg=0)            {addAction(aa,arg); return *this;};
    ScannerStatemachine& miss( int ee)                                       {addMiss(ee); return *this;};
    ScannerStatemachine& fallback( int stateIdx)                             {addFallback(stateIdx); return *this;};
    ScannerStatemachine& other( int stateIdx)                                {addOtherTransition(stateIdx); return *this;};
@@ -466,7 +468,7 @@ public:
    {
       Ok,ErrMemblockTooSmall, ErrExpectedOpenTag, ErrUnexpectedState,
       ErrExpectedXMLTag, ErrSyntaxString, ErrUnexpectedEndOfText, ErrOutputBufferTooSmall,
-      ErrSyntaxToken, ErrStringExceedsLine, ErrEntityEncodesCntrlChar, ErrExpectedIdentifier,
+      ErrSyntaxToken, ErrStringNotTerminated, ErrEntityEncodesCntrlChar, ErrExpectedIdentifier,
       ErrExpectedToken, ErrUndefinedCharacterEntity, ErrInternalErrorSTM, ErrExpectedTagEnd,
       ErrExpectedEqual, ErrExpectedTagAttribute, ErrExpectedCDATATag, ErrInternal
    };
@@ -476,7 +478,7 @@ public:
       static const char* sError[NofErrors]
       = {0,"MemblockTooSmall","ExpectedOpenTag","UnexpectedState",
          "ExpectedXMLTag","SyntaxString","UnexpectedEndOfText","OutputBufferTooSmall",
-         "SyntaxToken","StringExceedsLine","EntityEncodesCntrlChar","ExpectedIdentifier",
+         "SyntaxToken","StringNotTerminated","EntityEncodesCntrlChar","ExpectedIdentifier",
          "ExpectedToken", "UndefinedCharacterEntity","InternalErrorSTM","ExpectedTagEnd",
          "ExpectedEqual", "ExpectedTagAttribute","ExpectedCDATATag","Internal"
       };
@@ -484,17 +486,17 @@ public:
    };
    enum STMState 
    {
-      START,  STARTTAG, XTAG, XTAGEND, XTAGAISK, XTAGANAM, XTAGAESK, XTAGAVSK, XTAGAVID, XTAGAVSQ, XTAGAVDQ, CONTENT, 
-      TOKEN, XMLTAG, OPENTAG, CLOSETAG, TAGCLSK, TAGAISK, TAGANAM, TAGAESK, TAGAVSK, TAGAVID, TAGAVSQ, TAGAVDQ,
+      START,  STARTTAG, XTAG, XTAGEND, XTAGAISK, XTAGANAM, XTAGAESK, XTAGAVSK, XTAGAVID, XTAGAVSQ, XTAGAVDQ, XTAGAVQE, CONTENT, 
+      TOKEN, XMLTAG, OPENTAG, CLOSETAG, TAGCLSK, TAGAISK, TAGANAM, TAGAESK, TAGAVSK, TAGAVID, TAGAVSQ, TAGAVDQ, TAGAVQE,
       TAGCLIM, ENTITYSL, ENTITY, CDATA, CDATA1, CDATA2, CDATA3, EXIT
    };
    static const char* getStateString( STMState s)
    {
-      enum Constant {NofStates=32};
+      enum Constant {NofStates=34};
       static const char* sState[NofStates]
       = {
-         "START", "STARTTAG", "XTAG", "XTAGEND", "XTAGAISK", "XTAGANAM", "XTAGAESK", "XTAGAVSK", "XTAGAVID", "XTAGAVSQ", "XTAGAVDQ", "CONTENT",
-         "TOKEN", "XMLTAG", "OPENTAG", "CLOSETAG", "TAGCLSK", "TAGAISK", "TAGANAM", "TAGAESK", "TAGAVSK", "TAGAVID", "TAGAVSQ", "TAGAVDQ",
+         "START", "STARTTAG", "XTAG", "XTAGEND", "XTAGAISK", "XTAGANAM", "XTAGAESK", "XTAGAVSK", "XTAGAVID", "XTAGAVSQ", "XTAGAVDQ", "XTAGAVQE", "CONTENT",
+         "TOKEN", "XMLTAG", "OPENTAG", "CLOSETAG", "TAGCLSK", "TAGAISK", "TAGANAM", "TAGAESK", "TAGAVSK", "TAGAVID", "TAGAVSQ", "TAGAVDQ", "TAGAVQE",
          "TAGCLIM", "ENTITYSL", "ENTITY", "CDATA", "CDATA1", "CDATA2", "CDATA3", "EXIT"
       };      
       return sState[(unsigned int)s];      
@@ -502,11 +504,12 @@ public:
    
    enum STMAction 
    { 
-      Return, ReturnToken, ReturnIdentifier, ReturnSQString, ReturnDQString, ExpectIdentifierXML, ExpectIdentifierCDATA, ReturnEOF
+      Return, ReturnToken, ReturnIdentifier, ReturnSQString, ReturnDQString, ExpectIdentifierXML, ExpectIdentifierCDATA, ReturnEOF,
+      NofSTMActions = 8     
    };
    static const char* getActionString( STMAction a)
    {
-      static const char* name[ 8] = {"Return", "ReturnToken", "ReturnIdentifier", "ReturnSQString", "ReturnDQString", "ExpectIdentifierXML", "ExpectIdentifierCDATA", "ReturnEOF"};
+      static const char* name[ NofSTMActions] = {"Return", "ReturnToken", "ReturnIdentifier", "ReturnSQString", "ReturnDQString", "ExpectIdentifierXML", "ExpectIdentifierCDATA", "ReturnEOF"};
       return name[ (unsigned int)a];
    };
 
@@ -525,8 +528,9 @@ public:
          [ XTAGAESK ](EndOfLine)(Cntrl)(Space)(Equal,XTAGAVSK).miss(ErrExpectedEqual)
          [ XTAGAVSK ](EndOfLine)(Cntrl)(Space)(Sq,XTAGAVSQ)(Dq,XTAGAVDQ).fallback(XTAGAVID)
          [ XTAGAVID ].action(ReturnIdentifier,HeaderAttribValue)(EndOfLine,Cntrl,Space,XTAGAISK)(Questm,XTAGEND).miss(ErrExpectedTagAttribute)
-         [ XTAGAVSQ ].action(ReturnSQString,HeaderAttribValue)(EndOfLine,Cntrl,Space,XTAGAISK)(Questm,XTAGEND).miss(ErrExpectedTagAttribute)
-         [ XTAGAVDQ ].action(ReturnDQString,HeaderAttribValue)(EndOfLine,Cntrl,Space,XTAGAISK)(Questm,XTAGEND).miss(ErrExpectedTagAttribute)
+         [ XTAGAVSQ ].action(ReturnSQString,HeaderAttribValue)(Sq,XTAGAVQE).miss(ErrStringNotTerminated)
+         [ XTAGAVDQ ].action(ReturnDQString,HeaderAttribValue)(Dq,XTAGAVQE).miss(ErrStringNotTerminated)
+         [ XTAGAVQE ](EndOfLine,Cntrl,Space,XTAGAISK)(Questm,XTAGEND).miss(ErrExpectedTagAttribute)
          [ CONTENT  ](EndOfText,EXIT)(EndOfLine)(Cntrl)(Space)(Lt,XMLTAG).fallback(TOKEN)
          [ TOKEN    ].action(ReturnToken,Content)(EndOfText,EXIT)(EndOfLine,Cntrl,Space,CONTENT)(Lt,XMLTAG).fallback(CONTENT)
          [ XMLTAG   ](EndOfLine)(Cntrl)(Space)(Questm,XTAG)(Slash,CLOSETAG).fallback(OPENTAG)
@@ -538,8 +542,9 @@ public:
          [ TAGAESK  ](EndOfLine)(Cntrl)(Space)(Equal,TAGAVSK).miss(ErrExpectedEqual)
          [ TAGAVSK  ](EndOfLine)(Cntrl)(Space)(Sq,TAGAVSQ)(Dq,TAGAVDQ).fallback(TAGAVID)
          [ TAGAVID  ].action(ReturnIdentifier,TagAttribValue)(EndOfLine,Cntrl,Space,TAGAISK)(Slash,TAGCLIM)(Gt,CONTENT).miss(ErrExpectedTagAttribute)
-         [ TAGAVSQ  ].action(ReturnSQString,TagAttribValue)(EndOfLine,Cntrl,Space,TAGAISK)(Slash,TAGCLIM)(Gt,CONTENT).miss(ErrExpectedTagAttribute)
-         [ TAGAVDQ  ].action(ReturnDQString,TagAttribValue)(EndOfLine,Cntrl,Space,TAGAISK)(Slash,TAGCLIM)(Gt,CONTENT).miss(ErrExpectedTagAttribute)
+         [ TAGAVSQ  ].action(ReturnSQString,TagAttribValue)(Sq,TAGAVQE).miss(ErrStringNotTerminated)
+         [ TAGAVDQ  ].action(ReturnDQString,TagAttribValue)(Dq,TAGAVQE).miss(ErrStringNotTerminated)
+         [ TAGAVQE  ](EndOfLine,Cntrl,Space,TAGAISK)(Slash,TAGCLIM)(Gt,CONTENT).miss(ErrExpectedTagAttribute)
          [ TAGCLIM  ].action(Return,CloseTagIm)(EndOfLine)(Cntrl)(Space)(Gt,CONTENT).miss(ErrExpectedTagEnd)
          [ ENTITYSL ](Osb,CDATA).fallback(ENTITY)
          [ ENTITY   ](Exclam,TAGCLSK).other( ENTITY)
@@ -547,7 +552,7 @@ public:
          [ CDATA1   ](Csb,CDATA2).other(CDATA1)
          [ CDATA2   ](Csb,CDATA3).other(CDATA1)
          [ CDATA3   ](Gt,CONTENT).other(CDATA1)
-         [ EXIT     ].action(ReturnEOF);
+         [ EXIT     ].action(Return,Exit);
       };
    };
 };
@@ -600,7 +605,7 @@ public:
       static HexCharMap hexCharMap;
       return hexCharMap[ch];
    };
-   
+
    static UChar parseStaticNumericEntityValue( InputReader& ir)
    {
       signed long long value = 0;
@@ -632,7 +637,7 @@ public:
    }
 
    bool parseEntity()
-   {      
+   {
       unsigned char ch;
       unsigned char chval;
       int base;
@@ -709,7 +714,7 @@ public:
             }
          default:
             while (ee < sizeof(ebuf) && ch != ';' && src.control() == Any)
-            {               
+            {   
                ebuf[ ee++] = ch;
                src.skip();
                ch = src.ascii();
@@ -717,6 +722,7 @@ public:
             if (ch == ';')
             {
                ebuf[ ee] = '\0';
+               src.skip();
                return pushEntity( ebuf);
             }
             else
@@ -732,175 +738,115 @@ public:
       return true;
    };
    
-   bool parseToken()
+   typedef CharMap<bool,false,NofControlCharacter> IsTokenCharMap;
+   
+   struct IsTagCharMap :public IsTokenCharMap
+   {
+      IsTagCharMap()
+      {
+         (*this)(Undef,true)(Any,true);
+      };
+   };
+
+   struct IsContentCharMap :public IsTokenCharMap
+   {
+      IsContentCharMap()
+      {
+         (*this)(Undef,true)(Equal,true)(Gt,true)(Slash,true)(Exclam,true)(Questm,true)(Sq,true)(Dq,true)(Osb,true)(Csb,true)(Any,true);
+      };
+   };
+   
+   struct IsSQStringCharMap :public IsContentCharMap
+   {
+      IsSQStringCharMap()
+      {         
+         (*this)(Sq,false);
+      };
+   };
+   
+   struct IsDQStringCharMap :public IsContentCharMap
+   {
+      IsDQStringCharMap()
+      {         
+         (*this)(Dq,false);
+      };
+   };
+
+   bool parseToken( const IsTokenCharMap& isTok)
    {
       for (;;)
       {
          ControlCharacter ch;
-         while ((ch=src.control()) == Any || ch==Equal || ch==Slash || ch==Exclam || ch==Questm || ch==Sq || ch==Dq || ch==Osb || ch==Csb || ch==Undef) 
+         while (isTok[ ch=src.control()])
          {
             push( src.chr());
             src.skip();
          }
-         if (src.control() == Amp) 
+         if (ch == Amp) 
          {
             if (!parseEntity()) return false;
+            continue;
+         }
+         else if (outputSize == 0)
+         {
+            error = ErrExpectedToken;
+            return false;
          }
          else
          {
-            if (outputSize == 0)
-            {
-               error = ErrExpectedToken; return false;
-            }
             return true;
          }
       }
    };
 
-   static bool parseStaticToken( InputReader ir, char* buf, size_type bufsize, size_type* p_outputBufSize)
+   static bool parseStaticToken( const IsTokenCharMap& isTok, InputReader ir, char* buf, size_type bufsize, size_type* p_outputBufSize)
    {
       for (;;)
       {
          ControlCharacter ch;
          size_type ii=0;
-         while ((ch=ir.control()) == Any || ch==Equal || ch==Slash || ch==Exclam || ch==Questm || ch==Sq || ch==Dq || ch==Osb || ch==Csb || ch==Amp)
+			*p_outputBufSize = 0;
+			for (;;)
          {
-            UChar pc = (ch==Amp)?parseStaticNumericEntityValue( ir):ir.ascii();
-            unsigned int chlen = OutputCharSet::print( pc, buf+ii, bufsize-ii);
-            if (chlen == 0 || pc == 0)
-            {
-               *p_outputBufSize = ii;
-               return false; 
+				UChar pc;
+				if (isTok[ ch=ir.control()])
+				{
+					 pc = ir.chr();
+				}
+				else if (ch == Amp)
+				{
+					 pc = parseStaticNumericEntityValue( ir);
+				}
+				else
+				{
+					 *p_outputBufSize = ii;
+					 return true;
+				}
+				unsigned int chlen = OutputCharSet::print( pc, buf+ii, bufsize-ii);
+				if (chlen == 0 || pc == 0)
+				{
+					*p_outputBufSize = ii;
+					return false; 
             }
             ii += chlen;
             ir.skip();
-         }
-         *p_outputBufSize = ii;
-         return true;
+			}
       }      
    };
    
-   bool skipToken()
+   bool skipToken( const IsTokenCharMap& isTok)
    {
       for (;;)
       {
          ControlCharacter ch;
-         if ((ch=src.control()) == Any || ch==Equal || ch==Slash || ch==Exclam || ch==Questm || ch==Sq || ch==Dq || ch==Osb || ch==Csb || ch==Amp)
+         while (isTok[ ch=src.control()] || ch == Amp)
          {
             src.skip();
          }
-         else
-         {
-            error = ErrExpectedToken; 
-            return false;
-         }
-         while ((ch=src.control()) == Any || ch==Equal || ch==Slash || ch==Exclam || ch==Questm || ch==Sq || ch==Dq || ch==Osb || ch==Csb || ch==Amp) src.skip();
-         return true;
+         if (src.control() != Any) return true;
       }
    };
-   bool parseIdentifier()
-   {
-      for (;;)
-      {
-         ControlCharacter ch;
-         while ((ch=src.control()) == Any) 
-         {
-            push( src.chr());
-            src.skip();
-         }
-         if (src.control() == Amp) 
-         {
-            if (!parseEntity()) return false;
-         }
-         else
-         {
-            if (outputSize == 0)
-            {
-               error = ErrExpectedIdentifier; return false;
-            }
-            return true;
-         }
-      }
-   };
-   bool skipIdentifier()
-   {
-      for (;;)
-      {
-         ControlCharacter ch;
-         if ((ch=src.control()) == Any || ch == Amp) 
-         {
-            src.skip(); 
-         }
-         else
-         {
-            error = ErrExpectedIdentifier; 
-            return false;
-         }
-         while ((ch=src.control()) == Any || ch == Amp) (src.skip());
-         return true;
-      }
-   };   
-   bool parseString( ControlCharacter eb)
-   {
-      ControlCharacter ch;
-      while ((ch=src.control()) != EndOfText && ch != EndOfLine && ch != Cntrl && ch != eb)
-      {
-         if (ch == Amp)
-         {
-            if (!parseEntity()) return false;
-         }
-         else
-         {
-            push( src.chr());
-            src.skip();
-         }         
-      }
-      if (ch != eb)
-      {
-         if (ch == EndOfText) {error = ErrUnexpectedEndOfText; return false;}
-         if (ch == EndOfLine) {error = ErrStringExceedsLine; return false;}
-         if (ch == Cntrl)     {error = ErrSyntaxString; return false;}
-         error = ErrUnexpectedState; return false;         
-      }
-      src.skip();
-      return true;
-   }; 
-   bool skipString( ControlCharacter eb)
-   {
-      ControlCharacter ch;
-      while ((ch=src.control()) != EndOfText && ch != EndOfLine && ch != Cntrl && ch != eb) src.skip();
-
-      if (ch != eb)
-      {
-         if (ch == EndOfText) {error = ErrUnexpectedEndOfText; return false;}
-         if (ch == EndOfLine) {error = ErrStringExceedsLine; return false;}
-         if (ch == Cntrl)     {error = ErrSyntaxString; return false;}
-         error = ErrUnexpectedState; return false;         
-      }
-      src.skip();
-      return true;
-   }; 
-   char nextNonSpace()
-   {
-      ControlCharacter ch;
-      while ((ch=src.control()) == Space || ch == EndOfLine || ch == Cntrl) src.skip();
-      return ch;
-   };   
-   bool expectSpace()
-   {
-      switch (src.control())
-      {
-         case Space:
-         case EndOfLine:
-         case Cntrl:
-            src.skip();
-            break;
-            
-         case EndOfText: error = ErrUnexpectedEndOfText; return false;
-         default: error = ErrSyntaxToken; return false;
-      }
-      return true;
-   };
+   
    bool expectStr( const char* str)
    {
       unsigned int ii;
@@ -913,6 +859,7 @@ public:
       }
       return true;
    }; 
+   
    bool pushPredefinedEntity( const char* str)
    {
       switch (str[0])
@@ -970,6 +917,7 @@ public:
       }
       return false;
    };
+   
    bool pushEntity( const char* str)
    {
       if (pushPredefinedEntity( str))
@@ -1031,7 +979,10 @@ public:
    template <class CharSet>
    static bool getTagName( const char* src, char* p_outputBuf, size_type p_outputBufSize, size_type* p_outputSize)
    {
-      return XMLScanner<const char*, charset::UTF8, CharSet>::parseStaticToken( src, p_outputBuf, p_outputBufSize, p_outputSize);
+      static IsTagCharMap isTagCharMap;
+      typedef XMLScanner<const char*, charset::UTF8, CharSet> Scan;
+      char* itr = const_cast<char*>(src);
+      return parseStaticToken( isTagCharMap, itr, p_outputBuf, p_outputBufSize, p_outputSize);
    }
    
    char* getItem() const {return outputBuf;};
@@ -1055,7 +1006,13 @@ public:
       outputSize = 0;
       outputBuf[0] = 0;
       ElementType rt = None;
-      
+		static const IsContentCharMap contentC;
+		static const IsTagCharMap tagC;
+		static const IsSQStringCharMap sqC;
+		static const IsDQStringCharMap dqC;
+      static const IsTokenCharMap* tokenDefs[ NofSTMActions] = {0,&contentC,&tagC,&sqC,&dqC,0,0,0};
+      static const char* stringDefs[ NofSTMActions] = {0,0,0,0,0,"xml","CDATA",0};
+
       do
       {
          #ifdef LOWLEVEL_DEBUG_SCANNER
@@ -1068,90 +1025,30 @@ public:
             #ifdef LOWLEVEL_DEBUG_SCANNER
             std::cout << "ACTION " << getActionString( (STMAction)sd->action.op) << std::endl;
             #endif
-            switch ((STMAction)(sd->action.op))
+            if (tokenDefs[sd->action.op])
             {
-               case Return:
-                  rt = (ElementType)sd->action.arg;
-                  break;
-
-               case ReturnToken:
-                  if ((mask&(1<<sd->action.arg)) != 0)
-                  {
-                     if (!parseToken()) return ErrorOccurred;
-                  }
-                  else
-                  {
-                     if (!skipToken()) return ErrorOccurred;
-                  }
-                  if (!print(0)) return ErrorOccurred;
-                  rt = (ElementType)sd->action.arg;
-                  #ifdef LOWLEVEL_DEBUG_SCANNER
-                  std::cout << "RETURN TOKEN " << outputBuf << std::endl;
-                  #endif
-                  break;
-
-               case ReturnIdentifier:
-                  if ((mask&(1<<sd->action.arg)) != 0)
-                  {
-                     if (!parseIdentifier()) return ErrorOccurred;
-                  }
-                  else
-                  {
-                     if (!skipIdentifier()) return ErrorOccurred;
-                  }
-                  if (!print(0)) return ErrorOccurred;
-                  rt = (ElementType)sd->action.arg;
-                  #ifdef LOWLEVEL_DEBUG_SCANNER
-                  std::cout << "RETURN IDENTIFIER " << outputBuf << std::endl;
-                  #endif
-                  break;
-
-               case ReturnSQString:
-                  if ((mask&(1<<sd->action.arg)) != 0)
-                  {
-                     if (!parseString( Sq)) return ErrorOccurred;
-                  }
-                  else
-                  {
-                     if (!skipString( Sq)) return ErrorOccurred;
-                  }
-                  if (!print(0)) return ErrorOccurred;
-                  #ifdef LOWLEVEL_DEBUG_SCANNER
-                  std::cout << "RETURN SQSTRING " << outputBuf << std::endl;
-                  #endif
-                  rt = (ElementType)sd->action.arg;
-                  break;
-
-               case ReturnDQString:
-                  if ((mask&(1<<sd->action.arg)) != 0)
-                  {
-                     if (!parseString( Dq)) return ErrorOccurred;
-                  }
-                  else
-                  {
-                     if (!skipString( Dq)) return ErrorOccurred;
-                  }
-                  if (!print(0)) return ErrorOccurred;
-                  #ifdef LOWLEVEL_DEBUG_SCANNER
-                  std::cout << "RETURN DQSTRING " << outputBuf << std::endl;
-                  #endif
-                  rt = (ElementType)sd->action.arg;
-                  break;
-               
-               case ExpectIdentifierXML:
-                  if (!expectStr( "xml")) return ErrorOccurred;
-                  break;
-                  
-               case ExpectIdentifierCDATA:
-                  if (!expectStr( "CDATA")) return ErrorOccurred;
-                  break;
-
-               case ReturnEOF:
-                  return Exit;
-
-               default:
-                  error = ErrInternal;
-                  return ErrorOccurred;   
+               if ((mask&(1<<sd->action.arg)) != 0)
+               {
+                  if (!parseToken( *tokenDefs[ sd->action.op])) return ErrorOccurred;
+               }
+               else
+               {
+                  if (!skipToken( *tokenDefs[ sd->action.op])) return ErrorOccurred;
+               }
+               if (!print(0)) return ErrorOccurred;
+               rt = (ElementType)sd->action.arg;
+               #ifdef LOWLEVEL_DEBUG_SCANNER
+               std::cout << "RETURN TOKEN " << outputBuf << std::endl;
+               #endif
+            }
+            else if (stringDefs[sd->action.op])
+            {
+               if (!expectStr( stringDefs[sd->action.op])) return ErrorOccurred;
+            }
+            else
+            {                  
+               rt = (ElementType)sd->action.arg;
+					if (rt == Exit) return rt;
             }
          }
          ControlCharacter ch = src.control();
@@ -1421,8 +1318,9 @@ public:
          if (orig.key && orig.keysize)
          {
             unsigned int ii;
-            srckey = new char[ strlen(orig.srckey)+1];
-            for (ii=0; orig.srckey[ii]!=0; ii++) srckey[ii]=orig.srckey[ii];
+				for (ii=0; orig.srckey[ ii]!='\0'; ii++) 
+            srckey = new char[ ii+1];
+            for (ii=0; orig.srckey[ ii]!=0; ii++) srckey[ ii]=orig.srckey[ ii];
             srckey[ ii] = 0;
             key = new char[ keysize];
             for (ii=0; ii<keysize; ii++) key[ii]=orig.key[ii];
@@ -1441,7 +1339,8 @@ public:
          {
             unsigned int ii;
             core.x = hash(p_key,keysize=p_keysize);
-            srckey = new char[ strlen(p_srckey)+1];
+				for (ii=0; p_srckey[ii]!=0; ii++);
+            srckey = new char[ ii+1];
             for (ii=0; p_srckey[ii]!=0; ii++) srckey[ii]=p_srckey[ii];
             srckey[ ii] = 0;
             key = new char[ keysize];
@@ -1689,7 +1588,7 @@ public:
       PathElement& operator ()()  throw(exception)                                      {return doSelect(Content);};
    };
    PathElement operator*()
-   {      
+   {
       return PathElement( this);
    };
 };
@@ -1891,7 +1790,7 @@ private:
       if (context.scope.mask.matches( context.type))
       {
          while (!type)
-         {      
+         {
             if (context.scope_iter < context.scope.range.tokenidx_to)
             {
                type = match( context.scope_iter++);
@@ -1943,7 +1842,7 @@ public:
          int type;
          const char* content;
          unsigned int size;
-         
+
          Element()                     :error(0),eof(false),type(0),content(0),size(0) {};
          Element( const End&)          :error(0),eof( true),type(0),content(0),size(0) {};
          Element( const Element& orig) :error(orig.error),eof(orig.eof),type(orig.type),content(orig.content),size(orig.size) {};
