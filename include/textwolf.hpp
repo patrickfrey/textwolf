@@ -267,7 +267,7 @@ private:
    char buf[8];
    UChar val;
    char cur;
-   unsigned char state;
+   unsigned int state;
    
 public:
    struct ControlCharMap  :public CharMap<ControlCharacter,Undef>
@@ -281,10 +281,7 @@ public:
       };
    };   
    
-   TextScanner( const Iterator& p_iterator)    :input(p_iterator),val(0),cur(0),state(0)
-   {
-      skip();
-   };
+   TextScanner( const Iterator& p_iterator)    :input(p_iterator),val(0),cur(0),state(0) {};
    TextScanner( const TextScanner& orig)       :val(orig.val),cur(orig.cur),state(orig.state)
    {
       for (unsigned int ii=0; ii<sizeof(buf); ii++) buf[ii]=orig.buf[ii];
@@ -292,51 +289,53 @@ public:
    
    UChar chr()
    {
-      if (state == 1) 
+      if (val == 0)
       {
-         for (int ii=0,nn=CharSet::size(buf)-CharSet::asize(); ii<nn; ii++)
+         while (state < CharSet::size(buf))
          {
-            buf[ii+CharSet::asize()] = *input;
+            buf[state] = *input;        
             input++;
+            state++;
          }
-         state = 0;
-         val = CharSet::value(buf);          
-      }
-      else if (val == 0)
-      {
-         val = CharSet::value(buf);          
+         val = CharSet::value(buf);
       }
       return val;
    };
+
+   void getcur()
+   {
+      while (state < CharSet::asize())
+      {
+         buf[state] = *input;        
+         input++;
+         state++;
+      }
+      cur = CharSet::achar(buf);
+   };
    
-   ControlCharacter control() const
+   ControlCharacter control()
    {
       static ControlCharMap controlCharMap;
+      getcur();
       return controlCharMap[ (unsigned char)cur];
    };
    
-   char ascii() const
+   char ascii()
    {
+      getcur();
       return cur>=0?cur:0;
    };
    
    TextScanner& skip()
    {
-      if (state == 1)
+      while (state < CharSet::asize())
       {
-         int nn = CharSet::size(buf)-CharSet::asize();
-         while (nn-- > 0) input++;
+         input++; 
+         state++;
       }
-      else
-      {
-         state = 1;
-      }
-      for (unsigned int ii=0; ii<CharSet::asize(); ii++)
-      {
-         buf[ii] = *input;
-         input++;
-      }
-      cur = CharSet::achar(buf);
+      state = 0;
+      cur = 0;
+      val = 0;
       return *this;
    };
    
@@ -566,6 +565,21 @@ template <
 >
 class XMLScanner :public XMLScannerBase
 {
+private:
+   struct TokState
+   {
+      enum Id {Start,ParsingKey,ParsingEntity,ParsingNumericEntity,ParsingNumericBaseEntity,ParsingNamedEntity,ParsingToken};
+      Id id;
+      unsigned int pos;
+      unsigned int base;
+      unsigned long long value;
+      char buf[ 16];
+      
+      TokState()                       :id(Start),pos(0),base(0),value(0) {};
+      void init(Id id_=Start)          {id=id_;pos=0;base=0;value=0;};
+   };
+   TokState tokstate;
+
 public:
    typedef InputCharSet_ InputCharSet;
    typedef OutputCharSet_ OutputCharSet;
@@ -576,7 +590,7 @@ public:
    typedef TextScanner<InputIterator,InputCharSet_> InputReader;
    typedef XMLScanner<InputIterator,InputCharSet_,OutputCharSet_,EntityMap> ThisXMLScanner;
    typedef typename EntityMap::iterator EntityMapIterator;
-
+   
    unsigned int print( UChar ch)
    {
       unsigned int nn = OutputCharSet::print( ch, outputBuf+outputSize, outputBufSize-outputSize);
@@ -629,113 +643,126 @@ public:
          unsigned char chval = HEX(ch);
          if (value >= base) return 0;
          value = value * base + chval;
-         if (value >= (1LL << (8*sizeof(UChar)))) return 0;
+         if (value >= 0xFFFFFFFF) return 0;
          ir.skip();
          ch = ir.ascii();
       }
       return (UChar)value;
-   }
+   };
 
+   bool fallbackEntity()
+   {
+      switch (tokstate.id)
+      {
+         case TokState::Start:
+         case TokState::ParsingKey:
+         case TokState::ParsingToken:
+            break;
+            
+         case TokState::ParsingEntity:
+            return push('&');            
+         case TokState::ParsingNumericEntity:
+            return push('&') && push('#');
+         case TokState::ParsingNumericBaseEntity:            
+            if (!push('&') || !push('#')) return false;
+            for (unsigned int ii=0; ii<tokstate.pos; ii++) if (!push( tokstate.buf[ii])) return false;
+            return true;
+         case TokState::ParsingNamedEntity:
+            if (!push('&')) return false;
+            for (unsigned int ii=0; ii<tokstate.pos; ii++) if (!push( tokstate.buf[ii])) return false;
+            return true;
+      }
+      error = ErrInternal;
+      return false;
+   };
+   
    bool parseEntity()
    {
       unsigned char ch;
-      unsigned char chval;
-      int base;
-      char ebuf[ 256];
-      unsigned int ee = 0;
-      signed long long value = 0;
-      
-      if (src.ascii() != '&')
-      {
-         error = ErrUnexpectedState; return false;
-      }
-      src.skip();
+      tokstate.id = TokState::ParsingEntity;
       ch = src.ascii();
-      switch (ch)
+      if (ch == '#')
       {
-         case '#':
-            src.skip();
-            ch = src.ascii();
-            if (ch == 'x')
-            {
-               src.skip();
-               ch = src.ascii();
-               chval = HEX( ch);
-               if (chval == 0xFF)
-               {
-                  ebuf[ ee++] = 'x'; base = -1; break;
-               }
-               else
-               {
-                  base = 16;
-               }
-            }
-            else
-            {
-               chval = HEX( ch);
-               base = 10;
-               if (chval == 0xFF || chval >= base)
-               {
-                  base = -1;
-               }
-            }
-            if (base == -1)
-            {
-               if (!push('&')) return false;
-               if (!push('#')) return false;
-               return true;
-            }
-            else
-            {
-               while (ee < 16)
-               {
-                  ch = src.ascii();
-                  chval = HEX( ch);
-                  if (chval == 0xFF || chval >= base) break;
-                  value = value * base + chval;
-                  ebuf[ ee++] = ch;
-                  src.skip();
-               }
-               if (ee == 0 || value >= (1LL << (8*sizeof(UChar))) || ch != ';')
-               {
-                  if (!push('&')) return false;
-                  if (!push('#')) return false;
-                  for (unsigned int ii=0; ii<ee; ii++) if (!push(ebuf[ii])) return false;
-                  return true;
-               }
-               src.skip();
-               UChar chr = (UChar)value;
-               if (chr < 32)
-               {
-                  error = ErrEntityEncodesCntrlChar; return false;
-               }
-               if (!push( chr)) return false;
-               return true;
-            }
-         default:
-            while (ee < sizeof(ebuf) && ch != ';' && src.control() == Any)
-            {   
-               ebuf[ ee++] = ch;
-               src.skip();
-               ch = src.ascii();
-            }
-            if (ch == ';')
-            {
-               ebuf[ ee] = '\0';
-               src.skip();
-               return pushEntity( ebuf);
-            }
-            else
-            {
-               if (!push('&')) return false;
-               if (!push('#')) return false;
-               for (unsigned int ii=0; ii<ee; ii++) if (!push(ebuf[ii])) return false;
-               return true;
-            }
-         break;
+         src.skip();
+         return parseNumericEntity();
       }
-      if (!push('&')) return false;
-      return true;
+      else
+      {
+         return parseNamedEntity();
+      }
+   };
+      
+   bool parseNumericEntity()
+   {
+      unsigned char ch;
+      tokstate.id = TokState::ParsingNumericEntity;
+      ch = src.ascii();
+      if (ch == 'x')
+      {
+          tokstate.base = 16;
+          src.skip();
+          return parseNumericBaseEntity();
+      }
+      else
+      {
+          tokstate.base = 10;
+          return parseNumericBaseEntity();          
+      }
+   };
+   
+   bool parseNumericBaseEntity()
+   {
+      unsigned char ch;
+      tokstate.id = TokState::ParsingNumericBaseEntity;
+   
+      while (tokstate.pos < sizeof(tokstate.buf))
+      {
+         tokstate.buf[tokstate.pos++] = ch = src.ascii();
+         if (ch == ';')
+         {
+            if (tokstate.value > 0xFFFFFFFF) return fallbackEntity();
+            if (tokstate.value < 32)
+            {
+               error = ErrEntityEncodesCntrlChar; 
+               return false;
+            }
+            if (tokstate.value > 0xFFFFFFFF) fallbackEntity();
+            src.skip();
+            return push( tokstate.value);
+         }
+         else
+         {
+            unsigned char chval = HEX(ch);
+            if (tokstate.value >= tokstate.base) fallbackEntity();
+            tokstate.value = tokstate.value * tokstate.base + chval;
+         }
+      }
+      return fallbackEntity();
+   };
+
+   bool parseNamedEntity()
+   {
+      unsigned char ch;
+      tokstate.id = TokState::ParsingNamedEntity;
+   
+      ch = src.ascii();
+      while (tokstate.pos < sizeof(tokstate.buf)-1 && ch != ';' && src.control() == Any)
+      {   
+          tokstate.buf[ tokstate.pos] = ch;
+          src.skip();
+          tokstate.pos++;
+          ch = src.ascii();
+      }
+      if (ch == ';')
+      {
+          tokstate.buf[ tokstate.pos] = '\0';
+          src.skip();
+          return pushEntity( tokstate.buf);
+      }
+      else
+      {
+          return fallbackEntity();
+      }
    };
    
    typedef CharMap<bool,false,NofControlCharacter> IsTokenCharMap;
@@ -772,8 +799,39 @@ public:
       };
    };
 
+   bool parseTokenRecover()
+   {
+      bool rt;
+      switch (tokstate.id)
+      {
+         case TokState::Start:
+         case TokState::ParsingKey:
+         case TokState::ParsingToken:
+            error = ErrInternal;
+            return false;
+         case TokState::ParsingEntity: rt = parseEntity(); break;
+         case TokState::ParsingNumericEntity: rt = parseNumericEntity(); break;
+         case TokState::ParsingNumericBaseEntity: rt = parseNumericBaseEntity(); break;
+         case TokState::ParsingNamedEntity: rt = parseNamedEntity(); break;
+      }
+      tokstate.init( TokState::ParsingToken);
+      return rt;
+   };
+   
    bool parseToken( const IsTokenCharMap& isTok)
    {
+      if (tokstate.id == TokState::Start)
+      {
+         tokstate.id = TokState::ParsingToken;
+      }
+      else if (tokstate.id != TokState::ParsingToken)
+      {
+         if (!parseTokenRecover())
+         {
+            tokstate.init();
+            return false;
+         }
+      }
       for (;;)
       {
          ControlCharacter ch;
@@ -784,19 +842,25 @@ public:
          }
          if (ch == Amp) 
          {
-            if (!parseEntity()) return false;
+            src.skip();
+            if (!parseEntity()) break;
+            tokstate.init( TokState::ParsingToken);
             continue;
          }
          else if (outputSize == 0)
          {
+            tokstate.init();
             error = ErrExpectedToken;
-            return false;
+            break;
          }
          else
          {
+            tokstate.init();
             return true;
          }
       }
+      tokstate.init();
+      return false;
    };
 
    static bool parseStaticToken( const IsTokenCharMap& isTok, InputReader ir, char* buf, size_type bufsize, size_type* p_outputBufSize)
@@ -805,35 +869,35 @@ public:
       {
          ControlCharacter ch;
          size_type ii=0;
-			*p_outputBufSize = 0;
-			for (;;)
+         *p_outputBufSize = 0;
+         for (;;)
          {
-				UChar pc;
-				if (isTok[ ch=ir.control()])
-				{
-					 pc = ir.chr();
-				}
-				else if (ch == Amp)
-				{
-					 pc = parseStaticNumericEntityValue( ir);
-				}
-				else
-				{
-					 *p_outputBufSize = ii;
-					 return true;
-				}
-				unsigned int chlen = OutputCharSet::print( pc, buf+ii, bufsize-ii);
-				if (chlen == 0 || pc == 0)
-				{
-					*p_outputBufSize = ii;
-					return false; 
+            UChar pc;
+            if (isTok[ ch=ir.control()])
+            {
+               pc = ir.chr();
+            }
+            else if (ch == Amp)
+            {
+               pc = parseStaticNumericEntityValue( ir);
+            }
+            else
+            {
+               *p_outputBufSize = ii;
+               return true;
+            }
+            unsigned int chlen = OutputCharSet::print( pc, buf+ii, bufsize-ii);
+            if (chlen == 0 || pc == 0)
+            {
+               *p_outputBufSize = ii;
+               return false; 
             }
             ii += chlen;
             ir.skip();
-			}
+         }
       }      
    };
-   
+
    bool skipToken( const IsTokenCharMap& isTok)
    {
       for (;;)
@@ -849,15 +913,24 @@ public:
    
    bool expectStr( const char* str)
    {
-      unsigned int ii;
-      for (ii=0; str[ii] != '\0'; ii++,src.skip())
+      bool rt = true;
+      tokstate.id = TokState::ParsingKey;
+      for (; str[tokstate.pos] != '\0'; src.skip(),tokstate.pos++)
       {
-         if (src.ascii() == str[ii]) continue;
+         if (src.ascii() == str[ tokstate.pos]) continue;
          ControlCharacter ch = src.control();
-         if (ch == EndOfText) {error = ErrUnexpectedEndOfText; return false;};
-         error = ErrSyntaxToken; return false;
+         if (ch == EndOfText) {
+            error = ErrUnexpectedEndOfText;
+         }
+         else
+         {
+            error = ErrSyntaxToken; 
+         }
+         rt = false;
+         break;
       }
-      return true;
+      tokstate.init();
+      return rt;
    }; 
    
    bool pushPredefinedEntity( const char* str)
@@ -1003,16 +1076,19 @@ public:
 
    ElementType nextItem( unsigned short mask=0xFFFF)
    {
-      outputSize = 0;
-      outputBuf[0] = 0;
-      ElementType rt = None;
-		static const IsContentCharMap contentC;
-		static const IsTagCharMap tagC;
-		static const IsSQStringCharMap sqC;
-		static const IsDQStringCharMap dqC;
+      static const IsContentCharMap contentC;
+      static const IsTagCharMap tagC;
+      static const IsSQStringCharMap sqC;
+      static const IsDQStringCharMap dqC;
       static const IsTokenCharMap* tokenDefs[ NofSTMActions] = {0,&contentC,&tagC,&sqC,&dqC,0,0,0};
       static const char* stringDefs[ NofSTMActions] = {0,0,0,0,0,"xml","CDATA",0};
 
+      ElementType rt = None;
+		if (tokstate.id == TokState::Start)
+      {
+         outputSize = 0;
+         outputBuf[0] = 0;
+      }
       do
       {
          #ifdef LOWLEVEL_DEBUG_SCANNER
@@ -1048,7 +1124,7 @@ public:
             else
             {                  
                rt = (ElementType)sd->action.arg;
-					if (rt == Exit) return rt;
+               if (rt == Exit) return rt;
             }
          }
          ControlCharacter ch = src.control();
@@ -1318,7 +1394,7 @@ public:
          if (orig.key && orig.keysize)
          {
             unsigned int ii;
-				for (ii=0; orig.srckey[ ii]!='\0'; ii++) 
+            for (ii=0; orig.srckey[ ii]!='\0'; ii++) 
             srckey = new char[ ii+1];
             for (ii=0; orig.srckey[ ii]!=0; ii++) srckey[ ii]=orig.srckey[ ii];
             srckey[ ii] = 0;
@@ -1339,7 +1415,7 @@ public:
          {
             unsigned int ii;
             core.x = hash(p_key,keysize=p_keysize);
-				for (ii=0; p_srckey[ii]!=0; ii++);
+            for (ii=0; p_srckey[ii]!=0; ii++);
             srckey = new char[ ii+1];
             for (ii=0; p_srckey[ii]!=0; ii++) srckey[ii]=p_srckey[ii];
             srckey[ ii] = 0;

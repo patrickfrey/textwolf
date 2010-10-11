@@ -114,7 +114,7 @@ int main( int argc, const char** argv)
             docCnt++;
             if ((docCnt & 16383) == 0) {printf( "\r%u", docCnt); fflush(stdout);}
          }
-#define PRINT_RESULT_STDOUT          
+#undef PRINT_RESULT_STDOUT          
 #ifdef PRINT_RESULT_STDOUT          
          std::cout << "Element " << itr->type << ": " << itr->content << std::endl;
 #endif
