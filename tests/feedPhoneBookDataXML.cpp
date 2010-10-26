@@ -1,4 +1,5 @@
 #include "textwolf.hpp"
+#include "textwolf/iterator/file.hpp"
 #include <iostream>
 #include <map>
 #include <stdio.h>
@@ -9,75 +10,16 @@
 
 using namespace textwolf;
 
-namespace
-{
-struct Input
-{
-   enum {maxbufsize=8192};
-   char buf[ maxbufsize];
-   unsigned int bufsize;
-   unsigned int bufpos;
-   FILE* file;
-   
-   Input()                                :bufsize(0),bufpos(0),file(stdin) {};
-   Input( const char* fname)              :bufsize(0),bufpos(0),file(fopen(fname,"rb")) {};
-   ~Input()                               {if (file != stdin) fclose(file);};
-   
-   char getchar()
-   {
-      if (bufpos == bufsize)
-      {
-         bufsize = fread( buf, 1, maxbufsize, file);
-         if (bufsize == 0)
-         {
-            int ee = errno;
-            if (ee != 0) fprintf( stderr, "error %d reading input\n", ee);
-            return 0;
-         }
-         bufpos = 0;          
-      }
-      return buf[ bufpos++];
-   };
-   
-   struct iterator
-   {
-      Input* input;
-      int ch;
-      
-      iterator( Input* p_input)           :input(p_input),ch(0) {};
-      iterator()                          :input(0),ch(0) {};
-      iterator( const iterator& o)        :input(o.input),ch(o.ch) {};
-      
-      void skip()                         {ch=input->getchar();};                                
-      iterator& operator++()              {skip(); return *this;};
-      iterator operator++(int)            {iterator tmp(*this); skip(); return tmp;};
-      char operator*()                    {return ch;};
-   };
-   iterator begin()                       {iterator rt(this); rt.skip(); return rt;};
-   iterator end()                         {return iterator();};
-};
-}//anynomous namespace
+typedef textwolf::io::FileInput Input;
 
 int main( int argc, const char** argv)
 { 
    try 
    {
       //[1] define the source iterator
-      Input* input;
-      if (argc == 2)
-      {
-         input = new Input( argv[1]);
-      }
-      else if (argc > 2)
-      {
-         fprintf( stderr, "too many arguments");
-         return 1;
-      }
-      else
-      {
-         input = new Input();
-      }
-      Input::iterator src = input->begin();
+      const char* filename = (argc >= 2)?argv[1]:"-";
+      Input input( filename);
+      Input::iterator src = input.begin();
       
       //[2] creating the automaton
       typedef XMLPathSelectAutomaton<charset::UTF8> Automaton;
@@ -103,11 +45,13 @@ int main( int argc, const char** argv)
       //    -Output is UTF-8
             
       typedef XMLPathSelect<Input::iterator,charset::IsoLatin1,charset::UTF8> MyXMLPathSelect; 
-      MyXMLPathSelect xs( &atm, src);
+      enum {outputbufSize=1024};
+      char outputbuf[ outputbufSize];
+      MyXMLPathSelect xs( &atm, src, outputbuf, outputbufSize);
 
       //[4] iterating through the produced elements and printing them
       MyXMLPathSelect::iterator itr=xs.begin(),end=xs.end();
-      for (; itr!=end && !itr->error; itr++)
+      for (; itr!=end; itr++)
       {
          if (itr->type == Doc)
          {
@@ -122,7 +66,7 @@ int main( int argc, const char** argv)
       printf( "\r%u\n", docCnt);
       
       //[5] handle a possible error
-      if (itr != end && itr->error)
+      if ((int)itr->state != 0)
       {
          std::cerr << "FAILED " << itr->content << std::endl;
          return 1;

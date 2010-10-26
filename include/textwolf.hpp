@@ -1,3 +1,31 @@
+/**
+--------------------------------------------------------------------
+    The template library textwolf implements an input iterator over 
+    a set of XML path expressions without backward references on an 
+    STL conforming input iterator as source. It does no buffering 
+    or read ahead and is dedicated for stream processing of XML 
+    for a small set of XML queries. 
+    Stream processing in this context refers to processing the 
+    document without buffering anything but the current result token 
+    processed with its tag hierarchy information.
+    
+    Copyright (C) 2010 Patrick Frey
+
+    This library is free software; you can redistribute it and/or
+    modify it under the terms of the GNU Lesser General Public
+    License as published by the Free Software Foundation; either
+    version 2.1 of the License, or (at your option) any later version.
+
+    This library is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+    Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public
+    License along with this library; if not, write to the Free Software
+    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+--------------------------------------------------------------------
+**/
 #ifndef __TEXTWOLF_HPP__
 #define __TEXTWOLF_HPP__
 #include <iterator>
@@ -5,16 +33,7 @@
 #include <stack>
 #include <map>
 #include <exception>
-#include <string.h>
-
-#undef LOWLEVEL_DEBUG_SCANNER
-#undef LOWLEVEL_DEBUG_XMLSEL
-#ifdef LOWLEVEL_DEBUG_XMLSEL
 #include <iostream>
-#endif
-#ifdef LOWLEVEL_DEBUG_SCANNER
-#include <iostream>
-#endif
 
 namespace textwolf {
 
@@ -212,7 +231,8 @@ struct UTF8
       unsigned int pp,sf;
       for (pp=1,sf=5; pp<5; pp++,sf+=5)
       {
-         if (chr < (unsigned int)((1<<6)<<sf)) {
+         if (chr < (unsigned int)((1<<6)<<sf))
+         {
             rt = pp+1;
             while (pp > 0)
             {
@@ -574,9 +594,10 @@ private:
       unsigned int base;
       unsigned long long value;
       char buf[ 16];
+      UChar curchr_saved;
       
-      TokState()                       :id(Start),pos(0),base(0),value(0) {};
-      void init(Id id_=Start)          {id=id_;pos=0;base=0;value=0;};
+      TokState()                       :id(Start),pos(0),base(0),value(0),curchr_saved(0) {};
+      void init(Id id_=Start)          {id=id_;pos=0;base=0;value=0;curchr_saved=0;};
    };
    TokState tokstate;
 
@@ -594,7 +615,11 @@ public:
    unsigned int print( UChar ch)
    {
       unsigned int nn = OutputCharSet::print( ch, outputBuf+outputSize, outputBufSize-outputSize);
-      if (nn == 0) error = ErrOutputBufferTooSmall;
+      if (nn == 0)
+      {
+         error = ErrOutputBufferTooSmall;
+         tokstate.curchr_saved = ch;
+      }
       return nn;     
    };
    
@@ -802,6 +827,11 @@ public:
    bool parseTokenRecover()
    {
       bool rt;
+      if (tokstate.curchr_saved)
+      {
+         if (!push( tokstate.curchr_saved)) return false;
+         tokstate.curchr_saved = 0;
+      }
       switch (tokstate.id)
       {
          case TokState::Start:
@@ -837,7 +867,11 @@ public:
          ControlCharacter ch;
          while (isTok[ ch=src.control()])
          {
-            push( src.chr());
+            if (!push( src.chr()))
+            {
+               tokstate.curchr_saved = src.chr();
+               return false;
+            }
             src.skip();
          }
          if (ch == Amp) 
@@ -919,7 +953,8 @@ public:
       {
          if (src.ascii() == str[ tokstate.pos]) continue;
          ControlCharacter ch = src.control();
-         if (ch == EndOfText) {
+         if (ch == EndOfText)
+         {
             error = ErrUnexpectedEndOfText;
          }
          else
@@ -940,7 +975,7 @@ public:
          case 'q':
             if (str[1] == 'u' && str[2] == 'o' && str[3] == 't' && str[4] == '\0')
             {
-               push( '\"');
+               if (!push( '\"')) return false;
                return true;
             }
             break;
@@ -950,7 +985,7 @@ public:
             {
                if (str[2] == 'p' && str[3] == '\0')
                {
-                  push( '&');
+                  if (!push( '&')) return false;
                   return true;
                }
             }
@@ -958,7 +993,7 @@ public:
             {
                if (str[2] == 'o' && str[3] == 's' && str[4] == '\0')
                {
-                  push( '\'');
+                  if (!push( '\'')) return false;
                   return true;
                }
             }
@@ -967,7 +1002,7 @@ public:
          case 'l':
             if (str[1] == 't' && str[2] == '\0')
             {
-               push( '<');
+               if (!push( '<')) return false;
                return true;
             }
             break;
@@ -975,7 +1010,7 @@ public:
          case 'g':
             if (str[1] == 't' && str[2] == '\0')
             {
-               push( '>');
+               if (!push( '>')) return false;
                return true;
             }
             break;
@@ -983,7 +1018,7 @@ public:
          case 'n':
             if (str[1] == 'b' && str[2] == 's' && str[3] == 'p' && str[4] == '\0')
             {
-               push( ' ');
+               if (!push( ' ')) return false;
                return true;
             }
             break;
@@ -1033,22 +1068,20 @@ private:
    size_type outputSize;
    
 public:
-   XMLScanner( InputIterator& p_src, size_type p_outputBufSize, EntityMap* p_entityMap=0)
-         :state(START),error(Ok),src(p_src),entityMap(p_entityMap),outputBuf(0),outputBufSize(p_outputBufSize),outputSize(0)
-   {
-      if (outputBufSize) outputBuf = new (std::nothrow) char[ outputBufSize];
-      if (!outputBuf) outputBufSize = 0;
-   };
+   XMLScanner( InputIterator& p_src, char* p_outputBuf, size_type p_outputBufSize, EntityMap* p_entityMap=0)
+         :state(START),error(Ok),src(p_src),entityMap(p_entityMap),outputBuf(p_outputBuf),outputBufSize(p_outputBufSize),outputSize(0)
+   {};
    
    XMLScanner( XMLScanner& o)
-         :state(o.state),error(o.error),src(o.src),entityMap(o.entityMap),outputBuf(0),outputBufSize(o.outputBufSize),outputSize(o.outputSize)
-   {
-      if (outputBufSize) outputBuf = new (std::nothrow) char[ outputBufSize];
-      if (!outputBuf) outputBufSize = 0;
-      unsigned int ii;
-      for (ii=0; ii<o.outputSize; ii++) outputBuf[ii] = o.outputBuf[ii];
-   };
+         :state(o.state),error(o.error),src(o.src),entityMap(o.entityMap),outputBuf(o.outputBuf),outputBufSize(o.outputBufSize),outputSize(o.outputSize)
+   {};
 
+   void setOutputBuffer( char* p_outputBuf, size_type p_outputBufSize)
+   {
+      outputBuf = p_outputBuf;
+      outputBufSize = p_outputBufSize;
+   };
+   
    template <class CharSet>
    static bool getTagName( const char* src, char* p_outputBuf, size_type p_outputBufSize, size_type* p_outputSize)
    {
@@ -1090,17 +1123,10 @@ public:
          outputBuf[0] = 0;
       }
       do
-      {
-         #ifdef LOWLEVEL_DEBUG_SCANNER
-         std::cout << "STATE " << getStateString( state) << std::endl;
-         #endif
-      
+      {      
          ScannerStatemachine::Element* sd = getState();
          if (sd->action.op != -1)
          {
-            #ifdef LOWLEVEL_DEBUG_SCANNER
-            std::cout << "ACTION " << getActionString( (STMAction)sd->action.op) << std::endl;
-            #endif
             if (tokenDefs[sd->action.op])
             {
                if ((mask&(1<<sd->action.arg)) != 0)
@@ -1113,9 +1139,6 @@ public:
                }
                if (!print(0)) return ErrorOccurred;
                rt = (ElementType)sd->action.arg;
-               #ifdef LOWLEVEL_DEBUG_SCANNER
-               std::cout << "RETURN TOKEN " << outputBuf << std::endl;
-               #endif
             }
             else if (stringDefs[sd->action.op])
             {
@@ -1128,9 +1151,6 @@ public:
             }
          }
          ControlCharacter ch = src.control();
-         #ifdef LOWLEVEL_DEBUG_SCANNER
-         std::cout << "GET " << controlCharacterName(ch) << std::endl;
-         #endif
 
          if (sd->next[ ch] != -1) 
          {
@@ -1266,19 +1286,18 @@ template <class CharSet_=charset::UTF8>
 class XMLPathSelectAutomaton :public throws_exception
 {
 public:
-   enum {defaultMemUsage=3*1024,defaultMaxDepth=32,defaultMaxTokenSize=1024};
+   enum {defaultMemUsage=3*1024,defaultMaxDepth=32};
    unsigned int memUsage;
    unsigned int maxDepth;   
    unsigned int maxScopeStackSize;
    unsigned int maxFollows;
    unsigned int maxTokens;
-   unsigned int maxTokenSize;
 
 public:
    XMLPathSelectAutomaton()
-         :memUsage(defaultMemUsage),maxDepth(defaultMaxDepth),maxTokenSize(defaultMaxTokenSize)
+         :memUsage(defaultMemUsage),maxDepth(defaultMaxDepth),maxScopeStackSize(0),maxFollows(0),maxTokens(0)
    {
-      if (!setMemUsage( memUsage, maxDepth, maxTokenSize)) throw exception( DimOutOfRange);
+      if (!setMemUsage( memUsage, maxDepth)) throw exception( DimOutOfRange);
    };
 
    typedef int Hash;
@@ -1438,20 +1457,11 @@ public:
       Scope()                               {};  
    };
 
-   bool setMemUsage( unsigned int p_memUsage, unsigned int p_maxDepth, unsigned int p_maxTokenSize)
+   bool setMemUsage( unsigned int p_memUsage, unsigned int p_maxDepth)
    {
-      maxTokenSize = p_maxTokenSize;
       memUsage = p_memUsage;
       maxDepth = p_maxDepth;
       maxScopeStackSize = maxDepth;
-      if (p_memUsage < maxTokenSize)
-      {
-         maxTokenSize = 0;
-      }
-      else
-      {
-         p_memUsage -= maxTokenSize;
-      }
       if (p_memUsage < maxScopeStackSize * sizeof(Scope))
       {
          maxScopeStackSize = 0;
@@ -1479,9 +1489,11 @@ private:
          }
          for (int ee=stateidx; ee != -1; stateidx=ee,ee=states[ee].link)
          {
-            if (states[ee].key != 0 && keysize == states[ee].keysize && states[ee].core.follow == follow && memcmp(states[ee].key,key,keysize)==0)
+            if (states[ee].key != 0 && keysize == states[ee].keysize && states[ee].core.follow == follow)
             {
-               return states[ee].next;
+               unsigned int ii;
+               for (ii=0; ii<keysize && states[ee].key[ii]==key[ii]; ii++);
+               if (ii == keysize) return states[ee].next;
             }
          }
          if (!states[stateidx].isempty())
@@ -1489,12 +1501,10 @@ private:
             stateidx = states[stateidx].link = states.size();
             states.push_back( state);
          }
-         {
-            states.push_back( state);
-            unsigned int lastidx = states.size()-1;
-            states[ stateidx].defNext( op, keysize, key, srckey, lastidx, follow); 
-            return stateidx=lastidx;
-         }
+         states.push_back( state);
+         unsigned int lastidx = states.size()-1;
+         states[ stateidx].defNext( op, keysize, key, srckey, lastidx, follow); 
+         return stateidx=lastidx;
       }
       catch (std::bad_alloc)
       {
@@ -1564,9 +1574,9 @@ public:
             case Attribute:            pushOpMask.match( XMLScannerBase::TagAttribName);
             case ThisAttributeValue:   pushOpMask.match( XMLScannerBase::TagAttribValue);
             case AttributeValue:       pushOpMask.match( XMLScannerBase::TagAttribValue);
-         };
+         }
          return *this;
-      }
+      };
       PathElement& doSelect( Operation op, const char* value) throw(exception)
       {
          if (xs != 0)
@@ -1721,9 +1731,6 @@ private:
          key = p_key;
          keysize = p_keysize;
          scope_iter = scope.range.tokenidx_from;
-         #ifdef LOWLEVEL_DEBUG_XMLSEL
-         std::cout << "[!context] " << XMLScannerBase::getElementTypeName(p_type) << " " << p_key << std::endl;
-         #endif
       };
    };
    Context context;
@@ -1733,11 +1740,6 @@ private:
       while (stateidx!=-1)
       {
          const State& st = atm->states[ stateidx];
-         #ifdef LOWLEVEL_DEBUG_XMLSEL
-            if (st.core.x != -1) std::cout << "[!expand] STATE " << stateidx << ":" << st.srckey << (st.core.follow?" --":" ") << "> " << st.next << std::endl;
-            if (st.core.typeidx != 0) std::cout << "[!expand] FETCH " << st.core.typeidx << std::endl;
-            std::cout << "[!mask] " << context.scope.mask.pos << "/" << context.scope.mask.neg << " JOIN " << st.core.mask.pos << "/" << st.core.mask.neg << std::endl;
-         #endif         
          context.scope.mask.join( st.core.mask);
          if (st.core.follow) 
          {
@@ -1780,7 +1782,7 @@ private:
             follows.resize( context.scope.range.followidx);
             tokens.resize( context.scope.range.tokenidx_to);
          }
-      };
+      }
    };
    
    int match( unsigned int tokenidx)
@@ -1857,19 +1859,21 @@ private:
       {
          context.key = 0;
       }
-      #ifdef LOWLEVEL_DEBUG_XMLSEL
-      std::cout << "[!fetch] " << type << std::endl;
-      #endif
       return type;
    };
 
 public:
-   XMLPathSelect( Automaton* p_atm, InputIterator& src, EntityMap* entityMap=0)  :scan(src,p_atm->maxTokenSize,entityMap),atm(p_atm),scopestk(p_atm->maxScopeStackSize),follows(p_atm->maxFollows),tokens(p_atm->maxTokens)
+   XMLPathSelect( Automaton* p_atm, InputIterator& src, char* obuf, unsigned int obufsize, EntityMap* entityMap=0)  :scan(src,obuf,obufsize,entityMap),atm(p_atm),scopestk(p_atm->maxScopeStackSize),follows(p_atm->maxFollows),tokens(p_atm->maxTokens)
    {
       if (atm->states.size() > 0) expand(0);
    };
    XMLPathSelect( const XMLPathSelect& o)                                                                                     :scan(o.scan),atm(o.atm),scopestk(o.maxScopeStackSize),follows(o.maxFollows),tokens(o.maxTokens) {};
 
+   void setOutputBuffer( char* outputBuf, size_type outputBufSize)
+   {
+      scan.setOutputBuffer( outputBuf, outputBufSize);
+   };
+   
    //STL conform input iterator for the output of this XMLScanner:   
    struct End {};
    class iterator
@@ -1877,15 +1881,15 @@ public:
    public:
       struct Element
       {
-         bool error;
-         bool eof;
+         enum State {Ok,EndOfOutput,EndOfInput,ErrorState};
+         State state;
          int type;
          const char* content;
          unsigned int size;
 
-         Element()                     :error(0),eof(false),type(0),content(0),size(0) {};
-         Element( const End&)          :error(0),eof( true),type(0),content(0),size(0) {};
-         Element( const Element& orig) :error(orig.error),eof(orig.eof),type(orig.type),content(orig.content),size(orig.size) {};
+         Element()                     :state(Ok),type(0),content(0),size(0) {};
+         Element( const End&)          :state(EndOfInput),type(0),content(0),size(0) {};
+         Element( const Element& orig) :state(orig.state),type(orig.type),content(orig.content),size(orig.size) {};
       };
       typedef Element value_type;
       typedef unsigned int difference_type;
@@ -1910,13 +1914,20 @@ public:
                      XMLScannerBase::ElementType et = input->scan.nextItem( input->context.scope.mask.pos);
                      if (et == XMLScannerBase::Exit)
                      {
-                        element.eof = true;
+                        element.state = Element::EndOfInput;
                         return *this;
                      }
                      if (et == XMLScannerBase::ErrorOccurred)
                      {
-                        element.error = true;
-                        (void)input->scan.getError( &element.content);
+                        XMLScannerBase::Error err = input->scan.getError( &element.content);
+                        if (err == XMLScannerBase::ErrOutputBufferTooSmall)
+                        {
+                           element.state = Element::EndOfOutput;
+                        }
+                        else
+                        {
+                           element.state = Element::ErrorState;
+                        }
                         return *this;
                      }
                      input->initProcessElement( et, input->scan.getItem(), input->scan.getItemSize());
@@ -1942,14 +1953,13 @@ public:
       };
       bool compare( const iterator& iter) const
       {
-         return (element.eof && iter.element.eof);
+         return (element.state != Element::Ok && iter.element.state != Element::Ok);
       };
    public:
       void assign( const iterator& orig)
       {
          input = orig.input;
-         element.error = orig.element.error;
-         element.eof = orig.element.eof;
+         element.state = orig.element.state;
          element.type = orig.element.type;
          element.content = orig.element.content;
          element.size = orig.element.size;

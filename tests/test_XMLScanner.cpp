@@ -7,47 +7,25 @@
 
 using namespace textwolf;
 
-static const char* simpleXmple = "<?xml charset=isolatin-1?><note id=1 t=2 g=\"zu\"><stag value='500'/> \n<to>Frog</to>\n<from>Bird</from><body>Hello world!</body>\n</note>";
-
-template <class InputCharSet, class OutputCharSet>
-struct XMLScannerTest
-{
-   typedef XMLScanner<char*,InputCharSet,OutputCharSet> MyXMLScanner;
-   enum {outputBufSize=2048};
-   MyXMLScanner xs;
-   
-   XMLScannerTest( char* text) :xs(text,outputBufSize) {};
-
-   bool run()
-   {
-      typename MyXMLScanner::iterator itr;
-      typename MyXMLScanner::iterator end;
-      for (itr=xs.begin(),end=xs.end(); itr!=end; itr++)
-      {
-         std::cout << "Element " << itr->name() << ": " << itr->content << std::endl;
-         if (itr->type == MyXMLScanner::ErrorOccurred) break;
-      }
-      return true;
-   };
-};
-
-static bool simpleTest( const char* txt)
-{
-   typedef XMLScannerTest<charset::IsoLatin1,charset::IsoLatin1> Test;
-   return Test( const_cast<char*>(txt)).run();
-}
-
-static bool testAll()
-{
-   if (!simpleTest( simpleXmple)) return false;
-   return true;
-}
-
 int main( int, const char**)
 {   
-   return testAll()?0:1;
-}
+   static const char* xmlstr = "<?xml charset=isolatin-1?><note id=1 t=2 g=\"zu\"><stag value='500'/> \n<to>Frog</to>\n<from>Bird</from><body>Hello world!</body>\n</note>";
+   typedef XMLScanner<char*,charset::IsoLatin1,charset::IsoLatin1> MyXMLScanner;
+   enum {outputbufSize=2048};
+   char outputbuf[ outputbufSize];
+   char* xmlitr = const_cast<char*>(xmlstr);
 
+   MyXMLScanner xs( xmlitr, outputbuf, outputbufSize);
+
+   MyXMLScanner::iterator itr;
+   MyXMLScanner::iterator end;
+   for (itr=xs.begin(),end=xs.end(); itr!=end; itr++)
+   {
+      std::cout << "Element " << itr->name() << ": " << itr->content << std::endl;
+      if (itr->type == MyXMLScanner::ErrorOccurred) break;
+   }
+   return 0;
+}
 
 
 

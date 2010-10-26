@@ -1,5 +1,6 @@
 #include "textwolf.hpp"
 #include <iostream>
+#include <stdio.h>
 
 //compile: g++ -c -o test_TextScanner.o -g -fstrict-aliasing -pedantic -Wall -Wunused -Wno-import -Wformat -Wformat-y2k -Wformat-nonliteral -Wformat-security -Wformat-y2k -Wswitch-enum -Wunknown-pragmas -Wfloat-equal -Wundef -Wshadow -Wpointer-arith -Wcast-qual -Wcast-align -Wwrite-strings -Wmissing-noreturn -Wno-multichar -Wparentheses -Wredundant-decls -Winline -Wdisabled-optimization -Wno-long-long -Werror -Wfatal-errors test_TextScanner.cpp
 //link     g++ -lc -o test_TextScanner test_TextScanner.o
@@ -155,12 +156,12 @@ int main( int, const char**)
    if (!res)
    {
       std::cerr << "OK" << std::endl;
-      exit( 0);
+      return 0;
    }
    else
    {
       std::cerr << res << std::endl;
-      exit( 1);
+      return 1;
    }
 }
 
