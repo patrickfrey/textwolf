@@ -24,6 +24,11 @@
     You should have received a copy of the GNU Lesser General Public
     License along with this library; if not, write to the Free Software
     Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+
+--------------------------------------------------------------------
+
+    The latest version of textwolf can be found at 'http://github.com/patrickfrey/textwolf'
+    
 --------------------------------------------------------------------
 **/
 #ifndef __TEXTWOLF_HPP__
@@ -272,17 +277,23 @@ const char* controlCharacterName( ControlCharacter c)
    return name[ (unsigned int)c];   
 }
 
+struct DefaultCharProd
+{
+   DefaultCharProd(){};
+   char operator[]( char ch) const {return ch;};
+};
 
 /**
 * reads the input and provides the items to control the parsing:
 *   control characters, ascii characters, unicode characters
 * @TODO Implement better skip for iterator += i if available
 */
-template <class Iterator, class CharSet>
+template <class Iterator, class CharSet, class CharProd=DefaultCharProd>
 class TextScanner
 {
 private:
    Iterator input;
+   CharProd charProd;
    
    char buf[8];
    UChar val;
@@ -330,7 +341,7 @@ public:
          input++;
          state++;
       }
-      cur = CharSet::achar(buf);
+      cur = charProd[ CharSet::achar(buf)];
    };
    
    ControlCharacter control()
@@ -476,11 +487,11 @@ class XMLScannerBase
 public:
    enum ElementType
    {
-      None, ErrorOccurred, HeaderAttribName, HeaderAttribValue, TagAttribName, TagAttribValue, OpenTag, CloseTag, CloseTagIm, Content, Exit
+      None, ErrorOccurred, HeaderAttribName, HeaderAttribValue, HeaderEnd, TagAttribName, TagAttribValue, OpenTag, CloseTag, CloseTagIm, Content, Exit
    };
    static const char* getElementTypeName( ElementType ee)
    {
-      static const char* names[ (unsigned int)Exit+1] = {0,"ErrorOccurred","HeaderAttribName","HeaderAttribValue","TagAttribName","TagAttribValue","OpenTag","CloseTag","CloseTagIm","Content","Exit"};
+      static const char* names[ (unsigned int)Exit+1] = {0,"ErrorOccurred","HeaderAttribName","HeaderAttribValue","HeaderEnd","TagAttribName","TagAttribValue","OpenTag","CloseTag","CloseTagIm","Content","Exit"};
       return names[ (unsigned int)ee];
    };
    enum Error
@@ -541,7 +552,7 @@ public:
          [ START    ](EndOfLine)(Cntrl)(Space)(Lt,STARTTAG).miss(ErrExpectedOpenTag)
          [ STARTTAG ](EndOfLine)(Cntrl)(Space)(Questm,XTAG )(Exclam,ENTITYSL).fallback(OPENTAG)
          [ XTAG     ].action(ExpectIdentifierXML)(EndOfLine,Cntrl,Space,XTAGAISK)(Questm,XTAGEND).miss(ErrExpectedXMLTag)
-         [ XTAGEND  ](Gt,CONTENT)(EndOfLine)(Cntrl)(Space).miss(ErrExpectedTagEnd)
+         [ XTAGEND  ].action(Return,HeaderEnd)(Gt,CONTENT)(EndOfLine)(Cntrl)(Space).miss(ErrExpectedTagEnd)
          [ XTAGAISK ](EndOfLine)(Cntrl)(Space)(Questm,XTAGEND).fallback(XTAGANAM)
          [ XTAGANAM ].action(ReturnIdentifier,HeaderAttribName)(EndOfLine,Cntrl,Space,XTAGAESK)(Equal,XTAGAVSK).miss(ErrExpectedEqual)
          [ XTAGAESK ](EndOfLine)(Cntrl)(Space)(Equal,XTAGAVSK).miss(ErrExpectedEqual)
@@ -581,7 +592,8 @@ template <
       class InputIterator,                         //< STL conform input iterator with ++ and read only * returning 0 als last character of the input
       class InputCharSet_=charset::UTF8,           //Character set encoding of the input, read as stream of bytes
       class OutputCharSet_=charset::UTF8,          //Character set encoding of the output, printed as string of the item type of the character set
-      class EntityMap=std::map<const char*,UChar>  //< STL like map from ASCII const char* to UChar
+      class EntityMap=std::map<const char*,UChar>, //< STL like map from ASCII const char* to UChar
+      class CharProd=DefaultCharProd
 >
 class XMLScanner :public XMLScannerBase
 {
@@ -608,8 +620,8 @@ public:
    class iterator;
    
 public:
-   typedef TextScanner<InputIterator,InputCharSet_> InputReader;
-   typedef XMLScanner<InputIterator,InputCharSet_,OutputCharSet_,EntityMap> ThisXMLScanner;
+   typedef TextScanner<InputIterator,InputCharSet_,CharProd> InputReader;
+   typedef XMLScanner<InputIterator,InputCharSet_,OutputCharSet_,EntityMap,CharProd> ThisXMLScanner;
    typedef typename EntityMap::iterator EntityMapIterator;
    
    unsigned int print( UChar ch)
@@ -1306,11 +1318,11 @@ public:
 public:
    enum Operation 
    {
-      Content, Tag, Attribute, ThisAttributeValue, AttributeValue
+      Content, Tag, Attribute, ThisAttributeValue, AttributeValue, ContentStart
    };
    static const char* operationName( Operation op)
    {
-      static const char* name[ 5] = {"Content", "Tag", "Attribute", "ThisAttributeValue", "AttributeValue"};
+      static const char* name[ 6] = {"Content", "Tag", "Attribute", "ThisAttributeValue", "AttributeValue", "ContentStart"};
       return name[ (unsigned int)op];
    };
 
@@ -1329,15 +1341,23 @@ public:
          switch (op)
          {
             case Tag:                this->match( XMLScannerBase::OpenTag); break;
-            case Attribute:          this->match( XMLScannerBase::TagAttribName); break;               
+            case Attribute:          this->match( XMLScannerBase::TagAttribName); 
+                                     this->match( XMLScannerBase::HeaderAttribName); break;
+                                     
             case ThisAttributeValue: this->match( XMLScannerBase::TagAttribValue); 
+                                     this->match( XMLScannerBase::HeaderAttribValue);
                                      this->reject( XMLScannerBase::TagAttribName); 
+                                     this->reject( XMLScannerBase::HeaderAttribName); 
                                      this->reject( XMLScannerBase::Content); 
                                      this->reject( XMLScannerBase::OpenTag); break;
+                                     
             case AttributeValue:     this->match( XMLScannerBase::TagAttribValue); 
-                                     this->reject( XMLScannerBase::Content); 
-                                     break;
+                                     this->match( XMLScannerBase::HeaderAttribValue); 
+                                     this->reject( XMLScannerBase::Content); break;
+                                     
             case Content:            this->match( XMLScannerBase::Content); break; 
+
+            case ContentStart:       this->match( XMLScannerBase::HeaderEnd); break; 
          }         
       };
       void join( const Mask& mask)                         {pos |= mask.pos; neg |= mask.neg;};
@@ -1572,8 +1592,15 @@ public:
                                        pushOpMask.match( XMLScannerBase::TagAttribValue); 
                                        break;
             case Attribute:            pushOpMask.match( XMLScannerBase::TagAttribName);
+                                       pushOpMask.match( XMLScannerBase::HeaderAttribName);
+                                       break;
             case ThisAttributeValue:   pushOpMask.match( XMLScannerBase::TagAttribValue);
+                                       pushOpMask.match( XMLScannerBase::HeaderAttribValue);
+                                       break;
             case AttributeValue:       pushOpMask.match( XMLScannerBase::TagAttribValue);
+                                       pushOpMask.match( XMLScannerBase::HeaderAttribValue);
+                                       break;
+            case ContentStart:         pushOpMask.match( XMLScannerBase::HeaderEnd);
          }
          return *this;
       };
@@ -1623,7 +1650,7 @@ public:
 
    public:
       PathElement()                                                  :xs(0),stateidx(0),count(-1),follow(false),pushOpMask(0) {};
-      PathElement( XMLPathSelectAutomaton* p_xs, int p_stateidx=0)   :xs(p_xs),stateidx(p_stateidx),count(-1),follow(false),pushOpMask(0) {doSelect(Tag);};
+      PathElement( XMLPathSelectAutomaton* p_xs, int p_stateidx=0)   :xs(p_xs),stateidx(p_stateidx),count(-1),follow(false),pushOpMask(0) {doSelect(Tag);doSelect(ContentStart);};
       PathElement( const PathElement& orig)                          :xs(orig.xs),stateidx(orig.stateidx),count(orig.count),follow(orig.follow),pushOpMask(orig.pushOpMask) {};
 
       //corresponds to "//" in abbreviated syntax of XPath
@@ -1652,13 +1679,14 @@ template <
       class InputIterator,                         //< STL conform input iterator with ++ and read only * returning 0 als last character of the input
       class InputCharSet_=charset::UTF8,           //Character set encoding of the input, read as stream of bytes
       class OutputCharSet_=charset::UTF8,          //Character set encoding of the output, printed as string of the item type of the character set
-      class EntityMap=std::map<const char*,UChar>  //< STL like map from ASCII const char* to UChar
+      class EntityMap=std::map<const char*,UChar>, //< STL like map from ASCII const char* to UChar
+      class CharProd=DefaultCharProd
 >
 class XMLPathSelect :public throws_exception
 {
 public:
    typedef XMLPathSelectAutomaton<OutputCharSet_> Automaton;
-   typedef XMLScanner<InputIterator,InputCharSet_,OutputCharSet_,EntityMap> ThisXMLScanner;
+   typedef XMLScanner<InputIterator,InputCharSet_,OutputCharSet_,EntityMap,CharProd> ThisXMLScanner;
    typedef XMLPathSelect<InputIterator,InputCharSet_,OutputCharSet_,EntityMap> ThisXMLPathSelect;
    
 private:
@@ -1867,9 +1895,10 @@ public:
    {
       if (atm->states.size() > 0) expand(0);
    };
-   XMLPathSelect( const XMLPathSelect& o)                                                                                     :scan(o.scan),atm(o.atm),scopestk(o.maxScopeStackSize),follows(o.maxFollows),tokens(o.maxTokens) {};
+   XMLPathSelect( const XMLPathSelect& o)                                                                           :scan(o.scan),atm(o.atm),scopestk(o.maxScopeStackSize),follows(o.maxFollows),tokens(o.maxTokens) 
+   {};
 
-   void setOutputBuffer( char* outputBuf, size_type outputBufSize)
+   void setOutputBuffer( char* outputBuf, unsigned int outputBufSize)
    {
       scan.setOutputBuffer( outputBuf, outputBufSize);
    };
@@ -1941,13 +1970,9 @@ public:
             }
             return *this;
          }
-         catch (std::bad_alloc)
+         catch (exception e)
          {
-            throw exception( OutOfMem);
-         }
-         catch (...)
-         {
-            throw exception( Unknown); 
+            throw exception( e.cause); 
          };
          return *this;
       };
