@@ -268,15 +268,18 @@ struct UTF8
 * control characters needed for XML scanner statemachine
 */
 enum ControlCharacter 
-{ 
+{
    Undef=0, EndOfText, EndOfLine, Cntrl, Space, Amp, Lt, Equal, Gt, Slash, Exclam, Questm, Sq, Dq, Osb, Csb, Any,
    NofControlCharacter=17
 };
-const char* controlCharacterName( ControlCharacter c)
+struct ControlCharacterM
 {
-   static const char* name[ NofControlCharacter] = {"Undef", "EndOfText", "EndOfLine", "Cntrl", "Space", "Amp", "Lt", "Equal", "Gt", "Slash", "Exclam", "Questm", "Sq", "Dq", "Osb", "Csb", "Any"};
-   return name[ (unsigned int)c];   
-}
+   static const char* name( ControlCharacter c)
+   {
+      static const char* name[ NofControlCharacter] = {"Undef", "EndOfText", "EndOfLine", "Cntrl", "Space", "Amp", "Lt", "Equal", "Gt", "Slash", "Exclam", "Questm", "Sq", "Dq", "Osb", "Csb", "Any"};
+      return name[ (unsigned int)c];
+   }
+};
 
 struct DefaultCharProd
 {
@@ -1689,15 +1692,11 @@ public:
       PathElement& operator ()( const char* name, const char* value) throw(exception)   {return doSelect( Attribute, name).doSelect( ThisAttributeValue, value);};
 
       //define maximum element index to push
-      PathElement& operator <= (int cnt)   throw(exception)                             {doCount((cnt>=0)?(cnt+1):-1);};
-      //define maximum element count limit
-      PathElement& operator <(int cnt)   throw(exception)                               {doCount(cnt);};
-
+      PathElement& TO(int cnt)   throw(exception)                                       {return doCount((cnt>=0)?(cnt+1):-1); return *this;};
       //define minimum element index to push
-      PathElement& operator >=(int cnt)   throw(exception)                              {if (cnt>0) doStart(cnt-1);};
-      //define minimum element count limit
-      PathElement& operator >(int cnt)   throw(exception)                               {doStart(cnt);};
-
+      PathElement& FROM(int cnt)   throw(exception)                                     {return doStart(cnt); return *this;};
+      //define minimum and maximum element index to push
+      PathElement& RANGE(int cnt)   throw(exception)                                    {return doRange(cnt,(cnt>=0)?(cnt+1):-1); return *this;};
       //define element type to push
       PathElement& operator =(int type)  throw(exception)                               {return push( type);};
       //grab content
