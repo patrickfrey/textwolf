@@ -7,6 +7,24 @@
 
 using namespace textwolf;
 
+class ProtocolCharMap
+{
+   char state;
+   ProtocolCharMap() :state('\n'){};
+
+   char operator[]( char ch)
+   {
+      if (ch == state)
+      {
+         if (state == '\n') state='.';
+         else if (state == '.') state='\r';
+         else if (state == '\r') {state='\n'; return 0;}
+      }
+      state = '\n';
+      return ch;
+   };
+};
+
 int main( int, const char**)
 { 
    try 
@@ -60,7 +78,7 @@ int main( int, const char**)
       }
       
       //[5] handle a possible error
-      if ((int)itr->state != 0)
+      if ((int)itr->state != MyXMLPathSelect::iterator::Element::EndOfInput)
       {
          std::cerr << "FAILED " << itr->content << std::endl;
          return 1;
