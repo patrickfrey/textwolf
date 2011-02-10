@@ -1881,11 +1881,14 @@ private:
             const State& st = atm->states[ tk.stateidx];
             if (st.key)
             {
-               unsigned int ii;
-               for (ii=0; ii<context.keysize && st.key[ii] == context.key[ii]; ii++);
-               if (ii==context.keysize)
+               if (st.keysize == context.keysize)
                {
-                  produce( tokenidx, st);
+                  unsigned int ii;
+                  for (ii=0; ii<context.keysize && st.key[ii] == context.key[ii]; ii++);
+                  if (ii==context.keysize)
+                  {
+                     produce( tokenidx, st);
+                  }
                }
             }
             else
