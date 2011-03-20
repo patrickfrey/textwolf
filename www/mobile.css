@@ -29,3 +29,5 @@ h1,h2,h3 {font-weight:400;}
 .timestamp {font-size:1.3em; margin:5px 0 15px 0;}
 .timestamp a {font-weight:400;}
 .clear {clear:both; height:20px; visibility:hidden;}
+.credits {font-size:0.8em; color:#777; margin:0;}
+.credits a {color:#777;}
