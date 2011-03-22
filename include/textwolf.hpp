@@ -1,6 +1,6 @@
 /**
 ---------------------------------------------------------------------
-    The template library textwolf implements an input iterator over
+    The template library textwolf implements an input iterator on
     a set of XML path expressions without backward references on an
     STL conforming input iterator as source. It does no buffering
     or read ahead and is dedicated for stream processing of XML
@@ -41,6 +41,7 @@
 #include <exception>
 #include <iostream>
 #include <limits>
+#include <stdint.h>
 
 namespace textwolf {
 
@@ -96,7 +97,7 @@ public:
 /*
 * unicode character range type used for processing
 */
-typedef unsigned int UChar;
+typedef uint32_t UChar;
 
 namespace charset {
 /**
@@ -119,10 +120,10 @@ struct IsoLatin1
 
 struct ByteOrder
 {
-	enum {LE=1,BE=2,Machine=1};
+	enum {LE=1,BE=2};
 };
 
-template <int encoding=ByteOrder::Machine>
+template <int encoding>
 struct UCS2
 {
 	enum {LSB=(encoding==ByteOrder::BE),MSB=(encoding==ByteOrder::LE),HeadSize=2,Size=2,MaxChar=0xFFFF};
@@ -134,7 +135,7 @@ struct UCS2
 	static unsigned int print( UChar chr, char* buf, unsigned int bufsize)		{if (bufsize<2) return 0; if (chr>0xFFFF) {buf[0]=(char)0xFF; buf[1]=(char)0xFF;} else {buf[LSB]=(char)chr; buf[MSB]=(char)(chr>>8);} return 2;}
 };
 
-template <int encoding=ByteOrder::Machine>
+template <int encoding>
 struct UCS4
 {
 	enum {B0=(encoding==ByteOrder::BE)?3:0,B1=(encoding==ByteOrder::BE)?2:1,B2=(encoding==ByteOrder::BE)?1:2,B3=(encoding==ByteOrder::BE)?0:3,HeadSize=4,Size=4,MaxChar=0xFFFFFFFF};
@@ -486,7 +487,7 @@ public:
 };
 
 /**
-* the template XMLScanner provides you the XML elements like tags, attributes, etc. with an STL conform input iterator
+* the template XMLScanner provides you the XML elements like tags, attributes, etc. with an input iterator
 * with XMLScannerBase we define the common elements
 */
 class XMLScannerBase
@@ -598,9 +599,9 @@ public:
 
 
 template <
-		class InputIterator,				//< STL conform input iterator with ++ and read only * returning 0 als last character of the input
-		class InputCharSet_=charset::UTF8,		//Character set encoding of the input, read as stream of bytes
-		class OutputCharSet_=charset::UTF8,		//Character set encoding of the output, printed as string of the item type of the character set
+		class InputIterator,				//< input iterator with ++ and read only * returning 0 als last character of the input
+		class InputCharSet_=charset::UTF8,		//< Character set encoding of the input, read as stream of bytes
+		class OutputCharSet_=charset::UTF8,		//< Character set encoding of the output, printed as string of the item type of the character set
 		class EntityMap_=std::map<const char*,UChar>	//< STL like map from ASCII const char* to UChar
 >
 class XMLScanner :public XMLScannerBase
@@ -1202,24 +1203,26 @@ public:
 		return rt;
 	}
 
-	//STL conform input iterator for the output of this XMLScanner:
+	//input iterator for the output of this XMLScanner:
 	struct End {};
 	class iterator
 	{
 	public:
-		struct Element
+		class Element
 		{
-			ElementType type;
-			const char* name() const		{return getElementTypeName( type);}
-			char* content;
-			size_type size;
-
-			Element()							:type(None),content(0),size(0)
-			{}
-			Element( const End&)			:type(Exit),content(0),size(0)
-			{}
-			Element( const Element& orig) :type(orig.type),content(orig.content),size(orig.size)
-			{}
+		private:
+			friend class iterator;
+			ElementType m_type;
+			char* m_content;
+			size_type m_size;
+		public:
+			const char* name() const	{return getElementTypeName( m_type);}
+			ElementType type() const	{return m_type;}
+			const char* content() const	{return m_content;}
+			size_type size() const		{return m_size;}
+			Element()			:m_type(None),m_content(0),m_size(0) {}
+			Element( const End&)		:m_type(Exit),m_content(0),m_size(0) {}
+			Element( const Element& orig)	:m_type(orig.m_type),m_content(orig.m_content),m_size(orig.m_size) {}
 		};
 		typedef Element value_type;
 		typedef size_type difference_type;
@@ -1235,17 +1238,17 @@ public:
 		{
 			if (input != 0)
 			{
-				element.type = input->nextItem(mask);
-				element.content = input->getItem();
-				element.size = input->getItemSize();
+				element.m_type = input->nextItem(mask);
+				element.m_content = input->getItem();
+				element.m_size = input->getItemSize();
 			}
 			return *this;
 		}
 		bool compare( const iterator& iter) const
 		{
-			if (element.type == iter.element.type)
+			if (element.type() == iter.element.type())
 			{
-				if (element.type == Exit || element.type == None) return true;  //equal only at beginning and end
+				if (element.type() == Exit || element.type() == None) return true;  //equal only at beginning and end
 			}
 			return false;
 		}
@@ -1253,9 +1256,7 @@ public:
 		void assign( const iterator& orig)
 		{
 			input = orig.input;
-			element.type = orig.element.type;
-			element.content = orig.element.content;
-			element.size = orig.element.size;
+			element = orig.element;
 		}
 		iterator( const iterator& orig)
 		{
@@ -1264,9 +1265,9 @@ public:
 		iterator( ThisXMLScanner& p_input)
 				:input( &p_input)
 		{
-			element.type = input->nextItem();
-			element.content = input->getItem();
-			element.size = input->getItemSize();
+			element.m_type = input->nextItem();
+			element.m_content = input->getItem();
+			element.m_size = input->getItemSize();
 		}
 		iterator( const End& et)  :element(et),input(0) {}
 		iterator()  :input(0) {}
@@ -1283,8 +1284,8 @@ public:
 		{
 			return &element;
 		}
-		iterator& operator++()	{return skip();}
-		iterator operator++(int)	{iterator tmp(*this); skip(); return tmp;}
+		iterator& operator++()				{return skip();}
+		iterator operator++(int)			{iterator tmp(*this); skip(); return tmp;}
 
 		bool operator==( const iterator& iter) const	{return compare( iter);}
 		bool operator!=( const iterator& iter) const	{return !compare( iter);}
@@ -1674,7 +1675,7 @@ public:
 		PathElement( const PathElement& orig)				:xs(orig.xs),stateidx(orig.stateidx),range(orig.range),follow(orig.follow),pushOpMask(orig.pushOpMask),printOpMask(orig.printOpMask) {}
 
 		//corresponds to "//" in abbreviated syntax of XPath
-		PathElement& operator --(int)					{return doFollow();}
+		PathElement& operator --(int)							{return doFollow();}
 		//find tag
 		PathElement& operator []( const char* name) throw(exception)			{return doSelect( Tag, name);}
 		PathElement& selectTag( const char* name) throw(exception)			{return doSelect( Tag, name);}
@@ -1707,7 +1708,7 @@ public:
 
 
 template <
-		class InputIterator,				//< STL conform input iterator with ++ and read only * returning 0 als last character of the input
+		class InputIterator,				//< input iterator with ++ and read only * returning 0 als last character of the input
 		class InputCharSet_=charset::UTF8,		//< character set encoding of the input, read as stream of bytes
 		class OutputCharSet_=charset::UTF8,		//< character set encoding of the output, printed as string of the item type of the character set
 		class EntityMap_=std::map<const char*,UChar>	//< STL like map from ASCII const char* to UChar
@@ -2000,22 +2001,29 @@ public:
 		scan.setOutputBuffer( outputBuf, outputBufSize);
 	}
 
-	//STL conform input iterator for the output of this XMLScanner:
+	//input iterator for the output of this XMLScanner:
 	struct End {};
 	class iterator
 	{
 	public:
-		struct Element
+		class Element
 		{
+		public:
 			enum State {Ok,EndOfOutput,EndOfInput,ErrorState};
-			State state;
-			int type;
-			const char* content;
-			unsigned int size;
 
-			Element()				:state(Ok),type(0),content(0),size(0) {}
-			Element( const End&)			:state(EndOfInput),type(0),content(0),size(0) {}
-			Element( const Element& orig)		:state(orig.state),type(orig.type),content(orig.content),size(orig.size) {}
+			Element()				:m_state(Ok),m_type(0),m_content(0),m_size(0) {}
+			Element( const End&)			:m_state(EndOfInput),m_type(0),m_content(0),m_size(0) {}
+			Element( const Element& orig)		:m_state(orig.m_state),m_type(orig.m_type),m_content(orig.m_content),m_size(orig.m_size) {}
+			State state() const			{return m_state;}
+			int type() const			{return m_type;}
+			const char* content() const		{return m_content;}
+			unsigned int size() const		{return m_size;}
+		private:
+			friend class iterator;
+			State m_state;
+			int m_type;
+			const char* m_content;
+			unsigned int m_size;
 		};
 		typedef Element value_type;
 		typedef unsigned int difference_type;
@@ -2042,36 +2050,36 @@ public:
 							{
 								if (input->scopestk.size() == 0)
 								{
-									element.state = Element::EndOfInput;
+									element.m_state = Element::EndOfInput;
 								}
 								else
 								{
-									element.state = Element::ErrorState;
-									element.content = XMLScannerBase::getErrorString( XMLScannerBase::ErrUnexpectedEndOfInput);
+									element.m_state = Element::ErrorState;
+									element.m_content = XMLScannerBase::getErrorString( XMLScannerBase::ErrUnexpectedEndOfInput);
 								}
 								return *this;
 							}
 							if (et == XMLScannerBase::ErrorOccurred)
 							{
-								XMLScannerBase::Error err = input->scan.getError( &element.content);
+								XMLScannerBase::Error err = input->scan.getError( &element.m_content);
 								if (err == XMLScannerBase::ErrOutputBufferTooSmall)
 								{
-									element.state = Element::EndOfOutput;
+									element.m_state = Element::EndOfOutput;
 								}
 								else
 								{
-									element.state = Element::ErrorState;
+									element.m_state = Element::ErrorState;
 								}
 								return *this;
 							}
 							input->initProcessElement( et, input->scan.getItem(), input->scan.getItemSize());
 						}
-						element.type = input->fetch();
+						element.m_type = input->fetch();
 
-					} while (element.type == 0);
+					} while (element.m_type == 0);
 
-					element.content = input->context.key;
-					element.size = input->context.keysize;
+					element.m_content = input->context.key;
+					element.m_size = input->context.keysize;
 				}
 				return *this;
 			}
@@ -2083,16 +2091,13 @@ public:
 		}
 		bool compare( const iterator& iter) const
 		{
-			return (element.state != Element::Ok && iter.element.state != Element::Ok);
+			return (element.state() != Element::Ok && iter.element.state() != Element::Ok);
 		}
 	public:
 		void assign( const iterator& orig)
 		{
 			input = orig.input;
-			element.state = orig.element.state;
-			element.type = orig.element.type;
-			element.content = orig.element.content;
-			element.size = orig.element.size;
+			element = orig.element;
 		}
 		iterator( const iterator& orig)
 		{

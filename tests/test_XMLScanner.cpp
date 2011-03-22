@@ -21,8 +21,8 @@ int main( int, const char**)
    MyXMLScanner::iterator end;
    for (itr=xs.begin(),end=xs.end(); itr!=end; itr++)
    {
-      std::cout << "Element " << itr->name() << ": " << itr->content << std::endl;
-      if (itr->type == MyXMLScanner::ErrorOccurred) break;
+      std::cout << "Element " << itr->name() << ": " << itr->content() << std::endl;
+      if (itr->type() == MyXMLScanner::ErrorOccurred) break;
    }
    return 0;
 }

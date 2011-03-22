@@ -65,7 +65,7 @@ int main( int, const char**)
       (*atm)["Y"]--(0,"2")() = 18;
 
       //[3] define the XML Path selection by the automaton over the source iterator
-      typedef XMLPathSelect<char*> MyXMLPathSelect; 
+      typedef XMLPathSelect<char*,charset::UTF8,charset::UTF8> MyXMLPathSelect;
       enum {outputbufSize=1024};
       char outputbuf[ outputbufSize];
       MyXMLPathSelect xs( &atm, src, outputbuf, outputbufSize);
@@ -73,14 +73,14 @@ int main( int, const char**)
       //[4] iterating through the produced elements and printing them
       MyXMLPathSelect::iterator itr=xs.begin(),end=xs.end();
       for (; itr!=end; itr++)
-      {         
-         std::cout << "Element " << itr->type << ": " << itr->content << std::endl;
+      {
+	 std::cout << "Element " << itr->type() << ": " << itr->content() << std::endl;
       }
       
       //[5] handle a possible error
-      if ((int)itr->state != MyXMLPathSelect::iterator::Element::EndOfInput)
+      if ((int)itr->state() != MyXMLPathSelect::iterator::Element::EndOfInput)
       {
-         std::cerr << "FAILED " << itr->content << std::endl;
+	 std::cerr << "FAILED " << itr->content() << std::endl;
          return 1;
       } 
       else
