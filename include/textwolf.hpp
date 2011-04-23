@@ -156,29 +156,30 @@ struct UCS4BE :public UCS4<ByteOrder::BE> {};
 struct UTF8
 {
 	enum {MaxChar=0xFFFFFFFF};
-	enum {B11111111=0xFF,
-			B01111111=0x7F,
-			B00111111=0x3F,
-			B00011111=0x1F,
-			B00001111=0x0F,
-			B00000111=0x07,
-			B00000011=0x03,
-			B00000001=0x01,
-			B00000000=0x00,
-			B10000000=0x80,
-			B11000000=0xC0,
-			B11100000=0xE0,
-			B11110000=0xF0,
-			B11111000=0xF8,
-			B11111100=0xFC,
-			B11111110=0xFE,
+	enum {
+		B11111111=0xFF,
+		B01111111=0x7F,
+		B00111111=0x3F,
+		B00011111=0x1F,
+		B00001111=0x0F,
+		B00000111=0x07,
+		B00000011=0x03,
+		B00000001=0x01,
+		B00000000=0x00,
+		B10000000=0x80,
+		B11000000=0xC0,
+		B11100000=0xE0,
+		B11110000=0xF0,
+		B11111000=0xF8,
+		B11111100=0xFC,
+		B11111110=0xFE,
 
-			B11011111=B11000000|B00011111,
-			B11101111=B11100000|B00001111,
-			B11110111=B11110000|B00000111,
-			B11111011=B11111000|B00000011,
-			B11111101=B11111100|B00000001
-		};
+		B11011111=B11000000|B00011111,
+		B11101111=B11100000|B00001111,
+		B11110111=B11110000|B00000111,
+		B11111011=B11111000|B00000011,
+		B11111101=B11111100|B00000001
+	};
 
 	enum {HeadSize=1};
 
@@ -559,9 +560,9 @@ public:
 		Statemachine()
 		{
 			(*this)
-			[ START	](EndOfLine)(Cntrl)(Space)(Lt,STARTTAG).miss(ErrExpectedOpenTag)
+			[ START    ](EndOfLine)(Cntrl)(Space)(Lt,STARTTAG).miss(ErrExpectedOpenTag)
 			[ STARTTAG ](EndOfLine)(Cntrl)(Space)(Questm,XTAG )(Exclam,ENTITYSL).fallback(OPENTAG)
-			[ XTAG	].action(ExpectIdentifierXML)(EndOfLine,Cntrl,Space,XTAGAISK)(Questm,XTAGEND).miss(ErrExpectedXMLTag)
+			[ XTAG     ].action(ExpectIdentifierXML)(EndOfLine,Cntrl,Space,XTAGAISK)(Questm,XTAGEND).miss(ErrExpectedXMLTag)
 			[ XTAGEND  ].action(Return,HeaderEnd)(Gt,CONTENT)(EndOfLine)(Cntrl)(Space).miss(ErrExpectedTagEnd)
 			[ XTAGAISK ](EndOfLine)(Cntrl)(Space)(Questm,XTAGEND).fallback(XTAGANAM)
 			[ XTAGANAM ].action(ReturnIdentifier,HeaderAttribName)(EndOfLine,Cntrl,Space,XTAGAESK)(Equal,XTAGAVSK).miss(ErrExpectedEqual)
@@ -572,8 +573,8 @@ public:
 			[ XTAGAVDQ ].action(ReturnDQString,HeaderAttribValue)(Dq,XTAGAVQE).miss(ErrStringNotTerminated)
 			[ XTAGAVQE ](EndOfLine,Cntrl,Space,XTAGAISK)(Questm,XTAGEND).miss(ErrExpectedTagAttribute)
 			[ CONTENT  ](EndOfText,EXIT)(EndOfLine)(Cntrl)(Space)(Lt,XMLTAG).fallback(TOKEN)
-			[ TOKEN	].action(ReturnToken,Content)(EndOfText,EXIT)(EndOfLine,Cntrl,Space,CONTENT)(Lt,XMLTAG).fallback(CONTENT)
-			[ XMLTAG	](EndOfLine)(Cntrl)(Space)(Questm,XTAG)(Slash,CLOSETAG).fallback(OPENTAG)
+			[ TOKEN    ].action(ReturnToken,Content)(EndOfText,EXIT)(EndOfLine,Cntrl,Space,CONTENT)(Lt,XMLTAG).fallback(CONTENT)
+			[ XMLTAG   ](EndOfLine)(Cntrl)(Space)(Questm,XTAG)(Slash,CLOSETAG).fallback(OPENTAG)
 			[ OPENTAG  ].action(ReturnIdentifier,OpenTag)(EndOfLine,Cntrl,Space,TAGAISK)(Slash,TAGCLIM)(Gt,CONTENT).miss(ErrExpectedTagAttribute)
 			[ CLOSETAG ].action(ReturnIdentifier,CloseTag)(EndOfLine,Cntrl,Space,TAGCLSK)(Gt,CONTENT).miss(ErrExpectedTagEnd)
 			[ TAGCLSK  ](EndOfLine)(Cntrl)(Space)(Gt,CONTENT).miss(ErrExpectedTagEnd)
@@ -587,12 +588,12 @@ public:
 			[ TAGAVQE  ](EndOfLine,Cntrl,Space,TAGAISK)(Slash,TAGCLIM)(Gt,CONTENT).miss(ErrExpectedTagAttribute)
 			[ TAGCLIM  ].action(Return,CloseTagIm)(EndOfLine)(Cntrl)(Space)(Gt,CONTENT).miss(ErrExpectedTagEnd)
 			[ ENTITYSL ](Osb,CDATA).fallback(ENTITY)
-			[ ENTITY	](Exclam,TAGCLSK).other( ENTITY)
-			[ CDATA	].action(ExpectIdentifierCDATA)(Osb,CDATA1).miss(ErrExpectedCDATATag)
-			[ CDATA1	](Csb,CDATA2).other(CDATA1)
-			[ CDATA2	](Csb,CDATA3).other(CDATA1)
-			[ CDATA3	](Gt,CONTENT).other(CDATA1)
-			[ EXIT	].action(Return,Exit);
+			[ ENTITY   ](Exclam,TAGCLSK).other( ENTITY)
+			[ CDATA    ].action(ExpectIdentifierCDATA)(Osb,CDATA1).miss(ErrExpectedCDATATag)
+			[ CDATA1   ](Csb,CDATA2).other(CDATA1)
+			[ CDATA2   ](Csb,CDATA3).other(CDATA1)
+			[ CDATA3   ](Gt,CONTENT).other(CDATA1)
+			[ EXIT     ].action(Return,Exit);
 		}
 	};
 };
@@ -1349,21 +1350,33 @@ public:
 		{
 			switch (op)
 			{
-				case Tag:			this->match( XMLScannerBase::OpenTag); break;
-				case Attribute:			this->match( XMLScannerBase::TagAttribName);
-								this->match( XMLScannerBase::HeaderAttribName);
-								this->reject( XMLScannerBase::Content); break;
-				case ThisAttributeValue:	this->match( XMLScannerBase::TagAttribValue);
-								this->match( XMLScannerBase::HeaderAttribValue);
-								this->reject( XMLScannerBase::TagAttribName);
-								this->reject( XMLScannerBase::HeaderAttribName);
-								this->reject( XMLScannerBase::Content);
-								this->reject( XMLScannerBase::OpenTag); break;
-				case AttributeValue:		this->match( XMLScannerBase::TagAttribValue);
-								this->match( XMLScannerBase::HeaderAttribValue);
-								this->reject( XMLScannerBase::Content); break;
-				case Content:			this->match( XMLScannerBase::Content); break;
-				case ContentStart:		this->match( XMLScannerBase::HeaderEnd); break;
+				case Tag:
+					this->match( XMLScannerBase::OpenTag);
+					break;
+				case Attribute:
+					this->match( XMLScannerBase::TagAttribName);
+					this->match( XMLScannerBase::HeaderAttribName);
+					this->reject( XMLScannerBase::Content);
+					break;
+				case ThisAttributeValue:
+					this->match( XMLScannerBase::TagAttribValue);
+					this->match( XMLScannerBase::HeaderAttribValue);
+					this->reject( XMLScannerBase::TagAttribName);
+					this->reject( XMLScannerBase::HeaderAttribName);
+					this->reject( XMLScannerBase::Content);
+					this->reject( XMLScannerBase::OpenTag);
+					break;
+				case AttributeValue:
+					this->match( XMLScannerBase::TagAttribValue);
+					this->match( XMLScannerBase::HeaderAttribValue);
+					this->reject( XMLScannerBase::Content);
+					break;
+				case Content:
+					this->match( XMLScannerBase::Content);
+					break;
+				case ContentStart:
+					this->match( XMLScannerBase::HeaderEnd);
+					break;
 			}
 		}
 		void join( const Mask& mask)				{pos |= mask.pos; neg |= mask.neg;}
