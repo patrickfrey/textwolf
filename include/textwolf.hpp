@@ -41,7 +41,7 @@
 #include <exception>
 #include <iostream>
 #include <limits>
-#include <stdint.h>
+#include <boost/cstdint.hpp>
 
 namespace textwolf {
 
@@ -97,7 +97,7 @@ public:
 /*
 * unicode character range type used for processing
 */
-typedef uint32_t UChar;
+typedef boost::uint32_t UChar;
 
 namespace charset {
 /**
