@@ -1,5 +1,6 @@
 Documentation
-* For using textwolf just include "include/textwolf.hpp" A textwolf tutorial can be found here in the Wiki. 
+* For using textwolf just include "include/textwolf.hpp".
+* A textwolf tutorial can be found at http://patrickfrey.github.com/textwolf/.
 
 Examples
 * See the examples in tests:
