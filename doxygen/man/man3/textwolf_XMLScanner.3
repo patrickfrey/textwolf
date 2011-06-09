@@ -1,0 +1,240 @@
+.TH "textwolf::XMLScanner" 3 "10 Jun 2011" "textwolf" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+textwolf::XMLScanner \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <textwolf.hpp>\fP
+.PP
+Inherits \fBtextwolf::XMLScannerBase\fP.
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "struct \fBEnd\fP"
+.br
+.ti -1c
+.RI "struct \fBIsContentCharMap\fP"
+.br
+.ti -1c
+.RI "struct \fBIsDQStringCharMap\fP"
+.br
+.ti -1c
+.RI "struct \fBIsSQStringCharMap\fP"
+.br
+.ti -1c
+.RI "struct \fBIsTagCharMap\fP"
+.br
+.ti -1c
+.RI "class \fBiterator\fP"
+.br
+.ti -1c
+.RI "struct \fBTokState\fP"
+.br
+.in -1c
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "typedef InputCharSet_ \fBInputCharSet\fP"
+.br
+.ti -1c
+.RI "typedef OutputCharSet_ \fBOutputCharSet\fP"
+.br
+.ti -1c
+.RI "typedef unsigned int \fBsize_type\fP"
+.br
+.ti -1c
+.RI "typedef \fBTextScanner\fP< InputIterator, InputCharSet_ > \fBInputReader\fP"
+.br
+.ti -1c
+.RI "typedef \fBXMLScanner\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ > \fBThisXMLScanner\fP"
+.br
+.ti -1c
+.RI "typedef EntityMap_ \fBEntityMap\fP"
+.br
+.ti -1c
+.RI "typedef EntityMap::iterator \fBEntityMapIterator\fP"
+.br
+.ti -1c
+.RI "typedef \fBCharMap\fP< bool, false, NofControlCharacter > \fBIsTokenCharMap\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "unsigned int \fBprint\fP (\fBUChar\fP ch)"
+.br
+.ti -1c
+.RI "bool \fBpush\fP (\fBUChar\fP ch)"
+.br
+.ti -1c
+.RI "bool \fBfallbackEntity\fP ()"
+.br
+.ti -1c
+.RI "bool \fBparseEntity\fP ()"
+.br
+.ti -1c
+.RI "bool \fBparseNumericEntity\fP ()"
+.br
+.ti -1c
+.RI "bool \fBparseNumericBaseEntity\fP ()"
+.br
+.ti -1c
+.RI "bool \fBparseNamedEntity\fP ()"
+.br
+.ti -1c
+.RI "bool \fBparseTokenRecover\fP ()"
+.br
+.ti -1c
+.RI "bool \fBparseToken\fP (const \fBIsTokenCharMap\fP &isTok)"
+.br
+.ti -1c
+.RI "bool \fBskipToken\fP (const \fBIsTokenCharMap\fP &isTok)"
+.br
+.ti -1c
+.RI "bool \fBexpectStr\fP (const char *str)"
+.br
+.ti -1c
+.RI "bool \fBpushPredefinedEntity\fP (const char *str)"
+.br
+.ti -1c
+.RI "bool \fBpushEntity\fP (const char *str)"
+.br
+.ti -1c
+.RI "\fBXMLScanner\fP (InputIterator &p_src, char *p_outputBuf, \fBsize_type\fP p_outputBufSize, \fBEntityMap\fP *p_entityMap=0)"
+.br
+.ti -1c
+.RI "\fBXMLScanner\fP (\fBXMLScanner\fP &o)"
+.br
+.ti -1c
+.RI "void \fBsetOutputBuffer\fP (char *p_outputBuf, \fBsize_type\fP p_outputBufSize)"
+.br
+.ti -1c
+.RI "char * \fBgetItem\fP () const "
+.br
+.ti -1c
+.RI "\fBsize_type\fP \fBgetItemSize\fP () const "
+.br
+.ti -1c
+.RI "\fBScannerStatemachine::Element\fP * \fBgetState\fP ()"
+.br
+.ti -1c
+.RI "\fBError\fP \fBgetError\fP (const char **str=0)"
+.br
+.ti -1c
+.RI "\fBElementType\fP \fBnextItem\fP (unsigned short mask=0xFFFF)"
+.br
+.ti -1c
+.RI "\fBiterator\fP \fBbegin\fP ()"
+.br
+.ti -1c
+.RI "\fBiterator\fP \fBend\fP ()"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static unsigned char \fBHEX\fP (unsigned char ch)"
+.br
+.ti -1c
+.RI "static \fBUChar\fP \fBparseStaticNumericEntityValue\fP (\fBInputReader\fP &ir)"
+.br
+.ti -1c
+.RI "static bool \fBparseStaticToken\fP (const \fBIsTokenCharMap\fP &isTok, \fBInputReader\fP ir, char *buf, \fBsize_type\fP bufsize, \fBsize_type\fP *p_outputBufSize)"
+.br
+.ti -1c
+.RI "template<class CharSet > static bool \fBgetTagName\fP (const char *\fBsrc\fP, char *p_outputBuf, \fBsize_type\fP p_outputBufSize, \fBsize_type\fP *p_outputSize)"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBTokState\fP \fBtokstate\fP"
+.br
+.ti -1c
+.RI "\fBSTMState\fP \fBstate\fP"
+.br
+.ti -1c
+.RI "\fBError\fP \fBerror\fP"
+.br
+.ti -1c
+.RI "\fBInputReader\fP \fBsrc\fP"
+.br
+.ti -1c
+.RI "\fBEntityMap\fP * \fBentityMap\fP"
+.br
+.ti -1c
+.RI "char * \fBoutputBuf\fP"
+.br
+.ti -1c
+.RI "\fBsize_type\fP \fBoutputBufSize\fP"
+.br
+.ti -1c
+.RI "\fBsize_type\fP \fBoutputSize\fP"
+.br
+.in -1c
+
+.SS "template<class InputIterator, class InputCharSet_ = charset::UTF8, class OutputCharSet_ = charset::UTF8, class EntityMap_ = std::map<const char*,UChar>> class textwolf::XMLScanner< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >"
+
+.SH "Member Typedef Documentation"
+.PP 
+.SS "template<class InputIterator, class InputCharSet_ = charset::UTF8, class OutputCharSet_ = charset::UTF8, class EntityMap_ = std::map<const char*,UChar>> typedef EntityMap_ \fBtextwolf::XMLScanner\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::\fBEntityMap\fP"
+.SS "template<class InputIterator, class InputCharSet_ = charset::UTF8, class OutputCharSet_ = charset::UTF8, class EntityMap_ = std::map<const char*,UChar>> typedef EntityMap::iterator \fBtextwolf::XMLScanner\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::\fBEntityMapIterator\fP"
+.SS "template<class InputIterator, class InputCharSet_ = charset::UTF8, class OutputCharSet_ = charset::UTF8, class EntityMap_ = std::map<const char*,UChar>> typedef InputCharSet_ \fBtextwolf::XMLScanner\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::\fBInputCharSet\fP"
+.SS "template<class InputIterator, class InputCharSet_ = charset::UTF8, class OutputCharSet_ = charset::UTF8, class EntityMap_ = std::map<const char*,UChar>> typedef \fBTextScanner\fP<InputIterator,InputCharSet_> \fBtextwolf::XMLScanner\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::\fBInputReader\fP"
+.SS "template<class InputIterator, class InputCharSet_ = charset::UTF8, class OutputCharSet_ = charset::UTF8, class EntityMap_ = std::map<const char*,UChar>> typedef \fBCharMap\fP<bool,false,NofControlCharacter> \fBtextwolf::XMLScanner\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::\fBIsTokenCharMap\fP"
+.SS "template<class InputIterator, class InputCharSet_ = charset::UTF8, class OutputCharSet_ = charset::UTF8, class EntityMap_ = std::map<const char*,UChar>> typedef OutputCharSet_ \fBtextwolf::XMLScanner\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::\fBOutputCharSet\fP"
+.SS "template<class InputIterator, class InputCharSet_ = charset::UTF8, class OutputCharSet_ = charset::UTF8, class EntityMap_ = std::map<const char*,UChar>> typedef unsigned int \fBtextwolf::XMLScanner\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::\fBsize_type\fP"
+.SS "template<class InputIterator, class InputCharSet_ = charset::UTF8, class OutputCharSet_ = charset::UTF8, class EntityMap_ = std::map<const char*,UChar>> typedef \fBXMLScanner\fP<InputIterator,InputCharSet_,OutputCharSet_,EntityMap_> \fBtextwolf::XMLScanner\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::\fBThisXMLScanner\fP"
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<class InputIterator, class InputCharSet_ = charset::UTF8, class OutputCharSet_ = charset::UTF8, class EntityMap_ = std::map<const char*,UChar>> \fBtextwolf::XMLScanner\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::\fBXMLScanner\fP (InputIterator & p_src, char * p_outputBuf, \fBsize_type\fP p_outputBufSize, \fBEntityMap\fP * p_entityMap = \fC0\fP)\fC [inline]\fP"
+.SS "template<class InputIterator, class InputCharSet_ = charset::UTF8, class OutputCharSet_ = charset::UTF8, class EntityMap_ = std::map<const char*,UChar>> \fBtextwolf::XMLScanner\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::\fBXMLScanner\fP (\fBXMLScanner\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ > & o)\fC [inline]\fP"
+.SH "Member Function Documentation"
+.PP 
+.SS "template<class InputIterator, class InputCharSet_ = charset::UTF8, class OutputCharSet_ = charset::UTF8, class EntityMap_ = std::map<const char*,UChar>> \fBiterator\fP \fBtextwolf::XMLScanner\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::begin ()\fC [inline]\fP"
+.SS "template<class InputIterator, class InputCharSet_ = charset::UTF8, class OutputCharSet_ = charset::UTF8, class EntityMap_ = std::map<const char*,UChar>> \fBiterator\fP \fBtextwolf::XMLScanner\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::end ()\fC [inline]\fP"
+.SS "template<class InputIterator, class InputCharSet_ = charset::UTF8, class OutputCharSet_ = charset::UTF8, class EntityMap_ = std::map<const char*,UChar>> bool \fBtextwolf::XMLScanner\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::expectStr (const char * str)\fC [inline]\fP"
+.SS "template<class InputIterator, class InputCharSet_ = charset::UTF8, class OutputCharSet_ = charset::UTF8, class EntityMap_ = std::map<const char*,UChar>> bool \fBtextwolf::XMLScanner\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::fallbackEntity ()\fC [inline]\fP"
+.SS "template<class InputIterator, class InputCharSet_ = charset::UTF8, class OutputCharSet_ = charset::UTF8, class EntityMap_ = std::map<const char*,UChar>> \fBError\fP \fBtextwolf::XMLScanner\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::getError (const char ** str = \fC0\fP)\fC [inline]\fP"
+.SS "template<class InputIterator, class InputCharSet_ = charset::UTF8, class OutputCharSet_ = charset::UTF8, class EntityMap_ = std::map<const char*,UChar>> char* \fBtextwolf::XMLScanner\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::getItem () const\fC [inline]\fP"
+.SS "template<class InputIterator, class InputCharSet_ = charset::UTF8, class OutputCharSet_ = charset::UTF8, class EntityMap_ = std::map<const char*,UChar>> \fBsize_type\fP \fBtextwolf::XMLScanner\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::getItemSize () const\fC [inline]\fP"
+.SS "template<class InputIterator, class InputCharSet_ = charset::UTF8, class OutputCharSet_ = charset::UTF8, class EntityMap_ = std::map<const char*,UChar>> \fBScannerStatemachine::Element\fP* \fBtextwolf::XMLScanner\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::getState ()\fC [inline]\fP"
+.SS "template<class InputIterator, class InputCharSet_ = charset::UTF8, class OutputCharSet_ = charset::UTF8, class EntityMap_ = std::map<const char*,UChar>> template<class CharSet > static bool \fBtextwolf::XMLScanner\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::getTagName (const char * src, char * p_outputBuf, \fBsize_type\fP p_outputBufSize, \fBsize_type\fP * p_outputSize)\fC [inline, static]\fP"
+.SS "template<class InputIterator, class InputCharSet_ = charset::UTF8, class OutputCharSet_ = charset::UTF8, class EntityMap_ = std::map<const char*,UChar>> static unsigned char \fBtextwolf::XMLScanner\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::HEX (unsigned char ch)\fC [inline, static]\fP"
+.SS "template<class InputIterator, class InputCharSet_ = charset::UTF8, class OutputCharSet_ = charset::UTF8, class EntityMap_ = std::map<const char*,UChar>> \fBElementType\fP \fBtextwolf::XMLScanner\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::nextItem (unsigned short mask = \fC0xFFFF\fP)\fC [inline]\fP"
+.SS "template<class InputIterator, class InputCharSet_ = charset::UTF8, class OutputCharSet_ = charset::UTF8, class EntityMap_ = std::map<const char*,UChar>> bool \fBtextwolf::XMLScanner\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::parseEntity ()\fC [inline]\fP"
+.SS "template<class InputIterator, class InputCharSet_ = charset::UTF8, class OutputCharSet_ = charset::UTF8, class EntityMap_ = std::map<const char*,UChar>> bool \fBtextwolf::XMLScanner\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::parseNamedEntity ()\fC [inline]\fP"
+.SS "template<class InputIterator, class InputCharSet_ = charset::UTF8, class OutputCharSet_ = charset::UTF8, class EntityMap_ = std::map<const char*,UChar>> bool \fBtextwolf::XMLScanner\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::parseNumericBaseEntity ()\fC [inline]\fP"
+.SS "template<class InputIterator, class InputCharSet_ = charset::UTF8, class OutputCharSet_ = charset::UTF8, class EntityMap_ = std::map<const char*,UChar>> bool \fBtextwolf::XMLScanner\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::parseNumericEntity ()\fC [inline]\fP"
+.SS "template<class InputIterator, class InputCharSet_ = charset::UTF8, class OutputCharSet_ = charset::UTF8, class EntityMap_ = std::map<const char*,UChar>> static \fBUChar\fP \fBtextwolf::XMLScanner\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::parseStaticNumericEntityValue (\fBInputReader\fP & ir)\fC [inline, static]\fP"
+.SS "template<class InputIterator, class InputCharSet_ = charset::UTF8, class OutputCharSet_ = charset::UTF8, class EntityMap_ = std::map<const char*,UChar>> static bool \fBtextwolf::XMLScanner\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::parseStaticToken (const \fBIsTokenCharMap\fP & isTok, \fBInputReader\fP ir, char * buf, \fBsize_type\fP bufsize, \fBsize_type\fP * p_outputBufSize)\fC [inline, static]\fP"
+.SS "template<class InputIterator, class InputCharSet_ = charset::UTF8, class OutputCharSet_ = charset::UTF8, class EntityMap_ = std::map<const char*,UChar>> bool \fBtextwolf::XMLScanner\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::parseToken (const \fBIsTokenCharMap\fP & isTok)\fC [inline]\fP"
+.SS "template<class InputIterator, class InputCharSet_ = charset::UTF8, class OutputCharSet_ = charset::UTF8, class EntityMap_ = std::map<const char*,UChar>> bool \fBtextwolf::XMLScanner\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::parseTokenRecover ()\fC [inline]\fP"
+.SS "template<class InputIterator, class InputCharSet_ = charset::UTF8, class OutputCharSet_ = charset::UTF8, class EntityMap_ = std::map<const char*,UChar>> unsigned int \fBtextwolf::XMLScanner\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::print (\fBUChar\fP ch)\fC [inline]\fP"
+.SS "template<class InputIterator, class InputCharSet_ = charset::UTF8, class OutputCharSet_ = charset::UTF8, class EntityMap_ = std::map<const char*,UChar>> bool \fBtextwolf::XMLScanner\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::push (\fBUChar\fP ch)\fC [inline]\fP"
+.SS "template<class InputIterator, class InputCharSet_ = charset::UTF8, class OutputCharSet_ = charset::UTF8, class EntityMap_ = std::map<const char*,UChar>> bool \fBtextwolf::XMLScanner\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::pushEntity (const char * str)\fC [inline]\fP"
+.SS "template<class InputIterator, class InputCharSet_ = charset::UTF8, class OutputCharSet_ = charset::UTF8, class EntityMap_ = std::map<const char*,UChar>> bool \fBtextwolf::XMLScanner\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::pushPredefinedEntity (const char * str)\fC [inline]\fP"
+.SS "template<class InputIterator, class InputCharSet_ = charset::UTF8, class OutputCharSet_ = charset::UTF8, class EntityMap_ = std::map<const char*,UChar>> void \fBtextwolf::XMLScanner\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::setOutputBuffer (char * p_outputBuf, \fBsize_type\fP p_outputBufSize)\fC [inline]\fP"
+.SS "template<class InputIterator, class InputCharSet_ = charset::UTF8, class OutputCharSet_ = charset::UTF8, class EntityMap_ = std::map<const char*,UChar>> bool \fBtextwolf::XMLScanner\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::skipToken (const \fBIsTokenCharMap\fP & isTok)\fC [inline]\fP"
+.SH "Member Data Documentation"
+.PP 
+.SS "template<class InputIterator, class InputCharSet_ = charset::UTF8, class OutputCharSet_ = charset::UTF8, class EntityMap_ = std::map<const char*,UChar>> \fBEntityMap\fP* \fBtextwolf::XMLScanner\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::\fBentityMap\fP\fC [private]\fP"
+.SS "template<class InputIterator, class InputCharSet_ = charset::UTF8, class OutputCharSet_ = charset::UTF8, class EntityMap_ = std::map<const char*,UChar>> \fBError\fP \fBtextwolf::XMLScanner\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::\fBerror\fP\fC [private]\fP"
+.SS "template<class InputIterator, class InputCharSet_ = charset::UTF8, class OutputCharSet_ = charset::UTF8, class EntityMap_ = std::map<const char*,UChar>> char* \fBtextwolf::XMLScanner\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::\fBoutputBuf\fP\fC [private]\fP"
+.SS "template<class InputIterator, class InputCharSet_ = charset::UTF8, class OutputCharSet_ = charset::UTF8, class EntityMap_ = std::map<const char*,UChar>> \fBsize_type\fP \fBtextwolf::XMLScanner\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::\fBoutputBufSize\fP\fC [private]\fP"
+.SS "template<class InputIterator, class InputCharSet_ = charset::UTF8, class OutputCharSet_ = charset::UTF8, class EntityMap_ = std::map<const char*,UChar>> \fBsize_type\fP \fBtextwolf::XMLScanner\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::\fBoutputSize\fP\fC [private]\fP"
+.SS "template<class InputIterator, class InputCharSet_ = charset::UTF8, class OutputCharSet_ = charset::UTF8, class EntityMap_ = std::map<const char*,UChar>> \fBInputReader\fP \fBtextwolf::XMLScanner\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::\fBsrc\fP\fC [private]\fP"
+.SS "template<class InputIterator, class InputCharSet_ = charset::UTF8, class OutputCharSet_ = charset::UTF8, class EntityMap_ = std::map<const char*,UChar>> \fBSTMState\fP \fBtextwolf::XMLScanner\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::\fBstate\fP\fC [private]\fP"
+.SS "template<class InputIterator, class InputCharSet_ = charset::UTF8, class OutputCharSet_ = charset::UTF8, class EntityMap_ = std::map<const char*,UChar>> \fBTokState\fP \fBtextwolf::XMLScanner\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::\fBtokstate\fP\fC [private]\fP"
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for textwolf from the source code.

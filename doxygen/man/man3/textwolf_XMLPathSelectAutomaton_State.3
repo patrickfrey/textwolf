@@ -1,0 +1,87 @@
+.TH "textwolf::XMLPathSelectAutomaton::State" 3 "10 Jun 2011" "textwolf" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+textwolf::XMLPathSelectAutomaton::State \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <textwolf.hpp>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBState\fP ()"
+.br
+.ti -1c
+.RI "\fBState\fP (const \fBState\fP &orig)"
+.br
+.ti -1c
+.RI "\fB~State\fP ()"
+.br
+.ti -1c
+.RI "bool \fBisempty\fP ()"
+.br
+.ti -1c
+.RI "void \fBdefineKey\fP (unsigned int p_keysize, const char *p_key, const char *p_srckey)"
+.br
+.ti -1c
+.RI "void \fBdefineNext\fP (\fBOperation\fP op, unsigned int p_keysize, const char *p_key, const char *p_srckey, int p_next, bool p_follow=false)"
+.br
+.ti -1c
+.RI "void \fBdefineOutput\fP (const \fBMask\fP &mask, int p_typeidx, bool p_follow, int p_start, int p_end)"
+.br
+.ti -1c
+.RI "void \fBdefLink\fP (int p_link)"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBCore\fP \fBcore\fP"
+.br
+.ti -1c
+.RI "unsigned int \fBkeysize\fP"
+.br
+.ti -1c
+.RI "char * \fBkey\fP"
+.br
+.ti -1c
+.RI "char * \fBsrckey\fP"
+.br
+.ti -1c
+.RI "int \fBnext\fP"
+.br
+.ti -1c
+.RI "int \fBlink\fP"
+.br
+.in -1c
+
+.SS "template<class CharSet_ = charset::UTF8> struct textwolf::XMLPathSelectAutomaton< CharSet_ >::State"
+
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<class CharSet_  = charset::UTF8> \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::State::State ()\fC [inline]\fP"
+.SS "template<class CharSet_  = charset::UTF8> \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::State::State (const \fBState\fP & orig)\fC [inline]\fP"
+.SS "template<class CharSet_  = charset::UTF8> \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::State::~State ()\fC [inline]\fP"
+.SH "Member Function Documentation"
+.PP 
+.SS "template<class CharSet_  = charset::UTF8> void \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::State::defineKey (unsigned int p_keysize, const char * p_key, const char * p_srckey)\fC [inline]\fP"
+.SS "template<class CharSet_  = charset::UTF8> void \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::State::defineNext (\fBOperation\fP op, unsigned int p_keysize, const char * p_key, const char * p_srckey, int p_next, bool p_follow = \fCfalse\fP)\fC [inline]\fP"
+.SS "template<class CharSet_  = charset::UTF8> void \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::State::defineOutput (const \fBMask\fP & mask, int p_typeidx, bool p_follow, int p_start, int p_end)\fC [inline]\fP"
+.SS "template<class CharSet_  = charset::UTF8> void \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::State::defLink (int p_link)\fC [inline]\fP"
+.SS "template<class CharSet_  = charset::UTF8> bool \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::State::isempty ()\fC [inline]\fP"
+.SH "Member Data Documentation"
+.PP 
+.SS "template<class CharSet_  = charset::UTF8> \fBCore\fP \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::\fBState::core\fP"
+.SS "template<class CharSet_  = charset::UTF8> char* \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::\fBState::key\fP"
+.SS "template<class CharSet_  = charset::UTF8> unsigned int \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::\fBState::keysize\fP"
+.SS "template<class CharSet_  = charset::UTF8> int \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::\fBState::link\fP"
+.SS "template<class CharSet_  = charset::UTF8> int \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::\fBState::next\fP"
+.SS "template<class CharSet_  = charset::UTF8> char* \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::\fBState::srckey\fP"
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for textwolf from the source code.

@@ -1,0 +1,142 @@
+.TH "textwolf::ScannerStatemachine" 3 "10 Jun 2011" "textwolf" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+textwolf::ScannerStatemachine \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <textwolf.hpp>\fP
+.PP
+Inherits \fBtextwolf::throws_exception\fP.
+.PP
+Inherited by \fBtextwolf::XMLScannerBase::Statemachine\fP.
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "struct \fBElement\fP"
+.br
+.in -1c
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBConstant\fP { \fBMaxNofStates\fP = 128 }"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBElement\fP * \fBget\fP (int stateIdx)  throw (exception)"
+.br
+.ti -1c
+.RI "\fBScannerStatemachine\fP ()"
+.br
+.ti -1c
+.RI "\fBScannerStatemachine\fP & \fBoperator[]\fP (int stateIdx)"
+.br
+.ti -1c
+.RI "\fBScannerStatemachine\fP & \fBoperator()\fP (\fBControlCharacter\fP inputchr, int ns)"
+.br
+.ti -1c
+.RI "\fBScannerStatemachine\fP & \fBoperator()\fP (\fBControlCharacter\fP i1, \fBControlCharacter\fP i2, int ns)"
+.br
+.ti -1c
+.RI "\fBScannerStatemachine\fP & \fBoperator()\fP (\fBControlCharacter\fP i1, \fBControlCharacter\fP i2, \fBControlCharacter\fP i3, int ns)"
+.br
+.ti -1c
+.RI "\fBScannerStatemachine\fP & \fBoperator()\fP (\fBControlCharacter\fP inputchr)"
+.br
+.ti -1c
+.RI "\fBScannerStatemachine\fP & \fBaction\fP (int aa, int arg=0)"
+.br
+.ti -1c
+.RI "\fBScannerStatemachine\fP & \fBmiss\fP (int ee)"
+.br
+.ti -1c
+.RI "\fBScannerStatemachine\fP & \fBfallback\fP (int stateIdx)"
+.br
+.ti -1c
+.RI "\fBScannerStatemachine\fP & \fBother\fP (int stateIdx)"
+.br
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBnewState\fP (int stateIdx)  throw (exception)"
+.br
+.ti -1c
+.RI "void \fBaddOtherTransition\fP (int nextState)  throw (exception)"
+.br
+.ti -1c
+.RI "void \fBaddTransition\fP (\fBControlCharacter\fP inputchr, int nextState)  throw (exception)"
+.br
+.ti -1c
+.RI "void \fBaddTransition\fP (\fBControlCharacter\fP inputchr)  throw (exception)"
+.br
+.ti -1c
+.RI "void \fBaddAction\fP (int action_op, int action_arg=0)  throw (exception)"
+.br
+.ti -1c
+.RI "void \fBaddMiss\fP (int error)  throw (exception)"
+.br
+.ti -1c
+.RI "void \fBaddFallback\fP (int stateIdx)  throw (exception)"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBElement\fP \fBtab\fP [MaxNofStates]"
+.br
+.ti -1c
+.RI "unsigned int \fBsize\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+with this class we build up the XML element scanner state machine in a descriptive way 
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum \fBtextwolf::ScannerStatemachine::Constant\fP"
+.PP
+\fBEnumerator: \fP
+.in +1c
+.TP
+\fB\fIMaxNofStates \fP\fP
+
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "textwolf::ScannerStatemachine::ScannerStatemachine ()\fC [inline]\fP"
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBScannerStatemachine\fP& textwolf::ScannerStatemachine::action (int aa, int arg = \fC0\fP)\fC [inline]\fP"
+.SS "void textwolf::ScannerStatemachine::addAction (int action_op, int action_arg = \fC0\fP)  throw (\fBexception\fP)\fC [inline, private]\fP"
+.SS "void textwolf::ScannerStatemachine::addFallback (int stateIdx)  throw (\fBexception\fP)\fC [inline, private]\fP"
+.SS "void textwolf::ScannerStatemachine::addMiss (int error)  throw (\fBexception\fP)\fC [inline, private]\fP"
+.SS "void textwolf::ScannerStatemachine::addOtherTransition (int nextState)  throw (\fBexception\fP)\fC [inline, private]\fP"
+.SS "void textwolf::ScannerStatemachine::addTransition (\fBControlCharacter\fP inputchr)  throw (\fBexception\fP)\fC [inline, private]\fP"
+.SS "void textwolf::ScannerStatemachine::addTransition (\fBControlCharacter\fP inputchr, int nextState)  throw (\fBexception\fP)\fC [inline, private]\fP"
+.SS "\fBScannerStatemachine\fP& textwolf::ScannerStatemachine::fallback (int stateIdx)\fC [inline]\fP"
+.SS "\fBElement\fP* textwolf::ScannerStatemachine::get (int stateIdx)  throw (\fBexception\fP)\fC [inline]\fP"
+.SS "\fBScannerStatemachine\fP& textwolf::ScannerStatemachine::miss (int ee)\fC [inline]\fP"
+.SS "void textwolf::ScannerStatemachine::newState (int stateIdx)  throw (\fBexception\fP)\fC [inline, private]\fP"
+.SS "\fBScannerStatemachine\fP& textwolf::ScannerStatemachine::operator() (\fBControlCharacter\fP inputchr)\fC [inline]\fP"
+.SS "\fBScannerStatemachine\fP& textwolf::ScannerStatemachine::operator() (\fBControlCharacter\fP i1, \fBControlCharacter\fP i2, \fBControlCharacter\fP i3, int ns)\fC [inline]\fP"
+.SS "\fBScannerStatemachine\fP& textwolf::ScannerStatemachine::operator() (\fBControlCharacter\fP i1, \fBControlCharacter\fP i2, int ns)\fC [inline]\fP"
+.SS "\fBScannerStatemachine\fP& textwolf::ScannerStatemachine::operator() (\fBControlCharacter\fP inputchr, int ns)\fC [inline]\fP"
+.SS "\fBScannerStatemachine\fP& textwolf::ScannerStatemachine::operator[] (int stateIdx)\fC [inline]\fP"
+.SS "\fBScannerStatemachine\fP& textwolf::ScannerStatemachine::other (int stateIdx)\fC [inline]\fP"
+.SH "Member Data Documentation"
+.PP 
+.SS "unsigned int \fBtextwolf::ScannerStatemachine::size\fP\fC [private]\fP"
+.SS "\fBElement\fP \fBtextwolf::ScannerStatemachine::tab\fP[MaxNofStates]\fC [private]\fP"
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for textwolf from the source code.

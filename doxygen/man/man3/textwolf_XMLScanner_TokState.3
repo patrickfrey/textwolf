@@ -1,0 +1,89 @@
+.TH "textwolf::XMLScanner::TokState" 3 "10 Jun 2011" "textwolf" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+textwolf::XMLScanner::TokState \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBId\fP { \fBStart\fP, \fBParsingKey\fP, \fBParsingEntity\fP, \fBParsingNumericEntity\fP, \fBParsingNumericBaseEntity\fP, \fBParsingNamedEntity\fP, \fBParsingToken\fP }"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBTokState\fP ()"
+.br
+.ti -1c
+.RI "void \fBinit\fP (\fBId\fP id_=Start)"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBId\fP \fBid\fP"
+.br
+.ti -1c
+.RI "unsigned int \fBpos\fP"
+.br
+.ti -1c
+.RI "unsigned int \fBbase\fP"
+.br
+.ti -1c
+.RI "unsigned long long \fBvalue\fP"
+.br
+.ti -1c
+.RI "char \fBbuf\fP [16]"
+.br
+.ti -1c
+.RI "\fBUChar\fP \fBcurchr_saved\fP"
+.br
+.in -1c
+
+.SS "template<class InputIterator, class InputCharSet_ = charset::UTF8, class OutputCharSet_ = charset::UTF8, class EntityMap_ = std::map<const char*,UChar>> struct textwolf::XMLScanner< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::TokState"
+
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "template<class InputIterator, class InputCharSet_ = charset::UTF8, class OutputCharSet_ = charset::UTF8, class EntityMap_ = std::map<const char*,UChar>> enum \fBtextwolf::XMLScanner::TokState::Id\fP"
+.PP
+\fBEnumerator: \fP
+.in +1c
+.TP
+\fB\fIStart \fP\fP
+.TP
+\fB\fIParsingKey \fP\fP
+.TP
+\fB\fIParsingEntity \fP\fP
+.TP
+\fB\fIParsingNumericEntity \fP\fP
+.TP
+\fB\fIParsingNumericBaseEntity \fP\fP
+.TP
+\fB\fIParsingNamedEntity \fP\fP
+.TP
+\fB\fIParsingToken \fP\fP
+
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<class InputIterator, class InputCharSet_ = charset::UTF8, class OutputCharSet_ = charset::UTF8, class EntityMap_ = std::map<const char*,UChar>> \fBtextwolf::XMLScanner\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::TokState::TokState ()\fC [inline]\fP"
+.SH "Member Function Documentation"
+.PP 
+.SS "template<class InputIterator, class InputCharSet_ = charset::UTF8, class OutputCharSet_ = charset::UTF8, class EntityMap_ = std::map<const char*,UChar>> void \fBtextwolf::XMLScanner\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::TokState::init (\fBId\fP id_ = \fCStart\fP)\fC [inline]\fP"
+.SH "Member Data Documentation"
+.PP 
+.SS "template<class InputIterator, class InputCharSet_ = charset::UTF8, class OutputCharSet_ = charset::UTF8, class EntityMap_ = std::map<const char*,UChar>> unsigned int \fBtextwolf::XMLScanner\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::\fBTokState::base\fP"
+.SS "template<class InputIterator, class InputCharSet_ = charset::UTF8, class OutputCharSet_ = charset::UTF8, class EntityMap_ = std::map<const char*,UChar>> char \fBtextwolf::XMLScanner\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::\fBTokState::buf\fP[16]"
+.SS "template<class InputIterator, class InputCharSet_ = charset::UTF8, class OutputCharSet_ = charset::UTF8, class EntityMap_ = std::map<const char*,UChar>> \fBUChar\fP \fBtextwolf::XMLScanner\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::\fBTokState::curchr_saved\fP"
+.SS "template<class InputIterator, class InputCharSet_ = charset::UTF8, class OutputCharSet_ = charset::UTF8, class EntityMap_ = std::map<const char*,UChar>> \fBId\fP \fBtextwolf::XMLScanner\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::\fBTokState::id\fP"
+.SS "template<class InputIterator, class InputCharSet_ = charset::UTF8, class OutputCharSet_ = charset::UTF8, class EntityMap_ = std::map<const char*,UChar>> unsigned int \fBtextwolf::XMLScanner\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::\fBTokState::pos\fP"
+.SS "template<class InputIterator, class InputCharSet_ = charset::UTF8, class OutputCharSet_ = charset::UTF8, class EntityMap_ = std::map<const char*,UChar>> unsigned long long \fBtextwolf::XMLScanner\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::\fBTokState::value\fP"
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for textwolf from the source code.

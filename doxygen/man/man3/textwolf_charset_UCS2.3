@@ -1,0 +1,67 @@
+.TH "textwolf::charset::UCS2" 3 "10 Jun 2011" "textwolf" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+textwolf::charset::UCS2 \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <textwolf.hpp>\fP
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum { \fBLSB\fP = (encoding==ByteOrder::BE), \fBMSB\fP = (encoding==ByteOrder::LE), \fBHeadSize\fP = 2, \fBSize\fP = 2, \fBMaxChar\fP = 0xFFFF }"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static unsigned int \fBasize\fP ()"
+.br
+.ti -1c
+.RI "static unsigned int \fBsize\fP (const char *)"
+.br
+.ti -1c
+.RI "static char \fBachar\fP (const char *buf)"
+.br
+.ti -1c
+.RI "static \fBUChar\fP \fBvalue\fP (const char *buf)"
+.br
+.ti -1c
+.RI "static unsigned int \fBprint\fP (\fBUChar\fP chr, char *buf, unsigned int bufsize)"
+.br
+.in -1c
+
+.SS "template<int encoding> struct textwolf::charset::UCS2< encoding >"
+
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "template<int encoding> anonymous enum"
+.PP
+\fBEnumerator: \fP
+.in +1c
+.TP
+\fB\fILSB \fP\fP
+.TP
+\fB\fIMSB \fP\fP
+.TP
+\fB\fIHeadSize \fP\fP
+.TP
+\fB\fISize \fP\fP
+.TP
+\fB\fIMaxChar \fP\fP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "template<int encoding> static char \fBtextwolf::charset::UCS2\fP< encoding >::achar (const char * buf)\fC [inline, static]\fP"
+.SS "template<int encoding> static unsigned int \fBtextwolf::charset::UCS2\fP< encoding >::asize ()\fC [inline, static]\fP"
+.SS "template<int encoding> static unsigned int \fBtextwolf::charset::UCS2\fP< encoding >::print (\fBUChar\fP chr, char * buf, unsigned int bufsize)\fC [inline, static]\fP"
+.SS "template<int encoding> static unsigned int \fBtextwolf::charset::UCS2\fP< encoding >::size (const char *)\fC [inline, static]\fP"
+.SS "template<int encoding> static \fBUChar\fP \fBtextwolf::charset::UCS2\fP< encoding >::value (const char * buf)\fC [inline, static]\fP"
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for textwolf from the source code.

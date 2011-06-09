@@ -1,0 +1,83 @@
+.TH "textwolf::XMLPathSelectAutomaton::Mask" 3 "10 Jun 2011" "textwolf" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+textwolf::XMLPathSelectAutomaton::Mask \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <textwolf.hpp>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "bool \fBempty\fP () const "
+.br
+.ti -1c
+.RI "\fBMask\fP (unsigned short p_pos=0, unsigned short p_neg=0)"
+.br
+.ti -1c
+.RI "\fBMask\fP (const \fBMask\fP &orig)"
+.br
+.ti -1c
+.RI "\fBMask\fP (\fBOperation\fP op)"
+.br
+.ti -1c
+.RI "void \fBreset\fP ()"
+.br
+.ti -1c
+.RI "void \fBreject\fP (\fBXMLScannerBase::ElementType\fP e)"
+.br
+.ti -1c
+.RI "void \fBmatch\fP (\fBXMLScannerBase::ElementType\fP e)"
+.br
+.ti -1c
+.RI "void \fBseekop\fP (\fBOperation\fP op)"
+.br
+.ti -1c
+.RI "void \fBjoin\fP (const \fBMask\fP &mask)"
+.br
+.ti -1c
+.RI "bool \fBmatches\fP (\fBXMLScannerBase::ElementType\fP e) const "
+.br
+.ti -1c
+.RI "bool \fBrejects\fP (\fBXMLScannerBase::ElementType\fP e) const "
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "unsigned short \fBpos\fP"
+.br
+.ti -1c
+.RI "unsigned short \fBneg\fP"
+.br
+.in -1c
+
+.SS "template<class CharSet_ = charset::UTF8> struct textwolf::XMLPathSelectAutomaton< CharSet_ >::Mask"
+
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<class CharSet_  = charset::UTF8> \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::Mask::Mask (unsigned short p_pos = \fC0\fP, unsigned short p_neg = \fC0\fP)\fC [inline]\fP"
+.SS "template<class CharSet_  = charset::UTF8> \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::Mask::Mask (const \fBMask\fP & orig)\fC [inline]\fP"
+.SS "template<class CharSet_  = charset::UTF8> \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::Mask::Mask (\fBOperation\fP op)\fC [inline]\fP"
+.SH "Member Function Documentation"
+.PP 
+.SS "template<class CharSet_  = charset::UTF8> bool \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::Mask::empty () const\fC [inline]\fP"
+.SS "template<class CharSet_  = charset::UTF8> void \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::Mask::join (const \fBMask\fP & mask)\fC [inline]\fP"
+.SS "template<class CharSet_  = charset::UTF8> void \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::Mask::match (\fBXMLScannerBase::ElementType\fP e)\fC [inline]\fP"
+.SS "template<class CharSet_  = charset::UTF8> bool \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::Mask::matches (\fBXMLScannerBase::ElementType\fP e) const\fC [inline]\fP"
+.SS "template<class CharSet_  = charset::UTF8> void \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::Mask::reject (\fBXMLScannerBase::ElementType\fP e)\fC [inline]\fP"
+.SS "template<class CharSet_  = charset::UTF8> bool \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::Mask::rejects (\fBXMLScannerBase::ElementType\fP e) const\fC [inline]\fP"
+.SS "template<class CharSet_  = charset::UTF8> void \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::Mask::reset ()\fC [inline]\fP"
+.SS "template<class CharSet_  = charset::UTF8> void \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::Mask::seekop (\fBOperation\fP op)\fC [inline]\fP"
+.SH "Member Data Documentation"
+.PP 
+.SS "template<class CharSet_  = charset::UTF8> unsigned short \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::\fBMask::neg\fP"
+.SS "template<class CharSet_  = charset::UTF8> unsigned short \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::\fBMask::pos\fP"
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for textwolf from the source code.

@@ -1,0 +1,129 @@
+.TH "textwolf" 3 "10 Jun 2011" "textwolf" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+textwolf \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI "namespace \fBcharset\fP"
+.br
+.in -1c
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "struct \fBthrows_exception\fP"
+.br
+.ti -1c
+.RI "struct \fBexception\fP"
+.br
+.ti -1c
+.RI "class \fBCharMap\fP"
+.br
+.ti -1c
+.RI "struct \fBControlCharacterM\fP"
+.br
+.ti -1c
+.RI "class \fBTextScanner\fP"
+.br
+.ti -1c
+.RI "class \fBScannerStatemachine\fP"
+.br
+.ti -1c
+.RI "class \fBXMLScannerBase\fP"
+.br
+.ti -1c
+.RI "class \fBXMLScanner\fP"
+.br
+.ti -1c
+.RI "class \fBXMLPathSelectAutomaton\fP"
+.br
+.ti -1c
+.RI "class \fBXMLPathSelect\fP"
+.br
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef boost::uint32_t \fBUChar\fP"
+.br
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBControlCharacter\fP { \fBUndef\fP = 0, \fBEndOfText\fP, \fBEndOfLine\fP, \fBCntrl\fP, \fBSpace\fP, \fBAmp\fP, \fBLt\fP, \fBEqual\fP, \fBGt\fP, \fBSlash\fP, \fBExclam\fP, \fBQuestm\fP, \fBSq\fP, \fBDq\fP, \fBOsb\fP, \fBCsb\fP, \fBAny\fP, \fBNofControlCharacter\fP = 17 }"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+--------------------------------------------------------------------- The template library textwolf implements an input iterator on a set of XML path expressions without backward references on an STL conforming input iterator as source. It does no buffering or read ahead and is dedicated for stream processing of XML for a small set of XML queries. Stream processing in this context refers to processing the document without buffering anything but the current result token processed with its tag hierarchy information.
+.PP
+Copyright (C) 2010 Patrick Frey
+.PP
+This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation; either version 2.1 of the License, or (at your option) any later version.
+.PP
+This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
+.PP
+You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+.PP
+--------------------------------------------------------------------
+.PP
+The latest version of textwolf can be found at 'http://github.com/patrickfrey/textwolf'
+.PP
+-------------------------------------------------------------------- 
+.SH "Typedef Documentation"
+.PP 
+.SS "typedef boost::uint32_t \fBtextwolf::UChar\fP"
+.SH "Enumeration Type Documentation"
+.PP 
+.SS "enum \fBtextwolf::ControlCharacter\fP"control characters needed for XML scanner statemachine 
+.PP
+\fBEnumerator: \fP
+.in +1c
+.TP
+\fB\fIUndef \fP\fP
+.TP
+\fB\fIEndOfText \fP\fP
+.TP
+\fB\fIEndOfLine \fP\fP
+.TP
+\fB\fICntrl \fP\fP
+.TP
+\fB\fISpace \fP\fP
+.TP
+\fB\fIAmp \fP\fP
+.TP
+\fB\fILt \fP\fP
+.TP
+\fB\fIEqual \fP\fP
+.TP
+\fB\fIGt \fP\fP
+.TP
+\fB\fISlash \fP\fP
+.TP
+\fB\fIExclam \fP\fP
+.TP
+\fB\fIQuestm \fP\fP
+.TP
+\fB\fISq \fP\fP
+.TP
+\fB\fIDq \fP\fP
+.TP
+\fB\fIOsb \fP\fP
+.TP
+\fB\fICsb \fP\fP
+.TP
+\fB\fIAny \fP\fP
+.TP
+\fB\fINofControlCharacter \fP\fP
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for textwolf from the source code.

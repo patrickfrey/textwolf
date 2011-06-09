@@ -1,0 +1,188 @@
+.TH "textwolf/include/textwolf.hpp" 3 "10 Jun 2011" "textwolf" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+textwolf/include/textwolf.hpp \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <iterator>\fP
+.br
+\fC#include <vector>\fP
+.br
+\fC#include <stack>\fP
+.br
+\fC#include <map>\fP
+.br
+\fC#include <exception>\fP
+.br
+\fC#include <iostream>\fP
+.br
+\fC#include <limits>\fP
+.br
+\fC#include <boost/cstdint.hpp>\fP
+.br
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "struct \fBtextwolf::throws_exception\fP"
+.br
+.ti -1c
+.RI "struct \fBtextwolf::exception\fP"
+.br
+.ti -1c
+.RI "class \fBtextwolf::CharMap< RESTYPE, nullvalue_, RANGE >\fP"
+.br
+.ti -1c
+.RI "struct \fBtextwolf::charset::IsoLatin1\fP"
+.br
+.ti -1c
+.RI "struct \fBtextwolf::charset::ByteOrder\fP"
+.br
+.ti -1c
+.RI "struct \fBtextwolf::charset::UCS2< encoding >\fP"
+.br
+.ti -1c
+.RI "struct \fBtextwolf::charset::UCS4< encoding >\fP"
+.br
+.ti -1c
+.RI "struct \fBtextwolf::charset::UCS2LE\fP"
+.br
+.ti -1c
+.RI "struct \fBtextwolf::charset::UCS2BE\fP"
+.br
+.ti -1c
+.RI "struct \fBtextwolf::charset::UCS4LE\fP"
+.br
+.ti -1c
+.RI "struct \fBtextwolf::charset::UCS4BE\fP"
+.br
+.ti -1c
+.RI "struct \fBtextwolf::charset::UTF8\fP"
+.br
+.ti -1c
+.RI "struct \fBtextwolf::charset::UTF8::CharLengthTab\fP"
+.br
+.ti -1c
+.RI "struct \fBtextwolf::ControlCharacterM\fP"
+.br
+.ti -1c
+.RI "class \fBtextwolf::TextScanner< Iterator, CharSet >\fP"
+.br
+.ti -1c
+.RI "struct \fBtextwolf::TextScanner< Iterator, CharSet >::ControlCharMap\fP"
+.br
+.ti -1c
+.RI "class \fBtextwolf::ScannerStatemachine\fP"
+.br
+.ti -1c
+.RI "struct \fBtextwolf::ScannerStatemachine::Element\fP"
+.br
+.ti -1c
+.RI "class \fBtextwolf::XMLScannerBase\fP"
+.br
+.ti -1c
+.RI "struct \fBtextwolf::XMLScannerBase::Statemachine\fP"
+.br
+.ti -1c
+.RI "class \fBtextwolf::XMLScanner< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >\fP"
+.br
+.ti -1c
+.RI "struct \fBtextwolf::XMLScanner< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::TokState\fP"
+.br
+.ti -1c
+.RI "struct \fBtextwolf::XMLScanner< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::IsTagCharMap\fP"
+.br
+.ti -1c
+.RI "struct \fBtextwolf::XMLScanner< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::IsContentCharMap\fP"
+.br
+.ti -1c
+.RI "struct \fBtextwolf::XMLScanner< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::IsSQStringCharMap\fP"
+.br
+.ti -1c
+.RI "struct \fBtextwolf::XMLScanner< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::IsDQStringCharMap\fP"
+.br
+.ti -1c
+.RI "struct \fBtextwolf::XMLScanner< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::End\fP"
+.br
+.ti -1c
+.RI "class \fBtextwolf::XMLScanner< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::iterator\fP"
+.br
+.ti -1c
+.RI "class \fBtextwolf::XMLScanner< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::iterator::Element\fP"
+.br
+.ti -1c
+.RI "class \fBtextwolf::XMLPathSelectAutomaton< CharSet_ >\fP"
+.br
+.ti -1c
+.RI "struct \fBtextwolf::XMLPathSelectAutomaton< CharSet_ >::Mask\fP"
+.br
+.ti -1c
+.RI "struct \fBtextwolf::XMLPathSelectAutomaton< CharSet_ >::Core\fP"
+.br
+.ti -1c
+.RI "struct \fBtextwolf::XMLPathSelectAutomaton< CharSet_ >::State\fP"
+.br
+.ti -1c
+.RI "struct \fBtextwolf::XMLPathSelectAutomaton< CharSet_ >::Token\fP"
+.br
+.ti -1c
+.RI "struct \fBtextwolf::XMLPathSelectAutomaton< CharSet_ >::Scope\fP"
+.br
+.ti -1c
+.RI "struct \fBtextwolf::XMLPathSelectAutomaton< CharSet_ >::Scope::Range\fP"
+.br
+.ti -1c
+.RI "struct \fBtextwolf::XMLPathSelectAutomaton< CharSet_ >::PathElement\fP"
+.br
+.ti -1c
+.RI "struct \fBtextwolf::XMLPathSelectAutomaton< CharSet_ >::PathElement::Range\fP"
+.br
+.ti -1c
+.RI "class \fBtextwolf::XMLPathSelect< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >\fP"
+.br
+.ti -1c
+.RI "class \fBtextwolf::XMLPathSelect< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::Array< Element >\fP"
+.br
+.ti -1c
+.RI "struct \fBtextwolf::XMLPathSelect< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::Context\fP"
+.br
+.ti -1c
+.RI "struct \fBtextwolf::XMLPathSelect< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::End\fP"
+.br
+.ti -1c
+.RI "class \fBtextwolf::XMLPathSelect< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::iterator\fP"
+.br
+.ti -1c
+.RI "class \fBtextwolf::XMLPathSelect< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::iterator::Element\fP"
+.br
+.in -1c
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI "namespace \fBtextwolf\fP"
+.br
+.ti -1c
+.RI "namespace \fBtextwolf::charset\fP"
+.br
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef boost::uint32_t \fBtextwolf::UChar\fP"
+.br
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBtextwolf::ControlCharacter\fP { \fBtextwolf::Undef\fP = 0, \fBtextwolf::EndOfText\fP, \fBtextwolf::EndOfLine\fP, \fBtextwolf::Cntrl\fP, \fBtextwolf::Space\fP, \fBtextwolf::Amp\fP, \fBtextwolf::Lt\fP, \fBtextwolf::Equal\fP, \fBtextwolf::Gt\fP, \fBtextwolf::Slash\fP, \fBtextwolf::Exclam\fP, \fBtextwolf::Questm\fP, \fBtextwolf::Sq\fP, \fBtextwolf::Dq\fP, \fBtextwolf::Osb\fP, \fBtextwolf::Csb\fP, \fBtextwolf::Any\fP, \fBtextwolf::NofControlCharacter\fP = 17 }"
+.br
+.in -1c
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for textwolf from the source code.

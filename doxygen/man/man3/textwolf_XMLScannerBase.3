@@ -1,0 +1,248 @@
+.TH "textwolf::XMLScannerBase" 3 "10 Jun 2011" "textwolf" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+textwolf::XMLScannerBase \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <textwolf.hpp>\fP
+.PP
+Inherited by \fBtextwolf::XMLScanner< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >\fP.
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "struct \fBStatemachine\fP"
+.br
+.in -1c
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBElementType\fP { \fBNone\fP, \fBErrorOccurred\fP, \fBHeaderAttribName\fP, \fBHeaderAttribValue\fP, \fBHeaderEnd\fP, \fBTagAttribName\fP, \fBTagAttribValue\fP, \fBOpenTag\fP, \fBCloseTag\fP, \fBCloseTagIm\fP, \fBContent\fP, \fBExit\fP }"
+.br
+.ti -1c
+.RI "enum { \fBNofElementTypes\fP = Exit+1 }"
+.br
+.ti -1c
+.RI "enum \fBError\fP { \fBOk\fP, \fBErrMemblockTooSmall\fP, \fBErrExpectedOpenTag\fP, \fBErrUnexpectedState\fP, \fBErrExpectedXMLTag\fP, \fBErrSyntaxString\fP, \fBErrUnexpectedEndOfText\fP, \fBErrOutputBufferTooSmall\fP, \fBErrSyntaxToken\fP, \fBErrStringNotTerminated\fP, \fBErrEntityEncodesCntrlChar\fP, \fBErrExpectedIdentifier\fP, \fBErrExpectedToken\fP, \fBErrUndefinedCharacterEntity\fP, \fBErrInternalErrorSTM\fP, \fBErrExpectedTagEnd\fP, \fBErrExpectedEqual\fP, \fBErrExpectedTagAttribute\fP, \fBErrExpectedCDATATag\fP, \fBErrInternal\fP, \fBErrUnexpectedEndOfInput\fP }"
+.br
+.ti -1c
+.RI "enum \fBSTMState\fP { \fBSTART\fP, \fBSTARTTAG\fP, \fBXTAG\fP, \fBXTAGEND\fP, \fBXTAGAISK\fP, \fBXTAGANAM\fP, \fBXTAGAESK\fP, \fBXTAGAVSK\fP, \fBXTAGAVID\fP, \fBXTAGAVSQ\fP, \fBXTAGAVDQ\fP, \fBXTAGAVQE\fP, \fBCONTENT\fP, \fBTOKEN\fP, \fBXMLTAG\fP, \fBOPENTAG\fP, \fBCLOSETAG\fP, \fBTAGCLSK\fP, \fBTAGAISK\fP, \fBTAGANAM\fP, \fBTAGAESK\fP, \fBTAGAVSK\fP, \fBTAGAVID\fP, \fBTAGAVSQ\fP, \fBTAGAVDQ\fP, \fBTAGAVQE\fP, \fBTAGCLIM\fP, \fBENTITYSL\fP, \fBENTITY\fP, \fBCDATA\fP, \fBCDATA1\fP, \fBCDATA2\fP, \fBCDATA3\fP, \fBEXIT\fP }"
+.br
+.ti -1c
+.RI "enum \fBSTMAction\fP { \fBReturn\fP, \fBReturnToken\fP, \fBReturnIdentifier\fP, \fBReturnSQString\fP, \fBReturnDQString\fP, \fBExpectIdentifierXML\fP, \fBExpectIdentifierCDATA\fP, \fBReturnEOF\fP, \fBNofSTMActions\fP =  8 }"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static const char * \fBgetElementTypeName\fP (\fBElementType\fP ee)"
+.br
+.ti -1c
+.RI "static const char * \fBgetErrorString\fP (\fBError\fP ee)"
+.br
+.ti -1c
+.RI "static const char * \fBgetStateString\fP (\fBSTMState\fP s)"
+.br
+.ti -1c
+.RI "static const char * \fBgetActionString\fP (\fBSTMAction\fP a)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+the template \fBXMLScanner\fP provides you the XML elements like tags, attributes, etc. with an input iterator with \fBXMLScannerBase\fP we define the common elements 
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "anonymous enum"
+.PP
+\fBEnumerator: \fP
+.in +1c
+.TP
+\fB\fINofElementTypes \fP\fP
+
+.SS "enum \fBtextwolf::XMLScannerBase::ElementType\fP"
+.PP
+\fBEnumerator: \fP
+.in +1c
+.TP
+\fB\fINone \fP\fP
+.TP
+\fB\fIErrorOccurred \fP\fP
+.TP
+\fB\fIHeaderAttribName \fP\fP
+.TP
+\fB\fIHeaderAttribValue \fP\fP
+.TP
+\fB\fIHeaderEnd \fP\fP
+.TP
+\fB\fITagAttribName \fP\fP
+.TP
+\fB\fITagAttribValue \fP\fP
+.TP
+\fB\fIOpenTag \fP\fP
+.TP
+\fB\fICloseTag \fP\fP
+.TP
+\fB\fICloseTagIm \fP\fP
+.TP
+\fB\fIContent \fP\fP
+.TP
+\fB\fIExit \fP\fP
+
+.SS "enum \fBtextwolf::XMLScannerBase::Error\fP"
+.PP
+\fBEnumerator: \fP
+.in +1c
+.TP
+\fB\fIOk \fP\fP
+.TP
+\fB\fIErrMemblockTooSmall \fP\fP
+.TP
+\fB\fIErrExpectedOpenTag \fP\fP
+.TP
+\fB\fIErrUnexpectedState \fP\fP
+.TP
+\fB\fIErrExpectedXMLTag \fP\fP
+.TP
+\fB\fIErrSyntaxString \fP\fP
+.TP
+\fB\fIErrUnexpectedEndOfText \fP\fP
+.TP
+\fB\fIErrOutputBufferTooSmall \fP\fP
+.TP
+\fB\fIErrSyntaxToken \fP\fP
+.TP
+\fB\fIErrStringNotTerminated \fP\fP
+.TP
+\fB\fIErrEntityEncodesCntrlChar \fP\fP
+.TP
+\fB\fIErrExpectedIdentifier \fP\fP
+.TP
+\fB\fIErrExpectedToken \fP\fP
+.TP
+\fB\fIErrUndefinedCharacterEntity \fP\fP
+.TP
+\fB\fIErrInternalErrorSTM \fP\fP
+.TP
+\fB\fIErrExpectedTagEnd \fP\fP
+.TP
+\fB\fIErrExpectedEqual \fP\fP
+.TP
+\fB\fIErrExpectedTagAttribute \fP\fP
+.TP
+\fB\fIErrExpectedCDATATag \fP\fP
+.TP
+\fB\fIErrInternal \fP\fP
+.TP
+\fB\fIErrUnexpectedEndOfInput \fP\fP
+
+.SS "enum \fBtextwolf::XMLScannerBase::STMAction\fP"
+.PP
+\fBEnumerator: \fP
+.in +1c
+.TP
+\fB\fIReturn \fP\fP
+.TP
+\fB\fIReturnToken \fP\fP
+.TP
+\fB\fIReturnIdentifier \fP\fP
+.TP
+\fB\fIReturnSQString \fP\fP
+.TP
+\fB\fIReturnDQString \fP\fP
+.TP
+\fB\fIExpectIdentifierXML \fP\fP
+.TP
+\fB\fIExpectIdentifierCDATA \fP\fP
+.TP
+\fB\fIReturnEOF \fP\fP
+.TP
+\fB\fINofSTMActions \fP\fP
+
+.SS "enum \fBtextwolf::XMLScannerBase::STMState\fP"
+.PP
+\fBEnumerator: \fP
+.in +1c
+.TP
+\fB\fISTART \fP\fP
+.TP
+\fB\fISTARTTAG \fP\fP
+.TP
+\fB\fIXTAG \fP\fP
+.TP
+\fB\fIXTAGEND \fP\fP
+.TP
+\fB\fIXTAGAISK \fP\fP
+.TP
+\fB\fIXTAGANAM \fP\fP
+.TP
+\fB\fIXTAGAESK \fP\fP
+.TP
+\fB\fIXTAGAVSK \fP\fP
+.TP
+\fB\fIXTAGAVID \fP\fP
+.TP
+\fB\fIXTAGAVSQ \fP\fP
+.TP
+\fB\fIXTAGAVDQ \fP\fP
+.TP
+\fB\fIXTAGAVQE \fP\fP
+.TP
+\fB\fICONTENT \fP\fP
+.TP
+\fB\fITOKEN \fP\fP
+.TP
+\fB\fIXMLTAG \fP\fP
+.TP
+\fB\fIOPENTAG \fP\fP
+.TP
+\fB\fICLOSETAG \fP\fP
+.TP
+\fB\fITAGCLSK \fP\fP
+.TP
+\fB\fITAGAISK \fP\fP
+.TP
+\fB\fITAGANAM \fP\fP
+.TP
+\fB\fITAGAESK \fP\fP
+.TP
+\fB\fITAGAVSK \fP\fP
+.TP
+\fB\fITAGAVID \fP\fP
+.TP
+\fB\fITAGAVSQ \fP\fP
+.TP
+\fB\fITAGAVDQ \fP\fP
+.TP
+\fB\fITAGAVQE \fP\fP
+.TP
+\fB\fITAGCLIM \fP\fP
+.TP
+\fB\fIENTITYSL \fP\fP
+.TP
+\fB\fIENTITY \fP\fP
+.TP
+\fB\fICDATA \fP\fP
+.TP
+\fB\fICDATA1 \fP\fP
+.TP
+\fB\fICDATA2 \fP\fP
+.TP
+\fB\fICDATA3 \fP\fP
+.TP
+\fB\fIEXIT \fP\fP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "static const char* textwolf::XMLScannerBase::getActionString (\fBSTMAction\fP a)\fC [inline, static]\fP"
+.SS "static const char* textwolf::XMLScannerBase::getElementTypeName (\fBElementType\fP ee)\fC [inline, static]\fP"
+.SS "static const char* textwolf::XMLScannerBase::getErrorString (\fBError\fP ee)\fC [inline, static]\fP"
+.SS "static const char* textwolf::XMLScannerBase::getStateString (\fBSTMState\fP s)\fC [inline, static]\fP"
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for textwolf from the source code.

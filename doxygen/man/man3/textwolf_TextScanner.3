@@ -1,0 +1,96 @@
+.TH "textwolf::TextScanner" 3 "10 Jun 2011" "textwolf" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+textwolf::TextScanner \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <textwolf.hpp>\fP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "struct \fBControlCharMap\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBTextScanner\fP (const Iterator &p_iterator)"
+.br
+.ti -1c
+.RI "\fBTextScanner\fP (const \fBTextScanner\fP &orig)"
+.br
+.ti -1c
+.RI "\fBUChar\fP \fBchr\fP ()"
+.br
+.ti -1c
+.RI "void \fBgetcur\fP ()"
+.br
+.ti -1c
+.RI "\fBControlCharacter\fP \fBcontrol\fP ()"
+.br
+.ti -1c
+.RI "char \fBascii\fP ()"
+.br
+.ti -1c
+.RI "\fBTextScanner\fP & \fBskip\fP ()"
+.br
+.ti -1c
+.RI "\fBTextScanner\fP & \fBoperator++\fP ()"
+.br
+.ti -1c
+.RI "\fBTextScanner\fP \fBoperator++\fP (int)"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "Iterator \fBinput\fP"
+.br
+.ti -1c
+.RI "char \fBbuf\fP [8]"
+.br
+.ti -1c
+.RI "\fBUChar\fP \fBval\fP"
+.br
+.ti -1c
+.RI "char \fBcur\fP"
+.br
+.ti -1c
+.RI "unsigned int \fBstate\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<class Iterator, class CharSet> class textwolf::TextScanner< Iterator, CharSet >"
+reads the input and provides the items to control the parsing: control characters, ascii characters, unicode characters 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<class Iterator, class CharSet> \fBtextwolf::TextScanner\fP< Iterator, CharSet >::\fBTextScanner\fP (const Iterator & p_iterator)\fC [inline]\fP"
+.SS "template<class Iterator, class CharSet> \fBtextwolf::TextScanner\fP< Iterator, CharSet >::\fBTextScanner\fP (const \fBTextScanner\fP< Iterator, CharSet > & orig)\fC [inline]\fP"
+.SH "Member Function Documentation"
+.PP 
+.SS "template<class Iterator, class CharSet> char \fBtextwolf::TextScanner\fP< Iterator, CharSet >::ascii ()\fC [inline]\fP"
+.SS "template<class Iterator, class CharSet> \fBUChar\fP \fBtextwolf::TextScanner\fP< Iterator, CharSet >::chr ()\fC [inline]\fP"
+.SS "template<class Iterator, class CharSet> \fBControlCharacter\fP \fBtextwolf::TextScanner\fP< Iterator, CharSet >::control ()\fC [inline]\fP"
+.SS "template<class Iterator, class CharSet> void \fBtextwolf::TextScanner\fP< Iterator, CharSet >::getcur ()\fC [inline]\fP"
+.SS "template<class Iterator, class CharSet> \fBTextScanner\fP \fBtextwolf::TextScanner\fP< Iterator, CharSet >::operator++ (int)\fC [inline]\fP"
+.SS "template<class Iterator, class CharSet> \fBTextScanner\fP& \fBtextwolf::TextScanner\fP< Iterator, CharSet >::operator++ ()\fC [inline]\fP"
+.SS "template<class Iterator, class CharSet> \fBTextScanner\fP& \fBtextwolf::TextScanner\fP< Iterator, CharSet >::skip ()\fC [inline]\fP"
+.SH "Member Data Documentation"
+.PP 
+.SS "template<class Iterator, class CharSet> char \fBtextwolf::TextScanner\fP< Iterator, CharSet >::\fBbuf\fP[8]\fC [private]\fP"
+.SS "template<class Iterator, class CharSet> char \fBtextwolf::TextScanner\fP< Iterator, CharSet >::\fBcur\fP\fC [private]\fP"
+.SS "template<class Iterator, class CharSet> Iterator \fBtextwolf::TextScanner\fP< Iterator, CharSet >::\fBinput\fP\fC [private]\fP"
+.SS "template<class Iterator, class CharSet> unsigned int \fBtextwolf::TextScanner\fP< Iterator, CharSet >::\fBstate\fP\fC [private]\fP"
+.SS "template<class Iterator, class CharSet> \fBUChar\fP \fBtextwolf::TextScanner\fP< Iterator, CharSet >::\fBval\fP\fC [private]\fP"
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for textwolf from the source code.

@@ -1,0 +1,77 @@
+.TH "textwolf::CharMap" 3 "10 Jun 2011" "textwolf" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+textwolf::CharMap \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <textwolf.hpp>\fP
+.PP
+Inherited by \fBtextwolf::XMLScanner< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::IsContentCharMap\fP, and \fBtextwolf::XMLScanner< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::IsTagCharMap\fP.
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBConstant\fP { \fBnullvalue\fP = nullvalue_ }"
+.br
+.ti -1c
+.RI "typedef RESTYPE \fBvaluetype\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCharMap\fP ()"
+.br
+.ti -1c
+.RI "\fBCharMap\fP & \fBoperator()\fP (unsigned char from, unsigned char to, \fBvaluetype\fP value)"
+.br
+.ti -1c
+.RI "\fBCharMap\fP & \fBoperator()\fP (unsigned char at, \fBvaluetype\fP value)"
+.br
+.ti -1c
+.RI "\fBvaluetype\fP \fBoperator[]\fP (unsigned char ii) const "
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "RESTYPE \fBar\fP [RANGE]"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<typename RESTYPE, RESTYPE nullvalue_, int RANGE = 256> class textwolf::CharMap< RESTYPE, nullvalue_, RANGE >"
+character map for fast typing of a character byte 
+.SH "Member Typedef Documentation"
+.PP 
+.SS "template<typename RESTYPE, RESTYPE nullvalue_, int RANGE = 256> typedef RESTYPE \fBtextwolf::CharMap\fP< RESTYPE, nullvalue_, RANGE >::\fBvaluetype\fP"
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "template<typename RESTYPE, RESTYPE nullvalue_, int RANGE = 256> enum \fBtextwolf::CharMap::Constant\fP"
+.PP
+\fBEnumerator: \fP
+.in +1c
+.TP
+\fB\fInullvalue \fP\fP
+
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<typename RESTYPE, RESTYPE nullvalue_, int RANGE = 256> \fBtextwolf::CharMap\fP< RESTYPE, nullvalue_, RANGE >::\fBCharMap\fP ()\fC [inline]\fP"
+.SH "Member Function Documentation"
+.PP 
+.SS "template<typename RESTYPE, RESTYPE nullvalue_, int RANGE = 256> \fBCharMap\fP& \fBtextwolf::CharMap\fP< RESTYPE, nullvalue_, RANGE >::operator() (unsigned char at, \fBvaluetype\fP value)\fC [inline]\fP"
+.SS "template<typename RESTYPE, RESTYPE nullvalue_, int RANGE = 256> \fBCharMap\fP& \fBtextwolf::CharMap\fP< RESTYPE, nullvalue_, RANGE >::operator() (unsigned char from, unsigned char to, \fBvaluetype\fP value)\fC [inline]\fP"
+.SS "template<typename RESTYPE, RESTYPE nullvalue_, int RANGE = 256> \fBvaluetype\fP \fBtextwolf::CharMap\fP< RESTYPE, nullvalue_, RANGE >::operator[] (unsigned char ii) const\fC [inline]\fP"
+.SH "Member Data Documentation"
+.PP 
+.SS "template<typename RESTYPE, RESTYPE nullvalue_, int RANGE = 256> RESTYPE \fBtextwolf::CharMap\fP< RESTYPE, nullvalue_, RANGE >::\fBar\fP[RANGE]\fC [private]\fP"
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for textwolf from the source code.
