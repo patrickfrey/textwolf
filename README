@@ -1,1 +1,15 @@
-UNDER CONSTRUCTION
+Documentation
+* For using textwolf just include "include/textwolf.hpp" A textwolf tutorial can be found here in the Wiki. 
+
+Examples
+* See the examples in tests:
+** readStdinIterator.cpp     :Echoing stdin for all character sets
+** test_TextReader.cpp       :Iterating on a set of generated characters and test if read/write works for all characters
+** test_XMLPathSelect.cpp    :Iterating on the XML Path selected elements
+** test_XMLScanner.cpp       :Iterating on the XML elements
+
+Projects using textwolf
+* textwolf is used in the wolframe project (see http://wolframe.net or http://github.com/mbarbos/Wolframe)
+
+
+
