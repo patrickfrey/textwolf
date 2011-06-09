@@ -19,8 +19,9 @@
     h1 { font-size: 3.8em; color: #ead3a7; margin-bottom: 3px; }
     h1 .small { font-size: 0.4em; }
     h1 a { text-decoration: none }
-    h2 { font-size: 1.5em; color: #ead3a7; }
-    h3 { text-align: center; color: #ead3a7; }
+    h2 { margin-top: 50px; font-size: 1.5em; color: #ead3a7; }
+    h3 { margin-top: 30px; color: #ead3a7; }
+    h4 { margin-top: 30px; color: #ead3a7; }
     a { color: #ead3a7; }
     .description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
     .download { float: right; }
@@ -42,21 +43,46 @@
         <img border="0" width="90" src="http://github.com/images/modules/download/tar.png"></a>
     </div>
 
-    <h1><a href="http://github.com/patrickfrey/textwolf">textwolf</a>
-      <span class="small">by <a href="http://github.com/patrickfrey">patrickfrey</a></span></h1>
+    <h1><a href="http://github.com/patrickfrey/textwolf">textwolf</a></h1>
 
-    <div class="description">
-      Implements an input iterator on a set of XML path expressions without backward references on an STL conforming input iterator as source. It does no buffering or read ahead and is dedicated for stream processing of XML for a small set (<10000) of XML path queries.  Stream processing in this context refers to processing the document without buffering anything but the current result token processed with its tag hierarchy information. The processing  is fully  table driven and aims in future to make use of SSE or similar SIMD extensions in modern hardware and to have a small memory print.
-    </div>
+   <h2>Description</h2>
+   <div class="description">
+	textwolf is a C++ template library that implements an input iterator on a set of XML path expressions without
+	backward references on an STL conforming input iterator as source. It does no buffering or read ahead and is
+	dedicated for stream processing of XML for a small set (<10000) of XML path queries. Stream processing in this
+	context means processing the document without buffering anything but the current result token processed
+	with its tag hierarchy information. The processing  is fully  table driven and aims in future to make
+	use of SSE or similar SIMD extensions in modern hardware and to have a small memory print.
+	</div>
 
-    <h2>Install</h2>
-<p>textwolf is only one header file. Simply include "textwolf.hpp"</p>
-<h2>License</h2>
-<p>textwolf is free software. You can redistribute it and/or modify it under the terms of the GNU Lesser General Public License (LGPL).</p>
-<h2>Authors</h2>
-<p>Patrick Frey (patrickpfrey@yahoo.com)<br/><br/>      </p>
-<h2>Contact</h2>
-<p>Patrick Frey (patrickpfrey@yahoo.com)<br/>      </p>
+	<h2>Licence</h2>
+	<div class="description">textwolf is free software. You can redistribute it and/or modify it under the terms of the GNU Lesser General Public License (LGPL).</div>
+
+	<h2>Documentation</h2>
+	<ul>
+	<li><a href="tutorial.html">Tutorial</a>
+	</li>
+	</ul>
+
+	<h2>Projects Using textwolf</h2>
+	<div class="description">textwolf is used in the wolframe project
+	<ul>
+	<li><a href="http://wolframe.net">Wolframe Home</a></li>
+	<li><a href="http://github.com/mbarbos/Wolframe">Wolframe at Github</a></li>
+	</ul>
+	</div>
+
+	<h2>Install</h2>
+	<p>textwolf is only one header file. Simply include "textwolf.hpp"</p>
+	<h2>License</h2>
+	<p>textwolf is free software. You can redistribute it and/or modify it under the terms of the GNU Lesser General Public License (LGPL).</p>
+	<h2>Authors</h2>
+	<p>Patrick Frey (patrickpfrey@yahoo.com)
+	<br/>
+	<br/>      </p>
+	<h2>Contact</h2>
+	<p>Patrick Frey (patrickpfrey@yahoo.com)
+	<br/>      </p>
 
 
     <h2>Download</h2>
@@ -72,6 +98,10 @@
 
     <div class="footer">
       get the source code on GitHub : <a href="http://github.com/patrickfrey/textwolf">patrickfrey/textwolf</a>
+    </div>
+
+    <br/><br/>
+    <div class="description"><b><i></i>Copyright &copy; Patrick Frey, 2010</i></b></div>
     </div>
 
   </div>
