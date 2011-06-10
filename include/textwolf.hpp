@@ -1937,24 +1937,36 @@ public:
 		Token( const State& state, int p_stateidx)	:core(state.core),stateidx(p_stateidx) {}
 	};
 
+	///\class Scope
 	///\brief Tag scope definition
 	struct Scope
 	{
-		Mask mask;
-		Mask followMask;
+		Mask mask;						///< joined mask of all tokens active in this scope
+		Mask followMask;				///< joined mask of all tokens active in this and all sub scopes of this scope
+
+		///\class Range
+		///\brief Range on the token stack with all tokens that belong to this scope
 		struct Range
 		{
-			unsigned int tokenidx_from;
-			unsigned int tokenidx_to;
-			unsigned int followidx;
+			unsigned int tokenidx_from;	///< lower bound token index
+			unsigned int tokenidx_to;		///< upper bound token index
+			unsigned int followidx;			///< pointer to follow token stack with tokens active in this and all sub scopes of this scope
 
+			///\brief Constructor
 			Range()				:tokenidx_from(0),tokenidx_to(0),followidx(0) {}
+			///\brief Copy constructor
+			///\param[in] orig scope to copy
 			Range( const Scope& orig)	:tokenidx_from(orig.tokenidx_from),tokenidx_to(orig.tokenidx_to),followidx(orig.followidx) {}
 		};
-		Range range;
+		Range range;							///< valid (active) token range of this scope (on the token stacks)
 
+		///\brief Copy constructor
+		///\param[in] orig scope to copy
 		Scope( const Scope& orig)		:mask(orig.mask),followMask(orig.followMask),range(orig.range) {}
+		///\brief Assignement operator
+		///\param[in] orig scope to copy
 		Scope& operator =( const Scope& orig)	{mask=orig.mask; followMask=orig.followMask; range=orig.range; return *this;}
+		///\brief Constructor
 		Scope()					{}
 	};
 
