@@ -1801,39 +1801,59 @@ public:
 		bool rejects( XMLScannerBase::ElementType e) const	{return (0 != (neg & (1<<(unsigned short)e)));}
 	};
 
+	///\class Core
+	///\brief Core of an automaton state definition that is used during XML processing
 	struct Core
 	{
-		Mask mask;
-		bool follow;
-		int typeidx;
-		int cnt_start;
-		int cnt_end;
+		Mask mask;				///< mask definiting what tokens are matching this state
+		bool follow;			///< true, if the state is seeking tokens in all follow scopes in the XML tree
+		int typeidx;			///< type of the element emitted by this state on a match
+		int cnt_start;			///< lower bound of the element index matching (for index ranges)
+		int cnt_end;			///< upper bound of the element index matching (for index ranges)
 
+		///\brief Constructor
 		Core()			:follow(false),typeidx(0),cnt_start(0),cnt_end(-1) {}
+		///\brief Copy constructor
+		///\param [in] o element to copy
 		Core( const Core& o)	:mask(o.mask),follow(o.follow),typeidx(o.typeidx),cnt_start(o.cnt_start),cnt_end(o.cnt_end) {}
 	};
 
+	///\class State
+	///\brief State of an automaton in its definition
 	struct State
 	{
-		Core core;
-		unsigned int keysize;
-		char* key;
-		char* srckey;
-		int next;
-		int link;
+		Core core;						///< core of the state (the part used in processing)
+		unsigned int keysize;		///< key size of the element
+		char* key;						///< key of the element
+		char* srckey;					///< key of the element as in source (for debugging or reporting, etc.)
+		int next;						///< follow state
+		int link;						///< alternative state to check
 
-		State()					:keysize(0),key(0),srckey(0),next(-1),link(-1) {}
+		///\brief Constructor
+		State()
+				:keysize(0),key(0),srckey(0),next(-1),link(-1) {}
+
+		///\brief Copy constructor
+		///\param [in] orig element to copy
 		State( const State& orig)		:core(orig.core),keysize(orig.keysize),key(0),srckey(0),next(orig.next),link(orig.link)
 		{
 			defineKey( orig.keysize, orig.key, orig.srckey);
 		}
+
+		///\brief Destructor
 		~State()
 		{
 			if (key) delete [] key;
 		}
 
+		///\brief Check it the state definition is empty
+		///\return true for an empty state
 		bool isempty()				{return key==0&&core.typeidx==0;}
 
+		///\brief Define the matching key of this state
+		///\param[in] p_keysize size of the key in bytes 
+		///\param[in] p_key pointer to the key
+		///\param[in] p_srckey the source form of the key (ASCII with encoded entities for everything else)
 		void defineKey( unsigned int p_keysize, const char* p_key, const char* p_srckey)
 		{
 			unsigned int ii;
@@ -1861,6 +1881,13 @@ public:
 			}
 		}
 
+		///\brief Define a state transition by key and operation
+		///\param[in] op operation type
+		///\param[in] p_keysize size of the key in bytes 
+		///\param[in] p_key pointer to the key
+		///\param[in] p_srckey the source form of the key (ASCII with encoded entities for everything else)
+		///\param[in] p_next follow state on a match
+		///\param[in] p_follow true if the search reaches all included follow scopes of the definition scope
 		void defineNext( Operation op, unsigned int p_keysize, const char* p_key, const char* p_srckey, int p_next, bool p_follow=false)
 		{
 			core.mask.seekop( op);
@@ -1869,6 +1896,12 @@ public:
 			core.follow = p_follow;
 		}
 
+		///\brief Define an element output operation
+		///\param[in] mask mask defining the element types to output
+		///\param[in] p_typeidx the type of the element produced
+		///\param[in] p_follow true if the output reaches all included follow scopes of the definition scope
+		///\param[in] p_start start index of the element range produced
+		///\param[in] p_end upper bound index of the element range produced
 		void defineOutput( const Mask& mask, int p_typeidx, bool p_follow, int p_start, int p_end)
 		{
 			core.mask = mask;
@@ -1878,23 +1911,33 @@ public:
 			core.follow = p_follow;
 		}
 
+		///\brief Link another state to check to the current state
+		///\param[in] the index of the state to link
 		void defLink( int p_link)
 		{
 			link = p_link;
 		}
 	};
-	std::vector<State> states;
+	std::vector<State> states;							///< the states of the statemachine
 
+	///\class Token
+	///\brief Active or passive but still valid token of the XML processing (this is a trigger waiting to match)
 	struct Token
 	{
-		Core core;
-		int stateidx;
+		Core core;											///< core of the state
+		int stateidx;										///< index into the automaton, poiting to the state
 
+		///\brief Constructor
 		Token()						:stateidx(-1) {}
+		///\brief Copy constructor
 		Token( const Token& orig)			:core(orig.core),stateidx(orig.stateidx) {}
+		///\brief Constructor by value
+		///\param [in] state state that generated this token
+		///\param [in] p_stateidx index of the state that generated this token
 		Token( const State& state, int p_stateidx)	:core(state.core),stateidx(p_stateidx) {}
 	};
 
+	///\brief Tag scope definition
 	struct Scope
 	{
 		Mask mask;
