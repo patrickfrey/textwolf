@@ -1671,19 +1671,27 @@ public:
 ///\defgroup XMLpathselect
 ///\brief Structures for iterating on the elements typed by XML path selections
 
+///\class XMLPathSelectAutomaton
+///\tparam CharSet_ character set of the token defintions of the automaton
+///\brief Automaton to define XML path expressions and assign types (int values) to them
 template <class CharSet_=charset::UTF8>
 class XMLPathSelectAutomaton :public throws_exception
 {
 public:
-	enum {defaultMemUsage=3*1024,defaultMaxDepth=32};
-	unsigned int memUsage;
-	unsigned int maxDepth;
-	unsigned int maxScopeStackSize;
-	unsigned int maxFollows;
-	unsigned int maxTriggers;
-	unsigned int maxTokens;
+	enum
+	{
+		defaultMemUsage=3*1024,				///< default memory usage of the XML path select process, if not specified else
+		defaultMaxDepth=32					///< default max tag stack depth, if not specified else
+	};
+	unsigned int memUsage;					///< total memory usage
+	unsigned int maxDepth;					///< max tag stack depth
+	unsigned int maxScopeStackSize;		///< max scope stack depth
+	unsigned int maxFollows;				///< maximum number of tokens searched in depth (//a or //@a of //[@a='..'])
+	unsigned int maxTriggers;				///< maximum number of open triggers
+	unsigned int maxTokens;					///< maximum number of open tokens
 
 public:
+	///\brief Constructor
 	XMLPathSelectAutomaton()
 			:memUsage(defaultMemUsage),maxDepth(defaultMaxDepth),maxScopeStackSize(0),maxFollows(0),maxTriggers(0),maxTokens(0)
 	{
@@ -1694,27 +1702,59 @@ public:
 	typedef XMLPathSelectAutomaton<CharSet_> ThisXMLPathSelectAutomaton;
 
 public:
+	///\enum Operation
+	///\brief Enumeration of operation types in the automaton definition
 	enum Operation
 	{
-		Content, Tag, Attribute, ThisAttributeValue, AttributeValue, ContentStart
+		Content,						///< searching content token
+		Tag,							///< searching a tag
+		Attribute,					///< searching an attribute
+		ThisAttributeValue,		///< checking the value of the attribute just parsed (not an arbitrary but this one)
+		AttributeValue,			///< searching a value of an attribute
+		ContentStart				///< looking for the start of content (to signal the end of the XML header)
 	};
+
+	///\brief Get the name of the operation as string
+	///\return the operation as string
 	static const char* operationName( Operation op)
 	{
 		static const char* name[ 6] = {"Content", "Tag", "Attribute", "ThisAttributeValue", "AttributeValue", "ContentStart"};
 		return name[ (unsigned int)op];
 	}
 
+	///\class Mask
+	///\brief Mask to query for element types, if they match or not
 	struct Mask
 	{
-		unsigned short pos;
-		unsigned short neg;
+		unsigned short pos;			///< positively selected elements bitmask
+		unsigned short neg;			///< negatively selected elements bitmask that determines when a search pattern is given up copletely
+
+		///\brief Tells if mask does not select anything anymore
+		///\return true if it is not active anymore
 		bool empty() const								{return (pos==0);}
+
+		///\brief Constructor by values
+		///\param [in] p_pos positively selected elements bitmask
+		///\param [in] p_neg negatively selected elements bitmask that determines when a search pattern is given up copletely
 		Mask( unsigned short p_pos=0, unsigned short p_neg=0):pos(p_pos),neg(p_neg) {}
+
+		///\brief Copy constructor
+		///\param[in] orig mask to copy
 		Mask( const Mask& orig)								:pos(orig.pos),neg(orig.neg) {}
+
+		///\brief Constructor by operation type
 		Mask( Operation op)								:pos(0),neg(0) {this->match(op);}
+
+		///\brief Reset operation (deactivate)
 		void reset()									{pos=0; neg=0;}
+
+		///\brief Deactivate operation for a certain element type
 		void reject( XMLScannerBase::ElementType e)					{neg |= (1<<(unsigned short)e);}
+
+		///\brief Declare an operation to match on an element type
 		void match( XMLScannerBase::ElementType e)					{pos |= (1<<(unsigned short)e);}
+
+		///\brief Declare an operation as seek operation
 		void seekop( Operation op)
 		{
 			switch (op)
@@ -1748,8 +1788,16 @@ public:
 					break;
 			}
 		}
+		///\brief Join two mask definitions
+		///\param[in] mask definition of mask to join this with
 		void join( const Mask& mask)				{pos |= mask.pos; neg |= mask.neg;}
+
+		///\brief Check if an element type matches the mask
+		///\param[in] e element type to check
 		bool matches( XMLScannerBase::ElementType e) const	{return (0 != (pos & (1<<(unsigned short)e)));}
+
+		///\brief Check if an element type should reset a mask
+		///\param[in] e element type to check
 		bool rejects( XMLScannerBase::ElementType e) const	{return (0 != (neg & (1<<(unsigned short)e)));}
 	};
 
