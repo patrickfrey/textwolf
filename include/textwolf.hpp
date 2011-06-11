@@ -2642,6 +2642,8 @@ public:
 	}
 };
 
+/*! @} */
+
 } //namespace textwolf
 #endif
 
