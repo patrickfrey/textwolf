@@ -50,6 +50,9 @@ namespace textwolf {
 
 ///\defgroup Exceptions Exceptions
 ///\brief Exception classes and structures for error handling in the initialization phase
+/*! \addtogroup Exceptions
+ *  @{
+*/
 
 ///\class throws_exception
 ///\brief Base class for structures that can throw exceptions for non recoverable errors in the automata definition
@@ -110,8 +113,12 @@ struct exception	:public std::exception
 	}
 };
 
+/*! @} */
 ///\defgroup Charactersets Character Set Encodings
 ///\brief Character set encodings and character parsing tables
+/*! \addtogroup Charactersets
+ *  @{
+*/
 
 ///\class CharMap
 ///\brief Character map for fast typing of a character byte
@@ -371,8 +378,12 @@ struct ControlCharacterM
 	}
 };
 
+/*! @} */
 ///\defgroup Textscanner Text Scanner
 ///\brief Preliminary scanning of the input providing a unified view on the input character stream
+/*! \addtogroup Textscanner
+ *  @{
+*/
 
 ///\class TextScanner
 ///\brief Reader for scanning the input character by character
@@ -504,9 +515,12 @@ public:
 	TextScanner operator ++(int)	{TextScanner tmp(*this); skip(); return tmp;}
 };
 
-
+/*! @} */
 ///\defgroup XMLscanner XML Scanner
 ///\brief Structures for iterating on the XML elements
+/*! \addtogroup XMLscanner
+ *  @{
+*/
 
 ///\class ScannerStatemachine
 ///\brief Class to build up the XML element scanner state machine in a descriptive way
@@ -1667,8 +1681,12 @@ public:
 	}
 };
 
+/*! @} */
 ///\defgroup XMLpathselect XML Path Select
 ///\brief Structures for iterating on the elements typed by XML path selections
+/*! \addtogroup XMLpathselect
+ *  @{
+*/
 
 ///\class XMLPathSelectAutomaton
 ///\tparam CharSet_ character set of the token defintions of the automaton
