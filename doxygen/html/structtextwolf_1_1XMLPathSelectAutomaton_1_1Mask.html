@@ -49,7 +49,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
 </div>
 <div class="contents">
-<h1>textwolf::XMLPathSelectAutomaton&lt; CharSet_ &gt;::Mask Class Reference</h1><!-- doxytag: class="textwolf::XMLPathSelectAutomaton::Mask" -->
+<h1>textwolf::XMLPathSelectAutomaton&lt; CharSet_ &gt;::Mask Class Reference<br/>
+<small>
+[<a class="el" href="group__XMLpathselect.html">XML Path Select</a>]</small>
+</h1><!-- doxytag: class="textwolf::XMLPathSelectAutomaton::Mask" -->
 <p><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1Mask.html" title="Mask to query for element types, if they match or not.">Mask</a> to query for element types, if they match or not.  
 <a href="#_details">More...</a></p>
 
@@ -58,340 +61,40 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <p><a href="classtextwolf_1_1XMLPathSelectAutomaton_1_1Mask-members.html">List of all members.</a></p>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr><td colspan="2"><h2>Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1Mask.html#a729b7f6dc0f8b5313ab11436d3b7ac7d">empty</a> () const </td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Tells if mask does not select anything anymore.  <a href="#a729b7f6dc0f8b5313ab11436d3b7ac7d"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1Mask.html#a93f64eb289c591fb1615a0469a45c592">Mask</a> (unsigned short p_pos=0, unsigned short p_neg=0)</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Constructor by values.  <a href="#a93f64eb289c591fb1615a0469a45c592"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1Mask.html#a78bf4dd6196efa3995f2afc97230cf91">Mask</a> (const <a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1Mask.html">Mask</a> &amp;orig)</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Copy constructor.  <a href="#a78bf4dd6196efa3995f2afc97230cf91"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1Mask.html#a701bb8cb3ecba4b450f4ef7f7251ae99">Mask</a> (<a class="el" href="classtextwolf_1_1XMLPathSelectAutomaton.html#acd770d474c93c3fa4b3db53e612b8710">Operation</a> op)</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Constructor by operation type.  <a href="#a701bb8cb3ecba4b450f4ef7f7251ae99"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1Mask.html#a10f1773c95555592f0770bdf807319c5">reset</a> ()</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Reset operation (deactivate).  <a href="#a10f1773c95555592f0770bdf807319c5"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1Mask.html#a06e532a6bcba6560a71817a0dd8957b8">reject</a> (<a class="el" href="classtextwolf_1_1XMLScannerBase.html#aae4f0cdb7e16aca5fdee271fa60e1329">XMLScannerBase::ElementType</a> e)</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Deactivate operation for a certain element type.  <a href="#a06e532a6bcba6560a71817a0dd8957b8"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1Mask.html#a09c5317667def85993299fbdbd33a769">match</a> (<a class="el" href="classtextwolf_1_1XMLScannerBase.html#aae4f0cdb7e16aca5fdee271fa60e1329">XMLScannerBase::ElementType</a> e)</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Declare an operation to match on an element type.  <a href="#a09c5317667def85993299fbdbd33a769"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1Mask.html#a662d02b08f55eb15b1176444a1182556">seekop</a> (<a class="el" href="classtextwolf_1_1XMLPathSelectAutomaton.html#acd770d474c93c3fa4b3db53e612b8710">Operation</a> op)</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Declare an operation as seek operation.  <a href="#a662d02b08f55eb15b1176444a1182556"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1Mask.html#a14cdec6f9747b30d80dee2b36c176697">join</a> (const <a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1Mask.html">Mask</a> &amp;mask)</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Join two mask definitions.  <a href="#a14cdec6f9747b30d80dee2b36c176697"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1Mask.html#a26c7aceefd9d251e7a1f6201dc3ec808">matches</a> (<a class="el" href="classtextwolf_1_1XMLScannerBase.html#aae4f0cdb7e16aca5fdee271fa60e1329">XMLScannerBase::ElementType</a> e) const </td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Check if an element type matches the mask.  <a href="#a26c7aceefd9d251e7a1f6201dc3ec808"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1Mask.html#a0661275862c65b5d8e0bf8659e345e58">rejects</a> (<a class="el" href="classtextwolf_1_1XMLScannerBase.html#aae4f0cdb7e16aca5fdee271fa60e1329">XMLScannerBase::ElementType</a> e) const </td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Check if an element type should reset a mask.  <a href="#a0661275862c65b5d8e0bf8659e345e58"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__XMLpathselect.html#ga729b7f6dc0f8b5313ab11436d3b7ac7d">empty</a> () const </td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Tells if mask does not select anything anymore.  <a href="group__XMLpathselect.html#ga729b7f6dc0f8b5313ab11436d3b7ac7d"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__XMLpathselect.html#ga93f64eb289c591fb1615a0469a45c592">Mask</a> (unsigned short p_pos=0, unsigned short p_neg=0)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Constructor by values.  <a href="group__XMLpathselect.html#ga93f64eb289c591fb1615a0469a45c592"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__XMLpathselect.html#ga78bf4dd6196efa3995f2afc97230cf91">Mask</a> (const <a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1Mask.html">Mask</a> &amp;orig)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Copy constructor.  <a href="group__XMLpathselect.html#ga78bf4dd6196efa3995f2afc97230cf91"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__XMLpathselect.html#ga701bb8cb3ecba4b450f4ef7f7251ae99">Mask</a> (<a class="el" href="group__XMLpathselect.html#gacd770d474c93c3fa4b3db53e612b8710">Operation</a> op)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Constructor by operation type.  <a href="group__XMLpathselect.html#ga701bb8cb3ecba4b450f4ef7f7251ae99"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__XMLpathselect.html#ga10f1773c95555592f0770bdf807319c5">reset</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Reset operation (deactivate).  <a href="group__XMLpathselect.html#ga10f1773c95555592f0770bdf807319c5"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__XMLpathselect.html#ga06e532a6bcba6560a71817a0dd8957b8">reject</a> (<a class="el" href="group__XMLpathselect.html#gaae4f0cdb7e16aca5fdee271fa60e1329">XMLScannerBase::ElementType</a> e)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Deactivate operation for a certain element type.  <a href="group__XMLpathselect.html#ga06e532a6bcba6560a71817a0dd8957b8"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__XMLpathselect.html#ga09c5317667def85993299fbdbd33a769">match</a> (<a class="el" href="group__XMLpathselect.html#gaae4f0cdb7e16aca5fdee271fa60e1329">XMLScannerBase::ElementType</a> e)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Declare an operation to match on an element type.  <a href="group__XMLpathselect.html#ga09c5317667def85993299fbdbd33a769"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__XMLpathselect.html#ga662d02b08f55eb15b1176444a1182556">seekop</a> (<a class="el" href="group__XMLpathselect.html#gacd770d474c93c3fa4b3db53e612b8710">Operation</a> op)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Declare an operation as seek operation.  <a href="group__XMLpathselect.html#ga662d02b08f55eb15b1176444a1182556"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__XMLpathselect.html#ga14cdec6f9747b30d80dee2b36c176697">join</a> (const <a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1Mask.html">Mask</a> &amp;mask)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Join two mask definitions.  <a href="group__XMLpathselect.html#ga14cdec6f9747b30d80dee2b36c176697"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__XMLpathselect.html#ga26c7aceefd9d251e7a1f6201dc3ec808">matches</a> (<a class="el" href="group__XMLpathselect.html#gaae4f0cdb7e16aca5fdee271fa60e1329">XMLScannerBase::ElementType</a> e) const </td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Check if an element type matches the mask.  <a href="group__XMLpathselect.html#ga26c7aceefd9d251e7a1f6201dc3ec808"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__XMLpathselect.html#ga0661275862c65b5d8e0bf8659e345e58">rejects</a> (<a class="el" href="group__XMLpathselect.html#gaae4f0cdb7e16aca5fdee271fa60e1329">XMLScannerBase::ElementType</a> e) const </td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Check if an element type should reset a mask.  <a href="group__XMLpathselect.html#ga0661275862c65b5d8e0bf8659e345e58"></a><br/></td></tr>
 <tr><td colspan="2"><h2>Public Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">unsigned short&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1Mask.html#ac3831dfe60fe44ad591a893aca494d13">pos</a></td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">positively selected elements bitmask  <a href="#ac3831dfe60fe44ad591a893aca494d13"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">unsigned short&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1Mask.html#a4718902448ec02d527c439c89347241b">neg</a></td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">negatively selected elements bitmask that determines when a search pattern is given up copletely  <a href="#a4718902448ec02d527c439c89347241b"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">unsigned short&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__XMLpathselect.html#ga4718902448ec02d527c439c89347241b">neg</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">negatively selected elements bitmask that determines when a search pattern is given up copletely  <a href="group__XMLpathselect.html#ga4718902448ec02d527c439c89347241b"></a><br/></td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
 <h3>template&lt;class CharSet_ = charset::UTF8&gt;<br/>
  class textwolf::XMLPathSelectAutomaton&lt; CharSet_ &gt;::Mask</h3>
 
 <p><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1Mask.html" title="Mask to query for element types, if they match or not.">Mask</a> to query for element types, if they match or not. </p>
-<hr/><h2>Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a93f64eb289c591fb1615a0469a45c592"></a><!-- doxytag: member="textwolf::XMLPathSelectAutomaton::Mask::Mask" ref="a93f64eb289c591fb1615a0469a45c592" args="(unsigned short p_pos=0, unsigned short p_neg=0)" -->
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class CharSet_  = charset::UTF8&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classtextwolf_1_1XMLPathSelectAutomaton.html">textwolf::XMLPathSelectAutomaton</a>&lt; CharSet_ &gt;::Mask::Mask </td>
-          <td>(</td>
-          <td class="paramtype">unsigned short&nbsp;</td>
-          <td class="paramname"> <em>p_pos</em> = <code>0</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">unsigned short&nbsp;</td>
-          <td class="paramname"> <em>p_neg</em> = <code>0</code></td><td>&nbsp;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td><td><code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Constructor by values. </p>
-<dl><dt><b>Parameters:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>p_pos</em>&nbsp;</td><td>positively selected elements bitmask </td></tr>
-    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>p_neg</em>&nbsp;</td><td>negatively selected elements bitmask that determines when a search pattern is given up copletely </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="a78bf4dd6196efa3995f2afc97230cf91"></a><!-- doxytag: member="textwolf::XMLPathSelectAutomaton::Mask::Mask" ref="a78bf4dd6196efa3995f2afc97230cf91" args="(const Mask &amp;orig)" -->
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class CharSet_  = charset::UTF8&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classtextwolf_1_1XMLPathSelectAutomaton.html">textwolf::XMLPathSelectAutomaton</a>&lt; CharSet_ &gt;::Mask::Mask </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1Mask.html">Mask</a> &amp;&nbsp;</td>
-          <td class="paramname"> <em>orig</em></td>
-          <td>&nbsp;)&nbsp;</td>
-          <td><code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Copy constructor. </p>
-<dl><dt><b>Parameters:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>orig</em>&nbsp;</td><td>mask to copy </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="a701bb8cb3ecba4b450f4ef7f7251ae99"></a><!-- doxytag: member="textwolf::XMLPathSelectAutomaton::Mask::Mask" ref="a701bb8cb3ecba4b450f4ef7f7251ae99" args="(Operation op)" -->
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class CharSet_  = charset::UTF8&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classtextwolf_1_1XMLPathSelectAutomaton.html">textwolf::XMLPathSelectAutomaton</a>&lt; CharSet_ &gt;::Mask::Mask </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classtextwolf_1_1XMLPathSelectAutomaton.html#acd770d474c93c3fa4b3db53e612b8710">Operation</a>&nbsp;</td>
-          <td class="paramname"> <em>op</em></td>
-          <td>&nbsp;)&nbsp;</td>
-          <td><code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Constructor by operation type. </p>
-
-</div>
-</div>
-<hr/><h2>Member Function Documentation</h2>
-<a class="anchor" id="a729b7f6dc0f8b5313ab11436d3b7ac7d"></a><!-- doxytag: member="textwolf::XMLPathSelectAutomaton::Mask::empty" ref="a729b7f6dc0f8b5313ab11436d3b7ac7d" args="() const " -->
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class CharSet_  = charset::UTF8&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">bool <a class="el" href="classtextwolf_1_1XMLPathSelectAutomaton.html">textwolf::XMLPathSelectAutomaton</a>&lt; CharSet_ &gt;::Mask::empty </td>
-          <td>(</td>
-          <td class="paramname"></td>
-          <td>&nbsp;)&nbsp;</td>
-          <td> const<code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Tells if mask does not select anything anymore. </p>
-<dl class="return"><dt><b>Returns:</b></dt><dd>true if it is not active anymore </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="a14cdec6f9747b30d80dee2b36c176697"></a><!-- doxytag: member="textwolf::XMLPathSelectAutomaton::Mask::join" ref="a14cdec6f9747b30d80dee2b36c176697" args="(const Mask &amp;mask)" -->
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class CharSet_  = charset::UTF8&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="classtextwolf_1_1XMLPathSelectAutomaton.html">textwolf::XMLPathSelectAutomaton</a>&lt; CharSet_ &gt;::Mask::join </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1Mask.html">Mask</a> &amp;&nbsp;</td>
-          <td class="paramname"> <em>mask</em></td>
-          <td>&nbsp;)&nbsp;</td>
-          <td><code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Join two mask definitions. </p>
-<dl><dt><b>Parameters:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>mask</em>&nbsp;</td><td>definition of mask to join this with </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="a09c5317667def85993299fbdbd33a769"></a><!-- doxytag: member="textwolf::XMLPathSelectAutomaton::Mask::match" ref="a09c5317667def85993299fbdbd33a769" args="(XMLScannerBase::ElementType e)" -->
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class CharSet_  = charset::UTF8&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="classtextwolf_1_1XMLPathSelectAutomaton.html">textwolf::XMLPathSelectAutomaton</a>&lt; CharSet_ &gt;::Mask::match </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classtextwolf_1_1XMLScannerBase.html#aae4f0cdb7e16aca5fdee271fa60e1329">XMLScannerBase::ElementType</a>&nbsp;</td>
-          <td class="paramname"> <em>e</em></td>
-          <td>&nbsp;)&nbsp;</td>
-          <td><code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Declare an operation to match on an element type. </p>
-
-</div>
-</div>
-<a class="anchor" id="a26c7aceefd9d251e7a1f6201dc3ec808"></a><!-- doxytag: member="textwolf::XMLPathSelectAutomaton::Mask::matches" ref="a26c7aceefd9d251e7a1f6201dc3ec808" args="(XMLScannerBase::ElementType e) const " -->
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class CharSet_  = charset::UTF8&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">bool <a class="el" href="classtextwolf_1_1XMLPathSelectAutomaton.html">textwolf::XMLPathSelectAutomaton</a>&lt; CharSet_ &gt;::Mask::matches </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classtextwolf_1_1XMLScannerBase.html#aae4f0cdb7e16aca5fdee271fa60e1329">XMLScannerBase::ElementType</a>&nbsp;</td>
-          <td class="paramname"> <em>e</em></td>
-          <td>&nbsp;)&nbsp;</td>
-          <td> const<code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Check if an element type matches the mask. </p>
-<dl><dt><b>Parameters:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>e</em>&nbsp;</td><td>element type to check </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="a06e532a6bcba6560a71817a0dd8957b8"></a><!-- doxytag: member="textwolf::XMLPathSelectAutomaton::Mask::reject" ref="a06e532a6bcba6560a71817a0dd8957b8" args="(XMLScannerBase::ElementType e)" -->
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class CharSet_  = charset::UTF8&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="classtextwolf_1_1XMLPathSelectAutomaton.html">textwolf::XMLPathSelectAutomaton</a>&lt; CharSet_ &gt;::Mask::reject </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classtextwolf_1_1XMLScannerBase.html#aae4f0cdb7e16aca5fdee271fa60e1329">XMLScannerBase::ElementType</a>&nbsp;</td>
-          <td class="paramname"> <em>e</em></td>
-          <td>&nbsp;)&nbsp;</td>
-          <td><code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Deactivate operation for a certain element type. </p>
-
-</div>
-</div>
-<a class="anchor" id="a0661275862c65b5d8e0bf8659e345e58"></a><!-- doxytag: member="textwolf::XMLPathSelectAutomaton::Mask::rejects" ref="a0661275862c65b5d8e0bf8659e345e58" args="(XMLScannerBase::ElementType e) const " -->
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class CharSet_  = charset::UTF8&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">bool <a class="el" href="classtextwolf_1_1XMLPathSelectAutomaton.html">textwolf::XMLPathSelectAutomaton</a>&lt; CharSet_ &gt;::Mask::rejects </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classtextwolf_1_1XMLScannerBase.html#aae4f0cdb7e16aca5fdee271fa60e1329">XMLScannerBase::ElementType</a>&nbsp;</td>
-          <td class="paramname"> <em>e</em></td>
-          <td>&nbsp;)&nbsp;</td>
-          <td> const<code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Check if an element type should reset a mask. </p>
-<dl><dt><b>Parameters:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>e</em>&nbsp;</td><td>element type to check </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="a10f1773c95555592f0770bdf807319c5"></a><!-- doxytag: member="textwolf::XMLPathSelectAutomaton::Mask::reset" ref="a10f1773c95555592f0770bdf807319c5" args="()" -->
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class CharSet_  = charset::UTF8&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="classtextwolf_1_1XMLPathSelectAutomaton.html">textwolf::XMLPathSelectAutomaton</a>&lt; CharSet_ &gt;::Mask::reset </td>
-          <td>(</td>
-          <td class="paramname"></td>
-          <td>&nbsp;)&nbsp;</td>
-          <td><code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Reset operation (deactivate). </p>
-
-</div>
-</div>
-<a class="anchor" id="a662d02b08f55eb15b1176444a1182556"></a><!-- doxytag: member="textwolf::XMLPathSelectAutomaton::Mask::seekop" ref="a662d02b08f55eb15b1176444a1182556" args="(Operation op)" -->
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class CharSet_  = charset::UTF8&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="classtextwolf_1_1XMLPathSelectAutomaton.html">textwolf::XMLPathSelectAutomaton</a>&lt; CharSet_ &gt;::Mask::seekop </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classtextwolf_1_1XMLPathSelectAutomaton.html#acd770d474c93c3fa4b3db53e612b8710">Operation</a>&nbsp;</td>
-          <td class="paramname"> <em>op</em></td>
-          <td>&nbsp;)&nbsp;</td>
-          <td><code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Declare an operation as seek operation. </p>
-
-</div>
-</div>
 <hr/><h2>Member Data Documentation</h2>
-<a class="anchor" id="a4718902448ec02d527c439c89347241b"></a><!-- doxytag: member="textwolf::XMLPathSelectAutomaton::Mask::neg" ref="a4718902448ec02d527c439c89347241b" args="" -->
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class CharSet_  = charset::UTF8&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">unsigned short <a class="el" href="classtextwolf_1_1XMLPathSelectAutomaton.html">textwolf::XMLPathSelectAutomaton</a>&lt; CharSet_ &gt;::<a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1Mask.html#a4718902448ec02d527c439c89347241b">Mask::neg</a></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>negatively selected elements bitmask that determines when a search pattern is given up copletely </p>
-
-</div>
-</div>
 <a class="anchor" id="ac3831dfe60fe44ad591a893aca494d13"></a><!-- doxytag: member="textwolf::XMLPathSelectAutomaton::Mask::pos" ref="ac3831dfe60fe44ad591a893aca494d13" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -427,7 +130,7 @@ template&lt;class CharSet_  = charset::UTF8&gt; </div>
 </iframe>
 </div>
 
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Sat Jun 11 12:31:48 2011 for textwolf by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Sat Jun 11 12:48:06 2011 for textwolf by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

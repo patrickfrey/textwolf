@@ -49,7 +49,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
 </div>
 <div class="contents">
-<h1>textwolf::ScannerStatemachine Class Reference</h1><!-- doxytag: class="textwolf::ScannerStatemachine" --><!-- doxytag: inherits="textwolf::throws_exception" -->
+<h1>textwolf::ScannerStatemachine Class Reference<br/>
+<small>
+[<a class="el" href="group__XMLscanner.html">XML Scanner</a>]</small>
+</h1><!-- doxytag: class="textwolf::ScannerStatemachine" --><!-- doxytag: inherits="textwolf::throws_exception" -->
 <p>Class to build up the XML element scanner state machine in a descriptive way.  
 <a href="#_details">More...</a></p>
 
@@ -75,48 +78,48 @@ Inheritance diagram for textwolf::ScannerStatemachine:</div>
 <tr><td class="memItemLeft" align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom">{ <a class="el" href="classtextwolf_1_1ScannerStatemachine.html#a5aaad0304dde4716a5f0c14f85df2e3dac36ed547d2ee6625e8ed58e66e413109">MaxNofStates</a> = 64
  }</td></tr>
 <tr><td colspan="2"><h2>Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structtextwolf_1_1ScannerStatemachine_1_1Element.html">Element</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1ScannerStatemachine.html#affb72763ac3b0b207837c8b30c423c5b">get</a> (int stateIdx) const   throw (exception)</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Get state addressed by its index.  <a href="#affb72763ac3b0b207837c8b30c423c5b"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1ScannerStatemachine.html#a73d74d419e668ac55fc7aff5300afc38">ScannerStatemachine</a> ()</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Constructor.  <a href="#a73d74d419e668ac55fc7aff5300afc38"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtextwolf_1_1ScannerStatemachine.html">ScannerStatemachine</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1ScannerStatemachine.html#ab23081b09f34671af1662aec3c1c66fd">operator[]</a> (int stateIdx)</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">See <a class="el" href="classtextwolf_1_1ScannerStatemachine.html#a8d7b8d8eb28f9692b51d3f9b83a04eed" title="Create a new state.">ScannerStatemachine::newState(int)</a>.  <a href="#ab23081b09f34671af1662aec3c1c66fd"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtextwolf_1_1ScannerStatemachine.html">ScannerStatemachine</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1ScannerStatemachine.html#ad56d00ee0ae6d7da7743a53ba390a7df">operator()</a> (<a class="el" href="namespacetextwolf.html#a4650ba8f3f0f0c953ab1dad55efc6ee3">ControlCharacter</a> inputchr, int ns)</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">See <a class="el" href="classtextwolf_1_1ScannerStatemachine.html#afbee53400aa57737cb4df18cf403d543" title="Define a transition for inputchr in the last state defined.">ScannerStatemachine::addTransition(ControlCharacter,int)</a>.  <a href="#ad56d00ee0ae6d7da7743a53ba390a7df"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtextwolf_1_1ScannerStatemachine.html">ScannerStatemachine</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1ScannerStatemachine.html#a2ec157f6b57694e6b93ee90d3b15fbd7">operator()</a> (<a class="el" href="namespacetextwolf.html#a4650ba8f3f0f0c953ab1dad55efc6ee3">ControlCharacter</a> i1, <a class="el" href="namespacetextwolf.html#a4650ba8f3f0f0c953ab1dad55efc6ee3">ControlCharacter</a> i2, int ns)</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">See <a class="el" href="classtextwolf_1_1ScannerStatemachine.html#afbee53400aa57737cb4df18cf403d543" title="Define a transition for inputchr in the last state defined.">ScannerStatemachine::addTransition(ControlCharacter,int)</a>.  <a href="#a2ec157f6b57694e6b93ee90d3b15fbd7"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtextwolf_1_1ScannerStatemachine.html">ScannerStatemachine</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1ScannerStatemachine.html#a562fffd2be34ef9b8ebb964831a4840f">operator()</a> (<a class="el" href="namespacetextwolf.html#a4650ba8f3f0f0c953ab1dad55efc6ee3">ControlCharacter</a> i1, <a class="el" href="namespacetextwolf.html#a4650ba8f3f0f0c953ab1dad55efc6ee3">ControlCharacter</a> i2, <a class="el" href="namespacetextwolf.html#a4650ba8f3f0f0c953ab1dad55efc6ee3">ControlCharacter</a> i3, int ns)</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">See <a class="el" href="classtextwolf_1_1ScannerStatemachine.html#afbee53400aa57737cb4df18cf403d543" title="Define a transition for inputchr in the last state defined.">ScannerStatemachine::addTransition(ControlCharacter,int)</a>.  <a href="#a562fffd2be34ef9b8ebb964831a4840f"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtextwolf_1_1ScannerStatemachine.html">ScannerStatemachine</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1ScannerStatemachine.html#a418f6b66519f551113a190479ae6f43b">operator()</a> (<a class="el" href="namespacetextwolf.html#a4650ba8f3f0f0c953ab1dad55efc6ee3">ControlCharacter</a> inputchr)</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">See <a class="el" href="classtextwolf_1_1ScannerStatemachine.html#a09e5bad5b3f1c7023d6519497d8159ab" title="Define a self directing transition for inputchr in the last state defined (the state...">ScannerStatemachine::addTransition(ControlCharacter)</a>.  <a href="#a418f6b66519f551113a190479ae6f43b"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtextwolf_1_1ScannerStatemachine.html">ScannerStatemachine</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1ScannerStatemachine.html#a7969f2c8d8d4f10e63f2a6eafb68659f">action</a> (int aa, int arg=0)</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">See <a class="el" href="classtextwolf_1_1ScannerStatemachine.html#adda6abdde2071887284b1ff60fe56cd7" title="Define an action in the last state defined (to be executed when entering the state)...">ScannerStatemachine::addAction(int,int)</a>.  <a href="#a7969f2c8d8d4f10e63f2a6eafb68659f"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtextwolf_1_1ScannerStatemachine.html">ScannerStatemachine</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1ScannerStatemachine.html#acf604ba6fa94f5b9e27222d71ba3fa60">miss</a> (int ee)</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">See <a class="el" href="classtextwolf_1_1ScannerStatemachine.html#a4e7d9ea345f4abc3e2f8b42d780d1bfa" title="Define an error in the last state defined to be reported when no fallback is defined...">ScannerStatemachine::addMiss(int)</a>.  <a href="#acf604ba6fa94f5b9e27222d71ba3fa60"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtextwolf_1_1ScannerStatemachine.html">ScannerStatemachine</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1ScannerStatemachine.html#a67e8bbbb6b0e10b4dbbf33a74294a146">fallback</a> (int stateIdx)</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">See <a class="el" href="classtextwolf_1_1ScannerStatemachine.html#a73a76b4884195b209a4f6cd08989043a" title="Define in the last state defined a fallback state transition that is fired when no...">ScannerStatemachine::addFallback(int)</a>.  <a href="#a67e8bbbb6b0e10b4dbbf33a74294a146"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtextwolf_1_1ScannerStatemachine.html">ScannerStatemachine</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1ScannerStatemachine.html#a37dfd9112d64556daa4d3d42a4565051">other</a> (int stateIdx)</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">See <a class="el" href="classtextwolf_1_1ScannerStatemachine.html#a00e10cc0526b6e891390182751d913de" title="Define a transition for all control character types not firing yet in the last state...">ScannerStatemachine::addOtherTransition(int)</a>.  <a href="#a37dfd9112d64556daa4d3d42a4565051"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structtextwolf_1_1ScannerStatemachine_1_1Element.html">Element</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__XMLpathselect.html#gaffb72763ac3b0b207837c8b30c423c5b">get</a> (int stateIdx) const   throw (exception)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Get state addressed by its index.  <a href="group__XMLpathselect.html#gaffb72763ac3b0b207837c8b30c423c5b"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__XMLpathselect.html#ga73d74d419e668ac55fc7aff5300afc38">ScannerStatemachine</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Constructor.  <a href="group__XMLpathselect.html#ga73d74d419e668ac55fc7aff5300afc38"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtextwolf_1_1ScannerStatemachine.html">ScannerStatemachine</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__XMLpathselect.html#gab23081b09f34671af1662aec3c1c66fd">operator[]</a> (int stateIdx)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">See <a class="el" href="group__XMLpathselect.html#ga8d7b8d8eb28f9692b51d3f9b83a04eed" title="Create a new state.">ScannerStatemachine::newState(int)</a>.  <a href="group__XMLpathselect.html#gab23081b09f34671af1662aec3c1c66fd"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtextwolf_1_1ScannerStatemachine.html">ScannerStatemachine</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__XMLpathselect.html#gad56d00ee0ae6d7da7743a53ba390a7df">operator()</a> (<a class="el" href="group__Charactersets.html#ga4650ba8f3f0f0c953ab1dad55efc6ee3">ControlCharacter</a> inputchr, int ns)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">See <a class="el" href="group__XMLpathselect.html#gafbee53400aa57737cb4df18cf403d543" title="Define a transition for inputchr in the last state defined.">ScannerStatemachine::addTransition(ControlCharacter,int)</a>.  <a href="group__XMLpathselect.html#gad56d00ee0ae6d7da7743a53ba390a7df"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtextwolf_1_1ScannerStatemachine.html">ScannerStatemachine</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__XMLpathselect.html#ga2ec157f6b57694e6b93ee90d3b15fbd7">operator()</a> (<a class="el" href="group__Charactersets.html#ga4650ba8f3f0f0c953ab1dad55efc6ee3">ControlCharacter</a> i1, <a class="el" href="group__Charactersets.html#ga4650ba8f3f0f0c953ab1dad55efc6ee3">ControlCharacter</a> i2, int ns)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">See <a class="el" href="group__XMLpathselect.html#gafbee53400aa57737cb4df18cf403d543" title="Define a transition for inputchr in the last state defined.">ScannerStatemachine::addTransition(ControlCharacter,int)</a>.  <a href="group__XMLpathselect.html#ga2ec157f6b57694e6b93ee90d3b15fbd7"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtextwolf_1_1ScannerStatemachine.html">ScannerStatemachine</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__XMLpathselect.html#ga562fffd2be34ef9b8ebb964831a4840f">operator()</a> (<a class="el" href="group__Charactersets.html#ga4650ba8f3f0f0c953ab1dad55efc6ee3">ControlCharacter</a> i1, <a class="el" href="group__Charactersets.html#ga4650ba8f3f0f0c953ab1dad55efc6ee3">ControlCharacter</a> i2, <a class="el" href="group__Charactersets.html#ga4650ba8f3f0f0c953ab1dad55efc6ee3">ControlCharacter</a> i3, int ns)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">See <a class="el" href="group__XMLpathselect.html#gafbee53400aa57737cb4df18cf403d543" title="Define a transition for inputchr in the last state defined.">ScannerStatemachine::addTransition(ControlCharacter,int)</a>.  <a href="group__XMLpathselect.html#ga562fffd2be34ef9b8ebb964831a4840f"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtextwolf_1_1ScannerStatemachine.html">ScannerStatemachine</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__XMLpathselect.html#ga418f6b66519f551113a190479ae6f43b">operator()</a> (<a class="el" href="group__Charactersets.html#ga4650ba8f3f0f0c953ab1dad55efc6ee3">ControlCharacter</a> inputchr)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">See <a class="el" href="group__XMLpathselect.html#ga09e5bad5b3f1c7023d6519497d8159ab" title="Define a self directing transition for inputchr in the last state defined (the state...">ScannerStatemachine::addTransition(ControlCharacter)</a>.  <a href="group__XMLpathselect.html#ga418f6b66519f551113a190479ae6f43b"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtextwolf_1_1ScannerStatemachine.html">ScannerStatemachine</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__XMLpathselect.html#ga7969f2c8d8d4f10e63f2a6eafb68659f">action</a> (int aa, int arg=0)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">See <a class="el" href="group__XMLpathselect.html#gadda6abdde2071887284b1ff60fe56cd7" title="Define an action in the last state defined (to be executed when entering the state)...">ScannerStatemachine::addAction(int,int)</a>.  <a href="group__XMLpathselect.html#ga7969f2c8d8d4f10e63f2a6eafb68659f"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtextwolf_1_1ScannerStatemachine.html">ScannerStatemachine</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__XMLpathselect.html#gacf604ba6fa94f5b9e27222d71ba3fa60">miss</a> (int ee)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">See <a class="el" href="group__XMLpathselect.html#ga4e7d9ea345f4abc3e2f8b42d780d1bfa" title="Define an error in the last state defined to be reported when no fallback is defined...">ScannerStatemachine::addMiss(int)</a>.  <a href="group__XMLpathselect.html#gacf604ba6fa94f5b9e27222d71ba3fa60"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtextwolf_1_1ScannerStatemachine.html">ScannerStatemachine</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__XMLpathselect.html#ga67e8bbbb6b0e10b4dbbf33a74294a146">fallback</a> (int stateIdx)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">See <a class="el" href="group__XMLpathselect.html#ga73a76b4884195b209a4f6cd08989043a" title="Define in the last state defined a fallback state transition that is fired when no...">ScannerStatemachine::addFallback(int)</a>.  <a href="group__XMLpathselect.html#ga67e8bbbb6b0e10b4dbbf33a74294a146"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtextwolf_1_1ScannerStatemachine.html">ScannerStatemachine</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__XMLpathselect.html#ga37dfd9112d64556daa4d3d42a4565051">other</a> (int stateIdx)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">See <a class="el" href="group__XMLpathselect.html#ga00e10cc0526b6e891390182751d913de" title="Define a transition for all control character types not firing yet in the last state...">ScannerStatemachine::addOtherTransition(int)</a>.  <a href="group__XMLpathselect.html#ga37dfd9112d64556daa4d3d42a4565051"></a><br/></td></tr>
 <tr><td colspan="2"><h2>Private Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1ScannerStatemachine.html#a8d7b8d8eb28f9692b51d3f9b83a04eed">newState</a> (int stateIdx)  throw (exception)</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Create a new state.  <a href="#a8d7b8d8eb28f9692b51d3f9b83a04eed"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1ScannerStatemachine.html#a00e10cc0526b6e891390182751d913de">addOtherTransition</a> (int nextState)  throw (exception)</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Define a transition for all control character types not firing yet in the last state defined.  <a href="#a00e10cc0526b6e891390182751d913de"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1ScannerStatemachine.html#afbee53400aa57737cb4df18cf403d543">addTransition</a> (<a class="el" href="namespacetextwolf.html#a4650ba8f3f0f0c953ab1dad55efc6ee3">ControlCharacter</a> inputchr, int nextState)  throw (exception)</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Define a transition for inputchr in the last state defined.  <a href="#afbee53400aa57737cb4df18cf403d543"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1ScannerStatemachine.html#a09e5bad5b3f1c7023d6519497d8159ab">addTransition</a> (<a class="el" href="namespacetextwolf.html#a4650ba8f3f0f0c953ab1dad55efc6ee3">ControlCharacter</a> inputchr)  throw (exception)</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Define a self directing transition for inputchr in the last state defined (the state remains the same for this input).  <a href="#a09e5bad5b3f1c7023d6519497d8159ab"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1ScannerStatemachine.html#adda6abdde2071887284b1ff60fe56cd7">addAction</a> (int action_op, int action_arg=0)  throw (exception)</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Define an action in the last state defined (to be executed when entering the state).  <a href="#adda6abdde2071887284b1ff60fe56cd7"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1ScannerStatemachine.html#a4e7d9ea345f4abc3e2f8b42d780d1bfa">addMiss</a> (int error)  throw (exception)</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Define an error in the last state defined to be reported when no fallback is defined and no firing input character parsed.  <a href="#a4e7d9ea345f4abc3e2f8b42d780d1bfa"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1ScannerStatemachine.html#a73a76b4884195b209a4f6cd08989043a">addFallback</a> (int stateIdx)  throw (exception)</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Define in the last state defined a fallback state transition that is fired when no firing input character parsed.  <a href="#a73a76b4884195b209a4f6cd08989043a"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__XMLpathselect.html#ga8d7b8d8eb28f9692b51d3f9b83a04eed">newState</a> (int stateIdx)  throw (exception)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Create a new state.  <a href="group__XMLpathselect.html#ga8d7b8d8eb28f9692b51d3f9b83a04eed"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__XMLpathselect.html#ga00e10cc0526b6e891390182751d913de">addOtherTransition</a> (int nextState)  throw (exception)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Define a transition for all control character types not firing yet in the last state defined.  <a href="group__XMLpathselect.html#ga00e10cc0526b6e891390182751d913de"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__XMLpathselect.html#gafbee53400aa57737cb4df18cf403d543">addTransition</a> (<a class="el" href="group__Charactersets.html#ga4650ba8f3f0f0c953ab1dad55efc6ee3">ControlCharacter</a> inputchr, int nextState)  throw (exception)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Define a transition for inputchr in the last state defined.  <a href="group__XMLpathselect.html#gafbee53400aa57737cb4df18cf403d543"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__XMLpathselect.html#ga09e5bad5b3f1c7023d6519497d8159ab">addTransition</a> (<a class="el" href="group__Charactersets.html#ga4650ba8f3f0f0c953ab1dad55efc6ee3">ControlCharacter</a> inputchr)  throw (exception)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Define a self directing transition for inputchr in the last state defined (the state remains the same for this input).  <a href="group__XMLpathselect.html#ga09e5bad5b3f1c7023d6519497d8159ab"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__XMLpathselect.html#gadda6abdde2071887284b1ff60fe56cd7">addAction</a> (int action_op, int action_arg=0)  throw (exception)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Define an action in the last state defined (to be executed when entering the state).  <a href="group__XMLpathselect.html#gadda6abdde2071887284b1ff60fe56cd7"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__XMLpathselect.html#ga4e7d9ea345f4abc3e2f8b42d780d1bfa">addMiss</a> (int error)  throw (exception)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Define an error in the last state defined to be reported when no fallback is defined and no firing input character parsed.  <a href="group__XMLpathselect.html#ga4e7d9ea345f4abc3e2f8b42d780d1bfa"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__XMLpathselect.html#ga73a76b4884195b209a4f6cd08989043a">addFallback</a> (int stateIdx)  throw (exception)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Define in the last state defined a fallback state transition that is fired when no firing input character parsed.  <a href="group__XMLpathselect.html#ga73a76b4884195b209a4f6cd08989043a"></a><br/></td></tr>
 <tr><td colspan="2"><h2>Private Attributes</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structtextwolf_1_1ScannerStatemachine_1_1Element.html">Element</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1ScannerStatemachine.html#aa575a297829d2cee03f100d795412899">tab</a> [MaxNofStates]</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">states of the STM  <a href="#aa575a297829d2cee03f100d795412899"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">unsigned int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1ScannerStatemachine.html#a7b1bd0b71e97f9cd8949ea653c7ef467">size</a></td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">number of states defined in the STM  <a href="#a7b1bd0b71e97f9cd8949ea653c7ef467"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structtextwolf_1_1ScannerStatemachine_1_1Element.html">Element</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__XMLpathselect.html#gaa575a297829d2cee03f100d795412899">tab</a> [MaxNofStates]</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">states of the STM  <a href="group__XMLpathselect.html#gaa575a297829d2cee03f100d795412899"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">unsigned int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__XMLpathselect.html#ga7b1bd0b71e97f9cd8949ea653c7ef467">size</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">number of states defined in the STM  <a href="group__XMLpathselect.html#ga7b1bd0b71e97f9cd8949ea653c7ef467"></a><br/></td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
 <p>Class to build up the XML element scanner state machine in a descriptive way. </p>
@@ -141,521 +144,6 @@ Inheritance diagram for textwolf::ScannerStatemachine:</div>
 
 </div>
 </div>
-<hr/><h2>Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a73d74d419e668ac55fc7aff5300afc38"></a><!-- doxytag: member="textwolf::ScannerStatemachine::ScannerStatemachine" ref="a73d74d419e668ac55fc7aff5300afc38" args="()" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">textwolf::ScannerStatemachine::ScannerStatemachine </td>
-          <td>(</td>
-          <td class="paramname"></td>
-          <td>&nbsp;)&nbsp;</td>
-          <td><code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Constructor. </p>
-
-</div>
-</div>
-<hr/><h2>Member Function Documentation</h2>
-<a class="anchor" id="a7969f2c8d8d4f10e63f2a6eafb68659f"></a><!-- doxytag: member="textwolf::ScannerStatemachine::action" ref="a7969f2c8d8d4f10e63f2a6eafb68659f" args="(int aa, int arg=0)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classtextwolf_1_1ScannerStatemachine.html">ScannerStatemachine</a>&amp; textwolf::ScannerStatemachine::action </td>
-          <td>(</td>
-          <td class="paramtype">int&nbsp;</td>
-          <td class="paramname"> <em>aa</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&nbsp;</td>
-          <td class="paramname"> <em>arg</em> = <code>0</code></td><td>&nbsp;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td><td><code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>See <a class="el" href="classtextwolf_1_1ScannerStatemachine.html#adda6abdde2071887284b1ff60fe56cd7" title="Define an action in the last state defined (to be executed when entering the state)...">ScannerStatemachine::addAction(int,int)</a>. </p>
-
-</div>
-</div>
-<a class="anchor" id="adda6abdde2071887284b1ff60fe56cd7"></a><!-- doxytag: member="textwolf::ScannerStatemachine::addAction" ref="adda6abdde2071887284b1ff60fe56cd7" args="(int action_op, int action_arg=0)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void textwolf::ScannerStatemachine::addAction </td>
-          <td>(</td>
-          <td class="paramtype">int&nbsp;</td>
-          <td class="paramname"> <em>action_op</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&nbsp;</td>
-          <td class="paramname"> <em>action_arg</em> = <code>0</code></td><td>&nbsp;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td><td>  throw (<a class="el" href="structtextwolf_1_1exception.html">exception</a>)<code> [inline, private]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Define an action in the last state defined (to be executed when entering the state). </p>
-<dl><dt><b>Parameters:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>action_op</em>&nbsp;</td><td>action operand </td></tr>
-    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>action_arg</em>&nbsp;</td><td>action argument </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="a73a76b4884195b209a4f6cd08989043a"></a><!-- doxytag: member="textwolf::ScannerStatemachine::addFallback" ref="a73a76b4884195b209a4f6cd08989043a" args="(int stateIdx)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void textwolf::ScannerStatemachine::addFallback </td>
-          <td>(</td>
-          <td class="paramtype">int&nbsp;</td>
-          <td class="paramname"> <em>stateIdx</em></td>
-          <td>&nbsp;)&nbsp;</td>
-          <td>  throw (<a class="el" href="structtextwolf_1_1exception.html">exception</a>)<code> [inline, private]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Define in the last state defined a fallback state transition that is fired when no firing input character parsed. </p>
-<dl><dt><b>Parameters:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>stateIdx</em>&nbsp;</td><td>follow state index </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="a4e7d9ea345f4abc3e2f8b42d780d1bfa"></a><!-- doxytag: member="textwolf::ScannerStatemachine::addMiss" ref="a4e7d9ea345f4abc3e2f8b42d780d1bfa" args="(int error)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void textwolf::ScannerStatemachine::addMiss </td>
-          <td>(</td>
-          <td class="paramtype">int&nbsp;</td>
-          <td class="paramname"> <em>error</em></td>
-          <td>&nbsp;)&nbsp;</td>
-          <td>  throw (<a class="el" href="structtextwolf_1_1exception.html">exception</a>)<code> [inline, private]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Define an error in the last state defined to be reported when no fallback is defined and no firing input character parsed. </p>
-<dl><dt><b>Parameters:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>error</em>&nbsp;</td><td>code to be reported </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="a00e10cc0526b6e891390182751d913de"></a><!-- doxytag: member="textwolf::ScannerStatemachine::addOtherTransition" ref="a00e10cc0526b6e891390182751d913de" args="(int nextState)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void textwolf::ScannerStatemachine::addOtherTransition </td>
-          <td>(</td>
-          <td class="paramtype">int&nbsp;</td>
-          <td class="paramname"> <em>nextState</em></td>
-          <td>&nbsp;)&nbsp;</td>
-          <td>  throw (<a class="el" href="structtextwolf_1_1exception.html">exception</a>)<code> [inline, private]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Define a transition for all control character types not firing yet in the last state defined. </p>
-<dl><dt><b>Parameters:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>nextState</em>&nbsp;</td><td>the follow state index defined for these transitions </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="a09e5bad5b3f1c7023d6519497d8159ab"></a><!-- doxytag: member="textwolf::ScannerStatemachine::addTransition" ref="a09e5bad5b3f1c7023d6519497d8159ab" args="(ControlCharacter inputchr)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void textwolf::ScannerStatemachine::addTransition </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="namespacetextwolf.html#a4650ba8f3f0f0c953ab1dad55efc6ee3">ControlCharacter</a>&nbsp;</td>
-          <td class="paramname"> <em>inputchr</em></td>
-          <td>&nbsp;)&nbsp;</td>
-          <td>  throw (<a class="el" href="structtextwolf_1_1exception.html">exception</a>)<code> [inline, private]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Define a self directing transition for inputchr in the last state defined (the state remains the same for this input). </p>
-<dl><dt><b>Parameters:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>inputchr</em>&nbsp;</td><td>the firing input control character type </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="afbee53400aa57737cb4df18cf403d543"></a><!-- doxytag: member="textwolf::ScannerStatemachine::addTransition" ref="afbee53400aa57737cb4df18cf403d543" args="(ControlCharacter inputchr, int nextState)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void textwolf::ScannerStatemachine::addTransition </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="namespacetextwolf.html#a4650ba8f3f0f0c953ab1dad55efc6ee3">ControlCharacter</a>&nbsp;</td>
-          <td class="paramname"> <em>inputchr</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&nbsp;</td>
-          <td class="paramname"> <em>nextState</em></td><td>&nbsp;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td><td>  throw (<a class="el" href="structtextwolf_1_1exception.html">exception</a>)<code> [inline, private]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Define a transition for inputchr in the last state defined. </p>
-<dl><dt><b>Parameters:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>inputchr</em>&nbsp;</td><td>the firing input control character type </td></tr>
-    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>nextState</em>&nbsp;</td><td>the follow state index defined for this transition </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="a67e8bbbb6b0e10b4dbbf33a74294a146"></a><!-- doxytag: member="textwolf::ScannerStatemachine::fallback" ref="a67e8bbbb6b0e10b4dbbf33a74294a146" args="(int stateIdx)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classtextwolf_1_1ScannerStatemachine.html">ScannerStatemachine</a>&amp; textwolf::ScannerStatemachine::fallback </td>
-          <td>(</td>
-          <td class="paramtype">int&nbsp;</td>
-          <td class="paramname"> <em>stateIdx</em></td>
-          <td>&nbsp;)&nbsp;</td>
-          <td><code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>See <a class="el" href="classtextwolf_1_1ScannerStatemachine.html#a73a76b4884195b209a4f6cd08989043a" title="Define in the last state defined a fallback state transition that is fired when no...">ScannerStatemachine::addFallback(int)</a>. </p>
-
-</div>
-</div>
-<a class="anchor" id="affb72763ac3b0b207837c8b30c423c5b"></a><!-- doxytag: member="textwolf::ScannerStatemachine::get" ref="affb72763ac3b0b207837c8b30c423c5b" args="(int stateIdx) const " -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structtextwolf_1_1ScannerStatemachine_1_1Element.html">Element</a>* textwolf::ScannerStatemachine::get </td>
-          <td>(</td>
-          <td class="paramtype">int&nbsp;</td>
-          <td class="paramname"> <em>stateIdx</em></td>
-          <td>&nbsp;)&nbsp;</td>
-          <td> const  throw (<a class="el" href="structtextwolf_1_1exception.html">exception</a>)<code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Get state addressed by its index. </p>
-<dl><dt><b>Parameters:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>stateIdx</em>&nbsp;</td><td>index of the state </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>state defintion reference </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="acf604ba6fa94f5b9e27222d71ba3fa60"></a><!-- doxytag: member="textwolf::ScannerStatemachine::miss" ref="acf604ba6fa94f5b9e27222d71ba3fa60" args="(int ee)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classtextwolf_1_1ScannerStatemachine.html">ScannerStatemachine</a>&amp; textwolf::ScannerStatemachine::miss </td>
-          <td>(</td>
-          <td class="paramtype">int&nbsp;</td>
-          <td class="paramname"> <em>ee</em></td>
-          <td>&nbsp;)&nbsp;</td>
-          <td><code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>See <a class="el" href="classtextwolf_1_1ScannerStatemachine.html#a4e7d9ea345f4abc3e2f8b42d780d1bfa" title="Define an error in the last state defined to be reported when no fallback is defined...">ScannerStatemachine::addMiss(int)</a>. </p>
-
-</div>
-</div>
-<a class="anchor" id="a8d7b8d8eb28f9692b51d3f9b83a04eed"></a><!-- doxytag: member="textwolf::ScannerStatemachine::newState" ref="a8d7b8d8eb28f9692b51d3f9b83a04eed" args="(int stateIdx)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void textwolf::ScannerStatemachine::newState </td>
-          <td>(</td>
-          <td class="paramtype">int&nbsp;</td>
-          <td class="paramname"> <em>stateIdx</em></td>
-          <td>&nbsp;)&nbsp;</td>
-          <td>  throw (<a class="el" href="structtextwolf_1_1exception.html">exception</a>)<code> [inline, private]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Create a new state. </p>
-<dl><dt><b>Parameters:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>stateIdx</em>&nbsp;</td><td>index of the state (must be the size of the STM array, so that state identifiers can be named by enumeration constants for better readability) </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="a418f6b66519f551113a190479ae6f43b"></a><!-- doxytag: member="textwolf::ScannerStatemachine::operator()" ref="a418f6b66519f551113a190479ae6f43b" args="(ControlCharacter inputchr)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classtextwolf_1_1ScannerStatemachine.html">ScannerStatemachine</a>&amp; textwolf::ScannerStatemachine::operator() </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="namespacetextwolf.html#a4650ba8f3f0f0c953ab1dad55efc6ee3">ControlCharacter</a>&nbsp;</td>
-          <td class="paramname"> <em>inputchr</em></td>
-          <td>&nbsp;)&nbsp;</td>
-          <td><code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>See <a class="el" href="classtextwolf_1_1ScannerStatemachine.html#a09e5bad5b3f1c7023d6519497d8159ab" title="Define a self directing transition for inputchr in the last state defined (the state...">ScannerStatemachine::addTransition(ControlCharacter)</a>. </p>
-
-</div>
-</div>
-<a class="anchor" id="a562fffd2be34ef9b8ebb964831a4840f"></a><!-- doxytag: member="textwolf::ScannerStatemachine::operator()" ref="a562fffd2be34ef9b8ebb964831a4840f" args="(ControlCharacter i1, ControlCharacter i2, ControlCharacter i3, int ns)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classtextwolf_1_1ScannerStatemachine.html">ScannerStatemachine</a>&amp; textwolf::ScannerStatemachine::operator() </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="namespacetextwolf.html#a4650ba8f3f0f0c953ab1dad55efc6ee3">ControlCharacter</a>&nbsp;</td>
-          <td class="paramname"> <em>i1</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="namespacetextwolf.html#a4650ba8f3f0f0c953ab1dad55efc6ee3">ControlCharacter</a>&nbsp;</td>
-          <td class="paramname"> <em>i2</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="namespacetextwolf.html#a4650ba8f3f0f0c953ab1dad55efc6ee3">ControlCharacter</a>&nbsp;</td>
-          <td class="paramname"> <em>i3</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&nbsp;</td>
-          <td class="paramname"> <em>ns</em></td><td>&nbsp;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td><td><code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>See <a class="el" href="classtextwolf_1_1ScannerStatemachine.html#afbee53400aa57737cb4df18cf403d543" title="Define a transition for inputchr in the last state defined.">ScannerStatemachine::addTransition(ControlCharacter,int)</a>. </p>
-
-</div>
-</div>
-<a class="anchor" id="a2ec157f6b57694e6b93ee90d3b15fbd7"></a><!-- doxytag: member="textwolf::ScannerStatemachine::operator()" ref="a2ec157f6b57694e6b93ee90d3b15fbd7" args="(ControlCharacter i1, ControlCharacter i2, int ns)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classtextwolf_1_1ScannerStatemachine.html">ScannerStatemachine</a>&amp; textwolf::ScannerStatemachine::operator() </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="namespacetextwolf.html#a4650ba8f3f0f0c953ab1dad55efc6ee3">ControlCharacter</a>&nbsp;</td>
-          <td class="paramname"> <em>i1</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="namespacetextwolf.html#a4650ba8f3f0f0c953ab1dad55efc6ee3">ControlCharacter</a>&nbsp;</td>
-          <td class="paramname"> <em>i2</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&nbsp;</td>
-          <td class="paramname"> <em>ns</em></td><td>&nbsp;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td><td><code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>See <a class="el" href="classtextwolf_1_1ScannerStatemachine.html#afbee53400aa57737cb4df18cf403d543" title="Define a transition for inputchr in the last state defined.">ScannerStatemachine::addTransition(ControlCharacter,int)</a>. </p>
-
-</div>
-</div>
-<a class="anchor" id="ad56d00ee0ae6d7da7743a53ba390a7df"></a><!-- doxytag: member="textwolf::ScannerStatemachine::operator()" ref="ad56d00ee0ae6d7da7743a53ba390a7df" args="(ControlCharacter inputchr, int ns)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classtextwolf_1_1ScannerStatemachine.html">ScannerStatemachine</a>&amp; textwolf::ScannerStatemachine::operator() </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="namespacetextwolf.html#a4650ba8f3f0f0c953ab1dad55efc6ee3">ControlCharacter</a>&nbsp;</td>
-          <td class="paramname"> <em>inputchr</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&nbsp;</td>
-          <td class="paramname"> <em>ns</em></td><td>&nbsp;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td><td><code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>See <a class="el" href="classtextwolf_1_1ScannerStatemachine.html#afbee53400aa57737cb4df18cf403d543" title="Define a transition for inputchr in the last state defined.">ScannerStatemachine::addTransition(ControlCharacter,int)</a>. </p>
-
-</div>
-</div>
-<a class="anchor" id="ab23081b09f34671af1662aec3c1c66fd"></a><!-- doxytag: member="textwolf::ScannerStatemachine::operator[]" ref="ab23081b09f34671af1662aec3c1c66fd" args="(int stateIdx)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classtextwolf_1_1ScannerStatemachine.html">ScannerStatemachine</a>&amp; textwolf::ScannerStatemachine::operator[] </td>
-          <td>(</td>
-          <td class="paramtype">int&nbsp;</td>
-          <td class="paramname"> <em>stateIdx</em></td>
-          <td>&nbsp;)&nbsp;</td>
-          <td><code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>See <a class="el" href="classtextwolf_1_1ScannerStatemachine.html#a8d7b8d8eb28f9692b51d3f9b83a04eed" title="Create a new state.">ScannerStatemachine::newState(int)</a>. </p>
-
-</div>
-</div>
-<a class="anchor" id="a37dfd9112d64556daa4d3d42a4565051"></a><!-- doxytag: member="textwolf::ScannerStatemachine::other" ref="a37dfd9112d64556daa4d3d42a4565051" args="(int stateIdx)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classtextwolf_1_1ScannerStatemachine.html">ScannerStatemachine</a>&amp; textwolf::ScannerStatemachine::other </td>
-          <td>(</td>
-          <td class="paramtype">int&nbsp;</td>
-          <td class="paramname"> <em>stateIdx</em></td>
-          <td>&nbsp;)&nbsp;</td>
-          <td><code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>See <a class="el" href="classtextwolf_1_1ScannerStatemachine.html#a00e10cc0526b6e891390182751d913de" title="Define a transition for all control character types not firing yet in the last state...">ScannerStatemachine::addOtherTransition(int)</a>. </p>
-
-</div>
-</div>
-<hr/><h2>Member Data Documentation</h2>
-<a class="anchor" id="a7b1bd0b71e97f9cd8949ea653c7ef467"></a><!-- doxytag: member="textwolf::ScannerStatemachine::size" ref="a7b1bd0b71e97f9cd8949ea653c7ef467" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">unsigned int <a class="el" href="classtextwolf_1_1ScannerStatemachine.html#a7b1bd0b71e97f9cd8949ea653c7ef467">textwolf::ScannerStatemachine::size</a><code> [private]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>number of states defined in the STM </p>
-
-</div>
-</div>
-<a class="anchor" id="aa575a297829d2cee03f100d795412899"></a><!-- doxytag: member="textwolf::ScannerStatemachine::tab" ref="aa575a297829d2cee03f100d795412899" args="[MaxNofStates]" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structtextwolf_1_1ScannerStatemachine_1_1Element.html">Element</a> <a class="el" href="classtextwolf_1_1ScannerStatemachine.html#aa575a297829d2cee03f100d795412899">textwolf::ScannerStatemachine::tab</a>[MaxNofStates]<code> [private]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>states of the STM </p>
-
-</div>
-</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>textwolf/include/<a class="el" href="textwolf_8hpp_source.html">textwolf.hpp</a></li>
 </ul>
@@ -674,7 +162,7 @@ Inheritance diagram for textwolf::ScannerStatemachine:</div>
 </iframe>
 </div>
 
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Sat Jun 11 12:31:48 2011 for textwolf by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Sat Jun 11 12:48:06 2011 for textwolf by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

@@ -49,7 +49,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
 </div>
 <div class="contents">
-<h1>textwolf::TextScanner&lt; Iterator, CharSet &gt; Class Template Reference</h1><!-- doxytag: class="textwolf::TextScanner" -->
+<h1>textwolf::TextScanner&lt; Iterator, CharSet &gt; Class Template Reference<br/>
+<small>
+[<a class="el" href="group__Textscanner.html">Text Scanner</a>]</small>
+</h1><!-- doxytag: class="textwolf::TextScanner" -->
 <p>Reader for scanning the input character by character.  
 <a href="#_details">More...</a></p>
 
@@ -61,35 +64,35 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <tr><td class="memItemLeft" align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1TextScanner_1_1ControlCharMap.html">ControlCharMap</a></td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Map of ASCII characters to control character identifiers used in the XML scanner automaton.  <a href="structtextwolf_1_1TextScanner_1_1ControlCharMap.html#_details">More...</a><br/></td></tr>
 <tr><td colspan="2"><h2>Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1TextScanner.html#a81f6b27b76253b700d00a630298ff1d3">TextScanner</a> (const Iterator &amp;p_iterator)</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Constructor.  <a href="#a81f6b27b76253b700d00a630298ff1d3"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1TextScanner.html#ab253b7395490d044f9befb8545851d40">TextScanner</a> (const <a class="el" href="classtextwolf_1_1TextScanner.html">TextScanner</a> &amp;orig)</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Copy constructor.  <a href="#ab253b7395490d044f9befb8545851d40"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacetextwolf.html#a3eb8d6733d6737825026b2e41b8c3f9c">UChar</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1TextScanner.html#a783b195912d79ed958f7f9b0660f156a">chr</a> ()</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Get the unicode character of the current character.  <a href="#a783b195912d79ed958f7f9b0660f156a"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1TextScanner.html#ad8d2e73575e69cf8b86034da6db0fcc4">getcur</a> ()</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Fill the internal buffer with as many current character bytes needed for reading the ASCII representation.  <a href="#ad8d2e73575e69cf8b86034da6db0fcc4"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacetextwolf.html#a4650ba8f3f0f0c953ab1dad55efc6ee3">ControlCharacter</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1TextScanner.html#a24fd9e888680e46835e9c6f2d4be3f71">control</a> ()</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Get the control character representation of the current character.  <a href="#a24fd9e888680e46835e9c6f2d4be3f71"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">char&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1TextScanner.html#a1fbb13d8feb41d1340cdbf2118a8183c">ascii</a> ()</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Get the ASCII character representation of the current character.  <a href="#a1fbb13d8feb41d1340cdbf2118a8183c"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtextwolf_1_1TextScanner.html">TextScanner</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1TextScanner.html#ac0b6d4734280a45a14c3d93d068b248f">skip</a> ()</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Skip to the next character of the source.  <a href="#ac0b6d4734280a45a14c3d93d068b248f"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtextwolf_1_1TextScanner.html">TextScanner</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1TextScanner.html#abab7abef27e2745c4464a793b518d896">operator++</a> ()</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Preincrement: Skip to the next character of the source.  <a href="#abab7abef27e2745c4464a793b518d896"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtextwolf_1_1TextScanner.html">TextScanner</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1TextScanner.html#ab18e833d8e155673e5e096b1ccbe0128">operator++</a> (int)</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Postincrement: Skip to the next character of the source.  <a href="#ab18e833d8e155673e5e096b1ccbe0128"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__XMLpathselect.html#ga81f6b27b76253b700d00a630298ff1d3">TextScanner</a> (const Iterator &amp;p_iterator)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Constructor.  <a href="group__XMLpathselect.html#ga81f6b27b76253b700d00a630298ff1d3"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__XMLpathselect.html#gab253b7395490d044f9befb8545851d40">TextScanner</a> (const <a class="el" href="classtextwolf_1_1TextScanner.html">TextScanner</a> &amp;orig)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Copy constructor.  <a href="group__XMLpathselect.html#gab253b7395490d044f9befb8545851d40"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__Charactersets.html#ga3eb8d6733d6737825026b2e41b8c3f9c">UChar</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__XMLpathselect.html#ga783b195912d79ed958f7f9b0660f156a">chr</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Get the unicode character of the current character.  <a href="group__XMLpathselect.html#ga783b195912d79ed958f7f9b0660f156a"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__XMLpathselect.html#gad8d2e73575e69cf8b86034da6db0fcc4">getcur</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Fill the internal buffer with as many current character bytes needed for reading the ASCII representation.  <a href="group__XMLpathselect.html#gad8d2e73575e69cf8b86034da6db0fcc4"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__Charactersets.html#ga4650ba8f3f0f0c953ab1dad55efc6ee3">ControlCharacter</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__XMLpathselect.html#ga24fd9e888680e46835e9c6f2d4be3f71">control</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Get the control character representation of the current character.  <a href="group__XMLpathselect.html#ga24fd9e888680e46835e9c6f2d4be3f71"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">char&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__XMLpathselect.html#ga1fbb13d8feb41d1340cdbf2118a8183c">ascii</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Get the ASCII character representation of the current character.  <a href="group__XMLpathselect.html#ga1fbb13d8feb41d1340cdbf2118a8183c"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtextwolf_1_1TextScanner.html">TextScanner</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__XMLpathselect.html#gac0b6d4734280a45a14c3d93d068b248f">skip</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Skip to the next character of the source.  <a href="group__XMLpathselect.html#gac0b6d4734280a45a14c3d93d068b248f"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtextwolf_1_1TextScanner.html">TextScanner</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__XMLpathselect.html#gabab7abef27e2745c4464a793b518d896">operator++</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Preincrement: Skip to the next character of the source.  <a href="group__XMLpathselect.html#gabab7abef27e2745c4464a793b518d896"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtextwolf_1_1TextScanner.html">TextScanner</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__XMLpathselect.html#gab18e833d8e155673e5e096b1ccbe0128">operator++</a> (int)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Postincrement: Skip to the next character of the source.  <a href="group__XMLpathselect.html#gab18e833d8e155673e5e096b1ccbe0128"></a><br/></td></tr>
 <tr><td colspan="2"><h2>Private Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">Iterator&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1TextScanner.html#a780474c0aef1c2e97014e6155dbeca89">input</a></td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">source iterator  <a href="#a780474c0aef1c2e97014e6155dbeca89"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">char&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1TextScanner.html#a147278384372b6f39ca33c1143223c05">buf</a> [8]</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">buffer for one character (the current character parsed)  <a href="#a147278384372b6f39ca33c1143223c05"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacetextwolf.html#a3eb8d6733d6737825026b2e41b8c3f9c">UChar</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1TextScanner.html#aa12ffdb7b5dc39f802dc9d73d93d7646">val</a></td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Unicode character representation of the current character parsed.  <a href="#aa12ffdb7b5dc39f802dc9d73d93d7646"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">char&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1TextScanner.html#a2ad8cb3b28bd48004301e8e0a934f60c">cur</a></td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ASCII character representation of the current character parsed.  <a href="#a2ad8cb3b28bd48004301e8e0a934f60c"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">unsigned int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1TextScanner.html#ad609d14da9b478fdf57e40f71ee1fecd">state</a></td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">current state of the text scanner  <a href="#ad609d14da9b478fdf57e40f71ee1fecd"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">char&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__XMLpathselect.html#ga147278384372b6f39ca33c1143223c05">buf</a> [8]</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">buffer for one character (the current character parsed)  <a href="group__XMLpathselect.html#ga147278384372b6f39ca33c1143223c05"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__Charactersets.html#ga3eb8d6733d6737825026b2e41b8c3f9c">UChar</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__XMLpathselect.html#gaa12ffdb7b5dc39f802dc9d73d93d7646">val</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Unicode character representation of the current character parsed.  <a href="group__XMLpathselect.html#gaa12ffdb7b5dc39f802dc9d73d93d7646"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">char&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__XMLpathselect.html#ga2ad8cb3b28bd48004301e8e0a934f60c">cur</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ASCII character representation of the current character parsed.  <a href="group__XMLpathselect.html#ga2ad8cb3b28bd48004301e8e0a934f60c"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">unsigned int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__XMLpathselect.html#gad609d14da9b478fdf57e40f71ee1fecd">state</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">current state of the text scanner  <a href="group__XMLpathselect.html#gad609d14da9b478fdf57e40f71ee1fecd"></a><br/></td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
 <h3>template&lt;class Iterator, class CharSet&gt;<br/>
@@ -103,253 +106,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </table>
   </dd>
 </dl>
-<hr/><h2>Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a81f6b27b76253b700d00a630298ff1d3"></a><!-- doxytag: member="textwolf::TextScanner::TextScanner" ref="a81f6b27b76253b700d00a630298ff1d3" args="(const Iterator &amp;p_iterator)" -->
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class Iterator, class CharSet&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classtextwolf_1_1TextScanner.html">textwolf::TextScanner</a>&lt; Iterator, CharSet &gt;::<a class="el" href="classtextwolf_1_1TextScanner.html">TextScanner</a> </td>
-          <td>(</td>
-          <td class="paramtype">const Iterator &amp;&nbsp;</td>
-          <td class="paramname"> <em>p_iterator</em></td>
-          <td>&nbsp;)&nbsp;</td>
-          <td><code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Constructor. </p>
-<dl><dt><b>Parameters:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>p_iterator</em>&nbsp;</td><td>source iterator </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="ab253b7395490d044f9befb8545851d40"></a><!-- doxytag: member="textwolf::TextScanner::TextScanner" ref="ab253b7395490d044f9befb8545851d40" args="(const TextScanner &amp;orig)" -->
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class Iterator, class CharSet&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classtextwolf_1_1TextScanner.html">textwolf::TextScanner</a>&lt; Iterator, CharSet &gt;::<a class="el" href="classtextwolf_1_1TextScanner.html">TextScanner</a> </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="classtextwolf_1_1TextScanner.html">TextScanner</a>&lt; Iterator, CharSet &gt; &amp;&nbsp;</td>
-          <td class="paramname"> <em>orig</em></td>
-          <td>&nbsp;)&nbsp;</td>
-          <td><code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Copy constructor. </p>
-<dl><dt><b>Parameters:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>orig</em>&nbsp;</td><td>textscanner to copy </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<hr/><h2>Member Function Documentation</h2>
-<a class="anchor" id="a1fbb13d8feb41d1340cdbf2118a8183c"></a><!-- doxytag: member="textwolf::TextScanner::ascii" ref="a1fbb13d8feb41d1340cdbf2118a8183c" args="()" -->
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class Iterator, class CharSet&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">char <a class="el" href="classtextwolf_1_1TextScanner.html">textwolf::TextScanner</a>&lt; Iterator, CharSet &gt;::ascii </td>
-          <td>(</td>
-          <td class="paramname"></td>
-          <td>&nbsp;)&nbsp;</td>
-          <td><code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Get the ASCII character representation of the current character. </p>
-<dl class="return"><dt><b>Returns:</b></dt><dd>the ASCII character </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="a783b195912d79ed958f7f9b0660f156a"></a><!-- doxytag: member="textwolf::TextScanner::chr" ref="a783b195912d79ed958f7f9b0660f156a" args="()" -->
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class Iterator, class CharSet&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="namespacetextwolf.html#a3eb8d6733d6737825026b2e41b8c3f9c">UChar</a> <a class="el" href="classtextwolf_1_1TextScanner.html">textwolf::TextScanner</a>&lt; Iterator, CharSet &gt;::chr </td>
-          <td>(</td>
-          <td class="paramname"></td>
-          <td>&nbsp;)&nbsp;</td>
-          <td><code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Get the unicode character of the current character. </p>
-<dl class="return"><dt><b>Returns:</b></dt><dd>the unicode character </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="a24fd9e888680e46835e9c6f2d4be3f71"></a><!-- doxytag: member="textwolf::TextScanner::control" ref="a24fd9e888680e46835e9c6f2d4be3f71" args="()" -->
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class Iterator, class CharSet&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="namespacetextwolf.html#a4650ba8f3f0f0c953ab1dad55efc6ee3">ControlCharacter</a> <a class="el" href="classtextwolf_1_1TextScanner.html">textwolf::TextScanner</a>&lt; Iterator, CharSet &gt;::control </td>
-          <td>(</td>
-          <td class="paramname"></td>
-          <td>&nbsp;)&nbsp;</td>
-          <td><code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Get the control character representation of the current character. </p>
-<dl class="return"><dt><b>Returns:</b></dt><dd>the control character </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="ad8d2e73575e69cf8b86034da6db0fcc4"></a><!-- doxytag: member="textwolf::TextScanner::getcur" ref="ad8d2e73575e69cf8b86034da6db0fcc4" args="()" -->
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class Iterator, class CharSet&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="classtextwolf_1_1TextScanner.html">textwolf::TextScanner</a>&lt; Iterator, CharSet &gt;::getcur </td>
-          <td>(</td>
-          <td class="paramname"></td>
-          <td>&nbsp;)&nbsp;</td>
-          <td><code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Fill the internal buffer with as many current character bytes needed for reading the ASCII representation. </p>
-
-</div>
-</div>
-<a class="anchor" id="ab18e833d8e155673e5e096b1ccbe0128"></a><!-- doxytag: member="textwolf::TextScanner::operator++" ref="ab18e833d8e155673e5e096b1ccbe0128" args="(int)" -->
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class Iterator, class CharSet&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classtextwolf_1_1TextScanner.html">TextScanner</a> <a class="el" href="classtextwolf_1_1TextScanner.html">textwolf::TextScanner</a>&lt; Iterator, CharSet &gt;::operator++ </td>
-          <td>(</td>
-          <td class="paramtype">int&nbsp;</td>
-          <td class="paramname"></td>
-          <td>&nbsp;)&nbsp;</td>
-          <td><code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Postincrement: Skip to the next character of the source. </p>
-<dl class="return"><dt><b>Returns:</b></dt><dd>*this </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="abab7abef27e2745c4464a793b518d896"></a><!-- doxytag: member="textwolf::TextScanner::operator++" ref="abab7abef27e2745c4464a793b518d896" args="()" -->
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class Iterator, class CharSet&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classtextwolf_1_1TextScanner.html">TextScanner</a>&amp; <a class="el" href="classtextwolf_1_1TextScanner.html">textwolf::TextScanner</a>&lt; Iterator, CharSet &gt;::operator++ </td>
-          <td>(</td>
-          <td class="paramname"></td>
-          <td>&nbsp;)&nbsp;</td>
-          <td><code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Preincrement: Skip to the next character of the source. </p>
-<dl class="return"><dt><b>Returns:</b></dt><dd>*this </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="ac0b6d4734280a45a14c3d93d068b248f"></a><!-- doxytag: member="textwolf::TextScanner::skip" ref="ac0b6d4734280a45a14c3d93d068b248f" args="()" -->
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class Iterator, class CharSet&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classtextwolf_1_1TextScanner.html">TextScanner</a>&amp; <a class="el" href="classtextwolf_1_1TextScanner.html">textwolf::TextScanner</a>&lt; Iterator, CharSet &gt;::skip </td>
-          <td>(</td>
-          <td class="paramname"></td>
-          <td>&nbsp;)&nbsp;</td>
-          <td><code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Skip to the next character of the source. </p>
-<dl class="return"><dt><b>Returns:</b></dt><dd>*this </dd></dl>
-
-</div>
-</div>
 <hr/><h2>Member Data Documentation</h2>
-<a class="anchor" id="a147278384372b6f39ca33c1143223c05"></a><!-- doxytag: member="textwolf::TextScanner::buf" ref="a147278384372b6f39ca33c1143223c05" args="[8]" -->
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class Iterator, class CharSet&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">char <a class="el" href="classtextwolf_1_1TextScanner.html">textwolf::TextScanner</a>&lt; Iterator, CharSet &gt;::<a class="el" href="classtextwolf_1_1TextScanner.html#a147278384372b6f39ca33c1143223c05">buf</a>[8]<code> [private]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>buffer for one character (the current character parsed) </p>
-
-</div>
-</div>
-<a class="anchor" id="a2ad8cb3b28bd48004301e8e0a934f60c"></a><!-- doxytag: member="textwolf::TextScanner::cur" ref="a2ad8cb3b28bd48004301e8e0a934f60c" args="" -->
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class Iterator, class CharSet&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">char <a class="el" href="classtextwolf_1_1TextScanner.html">textwolf::TextScanner</a>&lt; Iterator, CharSet &gt;::<a class="el" href="classtextwolf_1_1TextScanner.html#a2ad8cb3b28bd48004301e8e0a934f60c">cur</a><code> [private]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>ASCII character representation of the current character parsed. </p>
-
-</div>
-</div>
 <a class="anchor" id="a780474c0aef1c2e97014e6155dbeca89"></a><!-- doxytag: member="textwolf::TextScanner::input" ref="a780474c0aef1c2e97014e6155dbeca89" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -364,40 +121,6 @@ template&lt;class Iterator, class CharSet&gt; </div>
 <div class="memdoc">
 
 <p>source iterator </p>
-
-</div>
-</div>
-<a class="anchor" id="ad609d14da9b478fdf57e40f71ee1fecd"></a><!-- doxytag: member="textwolf::TextScanner::state" ref="ad609d14da9b478fdf57e40f71ee1fecd" args="" -->
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class Iterator, class CharSet&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">unsigned int <a class="el" href="classtextwolf_1_1TextScanner.html">textwolf::TextScanner</a>&lt; Iterator, CharSet &gt;::<a class="el" href="classtextwolf_1_1TextScanner.html#ad609d14da9b478fdf57e40f71ee1fecd">state</a><code> [private]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>current state of the text scanner </p>
-
-</div>
-</div>
-<a class="anchor" id="aa12ffdb7b5dc39f802dc9d73d93d7646"></a><!-- doxytag: member="textwolf::TextScanner::val" ref="aa12ffdb7b5dc39f802dc9d73d93d7646" args="" -->
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class Iterator, class CharSet&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="namespacetextwolf.html#a3eb8d6733d6737825026b2e41b8c3f9c">UChar</a> <a class="el" href="classtextwolf_1_1TextScanner.html">textwolf::TextScanner</a>&lt; Iterator, CharSet &gt;::<a class="el" href="classtextwolf_1_1TextScanner.html#aa12ffdb7b5dc39f802dc9d73d93d7646">val</a><code> [private]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Unicode character representation of the current character parsed. </p>
 
 </div>
 </div>
@@ -419,7 +142,7 @@ template&lt;class Iterator, class CharSet&gt; </div>
 </iframe>
 </div>
 
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Sat Jun 11 12:31:48 2011 for textwolf by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Sat Jun 11 12:48:06 2011 for textwolf by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>
