@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
-<title>textwolf: textwolf::throws_exception Struct Reference</title>
+<title>textwolf: textwolf::throws_exception Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javaScript" src="search/search.js"></script>
@@ -18,6 +18,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="tabs">
     <ul>
       <li><a href="index.html"><span>Main&nbsp;Page</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
@@ -48,7 +49,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
 </div>
 <div class="contents">
-<h1>textwolf::throws_exception Struct Reference</h1><!-- doxytag: class="textwolf::throws_exception" -->
+<h1>textwolf::throws_exception Class Reference</h1><!-- doxytag: class="textwolf::throws_exception" -->
+<p>Base class for structures that can throw exceptions for non recoverable errors in the automata definition.  
+<a href="#_details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="textwolf_8hpp_source.html">textwolf.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for textwolf::throws_exception:</div>
@@ -66,7 +70,7 @@ Inheritance diagram for textwolf::throws_exception:</div>
  </div>
 </div>
 
-<p><a href="structtextwolf_1_1throws__exception-members.html">List of all members.</a></p>
+<p><a href="classtextwolf_1_1throws__exception-members.html">List of all members.</a></p>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr><td colspan="2"><h2>Public Types</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1throws__exception.html#aa2ca687050bf21caa57936fe400f59f0">Cause</a> { <br/>
@@ -84,7 +88,11 @@ Inheritance diagram for textwolf::throws_exception:</div>
 <a class="el" href="structtextwolf_1_1throws__exception.html#aa2ca687050bf21caa57936fe400f59f0ab1017be3f76b45387df09090d8e27ed5">NotAllowedOperation</a>
 <br/>
  }</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight"><p>Enumeration of error cases. </p>
+ <a href="structtextwolf_1_1throws__exception.html#aa2ca687050bf21caa57936fe400f59f0">More...</a><br/></td></tr>
 </table>
+<hr/><a name="_details"></a><h2>Detailed Description</h2>
+<p>Base class for structures that can throw exceptions for non recoverable errors in the automata definition. </p>
 <hr/><h2>Member Enumeration Documentation</h2>
 <a class="anchor" id="aa2ca687050bf21caa57936fe400f59f0"></a><!-- doxytag: member="textwolf::throws_exception::Cause" ref="aa2ca687050bf21caa57936fe400f59f0" args="" -->
 <div class="memitem">
@@ -96,26 +104,38 @@ Inheritance diagram for textwolf::throws_exception:</div>
       </table>
 </div>
 <div class="memdoc">
+
+<p>Enumeration of error cases. </p>
 <dl><dt><b>Enumerator: </b></dt><dd><table border="0" cellspacing="2" cellpadding="0">
 <tr><td valign="top"><em><a class="anchor" id="aa2ca687050bf21caa57936fe400f59f0a7da6bf2f451b1cdd0c9394af0a8bd7cf"></a><!-- doxytag: member="Unknown" ref="aa2ca687050bf21caa57936fe400f59f0a7da6bf2f451b1cdd0c9394af0a8bd7cf" args="" -->Unknown</em>&nbsp;</td><td>
+<p>uknown error </p>
 </td></tr>
 <tr><td valign="top"><em><a class="anchor" id="aa2ca687050bf21caa57936fe400f59f0a6b53f4ee17ef29219bfe9f39aa88ffa0"></a><!-- doxytag: member="DimOutOfRange" ref="aa2ca687050bf21caa57936fe400f59f0a6b53f4ee17ef29219bfe9f39aa88ffa0" args="" -->DimOutOfRange</em>&nbsp;</td><td>
+<p>memory reserved for statically allocated table or memory block is too small. Increase the size of memory block passed to the XML path select automaton. Usage error ! </p>
 </td></tr>
 <tr><td valign="top"><em><a class="anchor" id="aa2ca687050bf21caa57936fe400f59f0a349c2185d387d7c45abe47aca0bcdea8"></a><!-- doxytag: member="StateNumbersNotAscending" ref="aa2ca687050bf21caa57936fe400f59f0a349c2185d387d7c45abe47aca0bcdea8" args="" -->StateNumbersNotAscending</em>&nbsp;</td><td>
+<p>XML scanner automaton definition check failed. Labels of states must be equal to their indices. Internal textwold error ! </p>
 </td></tr>
 <tr><td valign="top"><em><a class="anchor" id="aa2ca687050bf21caa57936fe400f59f0a130ced6f430945b2f4b54bff316db077"></a><!-- doxytag: member="InvalidParam" ref="aa2ca687050bf21caa57936fe400f59f0a130ced6f430945b2f4b54bff316db077" args="" -->InvalidParam</em>&nbsp;</td><td>
+<p>parameter check in automaton definition failed. Internal textwold error ! </p>
 </td></tr>
 <tr><td valign="top"><em><a class="anchor" id="aa2ca687050bf21caa57936fe400f59f0a57912bf55209910fd35e1ac83937c964"></a><!-- doxytag: member="InvalidState" ref="aa2ca687050bf21caa57936fe400f59f0a57912bf55209910fd35e1ac83937c964" args="" -->InvalidState</em>&nbsp;</td><td>
+<p>invalied state definition in automaton. Internal textwold error ! </p>
 </td></tr>
 <tr><td valign="top"><em><a class="anchor" id="aa2ca687050bf21caa57936fe400f59f0af51b9be90fdb3435412a3c551f699aa8"></a><!-- doxytag: member="IllegalParam" ref="aa2ca687050bf21caa57936fe400f59f0af51b9be90fdb3435412a3c551f699aa8" args="" -->IllegalParam</em>&nbsp;</td><td>
+<p>parameter check in automaton definition failed. Internal textwold error ! </p>
 </td></tr>
 <tr><td valign="top"><em><a class="anchor" id="aa2ca687050bf21caa57936fe400f59f0a1da96eb27d5013265b863eebbdf8f9b0"></a><!-- doxytag: member="IllegalAttributeName" ref="aa2ca687050bf21caa57936fe400f59f0a1da96eb27d5013265b863eebbdf8f9b0" args="" -->IllegalAttributeName</em>&nbsp;</td><td>
+<p>invalid string for a tag or attribute in the automaton definition. Usage error ! </p>
 </td></tr>
 <tr><td valign="top"><em><a class="anchor" id="aa2ca687050bf21caa57936fe400f59f0ad473be4c50602dc67e3be6d629b212f1"></a><!-- doxytag: member="OutOfMem" ref="aa2ca687050bf21caa57936fe400f59f0ad473be4c50602dc67e3be6d629b212f1" args="" -->OutOfMem</em>&nbsp;</td><td>
+<p>out of memory in the automaton definition. System error (std::bad_alloc) ! </p>
 </td></tr>
 <tr><td valign="top"><em><a class="anchor" id="aa2ca687050bf21caa57936fe400f59f0ae4469d6f9cf53ee4331327e8a44f4196"></a><!-- doxytag: member="ArrayBoundsReadWrite" ref="aa2ca687050bf21caa57936fe400f59f0ae4469d6f9cf53ee4331327e8a44f4196" args="" -->ArrayBoundsReadWrite</em>&nbsp;</td><td>
+<p>invalid array access. Internal textwold error ! </p>
 </td></tr>
 <tr><td valign="top"><em><a class="anchor" id="aa2ca687050bf21caa57936fe400f59f0ab1017be3f76b45387df09090d8e27ed5"></a><!-- doxytag: member="NotAllowedOperation" ref="aa2ca687050bf21caa57936fe400f59f0ab1017be3f76b45387df09090d8e27ed5" args="" -->NotAllowedOperation</em>&nbsp;</td><td>
+<p>defining an operation in an automaton definition that is not allowed there. Usage error ! </p>
 </td></tr>
 </table>
 </dd>
@@ -123,7 +143,7 @@ Inheritance diagram for textwolf::throws_exception:</div>
 
 </div>
 </div>
-<hr/>The documentation for this struct was generated from the following file:<ul>
+<hr/>The documentation for this class was generated from the following file:<ul>
 <li>textwolf/include/<a class="el" href="textwolf_8hpp_source.html">textwolf.hpp</a></li>
 </ul>
 </div>
@@ -141,7 +161,7 @@ Inheritance diagram for textwolf::throws_exception:</div>
 </iframe>
 </div>
 
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Fri Jun 10 00:05:39 2011 for textwolf by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Sat Jun 11 12:31:47 2011 for textwolf by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

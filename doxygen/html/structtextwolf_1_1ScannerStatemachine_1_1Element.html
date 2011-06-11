@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
-<title>textwolf: textwolf::ScannerStatemachine::Element Struct Reference</title>
+<title>textwolf: textwolf::ScannerStatemachine::Element Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javaScript" src="search/search.js"></script>
@@ -18,6 +18,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="tabs">
     <ul>
       <li><a href="index.html"><span>Main&nbsp;Page</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
@@ -48,22 +49,32 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
 </div>
 <div class="contents">
-<h1>textwolf::ScannerStatemachine::Element Struct Reference</h1><!-- doxytag: class="textwolf::ScannerStatemachine::Element" -->
+<h1>textwolf::ScannerStatemachine::Element Class Reference</h1><!-- doxytag: class="textwolf::ScannerStatemachine::Element" -->
+<p>One state in the state machine.  
+<a href="#_details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="textwolf_8hpp_source.html">textwolf.hpp</a>&gt;</code></p>
 
-<p><a href="structtextwolf_1_1ScannerStatemachine_1_1Element-members.html">List of all members.</a></p>
+<p><a href="classtextwolf_1_1ScannerStatemachine_1_1Element-members.html">List of all members.</a></p>
 <table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Classes</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1ScannerStatemachine_1_1Element_1_1Action.html">Action</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Definition of action fired by the state machine.  <a href="structtextwolf_1_1ScannerStatemachine_1_1Element_1_1Action.html#_details">More...</a><br/></td></tr>
 <tr><td colspan="2"><h2>Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1ScannerStatemachine_1_1Element.html#abb74a3321654798452a22582f760092e">Element</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Constructor.  <a href="#abb74a3321654798452a22582f760092e"></a><br/></td></tr>
 <tr><td colspan="2"><h2>Public Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1ScannerStatemachine_1_1Element.html#a9ff96e6ea03b5e1ad0695339926e0f9d">fallbackState</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">state transition if the event does not match (it belongs to the next state = fallbackState)  <a href="#a9ff96e6ea03b5e1ad0695339926e0f9d"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1ScannerStatemachine_1_1Element.html#a122cbb1073604605c3d37169cbfce07a">missError</a></td></tr>
-<tr><td class="memItemLeft" >struct {</td></tr>
-<tr><td class="memItemLeft" >&nbsp;&nbsp;&nbsp;int&nbsp;&nbsp;&nbsp;<a class="el" href="structtextwolf_1_1ScannerStatemachine_1_1Element.html#a4465c013c16a102a7abbfb2cd8acf9b6">op</a></td></tr>
-<tr><td class="memItemLeft" >&nbsp;&nbsp;&nbsp;int&nbsp;&nbsp;&nbsp;<a class="el" href="structtextwolf_1_1ScannerStatemachine_1_1Element.html#ac40d0e976f2e808039b0dff00bdf0d5e">arg</a></td></tr>
-<tr><td class="memItemLeft" valign="top">}&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1ScannerStatemachine_1_1Element.html#a0cae2a6c2774d2f8682c14ee48d08cef">action</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">error code in case of an event that does not match and there is no fallback  <a href="#a122cbb1073604605c3d37169cbfce07a"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structtextwolf_1_1ScannerStatemachine_1_1Element_1_1Action.html">Action</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1ScannerStatemachine_1_1Element.html#a8495c95a6764d2cd6586cee0aca1ee71">action</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">action executed after entering this state  <a href="#a8495c95a6764d2cd6586cee0aca1ee71"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">char&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1ScannerStatemachine_1_1Element.html#a654ceb922a0b26da0c727ba923f38c7f">next</a> [NofControlCharacter]</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">follow state fired by an event (control character type parsed)  <a href="#a654ceb922a0b26da0c727ba923f38c7f"></a><br/></td></tr>
 </table>
+<hr/><a name="_details"></a><h2>Detailed Description</h2>
+<p>One state in the state machine. </p>
 <hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="abb74a3321654798452a22582f760092e"></a><!-- doxytag: member="textwolf::ScannerStatemachine::Element::Element" ref="abb74a3321654798452a22582f760092e" args="()" -->
 <div class="memitem">
@@ -80,32 +91,23 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="memdoc">
 
+<p>Constructor. </p>
+
 </div>
 </div>
 <hr/><h2>Member Data Documentation</h2>
-<a class="anchor" id="a0cae2a6c2774d2f8682c14ee48d08cef"></a><!-- doxytag: member="textwolf::ScannerStatemachine::Element::action" ref="a0cae2a6c2774d2f8682c14ee48d08cef" args="" -->
+<a class="anchor" id="a8495c95a6764d2cd6586cee0aca1ee71"></a><!-- doxytag: member="textwolf::ScannerStatemachine::Element::action" ref="a8495c95a6764d2cd6586cee0aca1ee71" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">struct { ... }   <a class="el" href="structtextwolf_1_1ScannerStatemachine_1_1Element.html#a0cae2a6c2774d2f8682c14ee48d08cef">textwolf::ScannerStatemachine::Element::action</a></td>
+          <td class="memname"><a class="el" href="structtextwolf_1_1ScannerStatemachine_1_1Element_1_1Action.html">Action</a> <a class="el" href="structtextwolf_1_1ScannerStatemachine_1_1Element.html#a8495c95a6764d2cd6586cee0aca1ee71">textwolf::ScannerStatemachine::Element::action</a></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
-</div>
-</div>
-<a class="anchor" id="ac40d0e976f2e808039b0dff00bdf0d5e"></a><!-- doxytag: member="textwolf::ScannerStatemachine::Element::arg" ref="ac40d0e976f2e808039b0dff00bdf0d5e" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int <a class="el" href="structtextwolf_1_1ScannerStatemachine_1_1Element.html#ac40d0e976f2e808039b0dff00bdf0d5e">textwolf::ScannerStatemachine::Element::arg</a></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
+<p>action executed after entering this state </p>
 
 </div>
 </div>
@@ -120,6 +122,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="memdoc">
 
+<p>state transition if the event does not match (it belongs to the next state = fallbackState) </p>
+
 </div>
 </div>
 <a class="anchor" id="a122cbb1073604605c3d37169cbfce07a"></a><!-- doxytag: member="textwolf::ScannerStatemachine::Element::missError" ref="a122cbb1073604605c3d37169cbfce07a" args="" -->
@@ -132,6 +136,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       </table>
 </div>
 <div class="memdoc">
+
+<p>error code in case of an event that does not match and there is no fallback </p>
 
 </div>
 </div>
@@ -146,22 +152,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="memdoc">
 
-</div>
-</div>
-<a class="anchor" id="a4465c013c16a102a7abbfb2cd8acf9b6"></a><!-- doxytag: member="textwolf::ScannerStatemachine::Element::op" ref="a4465c013c16a102a7abbfb2cd8acf9b6" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int <a class="el" href="structtextwolf_1_1ScannerStatemachine_1_1Element.html#a4465c013c16a102a7abbfb2cd8acf9b6">textwolf::ScannerStatemachine::Element::op</a></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
+<p>follow state fired by an event (control character type parsed) </p>
 
 </div>
 </div>
-<hr/>The documentation for this struct was generated from the following file:<ul>
+<hr/>The documentation for this class was generated from the following file:<ul>
 <li>textwolf/include/<a class="el" href="textwolf_8hpp_source.html">textwolf.hpp</a></li>
 </ul>
 </div>
@@ -179,7 +174,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Fri Jun 10 00:05:39 2011 for textwolf by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Sat Jun 11 12:31:48 2011 for textwolf by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

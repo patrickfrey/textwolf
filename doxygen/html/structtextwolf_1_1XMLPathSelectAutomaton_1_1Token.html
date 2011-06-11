@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
-<title>textwolf: textwolf::XMLPathSelectAutomaton&lt; CharSet_ &gt;::Token Struct Reference</title>
+<title>textwolf: textwolf::XMLPathSelectAutomaton&lt; CharSet_ &gt;::Token Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javaScript" src="search/search.js"></script>
@@ -18,6 +18,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="tabs">
     <ul>
       <li><a href="index.html"><span>Main&nbsp;Page</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
@@ -48,22 +49,32 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
 </div>
 <div class="contents">
-<h1>textwolf::XMLPathSelectAutomaton&lt; CharSet_ &gt;::Token Struct Reference</h1><!-- doxytag: class="textwolf::XMLPathSelectAutomaton::Token" -->
+<h1>textwolf::XMLPathSelectAutomaton&lt; CharSet_ &gt;::Token Class Reference</h1><!-- doxytag: class="textwolf::XMLPathSelectAutomaton::Token" -->
+<p>Active or passive but still valid token of the XML processing (this is a trigger waiting to match).  
+<a href="#_details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="textwolf_8hpp_source.html">textwolf.hpp</a>&gt;</code></p>
 
-<p><a href="structtextwolf_1_1XMLPathSelectAutomaton_1_1Token-members.html">List of all members.</a></p>
+<p><a href="classtextwolf_1_1XMLPathSelectAutomaton_1_1Token-members.html">List of all members.</a></p>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr><td colspan="2"><h2>Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1Token.html#a7a536fe50cfe35c6b3bc6ccef0a1fd2e">Token</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Constructor.  <a href="#a7a536fe50cfe35c6b3bc6ccef0a1fd2e"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1Token.html#a8be8e8b900f01a245b78a29a41a68f38">Token</a> (const <a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1Token.html">Token</a> &amp;orig)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Copy constructor.  <a href="#a8be8e8b900f01a245b78a29a41a68f38"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1Token.html#a13ea6c136791dda7eb46729c3c524814">Token</a> (const <a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1State.html">State</a> &amp;state, int p_stateidx)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Constructor by value.  <a href="#a13ea6c136791dda7eb46729c3c524814"></a><br/></td></tr>
 <tr><td colspan="2"><h2>Public Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1Core.html">Core</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1Token.html#a93e2a6d96fbfb7f41c18b29d568a9670">core</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">core of the state  <a href="#a93e2a6d96fbfb7f41c18b29d568a9670"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1Token.html#ae110776d8c9381a05c76a62e99d8018f">stateidx</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">index into the automaton, poiting to the state  <a href="#ae110776d8c9381a05c76a62e99d8018f"></a><br/></td></tr>
 </table>
+<hr/><a name="_details"></a><h2>Detailed Description</h2>
 <h3>template&lt;class CharSet_ = charset::UTF8&gt;<br/>
- struct textwolf::XMLPathSelectAutomaton&lt; CharSet_ &gt;::Token</h3>
+ class textwolf::XMLPathSelectAutomaton&lt; CharSet_ &gt;::Token</h3>
 
+<p>Active or passive but still valid token of the XML processing (this is a trigger waiting to match). </p>
 <hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a7a536fe50cfe35c6b3bc6ccef0a1fd2e"></a><!-- doxytag: member="textwolf::XMLPathSelectAutomaton::Token::Token" ref="a7a536fe50cfe35c6b3bc6ccef0a1fd2e" args="()" -->
 <div class="memitem">
@@ -81,6 +92,8 @@ template&lt;class CharSet_  = charset::UTF8&gt; </div>
       </table>
 </div>
 <div class="memdoc">
+
+<p>Constructor. </p>
 
 </div>
 </div>
@@ -101,6 +114,8 @@ template&lt;class CharSet_  = charset::UTF8&gt; </div>
       </table>
 </div>
 <div class="memdoc">
+
+<p>Copy constructor. </p>
 
 </div>
 </div>
@@ -131,6 +146,15 @@ template&lt;class CharSet_  = charset::UTF8&gt; </div>
 </div>
 <div class="memdoc">
 
+<p>Constructor by value. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>state</em>&nbsp;</td><td>state that generated this token </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>p_stateidx</em>&nbsp;</td><td>index of the state that generated this token </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <hr/><h2>Member Data Documentation</h2>
@@ -147,6 +171,8 @@ template&lt;class CharSet_  = charset::UTF8&gt; </div>
 </div>
 <div class="memdoc">
 
+<p>core of the state </p>
+
 </div>
 </div>
 <a class="anchor" id="ae110776d8c9381a05c76a62e99d8018f"></a><!-- doxytag: member="textwolf::XMLPathSelectAutomaton::Token::stateidx" ref="ae110776d8c9381a05c76a62e99d8018f" args="" -->
@@ -162,9 +188,11 @@ template&lt;class CharSet_  = charset::UTF8&gt; </div>
 </div>
 <div class="memdoc">
 
+<p>index into the automaton, poiting to the state </p>
+
 </div>
 </div>
-<hr/>The documentation for this struct was generated from the following file:<ul>
+<hr/>The documentation for this class was generated from the following file:<ul>
 <li>textwolf/include/<a class="el" href="textwolf_8hpp_source.html">textwolf.hpp</a></li>
 </ul>
 </div>
@@ -182,7 +210,7 @@ template&lt;class CharSet_  = charset::UTF8&gt; </div>
 </iframe>
 </div>
 
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Fri Jun 10 00:05:40 2011 for textwolf by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Sat Jun 11 12:31:48 2011 for textwolf by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

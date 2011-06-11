@@ -18,6 +18,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="tabs">
     <ul>
       <li><a href="index.html"><span>Main&nbsp;Page</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
@@ -49,6 +50,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="contents">
 <h1>textwolf::XMLScannerBase Class Reference</h1><!-- doxytag: class="textwolf::XMLScannerBase" -->
+<p>XML scanner base class for things common for all XML scanners.  
+<a href="#_details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="textwolf_8hpp_source.html">textwolf.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for textwolf::XMLScannerBase:</div>
@@ -64,7 +68,8 @@ Inheritance diagram for textwolf::XMLScannerBase:</div>
 <p><a href="classtextwolf_1_1XMLScannerBase-members.html">List of all members.</a></p>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr><td colspan="2"><h2>Classes</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1XMLScannerBase_1_1Statemachine.html">Statemachine</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1XMLScannerBase_1_1Statemachine.html">Statemachine</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">XML scanner state machine implementation.  <a href="structtextwolf_1_1XMLScannerBase_1_1Statemachine.html#_details">More...</a><br/></td></tr>
 <tr><td colspan="2"><h2>Public Types</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLScannerBase.html#aae4f0cdb7e16aca5fdee271fa60e1329">ElementType</a> { <br/>
 &nbsp;&nbsp;<a class="el" href="classtextwolf_1_1XMLScannerBase.html#aae4f0cdb7e16aca5fdee271fa60e1329afcd280f8a20da3408a1efcf7ab770e62">None</a>, 
@@ -83,37 +88,33 @@ Inheritance diagram for textwolf::XMLScannerBase:</div>
 <a class="el" href="classtextwolf_1_1XMLScannerBase.html#aae4f0cdb7e16aca5fdee271fa60e1329ad5a3d0d15f37c3483fdc5321f5baf2b7">Exit</a>
 <br/>
  }</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight"><p>Enumeration of XML element types returned by an XML scanner. </p>
+ <a href="classtextwolf_1_1XMLScannerBase.html#aae4f0cdb7e16aca5fdee271fa60e1329">More...</a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom">{ <a class="el" href="classtextwolf_1_1XMLScannerBase.html#a7f30f722ffad9c6fe1379171699cff43a413de836c470ed43a57a5403f4dfd33f">NofElementTypes</a> = Exit+1
  }</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLScannerBase.html#ae26e6510c822ee35e041ab2dab70e78b">Error</a> { <br/>
 &nbsp;&nbsp;<a class="el" href="classtextwolf_1_1XMLScannerBase.html#ae26e6510c822ee35e041ab2dab70e78ba13c32869c2a8c9039545270d1ef1c8f2">Ok</a>, 
-<a class="el" href="classtextwolf_1_1XMLScannerBase.html#ae26e6510c822ee35e041ab2dab70e78ba5465ea61cdc0a77be30dee9f0ffa24f4">ErrMemblockTooSmall</a>, 
 <a class="el" href="classtextwolf_1_1XMLScannerBase.html#ae26e6510c822ee35e041ab2dab70e78ba2f96fcdc63fa31f4fa128406b2e1056a">ErrExpectedOpenTag</a>, 
-<a class="el" href="classtextwolf_1_1XMLScannerBase.html#ae26e6510c822ee35e041ab2dab70e78bac7362e82b1e40cfed7054cd949784055">ErrUnexpectedState</a>, 
-<br/>
-&nbsp;&nbsp;<a class="el" href="classtextwolf_1_1XMLScannerBase.html#ae26e6510c822ee35e041ab2dab70e78badecb7183a28538a158f99e8c87f2f7c6">ErrExpectedXMLTag</a>, 
-<a class="el" href="classtextwolf_1_1XMLScannerBase.html#ae26e6510c822ee35e041ab2dab70e78ba94151002f6053535d3d249e61ef3f3bd">ErrSyntaxString</a>, 
+<a class="el" href="classtextwolf_1_1XMLScannerBase.html#ae26e6510c822ee35e041ab2dab70e78badecb7183a28538a158f99e8c87f2f7c6">ErrExpectedXMLTag</a>, 
 <a class="el" href="classtextwolf_1_1XMLScannerBase.html#ae26e6510c822ee35e041ab2dab70e78baaba73f646d7a3b6a5428d2ffa35c7956">ErrUnexpectedEndOfText</a>, 
-<a class="el" href="classtextwolf_1_1XMLScannerBase.html#ae26e6510c822ee35e041ab2dab70e78ba0508d0db399a1284b89d31d3f8781088">ErrOutputBufferTooSmall</a>, 
 <br/>
-&nbsp;&nbsp;<a class="el" href="classtextwolf_1_1XMLScannerBase.html#ae26e6510c822ee35e041ab2dab70e78ba457ff1c0d02518e32d4e1a3da4758918">ErrSyntaxToken</a>, 
+&nbsp;&nbsp;<a class="el" href="classtextwolf_1_1XMLScannerBase.html#ae26e6510c822ee35e041ab2dab70e78ba0508d0db399a1284b89d31d3f8781088">ErrOutputBufferTooSmall</a>, 
+<a class="el" href="classtextwolf_1_1XMLScannerBase.html#ae26e6510c822ee35e041ab2dab70e78ba457ff1c0d02518e32d4e1a3da4758918">ErrSyntaxToken</a>, 
 <a class="el" href="classtextwolf_1_1XMLScannerBase.html#ae26e6510c822ee35e041ab2dab70e78ba56c44481ec43cb1c867d0a76560ab411">ErrStringNotTerminated</a>, 
 <a class="el" href="classtextwolf_1_1XMLScannerBase.html#ae26e6510c822ee35e041ab2dab70e78ba670019961ef1e15e3623d3f5dc64a84c">ErrEntityEncodesCntrlChar</a>, 
-<a class="el" href="classtextwolf_1_1XMLScannerBase.html#ae26e6510c822ee35e041ab2dab70e78ba33b0372fc22c9a824547dcb2ad0387e3">ErrExpectedIdentifier</a>, 
 <br/>
-&nbsp;&nbsp;<a class="el" href="classtextwolf_1_1XMLScannerBase.html#ae26e6510c822ee35e041ab2dab70e78ba1497ef9de465aec1f579fe8879222fd5">ErrExpectedToken</a>, 
-<a class="el" href="classtextwolf_1_1XMLScannerBase.html#ae26e6510c822ee35e041ab2dab70e78ba80ae9361aa81f3ecce19acd0690e4aad">ErrUndefinedCharacterEntity</a>, 
-<a class="el" href="classtextwolf_1_1XMLScannerBase.html#ae26e6510c822ee35e041ab2dab70e78baade0e57cb78fb0767b5e9bd4ee0c7ce8">ErrInternalErrorSTM</a>, 
+&nbsp;&nbsp;<a class="el" href="classtextwolf_1_1XMLScannerBase.html#ae26e6510c822ee35e041ab2dab70e78ba80ae9361aa81f3ecce19acd0690e4aad">ErrUndefinedCharacterEntity</a>, 
 <a class="el" href="classtextwolf_1_1XMLScannerBase.html#ae26e6510c822ee35e041ab2dab70e78ba32a04f20fdf8548c67d3122b897abf82">ErrExpectedTagEnd</a>, 
-<br/>
-&nbsp;&nbsp;<a class="el" href="classtextwolf_1_1XMLScannerBase.html#ae26e6510c822ee35e041ab2dab70e78bac1d73c6915b7be8bf430abe7419d58a5">ErrExpectedEqual</a>, 
+<a class="el" href="classtextwolf_1_1XMLScannerBase.html#ae26e6510c822ee35e041ab2dab70e78bac1d73c6915b7be8bf430abe7419d58a5">ErrExpectedEqual</a>, 
 <a class="el" href="classtextwolf_1_1XMLScannerBase.html#ae26e6510c822ee35e041ab2dab70e78ba78fcb73365040660daebdd808a0ea5ed">ErrExpectedTagAttribute</a>, 
-<a class="el" href="classtextwolf_1_1XMLScannerBase.html#ae26e6510c822ee35e041ab2dab70e78ba812e6afd4a0394115fec19d05d5d6985">ErrExpectedCDATATag</a>, 
-<a class="el" href="classtextwolf_1_1XMLScannerBase.html#ae26e6510c822ee35e041ab2dab70e78ba12d0da8dca8d95268c6038211489014d">ErrInternal</a>, 
 <br/>
-&nbsp;&nbsp;<a class="el" href="classtextwolf_1_1XMLScannerBase.html#ae26e6510c822ee35e041ab2dab70e78ba52fec157b20cde2c69433fc3b705bafa">ErrUnexpectedEndOfInput</a>
+&nbsp;&nbsp;<a class="el" href="classtextwolf_1_1XMLScannerBase.html#ae26e6510c822ee35e041ab2dab70e78ba812e6afd4a0394115fec19d05d5d6985">ErrExpectedCDATATag</a>, 
+<a class="el" href="classtextwolf_1_1XMLScannerBase.html#ae26e6510c822ee35e041ab2dab70e78ba12d0da8dca8d95268c6038211489014d">ErrInternal</a>, 
+<a class="el" href="classtextwolf_1_1XMLScannerBase.html#ae26e6510c822ee35e041ab2dab70e78ba52fec157b20cde2c69433fc3b705bafa">ErrUnexpectedEndOfInput</a>
 <br/>
  }</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight"><p>Enumeration of XML scanner error codes. </p>
+ <a href="classtextwolf_1_1XMLScannerBase.html#ae26e6510c822ee35e041ab2dab70e78b">More...</a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLScannerBase.html#acf32f993fc533aa138e44a9b1afc8d1c">STMState</a> { <br/>
 &nbsp;&nbsp;<a class="el" href="classtextwolf_1_1XMLScannerBase.html#acf32f993fc533aa138e44a9b1afc8d1ca1f6a0615ee1bf6ea32da75f43cd3377d">START</a>, 
 <a class="el" href="classtextwolf_1_1XMLScannerBase.html#acf32f993fc533aa138e44a9b1afc8d1cad513463fbc4241fc62618a00f74b992b">STARTTAG</a>, 
@@ -159,6 +160,8 @@ Inheritance diagram for textwolf::XMLScannerBase:</div>
 <a class="el" href="classtextwolf_1_1XMLScannerBase.html#acf32f993fc533aa138e44a9b1afc8d1ca61928f501bfa1739fb10e5f4af757e3b">EXIT</a>
 <br/>
  }</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight"><p>Enumeration of states of the XML scanner state machine. </p>
+ <a href="classtextwolf_1_1XMLScannerBase.html#acf32f993fc533aa138e44a9b1afc8d1c">More...</a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLScannerBase.html#a9e098fe6f4a84b25db51fcfe61f4cbd0">STMAction</a> { <br/>
 &nbsp;&nbsp;<a class="el" href="classtextwolf_1_1XMLScannerBase.html#a9e098fe6f4a84b25db51fcfe61f4cbd0a2a7498be29d92a479557c0830bdde030">Return</a>, 
 <a class="el" href="classtextwolf_1_1XMLScannerBase.html#a9e098fe6f4a84b25db51fcfe61f4cbd0ae082ce809e6263fbc14edbff8efa4530">ReturnToken</a>, 
@@ -173,14 +176,20 @@ Inheritance diagram for textwolf::XMLScannerBase:</div>
 &nbsp;&nbsp;<a class="el" href="classtextwolf_1_1XMLScannerBase.html#a9e098fe6f4a84b25db51fcfe61f4cbd0a3a1ebd575361be30218f32daa1a9a31f">NofSTMActions</a> =  8
 <br/>
  }</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight"><p>Enumeration of actions in the XML scanner state machine. </p>
+ <a href="classtextwolf_1_1XMLScannerBase.html#a9e098fe6f4a84b25db51fcfe61f4cbd0">More...</a><br/></td></tr>
 <tr><td colspan="2"><h2>Static Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static const char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLScannerBase.html#a29eec38bb732d4cc1e759920aec82d7d">getElementTypeName</a> (<a class="el" href="classtextwolf_1_1XMLScannerBase.html#aae4f0cdb7e16aca5fdee271fa60e1329">ElementType</a> ee)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Get the XML element type as string.  <a href="#a29eec38bb732d4cc1e759920aec82d7d"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static const char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLScannerBase.html#a583151f1bc3a1b03e0d616618917c866">getErrorString</a> (<a class="el" href="classtextwolf_1_1XMLScannerBase.html#ae26e6510c822ee35e041ab2dab70e78b">Error</a> ee)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Get the error code as string.  <a href="#a583151f1bc3a1b03e0d616618917c866"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static const char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLScannerBase.html#aade9b82f45961bb5a5765f823a47a343">getStateString</a> (<a class="el" href="classtextwolf_1_1XMLScannerBase.html#acf32f993fc533aa138e44a9b1afc8d1c">STMState</a> s)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Get the scanner state machine state as string.  <a href="#aade9b82f45961bb5a5765f823a47a343"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static const char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLScannerBase.html#aa0bd625fc24362b945dcd6a167eabe7b">getActionString</a> (<a class="el" href="classtextwolf_1_1XMLScannerBase.html#a9e098fe6f4a84b25db51fcfe61f4cbd0">STMAction</a> a)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Get the scanner state machine action as string.  <a href="#aa0bd625fc24362b945dcd6a167eabe7b"></a><br/></td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
-<p>the template <a class="el" href="classtextwolf_1_1XMLScanner.html">XMLScanner</a> provides you the XML elements like tags, attributes, etc. with an input iterator with <a class="el" href="classtextwolf_1_1XMLScannerBase.html">XMLScannerBase</a> we define the common elements </p>
+<p>XML scanner base class for things common for all XML scanners. </p>
 <hr/><h2>Member Enumeration Documentation</h2>
 <a class="anchor" id="a7f30f722ffad9c6fe1379171699cff43"></a><!-- doxytag: member="textwolf::XMLScannerBase::@8" ref="a7f30f722ffad9c6fe1379171699cff43" args="" -->
 <div class="memitem">
@@ -194,6 +203,7 @@ Inheritance diagram for textwolf::XMLScannerBase:</div>
 <div class="memdoc">
 <dl><dt><b>Enumerator: </b></dt><dd><table border="0" cellspacing="2" cellpadding="0">
 <tr><td valign="top"><em><a class="anchor" id="a7f30f722ffad9c6fe1379171699cff43a413de836c470ed43a57a5403f4dfd33f"></a><!-- doxytag: member="NofElementTypes" ref="a7f30f722ffad9c6fe1379171699cff43a413de836c470ed43a57a5403f4dfd33f" args="" -->NofElementTypes</em>&nbsp;</td><td>
+<p>number of XML element types defined </p>
 </td></tr>
 </table>
 </dd>
@@ -211,30 +221,44 @@ Inheritance diagram for textwolf::XMLScannerBase:</div>
       </table>
 </div>
 <div class="memdoc">
+
+<p>Enumeration of XML element types returned by an XML scanner. </p>
 <dl><dt><b>Enumerator: </b></dt><dd><table border="0" cellspacing="2" cellpadding="0">
 <tr><td valign="top"><em><a class="anchor" id="aae4f0cdb7e16aca5fdee271fa60e1329afcd280f8a20da3408a1efcf7ab770e62"></a><!-- doxytag: member="None" ref="aae4f0cdb7e16aca5fdee271fa60e1329afcd280f8a20da3408a1efcf7ab770e62" args="" -->None</em>&nbsp;</td><td>
+<p>empty (NULL) </p>
 </td></tr>
 <tr><td valign="top"><em><a class="anchor" id="aae4f0cdb7e16aca5fdee271fa60e1329add5d6b79ae0dd25f900d4a3bc4463152"></a><!-- doxytag: member="ErrorOccurred" ref="aae4f0cdb7e16aca5fdee271fa60e1329add5d6b79ae0dd25f900d4a3bc4463152" args="" -->ErrorOccurred</em>&nbsp;</td><td>
+<p>XML scanning error error reported. </p>
 </td></tr>
 <tr><td valign="top"><em><a class="anchor" id="aae4f0cdb7e16aca5fdee271fa60e1329a0b53b9807847051855a3b134369652e5"></a><!-- doxytag: member="HeaderAttribName" ref="aae4f0cdb7e16aca5fdee271fa60e1329a0b53b9807847051855a3b134369652e5" args="" -->HeaderAttribName</em>&nbsp;</td><td>
+<p>tag attribute name in the XML header </p>
 </td></tr>
 <tr><td valign="top"><em><a class="anchor" id="aae4f0cdb7e16aca5fdee271fa60e1329a3eef44fa250a37b6452c5083becfceed"></a><!-- doxytag: member="HeaderAttribValue" ref="aae4f0cdb7e16aca5fdee271fa60e1329a3eef44fa250a37b6452c5083becfceed" args="" -->HeaderAttribValue</em>&nbsp;</td><td>
+<p>tag attribute value in the XML header </p>
 </td></tr>
 <tr><td valign="top"><em><a class="anchor" id="aae4f0cdb7e16aca5fdee271fa60e1329a733910968445c2d769fb97caf4f2b7bd"></a><!-- doxytag: member="HeaderEnd" ref="aae4f0cdb7e16aca5fdee271fa60e1329a733910968445c2d769fb97caf4f2b7bd" args="" -->HeaderEnd</em>&nbsp;</td><td>
+<p>end of XML header event (after parsing '?&gt;') </p>
 </td></tr>
 <tr><td valign="top"><em><a class="anchor" id="aae4f0cdb7e16aca5fdee271fa60e1329a6234cd840f34f792a8f909478a8b32ac"></a><!-- doxytag: member="TagAttribName" ref="aae4f0cdb7e16aca5fdee271fa60e1329a6234cd840f34f792a8f909478a8b32ac" args="" -->TagAttribName</em>&nbsp;</td><td>
+<p>tag attribute name (e.g. "id" in &lt;person id='5'&gt; </p>
 </td></tr>
 <tr><td valign="top"><em><a class="anchor" id="aae4f0cdb7e16aca5fdee271fa60e1329aef5004fd6e4b0d9d2a5a9755419de9b6"></a><!-- doxytag: member="TagAttribValue" ref="aae4f0cdb7e16aca5fdee271fa60e1329aef5004fd6e4b0d9d2a5a9755419de9b6" args="" -->TagAttribValue</em>&nbsp;</td><td>
+<p>tag attribute value (e.g. "5" in &lt;person id='5'&gt; </p>
 </td></tr>
 <tr><td valign="top"><em><a class="anchor" id="aae4f0cdb7e16aca5fdee271fa60e1329aa94cf1e86e5ba4b6db24b51681b15fb2"></a><!-- doxytag: member="OpenTag" ref="aae4f0cdb7e16aca5fdee271fa60e1329aa94cf1e86e5ba4b6db24b51681b15fb2" args="" -->OpenTag</em>&nbsp;</td><td>
+<p>open tag (e.g. "bla" for "&amp;lt;bla...") </p>
 </td></tr>
 <tr><td valign="top"><em><a class="anchor" id="aae4f0cdb7e16aca5fdee271fa60e1329aab57b42674c0f6ee8e92c3cf7c702cec"></a><!-- doxytag: member="CloseTag" ref="aae4f0cdb7e16aca5fdee271fa60e1329aab57b42674c0f6ee8e92c3cf7c702cec" args="" -->CloseTag</em>&nbsp;</td><td>
+<p>close tag (e.g. "bla" for "&amp;lt;/bla&amp;gt;") </p>
 </td></tr>
 <tr><td valign="top"><em><a class="anchor" id="aae4f0cdb7e16aca5fdee271fa60e1329a97df16f73186fd52ddcfc240189a72d7"></a><!-- doxytag: member="CloseTagIm" ref="aae4f0cdb7e16aca5fdee271fa60e1329a97df16f73186fd52ddcfc240189a72d7" args="" -->CloseTagIm</em>&nbsp;</td><td>
+<p>immediate close tag (e.g. "bla" for "&amp;lt;bla /&amp;gt;") </p>
 </td></tr>
 <tr><td valign="top"><em><a class="anchor" id="aae4f0cdb7e16aca5fdee271fa60e1329a63af29540f5188467ecb666899849957"></a><!-- doxytag: member="Content" ref="aae4f0cdb7e16aca5fdee271fa60e1329a63af29540f5188467ecb666899849957" args="" -->Content</em>&nbsp;</td><td>
+<p>content element string (separated by spaces or end of line) </p>
 </td></tr>
 <tr><td valign="top"><em><a class="anchor" id="aae4f0cdb7e16aca5fdee271fa60e1329ad5a3d0d15f37c3483fdc5321f5baf2b7"></a><!-- doxytag: member="Exit" ref="aae4f0cdb7e16aca5fdee271fa60e1329ad5a3d0d15f37c3483fdc5321f5baf2b7" args="" -->Exit</em>&nbsp;</td><td>
+<p>end of document </p>
 </td></tr>
 </table>
 </dd>
@@ -252,48 +276,53 @@ Inheritance diagram for textwolf::XMLScannerBase:</div>
       </table>
 </div>
 <div class="memdoc">
+
+<p>Enumeration of XML scanner error codes. </p>
 <dl><dt><b>Enumerator: </b></dt><dd><table border="0" cellspacing="2" cellpadding="0">
 <tr><td valign="top"><em><a class="anchor" id="ae26e6510c822ee35e041ab2dab70e78ba13c32869c2a8c9039545270d1ef1c8f2"></a><!-- doxytag: member="Ok" ref="ae26e6510c822ee35e041ab2dab70e78ba13c32869c2a8c9039545270d1ef1c8f2" args="" -->Ok</em>&nbsp;</td><td>
-</td></tr>
-<tr><td valign="top"><em><a class="anchor" id="ae26e6510c822ee35e041ab2dab70e78ba5465ea61cdc0a77be30dee9f0ffa24f4"></a><!-- doxytag: member="ErrMemblockTooSmall" ref="ae26e6510c822ee35e041ab2dab70e78ba5465ea61cdc0a77be30dee9f0ffa24f4" args="" -->ErrMemblockTooSmall</em>&nbsp;</td><td>
+<p>no error, everything is OK </p>
 </td></tr>
 <tr><td valign="top"><em><a class="anchor" id="ae26e6510c822ee35e041ab2dab70e78ba2f96fcdc63fa31f4fa128406b2e1056a"></a><!-- doxytag: member="ErrExpectedOpenTag" ref="ae26e6510c822ee35e041ab2dab70e78ba2f96fcdc63fa31f4fa128406b2e1056a" args="" -->ErrExpectedOpenTag</em>&nbsp;</td><td>
-</td></tr>
-<tr><td valign="top"><em><a class="anchor" id="ae26e6510c822ee35e041ab2dab70e78bac7362e82b1e40cfed7054cd949784055"></a><!-- doxytag: member="ErrUnexpectedState" ref="ae26e6510c822ee35e041ab2dab70e78bac7362e82b1e40cfed7054cd949784055" args="" -->ErrUnexpectedState</em>&nbsp;</td><td>
+<p>expected an open tag in this state </p>
 </td></tr>
 <tr><td valign="top"><em><a class="anchor" id="ae26e6510c822ee35e041ab2dab70e78badecb7183a28538a158f99e8c87f2f7c6"></a><!-- doxytag: member="ErrExpectedXMLTag" ref="ae26e6510c822ee35e041ab2dab70e78badecb7183a28538a158f99e8c87f2f7c6" args="" -->ErrExpectedXMLTag</em>&nbsp;</td><td>
-</td></tr>
-<tr><td valign="top"><em><a class="anchor" id="ae26e6510c822ee35e041ab2dab70e78ba94151002f6053535d3d249e61ef3f3bd"></a><!-- doxytag: member="ErrSyntaxString" ref="ae26e6510c822ee35e041ab2dab70e78ba94151002f6053535d3d249e61ef3f3bd" args="" -->ErrSyntaxString</em>&nbsp;</td><td>
+<p>expected an &lt;?xml tag in this state </p>
 </td></tr>
 <tr><td valign="top"><em><a class="anchor" id="ae26e6510c822ee35e041ab2dab70e78baaba73f646d7a3b6a5428d2ffa35c7956"></a><!-- doxytag: member="ErrUnexpectedEndOfText" ref="ae26e6510c822ee35e041ab2dab70e78baaba73f646d7a3b6a5428d2ffa35c7956" args="" -->ErrUnexpectedEndOfText</em>&nbsp;</td><td>
+<p>unexpected end of text in the middle of the XML definition </p>
 </td></tr>
 <tr><td valign="top"><em><a class="anchor" id="ae26e6510c822ee35e041ab2dab70e78ba0508d0db399a1284b89d31d3f8781088"></a><!-- doxytag: member="ErrOutputBufferTooSmall" ref="ae26e6510c822ee35e041ab2dab70e78ba0508d0db399a1284b89d31d3f8781088" args="" -->ErrOutputBufferTooSmall</em>&nbsp;</td><td>
+<p>scaned element in XML to big to fit in the buffer provided for it </p>
 </td></tr>
 <tr><td valign="top"><em><a class="anchor" id="ae26e6510c822ee35e041ab2dab70e78ba457ff1c0d02518e32d4e1a3da4758918"></a><!-- doxytag: member="ErrSyntaxToken" ref="ae26e6510c822ee35e041ab2dab70e78ba457ff1c0d02518e32d4e1a3da4758918" args="" -->ErrSyntaxToken</em>&nbsp;</td><td>
+<p>a specific string expected as token in XML but does not match </p>
 </td></tr>
 <tr><td valign="top"><em><a class="anchor" id="ae26e6510c822ee35e041ab2dab70e78ba56c44481ec43cb1c867d0a76560ab411"></a><!-- doxytag: member="ErrStringNotTerminated" ref="ae26e6510c822ee35e041ab2dab70e78ba56c44481ec43cb1c867d0a76560ab411" args="" -->ErrStringNotTerminated</em>&nbsp;</td><td>
+<p>single or double quoted string in XML not terminated on the same line </p>
 </td></tr>
 <tr><td valign="top"><em><a class="anchor" id="ae26e6510c822ee35e041ab2dab70e78ba670019961ef1e15e3623d3f5dc64a84c"></a><!-- doxytag: member="ErrEntityEncodesCntrlChar" ref="ae26e6510c822ee35e041ab2dab70e78ba670019961ef1e15e3623d3f5dc64a84c" args="" -->ErrEntityEncodesCntrlChar</em>&nbsp;</td><td>
-</td></tr>
-<tr><td valign="top"><em><a class="anchor" id="ae26e6510c822ee35e041ab2dab70e78ba33b0372fc22c9a824547dcb2ad0387e3"></a><!-- doxytag: member="ErrExpectedIdentifier" ref="ae26e6510c822ee35e041ab2dab70e78ba33b0372fc22c9a824547dcb2ad0387e3" args="" -->ErrExpectedIdentifier</em>&nbsp;</td><td>
-</td></tr>
-<tr><td valign="top"><em><a class="anchor" id="ae26e6510c822ee35e041ab2dab70e78ba1497ef9de465aec1f579fe8879222fd5"></a><!-- doxytag: member="ErrExpectedToken" ref="ae26e6510c822ee35e041ab2dab70e78ba1497ef9de465aec1f579fe8879222fd5" args="" -->ErrExpectedToken</em>&nbsp;</td><td>
+<p>control character &lt; 32 encoded as entity. This is rejected </p>
 </td></tr>
 <tr><td valign="top"><em><a class="anchor" id="ae26e6510c822ee35e041ab2dab70e78ba80ae9361aa81f3ecce19acd0690e4aad"></a><!-- doxytag: member="ErrUndefinedCharacterEntity" ref="ae26e6510c822ee35e041ab2dab70e78ba80ae9361aa81f3ecce19acd0690e4aad" args="" -->ErrUndefinedCharacterEntity</em>&nbsp;</td><td>
-</td></tr>
-<tr><td valign="top"><em><a class="anchor" id="ae26e6510c822ee35e041ab2dab70e78baade0e57cb78fb0767b5e9bd4ee0c7ce8"></a><!-- doxytag: member="ErrInternalErrorSTM" ref="ae26e6510c822ee35e041ab2dab70e78baade0e57cb78fb0767b5e9bd4ee0c7ce8" args="" -->ErrInternalErrorSTM</em>&nbsp;</td><td>
+<p>symbolic character entity is not defined in the entity map defined by the XML scanner caller </p>
 </td></tr>
 <tr><td valign="top"><em><a class="anchor" id="ae26e6510c822ee35e041ab2dab70e78ba32a04f20fdf8548c67d3122b897abf82"></a><!-- doxytag: member="ErrExpectedTagEnd" ref="ae26e6510c822ee35e041ab2dab70e78ba32a04f20fdf8548c67d3122b897abf82" args="" -->ErrExpectedTagEnd</em>&nbsp;</td><td>
+<p>expected end of tag </p>
 </td></tr>
 <tr><td valign="top"><em><a class="anchor" id="ae26e6510c822ee35e041ab2dab70e78bac1d73c6915b7be8bf430abe7419d58a5"></a><!-- doxytag: member="ErrExpectedEqual" ref="ae26e6510c822ee35e041ab2dab70e78bac1d73c6915b7be8bf430abe7419d58a5" args="" -->ErrExpectedEqual</em>&nbsp;</td><td>
+<p>expected equal in tag attribute definition </p>
 </td></tr>
 <tr><td valign="top"><em><a class="anchor" id="ae26e6510c822ee35e041ab2dab70e78ba78fcb73365040660daebdd808a0ea5ed"></a><!-- doxytag: member="ErrExpectedTagAttribute" ref="ae26e6510c822ee35e041ab2dab70e78ba78fcb73365040660daebdd808a0ea5ed" args="" -->ErrExpectedTagAttribute</em>&nbsp;</td><td>
+<p>expected tag attribute </p>
 </td></tr>
 <tr><td valign="top"><em><a class="anchor" id="ae26e6510c822ee35e041ab2dab70e78ba812e6afd4a0394115fec19d05d5d6985"></a><!-- doxytag: member="ErrExpectedCDATATag" ref="ae26e6510c822ee35e041ab2dab70e78ba812e6afd4a0394115fec19d05d5d6985" args="" -->ErrExpectedCDATATag</em>&nbsp;</td><td>
+<p>expected CDATA tag definition </p>
 </td></tr>
 <tr><td valign="top"><em><a class="anchor" id="ae26e6510c822ee35e041ab2dab70e78ba12d0da8dca8d95268c6038211489014d"></a><!-- doxytag: member="ErrInternal" ref="ae26e6510c822ee35e041ab2dab70e78ba12d0da8dca8d95268c6038211489014d" args="" -->ErrInternal</em>&nbsp;</td><td>
+<p>internal error (textwolf implementation error) </p>
 </td></tr>
 <tr><td valign="top"><em><a class="anchor" id="ae26e6510c822ee35e041ab2dab70e78ba52fec157b20cde2c69433fc3b705bafa"></a><!-- doxytag: member="ErrUnexpectedEndOfInput" ref="ae26e6510c822ee35e041ab2dab70e78ba52fec157b20cde2c69433fc3b705bafa" args="" -->ErrUnexpectedEndOfInput</em>&nbsp;</td><td>
+<p>unexpected end of input stream </p>
 </td></tr>
 </table>
 </dd>
@@ -311,6 +340,8 @@ Inheritance diagram for textwolf::XMLScannerBase:</div>
       </table>
 </div>
 <div class="memdoc">
+
+<p>Enumeration of actions in the XML scanner state machine. </p>
 <dl><dt><b>Enumerator: </b></dt><dd><table border="0" cellspacing="2" cellpadding="0">
 <tr><td valign="top"><em><a class="anchor" id="a9e098fe6f4a84b25db51fcfe61f4cbd0a2a7498be29d92a479557c0830bdde030"></a><!-- doxytag: member="Return" ref="a9e098fe6f4a84b25db51fcfe61f4cbd0a2a7498be29d92a479557c0830bdde030" args="" -->Return</em>&nbsp;</td><td>
 </td></tr>
@@ -346,6 +377,8 @@ Inheritance diagram for textwolf::XMLScannerBase:</div>
       </table>
 </div>
 <div class="memdoc">
+
+<p>Enumeration of states of the XML scanner state machine. </p>
 <dl><dt><b>Enumerator: </b></dt><dd><table border="0" cellspacing="2" cellpadding="0">
 <tr><td valign="top"><em><a class="anchor" id="acf32f993fc533aa138e44a9b1afc8d1ca1f6a0615ee1bf6ea32da75f43cd3377d"></a><!-- doxytag: member="START" ref="acf32f993fc533aa138e44a9b1afc8d1ca1f6a0615ee1bf6ea32da75f43cd3377d" args="" -->START</em>&nbsp;</td><td>
 </td></tr>
@@ -438,6 +471,15 @@ Inheritance diagram for textwolf::XMLScannerBase:</div>
 </div>
 <div class="memdoc">
 
+<p>Get the scanner state machine action as string. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>a</em>&nbsp;</td><td>the action </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>the action as string </dd></dl>
+
 </div>
 </div>
 <a class="anchor" id="a29eec38bb732d4cc1e759920aec82d7d"></a><!-- doxytag: member="textwolf::XMLScannerBase::getElementTypeName" ref="a29eec38bb732d4cc1e759920aec82d7d" args="(ElementType ee)" -->
@@ -455,6 +497,15 @@ Inheritance diagram for textwolf::XMLScannerBase:</div>
       </table>
 </div>
 <div class="memdoc">
+
+<p>Get the XML element type as string. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>ee</em>&nbsp;</td><td>XML element type </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>XML element type as string </dd></dl>
 
 </div>
 </div>
@@ -474,6 +525,15 @@ Inheritance diagram for textwolf::XMLScannerBase:</div>
 </div>
 <div class="memdoc">
 
+<p>Get the error code as string. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>ee</em>&nbsp;</td><td>error code </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>the error code as string </dd></dl>
+
 </div>
 </div>
 <a class="anchor" id="aade9b82f45961bb5a5765f823a47a343"></a><!-- doxytag: member="textwolf::XMLScannerBase::getStateString" ref="aade9b82f45961bb5a5765f823a47a343" args="(STMState s)" -->
@@ -491,6 +551,15 @@ Inheritance diagram for textwolf::XMLScannerBase:</div>
       </table>
 </div>
 <div class="memdoc">
+
+<p>Get the scanner state machine state as string. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>s</em>&nbsp;</td><td>the state </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>the state as string </dd></dl>
 
 </div>
 </div>
@@ -512,7 +581,7 @@ Inheritance diagram for textwolf::XMLScannerBase:</div>
 </iframe>
 </div>
 
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Fri Jun 10 00:05:39 2011 for textwolf by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Sat Jun 11 12:31:48 2011 for textwolf by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>
