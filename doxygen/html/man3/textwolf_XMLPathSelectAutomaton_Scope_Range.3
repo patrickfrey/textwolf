@@ -1,0 +1,74 @@
+.TH "textwolf::XMLPathSelectAutomaton::Scope::Range" 3 "11 Jun 2011" "textwolf" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+textwolf::XMLPathSelectAutomaton::Scope::Range \- 
+.PP
+\fBRange\fP on the token stack with all tokens that belong to this scope.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <textwolf.hpp>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBRange\fP ()"
+.br
+.RI "\fIConstructor. \fP"
+.ti -1c
+.RI "\fBRange\fP (const \fBScope\fP &orig)"
+.br
+.RI "\fICopy constructor. \fP"
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "unsigned int \fBtokenidx_from\fP"
+.br
+.RI "\fIlower bound token index \fP"
+.ti -1c
+.RI "unsigned int \fBtokenidx_to\fP"
+.br
+.RI "\fIupper bound token index \fP"
+.ti -1c
+.RI "unsigned int \fBfollowidx\fP"
+.br
+.RI "\fIpointer to follow token stack with tokens active in this and all sub scopes of this scope \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<class CharSet_ = charset::UTF8> class textwolf::XMLPathSelectAutomaton< CharSet_ >::Scope::Range"
+\fBRange\fP on the token stack with all tokens that belong to this scope. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<class CharSet_  = charset::UTF8> \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::Scope::Range::Range ()\fC [inline]\fP"
+.PP
+Constructor. 
+.SS "template<class CharSet_  = charset::UTF8> \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::Scope::Range::Range (const \fBScope\fP & orig)\fC [inline]\fP"
+.PP
+Copy constructor. \fBParameters:\fP
+.RS 4
+\fIorig\fP scope to copy 
+.RE
+.PP
+
+.SH "Member Data Documentation"
+.PP 
+.SS "template<class CharSet_  = charset::UTF8> unsigned int \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::\fBScope::Range::followidx\fP"
+.PP
+pointer to follow token stack with tokens active in this and all sub scopes of this scope 
+.SS "template<class CharSet_  = charset::UTF8> unsigned int \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::\fBScope::Range::tokenidx_from\fP"
+.PP
+lower bound token index 
+.SS "template<class CharSet_  = charset::UTF8> unsigned int \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::\fBScope::Range::tokenidx_to\fP"
+.PP
+upper bound token index 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for textwolf from the source code.

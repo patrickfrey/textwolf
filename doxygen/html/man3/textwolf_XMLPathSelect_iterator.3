@@ -1,0 +1,132 @@
+.TH "textwolf::XMLPathSelect::iterator" 3 "11 Jun 2011" "textwolf" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+textwolf::XMLPathSelect::iterator \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <textwolf.hpp>\fP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBElement\fP"
+.br
+.in -1c
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "typedef \fBElement\fP \fBvalue_type\fP"
+.br
+.ti -1c
+.RI "typedef unsigned int \fBdifference_type\fP"
+.br
+.ti -1c
+.RI "typedef \fBElement\fP * \fBpointer\fP"
+.br
+.ti -1c
+.RI "typedef \fBElement\fP & \fBreference\fP"
+.br
+.ti -1c
+.RI "typedef std::input_iterator_tag \fBiterator_category\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBassign\fP (const \fBiterator\fP &orig)"
+.br
+.ti -1c
+.RI "\fBiterator\fP (const \fBiterator\fP &orig)"
+.br
+.ti -1c
+.RI "\fBiterator\fP (\fBThisXMLPathSelect\fP &p_input)"
+.br
+.ti -1c
+.RI "\fBiterator\fP (const \fBEnd\fP &et)"
+.br
+.ti -1c
+.RI "\fBiterator\fP ()"
+.br
+.ti -1c
+.RI "\fBiterator\fP & \fBoperator=\fP (const \fBiterator\fP &orig)"
+.br
+.ti -1c
+.RI "const \fBElement\fP & \fBoperator*\fP ()"
+.br
+.ti -1c
+.RI "const \fBElement\fP * \fBoperator->\fP ()"
+.br
+.ti -1c
+.RI "\fBiterator\fP & \fBoperator++\fP ()"
+.br
+.ti -1c
+.RI "\fBiterator\fP \fBoperator++\fP (int)"
+.br
+.ti -1c
+.RI "bool \fBoperator==\fP (const \fBiterator\fP &iter) const "
+.br
+.ti -1c
+.RI "bool \fBoperator!=\fP (const \fBiterator\fP &iter) const "
+.br
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBiterator\fP & \fBskip\fP ()  throw (exception)"
+.br
+.ti -1c
+.RI "bool \fBcompare\fP (const \fBiterator\fP &iter) const "
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBElement\fP \fBelement\fP"
+.br
+.ti -1c
+.RI "\fBThisXMLPathSelect\fP * \fBinput\fP"
+.br
+.in -1c
+
+.SS "template<class InputIterator, class InputCharSet_ = charset::UTF8, class OutputCharSet_ = charset::UTF8, class EntityMap_ = std::map<const char*,UChar>> class textwolf::XMLPathSelect< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::iterator"
+
+.SH "Member Typedef Documentation"
+.PP 
+.SS "template<class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class EntityMap_  = std::map<const char*,UChar>> typedef unsigned int \fBtextwolf::XMLPathSelect\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::\fBiterator::difference_type\fP"
+.SS "template<class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class EntityMap_  = std::map<const char*,UChar>> typedef std::input_iterator_tag \fBtextwolf::XMLPathSelect\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::\fBiterator::iterator_category\fP"
+.SS "template<class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class EntityMap_  = std::map<const char*,UChar>> typedef \fBElement\fP* \fBtextwolf::XMLPathSelect\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::\fBiterator::pointer\fP"
+.SS "template<class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class EntityMap_  = std::map<const char*,UChar>> typedef \fBElement\fP& \fBtextwolf::XMLPathSelect\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::\fBiterator::reference\fP"
+.SS "template<class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class EntityMap_  = std::map<const char*,UChar>> typedef \fBElement\fP \fBtextwolf::XMLPathSelect\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::\fBiterator::value_type\fP"
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class EntityMap_  = std::map<const char*,UChar>> \fBtextwolf::XMLPathSelect\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::iterator::iterator (const \fBiterator\fP & orig)\fC [inline]\fP"
+.SS "template<class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class EntityMap_  = std::map<const char*,UChar>> \fBtextwolf::XMLPathSelect\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::iterator::iterator (\fBThisXMLPathSelect\fP & p_input)\fC [inline]\fP"
+.SS "template<class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class EntityMap_  = std::map<const char*,UChar>> \fBtextwolf::XMLPathSelect\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::iterator::iterator (const \fBEnd\fP & et)\fC [inline]\fP"
+.SS "template<class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class EntityMap_  = std::map<const char*,UChar>> \fBtextwolf::XMLPathSelect\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::iterator::iterator ()\fC [inline]\fP"
+.SH "Member Function Documentation"
+.PP 
+.SS "template<class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class EntityMap_  = std::map<const char*,UChar>> void \fBtextwolf::XMLPathSelect\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::iterator::assign (const \fBiterator\fP & orig)\fC [inline]\fP"
+.SS "template<class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class EntityMap_  = std::map<const char*,UChar>> bool \fBtextwolf::XMLPathSelect\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::iterator::compare (const \fBiterator\fP & iter) const\fC [inline, private]\fP"
+.SS "template<class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class EntityMap_  = std::map<const char*,UChar>> bool \fBtextwolf::XMLPathSelect\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::iterator::operator!= (const \fBiterator\fP & iter) const\fC [inline]\fP"
+.SS "template<class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class EntityMap_  = std::map<const char*,UChar>> const \fBElement\fP& \fBtextwolf::XMLPathSelect\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::iterator::operator* ()\fC [inline]\fP"
+.SS "template<class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class EntityMap_  = std::map<const char*,UChar>> \fBiterator\fP \fBtextwolf::XMLPathSelect\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::iterator::operator++ (int)\fC [inline]\fP"
+.SS "template<class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class EntityMap_  = std::map<const char*,UChar>> \fBiterator\fP& \fBtextwolf::XMLPathSelect\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::iterator::operator++ ()\fC [inline]\fP"
+.SS "template<class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class EntityMap_  = std::map<const char*,UChar>> const \fBElement\fP* \fBtextwolf::XMLPathSelect\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::iterator::operator-> ()\fC [inline]\fP"
+.SS "template<class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class EntityMap_  = std::map<const char*,UChar>> \fBiterator\fP& \fBtextwolf::XMLPathSelect\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::iterator::operator= (const \fBiterator\fP & orig)\fC [inline]\fP"
+.SS "template<class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class EntityMap_  = std::map<const char*,UChar>> bool \fBtextwolf::XMLPathSelect\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::iterator::operator== (const \fBiterator\fP & iter) const\fC [inline]\fP"
+.SS "template<class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class EntityMap_  = std::map<const char*,UChar>> \fBiterator\fP& \fBtextwolf::XMLPathSelect\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::iterator::skip ()  throw (\fBexception\fP)\fC [inline, private]\fP"
+.SH "Member Data Documentation"
+.PP 
+.SS "template<class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class EntityMap_  = std::map<const char*,UChar>> \fBElement\fP \fBtextwolf::XMLPathSelect\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::\fBiterator::element\fP\fC [private]\fP"
+.SS "template<class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class EntityMap_  = std::map<const char*,UChar>> \fBThisXMLPathSelect\fP* \fBtextwolf::XMLPathSelect\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::\fBiterator::input\fP\fC [private]\fP"
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for textwolf from the source code.

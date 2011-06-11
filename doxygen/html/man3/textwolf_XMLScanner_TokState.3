@@ -1,0 +1,137 @@
+.TH "textwolf::XMLScanner::TokState" 3 "11 Jun 2011" "textwolf" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+textwolf::XMLScanner::TokState \- 
+.PP
+Token state variables.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBId\fP { \fBStart\fP, \fBParsingKey\fP, \fBParsingEntity\fP, \fBParsingNumericEntity\fP, \fBParsingNumericBaseEntity\fP, \fBParsingNamedEntity\fP, \fBParsingToken\fP }"
+.br
+.RI "\fIEnumeration of token parser states. \fP"
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBTokState\fP ()"
+.br
+.RI "\fIConstructor. \fP"
+.ti -1c
+.RI "void \fBinit\fP (\fBId\fP id_=Start)"
+.br
+.RI "\fIReset this state variables (after succesful exit with a new token parsed). \fP"
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBId\fP \fBid\fP"
+.br
+.RI "\fIthe scanner token parser state \fP"
+.ti -1c
+.RI "unsigned int \fBpos\fP"
+.br
+.RI "\fIentity buffer position (buf) \fP"
+.ti -1c
+.RI "unsigned int \fBbase\fP"
+.br
+.RI "\fInumeric entity base (10 for decimal/16 for hexadecimal) \fP"
+.ti -1c
+.RI "unsigned long long \fBvalue\fP"
+.br
+.RI "\fIparsed entity value \fP"
+.ti -1c
+.RI "char \fBbuf\fP [16]"
+.br
+.RI "\fIparsed entity buffer \fP"
+.ti -1c
+.RI "\fBUChar\fP \fBcurchr_saved\fP"
+.br
+.RI "\fIsave current character parsed for the case we cannot print it (output buffer too small) \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<class InputIterator, class InputCharSet_ = charset::UTF8, class OutputCharSet_ = charset::UTF8, class EntityMap_ = std::map<const char*,UChar>> class textwolf::XMLScanner< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::TokState"
+Token state variables. 
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "template<class InputIterator, class InputCharSet_ = charset::UTF8, class OutputCharSet_ = charset::UTF8, class EntityMap_ = std::map<const char*,UChar>> enum \fBtextwolf::XMLScanner::TokState::Id\fP"
+.PP
+Enumeration of token parser states. \fBRemarks:\fP
+.RS 4
+These states define where the scanner has to continue parsing when it was interrupted by an EoD exception and reentered again with more input to process. 
+.RE
+.PP
+
+.PP
+\fBEnumerator: \fP
+.in +1c
+.TP
+\fB\fIStart \fP\fP
+start state (no parsing action performed at the moment) 
+.TP
+\fB\fIParsingKey \fP\fP
+scanner was interrupted when parsing a key 
+.TP
+\fB\fIParsingEntity \fP\fP
+scanner was interrupted when parsing an XML character entity 
+.TP
+\fB\fIParsingNumericEntity \fP\fP
+scanner was interrupted when parsing an XML numeric character entity 
+.TP
+\fB\fIParsingNumericBaseEntity \fP\fP
+scanner was interrupted when parsing an XML basic character entity (apos,amp,etc..) 
+.TP
+\fB\fIParsingNamedEntity \fP\fP
+scanner was interrupted when parsing an XML named character entity 
+.TP
+\fB\fIParsingToken \fP\fP
+scanner was interrupted when parsing a token (not in entity cotext) 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<class InputIterator, class InputCharSet_ = charset::UTF8, class OutputCharSet_ = charset::UTF8, class EntityMap_ = std::map<const char*,UChar>> \fBtextwolf::XMLScanner\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::TokState::TokState ()\fC [inline]\fP"
+.PP
+Constructor. 
+.SH "Member Function Documentation"
+.PP 
+.SS "template<class InputIterator, class InputCharSet_ = charset::UTF8, class OutputCharSet_ = charset::UTF8, class EntityMap_ = std::map<const char*,UChar>> void \fBtextwolf::XMLScanner\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::TokState::init (\fBId\fP id_ = \fCStart\fP)\fC [inline]\fP"
+.PP
+Reset this state variables (after succesful exit with a new token parsed). \fBParameters:\fP
+.RS 4
+\fIid_\fP the new entity parse state 
+.RE
+.PP
+
+.SH "Member Data Documentation"
+.PP 
+.SS "template<class InputIterator, class InputCharSet_ = charset::UTF8, class OutputCharSet_ = charset::UTF8, class EntityMap_ = std::map<const char*,UChar>> unsigned int \fBtextwolf::XMLScanner\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::\fBTokState::base\fP"
+.PP
+numeric entity base (10 for decimal/16 for hexadecimal) 
+.SS "template<class InputIterator, class InputCharSet_ = charset::UTF8, class OutputCharSet_ = charset::UTF8, class EntityMap_ = std::map<const char*,UChar>> char \fBtextwolf::XMLScanner\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::\fBTokState::buf\fP[16]"
+.PP
+parsed entity buffer 
+.SS "template<class InputIterator, class InputCharSet_ = charset::UTF8, class OutputCharSet_ = charset::UTF8, class EntityMap_ = std::map<const char*,UChar>> \fBUChar\fP \fBtextwolf::XMLScanner\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::\fBTokState::curchr_saved\fP"
+.PP
+save current character parsed for the case we cannot print it (output buffer too small) 
+.SS "template<class InputIterator, class InputCharSet_ = charset::UTF8, class OutputCharSet_ = charset::UTF8, class EntityMap_ = std::map<const char*,UChar>> \fBId\fP \fBtextwolf::XMLScanner\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::\fBTokState::id\fP"
+.PP
+the scanner token parser state 
+.SS "template<class InputIterator, class InputCharSet_ = charset::UTF8, class OutputCharSet_ = charset::UTF8, class EntityMap_ = std::map<const char*,UChar>> unsigned int \fBtextwolf::XMLScanner\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::\fBTokState::pos\fP"
+.PP
+entity buffer position (buf) 
+.SS "template<class InputIterator, class InputCharSet_ = charset::UTF8, class OutputCharSet_ = charset::UTF8, class EntityMap_ = std::map<const char*,UChar>> unsigned long long \fBtextwolf::XMLScanner\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::\fBTokState::value\fP"
+.PP
+parsed entity value 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for textwolf from the source code.

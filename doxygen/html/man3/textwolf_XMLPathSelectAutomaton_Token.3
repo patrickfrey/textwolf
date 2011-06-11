@@ -1,0 +1,76 @@
+.TH "textwolf::XMLPathSelectAutomaton::Token" 3 "11 Jun 2011" "textwolf" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+textwolf::XMLPathSelectAutomaton::Token \- 
+.PP
+Active or passive but still valid token of the XML processing (this is a trigger waiting to match).  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <textwolf.hpp>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBToken\fP ()"
+.br
+.RI "\fIConstructor. \fP"
+.ti -1c
+.RI "\fBToken\fP (const \fBToken\fP &orig)"
+.br
+.RI "\fICopy constructor. \fP"
+.ti -1c
+.RI "\fBToken\fP (const \fBState\fP &state, int p_stateidx)"
+.br
+.RI "\fIConstructor by value. \fP"
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBCore\fP \fBcore\fP"
+.br
+.RI "\fIcore of the state \fP"
+.ti -1c
+.RI "int \fBstateidx\fP"
+.br
+.RI "\fIindex into the automaton, poiting to the state \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<class CharSet_ = charset::UTF8> class textwolf::XMLPathSelectAutomaton< CharSet_ >::Token"
+Active or passive but still valid token of the XML processing (this is a trigger waiting to match). 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<class CharSet_  = charset::UTF8> \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::Token::Token ()\fC [inline]\fP"
+.PP
+Constructor. 
+.SS "template<class CharSet_  = charset::UTF8> \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::Token::Token (const \fBToken\fP & orig)\fC [inline]\fP"
+.PP
+Copy constructor. 
+.SS "template<class CharSet_  = charset::UTF8> \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::Token::Token (const \fBState\fP & state, int p_stateidx)\fC [inline]\fP"
+.PP
+Constructor by value. \fBParameters:\fP
+.RS 4
+\fIstate\fP state that generated this token 
+.br
+\fIp_stateidx\fP index of the state that generated this token 
+.RE
+.PP
+
+.SH "Member Data Documentation"
+.PP 
+.SS "template<class CharSet_  = charset::UTF8> \fBCore\fP \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::\fBToken::core\fP"
+.PP
+core of the state 
+.SS "template<class CharSet_  = charset::UTF8> int \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::\fBToken::stateidx\fP"
+.PP
+index into the automaton, poiting to the state 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for textwolf from the source code.

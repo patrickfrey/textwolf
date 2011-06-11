@@ -1,0 +1,129 @@
+.TH "textwolf::charset::UTF8" 3 "11 Jun 2011" "textwolf" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+textwolf::charset::UTF8 \- 
+.PP
+character set encoding UTF-8  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <textwolf.hpp>\fP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "struct \fBCharLengthTab\fP"
+.br
+.in -1c
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum { \fBMaxChar\fP = 0xFFFFFFFF }"
+.br
+.ti -1c
+.RI "enum { \fBB11111111\fP = 0xFF, \fBB01111111\fP = 0x7F, \fBB00111111\fP = 0x3F, \fBB00011111\fP = 0x1F, \fBB00001111\fP = 0x0F, \fBB00000111\fP = 0x07, \fBB00000011\fP = 0x03, \fBB00000001\fP = 0x01, \fBB00000000\fP = 0x00, \fBB10000000\fP = 0x80, \fBB11000000\fP = 0xC0, \fBB11100000\fP = 0xE0, \fBB11110000\fP = 0xF0, \fBB11111000\fP = 0xF8, \fBB11111100\fP = 0xFC, \fBB11111110\fP = 0xFE, \fBB11011111\fP = B11000000|B00011111, \fBB11101111\fP = B11100000|B00001111, \fBB11110111\fP = B11110000|B00000111, \fBB11111011\fP = B11111000|B00000011, \fBB11111101\fP = B11111100|B00000001 }"
+.br
+.ti -1c
+.RI "enum { \fBHeadSize\fP = 1 }"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static unsigned int \fBasize\fP ()"
+.br
+.ti -1c
+.RI "static char \fBachar\fP (const char *buf)"
+.br
+.ti -1c
+.RI "static unsigned int \fBsize\fP (const char *buf)"
+.br
+.ti -1c
+.RI "static \fBUChar\fP \fBvalue\fP (const char *buf)"
+.br
+.ti -1c
+.RI "static unsigned int \fBprint\fP (\fBUChar\fP chr, char *buf, unsigned int bufsize)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+character set encoding UTF-8 
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "anonymous enum"
+.PP
+\fBEnumerator: \fP
+.in +1c
+.TP
+\fB\fIMaxChar \fP\fP
+
+.SS "anonymous enum"
+.PP
+\fBEnumerator: \fP
+.in +1c
+.TP
+\fB\fIB11111111 \fP\fP
+.TP
+\fB\fIB01111111 \fP\fP
+.TP
+\fB\fIB00111111 \fP\fP
+.TP
+\fB\fIB00011111 \fP\fP
+.TP
+\fB\fIB00001111 \fP\fP
+.TP
+\fB\fIB00000111 \fP\fP
+.TP
+\fB\fIB00000011 \fP\fP
+.TP
+\fB\fIB00000001 \fP\fP
+.TP
+\fB\fIB00000000 \fP\fP
+.TP
+\fB\fIB10000000 \fP\fP
+.TP
+\fB\fIB11000000 \fP\fP
+.TP
+\fB\fIB11100000 \fP\fP
+.TP
+\fB\fIB11110000 \fP\fP
+.TP
+\fB\fIB11111000 \fP\fP
+.TP
+\fB\fIB11111100 \fP\fP
+.TP
+\fB\fIB11111110 \fP\fP
+.TP
+\fB\fIB11011111 \fP\fP
+.TP
+\fB\fIB11101111 \fP\fP
+.TP
+\fB\fIB11110111 \fP\fP
+.TP
+\fB\fIB11111011 \fP\fP
+.TP
+\fB\fIB11111101 \fP\fP
+
+.SS "anonymous enum"
+.PP
+\fBEnumerator: \fP
+.in +1c
+.TP
+\fB\fIHeadSize \fP\fP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "static char textwolf::charset::UTF8::achar (const char * buf)\fC [inline, static]\fP"
+.SS "static unsigned int textwolf::charset::UTF8::asize ()\fC [inline, static]\fP"
+.SS "static unsigned int textwolf::charset::UTF8::print (\fBUChar\fP chr, char * buf, unsigned int bufsize)\fC [inline, static]\fP"
+.SS "static unsigned int textwolf::charset::UTF8::size (const char * buf)\fC [inline, static]\fP"
+.SS "static \fBUChar\fP textwolf::charset::UTF8::value (const char * buf)\fC [inline, static]\fP"
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for textwolf from the source code.

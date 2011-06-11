@@ -1,0 +1,113 @@
+.TH "textwolf::exception" 3 "11 Jun 2011" "textwolf" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+textwolf::exception \- 
+.PP
+textwolf exception class  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <textwolf.hpp>\fP
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "typedef \fBthrows_exception::Cause\fP \fBCause\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBexception\fP \fBCause\fP p_cause \fBthrow\fP ()"
+.br
+.RI "\fIConstructor. \fP"
+.ti -1c
+.RI "\fBexception\fP const \fBexception\fP &orig \fBthrow\fP ()"
+.br
+.RI "\fICopy constructor. \fP"
+.ti -1c
+.RI "virtual \fB~exception\fP ()  throw ()"
+.br
+.RI "\fIDestructor. \fP"
+.ti -1c
+.RI "\fBexception\fP & \fBoperator=\fP (const \fBexception\fP &orig)  throw ()"
+.br
+.RI "\fIAssignement. \fP"
+.ti -1c
+.RI "virtual const char * \fBwhat\fP () const   throw ()"
+.br
+.RI "\fIException message. \fP"
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBCause\fP \fBcause\fP"
+.br
+.RI "\fIexception cause tag \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+textwolf exception class 
+
+\fBRemarks:\fP
+.RS 4
+textwolf is after the initialization phase of the automata exception free. Classes throwing exception in the initilazation phase are derived from 'textwolfthrows_exception' 
+.RE
+.PP
+
+.SH "Member Typedef Documentation"
+.PP 
+.SS "typedef \fBthrows_exception::Cause\fP \fBtextwolf::exception::Cause\fP"
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "virtual textwolf::exception::~exception ()  throw ()\fC [inline, virtual]\fP"
+.PP
+Destructor. 
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBexception\fP& textwolf::exception::operator= (const \fBexception\fP & orig)  throw ()\fC [inline]\fP"
+.PP
+Assignement. \fBParameters:\fP
+.RS 4
+\fIorig\fP exception to copy 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+*this 
+.RE
+.PP
+
+.SS "\fBexception\fP const \fBexception\fP& orig textwolf::exception::throw ()\fC [inline, final]\fP"
+.PP
+Copy constructor. 
+.SS "\fBexception\fP \fBCause\fP p_cause textwolf::exception::throw ()\fC [inline, final]\fP"
+.PP
+Constructor. \fBReturns:\fP
+.RS 4
+exception object 
+.RE
+.PP
+
+.SS "virtual const char* textwolf::exception::what () const  throw ()\fC [inline, virtual]\fP"
+.PP
+Exception message. \fBReturns:\fP
+.RS 4
+exception cause as string 
+.RE
+.PP
+
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBCause\fP \fBtextwolf::exception::cause\fP"
+.PP
+exception cause tag 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for textwolf from the source code.

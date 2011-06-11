@@ -1,0 +1,69 @@
+.TH "textwolf::throws_exception" 3 "11 Jun 2011" "textwolf" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+textwolf::throws_exception \- 
+.PP
+Base class for structures that can throw exceptions for non recoverable errors in the automata definition.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <textwolf.hpp>\fP
+.PP
+Inherited by \fBtextwolf::XMLPathSelect< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::Array< int >\fP, \fBtextwolf::XMLPathSelect< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::Array< Scope >\fP, \fBtextwolf::XMLPathSelect< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::Array< Token >\fP, \fBtextwolf::XMLPathSelect< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::Array< unsigned int >\fP, \fBtextwolf::ScannerStatemachine\fP, \fBtextwolf::XMLPathSelect< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >\fP, \fBtextwolf::XMLPathSelect< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::Array< Element >\fP, \fBtextwolf::XMLPathSelectAutomaton< CharSet_ >\fP, and \fBtextwolf::XMLPathSelectAutomaton< CharSet_ >::PathElement\fP.
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBCause\fP { \fBUnknown\fP, \fBDimOutOfRange\fP, \fBStateNumbersNotAscending\fP, \fBInvalidParam\fP, \fBInvalidState\fP, \fBIllegalParam\fP, \fBIllegalAttributeName\fP, \fBOutOfMem\fP, \fBArrayBoundsReadWrite\fP, \fBNotAllowedOperation\fP }"
+.br
+.RI "\fIEnumeration of error cases. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Base class for structures that can throw exceptions for non recoverable errors in the automata definition. 
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum \fBtextwolf::throws_exception::Cause\fP"
+.PP
+Enumeration of error cases. 
+.PP
+\fBEnumerator: \fP
+.in +1c
+.TP
+\fB\fIUnknown \fP\fP
+uknown error 
+.TP
+\fB\fIDimOutOfRange \fP\fP
+memory reserved for statically allocated table or memory block is too small. Increase the size of memory block passed to the XML path select automaton. Usage error ! 
+.TP
+\fB\fIStateNumbersNotAscending \fP\fP
+XML scanner automaton definition check failed. Labels of states must be equal to their indices. Internal textwold error ! 
+.TP
+\fB\fIInvalidParam \fP\fP
+parameter check in automaton definition failed. Internal textwold error ! 
+.TP
+\fB\fIInvalidState \fP\fP
+invalied state definition in automaton. Internal textwold error ! 
+.TP
+\fB\fIIllegalParam \fP\fP
+parameter check in automaton definition failed. Internal textwold error ! 
+.TP
+\fB\fIIllegalAttributeName \fP\fP
+invalid string for a tag or attribute in the automaton definition. Usage error ! 
+.TP
+\fB\fIOutOfMem \fP\fP
+out of memory in the automaton definition. System error (std::bad_alloc) ! 
+.TP
+\fB\fIArrayBoundsReadWrite \fP\fP
+invalid array access. Internal textwold error ! 
+.TP
+\fB\fINotAllowedOperation \fP\fP
+defining an operation in an automaton definition that is not allowed there. Usage error ! 
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for textwolf from the source code.
