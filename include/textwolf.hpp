@@ -49,13 +49,13 @@
 namespace textwolf {
 
 ///\defgroup Exceptions Exceptions
-///\brief Exception classes and structures for error handling in the initialization phase
+///\brief Exception classes and structures for error handling
 /*! \addtogroup Exceptions
  *  @{
 */
 
 ///\class throws_exception
-///\brief Base class for structures that can throw exceptions for non recoverable errors in the automata definition
+///\brief Base class for structures that can throw exceptions for non recoverable errors
 struct throws_exception
 {
 	///\enum Cause
@@ -77,7 +77,6 @@ struct throws_exception
 
 ///\class exception
 ///\brief textwolf exception class
-///\remark textwolf is after the initialization phase of the automata exception free. Classes throwing exception in the initilazation phase are derived from 'textwolf::throws_exception'
 struct exception	:public std::exception
 {
 	typedef throws_exception::Cause Cause;
@@ -111,6 +110,51 @@ struct exception	:public std::exception
 		};
 		return nameCause[ (unsigned int) cause];
 	}
+};
+
+
+/*! @} */
+///\defgroup Utilities Some Helper Structures and Functions
+///\brief Implements some helpers
+/*! \addtogroup Utilities
+ *  @{
+*/
+///
+/// \class Buffer
+/// \brief Simple back insertion sequence for storing the outputs of textwolf in a contant size buffer
+///
+class Buffer
+{
+private:
+	typedef unsigned int size_type;		///< size type of this buffer vector
+
+	size_type m_pos;			///< current cursor position of the buffer (number of added characters)
+	size_type m_size;			///< allocation size of the buffer in bytes
+	char* m_ar;				///< buffer content
+	bool m_allocated;			///< true, if the buffer is allocated by this class and not passed by constructor
+
+public:
+	///\brief Constructor
+	explicit Buffer( unsigned int n)
+		:m_pos(0),m_size(n),m_ar(0),m_allocated(true) {m_ar=new char[n];}
+	///\brief Constructor
+	Buffer( char* p, unsigned int n)
+		:m_pos(0),m_size(n),m_ar(p),m_allocated(false) {}
+	///\brief Destructor
+	~Buffer()
+		{if (m_allocated) delete [] m_ar;}
+
+	///\brief Clear the buffer content
+	void clear()				{m_pos=0;}
+	///\brief Append one character
+	///\param[in] ch the character to append
+	void push_back( char ch)		{if (m_pos<m_size) m_ar[m_pos++]=ch;}
+	///\brief Return the number of characters in the buffer
+	///\return the number of characters (bytes)
+	size_type size() const			{return m_pos;}
+	///\brief Return the buffer content as 0-terminated string
+	///\return the C-string
+	const char* ptr() const			{return m_ar;}
 };
 
 /*! @} */
@@ -559,7 +603,7 @@ public:
 	///\brief Get state addressed by its index
 	///\param [in] stateIdx index of the state
 	///\return state defintion reference
-	Element* get( int stateIdx) const throw(exception)
+	Element* get( int stateIdx) throw(exception)
 	{
 		if ((unsigned int)stateIdx>size) throw exception(InvalidState);
 		return tab + stateIdx;
@@ -2539,56 +2583,48 @@ public:
 
 		iterator& skip() throw(exception)
 		{
-			try
+			if (input != 0)
 			{
-				if (input != 0)
+				do
 				{
-					do
+					if (!input->context.key)
 					{
-						if (!input->context.key)
+						XMLScannerBase::ElementType et = input->scan.nextItem( input->context.scope.mask.pos);
+						if (et == XMLScannerBase::Exit)
 						{
-							XMLScannerBase::ElementType et = input->scan.nextItem( input->context.scope.mask.pos);
-							if (et == XMLScannerBase::Exit)
+							if (input->scopestk.size() == 0)
 							{
-								if (input->scopestk.size() == 0)
-								{
-									element.m_state = Element::EndOfInput;
-								}
-								else
-								{
-									element.m_state = Element::ErrorState;
-									element.m_content = XMLScannerBase::getErrorString( XMLScannerBase::ErrUnexpectedEndOfInput);
-								}
-								return *this;
+								element.m_state = Element::EndOfInput;
 							}
-							if (et == XMLScannerBase::ErrorOccurred)
+							else
 							{
-								XMLScannerBase::Error err = input->scan.getError( &element.m_content);
-								if (err == XMLScannerBase::ErrOutputBufferTooSmall)
-								{
-									element.m_state = Element::EndOfOutput;
-								}
-								else
-								{
-									element.m_state = Element::ErrorState;
-								}
-								return *this;
+								element.m_state = Element::ErrorState;
+								element.m_content = XMLScannerBase::getErrorString( XMLScannerBase::ErrUnexpectedEndOfInput);
 							}
-							input->initProcessElement( et, input->scan.getItem(), input->scan.getItemSize());
+							return *this;
 						}
-						element.m_type = input->fetch();
+						if (et == XMLScannerBase::ErrorOccurred)
+						{
+							XMLScannerBase::Error err = input->scan.getError( &element.m_content);
+							if (err == XMLScannerBase::ErrOutputBufferTooSmall)
+							{
+								element.m_state = Element::EndOfOutput;
+							}
+							else
+							{
+								element.m_state = Element::ErrorState;
+							}
+							return *this;
+						}
+						input->initProcessElement( et, input->scan.getItem(), input->scan.getItemSize());
+					}
+					element.m_type = input->fetch();
 
-					} while (element.m_type == 0);
+				} while (element.m_type == 0);
 
-					element.m_content = input->context.key;
-					element.m_size = input->context.keysize;
-				}
-				return *this;
+				element.m_content = input->context.key;
+				element.m_size = input->context.keysize;
 			}
-			catch (exception e)
-			{
-				throw exception( e.cause);
-			};
 			return *this;
 		}
 		bool compare( const iterator& iter) const
