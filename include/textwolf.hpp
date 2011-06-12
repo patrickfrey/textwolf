@@ -1905,6 +1905,7 @@ public:
 		~State()
 		{
 			if (key) delete [] key;
+			if (srckey) delete [] srckey;
 		}
 
 		///\brief Check it the state definition is empty
