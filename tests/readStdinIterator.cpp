@@ -5,7 +5,7 @@
 #include <errno.h>
 
 //compile: g++ -c -o readStdinIterator.o -g -fstrict-aliasing -pedantic -Wall -Wunused -Wno-import -Wformat -Wformat-y2k -Wformat-nonliteral -Wformat-security -Wformat-y2k -Wswitch-enum -Wunknown-pragmas -Wfloat-equal -Wundef -Wshadow -Wpointer-arith -Wcast-qual -Wcast-align -Wwrite-strings -Wmissing-noreturn -Wno-multichar -Wparentheses -Wredundant-decls -Winline -Wdisabled-optimization -Wno-long-long -Werror -Wfatal-errors readStdinIterator.cpp
-//link	  g++ -lc -o readStdinIterator readStdinIterator.o
+//link	g++ -lc -o readStdinIterator readStdinIterator.o
 
 using namespace textwolf;
 
@@ -19,9 +19,9 @@ struct Input
 	unsigned int bufpos;
 	FILE* file;
 
-	Input()										  :bufsize(0),bufpos(0),file(stdin) {};
-	Input( const char* fname)				  :bufsize(0),bufpos(0),file(fopen(fname,"rb")) {};
-	~Input()										 {if (file != stdin) fclose(file);};
+	Input()				:bufsize(0),bufpos(0),file(stdin) {};
+	Input( const char* fname)	:bufsize(0),bufpos(0),file(fopen(fname,"rb")) {};
+	~Input()			{if (file != stdin) fclose(file);};
 
 	char getchar()
 	{
@@ -44,17 +44,17 @@ struct Input
 		Input* input;
 		int ch;
 
-		iterator( Input* p_input)			  :input(p_input),ch(0) {};
-		iterator()								  :input(0),ch(0) {};
-		iterator( const iterator& o)		  :input(o.input),ch(o.ch) {};
+		iterator( Input* p_input)	:input(p_input),ch(0) {};
+		iterator()			:input(0),ch(0) {};
+		iterator( const iterator& o)	:input(o.input),ch(o.ch) {};
 
-		void skip()								 {ch=input->getchar();};
-		iterator& operator++()				  {skip(); return *this;};
-		iterator operator++(int)				{iterator tmp(*this); skip(); return tmp;};
-		char operator*()						  {return ch;};
+		void skip()			{ch=input->getchar();};
+		iterator& operator++()		{skip(); return *this;};
+		iterator operator++(int)	{iterator tmp(*this); skip(); return tmp;};
+		char operator*()		{return ch;};
 	};
-	iterator begin()							  {iterator rt(this); rt.skip(); return rt;};
-	iterator end()								 {return iterator();};
+	iterator begin()			{iterator rt(this); rt.skip(); return rt;};
+	iterator end()				{return iterator();};
 };
 }//anynomous namespace
 

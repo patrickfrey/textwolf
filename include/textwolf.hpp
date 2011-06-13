@@ -42,7 +42,23 @@
 #include <exception>
 #include <iostream>
 #include <limits>
+
+///\typedef UChar
+///\brief Unicode character type
+#ifdef BOOST_VERSION
 #include <boost/cstdint.hpp>
+namespace textwolf {
+	typedef boost::uint32_t UChar;
+}//namespace
+#elifdef _MSC_VER
+#include "port/stdint.h"
+namespace textwolf {
+	typedef uint32_t UChar;
+}//namespace
+#else
+#include <stdint.h>
+typedef uint32_t UChar;
+#endif
 
 ///\namespace textwolf
 ///\brief Toplevel namespace of the library
@@ -123,17 +139,11 @@ struct exception	:public std::exception
 /// \class Buffer
 /// \brief Simple back insertion sequence for storing the outputs of textwolf in a contant size buffer
 ///
-class Buffer
+class Buffer :public throws_exception
 {
-private:
+public:
 	typedef unsigned int size_type;		///< size type of this buffer vector
 
-	size_type m_pos;			///< current cursor position of the buffer (number of added characters)
-	size_type m_size;			///< allocation size of the buffer in bytes
-	char* m_ar;				///< buffer content
-	bool m_allocated;			///< true, if the buffer is allocated by this class and not passed by constructor
-
-public:
 	///\brief Constructor
 	explicit Buffer( unsigned int n)
 		:m_pos(0),m_size(n),m_ar(0),m_allocated(true) {m_ar=new char[n];}
@@ -155,6 +165,36 @@ public:
 	///\brief Return the buffer content as 0-terminated string
 	///\return the C-string
 	const char* ptr() const			{return m_ar;}
+	///\brief Shrinks the size of the buffer or expands it with c
+	///\param [in] n new size of the buffer
+	///\param [in] c fill character if n bigger than the current fill size
+	void resize( size_type n, char c=0)
+	{
+		if (m_pos<n)
+		{
+			m_pos=n;
+		}
+		else
+		{
+			if (m_size<n) n=m_size;
+			while (n>m_pos) push_back(c);
+		}
+	}
+	char operator []( unsigned int ii) const
+	{
+		if (ii > m_pos) throw exception( DimOutOfRange);
+		return m_ar[ii];
+	}
+	char& at( unsigned int ii) const
+	{
+		if (ii > m_pos) throw exception( DimOutOfRange);
+		return m_ar[ii];
+	}
+private:
+	size_type m_pos;			///< current cursor position of the buffer (number of added characters)
+	size_type m_size;			///< allocation size of the buffer in bytes
+	char* m_ar;				///< buffer content
+	bool m_allocated;			///< true, if the buffer is allocated by this class and not passed by constructor
 };
 
 /*! @} */
@@ -196,10 +236,6 @@ public:
 	valuetype operator []( unsigned char ii) const					{return ar[ii];}
 };
 
-///\typedef UChar
-///\brief Unicode character type
-typedef boost::uint32_t UChar;
-
 ///\namespace charset
 ///\brief Predefined character set encodings
 ///
@@ -220,8 +256,23 @@ struct IsoLatin1
 	static unsigned int asize()							{return HeadSize;}
 	static unsigned int size( const char*)						{return Size;}
 	static char achar( const char* buf)						{return buf[0];}
+
+	///\brief parses a unicode character from its serialization in a buffer
+	///\param [in] buf buffer to parse the character from
+	///\return the value of the unicode character
 	static UChar value( const char* buf)						{return (unsigned char)buf[0];}
-	static unsigned int print( UChar chr, char* buf, unsigned int bufsize)		{if (bufsize < 1) return 0; buf[0] = (chr <= 255)?(char)(unsigned char)chr:-1; return 1;}
+
+	///\brief prints a unicode character to a buffer
+	///\tparam Buffer_ STL back insertion sequence
+	///\param [in] chr character to print
+	///\param [out] buf buffer to print to
+	template <class Buffer_>
+	static void print( UChar chr, Buffer_& buf)
+	{
+		char chr_ = (char)(unsigned char)chr;
+		if (chr > 255) chr_ = -1;
+		buf.push_back( chr);
+	}
 };
 
 ///\class ByteOrder
@@ -241,13 +292,48 @@ struct ByteOrder
 template <int encoding>
 struct UCS2
 {
-	enum {LSB=(encoding==ByteOrder::BE),MSB=(encoding==ByteOrder::LE),HeadSize=2,Size=2,MaxChar=0xFFFF};
+	enum
+	{
+		LSB=(encoding==ByteOrder::BE),			///< least significant byte index (0 or 1)
+		MSB=(encoding==ByteOrder::LE),			///< most significant byte index (0 or 1)
+		Print1shift=(encoding==ByteOrder::BE)?8:0,	///< value to shift with to get the 1st character to print
+		Print2shift=(encoding==ByteOrder::LE)?8:0,	///< value to shift with to get the 2nd character to print
+		HeadSize=2,
+		Size=2,
+		MaxChar=0xFFFF
+	};
 
-	static unsigned int asize()							{return HeadSize;}
-	static unsigned int size( const char*)						{return Size;}
-	static char achar( const char* buf)						{return (buf[MSB])?(char)-1:buf[LSB];}
-	static UChar value( const char* buf)						{UChar res = (unsigned char)buf[MSB]; return (res << 8) + (unsigned char)buf[LSB];}
-	static unsigned int print( UChar chr, char* buf, unsigned int bufsize)		{if (bufsize<2) return 0; if (chr>0xFFFF) {buf[0]=(char)0xFF; buf[1]=(char)0xFF;} else {buf[LSB]=(char)chr; buf[MSB]=(char)(chr>>8);} return 2;}
+	static unsigned int asize()				{return HeadSize;}
+	static unsigned int size( const char*)			{return Size;}
+	static char achar( const char* buf)			{return (buf[MSB])?(char)-1:buf[LSB];}
+
+	///\brief parses a unicode character from its serialization in a buffer
+	///\param [in] buf buffer to parse the character from
+	///\return the value of the unicode character
+	static UChar value( const char* buf)
+	{
+		UChar res = (unsigned char)buf[MSB];
+		return (res << 8) + (unsigned char)buf[LSB];
+	}
+
+	///\brief prints a unicode character to a buffer
+	///\tparam Buffer_ STL back insertion sequence
+	///\param [in] chr character to print
+	///\param [out] buf buffer to print to
+	template <class Buffer_>
+	static void print( UChar chr, Buffer_& buf)
+	{
+		if (chr>MaxChar)
+		{
+			buf.push_back( -1);
+			buf.push_back( -1);
+		}
+		else
+		{
+			buf.push_back( chr >> Print1shift);
+			buf.push_back( chr >> Print2shift);
+		}
+	}
 };
 
 ///\class UCS4
@@ -256,13 +342,48 @@ struct UCS2
 template <int encoding>
 struct UCS4
 {
-	enum {B0=(encoding==ByteOrder::BE)?3:0,B1=(encoding==ByteOrder::BE)?2:1,B2=(encoding==ByteOrder::BE)?1:2,B3=(encoding==ByteOrder::BE)?0:3,HeadSize=4,Size=4,MaxChar=0xFFFFFFFF};
+	enum
+	{
+		B0=(encoding==ByteOrder::BE)?3:0,
+		B1=(encoding==ByteOrder::BE)?2:1,
+		B2=(encoding==ByteOrder::BE)?1:2,
+		B3=(encoding==ByteOrder::BE)?0:3,
+		Print1shift=(encoding==ByteOrder::BE)?24:0,	///< value to shift with to get the 1st character to print
+		Print2shift=(encoding==ByteOrder::BE)?16:8,	///< value to shift with to get the 2nd character to print
+		Print3shift=(encoding==ByteOrder::BE)?8:16,	///< value to shift with to get the 3rd character to print
+		Print4shift=(encoding==ByteOrder::BE)?0:24,	///< value to shift with to get the 4th character to print
+		HeadSize=4,
+		Size=4,
+		MaxChar=0xFFFFFFFF
+	};
 
-	static unsigned int asize()							{return HeadSize;}
-	static unsigned int size( const char*)						{return Size;}
-	static char achar( const char* buf)						{return (buf[B3]|buf[B2]|buf[B1])?(char)-1:buf[B0];}
-	static UChar value( const char* buf)						{UChar res = (unsigned char)buf[B3]; res = (res << 8) + (unsigned char)buf[B2]; res = (res << 8) + (unsigned char)buf[B1]; return (res << 8) + (unsigned char)buf[B0];}
-	static unsigned int print( UChar chr, char* buf, unsigned int bufsize)		{if (bufsize<4) return 0; buf[B0]=(char)chr; chr>>=8; buf[B1]=(char)chr; chr>>=8; buf[B2]=(char)chr; chr>>=8; buf[B3]=(char)chr; chr>>=8; return 4;}
+	static unsigned int asize()			{return HeadSize;}
+	static unsigned int size( const char*)		{return Size;}
+	static char achar( const char* buf)		{return (buf[B3]|buf[B2]|buf[B1])?(char)-1:buf[B0];}
+
+	///\brief parses a unicode character from its serialization in a buffer
+	///\param [in] buf buffer to parse the character from
+	///\return the value of the unicode character
+	static UChar value( const char* buf)
+	{
+		UChar res = (unsigned char)buf[B3];
+		res = (res << 8) + (unsigned char)buf[B2];
+		res = (res << 8) + (unsigned char)buf[B1];
+		return (res << 8) + (unsigned char)buf[B0];
+	}
+
+	///\brief prints a unicode character to a buffer
+	///\tparam Buffer_ STL back insertion sequence
+	///\param [in] chr character to print
+	///\param [out] buf buffer to print to
+	template <class Buffer_>
+	static void print( UChar chr, Buffer_& buf)
+	{
+		buf.push_back( (unsigned char)((chr >> Print1shift) & 0xFF));
+		buf.push_back( (unsigned char)((chr >> Print2shift) & 0xFF));
+		buf.push_back( (unsigned char)((chr >> Print3shift) & 0xFF));
+		buf.push_back( (unsigned char)((chr >> Print4shift) & 0xFF));
+	}
 };
 
 struct UCS2LE :public UCS2<ByteOrder::LE> {};
@@ -322,6 +443,9 @@ struct UTF8
 	static char achar( const char* buf)		{return buf[0];}
 	static unsigned int size( const char* buf)	{static CharLengthTab charLengthTab; return charLengthTab[ (unsigned char)buf[ 0]];}
 
+	///\brief parses a unicode character from its serialization in a buffer
+	///\param [in] buf buffer to parse the character from
+	///\return the value of the unicode character
 	static UChar value( const char* buf)
 	{
 		const UChar invalid = std::numeric_limits<UChar>::max();
@@ -346,42 +470,35 @@ struct UTF8
 			}
 		}
 		return res;
-	};
+	}
 
-	static unsigned int print( UChar chr, char* buf, unsigned int bufsize)
+	///\brief prints a unicode character to a buffer
+	///\tparam Buffer_ STL back insertion sequence
+	///\param [in] chr character to print
+	///\param [out] buf buffer to print to
+	template <class Buffer_>
+	static void print( UChar chr, Buffer_& buf)
 	{
 		unsigned int rt;
-		if (bufsize < 8) return 0;
-		if (chr <= 127) {
-			buf[0] = (char)(unsigned char)chr;
-			return 1;
+		if (chr <= 127)
+		{
+			buf.push_back( (char)(unsigned char)chr);
 		}
 		unsigned int pp,sf;
 		for (pp=1,sf=5; pp<5; pp++,sf+=5)
 		{
-			if (chr < (unsigned int)((1<<6)<<sf))
-			{
-				rt = pp+1;
-				while (pp > 0)
-				{
-					buf[pp--] = (char)(unsigned char)((chr & B00111111) | B10000000);
-					chr >>= 6;
-				}
-				unsigned char HB = (unsigned char)(B11111111 << (8-rt));
-				buf[0] = (char)(((unsigned char)chr & (~HB >> 1)) | HB);
-				return rt;
-			}
+			if (chr < (unsigned int)((1<<6)<<sf)) break;
 		}
 		rt = pp+1;
-		while (pp > 0)
-		{
-			buf[pp--] = (char)(unsigned char)((chr & B00111111) | B10000000);
-			chr >>= 6;
-		}
 		unsigned char HB = (unsigned char)(B11111111 << (8-rt));
-		buf[0] = (char)(((unsigned char)chr & (~HB >> 1)) | HB);
-		return rt;
-	};
+		unsigned char shf=pp*6;
+		unsigned int ii;
+		buf.push_back( (char)(((unsigned char)(chr >> shf) & (~HB >> 1)) | HB));
+		for (ii=1,shf-=6; ii<=pp; shf-=6,ii++)
+		{
+			buf.push_back( (char)(unsigned char) (((chr >> shf) & B00111111) | B10000000));
+		}
+	}
 };
 }//namespace charset
 
@@ -540,6 +657,12 @@ public:
 	TextScanner& skip()
 	{
 		while (state < CharSet::asize())
+		{
+			buf[state] = *input;
+			++input;
+			++state;
+		}
+		while (state < CharSet::size( buf))
 		{
 			++input;
 			++state;
@@ -872,13 +995,15 @@ public:
 ///\brief XML scanner template that adds the functionality to the statemachine base definition
 ///\tparam InputIterator input iterator with ++ and read only * returning 0 als last character of the input
 ///\tparam InputCharSet_ character set encoding of the input, read as stream of bytes
-///\tparam OutputCharSet_ character set encoding of the output, printed as string of the item type of the character set
+///\tparam OutputCharSet_ character set encoding of the output, printed as string of the item type of the character set,
+///\tparam OutputBuffer_ buffer for output with STL back insertion sequence interface (e.g. std::string,std::vector<char>,textwolf::Buffer)
 ///\tparam EntityMap_ STL like map from ASCII const char* to UChar
 template
 <
 		class InputIterator,
 		class InputCharSet_=charset::UTF8,
 		class OutputCharSet_=charset::UTF8,
+		class OutputBuffer_=Buffer,
 		class EntityMap_=std::map<const char*,UChar>
 >
 class XMLScanner :public XMLScannerBase
@@ -925,30 +1050,24 @@ public:
 
 public:
 	typedef TextScanner<InputIterator,InputCharSet_> InputReader;
-	typedef XMLScanner<InputIterator,InputCharSet_,OutputCharSet_,EntityMap_> ThisXMLScanner;
+	typedef XMLScanner<InputIterator,InputCharSet_,OutputCharSet_,OutputBuffer_,EntityMap_> ThisXMLScanner;
 	typedef EntityMap_ EntityMap;
-	typedef typename EntityMap::iterator EntityMapIterator;
+	typedef typename EntityMap::const_iterator EntityMapIterator;
+	typedef OutputBuffer_ OutputBuffer;
 
 	///\brief Print a character to the output token buffer
 	///\param [in] ch unicode character to print
-	unsigned int print( UChar ch)
+	void push( UChar ch)
 	{
-		unsigned int nn = OutputCharSet::print( ch, outputBuf+outputSize, outputBufSize-outputSize);
-		if (nn == 0)
-		{
-			error = ErrOutputBufferTooSmall;
-			tokstate.curchr_saved = ch;
-		}
-		return nn;
+		OutputCharSet::print( ch, *m_outputBuf);
 	}
 
-	///\brief Print a character to the output token buffer with incrementing the buffer used size
-	///\param [in] ch unicode character to print
-	bool push( UChar ch)
+	///\brief Print a null character to the output token buffer without expanding its size
+	void printnull()
 	{
-		unsigned int nn = print( ch);
-		outputSize += nn;
-		return (nn != 0);
+		typename OutputBuffer::size_type n = m_outputBuf->size();
+		OutputCharSet::print( 0, *m_outputBuf);
+		m_outputBuf->resize(n);
 	}
 
 	///\brief Map a hexadecimal digit to its value
@@ -1003,7 +1122,7 @@ public:
 
 	///\brief Print the characters of a sequence that was thought to form an entity but did not
 	///\return true on success
-	bool fallbackEntity()
+	void fallbackEntity()
 	{
 		switch (tokstate.id)
 		{
@@ -1011,22 +1130,23 @@ public:
 			case TokState::ParsingKey:
 			case TokState::ParsingToken:
 				break;
-
 			case TokState::ParsingEntity:
-				return push('&');
+				push('&');
+				break;
 			case TokState::ParsingNumericEntity:
-				return push('&') && push('#');
+				push('&');
+				push('#');
+				break;
 			case TokState::ParsingNumericBaseEntity:
-				if (!push('&') || !push('#')) return false;
-				for (unsigned int ii=0; ii<tokstate.pos; ii++) if (!push( tokstate.buf[ii])) return false;
-				return true;
+				push('&');
+				push('#');
+				for (unsigned int ii=0; ii<tokstate.pos; ii++) push( tokstate.buf[ii]);
+				break;
 			case TokState::ParsingNamedEntity:
-				if (!push('&')) return false;
-				for (unsigned int ii=0; ii<tokstate.pos; ii++) if (!push( tokstate.buf[ii])) return false;
-				return true;
+				push('&');
+				for (unsigned int ii=0; ii<tokstate.pos; ii++) push( tokstate.buf[ii]);
+				break;
 		}
-		error = ErrInternal;
-		return false;
 	}
 
 	///\brief Try to parse an entity (we got '&')
@@ -1079,13 +1199,17 @@ public:
 			tokstate.buf[tokstate.pos++] = ch = src.ascii();
 			if (ch == ';')
 			{
-				if (tokstate.value > 0xFFFFFFFF) return fallbackEntity();
+				if (tokstate.value > 0xFFFFFFFF)
+				{
+					fallbackEntity();
+					return true;
+				}
 				if (tokstate.value < 32)
 				{
 					error = ErrEntityEncodesCntrlChar;
 					return false;
 				}
-				if (!push( (UChar)tokstate.value)) return false;
+				push( (UChar)tokstate.value);
 				tokstate.init( TokState::ParsingToken);
 				src.skip();
 				return true;
@@ -1093,12 +1217,17 @@ public:
 			else
 			{
 				unsigned char chval = HEX(ch);
-				if (tokstate.value >= tokstate.base) return fallbackEntity();
+				if (tokstate.value >= tokstate.base)
+				{
+					fallbackEntity();
+					return true;
+				}
 				tokstate.value = tokstate.value * tokstate.base + chval;
 				src.skip();
 			}
 		}
-		return fallbackEntity();
+		fallbackEntity();
+		return true;
 	}
 
 	///\brief Try to parse a named entity
@@ -1125,7 +1254,8 @@ public:
 		}
 		else
 		{
-			return fallbackEntity();
+			fallbackEntity();
+			return true;
 		}
 	}
 
@@ -1180,7 +1310,7 @@ public:
 		bool rt = false;
 		if (tokstate.curchr_saved)
 		{
-			if (!push( tokstate.curchr_saved)) return false;
+			push( tokstate.curchr_saved);
 			tokstate.curchr_saved = 0;
 		}
 		switch (tokstate.id)
@@ -1221,11 +1351,7 @@ public:
 			ControlCharacter ch;
 			while (isTok[ (unsigned char)(ch=src.control())])
 			{
-				if (!push( src.chr()))
-				{
-					tokstate.curchr_saved = src.chr();
-					return false;
-				}
+				push( src.chr());
 				src.skip();
 			}
 			if (ch == Amp)
@@ -1246,19 +1372,17 @@ public:
 	}
 
 	///\brief Static version of parse a token for parsing table definition elements
+	///\tparam OutputBufferType type buffer for output
 	///\param [in] isTok set of valid token characters
 	///\param [in] ir input reader iterator
 	///\param [out] buf buffer where to write the result to
-	///\param [in] bufsize allocation size of buf in bytes
-	///\param [out] p_outputBufSize number of bytes written to buf
 	///\return true on success
-	static bool parseStaticToken( const IsTokenCharMap& isTok, InputReader ir, char* buf, size_type bufsize, size_type* p_outputBufSize)
+	template <class OutputBufferType>
+	static bool parseStaticToken( const IsTokenCharMap& isTok, InputReader ir, OutputBufferType& buf)
 	{
 		for (;;)
 		{
 			ControlCharacter ch;
-			size_type ii=0;
-			*p_outputBufSize = 0;
 			for (;;)
 			{
 				UChar pc;
@@ -1272,16 +1396,9 @@ public:
 				}
 				else
 				{
-					*p_outputBufSize = ii;
 					return true;
 				}
-				unsigned int chlen = OutputCharSet::print( pc, buf+ii, bufsize-ii);
-				if (chlen == 0 || pc == 0)
-				{
-					*p_outputBufSize = ii;
-					return false;
-				}
-				ii += chlen;
+				OutputCharSet::print( pc, buf);
 				ir.skip();
 			}
 		}
@@ -1339,7 +1456,7 @@ public:
 			case 'q':
 				if (str[1] == 'u' && str[2] == 'o' && str[3] == 't' && str[4] == '\0')
 				{
-					if (!push( '\"')) return false;
+					push( '\"');
 					return true;
 				}
 				break;
@@ -1349,7 +1466,7 @@ public:
 				{
 					if (str[2] == 'p' && str[3] == '\0')
 					{
-						if (!push( '&')) return false;
+						push( '&');
 						return true;
 					}
 				}
@@ -1357,7 +1474,7 @@ public:
 				{
 					if (str[2] == 'o' && str[3] == 's' && str[4] == '\0')
 					{
-						if (!push( '\'')) return false;
+						push( '\'');
 						return true;
 					}
 				}
@@ -1366,7 +1483,7 @@ public:
 			case 'l':
 				if (str[1] == 't' && str[2] == '\0')
 				{
-					if (!push( '<')) return false;
+					push( '<');
 					return true;
 				}
 				break;
@@ -1374,7 +1491,7 @@ public:
 			case 'g':
 				if (str[1] == 't' && str[2] == '\0')
 				{
-					if (!push( '>')) return false;
+					push( '>');
 					return true;
 				}
 				break;
@@ -1382,7 +1499,7 @@ public:
 			case 'n':
 				if (str[1] == 'b' && str[2] == 's' && str[3] == 'p' && str[4] == '\0')
 				{
-					if (!push( ' ')) return false;
+					push( ' ');
 					return true;
 				}
 				break;
@@ -1399,10 +1516,10 @@ public:
 		{
 			return true;
 		}
-		else if (entityMap)
+		else if (m_entityMap)
 		{
-			EntityMapIterator itr = entityMap->find( str);
-			if (itr == entityMap->end())
+			EntityMapIterator itr = m_entityMap->find( str);
+			if (itr == m_entityMap->end())
 			{
 				error = ErrUndefinedCharacterEntity;
 				return false;
@@ -1415,7 +1532,8 @@ public:
 					error = ErrEntityEncodesCntrlChar;
 					return false;
 				}
-				return push( ch);
+				push( ch);
+				return true;
 			}
 		}
 		else
@@ -1429,58 +1547,55 @@ private:
 	STMState state;			///< current state of the XML scanner
 	Error error;			///< last error code
 	InputReader src;		///< source input iterator
-	EntityMap* entityMap;		///< map with entities defined by the caller
-	char* outputBuf;		///< buffer to use for output
-	size_type outputBufSize;	///< size of buffer to use for output
-	size_type outputSize;		///< number of bytes written to output buffer
+	const EntityMap* m_entityMap;	///< map with entities defined by the caller
+	OutputBuffer* m_outputBuf;	///< buffer to use for output
 
 public:
 	///\brief Constructor
 	///\param [in] p_src source iterator
 	///\param [in] p_outputBuf buffer to use for output
-	///\param [in] p_outputBufSize size of buffer to use for output in bytes
 	///\param [in] p_entityMap read only map of named entities defined by the user
-	XMLScanner( InputIterator& p_src, char* p_outputBuf, size_type p_outputBufSize, EntityMap* p_entityMap=0)
-			:state(START),error(Ok),src(p_src),entityMap(p_entityMap),outputBuf(p_outputBuf),outputBufSize(p_outputBufSize),outputSize(0)
+	XMLScanner( InputIterator& p_src, Buffer& p_outputBuf, const EntityMap& p_entityMap)
+			:state(START),error(Ok),src(p_src),m_entityMap(&p_entityMap),m_outputBuf(&p_outputBuf)
+	{}
+	XMLScanner( InputIterator& p_src, Buffer& p_outputBuf)
+			:state(START),error(Ok),src(p_src),m_entityMap(0),m_outputBuf(&p_outputBuf)
 	{}
 
 	///\brief Copy constructor
 	///\param [in] o scanner to copy
 	XMLScanner( XMLScanner& o)
-			:state(o.state),error(o.error),src(o.src),entityMap(o.entityMap),outputBuf(o.outputBuf),outputBufSize(o.outputBufSize),outputSize(o.outputSize)
+			:state(o.state),error(o.error),src(o.src),m_entityMap(o.m_entityMap),m_outputBuf(o.m_outputBuf)
 	{}
 
 	///\brief Redefine the buffer to use for output
 	///\param [in] p_outputBuf buffer to use for output
-	///\param [in] p_outputBufSize size of buffer to use for output in bytes
-	void setOutputBuffer( char* p_outputBuf, size_type p_outputBufSize)
+	void setOutputBuffer( Buffer& p_outputBuf)
 	{
-		outputBuf = p_outputBuf;
-		outputBufSize = p_outputBufSize;
+		m_outputBuf = &p_outputBuf;
 	}
 
 	///\brief Static parse of a tag name for the elements in a table
-	///\tparam Character set of the tag written
+	///\tparam Charset Character set of the tag written
+	///\tparam OutputBufferType Buffer to use for output
 	///\param [in] src tagname as ASCII with encoded entities for characters beyond ASCII
-	///\param [in] p_outputBuf buffer for output
-	///\param [in] p_outputBufSize size of buffer for output in bytes
-	///\param [out] p_outputSize number of bytes written to output in bytes
-	template <class CharSet>
-	static bool getTagName( const char* src, char* p_outputBuf, size_type p_outputBufSize, size_type* p_outputSize)
+	///\param [in] p_buf buffer for output
+	template <class CharSet, class OutputBufferType>
+	static bool getTagName( const char* src, OutputBufferType& p_buf)
 	{
 		static IsTagCharMap isTagCharMap;
 		typedef XMLScanner<const char*, charset::UTF8, CharSet> Scan;
 		char* itr = const_cast<char*>(src);
-		return parseStaticToken( isTagCharMap, itr, p_outputBuf, p_outputBufSize, p_outputSize);
+		return parseStaticToken( isTagCharMap, itr, p_buf);
 	}
 
-	///\brief Get the current parsed YML element string, if it was not masked out, see nextItem(unsigned short)
+	///\brief Get the current parsed XML element string, if it was not masked out, see nextItem(unsigned short)
 	///\return the item string
-	char* getItem() const {return outputBuf;}
+	const char* getItem() const {return m_outputBuf->size()?&m_outputBuf->at(0):"\0\0\0\0";}
 
 	///\brief Get the size of the current parsed YML element string in bytes
 	///\return the item string
-	size_type getItemSize() const {return outputSize;}
+	size_type getItemSize() const {return m_outputBuf->size();}
 
 	///\brief Get the current XML scanner state machine state
 	///\return pointer to the state variables
@@ -1516,8 +1631,7 @@ public:
 		ElementType rt = None;
 		if (tokstate.id == TokState::Start)
 		{
-			outputSize = 0;
-			outputBuf[0] = 0;
+			m_outputBuf->clear();
 		}
 		do
 		{
@@ -1534,7 +1648,7 @@ public:
 					{
 						if (!skipToken( *tokenDefs[ sd->action.op])) return ErrorOccurred;
 					}
-					if (!print(0)) return ErrorOccurred;
+					printnull();
 					rt = (ElementType)sd->action.arg;
 				}
 				else if (stringDefs[sd->action.op])
@@ -1560,19 +1674,19 @@ public:
 			}
 			else if (sd->missError != -1)
 			{
-				print(0);
+				printnull();
 				error = (Error)sd->missError;
 				return ErrorOccurred;
 			}
 			else if (ch == EndOfText)
 			{
-				print(0);
+				printnull();
 				error = ErrUnexpectedEndOfText;
 				return ErrorOccurred;
 			}
 			else
 			{
-				print(0);
+				printnull();
 				error = ErrInternal;
 				return ErrorOccurred;
 			}
@@ -1597,7 +1711,7 @@ public:
 		private:
 			friend class iterator;
 			ElementType m_type;		///< type of the element
-			char* m_content;		///< value string of the element
+			const char* m_content;		///< value string of the element
 			size_type m_size;		///< size of the value string in bytes
 		public:
 			///\brief Type of the current element as string
@@ -2089,7 +2203,7 @@ private:
 		catch (...)
 		{
 			throw exception( Unknown);
-		};
+		}
 	}
 
 	void defineThisOutput( int stateidx, int typeidx)
@@ -2126,7 +2240,7 @@ private:
 		catch (...)
 		{
 			throw exception( Unknown);
-		};
+		}
 	}
 
 public:
@@ -2166,12 +2280,12 @@ public:
 				if (value)
 				{
 					char buf[ 1024];
-					XMLScanner<char*>::size_type size;
-					if (!XMLScanner<char*>::getTagName<CharSet_>( value, buf, sizeof(buf), &size))
+					Buffer pb( buf, sizeof(buf));
+					if (!XMLScanner<char*>::getTagName<CharSet_,Buffer>( value, pb))
 					{
 						throw exception( IllegalAttributeName);
 					}
-					stateidx = xs->defineNext( stateidx, op, size, buf, value, follow);
+					stateidx = xs->defineNext( stateidx, op, pb.size(), pb.ptr(), value, follow);
 				}
 				else
 				{
@@ -2250,23 +2364,30 @@ public:
 	PathElement operator*()
 	{
 		return PathElement( this);
-	};
+	}
 };
 
-
+///\brief XML path select template
+///\tparam InputIterator input iterator with ++ and read only * returning 0 als last character of the input
+///\tparam InputCharSet_ character set encoding of the input, read as stream of bytes
+///\tparam OutputCharSet_ character set encoding of the output, printed as string of the item type of the character set,
+///\tparam OutputBuffer_ buffer for output with STL back insertion sequence interface (e.g. std::string,std::vector<char>,textwolf::Buffer)
+///\tparam EntityMap_ STL like map from ASCII const char* to UChar
 template <
-		class InputIterator,				//< input iterator with ++ and read only * returning 0 als last character of the input
-		class InputCharSet_=charset::UTF8,		//< character set encoding of the input, read as stream of bytes
-		class OutputCharSet_=charset::UTF8,		//< character set encoding of the output, printed as string of the item type of the character set
-		class EntityMap_=std::map<const char*,UChar>	//< STL like map from ASCII const char* to UChar
+		class InputIterator,
+		class InputCharSet_=charset::UTF8,
+		class OutputCharSet_=charset::UTF8,
+		class OutputBuffer_=Buffer,
+		class EntityMap_=std::map<const char*,UChar>
 >
 class XMLPathSelect :public throws_exception
 {
 public:
 	typedef XMLPathSelectAutomaton<OutputCharSet_> Automaton;
-	typedef XMLScanner<InputIterator,InputCharSet_,OutputCharSet_,EntityMap_> ThisXMLScanner;
-	typedef XMLPathSelect<InputIterator,InputCharSet_,OutputCharSet_,EntityMap_> ThisXMLPathSelect;
+	typedef XMLScanner<InputIterator,InputCharSet_,OutputCharSet_,OutputBuffer_,EntityMap_> ThisXMLScanner;
+	typedef XMLPathSelect<InputIterator,InputCharSet_,OutputCharSet_,OutputBuffer_,EntityMap_> ThisXMLPathSelect;
 	typedef EntityMap_ EntityMap;
+	typedef OutputBuffer_ OutputBuffer;
 
 private:
 	ThisXMLScanner scan;
@@ -2535,17 +2656,24 @@ private:
 	}
 
 public:
-	XMLPathSelect( const Automaton* p_atm, InputIterator& src, char* obuf, unsigned int obufsize, EntityMap* entityMap=0)
-		:scan(src,obuf,obufsize,entityMap),atm(p_atm),scopestk(p_atm->maxScopeStackSize),follows(p_atm->maxFollows),triggers(p_atm->maxTriggers),tokens(p_atm->maxTokens)
+	XMLPathSelect( const Automaton* p_atm, InputIterator& src, OutputBuffer& obuf, const EntityMap& entityMap)
+		:scan(src,obuf,entityMap),atm(p_atm),scopestk(p_atm->maxScopeStackSize),follows(p_atm->maxFollows),triggers(p_atm->maxTriggers),tokens(p_atm->maxTokens)
+	{
+		if (atm->states.size() > 0) expand(0);
+	}
+	XMLPathSelect( const Automaton* p_atm, InputIterator& src, OutputBuffer& obuf)
+		:scan(src,obuf),atm(p_atm),scopestk(p_atm->maxScopeStackSize),follows(p_atm->maxFollows),triggers(p_atm->maxTriggers),tokens(p_atm->maxTokens)
 	{
 		if (atm->states.size() > 0) expand(0);
 	}
 	XMLPathSelect( const XMLPathSelect& o)
 		:scan(o.scan),atm(o.atm),scopestk(o.maxScopeStackSize),follows(o.maxFollows),follows(o.maxTriggers),tokens(o.maxTokens){}
 
-	void setOutputBuffer( char* outputBuf, unsigned int outputBufSize)
+	///\brief Redefine the buffer to use for output
+	///\param [in] p_outputBuf buffer to use for output
+	void setOutputBuffer( Buffer& p_outputBuf)
 	{
-		scan.setOutputBuffer( outputBuf, outputBufSize);
+		scan.setOutputBuffer( p_outputBuf);
 	}
 
 	//input iterator for the output of this XMLScanner:

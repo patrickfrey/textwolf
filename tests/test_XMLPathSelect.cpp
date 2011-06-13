@@ -2,8 +2,8 @@
 #include <iostream>
 #include <map>
 
-//compile: g++ -c -o test_XMLPathSelect.o -g -I../include -fstrict-aliasing -pedantic -Wall -Wunused -Wno-import -Wformat -Wformat-y2k -Wformat-nonliteral -Wformat-security -Wformat-y2k -Wswitch-enum -Wunknown-pragmas -Wfloat-equal -Wundef -Wshadow -Wpointer-arith -Wcast-qual -Wcast-align -Wwrite-strings -Wmissing-noreturn -Wno-multichar -Wparentheses -Wredundant-decls -Winline -Wdisabled-optimization -Wno-long-long -Werror -Wfatal-errors test_XMLPathSelect.cpp
-//link	  g++ -lc -o test_XMLPathSelect test_XMLPathSelect.o
+//compile:	g++ -c -o test_XMLPathSelect.o -g -I../include -fstrict-aliasing -pedantic -Wall -Wunused -Wno-import -Wformat -Wformat-y2k -Wformat-nonliteral -Wformat-security -Wformat-y2k -Wswitch-enum -Wunknown-pragmas -Wfloat-equal -Wundef -Wshadow -Wpointer-arith -Wcast-qual -Wcast-align -Wwrite-strings -Wmissing-noreturn -Wno-multichar -Wparentheses -Wredundant-decls -Winline -Wdisabled-optimization -Wno-long-long -Werror -Wfatal-errors test_XMLPathSelect.cpp
+//link		g++ -lc -o test_XMLPathSelect test_XMLPathSelect.o
 
 using namespace textwolf;
 
@@ -65,10 +65,10 @@ int main( int, const char**)
 		(*atm)["Y"]--(0,"2")() = 18;
 
 		//[3] define the XML Path selection by the automaton over the source iterator
-		typedef XMLPathSelect<char*,charset::UTF8,charset::UTF8> MyXMLPathSelect;
+		typedef XMLPathSelect<char*,charset::UTF8,charset::UTF8,Buffer> MyXMLPathSelect;
 		enum {outputbufSize=1024};
-		char outputbuf[ outputbufSize];
-		MyXMLPathSelect xs( &atm, src, outputbuf, outputbufSize);
+		Buffer outputbuf( outputbufSize);
+		MyXMLPathSelect xs( &atm, src, outputbuf);
 
 		//[4] iterating through the produced elements and printing them
 		MyXMLPathSelect::iterator itr=xs.begin(),end=xs.end();
