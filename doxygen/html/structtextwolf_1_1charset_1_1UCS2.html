@@ -61,18 +61,23 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <tr><td class="memItemLeft" align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom">{ <br/>
 &nbsp;&nbsp;<a class="el" href="structtextwolf_1_1charset_1_1UCS2.html#a69729e3e64a24a1f5b5e8e35d5105d17a4482f10af94d0206e308a4739ebbcee4">LSB</a> = (encoding==ByteOrder::BE), 
 <a class="el" href="structtextwolf_1_1charset_1_1UCS2.html#a69729e3e64a24a1f5b5e8e35d5105d17acb70eea43ddfdd34d543a0b09c7b91d6">MSB</a> = (encoding==ByteOrder::LE), 
-<a class="el" href="structtextwolf_1_1charset_1_1UCS2.html#a69729e3e64a24a1f5b5e8e35d5105d17a914465c2c8185cccbd8a6fa21a820618">HeadSize</a> = 2, 
-<a class="el" href="structtextwolf_1_1charset_1_1UCS2.html#a69729e3e64a24a1f5b5e8e35d5105d17af561a0ad151701a44fd0ae572342441b">Size</a> = 2, 
+<a class="el" href="structtextwolf_1_1charset_1_1UCS2.html#a69729e3e64a24a1f5b5e8e35d5105d17ada66158f47e40054ce391f3ee94f0e81">Print1shift</a> = (encoding==ByteOrder::BE)?8:0, 
+<a class="el" href="structtextwolf_1_1charset_1_1UCS2.html#a69729e3e64a24a1f5b5e8e35d5105d17a8e8193bb787bced47d7d289ab5426b61">Print2shift</a> = (encoding==ByteOrder::LE)?8:0, 
 <br/>
-&nbsp;&nbsp;<a class="el" href="structtextwolf_1_1charset_1_1UCS2.html#a69729e3e64a24a1f5b5e8e35d5105d17ad9c173b3afe065fbbba184cb86a71a01">MaxChar</a> = 0xFFFF
+&nbsp;&nbsp;<a class="el" href="structtextwolf_1_1charset_1_1UCS2.html#a69729e3e64a24a1f5b5e8e35d5105d17a914465c2c8185cccbd8a6fa21a820618">HeadSize</a> = 2, 
+<a class="el" href="structtextwolf_1_1charset_1_1UCS2.html#a69729e3e64a24a1f5b5e8e35d5105d17af561a0ad151701a44fd0ae572342441b">Size</a> = 2, 
+<a class="el" href="structtextwolf_1_1charset_1_1UCS2.html#a69729e3e64a24a1f5b5e8e35d5105d17ad9c173b3afe065fbbba184cb86a71a01">MaxChar</a> = 0xFFFF
 <br/>
  }</td></tr>
 <tr><td colspan="2"><h2>Static Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static unsigned int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1charset_1_1UCS2.html#a1eac08f25ee189c05901951f182df4a6">asize</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static unsigned int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1charset_1_1UCS2.html#a6125a67e40df6c9f3c4f5b7787527379">size</a> (const char *)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static char&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1charset_1_1UCS2.html#ad4152e61a820232d83d23ac0bfb5b6f8">achar</a> (const char *buf)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">static <a class="el" href="group__Charactersets.html#ga3eb8d6733d6737825026b2e41b8c3f9c">UChar</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1charset_1_1UCS2.html#a3a53e615ed5c12081d26c88e0272c97b">value</a> (const char *buf)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">static unsigned int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1charset_1_1UCS2.html#aead7c81540b664131416d3aa0be63ffd">print</a> (<a class="el" href="group__Charactersets.html#ga3eb8d6733d6737825026b2e41b8c3f9c">UChar</a> chr, char *buf, unsigned int bufsize)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static <a class="el" href="textwolf_8hpp.html#a6bb9fad572d65b305324ef288165e2ac">UChar</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1charset_1_1UCS2.html#a3a53e615ed5c12081d26c88e0272c97b">value</a> (const char *buf)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">parses a unicode character from its serialization in a buffer  <a href="#a3a53e615ed5c12081d26c88e0272c97b"></a><br/></td></tr>
+<tr><td class="memTemplParams" colspan="2">template&lt;class Buffer_ &gt; </td></tr>
+<tr><td class="memTemplItemLeft" align="right" valign="top">static void&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1charset_1_1UCS2.html#a0ff13894b4330d92ac3c2ae8461fc5f7">print</a> (<a class="el" href="textwolf_8hpp.html#a6bb9fad572d65b305324ef288165e2ac">UChar</a> chr, Buffer_ &amp;buf)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">prints a unicode character to a buffer  <a href="#a0ff13894b4330d92ac3c2ae8461fc5f7"></a><br/></td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
 <h3>template&lt;int encoding&gt;<br/>
@@ -100,8 +105,16 @@ template&lt;int encoding&gt; </div>
 <div class="memdoc">
 <dl><dt><b>Enumerator: </b></dt><dd><table border="0" cellspacing="2" cellpadding="0">
 <tr><td valign="top"><em><a class="anchor" id="a69729e3e64a24a1f5b5e8e35d5105d17a4482f10af94d0206e308a4739ebbcee4"></a><!-- doxytag: member="LSB" ref="a69729e3e64a24a1f5b5e8e35d5105d17a4482f10af94d0206e308a4739ebbcee4" args="" -->LSB</em>&nbsp;</td><td>
+<p>least significant byte index (0 or 1) </p>
 </td></tr>
 <tr><td valign="top"><em><a class="anchor" id="a69729e3e64a24a1f5b5e8e35d5105d17acb70eea43ddfdd34d543a0b09c7b91d6"></a><!-- doxytag: member="MSB" ref="a69729e3e64a24a1f5b5e8e35d5105d17acb70eea43ddfdd34d543a0b09c7b91d6" args="" -->MSB</em>&nbsp;</td><td>
+<p>most significant byte index (0 or 1) </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a69729e3e64a24a1f5b5e8e35d5105d17ada66158f47e40054ce391f3ee94f0e81"></a><!-- doxytag: member="Print1shift" ref="a69729e3e64a24a1f5b5e8e35d5105d17ada66158f47e40054ce391f3ee94f0e81" args="" -->Print1shift</em>&nbsp;</td><td>
+<p>value to shift with to get the 1st character to print </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a69729e3e64a24a1f5b5e8e35d5105d17a8e8193bb787bced47d7d289ab5426b61"></a><!-- doxytag: member="Print2shift" ref="a69729e3e64a24a1f5b5e8e35d5105d17a8e8193bb787bced47d7d289ab5426b61" args="" -->Print2shift</em>&nbsp;</td><td>
+<p>value to shift with to get the 2nd character to print </p>
 </td></tr>
 <tr><td valign="top"><em><a class="anchor" id="a69729e3e64a24a1f5b5e8e35d5105d17a914465c2c8185cccbd8a6fa21a820618"></a><!-- doxytag: member="HeadSize" ref="a69729e3e64a24a1f5b5e8e35d5105d17a914465c2c8185cccbd8a6fa21a820618" args="" -->HeadSize</em>&nbsp;</td><td>
 </td></tr>
@@ -155,29 +168,25 @@ template&lt;int encoding&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="aead7c81540b664131416d3aa0be63ffd"></a><!-- doxytag: member="textwolf::charset::UCS2::print" ref="aead7c81540b664131416d3aa0be63ffd" args="(UChar chr, char *buf, unsigned int bufsize)" -->
+<a class="anchor" id="a0ff13894b4330d92ac3c2ae8461fc5f7"></a><!-- doxytag: member="textwolf::charset::UCS2::print" ref="a0ff13894b4330d92ac3c2ae8461fc5f7" args="(UChar chr, Buffer_ &amp;buf)" -->
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;int encoding&gt; </div>
+<div class="memtemplate">
+template&lt;class Buffer_ &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">static unsigned int <a class="el" href="structtextwolf_1_1charset_1_1UCS2.html">textwolf::charset::UCS2</a>&lt; encoding &gt;::print </td>
+          <td class="memname">static void <a class="el" href="structtextwolf_1_1charset_1_1UCS2.html">textwolf::charset::UCS2</a>&lt; encoding &gt;::print </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="group__Charactersets.html#ga3eb8d6733d6737825026b2e41b8c3f9c">UChar</a>&nbsp;</td>
+          <td class="paramtype"><a class="el" href="textwolf_8hpp.html#a6bb9fad572d65b305324ef288165e2ac">UChar</a>&nbsp;</td>
           <td class="paramname"> <em>chr</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">char *&nbsp;</td>
-          <td class="paramname"> <em>buf</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">unsigned int&nbsp;</td>
-          <td class="paramname"> <em>bufsize</em></td><td>&nbsp;</td>
+          <td class="paramtype">Buffer_ &amp;&nbsp;</td>
+          <td class="paramname"> <em>buf</em></td><td>&nbsp;</td>
         </tr>
         <tr>
           <td></td>
@@ -187,6 +196,21 @@ template&lt;int encoding&gt; </div>
       </table>
 </div>
 <div class="memdoc">
+
+<p>prints a unicode character to a buffer </p>
+<dl><dt><b>Template Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>Buffer_</em>&nbsp;</td><td>STL back insertion sequence </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>chr</em>&nbsp;</td><td>character to print </td></tr>
+    <tr><td valign="top"><tt>[out]</tt>&nbsp;</td><td valign="top"><em>buf</em>&nbsp;</td><td>buffer to print to </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -217,7 +241,7 @@ template&lt;int encoding&gt; </div>
 template&lt;int encoding&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">static <a class="el" href="group__Charactersets.html#ga3eb8d6733d6737825026b2e41b8c3f9c">UChar</a> <a class="el" href="structtextwolf_1_1charset_1_1UCS2.html">textwolf::charset::UCS2</a>&lt; encoding &gt;::value </td>
+          <td class="memname">static <a class="el" href="textwolf_8hpp.html#a6bb9fad572d65b305324ef288165e2ac">UChar</a> <a class="el" href="structtextwolf_1_1charset_1_1UCS2.html">textwolf::charset::UCS2</a>&lt; encoding &gt;::value </td>
           <td>(</td>
           <td class="paramtype">const char *&nbsp;</td>
           <td class="paramname"> <em>buf</em></td>
@@ -227,6 +251,15 @@ template&lt;int encoding&gt; </div>
       </table>
 </div>
 <div class="memdoc">
+
+<p>parses a unicode character from its serialization in a buffer </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>buf</em>&nbsp;</td><td>buffer to parse the character from </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>the value of the unicode character </dd></dl>
 
 </div>
 </div>
@@ -239,7 +272,7 @@ template&lt;int encoding&gt; </div>
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&nbsp;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&nbsp;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&nbsp;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&nbsp;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&nbsp;</span>Friends</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&nbsp;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&nbsp;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&nbsp;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&nbsp;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&nbsp;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&nbsp;</span>Defines</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -248,7 +281,7 @@ template&lt;int encoding&gt; </div>
 </iframe>
 </div>
 
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Sat Jun 11 17:46:03 2011 for textwolf by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Mon Jun 13 19:42:56 2011 for textwolf by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

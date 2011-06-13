@@ -97,8 +97,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <tr><td class="memItemLeft" align="right" valign="top">static unsigned int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1charset_1_1UTF8.html#a69773f98f701cc5b20d48e87530bd461">asize</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static char&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1charset_1_1UTF8.html#a8d661b58c495850a3f1d973c33bb02d0">achar</a> (const char *buf)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static unsigned int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1charset_1_1UTF8.html#a46fce1b49d976aba192d55a565fc506f">size</a> (const char *buf)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">static <a class="el" href="group__Charactersets.html#ga3eb8d6733d6737825026b2e41b8c3f9c">UChar</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1charset_1_1UTF8.html#add4157d6bce86b89c129a2f74b49e790">value</a> (const char *buf)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">static unsigned int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1charset_1_1UTF8.html#aef9fb665a1756a9523eab6df5dc95109">print</a> (<a class="el" href="group__Charactersets.html#ga3eb8d6733d6737825026b2e41b8c3f9c">UChar</a> chr, char *buf, unsigned int bufsize)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static <a class="el" href="textwolf_8hpp.html#a6bb9fad572d65b305324ef288165e2ac">UChar</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1charset_1_1UTF8.html#add4157d6bce86b89c129a2f74b49e790">value</a> (const char *buf)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">parses a unicode character from its serialization in a buffer  <a href="#add4157d6bce86b89c129a2f74b49e790"></a><br/></td></tr>
+<tr><td class="memTemplParams" colspan="2">template&lt;class Buffer_ &gt; </td></tr>
+<tr><td class="memTemplItemLeft" align="right" valign="top">static void&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1charset_1_1UTF8.html#a98f9d14db65dcdd759f09bde6360b3b3">print</a> (<a class="el" href="textwolf_8hpp.html#a6bb9fad572d65b305324ef288165e2ac">UChar</a> chr, Buffer_ &amp;buf)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">prints a unicode character to a buffer  <a href="#a98f9d14db65dcdd759f09bde6360b3b3"></a><br/></td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
 <p>character set encoding UTF-8 </p>
@@ -236,27 +239,23 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 </div>
 </div>
-<a class="anchor" id="aef9fb665a1756a9523eab6df5dc95109"></a><!-- doxytag: member="textwolf::charset::UTF8::print" ref="aef9fb665a1756a9523eab6df5dc95109" args="(UChar chr, char *buf, unsigned int bufsize)" -->
+<a class="anchor" id="a98f9d14db65dcdd759f09bde6360b3b3"></a><!-- doxytag: member="textwolf::charset::UTF8::print" ref="a98f9d14db65dcdd759f09bde6360b3b3" args="(UChar chr, Buffer_ &amp;buf)" -->
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;class Buffer_ &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">static unsigned int textwolf::charset::UTF8::print </td>
+          <td class="memname">static void textwolf::charset::UTF8::print </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="group__Charactersets.html#ga3eb8d6733d6737825026b2e41b8c3f9c">UChar</a>&nbsp;</td>
+          <td class="paramtype"><a class="el" href="textwolf_8hpp.html#a6bb9fad572d65b305324ef288165e2ac">UChar</a>&nbsp;</td>
           <td class="paramname"> <em>chr</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">char *&nbsp;</td>
-          <td class="paramname"> <em>buf</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">unsigned int&nbsp;</td>
-          <td class="paramname"> <em>bufsize</em></td><td>&nbsp;</td>
+          <td class="paramtype">Buffer_ &amp;&nbsp;</td>
+          <td class="paramname"> <em>buf</em></td><td>&nbsp;</td>
         </tr>
         <tr>
           <td></td>
@@ -266,6 +265,21 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       </table>
 </div>
 <div class="memdoc">
+
+<p>prints a unicode character to a buffer </p>
+<dl><dt><b>Template Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>Buffer_</em>&nbsp;</td><td>STL back insertion sequence </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>chr</em>&nbsp;</td><td>character to print </td></tr>
+    <tr><td valign="top"><tt>[out]</tt>&nbsp;</td><td valign="top"><em>buf</em>&nbsp;</td><td>buffer to print to </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -292,7 +306,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">static <a class="el" href="group__Charactersets.html#ga3eb8d6733d6737825026b2e41b8c3f9c">UChar</a> textwolf::charset::UTF8::value </td>
+          <td class="memname">static <a class="el" href="textwolf_8hpp.html#a6bb9fad572d65b305324ef288165e2ac">UChar</a> textwolf::charset::UTF8::value </td>
           <td>(</td>
           <td class="paramtype">const char *&nbsp;</td>
           <td class="paramname"> <em>buf</em></td>
@@ -302,6 +316,15 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       </table>
 </div>
 <div class="memdoc">
+
+<p>parses a unicode character from its serialization in a buffer </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>buf</em>&nbsp;</td><td>buffer to parse the character from </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>the value of the unicode character </dd></dl>
 
 </div>
 </div>
@@ -314,7 +337,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&nbsp;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&nbsp;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&nbsp;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&nbsp;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&nbsp;</span>Friends</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&nbsp;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&nbsp;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&nbsp;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&nbsp;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&nbsp;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&nbsp;</span>Defines</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -323,7 +346,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Sat Jun 11 17:46:03 2011 for textwolf by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Mon Jun 13 19:42:56 2011 for textwolf by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>
