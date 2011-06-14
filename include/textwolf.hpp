@@ -494,7 +494,7 @@ struct UTF8
 		}
 		rt = pp+1;
 		unsigned char HB = (unsigned char)(B11111111 << (8-rt));
-		unsigned char shf=pp*6;
+		unsigned char shf = (unsigned char)(pp*6);
 		unsigned int ii;
 		buf.push_back( (char)(((unsigned char)(chr >> shf) & (~HB >> 1)) | HB));
 		for (ii=1,shf-=6; ii<=pp; shf-=6,ii++)
