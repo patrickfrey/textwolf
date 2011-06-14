@@ -73,14 +73,6 @@ Inheritance diagram for textwolf::XMLScanner&lt; InputIterator, InputCharSet_, O
 <tr><td colspan="2"><h2>Classes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1XMLScanner_1_1End.html">End</a></td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">end of input tag  <a href="structtextwolf_1_1XMLScanner_1_1End.html#_details">More...</a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1XMLScanner_1_1IsContentCharMap.html">IsContentCharMap</a></td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Defines the set of content token characters.  <a href="structtextwolf_1_1XMLScanner_1_1IsContentCharMap.html#_details">More...</a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1XMLScanner_1_1IsDQStringCharMap.html">IsDQStringCharMap</a></td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Defines the set characters belonging to a double quoted string.  <a href="structtextwolf_1_1XMLScanner_1_1IsDQStringCharMap.html#_details">More...</a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1XMLScanner_1_1IsSQStringCharMap.html">IsSQStringCharMap</a></td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Defines the set characters belonging to a single quoted string.  <a href="structtextwolf_1_1XMLScanner_1_1IsSQStringCharMap.html#_details">More...</a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1XMLScanner_1_1IsTagCharMap.html">IsTagCharMap</a></td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Defines the set of tag characters.  <a href="structtextwolf_1_1XMLScanner_1_1IsTagCharMap.html#_details">More...</a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLScanner_1_1iterator.html">iterator</a></td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">input iterator for iterating on the output of an XML scanner  <a href="classtextwolf_1_1XMLScanner_1_1iterator.html#_details">More...</a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1XMLScanner_1_1TokState.html">TokState</a></td></tr>
@@ -98,9 +90,6 @@ EntityMap_ &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el"
 <tr><td class="memItemLeft" align="right" valign="top">typedef EntityMap_&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLScanner.html#a262d0e6353b6071c7a876518292811b8">EntityMap</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">typedef EntityMap::const_iterator&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLScanner.html#ad9fb8e5c49302f1a725ba1783c39c184">EntityMapIterator</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">typedef OutputBuffer_&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLScanner.html#a71e367f50f9de5d5d434ccb4ea1a4567">OutputBuffer</a></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="classtextwolf_1_1CharMap.html">CharMap</a>&lt; bool, false, <br class="typebreak"/>
-NofControlCharacter &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLScanner.html#ac6f8dc338a14eed5eb41c878a26a7e08">IsTokenCharMap</a></td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Forms a set of characters by assigning (true/false) to the whole domain.  <a href="#ac6f8dc338a14eed5eb41c878a26a7e08"></a><br/></td></tr>
 <tr><td colspan="2"><h2>Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLScanner.html#af7333cd3aa3af83bbc18ee6a24e502c4">push</a> (<a class="el" href="textwolf_8hpp.html#a6bb9fad572d65b305324ef288165e2ac">UChar</a> ch)</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Print a character to the output token buffer.  <a href="#af7333cd3aa3af83bbc18ee6a24e502c4"></a><br/></td></tr>
@@ -128,13 +117,13 @@ NofControlCharacter &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a c
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Parse an entity defined by name (predefined).  <a href="#ac12deab9c8cb3ebc6b0c7e77ca966278"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLScanner.html#a9474d929c1b20999e3f3b406c668d9e9">pushEntity</a> (const char *str)</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Parse an entity defined by name (predefined or in defined in entity table).  <a href="#a9474d929c1b20999e3f3b406c668d9e9"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLScanner.html#a009999295071bd3c06281ca7907dfd65">XMLScanner</a> (InputIterator &amp;p_src, <a class="el" href="classtextwolf_1_1Buffer.html">Buffer</a> &amp;p_outputBuf, const <a class="el" href="classtextwolf_1_1XMLScanner.html#a262d0e6353b6071c7a876518292811b8">EntityMap</a> &amp;p_entityMap)</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Constructor.  <a href="#a009999295071bd3c06281ca7907dfd65"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLScanner.html#ad100ba70be0f8fb05d86c1c9aacf0f05">XMLScanner</a> (InputIterator &amp;p_src, <a class="el" href="classtextwolf_1_1Buffer.html">Buffer</a> &amp;p_outputBuf)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLScanner.html#a1e71918731ca9e49e2e30474fcca6f93">XMLScanner</a> (InputIterator &amp;p_src, <a class="el" href="classtextwolf_1_1XMLScanner.html#a71e367f50f9de5d5d434ccb4ea1a4567">OutputBuffer</a> &amp;p_outputBuf, const <a class="el" href="classtextwolf_1_1XMLScanner.html#a262d0e6353b6071c7a876518292811b8">EntityMap</a> &amp;p_entityMap)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Constructor.  <a href="#a1e71918731ca9e49e2e30474fcca6f93"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLScanner.html#ae08d6b679897b4f148f6441c93b49a72">XMLScanner</a> (InputIterator &amp;p_src, <a class="el" href="classtextwolf_1_1XMLScanner.html#a71e367f50f9de5d5d434ccb4ea1a4567">OutputBuffer</a> &amp;p_outputBuf)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLScanner.html#a6f9f96e4af19d93f92b4d5602680aca7">XMLScanner</a> (<a class="el" href="classtextwolf_1_1XMLScanner.html">XMLScanner</a> &amp;o)</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Copy constructor.  <a href="#a6f9f96e4af19d93f92b4d5602680aca7"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLScanner.html#ada828c832ddbd4736c3e4b9b001c8235">setOutputBuffer</a> (<a class="el" href="classtextwolf_1_1Buffer.html">Buffer</a> &amp;p_outputBuf)</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Redefine the buffer to use for output.  <a href="#ada828c832ddbd4736c3e4b9b001c8235"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLScanner.html#a2336eeb5cbf02ebfc11fe5d4d2c64342">setOutputBuffer</a> (<a class="el" href="classtextwolf_1_1XMLScanner.html#a71e367f50f9de5d5d434ccb4ea1a4567">OutputBuffer</a> &amp;p_outputBuf)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Redefine the buffer to use for output.  <a href="#a2336eeb5cbf02ebfc11fe5d4d2c64342"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">const char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLScanner.html#a60fcc8d1abb099a31761663d78a59214">getItem</a> () const </td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Get the current parsed XML element string, if it was not masked out, see <a class="el" href="classtextwolf_1_1XMLScanner.html#a3b70b3cbcacd2b017038b8a4be922bd0" title="Scan the next XML element.">nextItem(unsigned short)</a>.  <a href="#a60fcc8d1abb099a31761663d78a59214"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtextwolf_1_1XMLScanner.html#a0d4d65938492e1f03bc14891a5e24564">size_type</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLScanner.html#a1fc43c4cf96360f25b110463455b3a36">getItemSize</a> () const </td></tr>
@@ -157,9 +146,6 @@ NofControlCharacter &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a c
 <tr><td class="memTemplParams" colspan="2">template&lt;class OutputBufferType &gt; </td></tr>
 <tr><td class="memTemplItemLeft" align="right" valign="top">static bool&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLScanner.html#a887e1402c561967a9c7a9d689828f0b8">parseStaticToken</a> (const <a class="el" href="classtextwolf_1_1CharMap.html">IsTokenCharMap</a> &amp;isTok, <a class="el" href="classtextwolf_1_1TextScanner.html">InputReader</a> ir, OutputBufferType &amp;buf)</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Static version of parse a token for parsing table definition elements.  <a href="#a887e1402c561967a9c7a9d689828f0b8"></a><br/></td></tr>
-<tr><td class="memTemplParams" colspan="2">template&lt;class CharSet , class OutputBufferType &gt; </td></tr>
-<tr><td class="memTemplItemLeft" align="right" valign="top">static bool&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLScanner.html#ae8bcf8715313daf55172140e57c02853">getTagName</a> (const char *<a class="el" href="classtextwolf_1_1XMLScanner.html#a5f36d2de04ed1a8d75fdc7348918e3e2">src</a>, OutputBufferType &amp;p_buf)</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Static parse of a tag name for the elements in a table.  <a href="#ae8bcf8715313daf55172140e57c02853"></a><br/></td></tr>
 <tr><td colspan="2"><h2>Private Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structtextwolf_1_1XMLScanner_1_1TokState.html">TokState</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLScanner.html#a7594ceb1033f9b07d29f45ad90d5f369">tokstate</a></td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">the entity parsing state of this XML scanner  <a href="#a7594ceb1033f9b07d29f45ad90d5f369"></a><br/></td></tr>
@@ -175,7 +161,7 @@ NofControlCharacter &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a c
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">buffer to use for output  <a href="#abfd4e94ee33dfd5613dd37cd9b86e4d3"></a><br/></td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
-<h3>template&lt;class InputIterator, class InputCharSet_ = charset::UTF8, class OutputCharSet_ = charset::UTF8, class OutputBuffer_ = Buffer, class EntityMap_ = std::map&lt;const char*,UChar&gt;&gt;<br/>
+<h3>template&lt;class InputIterator, class InputCharSet_, class OutputCharSet_, class OutputBuffer_, class EntityMap_ = std::map&lt;const char*,UChar&gt;&gt;<br/>
  class textwolf::XMLScanner&lt; InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_, EntityMap_ &gt;</h3>
 
 <p>XML scanner template that adds the functionality to the statemachine base definition. </p>
@@ -184,7 +170,7 @@ NofControlCharacter &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a c
     <tr><td valign="top"></td><td valign="top"><em>InputIterator</em>&nbsp;</td><td>input iterator with ++ and read only * returning 0 als last character of the input </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>InputCharSet_</em>&nbsp;</td><td>character set encoding of the input, read as stream of bytes </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>OutputCharSet_</em>&nbsp;</td><td>character set encoding of the output, printed as string of the item type of the character set, </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>OutputBuffer_</em>&nbsp;</td><td>buffer for output with STL back insertion sequence interface (e.g. std::string,std::vector&lt;char&gt;,<a class="el" href="classtextwolf_1_1Buffer.html" title="Simple back insertion sequence for storing the outputs of textwolf in a contant size...">textwolf::Buffer</a>) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>OutputBuffer_</em>&nbsp;</td><td>buffer for output with STL back insertion sequence interface (e.g. std::string,std::vector&lt;char&gt;,<a class="el" href="classtextwolf_1_1StaticBuffer.html" title="Simple back insertion sequence for storing the outputs of textwolf in a contant size...">textwolf::StaticBuffer</a>) </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>EntityMap_</em>&nbsp;</td><td>STL like map from ASCII const char* to UChar </td></tr>
   </table>
   </dd>
@@ -194,7 +180,7 @@ NofControlCharacter &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a c
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class OutputBuffer_  = Buffer, class EntityMap_  = std::map&lt;const char*,UChar&gt;&gt; </div>
+template&lt;class InputIterator, class InputCharSet_, class OutputCharSet_, class OutputBuffer_, class EntityMap_ = std::map&lt;const char*,UChar&gt;&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">typedef EntityMap_ <a class="el" href="classtextwolf_1_1XMLScanner.html">textwolf::XMLScanner</a>&lt; InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_, EntityMap_ &gt;::<a class="el" href="classtextwolf_1_1XMLScanner.html#a262d0e6353b6071c7a876518292811b8">EntityMap</a></td>
@@ -209,7 +195,7 @@ template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class Ou
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class OutputBuffer_  = Buffer, class EntityMap_  = std::map&lt;const char*,UChar&gt;&gt; </div>
+template&lt;class InputIterator, class InputCharSet_, class OutputCharSet_, class OutputBuffer_, class EntityMap_ = std::map&lt;const char*,UChar&gt;&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">typedef EntityMap::const_iterator <a class="el" href="classtextwolf_1_1XMLScanner.html">textwolf::XMLScanner</a>&lt; InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_, EntityMap_ &gt;::<a class="el" href="classtextwolf_1_1XMLScanner.html#ad9fb8e5c49302f1a725ba1783c39c184">EntityMapIterator</a></td>
@@ -224,7 +210,7 @@ template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class Ou
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class OutputBuffer_  = Buffer, class EntityMap_  = std::map&lt;const char*,UChar&gt;&gt; </div>
+template&lt;class InputIterator, class InputCharSet_, class OutputCharSet_, class OutputBuffer_, class EntityMap_ = std::map&lt;const char*,UChar&gt;&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">typedef InputCharSet_ <a class="el" href="classtextwolf_1_1XMLScanner.html">textwolf::XMLScanner</a>&lt; InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_, EntityMap_ &gt;::<a class="el" href="classtextwolf_1_1XMLScanner.html#acf5a5d2d9a5dbcbb63fd17bca63c807e">InputCharSet</a></td>
@@ -239,7 +225,7 @@ template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class Ou
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class OutputBuffer_  = Buffer, class EntityMap_  = std::map&lt;const char*,UChar&gt;&gt; </div>
+template&lt;class InputIterator, class InputCharSet_, class OutputCharSet_, class OutputBuffer_, class EntityMap_ = std::map&lt;const char*,UChar&gt;&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">typedef <a class="el" href="classtextwolf_1_1TextScanner.html">TextScanner</a>&lt;InputIterator,InputCharSet_&gt; <a class="el" href="classtextwolf_1_1XMLScanner.html">textwolf::XMLScanner</a>&lt; InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_, EntityMap_ &gt;::<a class="el" href="classtextwolf_1_1TextScanner.html">InputReader</a></td>
@@ -250,28 +236,11 @@ template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class Ou
 
 </div>
 </div>
-<a class="anchor" id="ac6f8dc338a14eed5eb41c878a26a7e08"></a><!-- doxytag: member="textwolf::XMLScanner::IsTokenCharMap" ref="ac6f8dc338a14eed5eb41c878a26a7e08" args="" -->
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class OutputBuffer_  = Buffer, class EntityMap_  = std::map&lt;const char*,UChar&gt;&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classtextwolf_1_1XMLScanner.html">textwolf::XMLScanner</a>&lt; InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_, EntityMap_ &gt;::<a class="el" href="classtextwolf_1_1CharMap.html">IsTokenCharMap</a></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Forms a set of characters by assigning (true/false) to the whole domain. </p>
-
-</div>
-</div>
 <a class="anchor" id="a71e367f50f9de5d5d434ccb4ea1a4567"></a><!-- doxytag: member="textwolf::XMLScanner::OutputBuffer" ref="a71e367f50f9de5d5d434ccb4ea1a4567" args="" -->
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class OutputBuffer_  = Buffer, class EntityMap_  = std::map&lt;const char*,UChar&gt;&gt; </div>
+template&lt;class InputIterator, class InputCharSet_, class OutputCharSet_, class OutputBuffer_, class EntityMap_ = std::map&lt;const char*,UChar&gt;&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">typedef OutputBuffer_ <a class="el" href="classtextwolf_1_1XMLScanner.html">textwolf::XMLScanner</a>&lt; InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_, EntityMap_ &gt;::<a class="el" href="classtextwolf_1_1XMLScanner.html#a71e367f50f9de5d5d434ccb4ea1a4567">OutputBuffer</a></td>
@@ -286,7 +255,7 @@ template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class Ou
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class OutputBuffer_  = Buffer, class EntityMap_  = std::map&lt;const char*,UChar&gt;&gt; </div>
+template&lt;class InputIterator, class InputCharSet_, class OutputCharSet_, class OutputBuffer_, class EntityMap_ = std::map&lt;const char*,UChar&gt;&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">typedef OutputCharSet_ <a class="el" href="classtextwolf_1_1XMLScanner.html">textwolf::XMLScanner</a>&lt; InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_, EntityMap_ &gt;::<a class="el" href="classtextwolf_1_1XMLScanner.html#a1e2305bda986903f7a07ae0ed9ddfd9f">OutputCharSet</a></td>
@@ -301,7 +270,7 @@ template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class Ou
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class OutputBuffer_  = Buffer, class EntityMap_  = std::map&lt;const char*,UChar&gt;&gt; </div>
+template&lt;class InputIterator, class InputCharSet_, class OutputCharSet_, class OutputBuffer_, class EntityMap_ = std::map&lt;const char*,UChar&gt;&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">typedef unsigned int <a class="el" href="classtextwolf_1_1XMLScanner.html">textwolf::XMLScanner</a>&lt; InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_, EntityMap_ &gt;::<a class="el" href="classtextwolf_1_1XMLScanner.html#a0d4d65938492e1f03bc14891a5e24564">size_type</a></td>
@@ -316,7 +285,7 @@ template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class Ou
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class OutputBuffer_  = Buffer, class EntityMap_  = std::map&lt;const char*,UChar&gt;&gt; </div>
+template&lt;class InputIterator, class InputCharSet_, class OutputCharSet_, class OutputBuffer_, class EntityMap_ = std::map&lt;const char*,UChar&gt;&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">typedef <a class="el" href="classtextwolf_1_1XMLScanner.html">XMLScanner</a>&lt;InputIterator,InputCharSet_,OutputCharSet_,OutputBuffer_,EntityMap_&gt; <a class="el" href="classtextwolf_1_1XMLScanner.html">textwolf::XMLScanner</a>&lt; InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_, EntityMap_ &gt;::<a class="el" href="classtextwolf_1_1XMLScanner.html">ThisXMLScanner</a></td>
@@ -328,11 +297,11 @@ template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class Ou
 </div>
 </div>
 <hr/><h2>Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a009999295071bd3c06281ca7907dfd65"></a><!-- doxytag: member="textwolf::XMLScanner::XMLScanner" ref="a009999295071bd3c06281ca7907dfd65" args="(InputIterator &amp;p_src, Buffer &amp;p_outputBuf, const EntityMap &amp;p_entityMap)" -->
+<a class="anchor" id="a1e71918731ca9e49e2e30474fcca6f93"></a><!-- doxytag: member="textwolf::XMLScanner::XMLScanner" ref="a1e71918731ca9e49e2e30474fcca6f93" args="(InputIterator &amp;p_src, OutputBuffer &amp;p_outputBuf, const EntityMap &amp;p_entityMap)" -->
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class OutputBuffer_  = Buffer, class EntityMap_  = std::map&lt;const char*,UChar&gt;&gt; </div>
+template&lt;class InputIterator, class InputCharSet_, class OutputCharSet_, class OutputBuffer_, class EntityMap_ = std::map&lt;const char*,UChar&gt;&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="classtextwolf_1_1XMLScanner.html">textwolf::XMLScanner</a>&lt; InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_, EntityMap_ &gt;::<a class="el" href="classtextwolf_1_1XMLScanner.html">XMLScanner</a> </td>
@@ -343,7 +312,7 @@ template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class Ou
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="classtextwolf_1_1Buffer.html">Buffer</a> &amp;&nbsp;</td>
+          <td class="paramtype"><a class="el" href="classtextwolf_1_1XMLScanner.html#a71e367f50f9de5d5d434ccb4ea1a4567">OutputBuffer</a> &amp;&nbsp;</td>
           <td class="paramname"> <em>p_outputBuf</em>, </td>
         </tr>
         <tr>
@@ -373,11 +342,11 @@ template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class Ou
 
 </div>
 </div>
-<a class="anchor" id="ad100ba70be0f8fb05d86c1c9aacf0f05"></a><!-- doxytag: member="textwolf::XMLScanner::XMLScanner" ref="ad100ba70be0f8fb05d86c1c9aacf0f05" args="(InputIterator &amp;p_src, Buffer &amp;p_outputBuf)" -->
+<a class="anchor" id="ae08d6b679897b4f148f6441c93b49a72"></a><!-- doxytag: member="textwolf::XMLScanner::XMLScanner" ref="ae08d6b679897b4f148f6441c93b49a72" args="(InputIterator &amp;p_src, OutputBuffer &amp;p_outputBuf)" -->
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class OutputBuffer_  = Buffer, class EntityMap_  = std::map&lt;const char*,UChar&gt;&gt; </div>
+template&lt;class InputIterator, class InputCharSet_, class OutputCharSet_, class OutputBuffer_, class EntityMap_ = std::map&lt;const char*,UChar&gt;&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="classtextwolf_1_1XMLScanner.html">textwolf::XMLScanner</a>&lt; InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_, EntityMap_ &gt;::<a class="el" href="classtextwolf_1_1XMLScanner.html">XMLScanner</a> </td>
@@ -388,7 +357,7 @@ template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class Ou
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="classtextwolf_1_1Buffer.html">Buffer</a> &amp;&nbsp;</td>
+          <td class="paramtype"><a class="el" href="classtextwolf_1_1XMLScanner.html#a71e367f50f9de5d5d434ccb4ea1a4567">OutputBuffer</a> &amp;&nbsp;</td>
           <td class="paramname"> <em>p_outputBuf</em></td><td>&nbsp;</td>
         </tr>
         <tr>
@@ -406,7 +375,7 @@ template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class Ou
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class OutputBuffer_  = Buffer, class EntityMap_  = std::map&lt;const char*,UChar&gt;&gt; </div>
+template&lt;class InputIterator, class InputCharSet_, class OutputCharSet_, class OutputBuffer_, class EntityMap_ = std::map&lt;const char*,UChar&gt;&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="classtextwolf_1_1XMLScanner.html">textwolf::XMLScanner</a>&lt; InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_, EntityMap_ &gt;::<a class="el" href="classtextwolf_1_1XMLScanner.html">XMLScanner</a> </td>
@@ -435,7 +404,7 @@ template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class Ou
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class OutputBuffer_  = Buffer, class EntityMap_  = std::map&lt;const char*,UChar&gt;&gt; </div>
+template&lt;class InputIterator, class InputCharSet_, class OutputCharSet_, class OutputBuffer_, class EntityMap_ = std::map&lt;const char*,UChar&gt;&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="classtextwolf_1_1XMLScanner_1_1iterator.html">iterator</a> <a class="el" href="classtextwolf_1_1XMLScanner.html">textwolf::XMLScanner</a>&lt; InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_, EntityMap_ &gt;::begin </td>
@@ -457,7 +426,7 @@ template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class Ou
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class OutputBuffer_  = Buffer, class EntityMap_  = std::map&lt;const char*,UChar&gt;&gt; </div>
+template&lt;class InputIterator, class InputCharSet_, class OutputCharSet_, class OutputBuffer_, class EntityMap_ = std::map&lt;const char*,UChar&gt;&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="classtextwolf_1_1XMLScanner_1_1iterator.html">iterator</a> <a class="el" href="classtextwolf_1_1XMLScanner.html">textwolf::XMLScanner</a>&lt; InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_, EntityMap_ &gt;::end </td>
@@ -479,7 +448,7 @@ template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class Ou
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class OutputBuffer_  = Buffer, class EntityMap_  = std::map&lt;const char*,UChar&gt;&gt; </div>
+template&lt;class InputIterator, class InputCharSet_, class OutputCharSet_, class OutputBuffer_, class EntityMap_ = std::map&lt;const char*,UChar&gt;&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">bool <a class="el" href="classtextwolf_1_1XMLScanner.html">textwolf::XMLScanner</a>&lt; InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_, EntityMap_ &gt;::expectStr </td>
@@ -508,7 +477,7 @@ template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class Ou
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class OutputBuffer_  = Buffer, class EntityMap_  = std::map&lt;const char*,UChar&gt;&gt; </div>
+template&lt;class InputIterator, class InputCharSet_, class OutputCharSet_, class OutputBuffer_, class EntityMap_ = std::map&lt;const char*,UChar&gt;&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">void <a class="el" href="classtextwolf_1_1XMLScanner.html">textwolf::XMLScanner</a>&lt; InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_, EntityMap_ &gt;::fallbackEntity </td>
@@ -530,7 +499,7 @@ template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class Ou
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class OutputBuffer_  = Buffer, class EntityMap_  = std::map&lt;const char*,UChar&gt;&gt; </div>
+template&lt;class InputIterator, class InputCharSet_, class OutputCharSet_, class OutputBuffer_, class EntityMap_ = std::map&lt;const char*,UChar&gt;&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="classtextwolf_1_1XMLScannerBase.html#ae26e6510c822ee35e041ab2dab70e78b">Error</a> <a class="el" href="classtextwolf_1_1XMLScanner.html">textwolf::XMLScanner</a>&lt; InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_, EntityMap_ &gt;::getError </td>
@@ -559,7 +528,7 @@ template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class Ou
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class OutputBuffer_  = Buffer, class EntityMap_  = std::map&lt;const char*,UChar&gt;&gt; </div>
+template&lt;class InputIterator, class InputCharSet_, class OutputCharSet_, class OutputBuffer_, class EntityMap_ = std::map&lt;const char*,UChar&gt;&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">const char* <a class="el" href="classtextwolf_1_1XMLScanner.html">textwolf::XMLScanner</a>&lt; InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_, EntityMap_ &gt;::getItem </td>
@@ -581,7 +550,7 @@ template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class Ou
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class OutputBuffer_  = Buffer, class EntityMap_  = std::map&lt;const char*,UChar&gt;&gt; </div>
+template&lt;class InputIterator, class InputCharSet_, class OutputCharSet_, class OutputBuffer_, class EntityMap_ = std::map&lt;const char*,UChar&gt;&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="classtextwolf_1_1XMLScanner.html#a0d4d65938492e1f03bc14891a5e24564">size_type</a> <a class="el" href="classtextwolf_1_1XMLScanner.html">textwolf::XMLScanner</a>&lt; InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_, EntityMap_ &gt;::getItemSize </td>
@@ -603,7 +572,7 @@ template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class Ou
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class OutputBuffer_  = Buffer, class EntityMap_  = std::map&lt;const char*,UChar&gt;&gt; </div>
+template&lt;class InputIterator, class InputCharSet_, class OutputCharSet_, class OutputBuffer_, class EntityMap_ = std::map&lt;const char*,UChar&gt;&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="structtextwolf_1_1ScannerStatemachine_1_1Element.html">ScannerStatemachine::Element</a>* <a class="el" href="classtextwolf_1_1XMLScanner.html">textwolf::XMLScanner</a>&lt; InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_, EntityMap_ &gt;::getState </td>
@@ -621,58 +590,11 @@ template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class Ou
 
 </div>
 </div>
-<a class="anchor" id="ae8bcf8715313daf55172140e57c02853"></a><!-- doxytag: member="textwolf::XMLScanner::getTagName" ref="ae8bcf8715313daf55172140e57c02853" args="(const char *src, OutputBufferType &amp;p_buf)" -->
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class OutputBuffer_  = Buffer, class EntityMap_  = std::map&lt;const char*,UChar&gt;&gt; </div>
-<div class="memtemplate">
-template&lt;class CharSet , class OutputBufferType &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">static bool <a class="el" href="classtextwolf_1_1XMLScanner.html">textwolf::XMLScanner</a>&lt; InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_, EntityMap_ &gt;::getTagName </td>
-          <td>(</td>
-          <td class="paramtype">const char *&nbsp;</td>
-          <td class="paramname"> <em>src</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">OutputBufferType &amp;&nbsp;</td>
-          <td class="paramname"> <em>p_buf</em></td><td>&nbsp;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td><td><code> [inline, static]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Static parse of a tag name for the elements in a table. </p>
-<dl><dt><b>Template Parameters:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>Charset</em>&nbsp;</td><td>Character set of the tag written </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>OutputBufferType</em>&nbsp;</td><td><a class="el" href="classtextwolf_1_1Buffer.html" title="Simple back insertion sequence for storing the outputs of textwolf in a contant size...">Buffer</a> to use for output </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl><dt><b>Parameters:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>src</em>&nbsp;</td><td>tagname as ASCII with encoded entities for characters beyond ASCII </td></tr>
-    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>p_buf</em>&nbsp;</td><td>buffer for output </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
 <a class="anchor" id="a0ee44c9079b8c3d9631716c5c8d9498f"></a><!-- doxytag: member="textwolf::XMLScanner::HEX" ref="a0ee44c9079b8c3d9631716c5c8d9498f" args="(unsigned char ch)" -->
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class OutputBuffer_  = Buffer, class EntityMap_  = std::map&lt;const char*,UChar&gt;&gt; </div>
+template&lt;class InputIterator, class InputCharSet_, class OutputCharSet_, class OutputBuffer_, class EntityMap_ = std::map&lt;const char*,UChar&gt;&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">static unsigned char <a class="el" href="classtextwolf_1_1XMLScanner.html">textwolf::XMLScanner</a>&lt; InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_, EntityMap_ &gt;::HEX </td>
@@ -700,7 +622,7 @@ template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class Ou
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class OutputBuffer_  = Buffer, class EntityMap_  = std::map&lt;const char*,UChar&gt;&gt; </div>
+template&lt;class InputIterator, class InputCharSet_, class OutputCharSet_, class OutputBuffer_, class EntityMap_ = std::map&lt;const char*,UChar&gt;&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="classtextwolf_1_1XMLScannerBase.html#aae4f0cdb7e16aca5fdee271fa60e1329">ElementType</a> <a class="el" href="classtextwolf_1_1XMLScanner.html">textwolf::XMLScanner</a>&lt; InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_, EntityMap_ &gt;::nextItem </td>
@@ -729,7 +651,7 @@ template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class Ou
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class OutputBuffer_  = Buffer, class EntityMap_  = std::map&lt;const char*,UChar&gt;&gt; </div>
+template&lt;class InputIterator, class InputCharSet_, class OutputCharSet_, class OutputBuffer_, class EntityMap_ = std::map&lt;const char*,UChar&gt;&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">bool <a class="el" href="classtextwolf_1_1XMLScanner.html">textwolf::XMLScanner</a>&lt; InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_, EntityMap_ &gt;::parseEntity </td>
@@ -751,7 +673,7 @@ template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class Ou
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class OutputBuffer_  = Buffer, class EntityMap_  = std::map&lt;const char*,UChar&gt;&gt; </div>
+template&lt;class InputIterator, class InputCharSet_, class OutputCharSet_, class OutputBuffer_, class EntityMap_ = std::map&lt;const char*,UChar&gt;&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">bool <a class="el" href="classtextwolf_1_1XMLScanner.html">textwolf::XMLScanner</a>&lt; InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_, EntityMap_ &gt;::parseNamedEntity </td>
@@ -773,7 +695,7 @@ template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class Ou
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class OutputBuffer_  = Buffer, class EntityMap_  = std::map&lt;const char*,UChar&gt;&gt; </div>
+template&lt;class InputIterator, class InputCharSet_, class OutputCharSet_, class OutputBuffer_, class EntityMap_ = std::map&lt;const char*,UChar&gt;&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">bool <a class="el" href="classtextwolf_1_1XMLScanner.html">textwolf::XMLScanner</a>&lt; InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_, EntityMap_ &gt;::parseNumericBaseEntity </td>
@@ -795,7 +717,7 @@ template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class Ou
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class OutputBuffer_  = Buffer, class EntityMap_  = std::map&lt;const char*,UChar&gt;&gt; </div>
+template&lt;class InputIterator, class InputCharSet_, class OutputCharSet_, class OutputBuffer_, class EntityMap_ = std::map&lt;const char*,UChar&gt;&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">bool <a class="el" href="classtextwolf_1_1XMLScanner.html">textwolf::XMLScanner</a>&lt; InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_, EntityMap_ &gt;::parseNumericEntity </td>
@@ -817,7 +739,7 @@ template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class Ou
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class OutputBuffer_  = Buffer, class EntityMap_  = std::map&lt;const char*,UChar&gt;&gt; </div>
+template&lt;class InputIterator, class InputCharSet_, class OutputCharSet_, class OutputBuffer_, class EntityMap_ = std::map&lt;const char*,UChar&gt;&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">static <a class="el" href="textwolf_8hpp.html#a6bb9fad572d65b305324ef288165e2ac">UChar</a> <a class="el" href="classtextwolf_1_1XMLScanner.html">textwolf::XMLScanner</a>&lt; InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_, EntityMap_ &gt;::parseStaticNumericEntityValue </td>
@@ -846,7 +768,7 @@ template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class Ou
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class OutputBuffer_  = Buffer, class EntityMap_  = std::map&lt;const char*,UChar&gt;&gt; </div>
+template&lt;class InputIterator, class InputCharSet_, class OutputCharSet_, class OutputBuffer_, class EntityMap_ = std::map&lt;const char*,UChar&gt;&gt; </div>
 <div class="memtemplate">
 template&lt;class OutputBufferType &gt; </div>
       <table class="memname">
@@ -900,7 +822,7 @@ template&lt;class OutputBufferType &gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class OutputBuffer_  = Buffer, class EntityMap_  = std::map&lt;const char*,UChar&gt;&gt; </div>
+template&lt;class InputIterator, class InputCharSet_, class OutputCharSet_, class OutputBuffer_, class EntityMap_ = std::map&lt;const char*,UChar&gt;&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">bool <a class="el" href="classtextwolf_1_1XMLScanner.html">textwolf::XMLScanner</a>&lt; InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_, EntityMap_ &gt;::parseToken </td>
@@ -929,7 +851,7 @@ template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class Ou
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class OutputBuffer_  = Buffer, class EntityMap_  = std::map&lt;const char*,UChar&gt;&gt; </div>
+template&lt;class InputIterator, class InputCharSet_, class OutputCharSet_, class OutputBuffer_, class EntityMap_ = std::map&lt;const char*,UChar&gt;&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">bool <a class="el" href="classtextwolf_1_1XMLScanner.html">textwolf::XMLScanner</a>&lt; InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_, EntityMap_ &gt;::parseTokenRecover </td>
@@ -951,7 +873,7 @@ template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class Ou
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class OutputBuffer_  = Buffer, class EntityMap_  = std::map&lt;const char*,UChar&gt;&gt; </div>
+template&lt;class InputIterator, class InputCharSet_, class OutputCharSet_, class OutputBuffer_, class EntityMap_ = std::map&lt;const char*,UChar&gt;&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">void <a class="el" href="classtextwolf_1_1XMLScanner.html">textwolf::XMLScanner</a>&lt; InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_, EntityMap_ &gt;::printnull </td>
@@ -972,7 +894,7 @@ template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class Ou
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class OutputBuffer_  = Buffer, class EntityMap_  = std::map&lt;const char*,UChar&gt;&gt; </div>
+template&lt;class InputIterator, class InputCharSet_, class OutputCharSet_, class OutputBuffer_, class EntityMap_ = std::map&lt;const char*,UChar&gt;&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">void <a class="el" href="classtextwolf_1_1XMLScanner.html">textwolf::XMLScanner</a>&lt; InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_, EntityMap_ &gt;::push </td>
@@ -1000,7 +922,7 @@ template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class Ou
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class OutputBuffer_  = Buffer, class EntityMap_  = std::map&lt;const char*,UChar&gt;&gt; </div>
+template&lt;class InputIterator, class InputCharSet_, class OutputCharSet_, class OutputBuffer_, class EntityMap_ = std::map&lt;const char*,UChar&gt;&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">bool <a class="el" href="classtextwolf_1_1XMLScanner.html">textwolf::XMLScanner</a>&lt; InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_, EntityMap_ &gt;::pushEntity </td>
@@ -1029,7 +951,7 @@ template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class Ou
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class OutputBuffer_  = Buffer, class EntityMap_  = std::map&lt;const char*,UChar&gt;&gt; </div>
+template&lt;class InputIterator, class InputCharSet_, class OutputCharSet_, class OutputBuffer_, class EntityMap_ = std::map&lt;const char*,UChar&gt;&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">bool <a class="el" href="classtextwolf_1_1XMLScanner.html">textwolf::XMLScanner</a>&lt; InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_, EntityMap_ &gt;::pushPredefinedEntity </td>
@@ -1054,16 +976,16 @@ template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class Ou
 
 </div>
 </div>
-<a class="anchor" id="ada828c832ddbd4736c3e4b9b001c8235"></a><!-- doxytag: member="textwolf::XMLScanner::setOutputBuffer" ref="ada828c832ddbd4736c3e4b9b001c8235" args="(Buffer &amp;p_outputBuf)" -->
+<a class="anchor" id="a2336eeb5cbf02ebfc11fe5d4d2c64342"></a><!-- doxytag: member="textwolf::XMLScanner::setOutputBuffer" ref="a2336eeb5cbf02ebfc11fe5d4d2c64342" args="(OutputBuffer &amp;p_outputBuf)" -->
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class OutputBuffer_  = Buffer, class EntityMap_  = std::map&lt;const char*,UChar&gt;&gt; </div>
+template&lt;class InputIterator, class InputCharSet_, class OutputCharSet_, class OutputBuffer_, class EntityMap_ = std::map&lt;const char*,UChar&gt;&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">void <a class="el" href="classtextwolf_1_1XMLScanner.html">textwolf::XMLScanner</a>&lt; InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_, EntityMap_ &gt;::setOutputBuffer </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classtextwolf_1_1Buffer.html">Buffer</a> &amp;&nbsp;</td>
+          <td class="paramtype"><a class="el" href="classtextwolf_1_1XMLScanner.html#a71e367f50f9de5d5d434ccb4ea1a4567">OutputBuffer</a> &amp;&nbsp;</td>
           <td class="paramname"> <em>p_outputBuf</em></td>
           <td>&nbsp;)&nbsp;</td>
           <td><code> [inline]</code></td>
@@ -1086,7 +1008,7 @@ template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class Ou
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class OutputBuffer_  = Buffer, class EntityMap_  = std::map&lt;const char*,UChar&gt;&gt; </div>
+template&lt;class InputIterator, class InputCharSet_, class OutputCharSet_, class OutputBuffer_, class EntityMap_ = std::map&lt;const char*,UChar&gt;&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">bool <a class="el" href="classtextwolf_1_1XMLScanner.html">textwolf::XMLScanner</a>&lt; InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_, EntityMap_ &gt;::skipToken </td>
@@ -1116,7 +1038,7 @@ template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class Ou
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class OutputBuffer_  = Buffer, class EntityMap_  = std::map&lt;const char*,UChar&gt;&gt; </div>
+template&lt;class InputIterator, class InputCharSet_, class OutputCharSet_, class OutputBuffer_, class EntityMap_ = std::map&lt;const char*,UChar&gt;&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="classtextwolf_1_1XMLScannerBase.html#ae26e6510c822ee35e041ab2dab70e78b">Error</a> <a class="el" href="classtextwolf_1_1XMLScanner.html">textwolf::XMLScanner</a>&lt; InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_, EntityMap_ &gt;::<a class="el" href="classtextwolf_1_1XMLScanner.html#ad8829ba01b1dde1f927700d7a4e994e7">error</a><code> [private]</code></td>
@@ -1133,7 +1055,7 @@ template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class Ou
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class OutputBuffer_  = Buffer, class EntityMap_  = std::map&lt;const char*,UChar&gt;&gt; </div>
+template&lt;class InputIterator, class InputCharSet_, class OutputCharSet_, class OutputBuffer_, class EntityMap_ = std::map&lt;const char*,UChar&gt;&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">const <a class="el" href="classtextwolf_1_1XMLScanner.html#a262d0e6353b6071c7a876518292811b8">EntityMap</a>* <a class="el" href="classtextwolf_1_1XMLScanner.html">textwolf::XMLScanner</a>&lt; InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_, EntityMap_ &gt;::<a class="el" href="classtextwolf_1_1XMLScanner.html#ad4f0671cc6bc451e05e9a4589e46cac6">m_entityMap</a><code> [private]</code></td>
@@ -1150,7 +1072,7 @@ template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class Ou
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class OutputBuffer_  = Buffer, class EntityMap_  = std::map&lt;const char*,UChar&gt;&gt; </div>
+template&lt;class InputIterator, class InputCharSet_, class OutputCharSet_, class OutputBuffer_, class EntityMap_ = std::map&lt;const char*,UChar&gt;&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="classtextwolf_1_1XMLScanner.html#a71e367f50f9de5d5d434ccb4ea1a4567">OutputBuffer</a>* <a class="el" href="classtextwolf_1_1XMLScanner.html">textwolf::XMLScanner</a>&lt; InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_, EntityMap_ &gt;::<a class="el" href="classtextwolf_1_1XMLScanner.html#abfd4e94ee33dfd5613dd37cd9b86e4d3">m_outputBuf</a><code> [private]</code></td>
@@ -1167,7 +1089,7 @@ template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class Ou
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class OutputBuffer_  = Buffer, class EntityMap_  = std::map&lt;const char*,UChar&gt;&gt; </div>
+template&lt;class InputIterator, class InputCharSet_, class OutputCharSet_, class OutputBuffer_, class EntityMap_ = std::map&lt;const char*,UChar&gt;&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="classtextwolf_1_1TextScanner.html">InputReader</a> <a class="el" href="classtextwolf_1_1XMLScanner.html">textwolf::XMLScanner</a>&lt; InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_, EntityMap_ &gt;::<a class="el" href="classtextwolf_1_1XMLScanner.html#a5f36d2de04ed1a8d75fdc7348918e3e2">src</a><code> [private]</code></td>
@@ -1184,7 +1106,7 @@ template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class Ou
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class OutputBuffer_  = Buffer, class EntityMap_  = std::map&lt;const char*,UChar&gt;&gt; </div>
+template&lt;class InputIterator, class InputCharSet_, class OutputCharSet_, class OutputBuffer_, class EntityMap_ = std::map&lt;const char*,UChar&gt;&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="classtextwolf_1_1XMLScannerBase.html#acf32f993fc533aa138e44a9b1afc8d1c">STMState</a> <a class="el" href="classtextwolf_1_1XMLScanner.html">textwolf::XMLScanner</a>&lt; InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_, EntityMap_ &gt;::<a class="el" href="classtextwolf_1_1XMLScanner.html#a2eb3ca0583f1ba9f4ee5f08eef5b3172">state</a><code> [private]</code></td>
@@ -1201,7 +1123,7 @@ template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class Ou
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class OutputBuffer_  = Buffer, class EntityMap_  = std::map&lt;const char*,UChar&gt;&gt; </div>
+template&lt;class InputIterator, class InputCharSet_, class OutputCharSet_, class OutputBuffer_, class EntityMap_ = std::map&lt;const char*,UChar&gt;&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="structtextwolf_1_1XMLScanner_1_1TokState.html">TokState</a> <a class="el" href="classtextwolf_1_1XMLScanner.html">textwolf::XMLScanner</a>&lt; InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_, EntityMap_ &gt;::<a class="el" href="classtextwolf_1_1XMLScanner.html#a7594ceb1033f9b07d29f45ad90d5f369">tokstate</a><code> [private]</code></td>
@@ -1223,7 +1145,7 @@ template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class Ou
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&nbsp;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&nbsp;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&nbsp;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&nbsp;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&nbsp;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&nbsp;</span>Defines</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&nbsp;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&nbsp;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&nbsp;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&nbsp;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&nbsp;</span>Friends</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -1232,7 +1154,7 @@ template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class Ou
 </iframe>
 </div>
 
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Mon Jun 13 19:42:55 2011 for textwolf by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Tue Jun 14 21:10:54 2011 for textwolf by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

@@ -89,7 +89,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">save current character parsed for the case we cannot print it (output buffer too small)  <a href="#adb980fbf3783621472fedc10a482a88d"></a><br/></td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
-<h3>template&lt;class InputIterator, class InputCharSet_ = charset::UTF8, class OutputCharSet_ = charset::UTF8, class OutputBuffer_ = Buffer, class EntityMap_ = std::map&lt;const char*,UChar&gt;&gt;<br/>
+<h3>template&lt;class InputIterator, class InputCharSet_, class OutputCharSet_, class OutputBuffer_, class EntityMap_ = std::map&lt;const char*,UChar&gt;&gt;<br/>
  class textwolf::XMLScanner&lt; InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_, EntityMap_ &gt;::TokState</h3>
 
 <p>Token state variables. </p>
@@ -98,7 +98,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class OutputBuffer_  = Buffer, class EntityMap_  = std::map&lt;const char*,UChar&gt;&gt; </div>
+template&lt;class InputIterator, class InputCharSet_, class OutputCharSet_, class OutputBuffer_, class EntityMap_ = std::map&lt;const char*,UChar&gt;&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">enum <a class="el" href="structtextwolf_1_1XMLScanner_1_1TokState.html#a112aec6c97b6a2d56a030ae22df190c4">textwolf::XMLScanner::TokState::Id</a></td>
@@ -142,7 +142,7 @@ template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class Ou
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class OutputBuffer_  = Buffer, class EntityMap_  = std::map&lt;const char*,UChar&gt;&gt; </div>
+template&lt;class InputIterator, class InputCharSet_, class OutputCharSet_, class OutputBuffer_, class EntityMap_ = std::map&lt;const char*,UChar&gt;&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="classtextwolf_1_1XMLScanner.html">textwolf::XMLScanner</a>&lt; InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_, EntityMap_ &gt;::TokState::TokState </td>
@@ -164,7 +164,7 @@ template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class Ou
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class OutputBuffer_  = Buffer, class EntityMap_  = std::map&lt;const char*,UChar&gt;&gt; </div>
+template&lt;class InputIterator, class InputCharSet_, class OutputCharSet_, class OutputBuffer_, class EntityMap_ = std::map&lt;const char*,UChar&gt;&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">void <a class="el" href="classtextwolf_1_1XMLScanner.html">textwolf::XMLScanner</a>&lt; InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_, EntityMap_ &gt;::TokState::init </td>
@@ -193,7 +193,7 @@ template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class Ou
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class OutputBuffer_  = Buffer, class EntityMap_  = std::map&lt;const char*,UChar&gt;&gt; </div>
+template&lt;class InputIterator, class InputCharSet_, class OutputCharSet_, class OutputBuffer_, class EntityMap_ = std::map&lt;const char*,UChar&gt;&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">unsigned int <a class="el" href="classtextwolf_1_1XMLScanner.html">textwolf::XMLScanner</a>&lt; InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_, EntityMap_ &gt;::<a class="el" href="structtextwolf_1_1XMLScanner_1_1TokState.html#a66c355eeadbf76544b7023509aaa8544">TokState::base</a></td>
@@ -210,7 +210,7 @@ template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class Ou
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class OutputBuffer_  = Buffer, class EntityMap_  = std::map&lt;const char*,UChar&gt;&gt; </div>
+template&lt;class InputIterator, class InputCharSet_, class OutputCharSet_, class OutputBuffer_, class EntityMap_ = std::map&lt;const char*,UChar&gt;&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">char <a class="el" href="classtextwolf_1_1XMLScanner.html">textwolf::XMLScanner</a>&lt; InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_, EntityMap_ &gt;::<a class="el" href="structtextwolf_1_1XMLScanner_1_1TokState.html#a48401370f2b4ff0cc27bb120b044124f">TokState::buf</a>[16]</td>
@@ -227,7 +227,7 @@ template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class Ou
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class OutputBuffer_  = Buffer, class EntityMap_  = std::map&lt;const char*,UChar&gt;&gt; </div>
+template&lt;class InputIterator, class InputCharSet_, class OutputCharSet_, class OutputBuffer_, class EntityMap_ = std::map&lt;const char*,UChar&gt;&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="textwolf_8hpp.html#a6bb9fad572d65b305324ef288165e2ac">UChar</a> <a class="el" href="classtextwolf_1_1XMLScanner.html">textwolf::XMLScanner</a>&lt; InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_, EntityMap_ &gt;::<a class="el" href="structtextwolf_1_1XMLScanner_1_1TokState.html#adb980fbf3783621472fedc10a482a88d">TokState::curchr_saved</a></td>
@@ -244,7 +244,7 @@ template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class Ou
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class OutputBuffer_  = Buffer, class EntityMap_  = std::map&lt;const char*,UChar&gt;&gt; </div>
+template&lt;class InputIterator, class InputCharSet_, class OutputCharSet_, class OutputBuffer_, class EntityMap_ = std::map&lt;const char*,UChar&gt;&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="structtextwolf_1_1XMLScanner_1_1TokState.html#a112aec6c97b6a2d56a030ae22df190c4">Id</a> <a class="el" href="classtextwolf_1_1XMLScanner.html">textwolf::XMLScanner</a>&lt; InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_, EntityMap_ &gt;::<a class="el" href="structtextwolf_1_1XMLScanner_1_1TokState.html#a11659cc333894bfa7aad6db3d88a4130">TokState::id</a></td>
@@ -261,7 +261,7 @@ template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class Ou
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class OutputBuffer_  = Buffer, class EntityMap_  = std::map&lt;const char*,UChar&gt;&gt; </div>
+template&lt;class InputIterator, class InputCharSet_, class OutputCharSet_, class OutputBuffer_, class EntityMap_ = std::map&lt;const char*,UChar&gt;&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">unsigned int <a class="el" href="classtextwolf_1_1XMLScanner.html">textwolf::XMLScanner</a>&lt; InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_, EntityMap_ &gt;::<a class="el" href="structtextwolf_1_1XMLScanner_1_1TokState.html#acfcf8d98f9cf4811d9eb5bc9620195f3">TokState::pos</a></td>
@@ -278,7 +278,7 @@ template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class Ou
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class OutputBuffer_  = Buffer, class EntityMap_  = std::map&lt;const char*,UChar&gt;&gt; </div>
+template&lt;class InputIterator, class InputCharSet_, class OutputCharSet_, class OutputBuffer_, class EntityMap_ = std::map&lt;const char*,UChar&gt;&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">unsigned long long <a class="el" href="classtextwolf_1_1XMLScanner.html">textwolf::XMLScanner</a>&lt; InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_, EntityMap_ &gt;::<a class="el" href="structtextwolf_1_1XMLScanner_1_1TokState.html#aec920e0bfcef284389f4d2da15aa694e">TokState::value</a></td>
@@ -300,7 +300,7 @@ template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class Ou
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&nbsp;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&nbsp;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&nbsp;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&nbsp;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&nbsp;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&nbsp;</span>Defines</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&nbsp;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&nbsp;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&nbsp;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&nbsp;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&nbsp;</span>Friends</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -309,7 +309,7 @@ template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class Ou
 </iframe>
 </div>
 
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Mon Jun 13 19:42:55 2011 for textwolf by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Tue Jun 14 21:10:54 2011 for textwolf by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

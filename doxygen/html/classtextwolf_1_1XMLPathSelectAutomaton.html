@@ -75,7 +75,8 @@ Inheritance diagram for textwolf::XMLPathSelectAutomaton&lt; CharSet_ &gt;:</div
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1Core.html" title="Core of an automaton state definition that is used during XML processing.">Core</a> of an automaton state definition that is used during XML processing.  <a href="structtextwolf_1_1XMLPathSelectAutomaton_1_1Core.html#_details">More...</a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1Mask.html">Mask</a></td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1Mask.html" title="Mask to query for element types, if they match or not.">Mask</a> to query for element types, if they match or not.  <a href="structtextwolf_1_1XMLPathSelectAutomaton_1_1Mask.html#_details">More...</a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html">PathElement</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html">PathElement</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Defines one node in the XML Path element tree in the construction phase.  <a href="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html#_details">More...</a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1Scope.html">Scope</a></td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Tag scope definition.  <a href="structtextwolf_1_1XMLPathSelectAutomaton_1_1Scope.html#_details">More...</a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1State.html">State</a></td></tr>
@@ -98,14 +99,17 @@ Inheritance diagram for textwolf::XMLPathSelectAutomaton&lt; CharSet_ &gt;:</div
  }</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight"><p>Enumeration of operation types in the automaton definition. </p>
  <a href="classtextwolf_1_1XMLPathSelectAutomaton.html#acd770d474c93c3fa4b3db53e612b8710">More...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef CharSet_&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLPathSelectAutomaton.html#a369d208883763f5fd08046a76a191082">CharSet</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">typedef int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLPathSelectAutomaton.html#aa135cb0cf526860150c5b08febb9eb34">Hash</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="classtextwolf_1_1XMLPathSelectAutomaton.html">XMLPathSelectAutomaton</a><br class="typebreak"/>
-&lt; CharSet_ &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLPathSelectAutomaton.html#a43098c20f0f369406f99d3e598cf84d0">ThisXMLPathSelectAutomaton</a></td></tr>
+&lt; <a class="el" href="classtextwolf_1_1XMLPathSelectAutomaton.html#a369d208883763f5fd08046a76a191082">CharSet</a> &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLPathSelectAutomaton.html#a0b3e802187126a98593bcdaa4ec35534">ThisXMLPathSelectAutomaton</a></td></tr>
 <tr><td colspan="2"><h2>Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLPathSelectAutomaton.html#a024f64dd49aaee2758a4fdf6dff5a2c9">XMLPathSelectAutomaton</a> ()</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Constructor.  <a href="#a024f64dd49aaee2758a4fdf6dff5a2c9"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLPathSelectAutomaton.html#a788ac5912136f8f28db6bf16b10185ea">setMemUsage</a> (unsigned int p_memUsage, unsigned int p_maxDepth)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Defines the usage of memory.  <a href="#a788ac5912136f8f28db6bf16b10185ea"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html">PathElement</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLPathSelectAutomaton.html#ab3af9618ce7b58134b25a50435a4da70">operator*</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Get automaton root element to start an XML path definition.  <a href="#ab3af9618ce7b58134b25a50435a4da70"></a><br/></td></tr>
 <tr><td colspan="2"><h2>Static Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static const char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLPathSelectAutomaton.html#a58a3549f008953ee0d29ad154f16a683">operationName</a> (<a class="el" href="classtextwolf_1_1XMLPathSelectAutomaton.html#acd770d474c93c3fa4b3db53e612b8710">Operation</a> op)</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Get the name of the operation as string.  <a href="#a58a3549f008953ee0d29ad154f16a683"></a><br/></td></tr>
@@ -126,8 +130,9 @@ Inheritance diagram for textwolf::XMLPathSelectAutomaton&lt; CharSet_ &gt;:</div
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">the states of the statemachine  <a href="#abec1aa88802bed73ab343c5da34bea03"></a><br/></td></tr>
 <tr><td colspan="2"><h2>Private Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLPathSelectAutomaton.html#a54454cf26dbbc19e103c3730a1a90272">defineNext</a> (int stateidx, <a class="el" href="classtextwolf_1_1XMLPathSelectAutomaton.html#acd770d474c93c3fa4b3db53e612b8710">Operation</a> op, unsigned int keysize, const char *key, const char *srckey, bool follow=false)  throw (exception)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLPathSelectAutomaton.html#afcac16950b19bd99a3d4ecd76d9801b4">defineThisOutput</a> (int stateidx, int typeidx)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Defines a state transition.  <a href="#a54454cf26dbbc19e103c3730a1a90272"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLPathSelectAutomaton.html#a99b277e3cf1fdfb3d743c206628c9a5a">defineOutput</a> (int stateidx, const <a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1Mask.html">Mask</a> &amp;printOpMask, int typeidx, bool follow, int start, int end)  throw (exception)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Defines an output print action and output type for a state.  <a href="#a99b277e3cf1fdfb3d743c206628c9a5a"></a><br/></td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
 <h3>template&lt;class CharSet_ = charset::UTF8&gt;<br/>
@@ -141,6 +146,21 @@ Inheritance diagram for textwolf::XMLPathSelectAutomaton&lt; CharSet_ &gt;:</div
   </dd>
 </dl>
 <hr/><h2>Member Typedef Documentation</h2>
+<a class="anchor" id="a369d208883763f5fd08046a76a191082"></a><!-- doxytag: member="textwolf::XMLPathSelectAutomaton::CharSet" ref="a369d208883763f5fd08046a76a191082" args="" -->
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class CharSet_  = charset::UTF8&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef CharSet_ <a class="el" href="classtextwolf_1_1XMLPathSelectAutomaton.html">textwolf::XMLPathSelectAutomaton</a>&lt; CharSet_ &gt;::<a class="el" href="classtextwolf_1_1XMLPathSelectAutomaton.html#a369d208883763f5fd08046a76a191082">CharSet</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
 <a class="anchor" id="aa135cb0cf526860150c5b08febb9eb34"></a><!-- doxytag: member="textwolf::XMLPathSelectAutomaton::Hash" ref="aa135cb0cf526860150c5b08febb9eb34" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -156,14 +176,14 @@ template&lt;class CharSet_  = charset::UTF8&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a43098c20f0f369406f99d3e598cf84d0"></a><!-- doxytag: member="textwolf::XMLPathSelectAutomaton::ThisXMLPathSelectAutomaton" ref="a43098c20f0f369406f99d3e598cf84d0" args="" -->
+<a class="anchor" id="a0b3e802187126a98593bcdaa4ec35534"></a><!-- doxytag: member="textwolf::XMLPathSelectAutomaton::ThisXMLPathSelectAutomaton" ref="a0b3e802187126a98593bcdaa4ec35534" args="" -->
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class CharSet_  = charset::UTF8&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">typedef <a class="el" href="classtextwolf_1_1XMLPathSelectAutomaton.html">XMLPathSelectAutomaton</a>&lt;CharSet_&gt; <a class="el" href="classtextwolf_1_1XMLPathSelectAutomaton.html">textwolf::XMLPathSelectAutomaton</a>&lt; CharSet_ &gt;::<a class="el" href="classtextwolf_1_1XMLPathSelectAutomaton.html">ThisXMLPathSelectAutomaton</a></td>
+          <td class="memname">typedef <a class="el" href="classtextwolf_1_1XMLPathSelectAutomaton.html">XMLPathSelectAutomaton</a>&lt;<a class="el" href="classtextwolf_1_1XMLPathSelectAutomaton.html#a369d208883763f5fd08046a76a191082">CharSet</a>&gt; <a class="el" href="classtextwolf_1_1XMLPathSelectAutomaton.html">textwolf::XMLPathSelectAutomaton</a>&lt; CharSet_ &gt;::<a class="el" href="classtextwolf_1_1XMLPathSelectAutomaton.html">ThisXMLPathSelectAutomaton</a></td>
         </tr>
       </table>
 </div>
@@ -310,6 +330,20 @@ template&lt;class CharSet_  = charset::UTF8&gt; </div>
 </div>
 <div class="memdoc">
 
+<p>Defines a state transition. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>stateidx</em>&nbsp;</td><td>from what source state </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>op</em>&nbsp;</td><td>operation firing the state transition </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>keysize</em>&nbsp;</td><td>length of the key firing the state transition in bytes </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>key</em>&nbsp;</td><td>the key string firing the state transition in bytes </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>srckey</em>&nbsp;</td><td>the ASCII encoded representation in the source </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>follow</em>&nbsp;</td><td>true, uf the state transition is active for all sub scopes of the activation state </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>the target state of the transition defined </dd></dl>
+
 </div>
 </div>
 <a class="anchor" id="a99b277e3cf1fdfb3d743c206628c9a5a"></a><!-- doxytag: member="textwolf::XMLPathSelectAutomaton::defineOutput" ref="a99b277e3cf1fdfb3d743c206628c9a5a" args="(int stateidx, const Mask &amp;printOpMask, int typeidx, bool follow, int start, int end)" -->
@@ -363,34 +397,19 @@ template&lt;class CharSet_  = charset::UTF8&gt; </div>
 </div>
 <div class="memdoc">
 
-</div>
-</div>
-<a class="anchor" id="afcac16950b19bd99a3d4ecd76d9801b4"></a><!-- doxytag: member="textwolf::XMLPathSelectAutomaton::defineThisOutput" ref="afcac16950b19bd99a3d4ecd76d9801b4" args="(int stateidx, int typeidx)" -->
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class CharSet_  = charset::UTF8&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="classtextwolf_1_1XMLPathSelectAutomaton.html">textwolf::XMLPathSelectAutomaton</a>&lt; CharSet_ &gt;::defineThisOutput </td>
-          <td>(</td>
-          <td class="paramtype">int&nbsp;</td>
-          <td class="paramname"> <em>stateidx</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&nbsp;</td>
-          <td class="paramname"> <em>typeidx</em></td><td>&nbsp;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td><td><code> [inline, private]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
+<p>Defines an output print action and output type for a state. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>stateidx</em>&nbsp;</td><td>from what source state </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>printOpMask</em>&nbsp;</td><td>mask for elements printed </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>typeidx</em>&nbsp;</td><td>type identifier </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>follow</em>&nbsp;</td><td>true, uf the state transition is active for all sub scopes of the activation state </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>start</em>&nbsp;</td><td>start of index range where this state transition fires </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>end</em>&nbsp;</td><td>end of index range where this state transition fires </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>index of the state where this output action was defined </dd></dl>
 
 </div>
 </div>
@@ -434,6 +453,9 @@ template&lt;class CharSet_  = charset::UTF8&gt; </div>
 </div>
 <div class="memdoc">
 
+<p>Get automaton root element to start an XML path definition. </p>
+<dl class="return"><dt><b>Returns:</b></dt><dd>the automaton root element </dd></dl>
+
 </div>
 </div>
 <a class="anchor" id="a788ac5912136f8f28db6bf16b10185ea"></a><!-- doxytag: member="textwolf::XMLPathSelectAutomaton::setMemUsage" ref="a788ac5912136f8f28db6bf16b10185ea" args="(unsigned int p_memUsage, unsigned int p_maxDepth)" -->
@@ -462,6 +484,16 @@ template&lt;class CharSet_  = charset::UTF8&gt; </div>
       </table>
 </div>
 <div class="memdoc">
+
+<p>Defines the usage of memory. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>p_memUsage</em>&nbsp;</td><td>size of the memory block in bytes </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>p_maxDepth</em>&nbsp;</td><td>maximum depht of the scope stack </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>true, if everything is OK </dd></dl>
 
 </div>
 </div>
@@ -594,7 +626,7 @@ template&lt;class CharSet_  = charset::UTF8&gt; </div>
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&nbsp;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&nbsp;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&nbsp;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&nbsp;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&nbsp;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&nbsp;</span>Defines</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&nbsp;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&nbsp;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&nbsp;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&nbsp;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&nbsp;</span>Friends</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -603,7 +635,7 @@ template&lt;class CharSet_  = charset::UTF8&gt; </div>
 </iframe>
 </div>
 
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Mon Jun 13 19:42:55 2011 for textwolf by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Tue Jun 14 21:10:54 2011 for textwolf by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

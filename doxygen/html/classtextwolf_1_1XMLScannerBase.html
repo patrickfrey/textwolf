@@ -71,6 +71,14 @@ Inheritance diagram for textwolf::XMLScannerBase:</div>
 <p><a href="classtextwolf_1_1XMLScannerBase-members.html">List of all members.</a></p>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr><td colspan="2"><h2>Classes</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1XMLScannerBase_1_1IsContentCharMap.html">IsContentCharMap</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Defines the set of content token characters.  <a href="structtextwolf_1_1XMLScannerBase_1_1IsContentCharMap.html#_details">More...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1XMLScannerBase_1_1IsDQStringCharMap.html">IsDQStringCharMap</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Defines the set characters belonging to a double quoted string.  <a href="structtextwolf_1_1XMLScannerBase_1_1IsDQStringCharMap.html#_details">More...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1XMLScannerBase_1_1IsSQStringCharMap.html">IsSQStringCharMap</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Defines the set characters belonging to a single quoted string.  <a href="structtextwolf_1_1XMLScannerBase_1_1IsSQStringCharMap.html#_details">More...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1XMLScannerBase_1_1IsTagCharMap.html">IsTagCharMap</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Defines the set of tag characters.  <a href="structtextwolf_1_1XMLScannerBase_1_1IsTagCharMap.html#_details">More...</a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1XMLScannerBase_1_1Statemachine.html">Statemachine</a></td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">XML scanner state machine implementation.  <a href="structtextwolf_1_1XMLScannerBase_1_1Statemachine.html#_details">More...</a><br/></td></tr>
 <tr><td colspan="2"><h2>Public Types</h2></td></tr>
@@ -181,6 +189,9 @@ Inheritance diagram for textwolf::XMLScannerBase:</div>
  }</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight"><p>Enumeration of actions in the XML scanner state machine. </p>
  <a href="classtextwolf_1_1XMLScannerBase.html#a9e098fe6f4a84b25db51fcfe61f4cbd0">More...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="classtextwolf_1_1CharMap.html">CharMap</a>&lt; bool, false, <br class="typebreak"/>
+NofControlCharacter &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLScannerBase.html#a0604b6b1ebd2699f677f51dbe816889e">IsTokenCharMap</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Forms a set of characters by assigning (true/false) to the whole domain.  <a href="#a0604b6b1ebd2699f677f51dbe816889e"></a><br/></td></tr>
 <tr><td colspan="2"><h2>Static Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static const char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLScannerBase.html#a29eec38bb732d4cc1e759920aec82d7d">getElementTypeName</a> (<a class="el" href="classtextwolf_1_1XMLScannerBase.html#aae4f0cdb7e16aca5fdee271fa60e1329">ElementType</a> ee)</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Get the XML element type as string.  <a href="#a29eec38bb732d4cc1e759920aec82d7d"></a><br/></td></tr>
@@ -193,6 +204,22 @@ Inheritance diagram for textwolf::XMLScannerBase:</div>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
 <p>XML scanner base class for things common for all XML scanners. </p>
+<hr/><h2>Member Typedef Documentation</h2>
+<a class="anchor" id="a0604b6b1ebd2699f677f51dbe816889e"></a><!-- doxytag: member="textwolf::XMLScannerBase::IsTokenCharMap" ref="a0604b6b1ebd2699f677f51dbe816889e" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classtextwolf_1_1CharMap.html">textwolf::XMLScannerBase::IsTokenCharMap</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Forms a set of characters by assigning (true/false) to the whole domain. </p>
+
+</div>
+</div>
 <hr/><h2>Member Enumeration Documentation</h2>
 <a class="anchor" id="a7f30f722ffad9c6fe1379171699cff43"></a><!-- doxytag: member="textwolf::XMLScannerBase::@8" ref="a7f30f722ffad9c6fe1379171699cff43" args="" -->
 <div class="memitem">
@@ -575,7 +602,7 @@ Inheritance diagram for textwolf::XMLScannerBase:</div>
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&nbsp;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&nbsp;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&nbsp;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&nbsp;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&nbsp;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&nbsp;</span>Defines</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&nbsp;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&nbsp;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&nbsp;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&nbsp;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&nbsp;</span>Friends</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -584,7 +611,7 @@ Inheritance diagram for textwolf::XMLScannerBase:</div>
 </iframe>
 </div>
 
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Mon Jun 13 19:42:55 2011 for textwolf by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Tue Jun 14 21:10:54 2011 for textwolf by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

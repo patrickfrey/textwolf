@@ -49,7 +49,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
 </div>
 <div class="contents">
-<h1>textwolf::XMLPathSelect&lt; InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_, EntityMap_ &gt;::Array&lt; Element &gt; Class Template Reference</h1><!-- doxytag: class="textwolf::XMLPathSelect::Array" --><!-- doxytag: inherits="textwolf::throws_exception" --><div class="dynheader">
+<h1>textwolf::XMLPathSelect&lt; InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_, EntityMap_ &gt;::Array&lt; Element &gt; Class Template Reference</h1><!-- doxytag: class="textwolf::XMLPathSelect::Array" --><!-- doxytag: inherits="textwolf::throws_exception" -->
+<p>static array of POD types. I decided to implement it on my own though using boost::array would maybe be better.  
+<a href="#_details">More...</a></p>
+<div class="dynheader">
 Inheritance diagram for textwolf::XMLPathSelect&lt; InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_, EntityMap_ &gt;::Array&lt; Element &gt;:</div>
 <div class="dynsection">
  <div class="center">
@@ -64,29 +67,47 @@ Inheritance diagram for textwolf::XMLPathSelect&lt; InputIterator, InputCharSet_
 <table border="0" cellpadding="0" cellspacing="0">
 <tr><td colspan="2"><h2>Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLPathSelect_1_1Array.html#a98379fcdb34ebbdf8336a5a9426b4174">Array</a> (unsigned int p_maxSize)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Constructor.  <a href="#a98379fcdb34ebbdf8336a5a9426b4174"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLPathSelect_1_1Array.html#ad292b3642dac48e57fb801cb7e5709a6">~Array</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Destructor.  <a href="#ad292b3642dac48e57fb801cb7e5709a6"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLPathSelect_1_1Array.html#ada67f285fde9afb32fa3a5fd4152b486">push_back</a> (const Element &amp;elem)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Append one element.  <a href="#ada67f285fde9afb32fa3a5fd4152b486"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLPathSelect_1_1Array.html#a98a3ecd8253d8870975dfea1e8bd3402">pop_back</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Remove one element from the end.  <a href="#a98a3ecd8253d8870975dfea1e8bd3402"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">Element &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLPathSelect_1_1Array.html#a3dae3763dadeed257396a2b457c0c3ec">operator[]</a> (unsigned int idx)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Access element by index.  <a href="#a3dae3763dadeed257396a2b457c0c3ec"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">Element &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLPathSelect_1_1Array.html#aea9c5a6af00e025a57b86854f6d91288">back</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Get a reference of the element at the end of the array.  <a href="#aea9c5a6af00e025a57b86854f6d91288"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLPathSelect_1_1Array.html#abb2ddeec89e13378c31f8905768d93c7">resize</a> (unsigned int p_size)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Resize of the array.  <a href="#abb2ddeec89e13378c31f8905768d93c7"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">unsigned int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLPathSelect_1_1Array.html#a2857cea668345bf80881bd74dadcdf72">size</a> () const </td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLPathSelect_1_1Array.html#adc0ff7dcab62d6097aa340aa4a882083">empty</a> () const </td></tr>
 <tr><td colspan="2"><h2>Private Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">Element *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLPathSelect_1_1Array.html#af1af7d90bc1a177617a5b13883bd41b3">m_ar</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">pointer to elements  <a href="#af1af7d90bc1a177617a5b13883bd41b3"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">unsigned int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLPathSelect_1_1Array.html#a70958e342e5fa950b722732e9505dd8f">m_size</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">fill size (number of elements inserted)  <a href="#a70958e342e5fa950b722732e9505dd8f"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">unsigned int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLPathSelect_1_1Array.html#a5c3b75c1c1006c63bce1be4c6b6aa960">m_maxSize</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">allocation size (space reserved for this number of elements)  <a href="#a5c3b75c1c1006c63bce1be4c6b6aa960"></a><br/></td></tr>
 </table>
-<h3>template&lt;class InputIterator, class InputCharSet_ = charset::UTF8, class OutputCharSet_ = charset::UTF8, class OutputBuffer_ = Buffer, class EntityMap_ = std::map&lt;const char*,UChar&gt;&gt;<br/>
+<hr/><a name="_details"></a><h2>Detailed Description</h2>
+<h3>template&lt;class InputIterator, class InputCharSet_, class OutputCharSet_, class OutputBuffer_, class EntityMap_ = std::map&lt;const char*,UChar&gt;&gt;<br/>
 template&lt;typename Element&gt;<br/>
  class textwolf::XMLPathSelect&lt; InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_, EntityMap_ &gt;::Array&lt; Element &gt;</h3>
 
+<p>static array of POD types. I decided to implement it on my own though using boost::array would maybe be better. </p>
+<dl><dt><b>Template Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>Element</em>&nbsp;</td><td>element type of the array </td></tr>
+  </table>
+  </dd>
+</dl>
 <hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a98379fcdb34ebbdf8336a5a9426b4174"></a><!-- doxytag: member="textwolf::XMLPathSelect::Array::Array" ref="a98379fcdb34ebbdf8336a5a9426b4174" args="(unsigned int p_maxSize)" -->
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class OutputBuffer_  = Buffer, class EntityMap_  = std::map&lt;const char*,UChar&gt;&gt; </div>
+template&lt;class InputIterator , class InputCharSet_ , class OutputCharSet_ , class OutputBuffer_ , class EntityMap_  = std::map&lt;const char*,UChar&gt;&gt; </div>
 <div class="memtemplate">
 template&lt;typename Element&gt; </div>
       <table class="memname">
@@ -102,13 +123,21 @@ template&lt;typename Element&gt; </div>
 </div>
 <div class="memdoc">
 
+<p>Constructor. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>p_maxSize</em>&nbsp;</td><td>allocation size (number of elements) to reserve </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a class="anchor" id="ad292b3642dac48e57fb801cb7e5709a6"></a><!-- doxytag: member="textwolf::XMLPathSelect::Array::~Array" ref="ad292b3642dac48e57fb801cb7e5709a6" args="()" -->
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class OutputBuffer_  = Buffer, class EntityMap_  = std::map&lt;const char*,UChar&gt;&gt; </div>
+template&lt;class InputIterator , class InputCharSet_ , class OutputCharSet_ , class OutputBuffer_ , class EntityMap_  = std::map&lt;const char*,UChar&gt;&gt; </div>
 <div class="memtemplate">
 template&lt;typename Element&gt; </div>
       <table class="memname">
@@ -123,6 +152,8 @@ template&lt;typename Element&gt; </div>
 </div>
 <div class="memdoc">
 
+<p>Destructor. </p>
+
 </div>
 </div>
 <hr/><h2>Member Function Documentation</h2>
@@ -130,7 +161,7 @@ template&lt;typename Element&gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class OutputBuffer_  = Buffer, class EntityMap_  = std::map&lt;const char*,UChar&gt;&gt; </div>
+template&lt;class InputIterator , class InputCharSet_ , class OutputCharSet_ , class OutputBuffer_ , class EntityMap_  = std::map&lt;const char*,UChar&gt;&gt; </div>
 <div class="memtemplate">
 template&lt;typename Element&gt; </div>
       <table class="memname">
@@ -145,13 +176,16 @@ template&lt;typename Element&gt; </div>
 </div>
 <div class="memdoc">
 
+<p>Get a reference of the element at the end of the array. </p>
+<dl class="return"><dt><b>Returns:</b></dt><dd>element reference </dd></dl>
+
 </div>
 </div>
 <a class="anchor" id="adc0ff7dcab62d6097aa340aa4a882083"></a><!-- doxytag: member="textwolf::XMLPathSelect::Array::empty" ref="adc0ff7dcab62d6097aa340aa4a882083" args="() const " -->
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class OutputBuffer_  = Buffer, class EntityMap_  = std::map&lt;const char*,UChar&gt;&gt; </div>
+template&lt;class InputIterator , class InputCharSet_ , class OutputCharSet_ , class OutputBuffer_ , class EntityMap_  = std::map&lt;const char*,UChar&gt;&gt; </div>
 <div class="memtemplate">
 template&lt;typename Element&gt; </div>
       <table class="memname">
@@ -172,7 +206,7 @@ template&lt;typename Element&gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class OutputBuffer_  = Buffer, class EntityMap_  = std::map&lt;const char*,UChar&gt;&gt; </div>
+template&lt;class InputIterator , class InputCharSet_ , class OutputCharSet_ , class OutputBuffer_ , class EntityMap_  = std::map&lt;const char*,UChar&gt;&gt; </div>
 <div class="memtemplate">
 template&lt;typename Element&gt; </div>
       <table class="memname">
@@ -188,13 +222,22 @@ template&lt;typename Element&gt; </div>
 </div>
 <div class="memdoc">
 
+<p>Access element by index. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>idx</em>&nbsp;</td><td>index of the element starting with 0 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>element reference </dd></dl>
+
 </div>
 </div>
 <a class="anchor" id="a98a3ecd8253d8870975dfea1e8bd3402"></a><!-- doxytag: member="textwolf::XMLPathSelect::Array::pop_back" ref="a98a3ecd8253d8870975dfea1e8bd3402" args="()" -->
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class OutputBuffer_  = Buffer, class EntityMap_  = std::map&lt;const char*,UChar&gt;&gt; </div>
+template&lt;class InputIterator , class InputCharSet_ , class OutputCharSet_ , class OutputBuffer_ , class EntityMap_  = std::map&lt;const char*,UChar&gt;&gt; </div>
 <div class="memtemplate">
 template&lt;typename Element&gt; </div>
       <table class="memname">
@@ -209,13 +252,15 @@ template&lt;typename Element&gt; </div>
 </div>
 <div class="memdoc">
 
+<p>Remove one element from the end. </p>
+
 </div>
 </div>
 <a class="anchor" id="ada67f285fde9afb32fa3a5fd4152b486"></a><!-- doxytag: member="textwolf::XMLPathSelect::Array::push_back" ref="ada67f285fde9afb32fa3a5fd4152b486" args="(const Element &amp;elem)" -->
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class OutputBuffer_  = Buffer, class EntityMap_  = std::map&lt;const char*,UChar&gt;&gt; </div>
+template&lt;class InputIterator , class InputCharSet_ , class OutputCharSet_ , class OutputBuffer_ , class EntityMap_  = std::map&lt;const char*,UChar&gt;&gt; </div>
 <div class="memtemplate">
 template&lt;typename Element&gt; </div>
       <table class="memname">
@@ -231,13 +276,21 @@ template&lt;typename Element&gt; </div>
 </div>
 <div class="memdoc">
 
+<p>Append one element. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>elem</em>&nbsp;</td><td>element to append </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a class="anchor" id="abb2ddeec89e13378c31f8905768d93c7"></a><!-- doxytag: member="textwolf::XMLPathSelect::Array::resize" ref="abb2ddeec89e13378c31f8905768d93c7" args="(unsigned int p_size)" -->
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class OutputBuffer_  = Buffer, class EntityMap_  = std::map&lt;const char*,UChar&gt;&gt; </div>
+template&lt;class InputIterator , class InputCharSet_ , class OutputCharSet_ , class OutputBuffer_ , class EntityMap_  = std::map&lt;const char*,UChar&gt;&gt; </div>
 <div class="memtemplate">
 template&lt;typename Element&gt; </div>
       <table class="memname">
@@ -253,13 +306,21 @@ template&lt;typename Element&gt; </div>
 </div>
 <div class="memdoc">
 
+<p>Resize of the array. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>p_size</em>&nbsp;</td><td>new array size </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a class="anchor" id="a2857cea668345bf80881bd74dadcdf72"></a><!-- doxytag: member="textwolf::XMLPathSelect::Array::size" ref="a2857cea668345bf80881bd74dadcdf72" args="() const " -->
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class OutputBuffer_  = Buffer, class EntityMap_  = std::map&lt;const char*,UChar&gt;&gt; </div>
+template&lt;class InputIterator , class InputCharSet_ , class OutputCharSet_ , class OutputBuffer_ , class EntityMap_  = std::map&lt;const char*,UChar&gt;&gt; </div>
 <div class="memtemplate">
 template&lt;typename Element&gt; </div>
       <table class="memname">
@@ -281,7 +342,7 @@ template&lt;typename Element&gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class OutputBuffer_  = Buffer, class EntityMap_  = std::map&lt;const char*,UChar&gt;&gt; </div>
+template&lt;class InputIterator , class InputCharSet_ , class OutputCharSet_ , class OutputBuffer_ , class EntityMap_  = std::map&lt;const char*,UChar&gt;&gt; </div>
 <div class="memtemplate">
 template&lt;typename Element&gt; </div>
       <table class="memname">
@@ -292,13 +353,15 @@ template&lt;typename Element&gt; </div>
 </div>
 <div class="memdoc">
 
+<p>pointer to elements </p>
+
 </div>
 </div>
 <a class="anchor" id="a5c3b75c1c1006c63bce1be4c6b6aa960"></a><!-- doxytag: member="textwolf::XMLPathSelect::Array::m_maxSize" ref="a5c3b75c1c1006c63bce1be4c6b6aa960" args="" -->
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class OutputBuffer_  = Buffer, class EntityMap_  = std::map&lt;const char*,UChar&gt;&gt; </div>
+template&lt;class InputIterator , class InputCharSet_ , class OutputCharSet_ , class OutputBuffer_ , class EntityMap_  = std::map&lt;const char*,UChar&gt;&gt; </div>
 <div class="memtemplate">
 template&lt;typename Element&gt; </div>
       <table class="memname">
@@ -309,13 +372,15 @@ template&lt;typename Element&gt; </div>
 </div>
 <div class="memdoc">
 
+<p>allocation size (space reserved for this number of elements) </p>
+
 </div>
 </div>
 <a class="anchor" id="a70958e342e5fa950b722732e9505dd8f"></a><!-- doxytag: member="textwolf::XMLPathSelect::Array::m_size" ref="a70958e342e5fa950b722732e9505dd8f" args="" -->
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class InputIterator , class InputCharSet_  = charset::UTF8, class OutputCharSet_  = charset::UTF8, class OutputBuffer_  = Buffer, class EntityMap_  = std::map&lt;const char*,UChar&gt;&gt; </div>
+template&lt;class InputIterator , class InputCharSet_ , class OutputCharSet_ , class OutputBuffer_ , class EntityMap_  = std::map&lt;const char*,UChar&gt;&gt; </div>
 <div class="memtemplate">
 template&lt;typename Element&gt; </div>
       <table class="memname">
@@ -325,6 +390,8 @@ template&lt;typename Element&gt; </div>
       </table>
 </div>
 <div class="memdoc">
+
+<p>fill size (number of elements inserted) </p>
 
 </div>
 </div>
@@ -337,7 +404,7 @@ template&lt;typename Element&gt; </div>
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&nbsp;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&nbsp;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&nbsp;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&nbsp;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&nbsp;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&nbsp;</span>Defines</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&nbsp;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&nbsp;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&nbsp;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&nbsp;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&nbsp;</span>Friends</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -346,7 +413,7 @@ template&lt;typename Element&gt; </div>
 </iframe>
 </div>
 
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Mon Jun 13 19:42:56 2011 for textwolf by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Tue Jun 14 21:10:55 2011 for textwolf by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

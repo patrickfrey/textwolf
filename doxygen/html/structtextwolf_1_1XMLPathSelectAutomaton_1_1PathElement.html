@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
-<title>textwolf: textwolf::XMLPathSelectAutomaton&lt; CharSet_ &gt;::PathElement Struct Reference</title>
+<title>textwolf: textwolf::XMLPathSelectAutomaton&lt; CharSet_ &gt;::PathElement Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javaScript" src="search/search.js"></script>
@@ -49,7 +49,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
 </div>
 <div class="contents">
-<h1>textwolf::XMLPathSelectAutomaton&lt; CharSet_ &gt;::PathElement Struct Reference</h1><!-- doxytag: class="textwolf::XMLPathSelectAutomaton::PathElement" --><!-- doxytag: inherits="textwolf::throws_exception" -->
+<h1>textwolf::XMLPathSelectAutomaton&lt; CharSet_ &gt;::PathElement Class Reference</h1><!-- doxytag: class="textwolf::XMLPathSelectAutomaton::PathElement" --><!-- doxytag: inherits="textwolf::throws_exception" -->
+<p>Defines one node in the XML Path element tree in the construction phase.  
+<a href="#_details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="textwolf_8hpp_source.html">textwolf.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for textwolf::XMLPathSelectAutomaton&lt; CharSet_ &gt;::PathElement:</div>
@@ -62,72 +65,79 @@ Inheritance diagram for textwolf::XMLPathSelectAutomaton&lt; CharSet_ &gt;::Path
  </div>
 </div>
 
-<p><a href="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement-members.html">List of all members.</a></p>
+<p><a href="classtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement-members.html">List of all members.</a></p>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr><td colspan="2"><h2>Classes</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement_1_1Range.html">Range</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement_1_1Range.html">Range</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Element counting range defining what are indices of valid elements.  <a href="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement_1_1Range.html#_details">More...</a><br/></td></tr>
 <tr><td colspan="2"><h2>Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html#aa8c049c2f4475f8b3174c65847a18cae">PathElement</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Constructor.  <a href="#aa8c049c2f4475f8b3174c65847a18cae"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html#a2eeed2a03b4f3d2573cedc63eb97b835">PathElement</a> (<a class="el" href="classtextwolf_1_1XMLPathSelectAutomaton.html">XMLPathSelectAutomaton</a> *p_xs, int p_si=0)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Constructor by values.  <a href="#a2eeed2a03b4f3d2573cedc63eb97b835"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html#a10e50655d69afd06bd3b2c033832c880">PathElement</a> (const <a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html">PathElement</a> &amp;orig)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Copy constructor.  <a href="#a10e50655d69afd06bd3b2c033832c880"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html">PathElement</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html#ada9ade6ffcf8992e791e9f4be3bb59ee">operator--</a> (int)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Corresponds to "//" in abbreviated syntax of XPath.  <a href="#ada9ade6ffcf8992e791e9f4be3bb59ee"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html">PathElement</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html#a01a803134a5993278df409756be4e3ac">operator[]</a> (const char *name)  throw (exception)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Find tag by name.  <a href="#a01a803134a5993278df409756be4e3ac"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html">PathElement</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html#a8615937fad5766436c8fa0f5545716c9">selectTag</a> (const char *name)  throw (exception)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Find tag by name.  <a href="#a8615937fad5766436c8fa0f5545716c9"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html">PathElement</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html#ab14cd2ec72e3ddd112de496f1e48799e">operator()</a> (const char *name)  throw (exception)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Find tag with one attribute.  <a href="#ab14cd2ec72e3ddd112de496f1e48799e"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html">PathElement</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html#a7794f5c86d07abfc558255f25eb150c0">selectAttribute</a> (const char *name)  throw (exception)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Find tag with one attribute.  <a href="#a7794f5c86d07abfc558255f25eb150c0"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html">PathElement</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html#aa6dacf97513b073d51523c5f3758e437">operator()</a> (const char *name, const char *value)  throw (exception)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html">PathElement</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html#af96504c45c031438ed10d0a5a87d6791">ifAttribute</a> (const char *name, const char *value)  throw (exception)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html">PathElement</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html#a3885cbf44660d0b576c1112359252a5b">TO</a> (int cnt)  throw (exception)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html">PathElement</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html#a3d9fe27aa12b7dc691bae8273395dc55">FROM</a> (int cnt)  throw (exception)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html">PathElement</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html#a265c25d728adf31424417b700afdb19a">RANGE</a> (int cnt)  throw (exception)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html">PathElement</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html#a5b420d4df5eb3dc3eacfce5d77625a89">TO</a> (int idx)  throw (exception)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Define maximum element index to push.  <a href="#a5b420d4df5eb3dc3eacfce5d77625a89"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html">PathElement</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html#a99eb059ff6bd4c3de4012a4ce1592b9c">FROM</a> (int idx)  throw (exception)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Define minimum element index to push.  <a href="#a99eb059ff6bd4c3de4012a4ce1592b9c"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html">PathElement</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html#a1a993d49933ab346cdc75ff26594ba73">RANGE</a> (int idx1, int idx2)  throw (exception)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Define minimum and maximum element index to push.  <a href="#a1a993d49933ab346cdc75ff26594ba73"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html">PathElement</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html#a1df5f4e08567f94e416d2378b4e2a96f">operator=</a> (int type)  throw (exception)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Define element type to push.  <a href="#a1df5f4e08567f94e416d2378b4e2a96f"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html">PathElement</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html#ae8490ad7317a223fb78eed63c08f6043">assignType</a> (int type)  throw (exception)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Define element type to push.  <a href="#ae8490ad7317a223fb78eed63c08f6043"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html">PathElement</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html#aca3c2565217340d157229046a84f0e4f">operator()</a> ()  throw (exception)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Define grab content.  <a href="#aca3c2565217340d157229046a84f0e4f"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html">PathElement</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html#a7c4bf49a3d12219a60e07f49df046112">selectContent</a> ()  throw (exception)</td></tr>
-<tr><td colspan="2"><h2>Private Types</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom">{ <a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html#a2c8ba11a462cac3a4abcfc537b6c40a5a79ce58f16c2fbd9147e96eec0590227b">MaxSize</a> = 1024
- }</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Define grab content.  <a href="#a7c4bf49a3d12219a60e07f49df046112"></a><br/></td></tr>
 <tr><td colspan="2"><h2>Private Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html">PathElement</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html#a06ca3601a5dc2411fdb99ef2c8cfb66c">defineOutput</a> (<a class="el" href="classtextwolf_1_1XMLPathSelectAutomaton.html#acd770d474c93c3fa4b3db53e612b8710">Operation</a> op)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Define an output operation for a certain element type in this state.  <a href="#a06ca3601a5dc2411fdb99ef2c8cfb66c"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html">PathElement</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html#a3ce9b4db6bac090f6002333fc94bc8c0">doSelect</a> (<a class="el" href="classtextwolf_1_1XMLPathSelectAutomaton.html#acd770d474c93c3fa4b3db53e612b8710">Operation</a> op, const char *value)  throw (exception)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Define a state transition operation for a token of a certain element type in this state.  <a href="#a3ce9b4db6bac090f6002333fc94bc8c0"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html">PathElement</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html#aec47ca78835b1b31216835202f1c885c">doFollow</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Define this element as active (firing,printing) for all sub scopes of the activation scope.  <a href="#aec47ca78835b1b31216835202f1c885c"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html">PathElement</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html#a8f62811ba0fb1caefab780c3c647ca28">doRange</a> (int p_start, int p_end)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Define a valid range of token count for this element to be active.  <a href="#a8f62811ba0fb1caefab780c3c647ca28"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html">PathElement</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html#a9797c20c4cadb740eb198ec8e38f4e6b">doCount</a> (int p_count)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Define a valid range of token count for this element to be active by the number of elements.  <a href="#a9797c20c4cadb740eb198ec8e38f4e6b"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html">PathElement</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html#abb7323b6760d5e3b7f82210d1e989526">doStart</a> (int p_start)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Define the start of the range of token count for this element to be active.  <a href="#abb7323b6760d5e3b7f82210d1e989526"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html">PathElement</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html#a9c7f65730b1a9a249fbba913757b44f4">push</a> (int typeidx)  throw (exception)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Define the output of the current element.  <a href="#a9c7f65730b1a9a249fbba913757b44f4"></a><br/></td></tr>
 <tr><td colspan="2"><h2>Private Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtextwolf_1_1XMLPathSelectAutomaton.html">XMLPathSelectAutomaton</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html#ad0bf7cd6d6ff7aeb04bcb93e3c16e948">xs</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">XML Path select automaton where this node is an element of.  <a href="#ad0bf7cd6d6ff7aeb04bcb93e3c16e948"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html#a75168216583ef9c039626176b5858400">stateidx</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">state of this element in the automaton  <a href="#a75168216583ef9c039626176b5858400"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement_1_1Range.html">Range</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html#a306ce6c21c5c5592f76bd32f3f5a5473">range</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Index range of this XML path element.  <a href="#a306ce6c21c5c5592f76bd32f3f5a5473"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html#ac0dfe263701b152df19bce57a583d8a4">follow</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">true, if this element is active (firing) for all sub scopes of the activation scope  <a href="#ac0dfe263701b152df19bce57a583d8a4"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1Mask.html">Mask</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html#a860f37f25bbc8d9634dbb93bf7eb832a">pushOpMask</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">mask for firing element actions  <a href="#a860f37f25bbc8d9634dbb93bf7eb832a"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1Mask.html">Mask</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html#a618635acac0083d0f2cb53e242bc69cb">printOpMask</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">mask for printing element actions  <a href="#a618635acac0083d0f2cb53e242bc69cb"></a><br/></td></tr>
 </table>
+<hr/><a name="_details"></a><h2>Detailed Description</h2>
 <h3>template&lt;class CharSet_ = charset::UTF8&gt;<br/>
- struct textwolf::XMLPathSelectAutomaton&lt; CharSet_ &gt;::PathElement</h3>
+ class textwolf::XMLPathSelectAutomaton&lt; CharSet_ &gt;::PathElement</h3>
 
-<hr/><h2>Member Enumeration Documentation</h2>
-<a class="anchor" id="a2c8ba11a462cac3a4abcfc537b6c40a5"></a><!-- doxytag: member="textwolf::XMLPathSelectAutomaton::PathElement::@10" ref="a2c8ba11a462cac3a4abcfc537b6c40a5" args="" -->
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class CharSet_  = charset::UTF8&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">anonymous enum<code> [private]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-<dl><dt><b>Enumerator: </b></dt><dd><table border="0" cellspacing="2" cellpadding="0">
-<tr><td valign="top"><em><a class="anchor" id="a2c8ba11a462cac3a4abcfc537b6c40a5a79ce58f16c2fbd9147e96eec0590227b"></a><!-- doxytag: member="MaxSize" ref="a2c8ba11a462cac3a4abcfc537b6c40a5a79ce58f16c2fbd9147e96eec0590227b" args="" -->MaxSize</em>&nbsp;</td><td>
-</td></tr>
-</table>
-</dd>
-</dl>
-
-</div>
-</div>
+<p>Defines one node in the XML Path element tree in the construction phase. </p>
+<dl class="remark"><dt><b>Remarks:</b></dt><dd>This is just a construct for building the tree with cascading operators forming a path representation </dd></dl>
 <hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="aa8c049c2f4475f8b3174c65847a18cae"></a><!-- doxytag: member="textwolf::XMLPathSelectAutomaton::PathElement::PathElement" ref="aa8c049c2f4475f8b3174c65847a18cae" args="()" -->
 <div class="memitem">
@@ -145,6 +155,8 @@ template&lt;class CharSet_  = charset::UTF8&gt; </div>
       </table>
 </div>
 <div class="memdoc">
+
+<p>Constructor. </p>
 
 </div>
 </div>
@@ -175,6 +187,15 @@ template&lt;class CharSet_  = charset::UTF8&gt; </div>
 </div>
 <div class="memdoc">
 
+<p>Constructor by values. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>p_xs</em>&nbsp;</td><td>automaton of this element </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>p_si</em>&nbsp;</td><td>state index of this element in the automaton definition </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a class="anchor" id="a10e50655d69afd06bd3b2c033832c880"></a><!-- doxytag: member="textwolf::XMLPathSelectAutomaton::PathElement::PathElement" ref="a10e50655d69afd06bd3b2c033832c880" args="(const PathElement &amp;orig)" -->
@@ -194,6 +215,14 @@ template&lt;class CharSet_  = charset::UTF8&gt; </div>
       </table>
 </div>
 <div class="memdoc">
+
+<p>Copy constructor. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>orig</em>&nbsp;</td><td>element to copy </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -216,6 +245,15 @@ template&lt;class CharSet_  = charset::UTF8&gt; </div>
 </div>
 <div class="memdoc">
 
+<p>Define element type to push. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>type</em>&nbsp;</td><td>element type </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>*this </dd></dl>
+
 </div>
 </div>
 <a class="anchor" id="a06ca3601a5dc2411fdb99ef2c8cfb66c"></a><!-- doxytag: member="textwolf::XMLPathSelectAutomaton::PathElement::defineOutput" ref="a06ca3601a5dc2411fdb99ef2c8cfb66c" args="(Operation op)" -->
@@ -235,6 +273,15 @@ template&lt;class CharSet_  = charset::UTF8&gt; </div>
       </table>
 </div>
 <div class="memdoc">
+
+<p>Define an output operation for a certain element type in this state. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>op</em>&nbsp;</td><td>XML operation type of this output </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>*this </dd></dl>
 
 </div>
 </div>
@@ -256,6 +303,15 @@ template&lt;class CharSet_  = charset::UTF8&gt; </div>
 </div>
 <div class="memdoc">
 
+<p>Define a valid range of token count for this element to be active by the number of elements. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>p_count</em>&nbsp;</td><td>number of elements starting with 0 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>*this </dd></dl>
+
 </div>
 </div>
 <a class="anchor" id="aec47ca78835b1b31216835202f1c885c"></a><!-- doxytag: member="textwolf::XMLPathSelectAutomaton::PathElement::doFollow" ref="aec47ca78835b1b31216835202f1c885c" args="()" -->
@@ -274,6 +330,9 @@ template&lt;class CharSet_  = charset::UTF8&gt; </div>
       </table>
 </div>
 <div class="memdoc">
+
+<p>Define this element as active (firing,printing) for all sub scopes of the activation scope. </p>
+<dl class="return"><dt><b>Returns:</b></dt><dd>*this </dd></dl>
 
 </div>
 </div>
@@ -304,6 +363,16 @@ template&lt;class CharSet_  = charset::UTF8&gt; </div>
 </div>
 <div class="memdoc">
 
+<p>Define a valid range of token count for this element to be active. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>p_start</em>&nbsp;</td><td>index of starting element starting with 0 </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>p_end</em>&nbsp;</td><td>index of upper boundary element (not belonging to range anymore). -1 if undefined (unlimited) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>*this </dd></dl>
+
 </div>
 </div>
 <a class="anchor" id="a3ce9b4db6bac090f6002333fc94bc8c0"></a><!-- doxytag: member="textwolf::XMLPathSelectAutomaton::PathElement::doSelect" ref="a3ce9b4db6bac090f6002333fc94bc8c0" args="(Operation op, const char *value)" -->
@@ -333,6 +402,16 @@ template&lt;class CharSet_  = charset::UTF8&gt; </div>
 </div>
 <div class="memdoc">
 
+<p>Define a state transition operation for a token of a certain element type in this state. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>op</em>&nbsp;</td><td>XML operation type of this state transition </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>value</em>&nbsp;</td><td>key value as ASCII with encoded entities for higher unicode characters of this state transition </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>*this </dd></dl>
+
 </div>
 </div>
 <a class="anchor" id="abb7323b6760d5e3b7f82210d1e989526"></a><!-- doxytag: member="textwolf::XMLPathSelectAutomaton::PathElement::doStart" ref="abb7323b6760d5e3b7f82210d1e989526" args="(int p_start)" -->
@@ -353,9 +432,18 @@ template&lt;class CharSet_  = charset::UTF8&gt; </div>
 </div>
 <div class="memdoc">
 
+<p>Define the start of the range of token count for this element to be active. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>p_start</em>&nbsp;</td><td>index of starting element starting with 0 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>*this </dd></dl>
+
 </div>
 </div>
-<a class="anchor" id="a3d9fe27aa12b7dc691bae8273395dc55"></a><!-- doxytag: member="textwolf::XMLPathSelectAutomaton::PathElement::FROM" ref="a3d9fe27aa12b7dc691bae8273395dc55" args="(int cnt)" -->
+<a class="anchor" id="a99eb059ff6bd4c3de4012a4ce1592b9c"></a><!-- doxytag: member="textwolf::XMLPathSelectAutomaton::PathElement::FROM" ref="a99eb059ff6bd4c3de4012a4ce1592b9c" args="(int idx)" -->
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -365,13 +453,22 @@ template&lt;class CharSet_  = charset::UTF8&gt; </div>
           <td class="memname"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html">PathElement</a>&amp; <a class="el" href="classtextwolf_1_1XMLPathSelectAutomaton.html">textwolf::XMLPathSelectAutomaton</a>&lt; CharSet_ &gt;::PathElement::FROM </td>
           <td>(</td>
           <td class="paramtype">int&nbsp;</td>
-          <td class="paramname"> <em>cnt</em></td>
+          <td class="paramname"> <em>idx</em></td>
           <td>&nbsp;)&nbsp;</td>
           <td>  throw (<a class="el" href="structtextwolf_1_1exception.html">exception</a>)<code> [inline]</code></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
+
+<p>Define minimum element index to push. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>idx</em>&nbsp;</td><td>minimum element index </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>*this </dd></dl>
 
 </div>
 </div>
@@ -401,6 +498,14 @@ template&lt;class CharSet_  = charset::UTF8&gt; </div>
       </table>
 </div>
 <div class="memdoc">
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>name</em>&nbsp;</td><td>name of the attribute </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>value</em>&nbsp;</td><td>value of the attribute </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>*this </dd></dl>
 
 </div>
 </div>
@@ -420,6 +525,10 @@ template&lt;class CharSet_  = charset::UTF8&gt; </div>
       </table>
 </div>
 <div class="memdoc">
+
+<p>Define grab content. </p>
+<dl class="remark"><dt><b>Remarks:</b></dt><dd>same as <a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html#a7c4bf49a3d12219a60e07f49df046112" title="Define grab content.">selectContent()</a> </dd></dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>*this </dd></dl>
 
 </div>
 </div>
@@ -449,6 +558,15 @@ template&lt;class CharSet_  = charset::UTF8&gt; </div>
       </table>
 </div>
 <div class="memdoc">
+<dl class="remark"><dt><b>Remarks:</b></dt><dd>same as <a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html#af96504c45c031438ed10d0a5a87d6791">ifAttribute(const char*,const char*)</a> </dd></dl>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>name</em>&nbsp;</td><td>name of the attribute </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>value</em>&nbsp;</td><td>value of the attribute </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>*this </dd></dl>
 
 </div>
 </div>
@@ -470,6 +588,15 @@ template&lt;class CharSet_  = charset::UTF8&gt; </div>
 </div>
 <div class="memdoc">
 
+<p>Find tag with one attribute. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>name</em>&nbsp;</td><td>name of the attribute </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>*this </dd></dl>
+
 </div>
 </div>
 <a class="anchor" id="ada9ade6ffcf8992e791e9f4be3bb59ee"></a><!-- doxytag: member="textwolf::XMLPathSelectAutomaton::PathElement::operator&#45;&#45;" ref="ada9ade6ffcf8992e791e9f4be3bb59ee" args="(int)" -->
@@ -489,6 +616,9 @@ template&lt;class CharSet_  = charset::UTF8&gt; </div>
       </table>
 </div>
 <div class="memdoc">
+
+<p>Corresponds to "//" in abbreviated syntax of XPath. </p>
+<dl class="return"><dt><b>Returns:</b></dt><dd>*this </dd></dl>
 
 </div>
 </div>
@@ -510,6 +640,16 @@ template&lt;class CharSet_  = charset::UTF8&gt; </div>
 </div>
 <div class="memdoc">
 
+<p>Define element type to push. </p>
+<dl class="remark"><dt><b>Remarks:</b></dt><dd>same as <a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html#ae8490ad7317a223fb78eed63c08f6043" title="Define element type to push.">assignType(int)</a> </dd></dl>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>type</em>&nbsp;</td><td>element type </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>*this </dd></dl>
+
 </div>
 </div>
 <a class="anchor" id="a01a803134a5993278df409756be4e3ac"></a><!-- doxytag: member="textwolf::XMLPathSelectAutomaton::PathElement::operator[]" ref="a01a803134a5993278df409756be4e3ac" args="(const char *name)" -->
@@ -529,6 +669,15 @@ template&lt;class CharSet_  = charset::UTF8&gt; </div>
       </table>
 </div>
 <div class="memdoc">
+
+<p>Find tag by name. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>name</em>&nbsp;</td><td>name of the tag </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>*this </dd></dl>
 
 </div>
 </div>
@@ -550,9 +699,18 @@ template&lt;class CharSet_  = charset::UTF8&gt; </div>
 </div>
 <div class="memdoc">
 
+<p>Define the output of the current element. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>typeidx</em>&nbsp;</td><td>type of the element produced </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>*this </dd></dl>
+
 </div>
 </div>
-<a class="anchor" id="a265c25d728adf31424417b700afdb19a"></a><!-- doxytag: member="textwolf::XMLPathSelectAutomaton::PathElement::RANGE" ref="a265c25d728adf31424417b700afdb19a" args="(int cnt)" -->
+<a class="anchor" id="a1a993d49933ab346cdc75ff26594ba73"></a><!-- doxytag: member="textwolf::XMLPathSelectAutomaton::PathElement::RANGE" ref="a1a993d49933ab346cdc75ff26594ba73" args="(int idx1, int idx2)" -->
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -562,13 +720,32 @@ template&lt;class CharSet_  = charset::UTF8&gt; </div>
           <td class="memname"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html">PathElement</a>&amp; <a class="el" href="classtextwolf_1_1XMLPathSelectAutomaton.html">textwolf::XMLPathSelectAutomaton</a>&lt; CharSet_ &gt;::PathElement::RANGE </td>
           <td>(</td>
           <td class="paramtype">int&nbsp;</td>
-          <td class="paramname"> <em>cnt</em></td>
-          <td>&nbsp;)&nbsp;</td>
-          <td>  throw (<a class="el" href="structtextwolf_1_1exception.html">exception</a>)<code> [inline]</code></td>
+          <td class="paramname"> <em>idx1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>idx2</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td>  throw (<a class="el" href="structtextwolf_1_1exception.html">exception</a>)<code> [inline]</code></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
+
+<p>Define minimum and maximum element index to push. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>idx1</em>&nbsp;</td><td>minimum element index </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>idx2</em>&nbsp;</td><td>maximum element index </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>*this </dd></dl>
 
 </div>
 </div>
@@ -590,6 +767,16 @@ template&lt;class CharSet_  = charset::UTF8&gt; </div>
 </div>
 <div class="memdoc">
 
+<p>Find tag with one attribute. </p>
+<dl class="remark"><dt><b>Remarks:</b></dt><dd>same as <a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html#a7794f5c86d07abfc558255f25eb150c0" title="Find tag with one attribute.">selectAttribute(const char*)</a> </dd></dl>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>name</em>&nbsp;</td><td>name of the attribute </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>*this </dd></dl>
+
 </div>
 </div>
 <a class="anchor" id="a7c4bf49a3d12219a60e07f49df046112"></a><!-- doxytag: member="textwolf::XMLPathSelectAutomaton::PathElement::selectContent" ref="a7c4bf49a3d12219a60e07f49df046112" args="()" -->
@@ -608,6 +795,9 @@ template&lt;class CharSet_  = charset::UTF8&gt; </div>
       </table>
 </div>
 <div class="memdoc">
+
+<p>Define grab content. </p>
+<dl class="return"><dt><b>Returns:</b></dt><dd>*this </dd></dl>
 
 </div>
 </div>
@@ -629,9 +819,19 @@ template&lt;class CharSet_  = charset::UTF8&gt; </div>
 </div>
 <div class="memdoc">
 
+<p>Find tag by name. </p>
+<dl class="remark"><dt><b>Remarks:</b></dt><dd>same as <a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html#a8615937fad5766436c8fa0f5545716c9" title="Find tag by name.">selectTag(const char*)</a> </dd></dl>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>name</em>&nbsp;</td><td>name of the tag </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>*this </dd></dl>
+
 </div>
 </div>
-<a class="anchor" id="a3885cbf44660d0b576c1112359252a5b"></a><!-- doxytag: member="textwolf::XMLPathSelectAutomaton::PathElement::TO" ref="a3885cbf44660d0b576c1112359252a5b" args="(int cnt)" -->
+<a class="anchor" id="a5b420d4df5eb3dc3eacfce5d77625a89"></a><!-- doxytag: member="textwolf::XMLPathSelectAutomaton::PathElement::TO" ref="a5b420d4df5eb3dc3eacfce5d77625a89" args="(int idx)" -->
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -641,13 +841,22 @@ template&lt;class CharSet_  = charset::UTF8&gt; </div>
           <td class="memname"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html">PathElement</a>&amp; <a class="el" href="classtextwolf_1_1XMLPathSelectAutomaton.html">textwolf::XMLPathSelectAutomaton</a>&lt; CharSet_ &gt;::PathElement::TO </td>
           <td>(</td>
           <td class="paramtype">int&nbsp;</td>
-          <td class="paramname"> <em>cnt</em></td>
+          <td class="paramname"> <em>idx</em></td>
           <td>&nbsp;)&nbsp;</td>
           <td>  throw (<a class="el" href="structtextwolf_1_1exception.html">exception</a>)<code> [inline]</code></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
+
+<p>Define maximum element index to push. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>idx</em>&nbsp;</td><td>maximum element index </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>*this </dd></dl>
 
 </div>
 </div>
@@ -665,6 +874,8 @@ template&lt;class CharSet_  = charset::UTF8&gt; </div>
 </div>
 <div class="memdoc">
 
+<p>true, if this element is active (firing) for all sub scopes of the activation scope </p>
+
 </div>
 </div>
 <a class="anchor" id="a618635acac0083d0f2cb53e242bc69cb"></a><!-- doxytag: member="textwolf::XMLPathSelectAutomaton::PathElement::printOpMask" ref="a618635acac0083d0f2cb53e242bc69cb" args="" -->
@@ -679,6 +890,8 @@ template&lt;class CharSet_  = charset::UTF8&gt; </div>
       </table>
 </div>
 <div class="memdoc">
+
+<p>mask for printing element actions </p>
 
 </div>
 </div>
@@ -695,6 +908,8 @@ template&lt;class CharSet_  = charset::UTF8&gt; </div>
 </div>
 <div class="memdoc">
 
+<p>mask for firing element actions </p>
+
 </div>
 </div>
 <a class="anchor" id="a306ce6c21c5c5592f76bd32f3f5a5473"></a><!-- doxytag: member="textwolf::XMLPathSelectAutomaton::PathElement::range" ref="a306ce6c21c5c5592f76bd32f3f5a5473" args="" -->
@@ -709,6 +924,8 @@ template&lt;class CharSet_  = charset::UTF8&gt; </div>
       </table>
 </div>
 <div class="memdoc">
+
+<p>Index range of this XML path element. </p>
 
 </div>
 </div>
@@ -725,6 +942,8 @@ template&lt;class CharSet_  = charset::UTF8&gt; </div>
 </div>
 <div class="memdoc">
 
+<p>state of this element in the automaton </p>
+
 </div>
 </div>
 <a class="anchor" id="ad0bf7cd6d6ff7aeb04bcb93e3c16e948"></a><!-- doxytag: member="textwolf::XMLPathSelectAutomaton::PathElement::xs" ref="ad0bf7cd6d6ff7aeb04bcb93e3c16e948" args="" -->
@@ -740,9 +959,11 @@ template&lt;class CharSet_  = charset::UTF8&gt; </div>
 </div>
 <div class="memdoc">
 
+<p>XML Path select automaton where this node is an element of. </p>
+
 </div>
 </div>
-<hr/>The documentation for this struct was generated from the following file:<ul>
+<hr/>The documentation for this class was generated from the following file:<ul>
 <li>textwolf/include/<a class="el" href="textwolf_8hpp_source.html">textwolf.hpp</a></li>
 </ul>
 </div>
@@ -751,7 +972,7 @@ template&lt;class CharSet_  = charset::UTF8&gt; </div>
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&nbsp;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&nbsp;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&nbsp;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&nbsp;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&nbsp;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&nbsp;</span>Defines</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&nbsp;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&nbsp;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&nbsp;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&nbsp;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&nbsp;</span>Friends</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -760,7 +981,7 @@ template&lt;class CharSet_  = charset::UTF8&gt; </div>
 </iframe>
 </div>
 
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Mon Jun 13 19:42:55 2011 for textwolf by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Tue Jun 14 21:10:54 2011 for textwolf by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>
