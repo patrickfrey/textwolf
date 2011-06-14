@@ -52,6 +52,7 @@ namespace textwolf {
 }//namespace
 #else
 #ifdef _MSC_VER
+#pragma warning(disable:4290)
 #include <BaseTsd.h>
 namespace textwolf {
 	typedef DWORD32 UChar;
