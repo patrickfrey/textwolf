@@ -50,7 +50,9 @@
 namespace textwolf {
 	typedef boost::uint32_t UChar;
 }//namespace
-#elifdef _MSC_VER
+#else
+#ifdef _MSC_VER
+#pragma warning(disable:4290)
 #include "port/stdint.h"
 namespace textwolf {
 	typedef uint32_t UChar;
@@ -58,6 +60,7 @@ namespace textwolf {
 #else
 #include <stdint.h>
 typedef uint32_t UChar;
+#endif
 #endif
 
 ///\namespace textwolf
