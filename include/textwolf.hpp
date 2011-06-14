@@ -486,6 +486,7 @@ struct UTF8
 		if (chr <= 127)
 		{
 			buf.push_back( (char)(unsigned char)chr);
+			return;
 		}
 		unsigned int pp,sf;
 		for (pp=1,sf=5; pp<5; pp++,sf+=5)
@@ -991,6 +992,50 @@ public:
 			[ EXIT     ].action(Return,Exit);
 		}
 	};
+
+	///\typedef IsTokenCharMap
+	///\brief Forms a set of characters by assigning (true/false) to the whole domain
+	typedef CharMap<bool,false,NofControlCharacter> IsTokenCharMap;
+
+	///\class IsTagCharMap
+	///\brief Defines the set of tag characters
+	struct IsTagCharMap :public IsTokenCharMap
+	{
+		IsTagCharMap()
+		{
+			(*this)(Undef,true)(Any,true);
+		}
+	};
+
+	///\class IsContentCharMap
+	///\brief Defines the set of content token characters
+	struct IsContentCharMap :public IsTokenCharMap
+	{
+		IsContentCharMap()
+		{
+			(*this)(Undef,true)(Equal,true)(Gt,true)(Slash,true)(Exclam,true)(Questm,true)(Sq,true)(Dq,true)(Osb,true)(Csb,true)(Any,true);
+		}
+	};
+
+	///\class IsSQStringCharMap
+	///\brief Defines the set characters belonging to a single quoted string
+	struct IsSQStringCharMap :public IsContentCharMap
+	{
+		IsSQStringCharMap()
+		{
+			(*this)(Sq,false)(Space,true);
+		}
+	};
+
+	///\class IsDQStringCharMap
+	///\brief Defines the set characters belonging to a double quoted string
+	struct IsDQStringCharMap :public IsContentCharMap
+	{
+		IsDQStringCharMap()
+		{
+			(*this)(Dq,false)(Space,true);
+		}
+	};
 };
 
 
@@ -1262,50 +1307,6 @@ public:
 		}
 	}
 
-	///\typedef IsTokenCharMap
-	///\brief Forms a set of characters by assigning (true/false) to the whole domain
-	typedef CharMap<bool,false,NofControlCharacter> IsTokenCharMap;
-
-	///\class IsTagCharMap
-	///\brief Defines the set of tag characters
-	struct IsTagCharMap :public IsTokenCharMap
-	{
-		IsTagCharMap()
-		{
-			(*this)(Undef,true)(Any,true);
-		}
-	};
-
-	///\class IsContentCharMap
-	///\brief Defines the set of content token characters
-	struct IsContentCharMap :public IsTokenCharMap
-	{
-		IsContentCharMap()
-		{
-			(*this)(Undef,true)(Equal,true)(Gt,true)(Slash,true)(Exclam,true)(Questm,true)(Sq,true)(Dq,true)(Osb,true)(Csb,true)(Any,true);
-		}
-	};
-
-	///\class IsSQStringCharMap
-	///\brief Defines the set characters belonging to a single quoted string
-	struct IsSQStringCharMap :public IsContentCharMap
-	{
-		IsSQStringCharMap()
-		{
-			(*this)(Sq,false)(Space,true);
-		}
-	};
-
-	///\class IsDQStringCharMap
-	///\brief Defines the set characters belonging to a double quoted string
-	struct IsDQStringCharMap :public IsContentCharMap
-	{
-		IsDQStringCharMap()
-		{
-			(*this)(Dq,false)(Space,true);
-		}
-	};
-
 	///\brief Try to recover from an interrupted token parsing state (end of input exception)
 	///\return true on success
 	bool parseTokenRecover()
@@ -1576,19 +1577,6 @@ public:
 	void setOutputBuffer( OutputBuffer& p_outputBuf)
 	{
 		m_outputBuf = &p_outputBuf;
-	}
-
-	///\brief Static parse of a tag name for the elements in a table
-	///\tparam Charset Character set of the tag written
-	///\tparam OutputBufferType Buffer to use for output
-	///\param [in] src tagname as ASCII with encoded entities for characters beyond ASCII
-	///\param [in] p_buf buffer for output
-	template <class CharSet, class OutputBufferType>
-	static bool getTagName( const char* src, OutputBufferType& p_buf)
-	{
-		static IsTagCharMap isTagCharMap;
-		char* itr = const_cast<char*>(src);
-		return parseStaticToken( isTagCharMap, itr, p_buf);
 	}
 
 	///\brief Get the current parsed XML element string, if it was not masked out, see nextItem(unsigned short)
@@ -1874,9 +1862,9 @@ public:
 	{
 		if (!setMemUsage( memUsage, maxDepth)) throw exception( DimOutOfRange);
 	}
-
+	typedef CharSet_ CharSet;
 	typedef int Hash;
-	typedef XMLPathSelectAutomaton<CharSet_> ThisXMLPathSelectAutomaton;
+	typedef XMLPathSelectAutomaton<CharSet> ThisXMLPathSelectAutomaton;
 
 public:
 	///\enum Operation
@@ -2310,13 +2298,16 @@ public:
 		///\return *this
 		PathElement& doSelect( Operation op, const char* value) throw(exception)
 		{
+			static XMLScannerBase::IsTagCharMap isTagCharMap;
 			if (xs != 0)
 			{
 				if (value)
 				{
 					char buf[ 1024];
 					StaticBuffer pb( buf, sizeof(buf));
-					if (!XMLScanner<char*,CharSet_,CharSet_,StaticBuffer>::getTagName<CharSet_,StaticBuffer>( value, pb))
+					char* itr = const_cast<char*>(value);
+					typedef XMLScanner<char*,CharSet,CharSet,StaticBuffer> StaticXMLScanner;
+					if (!StaticXMLScanner::parseStaticToken( isTagCharMap, itr, pb))
 					{
 						throw exception( IllegalAttributeName);
 					}
@@ -2800,7 +2791,7 @@ private:
 public:
 	///\brief Constructor
 	///\param[in] p_atm read only ML path select automaton reference
-	///\param[in] source input iterator to process
+	///\param[in] src source input iterator to process
 	///\param[in] obuf reference to buffer to use for the output elements (STL back insertion sequence interface)
 	///\param[in] entityMap read only map of named entities to expand
 	XMLPathSelect( const ThisXMLPathSelectAutomaton* p_atm, InputIterator& src, OutputBuffer& obuf, const EntityMap& entityMap)
@@ -2810,7 +2801,7 @@ public:
 	}
 	///\brief Constructor
 	///\param[in] p_atm read only ML path select automaton reference
-	///\param[in] source input iterator to process
+	///\param[in] src source input iterator to process
 	///\param[in] obuf reference to buffer to use for the output elements (STL back insertion sequence interface)
 	XMLPathSelect( const ThisXMLPathSelectAutomaton* p_atm, InputIterator& src, OutputBuffer& obuf)
 		:scan(src,obuf),atm(p_atm),scopestk(p_atm->maxScopeStackSize),follows(p_atm->maxFollows),triggers(p_atm->maxTriggers),tokens(p_atm->maxTokens)
@@ -2818,7 +2809,7 @@ public:
 		if (atm->states.size() > 0) expand(0);
 	}
 	///\brief Copy constructor
-	///\param [in] element to copy
+	///\param [in] o element to copy
 	XMLPathSelect( const XMLPathSelect& o)
 		:scan(o.scan),atm(o.atm),scopestk(o.maxScopeStackSize),follows(o.maxFollows),follows(o.maxTriggers),tokens(o.maxTokens){}
 
@@ -2934,7 +2925,7 @@ public:
 			return *this;
 		}
 		///\brief Iterator compare
-		///\param [in] iterator to compare with
+		///\param [in] iter iterator to compare with
 		///\return true, if the elements are equal
 		bool compare( const iterator& iter) const
 		{

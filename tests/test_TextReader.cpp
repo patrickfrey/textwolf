@@ -13,7 +13,7 @@ class EnumCharIterator
 public:
 	unsigned int ii;
 	unsigned int pos;
-	Buffer buf;
+	StaticBuffer buf;
 
 public:
 	bool eof() const

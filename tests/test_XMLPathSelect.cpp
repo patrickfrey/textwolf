@@ -23,7 +23,7 @@ class ProtocolCharMap
 		}
 		state = '\n';
 		return ch;
-	};
+	}
 };
 
 int main( int, const char**)
@@ -93,5 +93,5 @@ int main( int, const char**)
 	{
 		std::cerr << "ERROR " << ee.what() << std::endl;
 		return 1;
-	};
+	}
 }
