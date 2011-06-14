@@ -2148,6 +2148,10 @@ public:
 		Scope()					{}
 	};
 
+	///\brief Defines the usage of memory
+	///\param [in] p_memUsage size of the memory block in bytes 
+	///\param [in] p_maxDepth maximum depht of the scope stack
+	///\return true, if everything is OK
 	bool setMemUsage( unsigned int p_memUsage, unsigned int p_maxDepth)
 	{
 		memUsage = p_memUsage;
@@ -2169,6 +2173,14 @@ public:
 	}
 
 private:
+	///\brief Defines a state transition
+	///\param [in] stateidx from what source state
+	///\param [in] op operation firing the state transition
+	///\param [in] keysize length of the key firing the state transition in bytes
+	///\param [in] key the key string firing the state transition in bytes	
+	///\param [in] srckey the ASCII encoded representation in the source
+	///\param [in] follow true, uf the state transition is active for all sub scopes of the activation state
+	///\return the target state of the transition defined
 	int defineNext( int stateidx, Operation op, unsigned int keysize, const char* key, const char* srckey, bool follow=false) throw(exception)
 	{
 		try
@@ -2208,13 +2220,14 @@ private:
 		}
 	}
 
-	void defineThisOutput( int stateidx, int typeidx)
-	{
-		if ((unsigned int)stateidx >= states.size()) throw exception( IllegalParam);
-		if (states[stateidx].core.typeidx != 0) throw exception( NotAllowedOperation);
-		states[stateidx].core.typeidx = typeidx;
-	}
-
+	///\brief Defines an output print action and output type for a state
+	///\param [in] stateidx from what source state
+	///\param [in] printOpMask mask for elements printed
+	///\param [in] typeidx type identifier
+	///\param [in] follow true, uf the state transition is active for all sub scopes of the activation state
+	///\param [in] start start of index range where this state transition fires
+	///\param [in] end end of index range where this state transition fires
+	///\return index of the state where this output action was defined
 	int defineOutput( int stateidx, const Mask& printOpMask, int typeidx, bool follow, int start, int end) throw(exception)
 	{
 		try
@@ -2246,35 +2259,55 @@ private:
 	}
 
 public:
+	///\class PathElement
+	///\brief Defines one node in the XML Path element tree in the construction phase. 
+	///\remark This is just a construct for building the tree with cascading operators forming a path representation
 	struct PathElement :throws_exception
 	{
 	private:
-		enum {MaxSize=1024};
-
-		XMLPathSelectAutomaton* xs;
-		int stateidx;
+		XMLPathSelectAutomaton* xs;		///< XML Path select automaton where this node is an element of
+		int stateidx;							///< state of this element in the automaton
+		
+		///\class Range
+		///\brief Element counting range defining what are indices of valid elements
 		struct Range
 		{
-			int start;
-			int end;
+			int start;							///< index of starting element starting with 0
+			int end;								///< index of upper boundary element (not belonging to range anymore). -1 if undefined (unlimited)
 
+			///\brief Copy constructor
+			///\param [in] o range element to copy
 			Range( const Range& o)		:start(o.start),end(o.end){}
+			///\brief Constructor by value
+			///\param [in] p_start index of starting element
+			///\param [in] p_end index of upper boundary element (not belonging to range anymore). -1 if undefined (unlimited)
 			Range( int p_start, int p_end)	:start(p_start),end(p_end){}
+			///\brief Constructor by value
+			///\param [in] count number of elements starting with the first one (with index 0)
 			Range( int count)		:start(0),end(count){}
+			///\brief Constructor
 			Range()				:start(0),end(-1){}
 		};
-		Range range;
-		bool follow;
-		Mask pushOpMask;
-		Mask printOpMask;
+		Range range;			///< Index range of this XML path element
+		bool follow;			///< true, if this element is active (firing) for all sub scopes of the activation scope
+		Mask pushOpMask;		///< mask for firing element actions
+		Mask printOpMask;		///< mask for printing element actions
 
 	private:
+		///\brief Define an output operation for a certain element type in this state
+		///\param [in] op XML operation type of this output
+		///\return *this
 		PathElement& defineOutput( Operation op)
 		{
 			printOpMask.reset();
 			printOpMask.seekop( op);
 			return *this;
 		}
+
+		///\brief Define a state transition operation for a token of a certain element type in this state
+		///\param [in] op XML operation type of this state transition
+		///\param [in] value key value as ASCII with encoded entities for higher unicode characters of this state transition
+		///\return *this
 		PathElement& doSelect( Operation op, const char* value) throw(exception)
 		{
 			if (xs != 0)
@@ -2296,11 +2329,19 @@ public:
 			}
 			return *this;
 		}
+
+		///\brief Define this element as active (firing,printing) for all sub scopes of the activation scope
+		///\return *this
 		PathElement& doFollow()
 		{
 			follow = true;
 			return *this;
 		}
+
+		///\brief Define a valid range of token count for this element to be active
+		///\param [in] p_start index of starting element starting with 0
+		///\param [in] p_end index of upper boundary element (not belonging to range anymore). -1 if undefined (unlimited)
+		///\return *this
 		PathElement& doRange( int p_start, int p_end)
 		{
 			if (range.end == -1)
@@ -2317,15 +2358,26 @@ public:
 			}
 			return *this;
 		}
+
+		///\brief Define a valid range of token count for this element to be active by the number of elements
+		///\param [in] p_count number of elements starting with 0
+		///\return *this
 		PathElement& doCount( int p_count)
 		{
 			return doRange( 0, p_count);
 		}
+
+		///\brief Define the start of the range of token count for this element to be active
+		///\param [in] p_start index of starting element starting with 0
+		///\return *this
 		PathElement& doStart( int p_start)
 		{
 			return doRange( p_start, std::numeric_limits<int>::max());
 		}
 
+		///\brief Define the output of the current element
+		///\param [in] typeidx type of the element produced
+		///\return *this
 		PathElement& push( int typeidx) throw(exception)
 		{
 			if (xs != 0) stateidx = xs->defineOutput( stateidx, printOpMask, typeidx, follow, range.start, range.end);
@@ -2333,36 +2385,83 @@ public:
 		}
 
 	public:
+		///\brief Constructor
 		PathElement()							:xs(0),stateidx(0),follow(false),pushOpMask(0),printOpMask(0){}
+		///\brief Constructor by values
+		///\param [in] p_xs automaton of this element
+		///\param [in] p_si state index of this element in the automaton definition
 		PathElement( XMLPathSelectAutomaton* p_xs, int p_si=0)		:xs(p_xs),stateidx(p_si),follow(false),pushOpMask(0),printOpMask(0){}
+		///\brief Copy constructor
+		///\param [in] orig element to copy
 		PathElement( const PathElement& orig)				:xs(orig.xs),stateidx(orig.stateidx),range(orig.range),follow(orig.follow),pushOpMask(orig.pushOpMask),printOpMask(orig.printOpMask) {}
 
-		//corresponds to "//" in abbreviated syntax of XPath
+		///\brief Corresponds to "//" in abbreviated syntax of XPath
+		///\return *this
 		PathElement& operator --(int)							{return doFollow();}
-		//find tag
+		///\brief Find tag by name
+		///\param [in] name name of the tag
+		///\return *this		
 		PathElement& operator []( const char* name) throw(exception)			{return doSelect( Tag, name);}
+		///\brief Find tag by name
+		///\remark same as selectTag(const char*)
+		///\param [in] name name of the tag
+		///\return *this		
 		PathElement& selectTag( const char* name) throw(exception)			{return doSelect( Tag, name);}
-		//find tag with one attribute
+		///\brief Find tag with one attribute
+		///\param [in] name name of the attribute
+		///\return *this		
 		PathElement& operator ()( const char* name) throw(exception)			{return doSelect( Attribute, name).defineOutput( ThisAttributeValue);}
+		///\brief Find tag with one attribute
+		///\remark same as selectAttribute(const char*)
+		///\param [in] name name of the attribute
+		///\return *this
 		PathElement& selectAttribute( const char* name) throw(exception)		{return doSelect( Attribute, name).defineOutput( ThisAttributeValue);}
-		//find tag with one attribute
+
+		//\brief Find tag with one attribute,value condition
+		///\remark same as ifAttribute(const char*,const char*)
+		///\param [in] name name of the attribute
+		///\param [in] value value of the attribute
+		///\return *this
 		PathElement& operator ()( const char* name, const char* value) throw(exception)	{return doSelect( Attribute, name).doSelect( ThisAttributeValue, value);}
+		//\brief Find tag with one attribute,value condition
+		///\param [in] name name of the attribute
+		///\param [in] value value of the attribute
+		///\return *this
 		PathElement& ifAttribute( const char* name, const char* value) throw(exception)	{return doSelect( Attribute, name).doSelect( ThisAttributeValue, value);}
 
-		//define maximum element index to push
-		PathElement& TO(int cnt) throw(exception)					{return doCount((cnt>=0)?(cnt+1):-1);}
-		//define minimum element index to push
-		PathElement& FROM(int cnt) throw(exception)					{return doStart(cnt); return *this;}
-		//define minimum and maximum element index to push
-		PathElement& RANGE(int cnt) throw(exception)					{return doRange(cnt,(cnt>=0)?(cnt+1):-1); return *this;}
-		//define element type to push
+		///\brief Define maximum element index to push
+		///\param [in] idx maximum element index
+		///\return *this
+		PathElement& TO(int idx) throw(exception)					{return doCount((idx>=0)?(idx+1):-1);}
+		///\brief Define minimum element index to push
+		///\param [in] idx minimum element index
+		///\return *this
+		PathElement& FROM(int idx) throw(exception)					{return doStart(idx); return *this;}
+		///\brief Define minimum and maximum element index to push
+		///\param [in] idx1 minimum element index
+		///\param [in] idx2 maximum element index
+		///\return *this
+		PathElement& RANGE(int idx1, int idx2) throw(exception)		{return doRange(idx1,(idx2>=0)?(idx2+1):-1); return *this;}
+		///\brief Define element type to push
+		///\remark same as assignType(int)
+		///\param [in] type element type
+		///\return *this
 		PathElement& operator =(int type) throw(exception)				{return push( type);}
+		///\brief Define element type to push
+		///\param [in] type element type
+		///\return *this
 		PathElement& assignType(int type) throw(exception)				{return push( type);}
-		//grab content
+		///\brief Define grab content
+		///\remark same as selectContent()
+		///\return *this
 		PathElement& operator ()()  throw(exception)					{return defineOutput(Content);}
+		///\brief Define grab content
+		///\return *this
 		PathElement& selectContent()  throw(exception)					{return defineOutput(Content);}
 	};
 
+	///\brief Get automaton root element to start an XML path definition
+	///\return the automaton root element
 	PathElement operator*()
 	{
 		return PathElement( this);
@@ -2392,51 +2491,72 @@ public:
 	typedef EntityMap_ EntityMap;
 
 private:
-	ThisXMLScanner scan;
-	const ThisXMLPathSelectAutomaton* atm;
+	ThisXMLScanner scan;				///< XML Scanner for fetching elements for the automaton input
+	const ThisXMLPathSelectAutomaton* atm;				///< XML select automaton used
 	typedef typename ThisXMLPathSelectAutomaton::Mask Mask;
 	typedef typename ThisXMLPathSelectAutomaton::Token Token;
 	typedef typename ThisXMLPathSelectAutomaton::Hash Hash;
 	typedef typename ThisXMLPathSelectAutomaton::State State;
 	typedef typename ThisXMLPathSelectAutomaton::Scope Scope;
 
-	//static array of POD types. I decided to implement it on my own
+	///\class Array
+	///\brief static array of POD types. I decided to implement it on my own though using boost::array would maybe be better.
+	///\tparam Element element type of the array
 	template <typename Element>
 	class Array :public throws_exception
 	{
-		Element* m_ar;
-		unsigned int m_size;
-		unsigned int m_maxSize;
+		Element* m_ar;				///< pointer to elements
+		unsigned int m_size;		///< fill size (number of elements inserted)
+		unsigned int m_maxSize;		///< allocation size (space reserved for this number of elements)
 	public:
+		///\brief Constructor
+		///\param [in] p_maxSize allocation size (number of elements) to reserve
 		Array( unsigned int p_maxSize) :m_size(0),m_maxSize(p_maxSize)
 		{
 			m_ar = new (std::nothrow) Element[ m_maxSize];
 			if (m_ar == 0) throw exception( OutOfMem);
 		}
+
+		///\brief Destructor
 		~Array()
 		{
 			if (m_ar) delete [] m_ar;
 		}
+
+		///\brief Append one element
+		///\param [in] elem element to append
 		void push_back( const Element& elem)
 		{
 			if (m_size == m_maxSize) throw exception( OutOfMem);
 			m_ar[ m_size++] = elem;
 		}
+
+		///\brief Remove one element from the end
 		void pop_back()
 		{
 			if (m_size == 0) throw exception( NotAllowedOperation);
 			m_size--;
 		}
+
+		///\brief Access element by index
+		///\param [in] idx index of the element starting with 0
+		///\return element reference
 		Element& operator[]( unsigned int idx)
 		{
 			if (idx >= m_size) throw exception( ArrayBoundsReadWrite);
 			return m_ar[ idx];
 		}
+
+		///\brief Get a reference of the element at the end of the array
+		///\return element reference
 		Element& back()
 		{
 			if (m_size == 0) throw exception( ArrayBoundsReadWrite);
 			return m_ar[ m_size-1];
 		}
+
+		///\brief Resize of the array
+		///\param [in] p_size new array size
 		void resize( unsigned int p_size)
 		{
 			if (p_size > m_size) throw exception( ArrayBoundsReadWrite);
@@ -2446,21 +2566,28 @@ private:
 		bool empty() const			{return m_size==0;}
 	};
 
-	Array<Scope> scopestk;		//stack of scopes opened
-	Array<unsigned int> follows;	//indices of tokens active in all descendant scopes
-	Array<int> triggers;		//triggered elements
-	Array<Token> tokens;		//list of waiting tokens
+	Array<Scope> scopestk;		///< stack of scopes opened
+	Array<unsigned int> follows;	///< indices of tokens active in all descendant scopes
+	Array<int> triggers;		///< triggered elements
+	Array<Token> tokens;		///< list of waiting tokens
 
+	///\class Context
+	///\brief State variables without stacks of the automaton
 	struct Context
 	{
-		XMLScannerBase::ElementType type;	//element type processed
-		const char* key;			//string value of element processed
-		unsigned int keysize;			//sizeof string value in bytes of element processed
-		Scope scope;				//active scope
-		unsigned int scope_iter;		//position of currently visited token in the active scope
+		XMLScannerBase::ElementType type;	///< element type processed
+		const char* key;			///< string value of element processed
+		unsigned int keysize;			///< size of string value in bytes of element processed
+		Scope scope;				///< active scope
+		unsigned int scope_iter;		///< position of currently visited token in the active scope
 
+		///\brief Constructor
 		Context()				:type(XMLScannerBase::Content),key(0),keysize(0) {}
 
+		///\brief Initialization
+		///\param [in] p_type type of the current element processed
+		///\param [in] p_key current element processed
+		///\param [in] p_keysize size of the key in bytes
 		void init( XMLScannerBase::ElementType p_type, const char* p_key, int p_keysize)
 		{
 			type = p_type;
@@ -2469,8 +2596,10 @@ private:
 			scope_iter = scope.range.tokenidx_from;
 		}
 	};
-	Context context;
+	Context context;		///< state variables without stacks of the automaton
 
+	///\brief Activate a state by index
+	///\param stateidx index of the state to activate
 	void expand( int stateidx)
 	{
 		while (stateidx!=-1)
@@ -2494,7 +2623,10 @@ private:
 		}
 	}
 
-	//declares the currently processed element of the XMLScanner input. By calling fetch we get the output elements from it
+	///\brief Declares the currently processed element of the XMLScanner input. By calling fetch we get the output elements from it
+	///\param [in] type type of the current element processed
+	///\param [in] key current element processed
+	///\param [in] keysize size of the key in bytes
 	void initProcessElement( XMLScannerBase::ElementType type, const char* key, int keysize)
 	{
 		if (context.type == XMLScannerBase::OpenTag)
@@ -2527,6 +2659,9 @@ private:
 		}
 	}
 
+	///\brief produce an element adressed by token index
+	///\param [in] tokenidx index of the token in the list of active tokens
+	///\param [in] st state from which the expand was triggered
 	void produce( unsigned int tokenidx, const State& st)
 	{
 		const Token& tk = tokens[ tokenidx];
@@ -2554,6 +2689,9 @@ private:
 		}
 	}
 
+	///\brief check if an active token addressed by index matches to the currently processed element
+	///\param [in] tokenidx index of the token in the list of active tokens
+	///\return matching token type
 	int match( unsigned int tokenidx)
 	{
 		int rt = 0;
@@ -2613,6 +2751,8 @@ private:
 		return rt;
 	}
 
+	///\brief fetch the next matching element
+	///\return type of the matching element
 	int fetch()
 	{
 		int type = 0;
@@ -2658,16 +2798,27 @@ private:
 	}
 
 public:
+	///\brief Constructor
+	///\param[in] p_atm read only ML path select automaton reference
+	///\param[in] source input iterator to process
+	///\param[in] obuf reference to buffer to use for the output elements (STL back insertion sequence interface)
+	///\param[in] entityMap read only map of named entities to expand
 	XMLPathSelect( const ThisXMLPathSelectAutomaton* p_atm, InputIterator& src, OutputBuffer& obuf, const EntityMap& entityMap)
 		:scan(src,obuf,entityMap),atm(p_atm),scopestk(p_atm->maxScopeStackSize),follows(p_atm->maxFollows),triggers(p_atm->maxTriggers),tokens(p_atm->maxTokens)
 	{
 		if (atm->states.size() > 0) expand(0);
 	}
+	///\brief Constructor
+	///\param[in] p_atm read only ML path select automaton reference
+	///\param[in] source input iterator to process
+	///\param[in] obuf reference to buffer to use for the output elements (STL back insertion sequence interface)
 	XMLPathSelect( const ThisXMLPathSelectAutomaton* p_atm, InputIterator& src, OutputBuffer& obuf)
 		:scan(src,obuf),atm(p_atm),scopestk(p_atm->maxScopeStackSize),follows(p_atm->maxFollows),triggers(p_atm->maxTriggers),tokens(p_atm->maxTokens)
 	{
 		if (atm->states.size() > 0) expand(0);
 	}
+	///\brief Copy constructor
+	///\param [in] element to copy
 	XMLPathSelect( const XMLPathSelect& o)
 		:scan(o.scan),atm(o.atm),scopestk(o.maxScopeStackSize),follows(o.maxFollows),follows(o.maxTriggers),tokens(o.maxTokens){}
 
@@ -2678,29 +2829,51 @@ public:
 		scan.setOutputBuffer( p_outputBuf);
 	}
 
-	//input iterator for the output of this XMLScanner:
+	///\class End
+	///\brief end of input iterator for the output of this XMLScanner
 	struct End {};
+
+	///\class iterator
+	///\brief input iterator for the output of this XMLScanner
 	class iterator
 	{
 	public:
+		///\class Element
+		///\brief visited current element data of the iterator
 		class Element
 		{
 		public:
-			enum State {Ok,EndOfOutput,EndOfInput,ErrorState};
+			///\class State
+			///\brief state of the iterator
+			enum State
+			{
+				Ok,				///< normal
+				EndOfOutput,	///< end of output triggered
+				EndOfInput,		///< end of input triggered
+				ErrorState		///< error occurred (identifier as string is in the output token buffer)
+			};
 
+			///\brief Constructor
 			Element()				:m_state(Ok),m_type(0),m_content(0),m_size(0) {}
+			///\brief Constructor for content end iterator
 			Element( const End&)			:m_state(EndOfInput),m_type(0),m_content(0),m_size(0) {}
+			///\brief Copy constructor
+			///\param [in] orig element to copy
 			Element( const Element& orig)		:m_state(orig.m_state),m_type(orig.m_type),m_content(orig.m_content),m_size(orig.m_size) {}
+			///\brief Get the iterator state
 			State state() const			{return m_state;}
+			///\brief Get the currently visited element type
 			int type() const			{return m_type;}
+			///\brief Get the currently visited element content
 			const char* content() const		{return m_content;}
+			///\brief Get the size of the content of the currently visited element in bytes
 			unsigned int size() const		{return m_size;}
 		private:
-			friend class iterator;
-			State m_state;
-			int m_type;
-			const char* m_content;
-			unsigned int m_size;
+			friend class iterator;		///< friend to intialize the elements
+			State m_state;				///< current state
+			int m_type;					///< currently visited element type
+			const char* m_content;	///< currently visited element content
+			unsigned int m_size;	///< size of the content of the currently visited element in bytes
 		};
 		typedef Element value_type;
 		typedef unsigned int difference_type;
@@ -2709,9 +2882,11 @@ public:
 		typedef std::input_iterator_tag iterator_category;
 
 	private:
-		Element element;
-		ThisXMLPathSelect* input;
+		Element element;		///< currently visited element
+		ThisXMLPathSelect* input;		///< producing XML path selection stream
 
+		///\brief Skip to next element
+		///\return *this
 		iterator& skip() throw(exception)
 		{
 			if (input != 0)
@@ -2758,51 +2933,93 @@ public:
 			}
 			return *this;
 		}
+		///\brief Iterator compare
+		///\param [in] iterator to compare with
+		///\return true, if the elements are equal
 		bool compare( const iterator& iter) const
 		{
 			return (element.state() != Element::Ok && iter.element.state() != Element::Ok);
 		}
 	public:
+		///\brief Assign iterator
+		///\param [in] orig iterator to copy
 		void assign( const iterator& orig)
 		{
 			input = orig.input;
 			element = orig.element;
 		}
+
+		///\brief Copy constructor
+		///\param [in] orig iterator to copy
 		iterator( const iterator& orig)
 		{
 			assign( orig);
 		}
+
+		///\brief Constructor by values
+		///\param [in] p_input XML path selection stream to iterate through
 		iterator( ThisXMLPathSelect& p_input)
 				:input( &p_input)
 		{
 			skip();
 		}
+
+		///\brief Constructor
+		///\param [in] et end of input tag
 		iterator( const End& et)	:element(et),input(0) {}
+
+		///\brief Constructor
 		iterator()			:input(0) {}
+
+		///\brief Assignement
+		///\param [in] orig iterator to copy
+		///\return *this
 		iterator& operator = (const iterator& orig)
 		{
 			assign( orig);
 			return *this;
 		}
+
+		///\brief Element acceess
+		///\return read only element reference
 		const Element& operator*()
 		{
 			return element;
 		}
+
+		///\brief Element acceess
+		///\return read only element reference
 		const Element* operator->()
 		{
 			return &element;
 		}
+
+		///\brief Preincrement
+		///\return *this
 		iterator& operator++()	{return skip();}
+
+		///\brief Postincrement
+		///\return *this
 		iterator operator++(int)	{iterator tmp(*this); skip(); return tmp;}
 
+		///\brief Compare elements for equality
+		///\return true, if they are equal
 		bool operator==( const iterator& iter) const	{return compare( iter);}
+
+		///\brief Compare elements for inequality
+		///\return true, if they are not equal
 		bool operator!=( const iterator& iter) const	{return !compare( iter);}
 	};
 
+	///\brief Get the start iterator
+	///\return iterator pointing to the first of the selected XML path elements
 	iterator begin()
 	{
 		return iterator( *this);
 	}
+
+	///\brief Get the end of content marker
+	///\return iterator as end of content marker
 	iterator end()
 	{
 		return iterator( End());
@@ -2813,4 +3030,4 @@ public:
 
 } //namespace textwolf
 #endif
-
+  
