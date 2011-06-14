@@ -1,6 +1,7 @@
 #include "textwolf.hpp"
 #include <iostream>
 #include <map>
+#include <string>
 
 //compile:	g++ -c -o test_XMLPathSelect.o -g -I../include -fstrict-aliasing -pedantic -Wall -Wunused -Wno-import -Wformat -Wformat-y2k -Wformat-nonliteral -Wformat-security -Wformat-y2k -Wswitch-enum -Wunknown-pragmas -Wfloat-equal -Wundef -Wshadow -Wpointer-arith -Wcast-qual -Wcast-align -Wwrite-strings -Wmissing-noreturn -Wno-multichar -Wparentheses -Wredundant-decls -Winline -Wdisabled-optimization -Wno-long-long -Werror -Wfatal-errors test_XMLPathSelect.cpp
 //link		g++ -lc -o test_XMLPathSelect test_XMLPathSelect.o
@@ -26,7 +27,7 @@ class ProtocolCharMap
 };
 
 int main( int, const char**)
-{ 
+{
 	try
 	{
 		//[1] define the source iterator
@@ -65,22 +66,21 @@ int main( int, const char**)
 		(*atm)["Y"]--(0,"2")() = 18;
 
 		//[3] define the XML Path selection by the automaton over the source iterator
-		typedef XMLPathSelect<char*,charset::UTF8,charset::UTF8,Buffer> MyXMLPathSelect;
-		enum {outputbufSize=1024};
-		Buffer outputbuf( outputbufSize);
+		typedef XMLPathSelect<char*,charset::UTF8,charset::UTF8,std::string> MyXMLPathSelect;
+		std::string outputbuf;
 		MyXMLPathSelect xs( &atm, src, outputbuf);
 
 		//[4] iterating through the produced elements and printing them
 		MyXMLPathSelect::iterator itr=xs.begin(),end=xs.end();
 		for (; itr!=end; itr++)
 		{
-	 std::cout << "Element " << itr->type() << ": " << itr->content() << std::endl;
+			std::cout << "Element " << itr->type() << ": " << itr->content() << std::endl;
 		}
 
 		//[5] handle a possible error
 		if ((int)itr->state() != MyXMLPathSelect::iterator::Element::EndOfInput)
 		{
-	 std::cerr << "FAILED " << itr->content() << std::endl;
+			std::cerr << "FAILED " << itr->content() << std::endl;
 			return 1;
 		}
 		else
@@ -95,4 +95,3 @@ int main( int, const char**)
 		return 1;
 	};
 }
-
