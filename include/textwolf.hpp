@@ -139,22 +139,22 @@ struct exception	:public std::exception
  *  @{
 */
 ///
-/// \class Buffer
+/// \class StaticBuffer
 /// \brief Simple back insertion sequence for storing the outputs of textwolf in a contant size buffer
 ///
-class Buffer :public throws_exception
+class StaticBuffer :public throws_exception
 {
 public:
 	typedef unsigned int size_type;		///< size type of this buffer vector
 
 	///\brief Constructor
-	explicit Buffer( unsigned int n)
+	explicit StaticBuffer( unsigned int n)
 		:m_pos(0),m_size(n),m_ar(0),m_allocated(true) {m_ar=new char[n];}
 	///\brief Constructor
-	Buffer( char* p, unsigned int n)
+	StaticBuffer( char* p, unsigned int n)
 		:m_pos(0),m_size(n),m_ar(p),m_allocated(false) {}
 	///\brief Destructor
-	~Buffer()
+	~StaticBuffer()
 		{if (m_allocated) delete [] m_ar;}
 
 	///\brief Clear the buffer content
@@ -999,14 +999,14 @@ public:
 ///\tparam InputIterator input iterator with ++ and read only * returning 0 als last character of the input
 ///\tparam InputCharSet_ character set encoding of the input, read as stream of bytes
 ///\tparam OutputCharSet_ character set encoding of the output, printed as string of the item type of the character set,
-///\tparam OutputBuffer_ buffer for output with STL back insertion sequence interface (e.g. std::string,std::vector<char>,textwolf::Buffer)
+///\tparam OutputBuffer_ buffer for output with STL back insertion sequence interface (e.g. std::string,std::vector<char>,textwolf::StaticBuffer)
 ///\tparam EntityMap_ STL like map from ASCII const char* to UChar
 template
 <
 		class InputIterator,
-		class InputCharSet_=charset::UTF8,
-		class OutputCharSet_=charset::UTF8,
-		class OutputBuffer_=Buffer,
+		class InputCharSet_,
+		class OutputCharSet_,
+		class OutputBuffer_,
 		class EntityMap_=std::map<const char*,UChar>
 >
 class XMLScanner :public XMLScannerBase
@@ -1558,10 +1558,10 @@ public:
 	///\param [in] p_src source iterator
 	///\param [in] p_outputBuf buffer to use for output
 	///\param [in] p_entityMap read only map of named entities defined by the user
-	XMLScanner( InputIterator& p_src, Buffer& p_outputBuf, const EntityMap& p_entityMap)
+	XMLScanner( InputIterator& p_src, OutputBuffer& p_outputBuf, const EntityMap& p_entityMap)
 			:state(START),error(Ok),src(p_src),m_entityMap(&p_entityMap),m_outputBuf(&p_outputBuf)
 	{}
-	XMLScanner( InputIterator& p_src, Buffer& p_outputBuf)
+	XMLScanner( InputIterator& p_src, OutputBuffer& p_outputBuf)
 			:state(START),error(Ok),src(p_src),m_entityMap(0),m_outputBuf(&p_outputBuf)
 	{}
 
@@ -1573,7 +1573,7 @@ public:
 
 	///\brief Redefine the buffer to use for output
 	///\param [in] p_outputBuf buffer to use for output
-	void setOutputBuffer( Buffer& p_outputBuf)
+	void setOutputBuffer( OutputBuffer& p_outputBuf)
 	{
 		m_outputBuf = &p_outputBuf;
 	}
@@ -1587,7 +1587,6 @@ public:
 	static bool getTagName( const char* src, OutputBufferType& p_buf)
 	{
 		static IsTagCharMap isTagCharMap;
-		typedef XMLScanner<const char*, charset::UTF8, CharSet> Scan;
 		char* itr = const_cast<char*>(src);
 		return parseStaticToken( isTagCharMap, itr, p_buf);
 	}
@@ -2283,8 +2282,8 @@ public:
 				if (value)
 				{
 					char buf[ 1024];
-					Buffer pb( buf, sizeof(buf));
-					if (!XMLScanner<char*>::getTagName<CharSet_,Buffer>( value, pb))
+					StaticBuffer pb( buf, sizeof(buf));
+					if (!XMLScanner<char*,CharSet_,CharSet_,StaticBuffer>::getTagName<CharSet_,StaticBuffer>( value, pb))
 					{
 						throw exception( IllegalAttributeName);
 					}
@@ -2374,32 +2373,32 @@ public:
 ///\tparam InputIterator input iterator with ++ and read only * returning 0 als last character of the input
 ///\tparam InputCharSet_ character set encoding of the input, read as stream of bytes
 ///\tparam OutputCharSet_ character set encoding of the output, printed as string of the item type of the character set,
-///\tparam OutputBuffer_ buffer for output with STL back insertion sequence interface (e.g. std::string,std::vector<char>,textwolf::Buffer)
+///\tparam OutputBuffer_ buffer for output with STL back insertion sequence interface (e.g. std::string,std::vector<char>,textwolf::StaticBuffer)
 ///\tparam EntityMap_ STL like map from ASCII const char* to UChar
 template <
 		class InputIterator,
-		class InputCharSet_=charset::UTF8,
-		class OutputCharSet_=charset::UTF8,
-		class OutputBuffer_=Buffer,
+		class InputCharSet_,
+		class OutputCharSet_,
+		class OutputBuffer_,
 		class EntityMap_=std::map<const char*,UChar>
 >
 class XMLPathSelect :public throws_exception
 {
 public:
-	typedef XMLPathSelectAutomaton<OutputCharSet_> Automaton;
-	typedef XMLScanner<InputIterator,InputCharSet_,OutputCharSet_,OutputBuffer_,EntityMap_> ThisXMLScanner;
-	typedef XMLPathSelect<InputIterator,InputCharSet_,OutputCharSet_,OutputBuffer_,EntityMap_> ThisXMLPathSelect;
-	typedef EntityMap_ EntityMap;
 	typedef OutputBuffer_ OutputBuffer;
+	typedef XMLPathSelectAutomaton<OutputCharSet_> ThisXMLPathSelectAutomaton;
+	typedef XMLScanner<InputIterator,InputCharSet_,OutputCharSet_,OutputBuffer,EntityMap_> ThisXMLScanner;
+	typedef XMLPathSelect<InputIterator,InputCharSet_,OutputCharSet_,OutputBuffer,EntityMap_> ThisXMLPathSelect;
+	typedef EntityMap_ EntityMap;
 
 private:
 	ThisXMLScanner scan;
-	const Automaton* atm;
-	typedef typename Automaton::Mask Mask;
-	typedef typename Automaton::Token Token;
-	typedef typename Automaton::Hash Hash;
-	typedef typename Automaton::State State;
-	typedef typename Automaton::Scope Scope;
+	const ThisXMLPathSelectAutomaton* atm;
+	typedef typename ThisXMLPathSelectAutomaton::Mask Mask;
+	typedef typename ThisXMLPathSelectAutomaton::Token Token;
+	typedef typename ThisXMLPathSelectAutomaton::Hash Hash;
+	typedef typename ThisXMLPathSelectAutomaton::State State;
+	typedef typename ThisXMLPathSelectAutomaton::Scope Scope;
 
 	//static array of POD types. I decided to implement it on my own
 	template <typename Element>
@@ -2659,12 +2658,12 @@ private:
 	}
 
 public:
-	XMLPathSelect( const Automaton* p_atm, InputIterator& src, OutputBuffer& obuf, const EntityMap& entityMap)
+	XMLPathSelect( const ThisXMLPathSelectAutomaton* p_atm, InputIterator& src, OutputBuffer& obuf, const EntityMap& entityMap)
 		:scan(src,obuf,entityMap),atm(p_atm),scopestk(p_atm->maxScopeStackSize),follows(p_atm->maxFollows),triggers(p_atm->maxTriggers),tokens(p_atm->maxTokens)
 	{
 		if (atm->states.size() > 0) expand(0);
 	}
-	XMLPathSelect( const Automaton* p_atm, InputIterator& src, OutputBuffer& obuf)
+	XMLPathSelect( const ThisXMLPathSelectAutomaton* p_atm, InputIterator& src, OutputBuffer& obuf)
 		:scan(src,obuf),atm(p_atm),scopestk(p_atm->maxScopeStackSize),follows(p_atm->maxFollows),triggers(p_atm->maxTriggers),tokens(p_atm->maxTokens)
 	{
 		if (atm->states.size() > 0) expand(0);
@@ -2674,7 +2673,7 @@ public:
 
 	///\brief Redefine the buffer to use for output
 	///\param [in] p_outputBuf buffer to use for output
-	void setOutputBuffer( Buffer& p_outputBuf)
+	void setOutputBuffer( OutputBuffer& p_outputBuf)
 	{
 		scan.setOutputBuffer( p_outputBuf);
 	}
