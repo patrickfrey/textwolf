@@ -274,7 +274,7 @@ struct IsoLatin1
 	{
 		char chr_ = (char)(unsigned char)chr;
 		if (chr > 255) chr_ = -1;
-		buf.push_back( chr);
+		buf.push_back( chr_);
 	}
 };
 
