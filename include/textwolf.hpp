@@ -897,11 +897,11 @@ public:
 	///\return the error code as string
 	static const char* getErrorString( Error ee)
 	{
-		enum {NofErrors=15};
+		enum {NofErrors=14};
 		static const char* sError[NofErrors]
 			= {0,"ExpectedOpenTag", "ExpectedXMLTag","UnexpectedEndOfText",
 				"OutputBufferTooSmall","SyntaxToken","StringNotTerminated",
-				"EntityEncodesCntrlChar","UndefinedCharacterEntity","ExpectedTagEnd",
+				"UndefinedCharacterEntity","ExpectedTagEnd",
 				"ExpectedEqual", "ExpectedTagAttribute","ExpectedCDATATag","Internal",
 				"UnexpectedEndOfInput"
 		};
