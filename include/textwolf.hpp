@@ -882,9 +882,8 @@ public:
 		ErrUnexpectedEndOfText,			///< unexpected end of text in the middle of the XML definition
 		ErrOutputBufferTooSmall,		///< scaned element in XML to big to fit in the buffer provided for it
 		ErrSyntaxToken,				///< a specific string expected as token in XML but does not match
-		ErrStringNotTerminated,			///< single or double quoted string in XML not terminated on the same line
-		ErrEntityEncodesCntrlChar,		///< control character < 32 encoded as entity. This is rejected
-		ErrUndefinedCharacterEntity,		///< symbolic character entity is not defined in the entity map defined by the XML scanner caller
+		ErrStringNotTerminated,			///< attribute string in XML not terminated on the same line
+		ErrUndefinedCharacterEntity,		///< named entity is not defined in the entity map 
 		ErrExpectedTagEnd,			///< expected end of tag
 		ErrExpectedEqual,			///< expected equal in tag attribute definition
 		ErrExpectedTagAttribute,		///< expected tag attribute
@@ -1528,11 +1527,6 @@ public:
 			else
 			{
 				UChar ch = itr->second;
-				if (ch < 32)
-				{
-					error = ErrEntityEncodesCntrlChar;
-					return false;
-				}
 				push( ch);
 				return true;
 			}
