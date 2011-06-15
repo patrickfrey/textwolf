@@ -1254,11 +1254,6 @@ public:
 					fallbackEntity();
 					return true;
 				}
-				if (tokstate.value < 32)
-				{
-					error = ErrEntityEncodesCntrlChar;
-					return false;
-				}
 				push( (UChar)tokstate.value);
 				tokstate.init( TokState::ParsingToken);
 				src.skip();
