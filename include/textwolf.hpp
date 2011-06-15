@@ -59,7 +59,9 @@ namespace textwolf {
 }//namespace
 #else
 #include <stdint.h>
-typedef uint32_t UChar;
+namespace textwolf {
+	typedef uint32_t UChar;
+}//namespace
 #endif
 #endif
 
