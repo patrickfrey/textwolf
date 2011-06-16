@@ -4,8 +4,12 @@
 #include <stdio.h>
 #include <errno.h>
 
-//compile: g++ -c -o readStdinIterator.o -g -I../include/ -fstrict-aliasing -pedantic -Wall -Wunused -Wno-import -Wformat -Wformat-y2k -Wformat-nonliteral -Wformat-security -Wformat-y2k -Wswitch-enum -Wunknown-pragmas -Wfloat-equal -Wundef -Wshadow -Wpointer-arith -Wcast-qual -Wcast-align -Wwrite-strings -Wmissing-noreturn -Wno-multichar -Wparentheses -Wredundant-decls -Winline -Wdisabled-optimization -Wno-long-long -Werror -Wfatal-errors readStdinIterator.cpp
-//link	g++ -lc -o readStdinIterator readStdinIterator.o
+//build gcc
+//compile: g++ -c -o readStdinIterator.o -g -I../include/ -pedantic -Wall -O4 readStdinIterator.cpp
+//link: g++ -lc -o readStdinIterator readStdinIterator.o
+//build windows
+//compile: cl.exe /O4 /MT /W4 /nologo /I..\include /D "WIN32" /D "_WINDOWS" /Fo"readStdinIterator.o" readStdinIterator.cpp
+
 
 using namespace textwolf;
 
