@@ -105,9 +105,24 @@ It is constructed by passing
 <pre>
 char* input = ...;
 std::string outputbuf;
-typedef textwolf::XMLScanner&lt;char*,charset::IsoLatin1,charset::IsoLatin1, std::string&gt; Scan;
+typedef textwolf::XMLScanner
+	&lt;
+		char*,
+		charset::IsoLatin1,
+		charset::IsoLatin1,
+		std::string
+	&gt; Scan;
 Scan xs( input, outputbuf);
-for (Scan::iterator itr = xs.begin(); itr != xs.end(); itr++) {...}
+for (Scan::iterator itr = xs.begin(); itr != xs.end(); itr++)
+{
+	switch (itr->type())
+	{
+		case MyXMLScanner::ErrorOccurred: throw(...);
+		case MyXMLScanner::OpenTag: ... break;
+		case MyXMLScanner::Content: ... break;
+		...
+	}
+}
 </pre>
 <div class="description">End of tag events come without tag name. So it is not possible to validate an XML with 'textwolf'.</div>
 
@@ -273,10 +288,35 @@ MyXMLScanner xs( in, outputbuf);
 MyXMLScanner::iterator itr;
 for (itr=xs.begin(); itr != xs.end(); itr++)
 {
+	const char* typestr = 0;
+	switch (itr->type())
+	{
+		case MyXMLScanner::ErrorOccurred:
+			throw std::runtime_error( itr->content());
+		case MyXMLScanner::HeaderEnd:
+			typestr = "end of header"; break;
+		case MyXMLScanner::TagAttribName:
+		case MyXMLScanner::HeaderAttribName:
+			typestr = "attribute name"; break;
+		case MyXMLScanner::TagAttribValue:
+		case MyXMLScanner::HeaderAttribValue:
+			typestr = "attribute value"; break;
+		case MyXMLScanner::OpenTag:
+			typestr = "open tag"; break;
+		case MyXMLScanner::CloseTag:
+		case MyXMLScanner::CloseTagIm:
+			typestr = "close tag"; break;
+		case MyXMLScanner::Content:
+			typestr = "content"; break;
+		case MyXMLScanner::Exit:
+			typestr = "end of document"; break;
+	}
 	std::cout
 		&lt;&lt; "Element "
+		&lt;&lt; typestr
+		&lt;&lt; " ("
 		&lt;&lt; itr->name()
-		&lt;&lt; ": "
+		&lt;&lt; "): "
 		&lt;&lt; itr->content()
 		&lt;&lt; std::endl;
 	if (itr->type() == MyXMLScanner::ErrorOccurred) break;
@@ -295,7 +335,13 @@ Automaton atm;
 (*atm)["doc"]() = 2;
 
 // define the selection on the source by an automaton:
-typedef XMLPathSelect&lt;char, charset::UTF8, charset::UTF8, std::string&gt; MyXMLPathSelect;
+typedef XMLPathSelect
+	&lt;
+		char,
+		charset::UTF8,
+		charset::UTF8,
+		std::string
+	&gt; MyXMLPathSelect;
 std::string outputbuf;
 MyXMLPathSelect xs( &atm, src, outputbuf);
 
