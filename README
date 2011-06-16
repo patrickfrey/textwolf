@@ -15,5 +15,14 @@ Projects using textwolf
 Bugreports
 * textwolf bug reports are for the time beeing collected as CSV file in BUGS.
 
+Project Schedule
+* 2011/6/16
+	Release Version 0.1.0
+* 2011/10/30
+	Planned Version 1.0.0
+	* Intrusive character set ecoding definition
+	* Native handling of wchar_t iterators
+	* Contribution of the IBM valid documents part of the XML W3C Conformance Test Suite 20080827 as test set
+
 
 
