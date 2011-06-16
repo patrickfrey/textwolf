@@ -8,8 +8,8 @@
 //compile: g++ -c -o readStdinIterator.o -g -I../include/ -pedantic -Wall -O4 readStdinIterator.cpp
 //link: g++ -lc -o readStdinIterator readStdinIterator.o
 //build windows
-//compile: cl.exe /O4 /MT /W4 /nologo /I..\include /D "WIN32" /D "_WINDOWS" /Fo"readStdinIterator.o" readStdinIterator.cpp
-
+//compile: cl.exe /wd4996 /Ob2 /O2 /EHsc /MT /W4 /nologo /I..\include /D "WIN32" /D "_WINDOWS" /Fo"readStdinIterator.obj" readStdinIterator.cpp 
+//link: link.exe /out:.\readStdinIterator  readStdinIterator.obj
 
 using namespace textwolf;
 
