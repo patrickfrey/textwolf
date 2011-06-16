@@ -22,7 +22,8 @@ Project Schedule
 	Planned Version 1.0.0
 	* Intrusive character set ecoding definition
 	* Native handling of wchar_t iterators
-	* Contribution of the IBM valid documents part of the XML W3C Conformance Test Suite 20080827 as test set
+	* IBM valid documents part of the XML W3C Conformance Test Suite 20080827 as test set
+	* XML grep like shell program as demo application
 
 
 
