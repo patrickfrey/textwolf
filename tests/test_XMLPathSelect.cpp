@@ -3,8 +3,12 @@
 #include <map>
 #include <string>
 
-//compile:	g++ -c -o test_XMLPathSelect.o -g -I../include -fstrict-aliasing -pedantic -Wall -Wunused -Wno-import -Wformat -Wformat-y2k -Wformat-nonliteral -Wformat-security -Wformat-y2k -Wswitch-enum -Wunknown-pragmas -Wfloat-equal -Wundef -Wshadow -Wpointer-arith -Wcast-qual -Wcast-align -Wwrite-strings -Wmissing-noreturn -Wno-multichar -Wparentheses -Wredundant-decls -Winline -Wdisabled-optimization -Wno-long-long -Werror -Wfatal-errors test_XMLPathSelect.cpp
-//link		g++ -lc -o test_XMLPathSelect test_XMLPathSelect.o
+//build gcc
+//compile: g++ -c -o test_XMLPathSelect.o -g -I../include/ -pedantic -Wall -O4 test_XMLPathSelect.cpp
+//link: g++ -lc -o test_XMLPathSelect test_XMLPathSelect.o
+//build windows
+//compile: cl.exe /wd4996 /Ob2 /O2 /EHsc /MT /W4 /nologo /I..\include /D "WIN32" /D "_WINDOWS" /Fo"test_XMLPathSelect.obj" test_XMLPathSelect.cpp 
+//link: link.exe /out:.\test_XMLPathSelect test_XMLPathSelect.obj
 
 using namespace textwolf;
 
