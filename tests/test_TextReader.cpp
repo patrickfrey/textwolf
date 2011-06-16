@@ -2,8 +2,13 @@
 #include <iostream>
 #include <stdio.h>
 
-//compile: g++ -c -o test_TextReader.o -g -I../include -fstrict-aliasing -pedantic -Wall -Wunused -Wno-import -Wformat -Wformat-y2k -Wformat-nonliteral -Wformat-security -Wformat-y2k -Wswitch-enum -Wunknown-pragmas -Wfloat-equal -Wundef -Wshadow -Wpointer-arith -Wcast-qual -Wcast-align -Wwrite-strings -Wmissing-noreturn -Wno-multichar -Wparentheses -Wredundant-decls -Winline -Wdisabled-optimization -Wno-long-long -Werror -Wfatal-errors test_TextReader.cpp
-//link	g++ -lc -o test_TextReader test_TextReader.o
+//build gcc
+//compile: g++ -c -o test_TextReader.o -g -I../include/ -pedantic -Wall -O4 test_TextReader.cpp
+//link: g++ -lc -o test_TextReader test_TextReader.o
+//build windows
+//compile: cl.exe /wd4996 /Ob2 /O2 /EHsc /MT /W4 /nologo /I..\include /D "WIN32" /D "_WINDOWS" /Fo"test_TextReader.obj" test_TextReader.cpp 
+//link: link.exe /out:.\test_TextReader test_TextReader.obj
+
 
 using namespace textwolf;
 
