@@ -43,11 +43,11 @@
 #include <iostream>
 #include <limits>
 
-///\typedef UChar
-///\brief Unicode character type
 #ifdef BOOST_VERSION
 #include <boost/cstdint.hpp>
 namespace textwolf {
+	///\typedef UChar
+	///\brief Unicode character type
 	typedef boost::uint32_t UChar;
 }//namespace
 #else
@@ -55,11 +55,15 @@ namespace textwolf {
 #pragma warning(disable:4290)
 #include <BaseTsd.h>
 namespace textwolf {
+	///\typedef UChar
+	///\brief Unicode character type
 	typedef DWORD32 UChar;
 }//namespace
 #else
 #include <stdint.h>
 namespace textwolf {
+	///\typedef UChar
+	///\brief Unicode character type
 	typedef uint32_t UChar;
 }//namespace
 #endif
