@@ -295,7 +295,7 @@ Automaton atm;
 (*atm)["doc"]() = 2;
 
 // define the selection on the source by an automaton:
-typedef XMLPathSelect&lt;char, charset::UTF8, charset::UTF8, std::string*&gt; MyXMLPathSelect;
+typedef XMLPathSelect&lt;char, charset::UTF8, charset::UTF8, std::string&gt; MyXMLPathSelect;
 std::string outputbuf;
 MyXMLPathSelect xs( &atm, src, outputbuf);
 
