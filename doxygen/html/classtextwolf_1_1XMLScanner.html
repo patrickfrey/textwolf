@@ -91,7 +91,7 @@ EntityMap_ &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el"
 <tr><td class="memItemLeft" align="right" valign="top">typedef EntityMap::const_iterator&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLScanner.html#ad9fb8e5c49302f1a725ba1783c39c184">EntityMapIterator</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">typedef OutputBuffer_&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLScanner.html#a71e367f50f9de5d5d434ccb4ea1a4567">OutputBuffer</a></td></tr>
 <tr><td colspan="2"><h2>Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLScanner.html#af7333cd3aa3af83bbc18ee6a24e502c4">push</a> (<a class="el" href="textwolf_8hpp.html#a6bb9fad572d65b305324ef288165e2ac">UChar</a> ch)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLScanner.html#af7333cd3aa3af83bbc18ee6a24e502c4">push</a> (<a class="el" href="namespacetextwolf.html#a3eb8d6733d6737825026b2e41b8c3f9c">UChar</a> ch)</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Print a character to the output token buffer.  <a href="#af7333cd3aa3af83bbc18ee6a24e502c4"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLScanner.html#af0a1250cfb8d4e9a88ab9f38c2c791fc">printnull</a> ()</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Print a null character to the output token buffer without expanding its size.  <a href="#af0a1250cfb8d4e9a88ab9f38c2c791fc"></a><br/></td></tr>
@@ -141,7 +141,7 @@ EntityMap_ &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el"
 <tr><td colspan="2"><h2>Static Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static unsigned char&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLScanner.html#a0ee44c9079b8c3d9631716c5c8d9498f">HEX</a> (unsigned char ch)</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Map a hexadecimal digit to its value.  <a href="#a0ee44c9079b8c3d9631716c5c8d9498f"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">static <a class="el" href="textwolf_8hpp.html#a6bb9fad572d65b305324ef288165e2ac">UChar</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLScanner.html#a5b8dadee9351981024ea7d8de80cc3a9">parseStaticNumericEntityValue</a> (<a class="el" href="classtextwolf_1_1TextScanner.html">InputReader</a> &amp;ir)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static <a class="el" href="namespacetextwolf.html#a3eb8d6733d6737825026b2e41b8c3f9c">UChar</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLScanner.html#a5b8dadee9351981024ea7d8de80cc3a9">parseStaticNumericEntityValue</a> (<a class="el" href="classtextwolf_1_1TextScanner.html">InputReader</a> &amp;ir)</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Parse a numeric entity value for a table definition (map it to the target character set).  <a href="#a5b8dadee9351981024ea7d8de80cc3a9"></a><br/></td></tr>
 <tr><td class="memTemplParams" colspan="2">template&lt;class OutputBufferType &gt; </td></tr>
 <tr><td class="memTemplItemLeft" align="right" valign="top">static bool&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLScanner.html#a887e1402c561967a9c7a9d689828f0b8">parseStaticToken</a> (const <a class="el" href="classtextwolf_1_1CharMap.html">IsTokenCharMap</a> &amp;isTok, <a class="el" href="classtextwolf_1_1TextScanner.html">InputReader</a> ir, OutputBufferType &amp;buf)</td></tr>
@@ -742,7 +742,7 @@ template&lt;class InputIterator, class InputCharSet_, class OutputCharSet_, clas
 template&lt;class InputIterator, class InputCharSet_, class OutputCharSet_, class OutputBuffer_, class EntityMap_ = std::map&lt;const char*,UChar&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">static <a class="el" href="textwolf_8hpp.html#a6bb9fad572d65b305324ef288165e2ac">UChar</a> <a class="el" href="classtextwolf_1_1XMLScanner.html">textwolf::XMLScanner</a>&lt; InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_, EntityMap_ &gt;::parseStaticNumericEntityValue </td>
+          <td class="memname">static <a class="el" href="namespacetextwolf.html#a3eb8d6733d6737825026b2e41b8c3f9c">UChar</a> <a class="el" href="classtextwolf_1_1XMLScanner.html">textwolf::XMLScanner</a>&lt; InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_, EntityMap_ &gt;::parseStaticNumericEntityValue </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classtextwolf_1_1TextScanner.html">InputReader</a> &amp;&nbsp;</td>
           <td class="paramname"> <em>ir</em></td>
@@ -899,7 +899,7 @@ template&lt;class InputIterator, class InputCharSet_, class OutputCharSet_, clas
         <tr>
           <td class="memname">void <a class="el" href="classtextwolf_1_1XMLScanner.html">textwolf::XMLScanner</a>&lt; InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_, EntityMap_ &gt;::push </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="textwolf_8hpp.html#a6bb9fad572d65b305324ef288165e2ac">UChar</a>&nbsp;</td>
+          <td class="paramtype"><a class="el" href="namespacetextwolf.html#a3eb8d6733d6737825026b2e41b8c3f9c">UChar</a>&nbsp;</td>
           <td class="paramname"> <em>ch</em></td>
           <td>&nbsp;)&nbsp;</td>
           <td><code> [inline]</code></td>
@@ -1154,7 +1154,7 @@ template&lt;class InputIterator, class InputCharSet_, class OutputCharSet_, clas
 </iframe>
 </div>
 
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Tue Jun 14 21:10:54 2011 for textwolf by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Thu Jun 16 19:39:07 2011 for textwolf by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

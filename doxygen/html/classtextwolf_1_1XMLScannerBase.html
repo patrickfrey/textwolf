@@ -112,15 +112,14 @@ Inheritance diagram for textwolf::XMLScannerBase:</div>
 &nbsp;&nbsp;<a class="el" href="classtextwolf_1_1XMLScannerBase.html#ae26e6510c822ee35e041ab2dab70e78ba0508d0db399a1284b89d31d3f8781088">ErrOutputBufferTooSmall</a>, 
 <a class="el" href="classtextwolf_1_1XMLScannerBase.html#ae26e6510c822ee35e041ab2dab70e78ba457ff1c0d02518e32d4e1a3da4758918">ErrSyntaxToken</a>, 
 <a class="el" href="classtextwolf_1_1XMLScannerBase.html#ae26e6510c822ee35e041ab2dab70e78ba56c44481ec43cb1c867d0a76560ab411">ErrStringNotTerminated</a>, 
-<a class="el" href="classtextwolf_1_1XMLScannerBase.html#ae26e6510c822ee35e041ab2dab70e78ba670019961ef1e15e3623d3f5dc64a84c">ErrEntityEncodesCntrlChar</a>, 
+<a class="el" href="classtextwolf_1_1XMLScannerBase.html#ae26e6510c822ee35e041ab2dab70e78ba80ae9361aa81f3ecce19acd0690e4aad">ErrUndefinedCharacterEntity</a>, 
 <br/>
-&nbsp;&nbsp;<a class="el" href="classtextwolf_1_1XMLScannerBase.html#ae26e6510c822ee35e041ab2dab70e78ba80ae9361aa81f3ecce19acd0690e4aad">ErrUndefinedCharacterEntity</a>, 
-<a class="el" href="classtextwolf_1_1XMLScannerBase.html#ae26e6510c822ee35e041ab2dab70e78ba32a04f20fdf8548c67d3122b897abf82">ErrExpectedTagEnd</a>, 
+&nbsp;&nbsp;<a class="el" href="classtextwolf_1_1XMLScannerBase.html#ae26e6510c822ee35e041ab2dab70e78ba32a04f20fdf8548c67d3122b897abf82">ErrExpectedTagEnd</a>, 
 <a class="el" href="classtextwolf_1_1XMLScannerBase.html#ae26e6510c822ee35e041ab2dab70e78bac1d73c6915b7be8bf430abe7419d58a5">ErrExpectedEqual</a>, 
 <a class="el" href="classtextwolf_1_1XMLScannerBase.html#ae26e6510c822ee35e041ab2dab70e78ba78fcb73365040660daebdd808a0ea5ed">ErrExpectedTagAttribute</a>, 
+<a class="el" href="classtextwolf_1_1XMLScannerBase.html#ae26e6510c822ee35e041ab2dab70e78ba812e6afd4a0394115fec19d05d5d6985">ErrExpectedCDATATag</a>, 
 <br/>
-&nbsp;&nbsp;<a class="el" href="classtextwolf_1_1XMLScannerBase.html#ae26e6510c822ee35e041ab2dab70e78ba812e6afd4a0394115fec19d05d5d6985">ErrExpectedCDATATag</a>, 
-<a class="el" href="classtextwolf_1_1XMLScannerBase.html#ae26e6510c822ee35e041ab2dab70e78ba12d0da8dca8d95268c6038211489014d">ErrInternal</a>, 
+&nbsp;&nbsp;<a class="el" href="classtextwolf_1_1XMLScannerBase.html#ae26e6510c822ee35e041ab2dab70e78ba12d0da8dca8d95268c6038211489014d">ErrInternal</a>, 
 <a class="el" href="classtextwolf_1_1XMLScannerBase.html#ae26e6510c822ee35e041ab2dab70e78ba52fec157b20cde2c69433fc3b705bafa">ErrUnexpectedEndOfInput</a>
 <br/>
  }</td></tr>
@@ -328,13 +327,10 @@ NofControlCharacter &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a c
 <p>a specific string expected as token in XML but does not match </p>
 </td></tr>
 <tr><td valign="top"><em><a class="anchor" id="ae26e6510c822ee35e041ab2dab70e78ba56c44481ec43cb1c867d0a76560ab411"></a><!-- doxytag: member="ErrStringNotTerminated" ref="ae26e6510c822ee35e041ab2dab70e78ba56c44481ec43cb1c867d0a76560ab411" args="" -->ErrStringNotTerminated</em>&nbsp;</td><td>
-<p>single or double quoted string in XML not terminated on the same line </p>
-</td></tr>
-<tr><td valign="top"><em><a class="anchor" id="ae26e6510c822ee35e041ab2dab70e78ba670019961ef1e15e3623d3f5dc64a84c"></a><!-- doxytag: member="ErrEntityEncodesCntrlChar" ref="ae26e6510c822ee35e041ab2dab70e78ba670019961ef1e15e3623d3f5dc64a84c" args="" -->ErrEntityEncodesCntrlChar</em>&nbsp;</td><td>
-<p>control character &lt; 32 encoded as entity. This is rejected </p>
+<p>attribute string in XML not terminated on the same line </p>
 </td></tr>
 <tr><td valign="top"><em><a class="anchor" id="ae26e6510c822ee35e041ab2dab70e78ba80ae9361aa81f3ecce19acd0690e4aad"></a><!-- doxytag: member="ErrUndefinedCharacterEntity" ref="ae26e6510c822ee35e041ab2dab70e78ba80ae9361aa81f3ecce19acd0690e4aad" args="" -->ErrUndefinedCharacterEntity</em>&nbsp;</td><td>
-<p>symbolic character entity is not defined in the entity map defined by the XML scanner caller </p>
+<p>named entity is not defined in the entity map </p>
 </td></tr>
 <tr><td valign="top"><em><a class="anchor" id="ae26e6510c822ee35e041ab2dab70e78ba32a04f20fdf8548c67d3122b897abf82"></a><!-- doxytag: member="ErrExpectedTagEnd" ref="ae26e6510c822ee35e041ab2dab70e78ba32a04f20fdf8548c67d3122b897abf82" args="" -->ErrExpectedTagEnd</em>&nbsp;</td><td>
 <p>expected end of tag </p>
@@ -611,7 +607,7 @@ NofControlCharacter &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a c
 </iframe>
 </div>
 
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Tue Jun 14 21:10:54 2011 for textwolf by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Thu Jun 16 19:39:07 2011 for textwolf by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

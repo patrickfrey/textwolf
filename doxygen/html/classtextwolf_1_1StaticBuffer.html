@@ -91,7 +91,11 @@ Inheritance diagram for textwolf::StaticBuffer:</div>
 <tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1StaticBuffer.html#a8a33aa6186caafbba8c6d7cd02191100">resize</a> (<a class="el" href="classtextwolf_1_1StaticBuffer.html#af0841f5c59478d6fb0aee8706eb857ab">size_type</a> n, char c=0)</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Shrinks the size of the buffer or expands it with c.  <a href="#a8a33aa6186caafbba8c6d7cd02191100"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">char&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1StaticBuffer.html#adc49d71d943389948957bfc3eb299b9f">operator[]</a> (unsigned int ii) const </td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">random access of element  <a href="#adc49d71d943389948957bfc3eb299b9f"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">char &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1StaticBuffer.html#a31af6f16551ad4f0a6f64feca5e2830b">at</a> (unsigned int ii) const </td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">random access of element reference  <a href="#a31af6f16551ad4f0a6f64feca5e2830b"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1StaticBuffer.html#adeb1952e21a6a5f8e0d4c0b5fd9cee40">overflow</a> () const </td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">check for array bounds write  <a href="#adeb1952e21a6a5f8e0d4c0b5fd9cee40"></a><br/></td></tr>
 <tr><td colspan="2"><h2>Private Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtextwolf_1_1StaticBuffer.html#af0841f5c59478d6fb0aee8706eb857ab">size_type</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1StaticBuffer.html#ab7aa9aefc102f609289cb7e657efa843">m_pos</a></td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">current cursor position of the buffer (number of added characters)  <a href="#ab7aa9aefc102f609289cb7e657efa843"></a><br/></td></tr>
@@ -101,6 +105,8 @@ Inheritance diagram for textwolf::StaticBuffer:</div>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">buffer content  <a href="#aee8cfb7df54e39121c974192db38f624"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1StaticBuffer.html#a53e4023aeeecc24079b4d8e2eedd6b55">m_allocated</a></td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">true, if the buffer is allocated by this class and not passed by constructor  <a href="#a53e4023aeeecc24079b4d8e2eedd6b55"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1StaticBuffer.html#a0ec52bf28dacdb1f2cd811a323e386b5">m_overflow</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">true, if an array bounds write would have happened with push_back  <a href="#a0ec52bf28dacdb1f2cd811a323e386b5"></a><br/></td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
 <p>Simple back insertion sequence for storing the outputs of textwolf in a contant size buffer. </p>
@@ -206,6 +212,15 @@ Inheritance diagram for textwolf::StaticBuffer:</div>
 </div>
 <div class="memdoc">
 
+<p>random access of element reference </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>ii</em>&nbsp;</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>the reference to the character at this position </dd></dl>
+
 </div>
 </div>
 <a class="anchor" id="a830095cb9c0dd1342c261e520d29a8e7"></a><!-- doxytag: member="textwolf::StaticBuffer::clear" ref="a830095cb9c0dd1342c261e520d29a8e7" args="()" -->
@@ -242,6 +257,35 @@ Inheritance diagram for textwolf::StaticBuffer:</div>
       </table>
 </div>
 <div class="memdoc">
+
+<p>random access of element </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>ii</em>&nbsp;</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>the character at this position </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="adeb1952e21a6a5f8e0d4c0b5fd9cee40"></a><!-- doxytag: member="textwolf::StaticBuffer::overflow" ref="adeb1952e21a6a5f8e0d4c0b5fd9cee40" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool textwolf::StaticBuffer::overflow </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const<code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>check for array bounds write </p>
+<dl class="return"><dt><b>Returns:</b></dt><dd>true if a push_back would have caused an array bounds write </dd></dl>
 
 </div>
 </div>
@@ -378,6 +422,21 @@ Inheritance diagram for textwolf::StaticBuffer:</div>
 
 </div>
 </div>
+<a class="anchor" id="a0ec52bf28dacdb1f2cd811a323e386b5"></a><!-- doxytag: member="textwolf::StaticBuffer::m_overflow" ref="a0ec52bf28dacdb1f2cd811a323e386b5" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classtextwolf_1_1StaticBuffer.html#a0ec52bf28dacdb1f2cd811a323e386b5">textwolf::StaticBuffer::m_overflow</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>true, if an array bounds write would have happened with push_back </p>
+
+</div>
+</div>
 <a class="anchor" id="ab7aa9aefc102f609289cb7e657efa843"></a><!-- doxytag: member="textwolf::StaticBuffer::m_pos" ref="ab7aa9aefc102f609289cb7e657efa843" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -426,7 +485,7 @@ Inheritance diagram for textwolf::StaticBuffer:</div>
 </iframe>
 </div>
 
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Tue Jun 14 21:10:54 2011 for textwolf by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Thu Jun 16 19:39:07 2011 for textwolf by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

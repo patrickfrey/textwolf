@@ -74,6 +74,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Automaton to define XML path expressions and assign types (int values) to them.  <a href="classtextwolf_1_1XMLPathSelectAutomaton.html#_details">More...</a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLPathSelect.html">XMLPathSelect</a></td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">XML path select template.  <a href="classtextwolf_1_1XMLPathSelect.html#_details">More...</a><br/></td></tr>
+<tr><td colspan="2"><h2>Typedefs</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef uint32_t&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacetextwolf.html#a3eb8d6733d6737825026b2e41b8c3f9c">UChar</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Unicode character type.  <a href="#a3eb8d6733d6737825026b2e41b8c3f9c"></a><br/></td></tr>
 <tr><td colspan="2"><h2>Enumerations</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Charactersets.html#ga4650ba8f3f0f0c953ab1dad55efc6ee3">ControlCharacter</a> { <br/>
 &nbsp;&nbsp;<a class="el" href="group__Charactersets.html#gga4650ba8f3f0f0c953ab1dad55efc6ee3ade85243a1cbc6c24c0e568517e36362d">Undef</a> = 0, 
@@ -105,6 +108,30 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
 <p>Toplevel namespace of the library. </p>
+<p>--------------------------------------------------------------------- The template library textwolf implements an input iterator on a set of XML path expressions without backward references on an STL conforming input iterator as source. It does no buffering or read ahead and is dedicated for stream processing of XML for a small set of XML queries. Stream processing in this context refers to processing the document without buffering anything but the current result token processed with its tag hierarchy information.</p>
+<p>Copyright (C) 2010 Patrick Frey</p>
+<p>This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation; either version 2.1 of the License, or (at your option) any later version.</p>
+<p>This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.</p>
+<p>You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA</p>
+<p>--------------------------------------------------------------------</p>
+<p>The latest version of textwolf can be found at 'http://github.com/patrickfrey/textwolf' For documentation see 'http://patrickfrey.github.com/textwolf'</p>
+<p>-------------------------------------------------------------------- </p>
+<hr/><h2>Typedef Documentation</h2>
+<a class="anchor" id="a3eb8d6733d6737825026b2e41b8c3f9c"></a><!-- doxytag: member="textwolf::UChar" ref="a3eb8d6733d6737825026b2e41b8c3f9c" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespacetextwolf.html#a3eb8d6733d6737825026b2e41b8c3f9c">textwolf::UChar</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Unicode character type. </p>
+
+</div>
+</div>
 </div>
 <!--- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -120,7 +147,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Tue Jun 14 21:10:53 2011 for textwolf by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Thu Jun 16 19:39:06 2011 for textwolf by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>
