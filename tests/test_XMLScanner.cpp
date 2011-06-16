@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include <map>
+#include <stdexcept>
 
 //build gcc
 //compile: g++ -c -o test_XMLScanner.o -g -I../include/ -pedantic -Wall -O4 test_XMLScanner.cpp
@@ -23,13 +24,35 @@ int main( int, const char**)
 	MyXMLScanner xs( xmlitr, outputbuf);
 
 	MyXMLScanner::iterator itr,end;
-	for (itr=xs.begin(),end=xs.end(); itr!=end; itr++)
+	try
 	{
-		std::cout << "Element " << itr->name() << ": " << itr->content() << std::endl;
-		if (itr->type() == MyXMLScanner::ErrorOccurred) break;
+		for (itr=xs.begin(),end=xs.end(); itr!=end; itr++)
+		{
+			const char* typestr = 0;
+			switch (itr->type())
+			{
+				case MyXMLScanner::ErrorOccurred: throw std::runtime_error( itr->content());
+				case MyXMLScanner::HeaderAttribName: typestr = "attribute name"; break;
+				case MyXMLScanner::HeaderAttribValue: typestr = "attribute value"; break;
+				case MyXMLScanner::HeaderEnd: typestr = "end of header"; break;
+				case MyXMLScanner::TagAttribName: typestr = "attribute name"; break;
+				case MyXMLScanner::TagAttribValue: typestr = "attribute value"; break;
+				case MyXMLScanner::OpenTag: typestr = "open tag"; break;
+				case MyXMLScanner::CloseTag: typestr = "close tag"; break;
+				case MyXMLScanner::CloseTagIm: typestr = "close tag"; break;
+				case MyXMLScanner::Content: typestr = "content"; break;
+				case MyXMLScanner::Exit: typestr = "end of document"; break;
+			}
+			std::cout << "Element (" << itr->name() << ")" << typestr << ": " << itr->content() << std::endl;
+		}
+	}
+	catch (const std::runtime_error& e)
+	{
+		std::cerr << "Error " << e.what() << std::endl;
 	}
 	return 0;
 }
+
 
 
 
