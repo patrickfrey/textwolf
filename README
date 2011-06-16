@@ -1,6 +1,8 @@
 Documentation
 * For using textwolf just include "include/textwolf.hpp".
-* A textwolf tutorial can be found at http://patrickfrey.github.com/textwolf/.
+* The textwolf home is at at http://patrickfrey.github.com/textwolf/.
+* A textwolf tutorial can be found at http://patrickfrey.github.com/textwolf/tutorial.html
+* A doxygen interface documentation can be found at http://patrickfrey.github.com/textwolf/doxygen/html/index.html
 
 Examples
 * See the examples in tests:
