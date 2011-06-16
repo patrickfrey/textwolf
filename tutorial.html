@@ -87,8 +87,7 @@ while (itr->chr()) itr++;
 It is constructed by passing
 <ul>
 <li>InputIterator& src = an input iterator reference (template argument)</li>
-<li>char* outbuf = a pointer to the buffer to use for output</li>
-<li>size_t outbufsize = the size of the output buffer outbuf in bytes</li>
+<li>OutputBuffer outbuf = the buffer to use for output</li>
 <li>EntityMap* emap = pointer to a read only map of entities (template argument, optional)</li>
 </ul>
 </div>
@@ -98,16 +97,16 @@ It is constructed by passing
 <li>InputIterator = input iterator type (explained in the section iterator)</li>
 <li>InputCharSet = character set encoding of the input (explained in the section character set encodings)</li>
 <li>OutputCharSet = character set encoding of the output (explained in the section character set encodings)</li>
+<li>OutputBuffer = buffer type to use for the tokens parsed (STL back insertion sequence interface)</li>
 <li>EntityMap = read only map from ASCII const char* to UChar that describes the mapping of named entities to unicode characters. (default is std::map)</li>
 </ol>
 
 <h4>Example</h4>
 <pre>
 char* input = ...;
-enum {outputbufSize=2048};
-char outputbuf[ outputbufSize];
-typedef textwolf::XMLScanner&lt;char*,charset::IsoLatin1,charset::IsoLatin1&gt; Scan;
-Scan xs( input, outputbuf, outputbufSize);
+std::string outputbuf;
+typedef textwolf::XMLScanner&lt;char*,charset::IsoLatin1,charset::IsoLatin1, std::string&gt; Scan;
+Scan xs( input, outputbuf);
 for (Scan::iterator itr = xs.begin(); itr != xs.end(); itr++) {...}
 </pre>
 <div class="description">End of tag events come without tag name. So it is not possible to validate an XML with 'textwolf'.</div>
@@ -126,8 +125,7 @@ for (Scan::iterator itr = xs.begin(); itr != xs.end(); itr++) {...}
 <ol>
 <li> textwolf::Automaton* atm = the pointer to an XML path selection automaton</li>
 <li> InputIterator& src = an input iterator reference (template argument)</li>
-<li> char* outbuf = a pointer to the buffer to use for output</li>
-<li> size_t outbufsize = the size of the output buffer outbuf in bytes</li>
+<li> OutputBuffer outbuf = the buffer to use for output</li>
 <li> EntityMap* emap = pointer to a read only map of entities (template argument, optional)</li>
 </ol>
 </div>
@@ -137,6 +135,7 @@ for (Scan::iterator itr = xs.begin(); itr != xs.end(); itr++) {...}
 <li> InputIterator = input iterator type (explained in the section iterator)</li>
 <li> InputCharSet = character set encoding of the input (explained in the section character set encodings)</li>
 <li> OutputCharSet = character set encoding of the output (explained in the section character set encodings)</li>
+<li> OutputBuffer = buffer type to use for the tokens parsed (STL back insertion sequence interface)</li>
 <li> EntityMap = read only map from ASCII const char* to UChar that describes the mapping of named entities to unicode characters. (default is std::map) </li>
 </ol>
 </div>
@@ -264,12 +263,12 @@ typedef XMLScanner
 	&lt;
 		InputIterator,
 		charset::IsoLatin1,
-		charset::IsoLatin1
+		charset::IsoLatin1,
+		std::string
 	&gt; MyXMLScanner;
-enum {outputbufSize=2048};
-char outputbuf[ outputbufSize];
+std::string outputbuf;
 InputIterator in = input.begin();
-MyXMLScanner xs( in, outputbuf, outputbufSize);
+MyXMLScanner xs( in, outputbuf);
 
 MyXMLScanner::iterator itr;
 for (itr=xs.begin(); itr != xs.end(); itr++)
@@ -296,10 +295,9 @@ Automaton atm;
 (*atm)["doc"]() = 2;
 
 // define the selection on the source by an automaton:
-typedef XMLPathSelect&lt;char*&gt; MyXMLPathSelect;
-enum {outputbufSize=1024};
-char outputbuf[ outputbufSize];
-MyXMLPathSelect xs( &atm, src, outputbuf, outputbufSize);
+typedef XMLPathSelect&lt;char, charset::UTF8, charset::UTF8, std::string*&gt; MyXMLPathSelect;
+std::string outputbuf;
+MyXMLPathSelect xs( &atm, src, outputbuf);
 
 // iterating through the produced elements and printing them
 MyXMLPathSelect::iterator itr=xs.begin(),end=xs.end();
