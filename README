@@ -20,6 +20,8 @@ Bugreports
 Project Schedule
 * 2011/6/16
 	Release Version 0.1.0
+* 2011/8/16
+	UTF-16 support (Windows!, Wolframe needs it)
 * 2011/10/30
 	Planned Version 1.0.0
 	* Intrusive character set ecoding definition
