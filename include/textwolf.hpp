@@ -309,8 +309,8 @@ struct ByteOrder
 {
 	enum
 	{
-		LE=1,		///< little endian
-		BE=2		///< big endian
+		LE=0,		///< little endian
+		BE=1		///< big endian
 	};
 };
 
