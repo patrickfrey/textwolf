@@ -267,11 +267,12 @@ public:
 ///\namespace charset
 ///\brief Predefined character set encodings
 ///
-/// Predefined character set definitions:
+/// Predefined character set encoding definitions:
 /// 1) Iso-Latin-1
-/// 2) UCS2  (little and big endian, not very efficient implementation)
-/// 3) UCS4  (little and big endian, not very efficient implementation)
-/// 4) UTF-8 (see http://de.wikipedia.org/wiki/UTF-8 for algorithms)
+/// 2) UCS2   (little or big endian)
+/// 3) UCS4   (little or big endian)
+/// 4) UTF-8  (see http://de.wikipedia.org/wiki/UTF-8 for algorithms)
+/// 5) UTF-16 (little or big endian, no implicit BOM swapping) see http://en.wikipedia.org/wiki/UTF-16/UCS-2 for algorithms)
 ///
 namespace charset {
 
