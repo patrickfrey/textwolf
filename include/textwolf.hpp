@@ -615,6 +615,9 @@ public:
 		}
 	}
 };
+
+struct UTF16LE :public UTF16<ByteOrder::LE> {};
+struct UTF16BE :public UTF16<ByteOrder::BE> {};
 #endif
 
 }//namespace charset
