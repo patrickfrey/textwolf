@@ -532,6 +532,90 @@ struct UTF8
 		}
 	}
 };
+
+#if 0 ///\todo enable UTF16
+///\class UTF16
+///\brief Character set UTF16 (little/big endian)
+///\tparam encoding ByteOrder::LE or ByteOrder::BE
+///\remark BOM character sequences are not interpreted as such and byte swapping is not done implicitely
+///	It is left to the caller to detect BOM or its inverse and to switch the iterator.
+///\remark See http://en.wikipedia.org/wiki/UTF-16/UCS-2: ... If the endian architecture of the decoder 
+///	matches that of the encoder, the decoder detects the 0xFEFF value, but an opposite-endian decoder 
+///	interprets the BOM as the non-character value U+FFFE reserved for this purpose. This incorrect
+///	result provides a hint to perform byte-swapping for the remaining values. If the BOM is missing,
+///	the standard says that big-endian encoding should be assumed....
+template <int encoding>
+class UTF16
+{
+private:
+	enum
+	{
+		LSB=(encoding==ByteOrder::BE),			///< least significant byte index (0 or 1)
+		MSB=(encoding==ByteOrder::LE),			///< most significant byte index (0 or 1)
+		Print1shift=(encoding==ByteOrder::BE)?8:0,	///< value to shift with to get the 1st character to print
+		Print2shift=(encoding==ByteOrder::LE)?8:0	///< value to shift with to get the 2nd character to print
+	};
+
+public:
+	static unsigned int asize()							{return 2;}
+	static unsigned int size( const char* buf)		{return ((buf[ MSB]&0xD8) == 0xD8)?4:2;}
+	static char achar( const char* buf)					{return (buf[MSB])?(char)-1:buf[LSB];}
+
+	///\brief parses a unicode character from its serialization in a buffer
+	///\param [in] buf buffer to parse the character from
+	///\return the value of the unicode character
+	static UChar value( const char* buf)
+	{
+		unsigned short hi = (unsigned char)buf[ MSB];
+		hi = (hi << 8) + (unsigned char)buf[ LSB];
+		if ((hi & 0xD800) == 0xD800)
+		{
+			unsigned short lo = (unsigned char)buf[ 2+MSB];
+			lo = (lo << 8) + (unsigned char)buf[ 2+LSB];
+			if ((lo & 0xDC00) != 0xDC00) return 0xFFFF;
+			hi ^= 0xD800;
+			lo ^= 0xDC00;
+			UChar rt = hi;
+			return (rt << 10) + lo;
+		}
+		else
+		{
+			UChar rt = (unsigned char)buf[ MSB];
+			return (rt << 8) + (unsigned char)buf[ LSB];
+		}
+		return 0xFFFF;
+	}
+	///\brief prints a unicode character to a buffer
+	///\tparam Buffer_ STL back insertion sequence
+	///\param [in] chr character to print
+	///\param [out] buf buffer to print to
+	template <class Buffer_>
+	static void print( UChar ch, Buffer_& buf)
+	{
+		if (ch <= 0xFFFF)
+		{
+			buf.push_back( (char)(unsigned char)((ch >> Print1shift) & 0xFF));
+			buf.push_back( (char)(unsigned char)((ch >> Print2shift) & 0xFF));
+		}
+		else if (ch <= 0x10FFFF)
+		{
+			ch -= 0x10000;
+			unsigned short hi = (ch >> 10) + 0xD800;
+			unsigned short lo = 1 & ((1 << 10) -1) + 0xDC00;
+			buf.push_back( (char)(unsigned char)((hi >> Print1shift) & 0xFF));
+			buf.push_back( (char)(unsigned char)((hi >> Print2shift) & 0xFF));
+			buf.push_back( (char)(unsigned char)((lo >> Print1shift) & 0xFF));
+			buf.push_back( (char)(unsigned char)((lo >> Print2shift) & 0xFF));
+		}
+		else
+		{
+			buf.push_back( (char)(unsigned char)(0xFF));
+			buf.push_back( (char)(unsigned char)(0xFF));
+		}
+	}
+};
+#endif
+
 }//namespace charset
 
 ///\enum ControlCharacter
