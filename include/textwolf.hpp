@@ -2982,10 +2982,10 @@ public:
 
 		///\brief Constructor by values
 		///\param [in] p_input XML path selection stream to iterate through
-		iterator( ThisXMLPathSelect& p_input)
+		iterator( ThisXMLPathSelect& p_input, bool skipToFirst=true)
 				:input( &p_input)
 		{
-			skip();
+			if (skipToFirst) skip();
 		}
 
 		///\brief Constructor
@@ -3020,7 +3020,7 @@ public:
 
 		///\brief Preincrement
 		///\return *this
-		iterator& operator++()	{return skip();}
+		iterator& operator++()		{return skip();}
 
 		///\brief Postincrement
 		///\return *this
@@ -3037,9 +3037,9 @@ public:
 
 	///\brief Get the start iterator
 	///\return iterator pointing to the first of the selected XML path elements
-	iterator begin()
+	iterator begin( bool skipToFirst=true)
 	{
-		return iterator( *this);
+		return iterator( *this, skipToFirst);
 	}
 
 	///\brief Get the end of content marker
