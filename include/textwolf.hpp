@@ -418,9 +418,17 @@ struct UCS4
 	}
 };
 
+///\class UCS2LE
+///\brief UCS-2 little endian character set encoding
 struct UCS2LE :public UCS2<ByteOrder::LE> {};
+///\class UCS2BE
+///\brief UCS-2 big endian character set encoding
 struct UCS2BE :public UCS2<ByteOrder::BE> {};
+///\class UCS4BE
+///\brief UCS-4 little endian character set encoding
 struct UCS4LE :public UCS4<ByteOrder::LE> {};
+///\class UCS4BE
+///\brief UCS-4 big endian character set encoding
 struct UCS4BE :public UCS4<ByteOrder::BE> {};
 
 ///\class UTF8
@@ -534,7 +542,6 @@ struct UTF8
 	}
 };
 
-#if 0 ///\todo enable UTF16
 ///\class UTF16
 ///\brief Character set UTF16 (little/big endian)
 ///\tparam encoding ByteOrder::LE or ByteOrder::BE
@@ -602,7 +609,7 @@ public:
 		{
 			ch -= 0x10000;
 			unsigned short hi = (ch >> 10) + 0xD800;
-			unsigned short lo = 1 & ((1 << 10) -1) + 0xDC00;
+			unsigned short lo = (1 & ((1 << 10) -1)) + 0xDC00;
 			buf.push_back( (char)(unsigned char)((hi >> Print1shift) & 0xFF));
 			buf.push_back( (char)(unsigned char)((hi >> Print2shift) & 0xFF));
 			buf.push_back( (char)(unsigned char)((lo >> Print1shift) & 0xFF));
@@ -616,9 +623,12 @@ public:
 	}
 };
 
+///\class UTF16LE
+///\brief UTF-16 little endian character set encoding
 struct UTF16LE :public UTF16<ByteOrder::LE> {};
+///\class UTF16BE
+///\brief UTF-16 big endian character set encoding
 struct UTF16BE :public UTF16<ByteOrder::BE> {};
-#endif
 
 }//namespace charset
 
