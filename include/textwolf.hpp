@@ -1805,12 +1805,15 @@ public:
 		}
 		///\brief Constructor
 		///\param [in] p_input XML scanner to use for iteration
-		iterator( ThisXMLScanner& p_input)
+		iterator( ThisXMLScanner& p_input, bool doSkipFirst=true)
 				:input( &p_input)
 		{
-			element.m_type = input->nextItem();
-			element.m_content = input->getItem();
-			element.m_size = input->getItemSize();
+			if (doSkipFirst)
+			{
+				element.m_type = input->nextItem();
+				element.m_content = input->getItem();
+				element.m_size = input->getItemSize();
+			}
 		}
 		///\brief Constructor
 		iterator( const End& et)  :element(et),input(0) {}
@@ -1850,9 +1853,9 @@ public:
 
 	///\brief Get begin iterator
 	///\return iterator
-	iterator begin()
+	iterator begin( bool doSkipFirst=true)
 	{
-		return iterator( *this);
+		return iterator( *this, doSkipFirst);
 	}
 	///\brief Get the pointer to the end of content
 	///\return iterator
