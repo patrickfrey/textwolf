@@ -1,9 +1,9 @@
 NUMBER	DATE	TYPE(ISSUE,BUG)	STATUS(FIXED,OPEN,WONTFIX,CLOSED)	Description
 1	11/6/13	BUG	WONTFIX	XML named entity defintions in the document are ignored. Only named entities passed in the read only table are mapped.
 2	11/6/13	BUG	OPEN	UTF-8 characters beyond 2147483649 are not parsed correctly
-3	11/6/13	BUG	OPEN	End of output buffer print exception is not caugth yet and fall back does not work anymore. Workaround use buffers not throwing end of buffer reached exceptions (std::string,std::vector) will be fixed soon because Wolframe needs it.
+3	11/6/13	BUG	OPEN	End of output buffer print exception fall back does not work anymore. Workaround use buffers not throwing end of buffer reached exceptions (std::string,std::vector) will be fixed soon because Wolframe needs it.
 4	11/6/13	BUG	FIXED	UTF-8 parsing error appearing when characters where skipped.
 5	11/6/13	BUG	FIXED	std::string or std::vector as buffer template argument for parsers are not working yet for unknown reasons.
 6	11/6/13	ISSUE	OPEN	BOM character sequences (Byte Order Mark U+FEFF in UTF-16) are ignored (interpretation is let to the caller).
-
+7	11/6/13	ISSUE	BUG	Entity map supports only single character substitution entities. Named entities in XML are defined as sustitutes for strings (UChar*).
 
