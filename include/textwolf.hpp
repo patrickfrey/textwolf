@@ -158,8 +158,8 @@ public:
 		:m_pos(0),m_size(n),m_ar(0),m_allocated(true) {m_ar=new char[n];}
 
 	///\brief Constructor
-	StaticBuffer( char* p, unsigned int n)
-		:m_pos(0),m_size(n),m_ar(p),m_allocated(false),m_overflow(false) {}
+	StaticBuffer( char* p, unsigned int n, unsigned int i=0)
+		:m_pos(i),m_size(n),m_ar(p),m_allocated(false),m_overflow(false) {}
 
 	///\brief Destructor
 	~StaticBuffer()
@@ -170,7 +170,17 @@ public:
 
 	///\brief Append one character
 	///\param[in] ch the character to append
-	void push_back( char ch)		{if (m_pos<m_size) m_ar[m_pos++]=ch; else m_overflow=true;}
+	void push_back( char ch)
+	{
+		if (m_pos < m_size)
+		{
+			m_ar[m_pos++] = ch;
+		}
+		else
+		{
+			m_overflow = true;
+		}
+	}
 
 	///\brief Return the number of characters in the buffer
 	///\return the number of characters (bytes)
@@ -185,7 +195,7 @@ public:
 	///\param [in] c fill character if n bigger than the current fill size
 	void resize( size_type n, char c=0)
 	{
-		if (m_pos<n)
+		if (m_pos>n)
 		{
 			m_pos=n;
 		}
@@ -276,6 +286,31 @@ public:
 ///
 namespace charset {
 
+struct Encoder
+{
+	static bool encode( UChar chr, char* bufptr, unsigned int bufsize)
+	{
+		static const char* HEX = "0123456789abcdef";
+		StaticBuffer buf( bufptr, bufsize);
+		char bb[ 32];
+		unsigned int ii=0;
+		while (chr > 0)
+		{
+			bb[ii++] = HEX[ chr & 0xf];
+			chr /= 16;
+		}
+		buf.push_back( '&');
+		buf.push_back( '#');
+		buf.push_back( 'x');
+		while (ii)
+		{
+			buf.push_back( bb[ --ii]);
+		}
+		buf.push_back( '\0');
+		return !buf.overflow();
+	}
+};
+
 ///\class IsoLatin1
 ///\brief Character set IsoLatin-1
 struct IsoLatin1
@@ -299,7 +334,13 @@ struct IsoLatin1
 	static void print( UChar chr, Buffer_& buf)
 	{
 		char chr_ = (char)(unsigned char)chr;
-		if (chr > 255) chr_ = -1;
+		if (chr > 255)
+		{
+			char tb[ 32];
+			char* cc = tb;
+			Encoder::encode( chr, tb, sizeof(tb));
+			while (*cc) buf.push_back( *cc++);
+		}
 		buf.push_back( chr_);
 	}
 };
@@ -357,8 +398,15 @@ struct UCS2
 	{
 		if (chr>MaxChar)
 		{
-			buf.push_back( -1);
-			buf.push_back( -1);
+			char tb[ 32];
+			char* cc = tb;
+			Encoder::encode( chr, tb, sizeof(tb));
+			while (*cc)
+			{
+				buf.push_back( (UChar)*cc >> Print1shift);
+				buf.push_back( (UChar)*cc >> Print2shift);
+				++cc;
+			}
 		}
 		else
 		{
@@ -565,9 +613,13 @@ private:
 	};
 
 public:
-	static unsigned int asize()							{return 2;}
+	static unsigned int asize()				{return 2;}
 	static unsigned int size( const char* buf)		{return ((buf[ MSB]&0xD8) == 0xD8)?4:2;}
-	static char achar( const char* buf)					{return (buf[MSB])?(char)-1:buf[LSB];}
+	static char achar( const char* buf)
+	{
+		char rt = (buf[MSB])?(char)-1:buf[LSB];
+		return rt;
+	}
 
 	///\brief parses a unicode character from its serialization in a buffer
 	///\param [in] buf buffer to parse the character from
@@ -617,8 +669,15 @@ public:
 		}
 		else
 		{
-			buf.push_back( (char)(unsigned char)(0xFF));
-			buf.push_back( (char)(unsigned char)(0xFF));
+			char tb[ 32];
+			char* cc = tb;
+			Encoder::encode( ch, tb, sizeof(tb));
+			while (*cc)
+			{
+				buf.push_back( (char)(unsigned char)(((UChar)*cc >> Print1shift) & 0xFF));
+				buf.push_back( (char)(unsigned char)(((UChar)*cc >> Print2shift) & 0xFF));
+				++cc;
+			}
 		}
 	}
 };
@@ -704,7 +763,7 @@ public:
 			(33,127,Any)
 			(128,255,Undef)
 			('\t',Space)
-			('\r',EndOfLine)
+			('\r',Space)
 			('\n',EndOfLine)
 			(' ',Space)
 			('&',Amp)
@@ -862,10 +921,11 @@ public:
 			int arg;		///< action argument
 		};
 		Action action;			///< action executed after entering this state
+		char nofnext;			///< number of follow states defined
 		char next[ NofControlCharacter];///< follow state fired by an event (control character type parsed)
 
 		///\brief Constructor
-		Element() :fallbackState(-1),missError(-1)
+		Element() :fallbackState(-1),missError(-1),nofnext(0)
 		{
 			action.op = -1;
 			action.arg = 0;
@@ -904,6 +964,7 @@ private:
 		{
 			if (tab[ size-1].next[ inputchr] == -1) tab[ size-1].next[ inputchr] = (unsigned char)nextState;
 		}
+		tab[ size-1].nofnext = NofControlCharacter;
 	}
 
 	///\brief Define a transition for inputchr in the last state defined
@@ -917,6 +978,7 @@ private:
 		if (tab[ size-1].next[ inputchr] != -1)  throw exception( InvalidParam);
 		if (size == 0)  throw exception( InvalidState);
 		tab[ size-1].next[ inputchr] = (unsigned char)nextState;
+		tab[ size-1].nofnext += 1;
 	}
 
 	///\brief Define a self directing transition for inputchr in the last state defined (the state remains the same for this input)
@@ -990,6 +1052,7 @@ public:
 	{
 		None,					///< empty (NULL)
 		ErrorOccurred,				///< XML scanning error error reported
+		HeaderStart,				///< open XML header tag
 		HeaderAttribName,			///< tag attribute name in the XML header
 		HeaderAttribValue,			///< tag attribute value in the XML header
 		HeaderEnd,				///< end of XML header event (after parsing '?&gt;')
@@ -1011,7 +1074,7 @@ public:
 	///\return XML element type as string
 	static const char* getElementTypeName( ElementType ee)
 	{
-		static const char* names[ NofElementTypes] = {0,"ErrorOccurred","HeaderAttribName","HeaderAttribValue","HeaderEnd","TagAttribName","TagAttribValue","OpenTag","CloseTag","CloseTagIm","Content","Exit"};
+		static const char* names[ NofElementTypes] = {0,"ErrorOccurred","HeaderStart","HeaderAttribName","HeaderAttribValue","HeaderEnd","TagAttribName","TagAttribValue","OpenTag","CloseTag","CloseTagIm","Content","Exit"};
 		return names[ (unsigned int)ee];
 	}
 
@@ -1032,7 +1095,8 @@ public:
 		ErrExpectedTagAttribute,		///< expected tag attribute
 		ErrExpectedCDATATag,			///< expected CDATA tag definition
 		ErrInternal,				///< internal error (textwolf implementation error)
-		ErrUnexpectedEndOfInput			///< unexpected end of input stream
+		ErrUnexpectedEndOfInput,		///< unexpected end of input stream
+		ErrExpectedEndOfLine			///< expected mandatory end of line (after XML header)
 	};
 
 	///\brief Get the error code as string
@@ -1040,13 +1104,13 @@ public:
 	///\return the error code as string
 	static const char* getErrorString( Error ee)
 	{
-		enum {NofErrors=14};
+		enum {NofErrors=15};
 		static const char* sError[NofErrors]
 			= {0,"ExpectedOpenTag", "ExpectedXMLTag","UnexpectedEndOfText",
 				"OutputBufferTooSmall","SyntaxToken","StringNotTerminated",
 				"UndefinedCharacterEntity","ExpectedTagEnd",
 				"ExpectedEqual", "ExpectedTagAttribute","ExpectedCDATATag","Internal",
-				"UnexpectedEndOfInput"
+				"UnexpectedEndOfInput", "ExpectedEndOfLine"
 		};
 		return sError[(unsigned int)ee];
 	}
@@ -1055,8 +1119,8 @@ public:
 	///\brief Enumeration of states of the XML scanner state machine
 	enum STMState
 	{
-		START, STARTTAG, XTAG, XTAGEND, XTAGAISK, XTAGANAM, XTAGAESK, XTAGAVSK, XTAGAVID, XTAGAVSQ, XTAGAVDQ, XTAGAVQE, CONTENT,
-		TOKEN, XMLTAG, OPENTAG, CLOSETAG, TAGCLSK, TAGAISK, TAGANAM, TAGAESK, TAGAVSK, TAGAVID, TAGAVSQ, TAGAVDQ, TAGAVQE,
+		START, STARTTAG, XTAG, XTAGEND, XTAGEOLN, XTAGDONE, XTAGAISK, XTAGANAM, XTAGAESK, XTAGAVSK, XTAGAVID, XTAGAVSQ, XTAGAVDQ, XTAGAVQE,
+		CONTENT, TOKEN, XMLTAG, OPENTAG, CLOSETAG, TAGCLSK, TAGAISK, TAGANAM, TAGAESK, TAGAVSK, TAGAVID, TAGAVSQ, TAGAVDQ, TAGAVQE,
 		TAGCLIM, ENTITYSL, ENTITY, CDATA, CDATA1, CDATA2, CDATA3, EXIT
 	};
 
@@ -1065,11 +1129,11 @@ public:
 	///\return the state as string
 	static const char* getStateString( STMState s)
 	{
-		enum Constant {NofStates=34};
+		enum Constant {NofStates=36};
 		static const char* sState[NofStates]
 		= {
-			"START", "STARTTAG", "XTAG", "XTAGEND", "XTAGAISK", "XTAGANAM", "XTAGAESK", "XTAGAVSK", "XTAGAVID", "XTAGAVSQ", "XTAGAVDQ", "XTAGAVQE", "CONTENT",
-			"TOKEN", "XMLTAG", "OPENTAG", "CLOSETAG", "TAGCLSK", "TAGAISK", "TAGANAM", "TAGAESK", "TAGAVSK", "TAGAVID", "TAGAVSQ", "TAGAVDQ", "TAGAVQE",
+			"START", "STARTTAG", "XTAG", "XTAGEND", "XTAGEOLN", "XTAGDONE", "XTAGAISK", "XTAGANAM", "XTAGAESK", "XTAGAVSK", "XTAGAVID", "XTAGAVSQ", "XTAGAVDQ", "XTAGAVQE",
+			"CONTENT", "TOKEN", "XMLTAG", "OPENTAG", "CLOSETAG", "TAGCLSK", "TAGAISK", "TAGANAM", "TAGAESK", "TAGAVSK", "TAGAVID", "TAGAVSQ", "TAGAVDQ", "TAGAVQE",
 			"TAGCLIM", "ENTITYSL", "ENTITY", "CDATA", "CDATA1", "CDATA2", "CDATA3", "EXIT"
 		};
 		return sState[(unsigned int)s];
@@ -1100,10 +1164,12 @@ public:
 		Statemachine()
 		{
 			(*this)
-			[ START    ](EndOfLine)(Cntrl)(Space)(Lt,STARTTAG).miss(ErrExpectedOpenTag)
+			[ START    ](EndOfText,EXIT)(EndOfLine)(Cntrl)(Space)(Lt,STARTTAG).miss(ErrExpectedOpenTag)
 			[ STARTTAG ](EndOfLine)(Cntrl)(Space)(Questm,XTAG )(Exclam,ENTITYSL).fallback(OPENTAG)
 			[ XTAG     ].action(ExpectIdentifierXML)(EndOfLine,Cntrl,Space,XTAGAISK)(Questm,XTAGEND).miss(ErrExpectedXMLTag)
-			[ XTAGEND  ].action(Return,HeaderEnd)(Gt,CONTENT)(EndOfLine)(Cntrl)(Space).miss(ErrExpectedTagEnd)
+			[ XTAGEND  ](Gt,XTAGEOLN)(EndOfLine)(Cntrl)(Space).miss(ErrExpectedTagEnd)
+			[ XTAGEOLN ](EndOfLine,XTAGDONE)(Cntrl)(Space).miss(ErrExpectedEndOfLine)
+			[ XTAGDONE ].action(Return,HeaderEnd).fallback(CONTENT)
 			[ XTAGAISK ](EndOfLine)(Cntrl)(Space)(Questm,XTAGEND).fallback(XTAGANAM)
 			[ XTAGANAM ].action(ReturnIdentifier,HeaderAttribName)(EndOfLine,Cntrl,Space,XTAGAESK)(Equal,XTAGAVSK).miss(ErrExpectedEqual)
 			[ XTAGAESK ](EndOfLine)(Cntrl)(Space)(Equal,XTAGAVSK).miss(ErrExpectedEqual)
@@ -1211,6 +1277,7 @@ private:
 		enum Id
 		{
 			Start,				///< start state (no parsing action performed at the moment)
+			ParsingDone,			///< scanner war interrupted after parsing something when accessing the follow character
 			ParsingKey,			///< scanner was interrupted when parsing a key
 			ParsingEntity,			///< scanner was interrupted when parsing an XML character entity
 			ParsingNumericEntity,		///< scanner was interrupted when parsing an XML numeric character entity
@@ -1252,14 +1319,6 @@ public:
 	void push( UChar ch)
 	{
 		OutputCharSet::print( ch, *m_outputBuf);
-	}
-
-	///\brief Print a null character to the output token buffer without expanding its size
-	void printnull()
-	{
-		typename OutputBuffer::size_type n = m_outputBuf->size();
-		OutputCharSet::print( 0, *m_outputBuf);
-		m_outputBuf->resize(n);
 	}
 
 	///\brief Map a hexadecimal digit to its value
@@ -1319,6 +1378,7 @@ public:
 		switch (tokstate.id)
 		{
 			case TokState::Start:
+			case TokState::ParsingDone:
 			case TokState::ParsingKey:
 			case TokState::ParsingToken:
 				break;
@@ -1347,10 +1407,10 @@ public:
 	{
 		unsigned char ch;
 		tokstate.id = TokState::ParsingEntity;
-		ch = src.ascii();
+		ch = m_src.ascii();
 		if (ch == '#')
 		{
-			src.skip();
+			m_src.skip();
 			return parseNumericEntity();
 		}
 		else
@@ -1365,11 +1425,11 @@ public:
 	{
 		unsigned char ch;
 		tokstate.id = TokState::ParsingNumericEntity;
-		ch = src.ascii();
+		ch = m_src.ascii();
 		if (ch == 'x')
 		{
 			tokstate.base = 16;
-			src.skip();
+			m_src.skip();
 			return parseNumericBaseEntity();
 		}
 		else
@@ -1388,7 +1448,7 @@ public:
 
 		while (tokstate.pos < sizeof(tokstate.buf))
 		{
-			tokstate.buf[tokstate.pos++] = ch = src.ascii();
+			tokstate.buf[tokstate.pos++] = ch = m_src.ascii();
 			if (ch == ';')
 			{
 				if (tokstate.value > 0xFFFFFFFF)
@@ -1398,7 +1458,7 @@ public:
 				}
 				push( (UChar)tokstate.value);
 				tokstate.init( TokState::ParsingToken);
-				src.skip();
+				m_src.skip();
 				return true;
 			}
 			else
@@ -1410,7 +1470,7 @@ public:
 					return true;
 				}
 				tokstate.value = tokstate.value * tokstate.base + chval;
-				src.skip();
+				m_src.skip();
 			}
 		}
 		fallbackEntity();
@@ -1423,20 +1483,20 @@ public:
 	{
 		unsigned char ch;
 		tokstate.id = TokState::ParsingNamedEntity;
-		ch = src.ascii();
-		while (tokstate.pos < sizeof(tokstate.buf)-1 && ch != ';' && src.control() == Any)
+		ch = m_src.ascii();
+		while (tokstate.pos < sizeof(tokstate.buf)-1 && ch != ';' && m_src.control() == Any)
 		{
 			tokstate.buf[ tokstate.pos] = ch;
-			src.skip();
+			m_src.skip();
 			tokstate.pos++;
-			ch = src.ascii();
+			ch = m_src.ascii();
 		}
 		if (ch == ';')
 		{
 			tokstate.buf[ tokstate.pos] = '\0';
 			if (!pushEntity( tokstate.buf)) return false;
 			tokstate.init( TokState::ParsingToken);
-			src.skip();
+			m_src.skip();
 			return true;
 		}
 		else
@@ -1459,6 +1519,7 @@ public:
 		switch (tokstate.id)
 		{
 			case TokState::Start:
+			case TokState::ParsingDone:
 			case TokState::ParsingKey:
 			case TokState::ParsingToken:
 				error = ErrInternal;
@@ -1492,21 +1553,21 @@ public:
 		for (;;)
 		{
 			ControlCharacter ch;
-			while (isTok[ (unsigned char)(ch=src.control())])
+			while (isTok[ (unsigned char)(ch=m_src.control())])
 			{
-				push( src.chr());
-				src.skip();
+				push( m_src.chr());
+				m_src.skip();
 			}
 			if (ch == Amp)
 			{
-				src.skip();
+				m_src.skip();
 				if (!parseEntity()) break;
 				tokstate.init( TokState::ParsingToken);
 				continue;
 			}
 			else
 			{
-				tokstate.init();
+				tokstate.init( TokState::ParsingDone);
 				return true;
 			}
 		}
@@ -1555,11 +1616,11 @@ public:
 		for (;;)
 		{
 			ControlCharacter ch;
-			while (isTok[ (unsigned char)(ch=src.control())] || ch == Amp)
+			while (isTok[ (unsigned char)(ch=m_src.control())] || ch == Amp)
 			{
-				src.skip();
+				m_src.skip();
 			}
-			if (src.control() != Any) return true;
+			if (m_src.control() != Any) return true;
 		}
 	}
 
@@ -1570,10 +1631,10 @@ public:
 	{
 		bool rt = true;
 		tokstate.id = TokState::ParsingKey;
-		for (; str[tokstate.pos] != '\0'; src.skip(),tokstate.pos++)
+		for (; str[tokstate.pos] != '\0'; m_src.skip(),tokstate.pos++)
 		{
-			if (src.ascii() == str[ tokstate.pos]) continue;
-			ControlCharacter ch = src.control();
+			if (m_src.ascii() == str[ tokstate.pos]) continue;
+			ControlCharacter ch = m_src.control();
 			if (ch == EndOfText)
 			{
 				error = ErrUnexpectedEndOfText;
@@ -1585,7 +1646,7 @@ public:
 			rt = false;
 			break;
 		}
-		tokstate.init();
+		tokstate.init( TokState::ParsingDone);
 		return rt;
 	}
 
@@ -1684,7 +1745,7 @@ public:
 private:
 	STMState state;			///< current state of the XML scanner
 	Error error;			///< last error code
-	InputReader src;		///< source input iterator
+	InputReader m_src;		///< source input iterator
 	const EntityMap* m_entityMap;	///< map with entities defined by the caller
 	OutputBuffer* m_outputBuf;	///< buffer to use for output
 
@@ -1694,16 +1755,16 @@ public:
 	///\param [in] p_outputBuf buffer to use for output
 	///\param [in] p_entityMap read only map of named entities defined by the user
 	XMLScanner( InputIterator& p_src, OutputBuffer& p_outputBuf, const EntityMap& p_entityMap)
-			:state(START),error(Ok),src(p_src),m_entityMap(&p_entityMap),m_outputBuf(&p_outputBuf)
+			:state(START),error(Ok),m_src(p_src),m_entityMap(&p_entityMap),m_outputBuf(&p_outputBuf)
 	{}
 	XMLScanner( InputIterator& p_src, OutputBuffer& p_outputBuf)
-			:state(START),error(Ok),src(p_src),m_entityMap(0),m_outputBuf(&p_outputBuf)
+			:state(START),error(Ok),m_src(p_src),m_entityMap(0),m_outputBuf(&p_outputBuf)
 	{}
 
 	///\brief Copy constructor
 	///\param [in] o scanner to copy
 	XMLScanner( XMLScanner& o)
-			:state(o.state),error(o.error),src(o.src),m_entityMap(o.m_entityMap),m_outputBuf(o.m_outputBuf)
+			:state(o.state),error(o.error),m_src(o.m_src),m_entityMap(o.m_entityMap),m_outputBuf(o.m_outputBuf)
 	{}
 
 	///\brief Redefine the buffer to use for output
@@ -1711,6 +1772,13 @@ public:
 	void setOutputBuffer( OutputBuffer& p_outputBuf)
 	{
 		m_outputBuf = &p_outputBuf;
+	}
+
+	///\brief Initialize a new source iterator while keeping the state
+	///\param [in] itr source iterator
+	void setSource( const InputIterator& itr)
+	{
+		m_src.setSource( itr);
 	}
 
 	///\brief Get the current parsed XML element string, if it was not masked out, see nextItem(unsigned short)
@@ -1753,10 +1821,7 @@ public:
 		static const char* stringDefs[ NofSTMActions] = {0,0,0,0,0,"xml","CDATA",0};
 
 		ElementType rt = None;
-		if (tokstate.id == TokState::Start)
-		{
-			m_outputBuf->clear();
-		}
+		ControlCharacter ch;
 		do
 		{
 			ScannerStatemachine::Element* sd = getState();
@@ -1764,33 +1829,59 @@ public:
 			{
 				if (tokenDefs[sd->action.op])
 				{
-					if ((mask&(1<<sd->action.arg)) != 0)
+					if (tokstate.id != TokState::ParsingDone)
 					{
-						if (!parseToken( *tokenDefs[ sd->action.op])) return ErrorOccurred;
+						if ((mask&(1<<sd->action.arg)) != 0)
+						{
+							if (!parseToken( *tokenDefs[ sd->action.op])) return ErrorOccurred;
+						}
+						else
+						{
+							if (!skipToken( *tokenDefs[ sd->action.op])) return ErrorOccurred;
+						}
 					}
-					else
-					{
-						if (!skipToken( *tokenDefs[ sd->action.op])) return ErrorOccurred;
-					}
-					printnull();
 					rt = (ElementType)sd->action.arg;
 				}
 				else if (stringDefs[sd->action.op])
 				{
-					if (!expectStr( stringDefs[sd->action.op])) return ErrorOccurred;
+					if (tokstate.id != TokState::ParsingDone)
+					{
+						if (!expectStr( stringDefs[sd->action.op])) return ErrorOccurred;
+						if (sd->action.op == ExpectIdentifierXML)
+						{
+							//... special treatement for xml header for not
+							//    enforcing the model too much just for this case
+							push( '?'); push( 'x'); push( 'm'); push( 'l');
+							rt = HeaderStart;
+						}
+					}
+					else if (sd->action.op == ExpectIdentifierXML)
+					{
+						//... special treatement for xml header for not  
+						//    enforcing the model too much just for this case
+						rt = HeaderStart;
+					}
 				}
 				else
 				{
 					rt = (ElementType)sd->action.arg;
-					if (rt == Exit) return rt;
+				}
+				if (sd->nofnext == 0)
+				{
+					if (sd->fallbackState != -1)
+					{
+						state = (STMState)sd->fallbackState;
+					}
+					return rt;
 				}
 			}
-			ControlCharacter ch = src.control();
+			ch = m_src.control();
+			tokstate.id = TokState::Start;
 
 			if (sd->next[ ch] != -1)
 			{
 				state = (STMState)sd->next[ ch];
-				src.skip();
+				m_src.skip();
 			}
 			else if (sd->fallbackState != -1)
 			{
@@ -1798,19 +1889,16 @@ public:
 			}
 			else if (sd->missError != -1)
 			{
-				printnull();
 				error = (Error)sd->missError;
 				return ErrorOccurred;
 			}
 			else if (ch == EndOfText)
 			{
-				printnull();
 				error = ErrUnexpectedEndOfText;
 				return ErrorOccurred;
 			}
 			else
 			{
-				printnull();
 				error = ErrInternal;
 				return ErrorOccurred;
 			}
@@ -2063,6 +2151,7 @@ public:
 			{
 				case Tag:
 					this->match( XMLScannerBase::OpenTag);
+					this->match( XMLScannerBase::HeaderStart);
 					break;
 				case Attribute:
 					this->match( XMLScannerBase::TagAttribName);
@@ -2928,20 +3017,20 @@ private:
 public:
 	///\brief Constructor
 	///\param[in] p_atm read only ML path select automaton reference
-	///\param[in] src source input iterator to process
+	///\param[in] p_src source input iterator to process
 	///\param[in] obuf reference to buffer to use for the output elements (STL back insertion sequence interface)
 	///\param[in] entityMap read only map of named entities to expand
-	XMLPathSelect( const ThisXMLPathSelectAutomaton* p_atm, InputIterator& src, OutputBuffer& obuf, const EntityMap& entityMap)
-		:scan(src,obuf,entityMap),atm(p_atm),scopestk(p_atm->maxScopeStackSize),follows(p_atm->maxFollows),triggers(p_atm->maxTriggers),tokens(p_atm->maxTokens)
+	XMLPathSelect( const ThisXMLPathSelectAutomaton* p_atm, InputIterator& p_src, OutputBuffer& obuf, const EntityMap& entityMap)
+		:scan(p_src,obuf,entityMap),atm(p_atm),scopestk(p_atm->maxScopeStackSize),follows(p_atm->maxFollows),triggers(p_atm->maxTriggers),tokens(p_atm->maxTokens)
 	{
 		if (atm->states.size() > 0) expand(0);
 	}
 	///\brief Constructor
 	///\param[in] p_atm read only ML path select automaton reference
-	///\param[in] src source input iterator to process
+	///\param[in] p_src source input iterator to process
 	///\param[in] obuf reference to buffer to use for the output elements (STL back insertion sequence interface)
-	XMLPathSelect( const ThisXMLPathSelectAutomaton* p_atm, InputIterator& src, OutputBuffer& obuf)
-		:scan(src,obuf),atm(p_atm),scopestk(p_atm->maxScopeStackSize),follows(p_atm->maxFollows),triggers(p_atm->maxTriggers),tokens(p_atm->maxTokens)
+	XMLPathSelect( const ThisXMLPathSelectAutomaton* p_atm, InputIterator& p_src, OutputBuffer& obuf)
+		:scan(p_src,obuf),atm(p_atm),scopestk(p_atm->maxScopeStackSize),follows(p_atm->maxFollows),triggers(p_atm->maxTriggers),tokens(p_atm->maxTokens)
 	{
 		if (atm->states.size() > 0) expand(0);
 	}
@@ -3158,4 +3247,3 @@ public:
 
 } //namespace textwolf
 #endif
-  
