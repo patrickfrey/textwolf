@@ -1,4 +1,4 @@
-.TH "textwolf::charset" 3 "10 Jun 2011" "textwolf" \" -*- nroff -*-
+.TH "textwolf::charset" 3 "14 Aug 2011" "textwolf" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -10,32 +10,55 @@ textwolf::charset \-
 
 .in +1c
 .ti -1c
-.RI "struct \fBIsoLatin1\fP"
+.RI "struct \fBEncoder\fP"
 .br
 .ti -1c
-.RI "struct \fBByteOrder\fP"
+.RI "class \fBIsoLatin1\fP"
 .br
+.RI "\fICharacter set IsoLatin-1. \fP"
 .ti -1c
-.RI "struct \fBUCS2\fP"
+.RI "class \fBByteOrder\fP"
 .br
+.RI "\fIOrder of bytes for wide char character sets. \fP"
 .ti -1c
-.RI "struct \fBUCS4\fP"
+.RI "class \fBUCS2\fP"
 .br
+.RI "\fICharacter set UCS-2 (little/big endian). \fP"
 .ti -1c
-.RI "struct \fBUCS2LE\fP"
+.RI "class \fBUCS4\fP"
 .br
+.RI "\fICharacter set UCS-4 (little/big endian). \fP"
 .ti -1c
-.RI "struct \fBUCS2BE\fP"
+.RI "class \fBUCS2LE\fP"
 .br
+.RI "\fIUCS-2 little endian character set encoding. \fP"
+.ti -1c
+.RI "class \fBUCS2BE\fP"
+.br
+.RI "\fIUCS-2 big endian character set encoding. \fP"
 .ti -1c
 .RI "struct \fBUCS4LE\fP"
 .br
 .ti -1c
-.RI "struct \fBUCS4BE\fP"
+.RI "class \fBUCS4BE\fP"
 .br
+.RI "\fIUCS-4 little endian character set encoding. \fP"
 .ti -1c
-.RI "struct \fBUTF8\fP"
+.RI "class \fBUTF8\fP"
 .br
+.RI "\fIcharacter set encoding UTF-8 \fP"
+.ti -1c
+.RI "class \fBUTF16\fP"
+.br
+.RI "\fICharacter set \fBUTF16\fP (little/big endian). \fP"
+.ti -1c
+.RI "class \fBUTF16LE\fP"
+.br
+.RI "\fIUTF-16 little endian character set encoding. \fP"
+.ti -1c
+.RI "class \fBUTF16BE\fP"
+.br
+.RI "\fIUTF-16 big endian character set encoding. \fP"
 .in -1c
 .SH "Author"
 .PP 

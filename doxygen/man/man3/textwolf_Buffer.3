@@ -1,0 +1,163 @@
+.TH "textwolf::Buffer" 3 "13 Jun 2011" "textwolf" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+textwolf::Buffer \- 
+.PP
+Simple back insertion sequence for storing the outputs of textwolf in a contant size buffer.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <textwolf.hpp>\fP
+.PP
+Inherits \fBtextwolf::throws_exception\fP.
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "typedef unsigned int \fBsize_type\fP"
+.br
+.RI "\fIsize type of this buffer vector \fP"
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBBuffer\fP (unsigned int n)"
+.br
+.RI "\fIConstructor. \fP"
+.ti -1c
+.RI "\fBBuffer\fP (char *p, unsigned int n)"
+.br
+.RI "\fIConstructor. \fP"
+.ti -1c
+.RI "\fB~Buffer\fP ()"
+.br
+.RI "\fIDestructor. \fP"
+.ti -1c
+.RI "void \fBclear\fP ()"
+.br
+.RI "\fIClear the buffer content. \fP"
+.ti -1c
+.RI "void \fBpush_back\fP (char ch)"
+.br
+.RI "\fIAppend one character. \fP"
+.ti -1c
+.RI "\fBsize_type\fP \fBsize\fP () const "
+.br
+.RI "\fIReturn the number of characters in the buffer. \fP"
+.ti -1c
+.RI "const char * \fBptr\fP () const "
+.br
+.RI "\fIReturn the buffer content as 0-terminated string. \fP"
+.ti -1c
+.RI "void \fBresize\fP (\fBsize_type\fP n, char c=0)"
+.br
+.RI "\fIShrinks the size of the buffer or expands it with c. \fP"
+.ti -1c
+.RI "char \fBoperator[]\fP (unsigned int ii) const "
+.br
+.ti -1c
+.RI "char & \fBat\fP (unsigned int ii) const "
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBsize_type\fP \fBm_pos\fP"
+.br
+.RI "\fIcurrent cursor position of the buffer (number of added characters) \fP"
+.ti -1c
+.RI "\fBsize_type\fP \fBm_size\fP"
+.br
+.RI "\fIallocation size of the buffer in bytes \fP"
+.ti -1c
+.RI "char * \fBm_ar\fP"
+.br
+.RI "\fIbuffer content \fP"
+.ti -1c
+.RI "bool \fBm_allocated\fP"
+.br
+.RI "\fItrue, if the buffer is allocated by this class and not passed by constructor \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Simple back insertion sequence for storing the outputs of textwolf in a contant size buffer. 
+.SH "Member Typedef Documentation"
+.PP 
+.SS "typedef unsigned int \fBtextwolf::Buffer::size_type\fP"
+.PP
+size type of this buffer vector 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "textwolf::Buffer::Buffer (unsigned int n)\fC [inline, explicit]\fP"
+.PP
+Constructor. 
+.SS "textwolf::Buffer::Buffer (char * p, unsigned int n)\fC [inline]\fP"
+.PP
+Constructor. 
+.SS "textwolf::Buffer::~Buffer ()\fC [inline]\fP"
+.PP
+Destructor. 
+.SH "Member Function Documentation"
+.PP 
+.SS "char& textwolf::Buffer::at (unsigned int ii) const\fC [inline]\fP"
+.SS "void textwolf::Buffer::clear ()\fC [inline]\fP"
+.PP
+Clear the buffer content. 
+.SS "char textwolf::Buffer::operator[] (unsigned int ii) const\fC [inline]\fP"
+.SS "const char* textwolf::Buffer::ptr () const\fC [inline]\fP"
+.PP
+Return the buffer content as 0-terminated string. \fBReturns:\fP
+.RS 4
+the C-string 
+.RE
+.PP
+
+.SS "void textwolf::Buffer::push_back (char ch)\fC [inline]\fP"
+.PP
+Append one character. \fBParameters:\fP
+.RS 4
+\fIch\fP the character to append 
+.RE
+.PP
+
+.SS "void textwolf::Buffer::resize (\fBsize_type\fP n, char c = \fC0\fP)\fC [inline]\fP"
+.PP
+Shrinks the size of the buffer or expands it with c. \fBParameters:\fP
+.RS 4
+\fIn\fP new size of the buffer 
+.br
+\fIc\fP fill character if n bigger than the current fill size 
+.RE
+.PP
+
+.SS "\fBsize_type\fP textwolf::Buffer::size () const\fC [inline]\fP"
+.PP
+Return the number of characters in the buffer. \fBReturns:\fP
+.RS 4
+the number of characters (bytes) 
+.RE
+.PP
+
+.SH "Member Data Documentation"
+.PP 
+.SS "bool \fBtextwolf::Buffer::m_allocated\fP\fC [private]\fP"
+.PP
+true, if the buffer is allocated by this class and not passed by constructor 
+.SS "char* \fBtextwolf::Buffer::m_ar\fP\fC [private]\fP"
+.PP
+buffer content 
+.SS "\fBsize_type\fP \fBtextwolf::Buffer::m_pos\fP\fC [private]\fP"
+.PP
+current cursor position of the buffer (number of added characters) 
+.SS "\fBsize_type\fP \fBtextwolf::Buffer::m_size\fP\fC [private]\fP"
+.PP
+allocation size of the buffer in bytes 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for textwolf from the source code.

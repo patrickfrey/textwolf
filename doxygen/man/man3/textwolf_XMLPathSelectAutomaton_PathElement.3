@@ -1,8 +1,11 @@
-.TH "textwolf::XMLPathSelectAutomaton::PathElement" 3 "10 Jun 2011" "textwolf" \" -*- nroff -*-
+.TH "textwolf::XMLPathSelectAutomaton::PathElement" 3 "14 Aug 2011" "textwolf" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
 textwolf::XMLPathSelectAutomaton::PathElement \- 
+.PP
+Defines one node in the XML Path element tree in the construction phase.  
+
 .SH SYNOPSIS
 .br
 .PP
@@ -14,8 +17,9 @@ Inherits \fBtextwolf::throws_exception\fP.
 
 .in +1c
 .ti -1c
-.RI "struct \fBRange\fP"
+.RI "class \fBRange\fP"
 .br
+.RI "\fIElement counting range defining what are indices of valid elements. \fP"
 .in -1c
 .SS "Public Member Functions"
 
@@ -23,27 +27,35 @@ Inherits \fBtextwolf::throws_exception\fP.
 .ti -1c
 .RI "\fBPathElement\fP ()"
 .br
+.RI "\fIConstructor. \fP"
 .ti -1c
 .RI "\fBPathElement\fP (\fBXMLPathSelectAutomaton\fP *p_xs, int p_si=0)"
 .br
+.RI "\fIConstructor by values. \fP"
 .ti -1c
 .RI "\fBPathElement\fP (const \fBPathElement\fP &orig)"
 .br
+.RI "\fICopy constructor. \fP"
 .ti -1c
 .RI "\fBPathElement\fP & \fBoperator--\fP (int)"
 .br
+.RI "\fICorresponds to '//' in abbreviated syntax of XPath. \fP"
 .ti -1c
 .RI "\fBPathElement\fP & \fBoperator[]\fP (const char *name)  throw (exception)"
 .br
+.RI "\fIFind tag by name. \fP"
 .ti -1c
 .RI "\fBPathElement\fP & \fBselectTag\fP (const char *name)  throw (exception)"
 .br
+.RI "\fIFind tag by name. \fP"
 .ti -1c
 .RI "\fBPathElement\fP & \fBoperator()\fP (const char *name)  throw (exception)"
 .br
+.RI "\fIFind tag with one attribute. \fP"
 .ti -1c
 .RI "\fBPathElement\fP & \fBselectAttribute\fP (const char *name)  throw (exception)"
 .br
+.RI "\fIFind tag with one attribute. \fP"
 .ti -1c
 .RI "\fBPathElement\fP & \fBoperator()\fP (const char *name, const char *value)  throw (exception)"
 .br
@@ -51,33 +63,33 @@ Inherits \fBtextwolf::throws_exception\fP.
 .RI "\fBPathElement\fP & \fBifAttribute\fP (const char *name, const char *value)  throw (exception)"
 .br
 .ti -1c
-.RI "\fBPathElement\fP & \fBTO\fP (int cnt)  throw (exception)"
+.RI "\fBPathElement\fP & \fBTO\fP (int idx)  throw (exception)"
 .br
+.RI "\fIDefine maximum element index to push. \fP"
 .ti -1c
-.RI "\fBPathElement\fP & \fBFROM\fP (int cnt)  throw (exception)"
+.RI "\fBPathElement\fP & \fBFROM\fP (int idx)  throw (exception)"
 .br
+.RI "\fIDefine minimum element index to push. \fP"
 .ti -1c
-.RI "\fBPathElement\fP & \fBRANGE\fP (int cnt)  throw (exception)"
+.RI "\fBPathElement\fP & \fBRANGE\fP (int idx1, int idx2)  throw (exception)"
 .br
+.RI "\fIDefine minimum and maximum element index to push. \fP"
 .ti -1c
 .RI "\fBPathElement\fP & \fBoperator=\fP (int type)  throw (exception)"
 .br
+.RI "\fIDefine element type to push. \fP"
 .ti -1c
 .RI "\fBPathElement\fP & \fBassignType\fP (int type)  throw (exception)"
 .br
+.RI "\fIDefine element type to push. \fP"
 .ti -1c
 .RI "\fBPathElement\fP & \fBoperator()\fP ()  throw (exception)"
 .br
+.RI "\fIDefine grab content. \fP"
 .ti -1c
 .RI "\fBPathElement\fP & \fBselectContent\fP ()  throw (exception)"
 .br
-.in -1c
-.SS "Private Types"
-
-.in +1c
-.ti -1c
-.RI "enum { \fBMaxSize\fP = 1024 }"
-.br
+.RI "\fIDefine grab content. \fP"
 .in -1c
 .SS "Private Member Functions"
 
@@ -85,24 +97,31 @@ Inherits \fBtextwolf::throws_exception\fP.
 .ti -1c
 .RI "\fBPathElement\fP & \fBdefineOutput\fP (\fBOperation\fP op)"
 .br
+.RI "\fIDefine an output operation for a certain element type in this state. \fP"
 .ti -1c
 .RI "\fBPathElement\fP & \fBdoSelect\fP (\fBOperation\fP op, const char *value)  throw (exception)"
 .br
+.RI "\fIDefine a state transition operation for a token of a certain element type in this state. \fP"
 .ti -1c
 .RI "\fBPathElement\fP & \fBdoFollow\fP ()"
 .br
+.RI "\fIDefine this element as active (firing,printing) for all sub scopes of the activation scope. \fP"
 .ti -1c
 .RI "\fBPathElement\fP & \fBdoRange\fP (int p_start, int p_end)"
 .br
+.RI "\fIDefine a valid range of token count for this element to be active. \fP"
 .ti -1c
 .RI "\fBPathElement\fP & \fBdoCount\fP (int p_count)"
 .br
+.RI "\fIDefine a valid range of token count for this element to be active by the number of elements. \fP"
 .ti -1c
 .RI "\fBPathElement\fP & \fBdoStart\fP (int p_start)"
 .br
+.RI "\fIDefine the start of the range of token count for this element to be active. \fP"
 .ti -1c
 .RI "\fBPathElement\fP & \fBpush\fP (int typeidx)  throw (exception)"
 .br
+.RI "\fIDefine the output of the current element. \fP"
 .in -1c
 .SS "Private Attributes"
 
@@ -110,70 +129,369 @@ Inherits \fBtextwolf::throws_exception\fP.
 .ti -1c
 .RI "\fBXMLPathSelectAutomaton\fP * \fBxs\fP"
 .br
+.RI "\fIXML Path select automaton where this node is an element of. \fP"
 .ti -1c
 .RI "int \fBstateidx\fP"
 .br
+.RI "\fIstate of this element in the automaton \fP"
 .ti -1c
 .RI "\fBRange\fP \fBrange\fP"
 .br
+.RI "\fIIndex range of this XML path element. \fP"
 .ti -1c
 .RI "bool \fBfollow\fP"
 .br
+.RI "\fItrue, if this element is active (firing) for all sub scopes of the activation scope \fP"
 .ti -1c
 .RI "\fBMask\fP \fBpushOpMask\fP"
 .br
+.RI "\fImask for firing element actions \fP"
 .ti -1c
 .RI "\fBMask\fP \fBprintOpMask\fP"
 .br
+.RI "\fImask for printing element actions \fP"
 .in -1c
-
-.SS "template<class CharSet_ = charset::UTF8> struct textwolf::XMLPathSelectAutomaton< CharSet_ >::PathElement"
-
-.SH "Member Enumeration Documentation"
+.SH "Detailed Description"
 .PP 
-.SS "template<class CharSet_  = charset::UTF8> anonymous enum\fC [private]\fP"
+
+.SS "template<class CharSet_ = charset::UTF8> class textwolf::XMLPathSelectAutomaton< CharSet_ >::PathElement"
+Defines one node in the XML Path element tree in the construction phase. 
+
+\fBRemarks:\fP
+.RS 4
+This is just a construct for building the tree with cascading operators forming a path representation 
+.RE
 .PP
-\fBEnumerator: \fP
-.in +1c
-.TP
-\fB\fIMaxSize \fP\fP
 
 .SH "Constructor & Destructor Documentation"
 .PP 
 .SS "template<class CharSet_  = charset::UTF8> \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::PathElement::PathElement ()\fC [inline]\fP"
+.PP
+Constructor. 
 .SS "template<class CharSet_  = charset::UTF8> \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::PathElement::PathElement (\fBXMLPathSelectAutomaton\fP * p_xs, int p_si = \fC0\fP)\fC [inline]\fP"
+.PP
+Constructor by values. \fBParameters:\fP
+.RS 4
+\fIp_xs\fP automaton of this element 
+.br
+\fIp_si\fP state index of this element in the automaton definition 
+.RE
+.PP
+
 .SS "template<class CharSet_  = charset::UTF8> \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::PathElement::PathElement (const \fBPathElement\fP & orig)\fC [inline]\fP"
+.PP
+Copy constructor. \fBParameters:\fP
+.RS 4
+\fIorig\fP element to copy 
+.RE
+.PP
+
 .SH "Member Function Documentation"
 .PP 
 .SS "template<class CharSet_  = charset::UTF8> \fBPathElement\fP& \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::PathElement::assignType (int type)  throw (\fBexception\fP)\fC [inline]\fP"
+.PP
+Define element type to push. \fBParameters:\fP
+.RS 4
+\fItype\fP element type 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+*this 
+.RE
+.PP
+
 .SS "template<class CharSet_  = charset::UTF8> \fBPathElement\fP& \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::PathElement::defineOutput (\fBOperation\fP op)\fC [inline, private]\fP"
+.PP
+Define an output operation for a certain element type in this state. \fBParameters:\fP
+.RS 4
+\fIop\fP XML operation type of this output 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+*this 
+.RE
+.PP
+
 .SS "template<class CharSet_  = charset::UTF8> \fBPathElement\fP& \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::PathElement::doCount (int p_count)\fC [inline, private]\fP"
+.PP
+Define a valid range of token count for this element to be active by the number of elements. \fBParameters:\fP
+.RS 4
+\fIp_count\fP number of elements starting with 0 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+*this 
+.RE
+.PP
+
 .SS "template<class CharSet_  = charset::UTF8> \fBPathElement\fP& \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::PathElement::doFollow ()\fC [inline, private]\fP"
+.PP
+Define this element as active (firing,printing) for all sub scopes of the activation scope. \fBReturns:\fP
+.RS 4
+*this 
+.RE
+.PP
+
 .SS "template<class CharSet_  = charset::UTF8> \fBPathElement\fP& \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::PathElement::doRange (int p_start, int p_end)\fC [inline, private]\fP"
+.PP
+Define a valid range of token count for this element to be active. \fBParameters:\fP
+.RS 4
+\fIp_start\fP index of starting element starting with 0 
+.br
+\fIp_end\fP index of upper boundary element (not belonging to range anymore). -1 if undefined (unlimited) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+*this 
+.RE
+.PP
+
 .SS "template<class CharSet_  = charset::UTF8> \fBPathElement\fP& \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::PathElement::doSelect (\fBOperation\fP op, const char * value)  throw (\fBexception\fP)\fC [inline, private]\fP"
+.PP
+Define a state transition operation for a token of a certain element type in this state. \fBParameters:\fP
+.RS 4
+\fIop\fP XML operation type of this state transition 
+.br
+\fIvalue\fP key value as ASCII with encoded entities for higher unicode characters of this state transition 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+*this 
+.RE
+.PP
+
 .SS "template<class CharSet_  = charset::UTF8> \fBPathElement\fP& \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::PathElement::doStart (int p_start)\fC [inline, private]\fP"
-.SS "template<class CharSet_  = charset::UTF8> \fBPathElement\fP& \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::PathElement::FROM (int cnt)  throw (\fBexception\fP)\fC [inline]\fP"
-.SS "template<class CharSet_  = charset::UTF8> \fBPathElement\fP& \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::PathElement::ifAttribute (const char * name, const char * value)  throw (\fBexception\fP)\fC [inline]\fP"
+.PP
+Define the start of the range of token count for this element to be active. \fBParameters:\fP
+.RS 4
+\fIp_start\fP index of starting element starting with 0 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+*this 
+.RE
+.PP
+
+.SS "template<class CharSet_  = charset::UTF8> \fBPathElement\fP& \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::PathElement::FROM (int idx)  throw (\fBexception\fP)\fC [inline]\fP"
+.PP
+Define minimum element index to push. \fBParameters:\fP
+.RS 4
+\fIidx\fP minimum element index 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+*this 
+.RE
+.PP
+
+.SS "template<class CharSet_  = charset::UTF8> \fBPathElement\fP& \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::PathElement::ifAttribute (const char * name, const char * value)  throw (\fBexception\fP)\fC [inline]\fP"\fBParameters:\fP
+.RS 4
+\fIname\fP name of the attribute 
+.br
+\fIvalue\fP value of the attribute 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+*this 
+.RE
+.PP
+
 .SS "template<class CharSet_  = charset::UTF8> \fBPathElement\fP& \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::PathElement::operator() ()  throw (\fBexception\fP)\fC [inline]\fP"
-.SS "template<class CharSet_  = charset::UTF8> \fBPathElement\fP& \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::PathElement::operator() (const char * name, const char * value)  throw (\fBexception\fP)\fC [inline]\fP"
+.PP
+Define grab content. \fBRemarks:\fP
+.RS 4
+same as \fBselectContent()\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+*this 
+.RE
+.PP
+
+.SS "template<class CharSet_  = charset::UTF8> \fBPathElement\fP& \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::PathElement::operator() (const char * name, const char * value)  throw (\fBexception\fP)\fC [inline]\fP"\fBRemarks:\fP
+.RS 4
+same as \fBifAttribute(const char*,const char*)\fP 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP name of the attribute 
+.br
+\fIvalue\fP value of the attribute 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+*this 
+.RE
+.PP
+
 .SS "template<class CharSet_  = charset::UTF8> \fBPathElement\fP& \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::PathElement::operator() (const char * name)  throw (\fBexception\fP)\fC [inline]\fP"
+.PP
+Find tag with one attribute. \fBParameters:\fP
+.RS 4
+\fIname\fP name of the attribute 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+*this 
+.RE
+.PP
+
 .SS "template<class CharSet_  = charset::UTF8> \fBPathElement\fP& \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::PathElement::operator-- (int)\fC [inline]\fP"
+.PP
+Corresponds to '//' in abbreviated syntax of XPath. \fBReturns:\fP
+.RS 4
+*this 
+.RE
+.PP
+
 .SS "template<class CharSet_  = charset::UTF8> \fBPathElement\fP& \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::PathElement::operator= (int type)  throw (\fBexception\fP)\fC [inline]\fP"
+.PP
+Define element type to push. \fBRemarks:\fP
+.RS 4
+same as \fBassignType(int)\fP 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fItype\fP element type 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+*this 
+.RE
+.PP
+
 .SS "template<class CharSet_  = charset::UTF8> \fBPathElement\fP& \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::PathElement::operator[] (const char * name)  throw (\fBexception\fP)\fC [inline]\fP"
+.PP
+Find tag by name. \fBParameters:\fP
+.RS 4
+\fIname\fP name of the tag 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+*this 
+.RE
+.PP
+
 .SS "template<class CharSet_  = charset::UTF8> \fBPathElement\fP& \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::PathElement::push (int typeidx)  throw (\fBexception\fP)\fC [inline, private]\fP"
-.SS "template<class CharSet_  = charset::UTF8> \fBPathElement\fP& \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::PathElement::RANGE (int cnt)  throw (\fBexception\fP)\fC [inline]\fP"
+.PP
+Define the output of the current element. \fBParameters:\fP
+.RS 4
+\fItypeidx\fP type of the element produced 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+*this 
+.RE
+.PP
+
+.SS "template<class CharSet_  = charset::UTF8> \fBPathElement\fP& \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::PathElement::RANGE (int idx1, int idx2)  throw (\fBexception\fP)\fC [inline]\fP"
+.PP
+Define minimum and maximum element index to push. \fBParameters:\fP
+.RS 4
+\fIidx1\fP minimum element index 
+.br
+\fIidx2\fP maximum element index 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+*this 
+.RE
+.PP
+
 .SS "template<class CharSet_  = charset::UTF8> \fBPathElement\fP& \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::PathElement::selectAttribute (const char * name)  throw (\fBexception\fP)\fC [inline]\fP"
+.PP
+Find tag with one attribute. \fBRemarks:\fP
+.RS 4
+same as \fBselectAttribute(const char*)\fP 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP name of the attribute 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+*this 
+.RE
+.PP
+
 .SS "template<class CharSet_  = charset::UTF8> \fBPathElement\fP& \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::PathElement::selectContent ()  throw (\fBexception\fP)\fC [inline]\fP"
+.PP
+Define grab content. \fBReturns:\fP
+.RS 4
+*this 
+.RE
+.PP
+
 .SS "template<class CharSet_  = charset::UTF8> \fBPathElement\fP& \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::PathElement::selectTag (const char * name)  throw (\fBexception\fP)\fC [inline]\fP"
-.SS "template<class CharSet_  = charset::UTF8> \fBPathElement\fP& \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::PathElement::TO (int cnt)  throw (\fBexception\fP)\fC [inline]\fP"
+.PP
+Find tag by name. \fBRemarks:\fP
+.RS 4
+same as \fBselectTag(const char*)\fP 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP name of the tag 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+*this 
+.RE
+.PP
+
+.SS "template<class CharSet_  = charset::UTF8> \fBPathElement\fP& \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::PathElement::TO (int idx)  throw (\fBexception\fP)\fC [inline]\fP"
+.PP
+Define maximum element index to push. \fBParameters:\fP
+.RS 4
+\fIidx\fP maximum element index 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+*this 
+.RE
+.PP
+
 .SH "Member Data Documentation"
 .PP 
 .SS "template<class CharSet_  = charset::UTF8> bool \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::\fBPathElement::follow\fP\fC [private]\fP"
+.PP
+true, if this element is active (firing) for all sub scopes of the activation scope 
 .SS "template<class CharSet_  = charset::UTF8> \fBMask\fP \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::\fBPathElement::printOpMask\fP\fC [private]\fP"
+.PP
+mask for printing element actions 
 .SS "template<class CharSet_  = charset::UTF8> \fBMask\fP \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::\fBPathElement::pushOpMask\fP\fC [private]\fP"
+.PP
+mask for firing element actions 
 .SS "template<class CharSet_  = charset::UTF8> \fBRange\fP \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::\fBPathElement::range\fP\fC [private]\fP"
+.PP
+Index range of this XML path element. 
 .SS "template<class CharSet_  = charset::UTF8> int \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::\fBPathElement::stateidx\fP\fC [private]\fP"
+.PP
+state of this element in the automaton 
 .SS "template<class CharSet_  = charset::UTF8> \fBXMLPathSelectAutomaton\fP* \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::\fBPathElement::xs\fP\fC [private]\fP"
+.PP
+XML Path select automaton where this node is an element of. 
 
 .SH "Author"
 .PP 

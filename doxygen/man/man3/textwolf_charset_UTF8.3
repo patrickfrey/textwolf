@@ -1,8 +1,11 @@
-.TH "textwolf::charset::UTF8" 3 "10 Jun 2011" "textwolf" \" -*- nroff -*-
+.TH "textwolf::charset::UTF8" 3 "14 Aug 2011" "textwolf" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
 textwolf::charset::UTF8 \- 
+.PP
+character set encoding UTF-8  
+
 .SH SYNOPSIS
 .br
 .PP
@@ -43,10 +46,15 @@ textwolf::charset::UTF8 \-
 .ti -1c
 .RI "static \fBUChar\fP \fBvalue\fP (const char *buf)"
 .br
+.RI "\fIparses a unicode character from its serialization in a buffer \fP"
 .ti -1c
-.RI "static unsigned int \fBprint\fP (\fBUChar\fP chr, char *buf, unsigned int bufsize)"
+.RI "template<class Buffer_ > static void \fBprint\fP (\fBUChar\fP chr, Buffer_ &buf)"
 .br
+.RI "\fIprints a unicode character to a buffer \fP"
 .in -1c
+.SH "Detailed Description"
+.PP 
+character set encoding UTF-8 
 .SH "Member Enumeration Documentation"
 .PP 
 .SS "anonymous enum"
@@ -114,9 +122,35 @@ textwolf::charset::UTF8 \-
 .PP 
 .SS "static char textwolf::charset::UTF8::achar (const char * buf)\fC [inline, static]\fP"
 .SS "static unsigned int textwolf::charset::UTF8::asize ()\fC [inline, static]\fP"
-.SS "static unsigned int textwolf::charset::UTF8::print (\fBUChar\fP chr, char * buf, unsigned int bufsize)\fC [inline, static]\fP"
+.SS "template<class Buffer_ > static void textwolf::charset::UTF8::print (\fBUChar\fP chr, Buffer_ & buf)\fC [inline, static]\fP"
+.PP
+prints a unicode character to a buffer \fBTemplate Parameters:\fP
+.RS 4
+\fIBuffer_\fP STL back insertion sequence 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIchr\fP character to print 
+.br
+\fIbuf\fP buffer to print to 
+.RE
+.PP
+
 .SS "static unsigned int textwolf::charset::UTF8::size (const char * buf)\fC [inline, static]\fP"
 .SS "static \fBUChar\fP textwolf::charset::UTF8::value (const char * buf)\fC [inline, static]\fP"
+.PP
+parses a unicode character from its serialization in a buffer \fBParameters:\fP
+.RS 4
+\fIbuf\fP buffer to parse the character from 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the value of the unicode character 
+.RE
+.PP
+
 
 .SH "Author"
 .PP 

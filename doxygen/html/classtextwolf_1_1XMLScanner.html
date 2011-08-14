@@ -93,8 +93,6 @@ EntityMap_ &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el"
 <tr><td colspan="2"><h2>Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLScanner.html#af7333cd3aa3af83bbc18ee6a24e502c4">push</a> (<a class="el" href="namespacetextwolf.html#a3eb8d6733d6737825026b2e41b8c3f9c">UChar</a> ch)</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Print a character to the output token buffer.  <a href="#af7333cd3aa3af83bbc18ee6a24e502c4"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLScanner.html#af0a1250cfb8d4e9a88ab9f38c2c791fc">printnull</a> ()</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Print a null character to the output token buffer without expanding its size.  <a href="#af0a1250cfb8d4e9a88ab9f38c2c791fc"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLScanner.html#afceec08743b9db72495d7590a972481b">fallbackEntity</a> ()</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Print the characters of a sequence that was thought to form an entity but did not.  <a href="#afceec08743b9db72495d7590a972481b"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLScanner.html#add7e86ec915b05eb4623b7a27aec19f9">parseEntity</a> ()</td></tr>
@@ -124,6 +122,8 @@ EntityMap_ &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el"
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Copy constructor.  <a href="#a6f9f96e4af19d93f92b4d5602680aca7"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLScanner.html#a2336eeb5cbf02ebfc11fe5d4d2c64342">setOutputBuffer</a> (<a class="el" href="classtextwolf_1_1XMLScanner.html#a71e367f50f9de5d5d434ccb4ea1a4567">OutputBuffer</a> &amp;p_outputBuf)</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Redefine the buffer to use for output.  <a href="#a2336eeb5cbf02ebfc11fe5d4d2c64342"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLScanner.html#ad35c76218f178175f0c55d76aa5b94d8">setSource</a> (const InputIterator &amp;itr)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialize a new source iterator while keeping the state.  <a href="#ad35c76218f178175f0c55d76aa5b94d8"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">const char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLScanner.html#a60fcc8d1abb099a31761663d78a59214">getItem</a> () const </td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Get the current parsed XML element string, if it was not masked out, see <a class="el" href="classtextwolf_1_1XMLScanner.html#a3b70b3cbcacd2b017038b8a4be922bd0" title="Scan the next XML element.">nextItem(unsigned short)</a>.  <a href="#a60fcc8d1abb099a31761663d78a59214"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtextwolf_1_1XMLScanner.html#a0d4d65938492e1f03bc14891a5e24564">size_type</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLScanner.html#a1fc43c4cf96360f25b110463455b3a36">getItemSize</a> () const </td></tr>
@@ -134,8 +134,8 @@ EntityMap_ &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el"
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Get the last error.  <a href="#a8c7c2bac22e53be9f7b0cbe712a744a8"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtextwolf_1_1XMLScannerBase.html#aae4f0cdb7e16aca5fdee271fa60e1329">ElementType</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLScanner.html#a3b70b3cbcacd2b017038b8a4be922bd0">nextItem</a> (unsigned short mask=0xFFFF)</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scan the next XML element.  <a href="#a3b70b3cbcacd2b017038b8a4be922bd0"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtextwolf_1_1XMLScanner_1_1iterator.html">iterator</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLScanner.html#af56d608f6ca1b2dc0bc0a961a08817da">begin</a> ()</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Get begin iterator.  <a href="#af56d608f6ca1b2dc0bc0a961a08817da"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtextwolf_1_1XMLScanner_1_1iterator.html">iterator</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLScanner.html#a13db95b444e758cb48fff65f304b6833">begin</a> (bool doSkipToFirst=true)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Get begin iterator.  <a href="#a13db95b444e758cb48fff65f304b6833"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtextwolf_1_1XMLScanner_1_1iterator.html">iterator</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLScanner.html#a75d7fc35d804d8f66c80a00020a1f2db">end</a> ()</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Get the pointer to the end of content.  <a href="#a75d7fc35d804d8f66c80a00020a1f2db"></a><br/></td></tr>
 <tr><td colspan="2"><h2>Static Public Member Functions</h2></td></tr>
@@ -153,8 +153,8 @@ EntityMap_ &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el"
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">current state of the XML scanner  <a href="#a2eb3ca0583f1ba9f4ee5f08eef5b3172"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtextwolf_1_1XMLScannerBase.html#ae26e6510c822ee35e041ab2dab70e78b">Error</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLScanner.html#ad8829ba01b1dde1f927700d7a4e994e7">error</a></td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">last error code  <a href="#ad8829ba01b1dde1f927700d7a4e994e7"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtextwolf_1_1TextScanner.html">InputReader</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLScanner.html#a5f36d2de04ed1a8d75fdc7348918e3e2">src</a></td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">source input iterator  <a href="#a5f36d2de04ed1a8d75fdc7348918e3e2"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtextwolf_1_1TextScanner.html">InputReader</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLScanner.html#a2e96c0ad2438370f3fb0429c234f5da3">m_src</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">source input iterator  <a href="#a2e96c0ad2438370f3fb0429c234f5da3"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classtextwolf_1_1XMLScanner.html#a262d0e6353b6071c7a876518292811b8">EntityMap</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLScanner.html#ad4f0671cc6bc451e05e9a4589e46cac6">m_entityMap</a></td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">map with entities defined by the caller  <a href="#ad4f0671cc6bc451e05e9a4589e46cac6"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtextwolf_1_1XMLScanner.html#a71e367f50f9de5d5d434ccb4ea1a4567">OutputBuffer</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLScanner.html#abfd4e94ee33dfd5613dd37cd9b86e4d3">m_outputBuf</a></td></tr>
@@ -400,7 +400,7 @@ template&lt;class InputIterator, class InputCharSet_, class OutputCharSet_, clas
 </div>
 </div>
 <hr/><h2>Member Function Documentation</h2>
-<a class="anchor" id="af56d608f6ca1b2dc0bc0a961a08817da"></a><!-- doxytag: member="textwolf::XMLScanner::begin" ref="af56d608f6ca1b2dc0bc0a961a08817da" args="()" -->
+<a class="anchor" id="a13db95b444e758cb48fff65f304b6833"></a><!-- doxytag: member="textwolf::XMLScanner::begin" ref="a13db95b444e758cb48fff65f304b6833" args="(bool doSkipToFirst=true)" -->
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -409,7 +409,8 @@ template&lt;class InputIterator, class InputCharSet_, class OutputCharSet_, clas
         <tr>
           <td class="memname"><a class="el" href="classtextwolf_1_1XMLScanner_1_1iterator.html">iterator</a> <a class="el" href="classtextwolf_1_1XMLScanner.html">textwolf::XMLScanner</a>&lt; InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_, EntityMap_ &gt;::begin </td>
           <td>(</td>
-          <td class="paramname"></td>
+          <td class="paramtype">bool&nbsp;</td>
+          <td class="paramname"> <em>doSkipToFirst</em> = <code>true</code></td>
           <td>&nbsp;)&nbsp;</td>
           <td><code> [inline]</code></td>
         </tr>
@@ -419,6 +420,12 @@ template&lt;class InputIterator, class InputCharSet_, class OutputCharSet_, clas
 
 <p>Get begin iterator. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>iterator </dd></dl>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>doSkipToFirst</em>&nbsp;</td><td>true, if the iterator should skip to the first character of the input (default behaviour of STL conform iterators but maybe not exception save) </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -869,27 +876,6 @@ template&lt;class InputIterator, class InputCharSet_, class OutputCharSet_, clas
 
 </div>
 </div>
-<a class="anchor" id="af0a1250cfb8d4e9a88ab9f38c2c791fc"></a><!-- doxytag: member="textwolf::XMLScanner::printnull" ref="af0a1250cfb8d4e9a88ab9f38c2c791fc" args="()" -->
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class InputIterator, class InputCharSet_, class OutputCharSet_, class OutputBuffer_, class EntityMap_ = std::map&lt;const char*,UChar&gt;&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="classtextwolf_1_1XMLScanner.html">textwolf::XMLScanner</a>&lt; InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_, EntityMap_ &gt;::printnull </td>
-          <td>(</td>
-          <td class="paramname"></td>
-          <td>&nbsp;)&nbsp;</td>
-          <td><code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Print a null character to the output token buffer without expanding its size. </p>
-
-</div>
-</div>
 <a class="anchor" id="af7333cd3aa3af83bbc18ee6a24e502c4"></a><!-- doxytag: member="textwolf::XMLScanner::push" ref="af7333cd3aa3af83bbc18ee6a24e502c4" args="(UChar ch)" -->
 <div class="memitem">
 <div class="memproto">
@@ -1004,6 +990,34 @@ template&lt;class InputIterator, class InputCharSet_, class OutputCharSet_, clas
 
 </div>
 </div>
+<a class="anchor" id="ad35c76218f178175f0c55d76aa5b94d8"></a><!-- doxytag: member="textwolf::XMLScanner::setSource" ref="ad35c76218f178175f0c55d76aa5b94d8" args="(const InputIterator &amp;itr)" -->
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class InputIterator, class InputCharSet_, class OutputCharSet_, class OutputBuffer_, class EntityMap_ = std::map&lt;const char*,UChar&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classtextwolf_1_1XMLScanner.html">textwolf::XMLScanner</a>&lt; InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_, EntityMap_ &gt;::setSource </td>
+          <td>(</td>
+          <td class="paramtype">const InputIterator &amp;&nbsp;</td>
+          <td class="paramname"> <em>itr</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Initialize a new source iterator while keeping the state. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>itr</em>&nbsp;</td><td>source iterator </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a class="anchor" id="ac5a944f70a70d271f54800116d5068a1"></a><!-- doxytag: member="textwolf::XMLScanner::skipToken" ref="ac5a944f70a70d271f54800116d5068a1" args="(const IsTokenCharMap &amp;isTok)" -->
 <div class="memitem">
 <div class="memproto">
@@ -1085,14 +1099,14 @@ template&lt;class InputIterator, class InputCharSet_, class OutputCharSet_, clas
 
 </div>
 </div>
-<a class="anchor" id="a5f36d2de04ed1a8d75fdc7348918e3e2"></a><!-- doxytag: member="textwolf::XMLScanner::src" ref="a5f36d2de04ed1a8d75fdc7348918e3e2" args="" -->
+<a class="anchor" id="a2e96c0ad2438370f3fb0429c234f5da3"></a><!-- doxytag: member="textwolf::XMLScanner::m_src" ref="a2e96c0ad2438370f3fb0429c234f5da3" args="" -->
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class InputIterator, class InputCharSet_, class OutputCharSet_, class OutputBuffer_, class EntityMap_ = std::map&lt;const char*,UChar&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classtextwolf_1_1TextScanner.html">InputReader</a> <a class="el" href="classtextwolf_1_1XMLScanner.html">textwolf::XMLScanner</a>&lt; InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_, EntityMap_ &gt;::<a class="el" href="classtextwolf_1_1XMLScanner.html#a5f36d2de04ed1a8d75fdc7348918e3e2">src</a><code> [private]</code></td>
+          <td class="memname"><a class="el" href="classtextwolf_1_1TextScanner.html">InputReader</a> <a class="el" href="classtextwolf_1_1XMLScanner.html">textwolf::XMLScanner</a>&lt; InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_, EntityMap_ &gt;::<a class="el" href="classtextwolf_1_1XMLScanner.html#a2e96c0ad2438370f3fb0429c234f5da3">m_src</a><code> [private]</code></td>
         </tr>
       </table>
 </div>
@@ -1154,7 +1168,7 @@ template&lt;class InputIterator, class InputCharSet_, class OutputCharSet_, clas
 </iframe>
 </div>
 
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Thu Jun 16 19:39:07 2011 for textwolf by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Sun Aug 14 23:21:34 2011 for textwolf by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

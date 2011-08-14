@@ -1,4 +1,4 @@
-.TH "textwolf/include/textwolf.hpp" 3 "10 Jun 2011" "textwolf" \" -*- nroff -*-
+.TH "textwolf/include/textwolf.hpp" 3 "14 Aug 2011" "textwolf" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -20,144 +20,209 @@ textwolf/include/textwolf.hpp \-
 .br
 \fC#include <limits>\fP
 .br
-\fC#include <boost/cstdint.hpp>\fP
+\fC#include <stdint.h>\fP
 .br
 
 .SS "Classes"
 
 .in +1c
 .ti -1c
-.RI "struct \fBtextwolf::throws_exception\fP"
+.RI "class \fBtextwolf::throws_exception\fP"
 .br
+.RI "\fIBase class for structures that can throw exceptions for non recoverable errors. \fP"
 .ti -1c
-.RI "struct \fBtextwolf::exception\fP"
+.RI "class \fBtextwolf::exception\fP"
 .br
+.RI "\fItextwolf exception class \fP"
+.ti -1c
+.RI "class \fBtextwolf::StaticBuffer\fP"
+.br
+.RI "\fISimple back insertion sequence for storing the outputs of textwolf in a contant size buffer. \fP"
 .ti -1c
 .RI "class \fBtextwolf::CharMap< RESTYPE, nullvalue_, RANGE >\fP"
 .br
+.RI "\fICharacter map for fast typing of a character byte. \fP"
 .ti -1c
-.RI "struct \fBtextwolf::charset::IsoLatin1\fP"
+.RI "struct \fBtextwolf::charset::Encoder\fP"
 .br
 .ti -1c
-.RI "struct \fBtextwolf::charset::ByteOrder\fP"
+.RI "class \fBtextwolf::charset::IsoLatin1\fP"
 .br
+.RI "\fICharacter set IsoLatin-1. \fP"
 .ti -1c
-.RI "struct \fBtextwolf::charset::UCS2< encoding >\fP"
+.RI "class \fBtextwolf::charset::ByteOrder\fP"
 .br
+.RI "\fIOrder of bytes for wide char character sets. \fP"
 .ti -1c
-.RI "struct \fBtextwolf::charset::UCS4< encoding >\fP"
+.RI "class \fBtextwolf::charset::UCS2< encoding >\fP"
 .br
+.RI "\fICharacter set UCS-2 (little/big endian). \fP"
 .ti -1c
-.RI "struct \fBtextwolf::charset::UCS2LE\fP"
+.RI "class \fBtextwolf::charset::UCS4< encoding >\fP"
 .br
+.RI "\fICharacter set UCS-4 (little/big endian). \fP"
 .ti -1c
-.RI "struct \fBtextwolf::charset::UCS2BE\fP"
+.RI "class \fBtextwolf::charset::UCS2LE\fP"
 .br
+.RI "\fIUCS-2 little endian character set encoding. \fP"
+.ti -1c
+.RI "class \fBtextwolf::charset::UCS2BE\fP"
+.br
+.RI "\fIUCS-2 big endian character set encoding. \fP"
 .ti -1c
 .RI "struct \fBtextwolf::charset::UCS4LE\fP"
 .br
 .ti -1c
-.RI "struct \fBtextwolf::charset::UCS4BE\fP"
+.RI "class \fBtextwolf::charset::UCS4BE\fP"
 .br
+.RI "\fIUCS-4 little endian character set encoding. \fP"
 .ti -1c
-.RI "struct \fBtextwolf::charset::UTF8\fP"
+.RI "class \fBtextwolf::charset::UTF8\fP"
 .br
+.RI "\fIcharacter set encoding UTF-8 \fP"
 .ti -1c
 .RI "struct \fBtextwolf::charset::UTF8::CharLengthTab\fP"
 .br
 .ti -1c
-.RI "struct \fBtextwolf::ControlCharacterM\fP"
+.RI "class \fBtextwolf::charset::UTF16< encoding >\fP"
 .br
+.RI "\fICharacter set \fBUTF16\fP (little/big endian). \fP"
+.ti -1c
+.RI "class \fBtextwolf::charset::UTF16LE\fP"
+.br
+.RI "\fIUTF-16 little endian character set encoding. \fP"
+.ti -1c
+.RI "class \fBtextwolf::charset::UTF16BE\fP"
+.br
+.RI "\fIUTF-16 big endian character set encoding. \fP"
+.ti -1c
+.RI "class \fBtextwolf::ControlCharacterM\fP"
+.br
+.RI "\fIMap of the enumeration of control characters to their names for debug messages. \fP"
 .ti -1c
 .RI "class \fBtextwolf::TextScanner< Iterator, CharSet >\fP"
 .br
+.RI "\fIReader for scanning the input character by character. \fP"
 .ti -1c
-.RI "struct \fBtextwolf::TextScanner< Iterator, CharSet >::ControlCharMap\fP"
+.RI "class \fBtextwolf::TextScanner< Iterator, CharSet >::ControlCharMap\fP"
 .br
+.RI "\fIMap of ASCII characters to control character identifiers used in the XML scanner automaton. \fP"
 .ti -1c
 .RI "class \fBtextwolf::ScannerStatemachine\fP"
 .br
+.RI "\fIClass to build up the XML element scanner state machine in a descriptive way. \fP"
 .ti -1c
-.RI "struct \fBtextwolf::ScannerStatemachine::Element\fP"
+.RI "class \fBtextwolf::ScannerStatemachine::Element\fP"
 .br
+.RI "\fIOne state in the state machine. \fP"
+.ti -1c
+.RI "class \fBtextwolf::ScannerStatemachine::Element::Action\fP"
+.br
+.RI "\fIDefinition of action fired by the state machine. \fP"
 .ti -1c
 .RI "class \fBtextwolf::XMLScannerBase\fP"
 .br
+.RI "\fIXML scanner base class for things common for all XML scanners. \fP"
 .ti -1c
-.RI "struct \fBtextwolf::XMLScannerBase::Statemachine\fP"
+.RI "class \fBtextwolf::XMLScannerBase::Statemachine\fP"
 .br
+.RI "\fIXML scanner state machine implementation. \fP"
 .ti -1c
-.RI "class \fBtextwolf::XMLScanner< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >\fP"
+.RI "class \fBtextwolf::XMLScannerBase::IsTagCharMap\fP"
 .br
+.RI "\fIDefines the set of tag characters. \fP"
 .ti -1c
-.RI "struct \fBtextwolf::XMLScanner< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::TokState\fP"
+.RI "class \fBtextwolf::XMLScannerBase::IsContentCharMap\fP"
 .br
+.RI "\fIDefines the set of content token characters. \fP"
 .ti -1c
-.RI "struct \fBtextwolf::XMLScanner< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::IsTagCharMap\fP"
+.RI "class \fBtextwolf::XMLScannerBase::IsSQStringCharMap\fP"
 .br
+.RI "\fIDefines the set characters belonging to a single quoted string. \fP"
 .ti -1c
-.RI "struct \fBtextwolf::XMLScanner< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::IsContentCharMap\fP"
+.RI "class \fBtextwolf::XMLScannerBase::IsDQStringCharMap\fP"
 .br
+.RI "\fIDefines the set characters belonging to a double quoted string. \fP"
 .ti -1c
-.RI "struct \fBtextwolf::XMLScanner< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::IsSQStringCharMap\fP"
+.RI "class \fBtextwolf::XMLScanner< InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_, EntityMap_ >\fP"
 .br
+.RI "\fIXML scanner template that adds the functionality to the statemachine base definition. \fP"
 .ti -1c
-.RI "struct \fBtextwolf::XMLScanner< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::IsDQStringCharMap\fP"
+.RI "class \fBtextwolf::XMLScanner< InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_, EntityMap_ >::TokState\fP"
 .br
+.RI "\fIToken state variables. \fP"
 .ti -1c
-.RI "struct \fBtextwolf::XMLScanner< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::End\fP"
+.RI "class \fBtextwolf::XMLScanner< InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_, EntityMap_ >::End\fP"
 .br
+.RI "\fIend of input tag \fP"
 .ti -1c
-.RI "class \fBtextwolf::XMLScanner< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::iterator\fP"
+.RI "class \fBtextwolf::XMLScanner< InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_, EntityMap_ >::iterator\fP"
 .br
+.RI "\fIinput iterator for iterating on the output of an XML scanner \fP"
 .ti -1c
-.RI "class \fBtextwolf::XMLScanner< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::iterator::Element\fP"
+.RI "class \fBtextwolf::XMLScanner< InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_, EntityMap_ >::iterator::Element\fP"
 .br
+.RI "\fIIterator element visited. \fP"
 .ti -1c
 .RI "class \fBtextwolf::XMLPathSelectAutomaton< CharSet_ >\fP"
 .br
+.RI "\fIAutomaton to define XML path expressions and assign types (int values) to them. \fP"
 .ti -1c
-.RI "struct \fBtextwolf::XMLPathSelectAutomaton< CharSet_ >::Mask\fP"
+.RI "class \fBtextwolf::XMLPathSelectAutomaton< CharSet_ >::Mask\fP"
 .br
+.RI "\fI\fBMask\fP to query for element types, if they match or not. \fP"
 .ti -1c
-.RI "struct \fBtextwolf::XMLPathSelectAutomaton< CharSet_ >::Core\fP"
+.RI "class \fBtextwolf::XMLPathSelectAutomaton< CharSet_ >::Core\fP"
 .br
+.RI "\fI\fBCore\fP of an automaton state definition that is used during XML processing. \fP"
 .ti -1c
-.RI "struct \fBtextwolf::XMLPathSelectAutomaton< CharSet_ >::State\fP"
+.RI "class \fBtextwolf::XMLPathSelectAutomaton< CharSet_ >::State\fP"
 .br
+.RI "\fI\fBState\fP of an automaton in its definition. \fP"
 .ti -1c
-.RI "struct \fBtextwolf::XMLPathSelectAutomaton< CharSet_ >::Token\fP"
+.RI "class \fBtextwolf::XMLPathSelectAutomaton< CharSet_ >::Token\fP"
 .br
+.RI "\fIActive or passive but still valid token of the XML processing (this is a trigger waiting to match). \fP"
 .ti -1c
-.RI "struct \fBtextwolf::XMLPathSelectAutomaton< CharSet_ >::Scope\fP"
+.RI "class \fBtextwolf::XMLPathSelectAutomaton< CharSet_ >::Scope\fP"
 .br
+.RI "\fITag scope definition. \fP"
 .ti -1c
-.RI "struct \fBtextwolf::XMLPathSelectAutomaton< CharSet_ >::Scope::Range\fP"
+.RI "class \fBtextwolf::XMLPathSelectAutomaton< CharSet_ >::Scope::Range\fP"
 .br
+.RI "\fI\fBRange\fP on the token stack with all tokens that belong to this scope. \fP"
 .ti -1c
-.RI "struct \fBtextwolf::XMLPathSelectAutomaton< CharSet_ >::PathElement\fP"
+.RI "class \fBtextwolf::XMLPathSelectAutomaton< CharSet_ >::PathElement\fP"
 .br
+.RI "\fIDefines one node in the XML Path element tree in the construction phase. \fP"
 .ti -1c
-.RI "struct \fBtextwolf::XMLPathSelectAutomaton< CharSet_ >::PathElement::Range\fP"
+.RI "class \fBtextwolf::XMLPathSelectAutomaton< CharSet_ >::PathElement::Range\fP"
 .br
+.RI "\fIElement counting range defining what are indices of valid elements. \fP"
 .ti -1c
-.RI "class \fBtextwolf::XMLPathSelect< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >\fP"
+.RI "class \fBtextwolf::XMLPathSelect< InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_, EntityMap_ >\fP"
 .br
+.RI "\fIXML path select template. \fP"
 .ti -1c
-.RI "class \fBtextwolf::XMLPathSelect< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::Array< Element >\fP"
+.RI "class \fBtextwolf::XMLPathSelect< InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_, EntityMap_ >::Array< Element >\fP"
 .br
+.RI "\fIstatic array of POD types. I decided to implement it on my own though using boost::array would maybe be better. \fP"
 .ti -1c
-.RI "struct \fBtextwolf::XMLPathSelect< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::Context\fP"
+.RI "class \fBtextwolf::XMLPathSelect< InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_, EntityMap_ >::Context\fP"
 .br
+.RI "\fI\fBState\fP variables without stacks of the automaton. \fP"
 .ti -1c
-.RI "struct \fBtextwolf::XMLPathSelect< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::End\fP"
+.RI "class \fBtextwolf::XMLPathSelect< InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_, EntityMap_ >::End\fP"
 .br
+.RI "\fIend of input iterator for the output of this \fBXMLScanner\fP \fP"
 .ti -1c
-.RI "class \fBtextwolf::XMLPathSelect< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::iterator\fP"
+.RI "class \fBtextwolf::XMLPathSelect< InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_, EntityMap_ >::iterator\fP"
 .br
+.RI "\fIinput iterator for the output of this \fBXMLScanner\fP \fP"
 .ti -1c
-.RI "class \fBtextwolf::XMLPathSelect< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::iterator::Element\fP"
+.RI "class \fBtextwolf::XMLPathSelect< InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_, EntityMap_ >::iterator::Element\fP"
 .br
+.RI "\fIvisited current element data of the iterator \fP"
 .in -1c
 .SS "Namespaces"
 
@@ -165,6 +230,15 @@ textwolf/include/textwolf.hpp \-
 .ti -1c
 .RI "namespace \fBtextwolf\fP"
 .br
+.PP
+
+.RI "\fIToplevel namespace of the library. \fP"
+.ti -1c
+.RI "namespace \fBcharset\fP"
+.br
+.PP
+
+.RI "\fIPredefined character set encodings. \fP"
 .ti -1c
 .RI "namespace \fBtextwolf::charset\fP"
 .br
@@ -173,8 +247,9 @@ textwolf/include/textwolf.hpp \-
 
 .in +1c
 .ti -1c
-.RI "typedef boost::uint32_t \fBtextwolf::UChar\fP"
+.RI "typedef uint32_t \fBtextwolf::UChar\fP"
 .br
+.RI "\fIUnicode character type. \fP"
 .in -1c
 .SS "Enumerations"
 
@@ -182,6 +257,7 @@ textwolf/include/textwolf.hpp \-
 .ti -1c
 .RI "enum \fBtextwolf::ControlCharacter\fP { \fBtextwolf::Undef\fP = 0, \fBtextwolf::EndOfText\fP, \fBtextwolf::EndOfLine\fP, \fBtextwolf::Cntrl\fP, \fBtextwolf::Space\fP, \fBtextwolf::Amp\fP, \fBtextwolf::Lt\fP, \fBtextwolf::Equal\fP, \fBtextwolf::Gt\fP, \fBtextwolf::Slash\fP, \fBtextwolf::Exclam\fP, \fBtextwolf::Questm\fP, \fBtextwolf::Sq\fP, \fBtextwolf::Dq\fP, \fBtextwolf::Osb\fP, \fBtextwolf::Csb\fP, \fBtextwolf::Any\fP, \fBtextwolf::NofControlCharacter\fP = 17 }"
 .br
+.RI "\fIEnumeration of control characters needed as events for XML scanner statemachine. \fP"
 .in -1c
 .SH "Author"
 .PP 

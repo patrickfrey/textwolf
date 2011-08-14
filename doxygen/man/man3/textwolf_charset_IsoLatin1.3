@@ -1,8 +1,11 @@
-.TH "textwolf::charset::IsoLatin1" 3 "10 Jun 2011" "textwolf" \" -*- nroff -*-
+.TH "textwolf::charset::IsoLatin1" 3 "14 Aug 2011" "textwolf" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
 textwolf::charset::IsoLatin1 \- 
+.PP
+Character set IsoLatin-1.  
+
 .SH SYNOPSIS
 .br
 .PP
@@ -30,13 +33,15 @@ textwolf::charset::IsoLatin1 \-
 .ti -1c
 .RI "static \fBUChar\fP \fBvalue\fP (const char *buf)"
 .br
+.RI "\fIparses a unicode character from its serialization in a buffer \fP"
 .ti -1c
-.RI "static unsigned int \fBprint\fP (\fBUChar\fP chr, char *buf, unsigned int bufsize)"
+.RI "template<class Buffer_ > static void \fBprint\fP (\fBUChar\fP chr, Buffer_ &buf)"
 .br
+.RI "\fIprints a unicode character to a buffer \fP"
 .in -1c
 .SH "Detailed Description"
 .PP 
-Default character set definitions: 1) Iso-Latin-1 2) \fBUCS2\fP (little and big endian, not very efficient implementation) 3) \fBUCS4\fP (little and big endian, not very efficient implementation) 4) UTF-8 (see http://de.wikipedia.org/wiki/UTF-8 for algorithms) 
+Character set IsoLatin-1. 
 .SH "Member Enumeration Documentation"
 .PP 
 .SS "anonymous enum"
@@ -54,9 +59,35 @@ Default character set definitions: 1) Iso-Latin-1 2) \fBUCS2\fP (little and big 
 .PP 
 .SS "static char textwolf::charset::IsoLatin1::achar (const char * buf)\fC [inline, static]\fP"
 .SS "static unsigned int textwolf::charset::IsoLatin1::asize ()\fC [inline, static]\fP"
-.SS "static unsigned int textwolf::charset::IsoLatin1::print (\fBUChar\fP chr, char * buf, unsigned int bufsize)\fC [inline, static]\fP"
+.SS "template<class Buffer_ > static void textwolf::charset::IsoLatin1::print (\fBUChar\fP chr, Buffer_ & buf)\fC [inline, static]\fP"
+.PP
+prints a unicode character to a buffer \fBTemplate Parameters:\fP
+.RS 4
+\fIBuffer_\fP STL back insertion sequence 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIchr\fP character to print 
+.br
+\fIbuf\fP buffer to print to 
+.RE
+.PP
+
 .SS "static unsigned int textwolf::charset::IsoLatin1::size (const char *)\fC [inline, static]\fP"
 .SS "static \fBUChar\fP textwolf::charset::IsoLatin1::value (const char * buf)\fC [inline, static]\fP"
+.PP
+parses a unicode character from its serialization in a buffer \fBParameters:\fP
+.RS 4
+\fIbuf\fP buffer to parse the character from 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the value of the unicode character 
+.RE
+.PP
+
 
 .SH "Author"
 .PP 

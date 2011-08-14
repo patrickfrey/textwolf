@@ -1,8 +1,11 @@
-.TH "textwolf::charset::ByteOrder" 3 "10 Jun 2011" "textwolf" \" -*- nroff -*-
+.TH "textwolf::charset::ByteOrder" 3 "14 Aug 2011" "textwolf" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
 textwolf::charset::ByteOrder \- 
+.PP
+Order of bytes for wide char character sets.  
+
 .SH SYNOPSIS
 .br
 .PP
@@ -12,9 +15,12 @@ textwolf::charset::ByteOrder \-
 
 .in +1c
 .ti -1c
-.RI "enum { \fBLE\fP = 1, \fBBE\fP = 2 }"
+.RI "enum { \fBLE\fP = 0, \fBBE\fP = 1 }"
 .br
 .in -1c
+.SH "Detailed Description"
+.PP 
+Order of bytes for wide char character sets. 
 .SH "Member Enumeration Documentation"
 .PP 
 .SS "anonymous enum"
@@ -23,9 +29,10 @@ textwolf::charset::ByteOrder \-
 .in +1c
 .TP
 \fB\fILE \fP\fP
+little endian 
 .TP
 \fB\fIBE \fP\fP
-
+big endian 
 
 
 .SH "Author"

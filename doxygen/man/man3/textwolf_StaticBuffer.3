@@ -1,0 +1,208 @@
+.TH "textwolf::StaticBuffer" 3 "14 Aug 2011" "textwolf" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+textwolf::StaticBuffer \- 
+.PP
+Simple back insertion sequence for storing the outputs of textwolf in a contant size buffer.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <textwolf.hpp>\fP
+.PP
+Inherits \fBtextwolf::throws_exception\fP.
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "typedef unsigned int \fBsize_type\fP"
+.br
+.RI "\fIsize type of this buffer vector \fP"
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBStaticBuffer\fP (unsigned int n)"
+.br
+.RI "\fIConstructor. \fP"
+.ti -1c
+.RI "\fBStaticBuffer\fP (char *p, unsigned int n, unsigned int i=0)"
+.br
+.RI "\fIConstructor. \fP"
+.ti -1c
+.RI "\fB~StaticBuffer\fP ()"
+.br
+.RI "\fIDestructor. \fP"
+.ti -1c
+.RI "void \fBclear\fP ()"
+.br
+.RI "\fIClear the buffer content. \fP"
+.ti -1c
+.RI "void \fBpush_back\fP (char ch)"
+.br
+.RI "\fIAppend one character. \fP"
+.ti -1c
+.RI "\fBsize_type\fP \fBsize\fP () const "
+.br
+.RI "\fIReturn the number of characters in the buffer. \fP"
+.ti -1c
+.RI "const char * \fBptr\fP () const "
+.br
+.RI "\fIReturn the buffer content as 0-terminated string. \fP"
+.ti -1c
+.RI "void \fBresize\fP (\fBsize_type\fP n, char c=0)"
+.br
+.RI "\fIShrinks the size of the buffer or expands it with c. \fP"
+.ti -1c
+.RI "char \fBoperator[]\fP (unsigned int ii) const "
+.br
+.RI "\fIrandom access of element \fP"
+.ti -1c
+.RI "char & \fBat\fP (unsigned int ii) const "
+.br
+.RI "\fIrandom access of element reference \fP"
+.ti -1c
+.RI "bool \fBoverflow\fP () const "
+.br
+.RI "\fIcheck for array bounds write \fP"
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBsize_type\fP \fBm_pos\fP"
+.br
+.RI "\fIcurrent cursor position of the buffer (number of added characters) \fP"
+.ti -1c
+.RI "\fBsize_type\fP \fBm_size\fP"
+.br
+.RI "\fIallocation size of the buffer in bytes \fP"
+.ti -1c
+.RI "char * \fBm_ar\fP"
+.br
+.RI "\fIbuffer content \fP"
+.ti -1c
+.RI "bool \fBm_allocated\fP"
+.br
+.RI "\fItrue, if the buffer is allocated by this class and not passed by constructor \fP"
+.ti -1c
+.RI "bool \fBm_overflow\fP"
+.br
+.RI "\fItrue, if an array bounds write would have happened with push_back \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Simple back insertion sequence for storing the outputs of textwolf in a contant size buffer. 
+.SH "Member Typedef Documentation"
+.PP 
+.SS "typedef unsigned int \fBtextwolf::StaticBuffer::size_type\fP"
+.PP
+size type of this buffer vector 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "textwolf::StaticBuffer::StaticBuffer (unsigned int n)\fC [inline, explicit]\fP"
+.PP
+Constructor. 
+.SS "textwolf::StaticBuffer::StaticBuffer (char * p, unsigned int n, unsigned int i = \fC0\fP)\fC [inline]\fP"
+.PP
+Constructor. 
+.SS "textwolf::StaticBuffer::~StaticBuffer ()\fC [inline]\fP"
+.PP
+Destructor. 
+.SH "Member Function Documentation"
+.PP 
+.SS "char& textwolf::StaticBuffer::at (unsigned int ii) const\fC [inline]\fP"
+.PP
+random access of element reference \fBParameters:\fP
+.RS 4
+\fIii\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the reference to the character at this position 
+.RE
+.PP
+
+.SS "void textwolf::StaticBuffer::clear ()\fC [inline]\fP"
+.PP
+Clear the buffer content. 
+.SS "char textwolf::StaticBuffer::operator[] (unsigned int ii) const\fC [inline]\fP"
+.PP
+random access of element \fBParameters:\fP
+.RS 4
+\fIii\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the character at this position 
+.RE
+.PP
+
+.SS "bool textwolf::StaticBuffer::overflow () const\fC [inline]\fP"
+.PP
+check for array bounds write \fBReturns:\fP
+.RS 4
+true if a push_back would have caused an array bounds write 
+.RE
+.PP
+
+.SS "const char* textwolf::StaticBuffer::ptr () const\fC [inline]\fP"
+.PP
+Return the buffer content as 0-terminated string. \fBReturns:\fP
+.RS 4
+the C-string 
+.RE
+.PP
+
+.SS "void textwolf::StaticBuffer::push_back (char ch)\fC [inline]\fP"
+.PP
+Append one character. \fBParameters:\fP
+.RS 4
+\fIch\fP the character to append 
+.RE
+.PP
+
+.SS "void textwolf::StaticBuffer::resize (\fBsize_type\fP n, char c = \fC0\fP)\fC [inline]\fP"
+.PP
+Shrinks the size of the buffer or expands it with c. \fBParameters:\fP
+.RS 4
+\fIn\fP new size of the buffer 
+.br
+\fIc\fP fill character if n bigger than the current fill size 
+.RE
+.PP
+
+.SS "\fBsize_type\fP textwolf::StaticBuffer::size () const\fC [inline]\fP"
+.PP
+Return the number of characters in the buffer. \fBReturns:\fP
+.RS 4
+the number of characters (bytes) 
+.RE
+.PP
+
+.SH "Member Data Documentation"
+.PP 
+.SS "bool \fBtextwolf::StaticBuffer::m_allocated\fP\fC [private]\fP"
+.PP
+true, if the buffer is allocated by this class and not passed by constructor 
+.SS "char* \fBtextwolf::StaticBuffer::m_ar\fP\fC [private]\fP"
+.PP
+buffer content 
+.SS "bool \fBtextwolf::StaticBuffer::m_overflow\fP\fC [private]\fP"
+.PP
+true, if an array bounds write would have happened with push_back 
+.SS "\fBsize_type\fP \fBtextwolf::StaticBuffer::m_pos\fP\fC [private]\fP"
+.PP
+current cursor position of the buffer (number of added characters) 
+.SS "\fBsize_type\fP \fBtextwolf::StaticBuffer::m_size\fP\fC [private]\fP"
+.PP
+allocation size of the buffer in bytes 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for textwolf from the source code.

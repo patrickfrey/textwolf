@@ -1,8 +1,11 @@
-.TH "textwolf::charset::UCS2" 3 "10 Jun 2011" "textwolf" \" -*- nroff -*-
+.TH "textwolf::charset::UCS2" 3 "14 Aug 2011" "textwolf" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
 textwolf::charset::UCS2 \- 
+.PP
+Character set UCS-2 (little/big endian).  
+
 .SH SYNOPSIS
 .br
 .PP
@@ -12,7 +15,7 @@ textwolf::charset::UCS2 \-
 
 .in +1c
 .ti -1c
-.RI "enum { \fBLSB\fP = (encoding==ByteOrder::BE), \fBMSB\fP = (encoding==ByteOrder::LE), \fBHeadSize\fP = 2, \fBSize\fP = 2, \fBMaxChar\fP = 0xFFFF }"
+.RI "enum { \fBLSB\fP = (encoding==ByteOrder::BE), \fBMSB\fP = (encoding==ByteOrder::LE), \fBPrint1shift\fP = (encoding==ByteOrder::BE)?8:0, \fBPrint2shift\fP = (encoding==ByteOrder::LE)?8:0, \fBHeadSize\fP = 2, \fBSize\fP = 2, \fBMaxChar\fP = 0xFFFF }"
 .br
 .in -1c
 .SS "Static Public Member Functions"
@@ -30,23 +33,47 @@ textwolf::charset::UCS2 \-
 .ti -1c
 .RI "static \fBUChar\fP \fBvalue\fP (const char *buf)"
 .br
+.RI "\fIparses a unicode character from its serialization in a buffer \fP"
 .ti -1c
-.RI "static unsigned int \fBprint\fP (\fBUChar\fP chr, char *buf, unsigned int bufsize)"
+.RI "template<class Buffer_ > static void \fBprint\fP (\fBUChar\fP chr, Buffer_ &buf)"
 .br
+.RI "\fIprints a unicode character to a buffer \fP"
 .in -1c
+.SH "Detailed Description"
+.PP 
 
-.SS "template<int encoding> struct textwolf::charset::UCS2< encoding >"
+.SS "template<int encoding = ByteOrder::BE> class textwolf::charset::UCS2< encoding >"
+Character set UCS-2 (little/big endian). 
+
+\fBTemplate Parameters:\fP
+.RS 4
+\fIencoding\fP \fBByteOrder::LE\fP or \fBByteOrder::BE\fP 
+.RE
+.PP
+\fBRemarks:\fP
+.RS 4
+UCS-2 encoding is defined to be big-endian only. Although the similar designations UCS-2BE and UCS-2LE imitate the UTF-16 labels, they do not represent official encoding schemes. (http://en.wikipedia.org/wiki/UTF-16/UCS-2) therefore we take encoding=ByteOrderBE as default. 
+.RE
+.PP
 
 .SH "Member Enumeration Documentation"
 .PP 
-.SS "template<int encoding> anonymous enum"
+.SS "template<int encoding = ByteOrder::BE> anonymous enum"
 .PP
 \fBEnumerator: \fP
 .in +1c
 .TP
 \fB\fILSB \fP\fP
+least significant byte index (0 or 1) 
 .TP
 \fB\fIMSB \fP\fP
+most significant byte index (0 or 1) 
+.TP
+\fB\fIPrint1shift \fP\fP
+value to shift with to get the 1st character to print 
+.TP
+\fB\fIPrint2shift \fP\fP
+value to shift with to get the 2nd character to print 
 .TP
 \fB\fIHeadSize \fP\fP
 .TP
@@ -56,11 +83,37 @@ textwolf::charset::UCS2 \-
 
 .SH "Member Function Documentation"
 .PP 
-.SS "template<int encoding> static char \fBtextwolf::charset::UCS2\fP< encoding >::achar (const char * buf)\fC [inline, static]\fP"
-.SS "template<int encoding> static unsigned int \fBtextwolf::charset::UCS2\fP< encoding >::asize ()\fC [inline, static]\fP"
-.SS "template<int encoding> static unsigned int \fBtextwolf::charset::UCS2\fP< encoding >::print (\fBUChar\fP chr, char * buf, unsigned int bufsize)\fC [inline, static]\fP"
-.SS "template<int encoding> static unsigned int \fBtextwolf::charset::UCS2\fP< encoding >::size (const char *)\fC [inline, static]\fP"
-.SS "template<int encoding> static \fBUChar\fP \fBtextwolf::charset::UCS2\fP< encoding >::value (const char * buf)\fC [inline, static]\fP"
+.SS "template<int encoding = ByteOrder::BE> static char \fBtextwolf::charset::UCS2\fP< encoding >::achar (const char * buf)\fC [inline, static]\fP"
+.SS "template<int encoding = ByteOrder::BE> static unsigned int \fBtextwolf::charset::UCS2\fP< encoding >::asize ()\fC [inline, static]\fP"
+.SS "template<int encoding = ByteOrder::BE> template<class Buffer_ > static void \fBtextwolf::charset::UCS2\fP< encoding >::print (\fBUChar\fP chr, Buffer_ & buf)\fC [inline, static]\fP"
+.PP
+prints a unicode character to a buffer \fBTemplate Parameters:\fP
+.RS 4
+\fIBuffer_\fP STL back insertion sequence 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIchr\fP character to print 
+.br
+\fIbuf\fP buffer to print to 
+.RE
+.PP
+
+.SS "template<int encoding = ByteOrder::BE> static unsigned int \fBtextwolf::charset::UCS2\fP< encoding >::size (const char *)\fC [inline, static]\fP"
+.SS "template<int encoding = ByteOrder::BE> static \fBUChar\fP \fBtextwolf::charset::UCS2\fP< encoding >::value (const char * buf)\fC [inline, static]\fP"
+.PP
+parses a unicode character from its serialization in a buffer \fBParameters:\fP
+.RS 4
+\fIbuf\fP buffer to parse the character from 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the value of the unicode character 
+.RE
+.PP
+
 
 .SH "Author"
 .PP 

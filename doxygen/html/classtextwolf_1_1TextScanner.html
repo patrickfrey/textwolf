@@ -64,10 +64,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <tr><td class="memItemLeft" align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1TextScanner_1_1ControlCharMap.html">ControlCharMap</a></td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Map of ASCII characters to control character identifiers used in the XML scanner automaton.  <a href="structtextwolf_1_1TextScanner_1_1ControlCharMap.html#_details">More...</a><br/></td></tr>
 <tr><td colspan="2"><h2>Public Member Functions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1TextScanner.html#a29880bc9516f3c1ed8c4316532ea7919">TextScanner</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Constructor.  <a href="#a29880bc9516f3c1ed8c4316532ea7919"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1TextScanner.html#a81f6b27b76253b700d00a630298ff1d3">TextScanner</a> (const Iterator &amp;p_iterator)</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Constructor.  <a href="#a81f6b27b76253b700d00a630298ff1d3"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1TextScanner.html#ab253b7395490d044f9befb8545851d40">TextScanner</a> (const <a class="el" href="classtextwolf_1_1TextScanner.html">TextScanner</a> &amp;orig)</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Copy constructor.  <a href="#ab253b7395490d044f9befb8545851d40"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1TextScanner.html#a1383f3d13f3f87efda9be768ded1c487">setSource</a> (const Iterator &amp;p_iterator)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialize a new source iterator while keeping the state.  <a href="#a1383f3d13f3f87efda9be768ded1c487"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacetextwolf.html#a3eb8d6733d6737825026b2e41b8c3f9c">UChar</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1TextScanner.html#a783b195912d79ed958f7f9b0660f156a">chr</a> ()</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Get the unicode character of the current character.  <a href="#a783b195912d79ed958f7f9b0660f156a"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1TextScanner.html#ad8d2e73575e69cf8b86034da6db0fcc4">getcur</a> ()</td></tr>
@@ -78,6 +81,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Get the ASCII character representation of the current character.  <a href="#a1fbb13d8feb41d1340cdbf2118a8183c"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtextwolf_1_1TextScanner.html">TextScanner</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1TextScanner.html#ac0b6d4734280a45a14c3d93d068b248f">skip</a> ()</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Skip to the next character of the source.  <a href="#ac0b6d4734280a45a14c3d93d068b248f"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacetextwolf.html#a3eb8d6733d6737825026b2e41b8c3f9c">UChar</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1TextScanner.html#a2e65d1f0a4ab1ca3264ca10aa6ee04c6">operator*</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">see <a class="el" href="classtextwolf_1_1TextScanner.html#a783b195912d79ed958f7f9b0660f156a" title="Get the unicode character of the current character.">TextScanner::chr()</a>  <a href="#a2e65d1f0a4ab1ca3264ca10aa6ee04c6"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtextwolf_1_1TextScanner.html">TextScanner</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1TextScanner.html#abab7abef27e2745c4464a793b518d896">operator++</a> ()</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Preincrement: Skip to the next character of the source.  <a href="#abab7abef27e2745c4464a793b518d896"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtextwolf_1_1TextScanner.html">TextScanner</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1TextScanner.html#ab18e833d8e155673e5e096b1ccbe0128">operator++</a> (int)</td></tr>
@@ -107,6 +112,27 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </dd>
 </dl>
 <hr/><h2>Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a29880bc9516f3c1ed8c4316532ea7919"></a><!-- doxytag: member="textwolf::TextScanner::TextScanner" ref="a29880bc9516f3c1ed8c4316532ea7919" args="()" -->
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Iterator, class CharSet&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classtextwolf_1_1TextScanner.html">textwolf::TextScanner</a>&lt; Iterator, CharSet &gt;::<a class="el" href="classtextwolf_1_1TextScanner.html">TextScanner</a> </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Constructor. </p>
+
+</div>
+</div>
 <a class="anchor" id="a81f6b27b76253b700d00a630298ff1d3"></a><!-- doxytag: member="textwolf::TextScanner::TextScanner" ref="a81f6b27b76253b700d00a630298ff1d3" args="(const Iterator &amp;p_iterator)" -->
 <div class="memitem">
 <div class="memproto">
@@ -124,14 +150,6 @@ template&lt;class Iterator, class CharSet&gt; </div>
       </table>
 </div>
 <div class="memdoc">
-
-<p>Constructor. </p>
-<dl><dt><b>Parameters:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>p_iterator</em>&nbsp;</td><td>source iterator </td></tr>
-  </table>
-  </dd>
-</dl>
 
 </div>
 </div>
@@ -251,6 +269,27 @@ template&lt;class Iterator, class CharSet&gt; </div>
 
 </div>
 </div>
+<a class="anchor" id="a2e65d1f0a4ab1ca3264ca10aa6ee04c6"></a><!-- doxytag: member="textwolf::TextScanner::operator*" ref="a2e65d1f0a4ab1ca3264ca10aa6ee04c6" args="()" -->
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Iterator, class CharSet&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespacetextwolf.html#a3eb8d6733d6737825026b2e41b8c3f9c">UChar</a> <a class="el" href="classtextwolf_1_1TextScanner.html">textwolf::TextScanner</a>&lt; Iterator, CharSet &gt;::operator* </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>see <a class="el" href="classtextwolf_1_1TextScanner.html#a783b195912d79ed958f7f9b0660f156a" title="Get the unicode character of the current character.">TextScanner::chr()</a> </p>
+
+</div>
+</div>
 <a class="anchor" id="ab18e833d8e155673e5e096b1ccbe0128"></a><!-- doxytag: member="textwolf::TextScanner::operator++" ref="ab18e833d8e155673e5e096b1ccbe0128" args="(int)" -->
 <div class="memitem">
 <div class="memproto">
@@ -293,6 +332,34 @@ template&lt;class Iterator, class CharSet&gt; </div>
 
 <p>Preincrement: Skip to the next character of the source. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>*this </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a1383f3d13f3f87efda9be768ded1c487"></a><!-- doxytag: member="textwolf::TextScanner::setSource" ref="a1383f3d13f3f87efda9be768ded1c487" args="(const Iterator &amp;p_iterator)" -->
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Iterator, class CharSet&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classtextwolf_1_1TextScanner.html">textwolf::TextScanner</a>&lt; Iterator, CharSet &gt;::setSource </td>
+          <td>(</td>
+          <td class="paramtype">const Iterator &amp;&nbsp;</td>
+          <td class="paramname"> <em>p_iterator</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Initialize a new source iterator while keeping the state. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>p_iterator</em>&nbsp;</td><td>source iterator </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -422,7 +489,7 @@ template&lt;class Iterator, class CharSet&gt; </div>
 </iframe>
 </div>
 
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Thu Jun 16 19:39:07 2011 for textwolf by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Sun Aug 14 23:21:34 2011 for textwolf by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

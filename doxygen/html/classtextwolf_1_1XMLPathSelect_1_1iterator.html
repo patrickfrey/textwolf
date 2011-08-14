@@ -71,8 +71,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Assign iterator.  <a href="#a1f88681a14a209a9ba560191fb14b3ae"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html#a8f42f4a6355034df60041d7cb8d192b9">iterator</a> (const <a class="el" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html">iterator</a> &amp;orig)</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Copy constructor.  <a href="#a8f42f4a6355034df60041d7cb8d192b9"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html#ac0738d1f7296621de4a76f29c72ecc5f">iterator</a> (<a class="el" href="classtextwolf_1_1XMLPathSelect.html">ThisXMLPathSelect</a> &amp;p_input)</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Constructor by values.  <a href="#ac0738d1f7296621de4a76f29c72ecc5f"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html#a40d3be641c9b8e78bbb1702e798b20d0">iterator</a> (<a class="el" href="classtextwolf_1_1XMLPathSelect.html">ThisXMLPathSelect</a> &amp;p_input, bool skipToFirst=true)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Constructor by values.  <a href="#a40d3be641c9b8e78bbb1702e798b20d0"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html#ae1cb3dcc402f89c31410936bce7f8a30">iterator</a> (const <a class="el" href="structtextwolf_1_1XMLPathSelect_1_1End.html">End</a> &amp;et)</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Constructor.  <a href="#ae1cb3dcc402f89c31410936bce7f8a30"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html#a8ab38f63e680820ecaef10886c5e6ca2">iterator</a> ()</td></tr>
@@ -212,7 +212,7 @@ template&lt;class InputIterator , class InputCharSet_ , class OutputCharSet_ , c
 
 </div>
 </div>
-<a class="anchor" id="ac0738d1f7296621de4a76f29c72ecc5f"></a><!-- doxytag: member="textwolf::XMLPathSelect::iterator::iterator" ref="ac0738d1f7296621de4a76f29c72ecc5f" args="(ThisXMLPathSelect &amp;p_input)" -->
+<a class="anchor" id="a40d3be641c9b8e78bbb1702e798b20d0"></a><!-- doxytag: member="textwolf::XMLPathSelect::iterator::iterator" ref="a40d3be641c9b8e78bbb1702e798b20d0" args="(ThisXMLPathSelect &amp;p_input, bool skipToFirst=true)" -->
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -222,9 +222,18 @@ template&lt;class InputIterator , class InputCharSet_ , class OutputCharSet_ , c
           <td class="memname"><a class="el" href="classtextwolf_1_1XMLPathSelect.html">textwolf::XMLPathSelect</a>&lt; InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_, EntityMap_ &gt;::iterator::iterator </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classtextwolf_1_1XMLPathSelect.html">ThisXMLPathSelect</a> &amp;&nbsp;</td>
-          <td class="paramname"> <em>p_input</em></td>
-          <td>&nbsp;)&nbsp;</td>
-          <td><code> [inline]</code></td>
+          <td class="paramname"> <em>p_input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&nbsp;</td>
+          <td class="paramname"> <em>skipToFirst</em> = <code>true</code></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
         </tr>
       </table>
 </div>
@@ -234,6 +243,7 @@ template&lt;class InputIterator , class InputCharSet_ , class OutputCharSet_ , c
 <dl><dt><b>Parameters:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
     <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>p_input</em>&nbsp;</td><td>XML path selection stream to iterate through </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>skipToFirst</em>&nbsp;</td><td>true, if the iterator should skip to the first character of the input (default behaviour of STL conform iterators but maybe not exception save) </td></tr>
   </table>
   </dd>
 </dl>
@@ -586,7 +596,7 @@ template&lt;class InputIterator , class InputCharSet_ , class OutputCharSet_ , c
 </iframe>
 </div>
 
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Thu Jun 16 19:39:08 2011 for textwolf by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Sun Aug 14 23:21:35 2011 for textwolf by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

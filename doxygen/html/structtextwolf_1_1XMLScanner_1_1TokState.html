@@ -58,11 +58,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <tr><td colspan="2"><h2>Public Types</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1XMLScanner_1_1TokState.html#a112aec6c97b6a2d56a030ae22df190c4">Id</a> { <br/>
 &nbsp;&nbsp;<a class="el" href="structtextwolf_1_1XMLScanner_1_1TokState.html#a112aec6c97b6a2d56a030ae22df190c4a1141c5d83501bf273084d661931cf312">Start</a>, 
+<a class="el" href="structtextwolf_1_1XMLScanner_1_1TokState.html#a112aec6c97b6a2d56a030ae22df190c4a048b8c4e52c97cd5971396a46c590eaf">ParsingDone</a>, 
 <a class="el" href="structtextwolf_1_1XMLScanner_1_1TokState.html#a112aec6c97b6a2d56a030ae22df190c4af27beece5feec85fcef0737eae78bfe6">ParsingKey</a>, 
 <a class="el" href="structtextwolf_1_1XMLScanner_1_1TokState.html#a112aec6c97b6a2d56a030ae22df190c4adf8ad27e7d50020442cb0f89dfef0465">ParsingEntity</a>, 
-<a class="el" href="structtextwolf_1_1XMLScanner_1_1TokState.html#a112aec6c97b6a2d56a030ae22df190c4a1fc824540a1cbb617002962f4cfeac42">ParsingNumericEntity</a>, 
 <br/>
-&nbsp;&nbsp;<a class="el" href="structtextwolf_1_1XMLScanner_1_1TokState.html#a112aec6c97b6a2d56a030ae22df190c4ade9a63eb74699d081cb43086e75eca26">ParsingNumericBaseEntity</a>, 
+&nbsp;&nbsp;<a class="el" href="structtextwolf_1_1XMLScanner_1_1TokState.html#a112aec6c97b6a2d56a030ae22df190c4a1fc824540a1cbb617002962f4cfeac42">ParsingNumericEntity</a>, 
+<a class="el" href="structtextwolf_1_1XMLScanner_1_1TokState.html#a112aec6c97b6a2d56a030ae22df190c4ade9a63eb74699d081cb43086e75eca26">ParsingNumericBaseEntity</a>, 
 <a class="el" href="structtextwolf_1_1XMLScanner_1_1TokState.html#a112aec6c97b6a2d56a030ae22df190c4a6eb5d3ec81812852313033f264a3bc40">ParsingNamedEntity</a>, 
 <a class="el" href="structtextwolf_1_1XMLScanner_1_1TokState.html#a112aec6c97b6a2d56a030ae22df190c4aa573329f353dbf8566103fb8f893e3a9">ParsingToken</a>
 <br/>
@@ -112,6 +113,9 @@ template&lt;class InputIterator, class InputCharSet_, class OutputCharSet_, clas
 <dl><dt><b>Enumerator: </b></dt><dd><table border="0" cellspacing="2" cellpadding="0">
 <tr><td valign="top"><em><a class="anchor" id="a112aec6c97b6a2d56a030ae22df190c4a1141c5d83501bf273084d661931cf312"></a><!-- doxytag: member="Start" ref="a112aec6c97b6a2d56a030ae22df190c4a1141c5d83501bf273084d661931cf312" args="" -->Start</em>&nbsp;</td><td>
 <p>start state (no parsing action performed at the moment) </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a112aec6c97b6a2d56a030ae22df190c4a048b8c4e52c97cd5971396a46c590eaf"></a><!-- doxytag: member="ParsingDone" ref="a112aec6c97b6a2d56a030ae22df190c4a048b8c4e52c97cd5971396a46c590eaf" args="" -->ParsingDone</em>&nbsp;</td><td>
+<p>scanner war interrupted after parsing something when accessing the follow character </p>
 </td></tr>
 <tr><td valign="top"><em><a class="anchor" id="a112aec6c97b6a2d56a030ae22df190c4af27beece5feec85fcef0737eae78bfe6"></a><!-- doxytag: member="ParsingKey" ref="a112aec6c97b6a2d56a030ae22df190c4af27beece5feec85fcef0737eae78bfe6" args="" -->ParsingKey</em>&nbsp;</td><td>
 <p>scanner was interrupted when parsing a key </p>
@@ -309,7 +313,7 @@ template&lt;class InputIterator, class InputCharSet_, class OutputCharSet_, clas
 </iframe>
 </div>
 
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Thu Jun 16 19:39:07 2011 for textwolf by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Sun Aug 14 23:21:34 2011 for textwolf by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

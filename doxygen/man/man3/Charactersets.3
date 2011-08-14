@@ -1,0 +1,109 @@
+.TH "Character Set Encodings" 3 "14 Aug 2011" "textwolf" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Character Set Encodings \- 
+.PP
+Character set encodings and character parsing tables.  
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBtextwolf::CharMap< RESTYPE, nullvalue_, RANGE >\fP"
+.br
+.RI "\fICharacter map for fast typing of a character byte. \fP"
+.ti -1c
+.RI "class \fBtextwolf::ControlCharacterM\fP"
+.br
+.RI "\fIMap of the enumeration of control characters to their names for debug messages. \fP"
+.in -1c
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI "namespace \fBcharset\fP"
+.br
+.PP
+
+.RI "\fIPredefined character set encodings. \fP"
+.ti -1c
+.RI "namespace \fBtextwolf::charset\fP"
+.br
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBtextwolf::ControlCharacter\fP { \fBtextwolf::Undef\fP = 0, \fBtextwolf::EndOfText\fP, \fBtextwolf::EndOfLine\fP, \fBtextwolf::Cntrl\fP, \fBtextwolf::Space\fP, \fBtextwolf::Amp\fP, \fBtextwolf::Lt\fP, \fBtextwolf::Equal\fP, \fBtextwolf::Gt\fP, \fBtextwolf::Slash\fP, \fBtextwolf::Exclam\fP, \fBtextwolf::Questm\fP, \fBtextwolf::Sq\fP, \fBtextwolf::Dq\fP, \fBtextwolf::Osb\fP, \fBtextwolf::Csb\fP, \fBtextwolf::Any\fP, \fBtextwolf::NofControlCharacter\fP = 17 }"
+.br
+.RI "\fIEnumeration of control characters needed as events for XML scanner statemachine. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Character set encodings and character parsing tables. 
+.SH "Enumeration Type Documentation"
+.PP 
+.SS "enum \fBtextwolf::ControlCharacter\fP"
+.PP
+Enumeration of control characters needed as events for XML scanner statemachine. 
+.PP
+\fBEnumerator: \fP
+.in +1c
+.TP
+\fB\fIUndef \fP\fP
+not defined (beyond ascii) 
+.TP
+\fB\fIEndOfText \fP\fP
+end of data (EOF,EOD,.) 
+.TP
+\fB\fIEndOfLine \fP\fP
+end of line 
+.TP
+\fB\fICntrl \fP\fP
+control character 
+.TP
+\fB\fISpace \fP\fP
+space, tab, etc.. 
+.TP
+\fB\fIAmp \fP\fP
+ampersant ('&') 
+.TP
+\fB\fILt \fP\fP
+lesser than '<' 
+.TP
+\fB\fIEqual \fP\fP
+equal '=' 
+.TP
+\fB\fIGt \fP\fP
+greater than '>' 
+.TP
+\fB\fISlash \fP\fP
+slash '/' 
+.TP
+\fB\fIExclam \fP\fP
+exclamation mark '!' 
+.TP
+\fB\fIQuestm \fP\fP
+question mark '?' 
+.TP
+\fB\fISq \fP\fP
+single quote 
+.TP
+\fB\fIDq \fP\fP
+double quote 
+.TP
+\fB\fIOsb \fP\fP
+open square bracket '[' 
+.TP
+\fB\fICsb \fP\fP
+close square bracket ']' 
+.TP
+\fB\fIAny \fP\fP
+any ascii character with meaning 
+.TP
+\fB\fINofControlCharacter \fP\fP
+total number of control characters 
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for textwolf from the source code.

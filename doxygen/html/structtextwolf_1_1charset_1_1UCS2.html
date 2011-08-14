@@ -80,7 +80,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">prints a unicode character to a buffer  <a href="#a0ff13894b4330d92ac3c2ae8461fc5f7"></a><br/></td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
-<h3>template&lt;int encoding&gt;<br/>
+<h3>template&lt;int encoding = ByteOrder::BE&gt;<br/>
  class textwolf::charset::UCS2&lt; encoding &gt;</h3>
 
 <p>Character set UCS-2 (little/big endian). </p>
@@ -90,12 +90,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </table>
   </dd>
 </dl>
+<dl class="remark"><dt><b>Remarks:</b></dt><dd>UCS-2 encoding is defined to be big-endian only. Although the similar designations UCS-2BE and UCS-2LE imitate the UTF-16 labels, they do not represent official encoding schemes. (<a href="http://en.wikipedia.org/wiki/UTF-16/UCS-2">http://en.wikipedia.org/wiki/UTF-16/UCS-2</a>) therefore we take encoding=ByteOrderBE as default. </dd></dl>
 <hr/><h2>Member Enumeration Documentation</h2>
 <a class="anchor" id="a69729e3e64a24a1f5b5e8e35d5105d17"></a><!-- doxytag: member="textwolf::charset::UCS2::@2" ref="a69729e3e64a24a1f5b5e8e35d5105d17" args="" -->
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;int encoding&gt; </div>
+template&lt;int encoding = ByteOrder::BE&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">anonymous enum</td>
@@ -133,7 +134,7 @@ template&lt;int encoding&gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;int encoding&gt; </div>
+template&lt;int encoding = ByteOrder::BE&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">static char <a class="el" href="structtextwolf_1_1charset_1_1UCS2.html">textwolf::charset::UCS2</a>&lt; encoding &gt;::achar </td>
@@ -153,7 +154,7 @@ template&lt;int encoding&gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;int encoding&gt; </div>
+template&lt;int encoding = ByteOrder::BE&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">static unsigned int <a class="el" href="structtextwolf_1_1charset_1_1UCS2.html">textwolf::charset::UCS2</a>&lt; encoding &gt;::asize </td>
@@ -172,7 +173,7 @@ template&lt;int encoding&gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;int encoding&gt; </div>
+template&lt;int encoding = ByteOrder::BE&gt; </div>
 <div class="memtemplate">
 template&lt;class Buffer_ &gt; </div>
       <table class="memname">
@@ -218,7 +219,7 @@ template&lt;class Buffer_ &gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;int encoding&gt; </div>
+template&lt;int encoding = ByteOrder::BE&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">static unsigned int <a class="el" href="structtextwolf_1_1charset_1_1UCS2.html">textwolf::charset::UCS2</a>&lt; encoding &gt;::size </td>
@@ -238,7 +239,7 @@ template&lt;int encoding&gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;int encoding&gt; </div>
+template&lt;int encoding = ByteOrder::BE&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">static <a class="el" href="namespacetextwolf.html#a3eb8d6733d6737825026b2e41b8c3f9c">UChar</a> <a class="el" href="structtextwolf_1_1charset_1_1UCS2.html">textwolf::charset::UCS2</a>&lt; encoding &gt;::value </td>
@@ -281,7 +282,7 @@ template&lt;int encoding&gt; </div>
 </iframe>
 </div>
 
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Thu Jun 16 19:39:08 2011 for textwolf by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Sun Aug 14 23:21:35 2011 for textwolf by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

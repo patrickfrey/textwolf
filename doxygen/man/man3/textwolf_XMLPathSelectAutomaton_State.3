@@ -1,8 +1,11 @@
-.TH "textwolf::XMLPathSelectAutomaton::State" 3 "10 Jun 2011" "textwolf" \" -*- nroff -*-
+.TH "textwolf::XMLPathSelectAutomaton::State" 3 "14 Aug 2011" "textwolf" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
 textwolf::XMLPathSelectAutomaton::State \- 
+.PP
+\fBState\fP of an automaton in its definition.  
+
 .SH SYNOPSIS
 .br
 .PP
@@ -14,27 +17,35 @@ textwolf::XMLPathSelectAutomaton::State \-
 .ti -1c
 .RI "\fBState\fP ()"
 .br
+.RI "\fIConstructor. \fP"
 .ti -1c
 .RI "\fBState\fP (const \fBState\fP &orig)"
 .br
+.RI "\fICopy constructor. \fP"
 .ti -1c
 .RI "\fB~State\fP ()"
 .br
+.RI "\fIDestructor. \fP"
 .ti -1c
 .RI "bool \fBisempty\fP ()"
 .br
+.RI "\fICheck it the state definition is empty. \fP"
 .ti -1c
 .RI "void \fBdefineKey\fP (unsigned int p_keysize, const char *p_key, const char *p_srckey)"
 .br
+.RI "\fIDefine the matching key of this state. \fP"
 .ti -1c
 .RI "void \fBdefineNext\fP (\fBOperation\fP op, unsigned int p_keysize, const char *p_key, const char *p_srckey, int p_next, bool p_follow=false)"
 .br
+.RI "\fIDefine a state transition by key and operation. \fP"
 .ti -1c
 .RI "void \fBdefineOutput\fP (const \fBMask\fP &mask, int p_typeidx, bool p_follow, int p_start, int p_end)"
 .br
+.RI "\fIDefine an element output operation. \fP"
 .ti -1c
 .RI "void \fBdefLink\fP (int p_link)"
 .br
+.RI "\fILink another state to check to the current state. \fP"
 .in -1c
 .SS "Public Attributes"
 
@@ -42,45 +53,133 @@ textwolf::XMLPathSelectAutomaton::State \-
 .ti -1c
 .RI "\fBCore\fP \fBcore\fP"
 .br
+.RI "\fIcore of the state (the part used in processing) \fP"
 .ti -1c
 .RI "unsigned int \fBkeysize\fP"
 .br
+.RI "\fIkey size of the element \fP"
 .ti -1c
 .RI "char * \fBkey\fP"
 .br
+.RI "\fIkey of the element \fP"
 .ti -1c
 .RI "char * \fBsrckey\fP"
 .br
+.RI "\fIkey of the element as in source (for debugging or reporting, etc.) \fP"
 .ti -1c
 .RI "int \fBnext\fP"
 .br
+.RI "\fIfollow state \fP"
 .ti -1c
 .RI "int \fBlink\fP"
 .br
+.RI "\fIalternative state to check \fP"
 .in -1c
+.SH "Detailed Description"
+.PP 
 
-.SS "template<class CharSet_ = charset::UTF8> struct textwolf::XMLPathSelectAutomaton< CharSet_ >::State"
-
+.SS "template<class CharSet_ = charset::UTF8> class textwolf::XMLPathSelectAutomaton< CharSet_ >::State"
+\fBState\fP of an automaton in its definition. 
 .SH "Constructor & Destructor Documentation"
 .PP 
 .SS "template<class CharSet_  = charset::UTF8> \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::State::State ()\fC [inline]\fP"
+.PP
+Constructor. 
 .SS "template<class CharSet_  = charset::UTF8> \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::State::State (const \fBState\fP & orig)\fC [inline]\fP"
+.PP
+Copy constructor. \fBParameters:\fP
+.RS 4
+\fIorig\fP element to copy 
+.RE
+.PP
+
 .SS "template<class CharSet_  = charset::UTF8> \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::State::~State ()\fC [inline]\fP"
+.PP
+Destructor. 
 .SH "Member Function Documentation"
 .PP 
 .SS "template<class CharSet_  = charset::UTF8> void \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::State::defineKey (unsigned int p_keysize, const char * p_key, const char * p_srckey)\fC [inline]\fP"
+.PP
+Define the matching key of this state. \fBParameters:\fP
+.RS 4
+\fIp_keysize\fP size of the key in bytes 
+.br
+\fIp_key\fP pointer to the key 
+.br
+\fIp_srckey\fP the source form of the key (ASCII with encoded entities for everything else) 
+.RE
+.PP
+
 .SS "template<class CharSet_  = charset::UTF8> void \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::State::defineNext (\fBOperation\fP op, unsigned int p_keysize, const char * p_key, const char * p_srckey, int p_next, bool p_follow = \fCfalse\fP)\fC [inline]\fP"
+.PP
+Define a state transition by key and operation. \fBParameters:\fP
+.RS 4
+\fIop\fP operation type 
+.br
+\fIp_keysize\fP size of the key in bytes 
+.br
+\fIp_key\fP pointer to the key 
+.br
+\fIp_srckey\fP the source form of the key (ASCII with encoded entities for everything else) 
+.br
+\fIp_next\fP follow state on a match 
+.br
+\fIp_follow\fP true if the search reaches all included follow scopes of the definition scope 
+.RE
+.PP
+
 .SS "template<class CharSet_  = charset::UTF8> void \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::State::defineOutput (const \fBMask\fP & mask, int p_typeidx, bool p_follow, int p_start, int p_end)\fC [inline]\fP"
+.PP
+Define an element output operation. \fBParameters:\fP
+.RS 4
+\fImask\fP mask defining the element types to output 
+.br
+\fIp_typeidx\fP the type of the element produced 
+.br
+\fIp_follow\fP true if the output reaches all included follow scopes of the definition scope 
+.br
+\fIp_start\fP start index of the element range produced 
+.br
+\fIp_end\fP upper bound index of the element range produced 
+.RE
+.PP
+
 .SS "template<class CharSet_  = charset::UTF8> void \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::State::defLink (int p_link)\fC [inline]\fP"
+.PP
+Link another state to check to the current state. \fBParameters:\fP
+.RS 4
+\fIp_link\fP the index of the state to link 
+.RE
+.PP
+
 .SS "template<class CharSet_  = charset::UTF8> bool \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::State::isempty ()\fC [inline]\fP"
+.PP
+Check it the state definition is empty. \fBReturns:\fP
+.RS 4
+true for an empty state 
+.RE
+.PP
+
 .SH "Member Data Documentation"
 .PP 
 .SS "template<class CharSet_  = charset::UTF8> \fBCore\fP \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::\fBState::core\fP"
+.PP
+core of the state (the part used in processing) 
 .SS "template<class CharSet_  = charset::UTF8> char* \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::\fBState::key\fP"
+.PP
+key of the element 
 .SS "template<class CharSet_  = charset::UTF8> unsigned int \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::\fBState::keysize\fP"
+.PP
+key size of the element 
 .SS "template<class CharSet_  = charset::UTF8> int \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::\fBState::link\fP"
+.PP
+alternative state to check 
 .SS "template<class CharSet_  = charset::UTF8> int \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::\fBState::next\fP"
+.PP
+follow state 
 .SS "template<class CharSet_  = charset::UTF8> char* \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::\fBState::srckey\fP"
+.PP
+key of the element as in source (for debugging or reporting, etc.) 
 
 .SH "Author"
 .PP 

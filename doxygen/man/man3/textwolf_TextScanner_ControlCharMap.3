@@ -1,8 +1,11 @@
-.TH "textwolf::TextScanner::ControlCharMap" 3 "10 Jun 2011" "textwolf" \" -*- nroff -*-
+.TH "textwolf::TextScanner::ControlCharMap" 3 "14 Aug 2011" "textwolf" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
 textwolf::TextScanner::ControlCharMap \- 
+.PP
+Map of ASCII characters to control character identifiers used in the XML scanner automaton.  
+
 .SH SYNOPSIS
 .br
 .PP
@@ -17,9 +20,11 @@ Inherits \fBCharMap< ControlCharacter, Undef >\fP.
 .RI "\fBControlCharMap\fP ()"
 .br
 .in -1c
+.SH "Detailed Description"
+.PP 
 
-.SS "template<class Iterator, class CharSet> struct textwolf::TextScanner< Iterator, CharSet >::ControlCharMap"
-
+.SS "template<class Iterator, class CharSet> class textwolf::TextScanner< Iterator, CharSet >::ControlCharMap"
+Map of ASCII characters to control character identifiers used in the XML scanner automaton. 
 .SH "Constructor & Destructor Documentation"
 .PP 
 .SS "template<class Iterator, class CharSet> \fBtextwolf::TextScanner\fP< Iterator, CharSet >::ControlCharMap::ControlCharMap ()\fC [inline]\fP"

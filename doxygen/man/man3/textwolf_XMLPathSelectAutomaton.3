@@ -1,8 +1,11 @@
-.TH "textwolf::XMLPathSelectAutomaton" 3 "10 Jun 2011" "textwolf" \" -*- nroff -*-
+.TH "textwolf::XMLPathSelectAutomaton" 3 "14 Aug 2011" "textwolf" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
 textwolf::XMLPathSelectAutomaton \- 
+.PP
+Automaton to define XML path expressions and assign types (int values) to them.  
+
 .SH SYNOPSIS
 .br
 .PP
@@ -14,23 +17,29 @@ Inherits \fBtextwolf::throws_exception\fP.
 
 .in +1c
 .ti -1c
-.RI "struct \fBCore\fP"
+.RI "class \fBCore\fP"
 .br
+.RI "\fI\fBCore\fP of an automaton state definition that is used during XML processing. \fP"
 .ti -1c
-.RI "struct \fBMask\fP"
+.RI "class \fBMask\fP"
 .br
+.RI "\fI\fBMask\fP to query for element types, if they match or not. \fP"
 .ti -1c
-.RI "struct \fBPathElement\fP"
+.RI "class \fBPathElement\fP"
 .br
+.RI "\fIDefines one node in the XML Path element tree in the construction phase. \fP"
 .ti -1c
-.RI "struct \fBScope\fP"
+.RI "class \fBScope\fP"
 .br
+.RI "\fITag scope definition. \fP"
 .ti -1c
-.RI "struct \fBState\fP"
+.RI "class \fBState\fP"
 .br
+.RI "\fI\fBState\fP of an automaton in its definition. \fP"
 .ti -1c
-.RI "struct \fBToken\fP"
+.RI "class \fBToken\fP"
 .br
+.RI "\fIActive or passive but still valid token of the XML processing (this is a trigger waiting to match). \fP"
 .in -1c
 .SS "Public Types"
 
@@ -41,11 +50,15 @@ Inherits \fBtextwolf::throws_exception\fP.
 .ti -1c
 .RI "enum \fBOperation\fP { \fBContent\fP, \fBTag\fP, \fBAttribute\fP, \fBThisAttributeValue\fP, \fBAttributeValue\fP, \fBContentStart\fP }"
 .br
+.RI "\fIEnumeration of operation types in the automaton definition. \fP"
+.ti -1c
+.RI "typedef CharSet_ \fBCharSet\fP"
+.br
 .ti -1c
 .RI "typedef int \fBHash\fP"
 .br
 .ti -1c
-.RI "typedef \fBXMLPathSelectAutomaton\fP< CharSet_ > \fBThisXMLPathSelectAutomaton\fP"
+.RI "typedef \fBXMLPathSelectAutomaton\fP< \fBCharSet\fP > \fBThisXMLPathSelectAutomaton\fP"
 .br
 .in -1c
 .SS "Public Member Functions"
@@ -54,12 +67,15 @@ Inherits \fBtextwolf::throws_exception\fP.
 .ti -1c
 .RI "\fBXMLPathSelectAutomaton\fP ()"
 .br
+.RI "\fIConstructor. \fP"
 .ti -1c
 .RI "bool \fBsetMemUsage\fP (unsigned int p_memUsage, unsigned int p_maxDepth)"
 .br
+.RI "\fIDefines the usage of memory. \fP"
 .ti -1c
 .RI "\fBPathElement\fP \fBoperator*\fP ()"
 .br
+.RI "\fIGet automaton root element to start an XML path definition. \fP"
 .in -1c
 .SS "Static Public Member Functions"
 
@@ -67,6 +83,7 @@ Inherits \fBtextwolf::throws_exception\fP.
 .ti -1c
 .RI "static const char * \fBoperationName\fP (\fBOperation\fP op)"
 .br
+.RI "\fIGet the name of the operation as string. \fP"
 .in -1c
 .SS "Public Attributes"
 
@@ -74,24 +91,31 @@ Inherits \fBtextwolf::throws_exception\fP.
 .ti -1c
 .RI "unsigned int \fBmemUsage\fP"
 .br
+.RI "\fItotal memory usage \fP"
 .ti -1c
 .RI "unsigned int \fBmaxDepth\fP"
 .br
+.RI "\fImax tag stack depth \fP"
 .ti -1c
 .RI "unsigned int \fBmaxScopeStackSize\fP"
 .br
+.RI "\fImax scope stack depth \fP"
 .ti -1c
 .RI "unsigned int \fBmaxFollows\fP"
 .br
+.RI "\fImaximum number of tokens searched in depth \fP"
 .ti -1c
 .RI "unsigned int \fBmaxTriggers\fP"
 .br
+.RI "\fImaximum number of open triggers \fP"
 .ti -1c
 .RI "unsigned int \fBmaxTokens\fP"
 .br
+.RI "\fImaximum number of open tokens \fP"
 .ti -1c
 .RI "std::vector< \fBState\fP > \fBstates\fP"
 .br
+.RI "\fIthe states of the statemachine \fP"
 .in -1c
 .SS "Private Member Functions"
 
@@ -99,20 +123,29 @@ Inherits \fBtextwolf::throws_exception\fP.
 .ti -1c
 .RI "int \fBdefineNext\fP (int stateidx, \fBOperation\fP op, unsigned int keysize, const char *key, const char *srckey, bool follow=false)  throw (exception)"
 .br
-.ti -1c
-.RI "void \fBdefineThisOutput\fP (int stateidx, int typeidx)"
-.br
+.RI "\fIDefines a state transition. \fP"
 .ti -1c
 .RI "int \fBdefineOutput\fP (int stateidx, const \fBMask\fP &printOpMask, int typeidx, bool follow, int start, int end)  throw (exception)"
 .br
+.RI "\fIDefines an output print action and output type for a state. \fP"
 .in -1c
+.SH "Detailed Description"
+.PP 
 
 .SS "template<class CharSet_ = charset::UTF8> class textwolf::XMLPathSelectAutomaton< CharSet_ >"
+Automaton to define XML path expressions and assign types (int values) to them. 
+
+\fBTemplate Parameters:\fP
+.RS 4
+\fICharSet_\fP character set of the token defintions of the automaton 
+.RE
+.PP
 
 .SH "Member Typedef Documentation"
 .PP 
+.SS "template<class CharSet_  = charset::UTF8> typedef CharSet_ \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::\fBCharSet\fP"
 .SS "template<class CharSet_  = charset::UTF8> typedef int \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::\fBHash\fP"
-.SS "template<class CharSet_  = charset::UTF8> typedef \fBXMLPathSelectAutomaton\fP<CharSet_> \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::\fBThisXMLPathSelectAutomaton\fP"
+.SS "template<class CharSet_  = charset::UTF8> typedef \fBXMLPathSelectAutomaton\fP<\fBCharSet\fP> \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::\fBThisXMLPathSelectAutomaton\fP"
 .SH "Member Enumeration Documentation"
 .PP 
 .SS "template<class CharSet_  = charset::UTF8> anonymous enum"
@@ -121,46 +154,141 @@ Inherits \fBtextwolf::throws_exception\fP.
 .in +1c
 .TP
 \fB\fIdefaultMemUsage \fP\fP
+default memory usage of the XML path select process, if not specified else 
 .TP
 \fB\fIdefaultMaxDepth \fP\fP
-
+default max tag stack depth, if not specified else 
 .SS "template<class CharSet_  = charset::UTF8> enum \fBtextwolf::XMLPathSelectAutomaton::Operation\fP"
+.PP
+Enumeration of operation types in the automaton definition. 
 .PP
 \fBEnumerator: \fP
 .in +1c
 .TP
 \fB\fIContent \fP\fP
+searching content token 
 .TP
 \fB\fITag \fP\fP
+searching a tag 
 .TP
 \fB\fIAttribute \fP\fP
+searching an attribute 
 .TP
 \fB\fIThisAttributeValue \fP\fP
+checking the value of the attribute just parsed (not an arbitrary but this one) 
 .TP
 \fB\fIAttributeValue \fP\fP
+searching a value of an attribute 
 .TP
 \fB\fIContentStart \fP\fP
-
+looking for the start of content (to signal the end of the XML header) 
 .SH "Constructor & Destructor Documentation"
 .PP 
 .SS "template<class CharSet_  = charset::UTF8> \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::\fBXMLPathSelectAutomaton\fP ()\fC [inline]\fP"
+.PP
+Constructor. 
 .SH "Member Function Documentation"
 .PP 
 .SS "template<class CharSet_  = charset::UTF8> int \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::defineNext (int stateidx, \fBOperation\fP op, unsigned int keysize, const char * key, const char * srckey, bool follow = \fCfalse\fP)  throw (\fBexception\fP)\fC [inline, private]\fP"
+.PP
+Defines a state transition. \fBParameters:\fP
+.RS 4
+\fIstateidx\fP from what source state 
+.br
+\fIop\fP operation firing the state transition 
+.br
+\fIkeysize\fP length of the key firing the state transition in bytes 
+.br
+\fIkey\fP the key string firing the state transition in bytes 
+.br
+\fIsrckey\fP the ASCII encoded representation in the source 
+.br
+\fIfollow\fP true, uf the state transition is active for all sub scopes of the activation state 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the target state of the transition defined 
+.RE
+.PP
+
 .SS "template<class CharSet_  = charset::UTF8> int \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::defineOutput (int stateidx, const \fBMask\fP & printOpMask, int typeidx, bool follow, int start, int end)  throw (\fBexception\fP)\fC [inline, private]\fP"
-.SS "template<class CharSet_  = charset::UTF8> void \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::defineThisOutput (int stateidx, int typeidx)\fC [inline, private]\fP"
+.PP
+Defines an output print action and output type for a state. \fBParameters:\fP
+.RS 4
+\fIstateidx\fP from what source state 
+.br
+\fIprintOpMask\fP mask for elements printed 
+.br
+\fItypeidx\fP type identifier 
+.br
+\fIfollow\fP true, uf the state transition is active for all sub scopes of the activation state 
+.br
+\fIstart\fP start of index range where this state transition fires 
+.br
+\fIend\fP end of index range where this state transition fires 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+index of the state where this output action was defined 
+.RE
+.PP
+
 .SS "template<class CharSet_  = charset::UTF8> static const char* \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::operationName (\fBOperation\fP op)\fC [inline, static]\fP"
+.PP
+Get the name of the operation as string. \fBReturns:\fP
+.RS 4
+the operation as string 
+.RE
+.PP
+
 .SS "template<class CharSet_  = charset::UTF8> \fBPathElement\fP \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::operator* ()\fC [inline]\fP"
+.PP
+Get automaton root element to start an XML path definition. \fBReturns:\fP
+.RS 4
+the automaton root element 
+.RE
+.PP
+
 .SS "template<class CharSet_  = charset::UTF8> bool \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::setMemUsage (unsigned int p_memUsage, unsigned int p_maxDepth)\fC [inline]\fP"
+.PP
+Defines the usage of memory. \fBParameters:\fP
+.RS 4
+\fIp_memUsage\fP size of the memory block in bytes 
+.br
+\fIp_maxDepth\fP maximum depht of the scope stack 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true, if everything is OK 
+.RE
+.PP
+
 .SH "Member Data Documentation"
 .PP 
 .SS "template<class CharSet_  = charset::UTF8> unsigned int \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::\fBmaxDepth\fP"
+.PP
+max tag stack depth 
 .SS "template<class CharSet_  = charset::UTF8> unsigned int \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::\fBmaxFollows\fP"
+.PP
+maximum number of tokens searched in depth 
 .SS "template<class CharSet_  = charset::UTF8> unsigned int \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::\fBmaxScopeStackSize\fP"
+.PP
+max scope stack depth 
 .SS "template<class CharSet_  = charset::UTF8> unsigned int \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::\fBmaxTokens\fP"
+.PP
+maximum number of open tokens 
 .SS "template<class CharSet_  = charset::UTF8> unsigned int \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::\fBmaxTriggers\fP"
+.PP
+maximum number of open triggers 
 .SS "template<class CharSet_  = charset::UTF8> unsigned int \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::\fBmemUsage\fP"
+.PP
+total memory usage 
 .SS "template<class CharSet_  = charset::UTF8> std::vector<\fBState\fP> \fBtextwolf::XMLPathSelectAutomaton\fP< CharSet_ >::\fBstates\fP"
+.PP
+the states of the statemachine 
 
 .SH "Author"
 .PP 

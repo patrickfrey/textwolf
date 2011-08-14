@@ -1,8 +1,11 @@
-.TH "textwolf::XMLScanner::IsContentCharMap" 3 "10 Jun 2011" "textwolf" \" -*- nroff -*-
+.TH "textwolf::XMLScanner::IsContentCharMap" 3 "14 Jun 2011" "textwolf" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
 textwolf::XMLScanner::IsContentCharMap \- 
+.PP
+Defines the set of content token characters.  
+
 .SH SYNOPSIS
 .br
 .PP
@@ -11,7 +14,7 @@ textwolf::XMLScanner::IsContentCharMap \-
 .PP
 Inherits \fBtextwolf::CharMap< bool, false, NofControlCharacter >\fP.
 .PP
-Inherited by \fBtextwolf::XMLScanner< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::IsDQStringCharMap\fP, and \fBtextwolf::XMLScanner< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::IsSQStringCharMap\fP.
+Inherited by \fBtextwolf::XMLScanner< InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_, EntityMap_ >::IsDQStringCharMap\fP, and \fBtextwolf::XMLScanner< InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_, EntityMap_ >::IsSQStringCharMap\fP.
 .SS "Public Member Functions"
 
 .in +1c
@@ -19,12 +22,14 @@ Inherited by \fBtextwolf::XMLScanner< InputIterator, InputCharSet_, OutputCharSe
 .RI "\fBIsContentCharMap\fP ()"
 .br
 .in -1c
+.SH "Detailed Description"
+.PP 
 
-.SS "template<class InputIterator, class InputCharSet_ = charset::UTF8, class OutputCharSet_ = charset::UTF8, class EntityMap_ = std::map<const char*,UChar>> struct textwolf::XMLScanner< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::IsContentCharMap"
-
+.SS "template<class InputIterator, class InputCharSet_, class OutputCharSet_, class OutputBuffer_, class EntityMap_ = std::map<const char*,UChar>> class textwolf::XMLScanner< InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_, EntityMap_ >::IsContentCharMap"
+Defines the set of content token characters. 
 .SH "Constructor & Destructor Documentation"
 .PP 
-.SS "template<class InputIterator, class InputCharSet_ = charset::UTF8, class OutputCharSet_ = charset::UTF8, class EntityMap_ = std::map<const char*,UChar>> \fBtextwolf::XMLScanner\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::IsContentCharMap::IsContentCharMap ()\fC [inline]\fP"
+.SS "template<class InputIterator, class InputCharSet_, class OutputCharSet_, class OutputBuffer_, class EntityMap_ = std::map<const char*,UChar>> \fBtextwolf::XMLScanner\fP< InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_, EntityMap_ >::IsContentCharMap::IsContentCharMap ()\fC [inline]\fP"
 
 .SH "Author"
 .PP 

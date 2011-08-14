@@ -1,8 +1,11 @@
-.TH "textwolf::XMLScanner::IsDQStringCharMap" 3 "10 Jun 2011" "textwolf" \" -*- nroff -*-
+.TH "textwolf::XMLScanner::IsDQStringCharMap" 3 "14 Jun 2011" "textwolf" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
 textwolf::XMLScanner::IsDQStringCharMap \- 
+.PP
+Defines the set characters belonging to a double quoted string.  
+
 .SH SYNOPSIS
 .br
 .PP
@@ -17,12 +20,14 @@ Inherits \fBtextwolf::XMLScanner::IsContentCharMap\fP.
 .RI "\fBIsDQStringCharMap\fP ()"
 .br
 .in -1c
+.SH "Detailed Description"
+.PP 
 
-.SS "template<class InputIterator, class InputCharSet_ = charset::UTF8, class OutputCharSet_ = charset::UTF8, class EntityMap_ = std::map<const char*,UChar>> struct textwolf::XMLScanner< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::IsDQStringCharMap"
-
+.SS "template<class InputIterator, class InputCharSet_, class OutputCharSet_, class OutputBuffer_, class EntityMap_ = std::map<const char*,UChar>> class textwolf::XMLScanner< InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_, EntityMap_ >::IsDQStringCharMap"
+Defines the set characters belonging to a double quoted string. 
 .SH "Constructor & Destructor Documentation"
 .PP 
-.SS "template<class InputIterator, class InputCharSet_ = charset::UTF8, class OutputCharSet_ = charset::UTF8, class EntityMap_ = std::map<const char*,UChar>> \fBtextwolf::XMLScanner\fP< InputIterator, InputCharSet_, OutputCharSet_, EntityMap_ >::IsDQStringCharMap::IsDQStringCharMap ()\fC [inline]\fP"
+.SS "template<class InputIterator, class InputCharSet_, class OutputCharSet_, class OutputBuffer_, class EntityMap_ = std::map<const char*,UChar>> \fBtextwolf::XMLScanner\fP< InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_, EntityMap_ >::IsDQStringCharMap::IsDQStringCharMap ()\fC [inline]\fP"
 
 .SH "Author"
 .PP 
