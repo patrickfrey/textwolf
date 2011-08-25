@@ -22,7 +22,7 @@ Project Schedule
 	Release Version 0.1.0
 * 2011/8/16
 	UTF-16 support
-* 2011/10/30
+* 2011/12/30
 	Planned Version 1.0.0
 	* Intrusive character set ecoding definition
 	* Native handling of wchar_t iterators
