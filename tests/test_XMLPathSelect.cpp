@@ -37,7 +37,7 @@ int main( int, const char**)
 		//[1] define the source iterator
 		char* src = const_cast<char*>
 		(
-			"<?xml charset=isolatin-1?>"
+			"<?xml charset=utf-8?>\r\n"
 			"<TT c='6'>7</TT>"
 			"<TT i='56'>8</TT>"
 			"<TT i='9'><v>9</v></TT>"
@@ -73,6 +73,7 @@ int main( int, const char**)
 		typedef XMLPathSelect<char*,charset::UTF8,charset::UTF8,std::string> MyXMLPathSelect;
 		std::string outputbuf;
 		MyXMLPathSelect xs( &atm, src, outputbuf);
+		xs.doTokenize(true);
 
 		//[4] iterating through the produced elements and printing them
 		MyXMLPathSelect::iterator itr=xs.begin(),end=xs.end();

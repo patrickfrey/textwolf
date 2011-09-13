@@ -40,8 +40,8 @@
 #include <stack>
 #include <map>
 #include <exception>
-#include <iostream>
 #include <limits>
+#include <cstddef>
 
 #ifdef BOOST_VERSION
 #include <boost/cstdint.hpp>
@@ -49,6 +49,7 @@ namespace textwolf {
 	///\typedef UChar
 	///\brief Unicode character type
 	typedef boost::uint32_t UChar;
+	typedef boost::uint64_t EChar;
 }//namespace
 #else
 #ifdef _MSC_VER
@@ -58,6 +59,7 @@ namespace textwolf {
 	///\typedef UChar
 	///\brief Unicode character type
 	typedef DWORD32 UChar;
+	typedef DWORD62 UChar;
 }//namespace
 #else
 #include <stdint.h>
@@ -65,6 +67,7 @@ namespace textwolf {
 	///\typedef UChar
 	///\brief Unicode character type
 	typedef uint32_t UChar;
+	typedef uint64_t EChar;
 }//namespace
 #endif
 #endif
@@ -151,14 +154,12 @@ struct exception	:public std::exception
 class StaticBuffer :public throws_exception
 {
 public:
-	typedef unsigned int size_type;		///< size type of this buffer vector
-
 	///\brief Constructor
-	explicit StaticBuffer( unsigned int n)
+	explicit StaticBuffer( std::size_t n)
 		:m_pos(0),m_size(n),m_ar(0),m_allocated(true) {m_ar=new char[n];}
 
 	///\brief Constructor
-	StaticBuffer( char* p, unsigned int n, unsigned int i=0)
+	StaticBuffer( char* p, std::size_t n, std::size_t i=0)
 		:m_pos(i),m_size(n),m_ar(p),m_allocated(false),m_overflow(false) {}
 
 	///\brief Destructor
@@ -184,7 +185,7 @@ public:
 
 	///\brief Return the number of characters in the buffer
 	///\return the number of characters (bytes)
-	size_type size() const			{return m_pos;}
+	std::size_t size() const			{return m_pos;}
 
 	///\brief Return the buffer content as 0-terminated string
 	///\return the C-string
@@ -193,7 +194,7 @@ public:
 	///\brief Shrinks the size of the buffer or expands it with c
 	///\param [in] n new size of the buffer
 	///\param [in] c fill character if n bigger than the current fill size
-	void resize( size_type n, char c=0)
+	void resize( std::size_t n, char c=0)
 	{
 		if (m_pos>n)
 		{
@@ -209,7 +210,7 @@ public:
 	///\brief random access of element
 	///\param [in] ii
 	///\return the character at this position
-	char operator []( unsigned int ii) const
+	char operator []( std::size_t ii) const
 	{
 		if (ii > m_pos) throw exception( DimOutOfRange);
 		return m_ar[ii];
@@ -218,7 +219,7 @@ public:
 	///\brief random access of element reference
 	///\param [in] ii
 	///\return the reference to the character at this position
-	char& at( unsigned int ii) const
+	char& at( std::size_t ii) const
 	{
 		if (ii > m_pos) throw exception( DimOutOfRange);
 		return m_ar[ii];
@@ -228,8 +229,8 @@ public:
 	///\return true if a push_back would have caused an array bounds write
 	bool overflow() const			{return m_overflow;}
 private:
-	size_type m_pos;			///< current cursor position of the buffer (number of added characters)
-	size_type m_size;			///< allocation size of the buffer in bytes
+	std::size_t m_pos;			///< current cursor position of the buffer (number of added characters)
+	std::size_t m_size;			///< allocation size of the buffer in bytes
 	char* m_ar;				///< buffer content
 	bool m_allocated;			///< true, if the buffer is allocated by this class and not passed by constructor
 	bool m_overflow;			///< true, if an array bounds write would have happened with push_back
@@ -288,7 +289,7 @@ namespace charset {
 
 struct Encoder
 {
-	static bool encode( UChar chr, char* bufptr, unsigned int bufsize)
+	static bool encode( UChar chr, char* bufptr, std::size_t bufsize)
 	{
 		static const char* HEX = "0123456789abcdef";
 		StaticBuffer buf( bufptr, bufsize);
@@ -1143,8 +1144,8 @@ public:
 	///\brief Enumeration of actions in the XML scanner state machine
 	enum STMAction
 	{
-		Return, ReturnToken, ReturnIdentifier, ReturnSQString, ReturnDQString, ExpectIdentifierXML, ExpectIdentifierCDATA, ReturnEOF,
-		NofSTMActions = 8
+		Return, ReturnWord, ReturnContent, ReturnIdentifier, ReturnSQString, ReturnDQString, ExpectIdentifierXML, ExpectIdentifierCDATA, ReturnEOF,
+		NofSTMActions = 9
 	};
 
 	///\brief Get the scanner state machine action as string
@@ -1152,7 +1153,7 @@ public:
 	///\return the action as string
 	static const char* getActionString( STMAction a)
 	{
-		static const char* name[ NofSTMActions] = {"Return", "ReturnToken", "ReturnIdentifier", "ReturnSQString", "ReturnDQString", "ExpectIdentifierXML", "ExpectIdentifierCDATA", "ReturnEOF"};
+		static const char* name[ NofSTMActions] = {"Return", "ReturnWord", "ReturnContent", "ReturnIdentifier", "ReturnSQString", "ReturnDQString", "ExpectIdentifierXML", "ExpectIdentifierCDATA", "ReturnEOF"};
 		return name[ (unsigned int)a];
 	};
 
@@ -1161,7 +1162,7 @@ public:
 	struct Statemachine :public ScannerStatemachine
 	{
 		///\brief Constructor (defines the state machine completely)
-		Statemachine()
+		Statemachine( bool doTokenize)
 		{
 			(*this)
 			[ START    ](EndOfText,EXIT)(EndOfLine)(Cntrl)(Space)(Lt,STARTTAG).miss(ErrExpectedOpenTag)
@@ -1177,9 +1178,20 @@ public:
 			[ XTAGAVID ].action(ReturnIdentifier,HeaderAttribValue)(EndOfLine,Cntrl,Space,XTAGAISK)(Questm,XTAGEND).miss(ErrExpectedTagAttribute)
 			[ XTAGAVSQ ].action(ReturnSQString,HeaderAttribValue)(Sq,XTAGAVQE).miss(ErrStringNotTerminated)
 			[ XTAGAVDQ ].action(ReturnDQString,HeaderAttribValue)(Dq,XTAGAVQE).miss(ErrStringNotTerminated)
-			[ XTAGAVQE ](EndOfLine,Cntrl,Space,XTAGAISK)(Questm,XTAGEND).miss(ErrExpectedTagAttribute)
-			[ CONTENT  ](EndOfText,EXIT)(EndOfLine)(Cntrl)(Space)(Lt,XMLTAG).fallback(TOKEN)
-			[ TOKEN    ].action(ReturnToken,Content)(EndOfText,EXIT)(EndOfLine,Cntrl,Space,CONTENT)(Lt,XMLTAG).fallback(CONTENT)
+			[ XTAGAVQE ](EndOfLine,Cntrl,Space,XTAGAISK)(Questm,XTAGEND).miss(ErrExpectedTagAttribute);
+			if (doTokenize)
+			{
+				(*this)
+				[ CONTENT  ](EndOfText,EXIT)(EndOfLine)(Cntrl)(Space)(Lt,XMLTAG).fallback(TOKEN)
+				[ TOKEN    ].action(ReturnWord,Content)(EndOfText,EXIT)(EndOfLine,Cntrl,Space,CONTENT)(Lt,XMLTAG).fallback(CONTENT);
+			}
+			else
+			{
+				(*this)
+				[ CONTENT  ](EndOfText,EXIT)(Lt,XMLTAG).fallback(TOKEN)
+				[ TOKEN    ].action(ReturnContent,Content)(EndOfText,EXIT)(EndOfLine,Cntrl,Space,CONTENT)(Lt,XMLTAG).fallback(CONTENT);
+			}
+			(*this)
 			[ XMLTAG   ](EndOfLine)(Cntrl)(Space)(Questm,XTAG)(Slash,CLOSETAG).fallback(OPENTAG)
 			[ OPENTAG  ].action(ReturnIdentifier,OpenTag)(EndOfLine,Cntrl,Space,TAGAISK)(Slash,TAGCLIM)(Gt,CONTENT).miss(ErrExpectedTagAttribute)
 			[ CLOSETAG ].action(ReturnIdentifier,CloseTag)(EndOfLine,Cntrl,Space,TAGCLSK)(Gt,CONTENT).miss(ErrExpectedTagEnd)
@@ -1217,13 +1229,23 @@ public:
 		}
 	};
 
+	///\class IsWordCharMap
+	///\brief Defines the set of content word characters (tokenization switched on)
+	struct IsWordCharMap :public IsTokenCharMap
+	{
+		IsWordCharMap()
+		{
+			(*this)(Undef,true)(Equal,true)(Gt,true)(Slash,true)(Exclam,true)(Questm,true)(Sq,true)(Dq,true)(Osb,true)(Csb,true)(Any,true);
+		}
+	};
+
 	///\class IsContentCharMap
 	///\brief Defines the set of content token characters
 	struct IsContentCharMap :public IsTokenCharMap
 	{
 		IsContentCharMap()
 		{
-			(*this)(Undef,true)(Equal,true)(Gt,true)(Slash,true)(Exclam,true)(Questm,true)(Sq,true)(Dq,true)(Osb,true)(Csb,true)(Any,true);
+			(*this)(Cntrl,true)(Space,true)(EndOfLine,true)(Undef,true)(Equal,true)(Gt,true)(Slash,true)(Exclam,true)(Questm,true)(Sq,true)(Dq,true)(Osb,true)(Csb,true)(Any,true);
 		}
 	};
 
@@ -1286,25 +1308,34 @@ private:
 			ParsingToken			///< scanner was interrupted when parsing a token (not in entity cotext)
 		};
 		Id id;					///< the scanner token parser state
+
+		enum EolnState				///< end of line state to fulfill the W3C requirements for end of line mapping (see http://www.w3.org/TR/xml/: 2.11 End-of-Line Handling)
+		{
+			SRC,CR
+		};
+		EolnState eolnState;			///< the scanner end of line state
+
 		unsigned int pos;			///< entity buffer position (buf)
 		unsigned int base;			///< numeric entity base (10 for decimal/16 for hexadecimal)
-		unsigned long long value;		///< parsed entity value
+		EChar value;				///< parsed entity value
 		char buf[ 16];				///< parsed entity buffer
 		UChar curchr_saved;			///< save current character parsed for the case we cannot print it (output buffer too small)
 
 		///\brief Constructor
-		TokState()				:id(Start),pos(0),base(0),value(0),curchr_saved(0) {}
+		TokState()				:id(Start),eolnState(SRC),pos(0),base(0),value(0),curchr_saved(0) {}
 
 		///\brief Reset this state variables (after succesful exit with a new token parsed)
 		///\param [in] id_ the new entity parse state
-		void init(Id id_=Start)			{id=id_;pos=0;base=0;value=0;curchr_saved=0;}
+		void init(Id id_=Start, EolnState eolnState_=SRC)
+		{
+			id=id_;eolnState=eolnState_;pos=0;base=0;value=0;curchr_saved=0;
+		}
 	};
 	TokState tokstate;								///< the entity parsing state of this XML scanner
 
 public:
 	typedef InputCharSet_ InputCharSet;
 	typedef OutputCharSet_ OutputCharSet;
-	typedef unsigned int size_type;
 	class iterator;
 
 public:
@@ -1343,7 +1374,7 @@ public:
 	///\return the value of the entity parsed
 	static UChar parseStaticNumericEntityValue( InputReader& ir)
 	{
-		signed long long value = 0;
+		EChar value = 0;
 		unsigned char ch = ir.ascii();
 		unsigned int base;
 		if (ch != '#') return 0;
@@ -1541,6 +1572,7 @@ public:
 		if (tokstate.id == TokState::Start)
 		{
 			tokstate.id = TokState::ParsingToken;
+			m_outputBuf->clear();
 		}
 		else if (tokstate.id != TokState::ParsingToken)
 		{
@@ -1555,7 +1587,35 @@ public:
 			ControlCharacter ch;
 			while (isTok[ (unsigned char)(ch=m_src.control())])
 			{
-				push( m_src.chr());
+				UChar chr = m_src.chr();
+				if (chr <= 0xD)
+				{
+					//handling W3C requirements for end of line translation in XML:
+					char aa = m_src.ascii();
+					if (aa == '\r')
+					{
+						push( (unsigned char)'\n');
+						tokstate.eolnState = TokState::CR;
+					}
+					else if (aa == '\n')
+					{
+						if (tokstate.eolnState != TokState::CR)
+						{
+							push( (unsigned char)'\n');
+						}
+						tokstate.eolnState = TokState::SRC;
+					}
+					else
+					{
+						push( chr);
+						tokstate.eolnState = TokState::SRC;
+					}
+				}
+				else
+				{
+					push( chr);
+					tokstate.eolnState = TokState::SRC;
+				}
 				m_src.skip();
 			}
 			if (ch == Amp)
@@ -1584,6 +1644,7 @@ public:
 	template <class OutputBufferType>
 	static bool parseStaticToken( const IsTokenCharMap& isTok, InputReader ir, OutputBufferType& buf)
 	{
+		buf.clear();
 		for (;;)
 		{
 			ControlCharacter ch;
@@ -1744,6 +1805,7 @@ public:
 
 private:
 	STMState state;			///< current state of the XML scanner
+	bool m_doTokenize;		///< true, if we do tokenize the input, false if we get the content according the W3C default (see http://www.w3.org/TR/xml: 2.10 White Space Handling)
 	Error error;			///< last error code
 	InputReader m_src;		///< source input iterator
 	const EntityMap* m_entityMap;	///< map with entities defined by the caller
@@ -1755,16 +1817,16 @@ public:
 	///\param [in] p_outputBuf buffer to use for output
 	///\param [in] p_entityMap read only map of named entities defined by the user
 	XMLScanner( InputIterator& p_src, OutputBuffer& p_outputBuf, const EntityMap& p_entityMap)
-			:state(START),error(Ok),m_src(p_src),m_entityMap(&p_entityMap),m_outputBuf(&p_outputBuf)
+			:state(START),m_doTokenize(false),error(Ok),m_src(p_src),m_entityMap(&p_entityMap),m_outputBuf(&p_outputBuf)
 	{}
 	XMLScanner( InputIterator& p_src, OutputBuffer& p_outputBuf)
-			:state(START),error(Ok),m_src(p_src),m_entityMap(0),m_outputBuf(&p_outputBuf)
+			:state(START),m_doTokenize(false),error(Ok),m_src(p_src),m_entityMap(0),m_outputBuf(&p_outputBuf)
 	{}
 
 	///\brief Copy constructor
 	///\param [in] o scanner to copy
 	XMLScanner( XMLScanner& o)
-			:state(o.state),error(o.error),m_src(o.m_src),m_entityMap(o.m_entityMap),m_outputBuf(o.m_outputBuf)
+			:state(o.state),m_doTokenize(o.m_doTokenize),error(o.error),m_src(o.m_src),m_entityMap(o.m_entityMap),m_outputBuf(o.m_outputBuf)
 	{}
 
 	///\brief Redefine the buffer to use for output
@@ -1787,14 +1849,23 @@ public:
 
 	///\brief Get the size of the current parsed YML element string in bytes
 	///\return the item string
-	size_type getItemSize() const {return m_outputBuf->size();}
+	std::size_t getItemSize() const {return m_outputBuf->size();}
 
 	///\brief Get the current XML scanner state machine state
 	///\return pointer to the state variables
 	ScannerStatemachine::Element* getState()
 	{
-		static Statemachine STM;
-		return STM.get( state);
+		static Statemachine STMtok(true);
+		static Statemachine STMW3C(false);
+		static Statemachine* stm[2] = {&STMW3C,&STMtok};
+		return stm[ m_doTokenize]->get( state);
+	}
+
+	///\brief Set the tokenization behaviour
+	///\param [out] v the tokenization behaviour flag
+	void doTokenize( bool v)
+	{
+		m_doTokenize = v;
 	}
 
 	///\brief Get the last error
@@ -1813,12 +1884,13 @@ public:
 	///\return the type of the XML element
 	ElementType nextItem( unsigned short mask=0xFFFF)
 	{
+		static const IsWordCharMap wordC;
 		static const IsContentCharMap contentC;
 		static const IsTagCharMap tagC;
 		static const IsSQStringCharMap sqC;
 		static const IsDQStringCharMap dqC;
-		static const IsTokenCharMap* tokenDefs[ NofSTMActions] = {0,&contentC,&tagC,&sqC,&dqC,0,0,0};
-		static const char* stringDefs[ NofSTMActions] = {0,0,0,0,0,"xml","CDATA",0};
+		static const IsTokenCharMap* tokenDefs[ NofSTMActions] = {0,&wordC,&contentC,&tagC,&sqC,&dqC,0,0,0};
+		static const char* stringDefs[ NofSTMActions] = {0,0,0,0,0,0,"xml","CDATA",0};
 
 		ElementType rt = None;
 		ControlCharacter ch;
@@ -1924,7 +1996,7 @@ public:
 			friend class iterator;
 			ElementType m_type;		///< type of the element
 			const char* m_content;		///< value string of the element
-			size_type m_size;		///< size of the value string in bytes
+			std::size_t m_size;		///< size of the value string in bytes
 		public:
 			///\brief Type of the current element as string
 			const char* name() const	{return getElementTypeName( m_type);}
@@ -1933,7 +2005,7 @@ public:
 			///\brief Value of the current element
 			const char* content() const	{return m_content;}
 			///\brief Size of the value of the current element in bytes
-			size_type size() const		{return m_size;}
+			std::size_t size() const	{return m_size;}
 			///\brief Constructor
 			Element()			:m_type(None),m_content(0),m_size(0) {}
 			///\brief Constructor
@@ -1944,7 +2016,8 @@ public:
 		};
 		// input iterator traits
 		typedef Element value_type;
-		typedef size_type difference_type;
+		typedef std::size_t difference_type;
+		typedef std::size_t size_type;
 		typedef Element* pointer;
 		typedef Element& reference;
 		typedef std::input_iterator_tag iterator_category;
@@ -2075,9 +2148,9 @@ public:
 		defaultMemUsage=3*1024,		///< default memory usage of the XML path select process, if not specified else
 		defaultMaxDepth=32		///< default max tag stack depth, if not specified else
 	};
-	unsigned int memUsage;			///< total memory usage
+	std::size_t memUsage;			///< total memory usage
 	unsigned int maxDepth;			///< max tag stack depth
-	unsigned int maxScopeStackSize;		///< max scope stack depth
+	std::size_t maxScopeStackSize;		///< max scope stack depth
 	unsigned int maxFollows;		///< maximum number of tokens searched in depth
 	unsigned int maxTriggers;		///< maximum number of open triggers
 	unsigned int maxTokens;			///< maximum number of open tokens
@@ -2198,7 +2271,7 @@ public:
 	///\brief Core of an automaton state definition that is used during XML processing
 	struct Core
 	{
-		Mask mask;				///< mask definiting what tokens are matching this state
+		Mask mask;			///< mask definiting what tokens are matching this state
 		bool follow;			///< true, if the state is seeking tokens in all follow scopes in the XML tree
 		int typeidx;			///< type of the element emitted by this state on a match
 		int cnt_start;			///< lower bound of the element index matching (for index ranges)
@@ -2215,12 +2288,12 @@ public:
 	///\brief State of an automaton in its definition
 	struct State
 	{
-		Core core;						///< core of the state (the part used in processing)
+		Core core;			///< core of the state (the part used in processing)
 		unsigned int keysize;		///< key size of the element
-		char* key;						///< key of the element
-		char* srckey;					///< key of the element as in source (for debugging or reporting, etc.)
-		int next;						///< follow state
-		int link;						///< alternative state to check
+		char* key;			///< key of the element
+		char* srckey;			///< key of the element as in source (for debugging or reporting, etc.)
+		int next;			///< follow state
+		int link;			///< alternative state to check
 
 		///\brief Constructor
 		State()
@@ -2335,14 +2408,14 @@ public:
 	///\brief Tag scope definition
 	struct Scope
 	{
-		Mask mask;						///< joined mask of all tokens active in this scope
+		Mask mask;					///< joined mask of all tokens active in this scope
 		Mask followMask;				///< joined mask of all tokens active in this and all sub scopes of this scope
 
 		///\class Range
 		///\brief Range on the token stack with all tokens that belong to this scope
 		struct Range
 		{
-			unsigned int tokenidx_from;	///< lower bound token index
+			unsigned int tokenidx_from;		///< lower bound token index
 			unsigned int tokenidx_to;		///< upper bound token index
 			unsigned int followidx;			///< pointer to follow token stack with tokens active in this and all sub scopes of this scope
 
@@ -2368,7 +2441,7 @@ public:
 	///\param [in] p_memUsage size of the memory block in bytes 
 	///\param [in] p_maxDepth maximum depht of the scope stack
 	///\return true, if everything is OK
-	bool setMemUsage( unsigned int p_memUsage, unsigned int p_maxDepth)
+	bool setMemUsage( std::size_t p_memUsage, unsigned int p_maxDepth)
 	{
 		memUsage = p_memUsage;
 		maxDepth = p_maxDepth;
@@ -2381,9 +2454,9 @@ public:
 		{
 			p_memUsage -= maxScopeStackSize * sizeof(Scope);
 		}
-		maxFollows = (p_memUsage / sizeof(unsigned int)) / 32 + 2;
-		maxTriggers = (p_memUsage / sizeof(unsigned int)) / 32 + 3;
-		p_memUsage -= sizeof(unsigned int) * maxFollows + sizeof(unsigned int) * maxTriggers;
+		maxFollows = (p_memUsage / sizeof(std::size_t)) / 32 + 2;
+		maxTriggers = (p_memUsage / sizeof(std::size_t)) / 32 + 3;
+		p_memUsage -= sizeof(std::size_t) * maxFollows + sizeof(std::size_t) * maxTriggers;
 		maxTokens = p_memUsage / sizeof(Token);
 		return (maxScopeStackSize != 0 && maxTokens != 0 && maxFollows != 0 && maxTriggers != 0);
 	}
@@ -2711,7 +2784,7 @@ public:
 
 private:
 	ThisXMLScanner scan;				///< XML Scanner for fetching elements for the automaton input
-	const ThisXMLPathSelectAutomaton* atm;				///< XML select automaton used
+	const ThisXMLPathSelectAutomaton* atm;		///< XML select automaton used
 	typedef typename ThisXMLPathSelectAutomaton::Mask Mask;
 	typedef typename ThisXMLPathSelectAutomaton::Token Token;
 	typedef typename ThisXMLPathSelectAutomaton::Hash Hash;
@@ -2725,12 +2798,12 @@ private:
 	class Array :public throws_exception
 	{
 		Element* m_ar;				///< pointer to elements
-		unsigned int m_size;		///< fill size (number of elements inserted)
-		unsigned int m_maxSize;		///< allocation size (space reserved for this number of elements)
+		std::size_t m_size;			///< fill size (number of elements inserted)
+		std::size_t m_maxSize;			///< allocation size (space reserved for this number of elements)
 	public:
 		///\brief Constructor
 		///\param [in] p_maxSize allocation size (number of elements) to reserve
-		Array( unsigned int p_maxSize) :m_size(0),m_maxSize(p_maxSize)
+		Array( std::size_t p_maxSize) :m_size(0),m_maxSize(p_maxSize)
 		{
 			m_ar = new (std::nothrow) Element[ m_maxSize];
 			if (m_ar == 0) throw exception( OutOfMem);
@@ -2760,7 +2833,7 @@ private:
 		///\brief Access element by index
 		///\param [in] idx index of the element starting with 0
 		///\return element reference
-		Element& operator[]( unsigned int idx)
+		Element& operator[]( std::size_t idx)
 		{
 			if (idx >= m_size) throw exception( ArrayBoundsReadWrite);
 			return m_ar[ idx];
@@ -2776,12 +2849,12 @@ private:
 
 		///\brief Resize of the array
 		///\param [in] p_size new array size
-		void resize( unsigned int p_size)
+		void resize( std::size_t p_size)
 		{
 			if (p_size > m_size) throw exception( ArrayBoundsReadWrite);
 			m_size = p_size;
 		}
-		unsigned int size() const  {return m_size;}
+		std::size_t size() const  {return m_size;}
 		bool empty() const			{return m_size==0;}
 	};
 
@@ -3048,6 +3121,13 @@ public:
 		scan.setOutputBuffer( p_outputBuf);
 	}
 
+	///\brief Set the tokenization behaviour
+	///\param [out] v the tokenization behaviour flag
+	void doTokenize( bool v)
+	{
+		scan.doTokenize(v);
+	}
+
 	///\class End
 	///\brief end of input iterator for the output of this XMLScanner
 	struct End {};
@@ -3089,13 +3169,13 @@ public:
 			unsigned int size() const		{return m_size;}
 		private:
 			friend class iterator;		///< friend to intialize the elements
-			State m_state;				///< current state
-			int m_type;					///< currently visited element type
-			const char* m_content;	///< currently visited element content
-			unsigned int m_size;	///< size of the content of the currently visited element in bytes
+			State m_state;			///< current state
+			int m_type;			///< currently visited element type
+			const char* m_content;		///< currently visited element content
+			unsigned int m_size;		///< size of the content of the currently visited element in bytes
 		};
 		typedef Element value_type;
-		typedef unsigned int difference_type;
+		typedef std::size_t difference_type;
 		typedef Element* pointer;
 		typedef Element& reference;
 		typedef std::input_iterator_tag iterator_category;
