@@ -16,12 +16,13 @@ using namespace textwolf;
 
 int main( int, const char**)
 {
-	static const char* xmlstr = "<?xml charset=isolatin-1?><note id=1 t=2 g=\"zu\"><stag value='500'/> \n<to>Frog</to>\n<from>Bird</from><body>Hello world!</body>\n</note>";
+	static const char* xmlstr = "<?xml charset=isolatin-1?>\r\n<note id=1 t=2 g=\"zu\"><stag value='500'/> \n<to>Frog</to>\n<from>Bird</from><body>Hello world!</body>\n</note>";
 	typedef XMLScanner<char*,charset::IsoLatin1,charset::IsoLatin1,std::string> MyXMLScanner;
 	std::string outputbuf;
 	char* xmlitr = const_cast<char*>(xmlstr);
 
 	MyXMLScanner xs( xmlitr, outputbuf);
+	xs.doTokenize(false);
 
 	MyXMLScanner::iterator itr,end;
 	try
@@ -31,6 +32,8 @@ int main( int, const char**)
 			const char* typestr = 0;
 			switch (itr->type())
 			{
+				case MyXMLScanner::None: continue;
+				case MyXMLScanner::HeaderStart: continue;
 				case MyXMLScanner::ErrorOccurred: throw std::runtime_error( itr->content());
 				case MyXMLScanner::HeaderAttribName: typestr = "attribute name"; break;
 				case MyXMLScanner::HeaderAttribValue: typestr = "attribute value"; break;
