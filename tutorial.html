@@ -57,6 +57,28 @@
 <div class="description">The namespace textwolf is defined there for all templates introduced here.
 </div>
 
+<h2>W3C Standards and textwolf</h2>
+<div class="description">textwolf follows the standard of <a href="http://www.w3.org/TR/xml/">W3C XML 1.0</a>
+but does not implement all of it. The following list shows the exceptions:
+<ul>
+<li>Only entities mapping to a character are supported.
+</li>
+<li>ENTITY definitions in the XML are ignored. Entity definitions have to be passed as read only table.
+</li>
+<li>ELEMENT definitions in the XML are ignored. Entity definitions have to be passed as read only table.
+</li>
+<li>ATTLIST definitions in the XML are ignored. Changing of tokenization has to be done by calling the doTokenize method
+of the scanner or XML path parser. You can do this at any point when you are iterating through the document.
+</li>
+<li>Other "&lt;? ..." than the &lt;?xml...?&gt; header are ignored.
+</li>
+<li>DOCTYPE definitions are ignored
+</li>
+<li>Namespace definitions are ignored
+</li>
+</ul>
+</div>
+
 <h2>Definitions</h2>
 <div class="description">textwolf defines the following templates and types</div>
 
