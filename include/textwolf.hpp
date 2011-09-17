@@ -1334,6 +1334,7 @@ private:
 
 		///\brief Reset this state variables (after succesful exit with a new token parsed)
 		///\param [in] id_ the new entity parse state
+		///\param [in] eolnState_ the end of line mapping state
 		void init(Id id_=Start, EolnState eolnState_=SRC)
 		{
 			id=id_;eolnState=eolnState_;pos=0;base=0;value=0;curchr_saved=0;
