@@ -60,7 +60,7 @@ namespace textwolf {
 	///\typedef UChar
 	///\brief Unicode character type
 	typedef DWORD32 UChar;
-	typedef DWORD62 UChar;
+	typedef DWORD64 EChar;
 }//namespace
 #else
 #include <stdint.h>
@@ -616,7 +616,7 @@ struct UTF8
 ///	interprets the BOM as the non-character value U+FFFE reserved for this purpose. This incorrect
 ///	result provides a hint to perform byte-swapping for the remaining values. If the BOM is missing,
 ///	the standard says that big-endian encoding should be assumed....
-template <int encoding>
+template <int encoding=ByteOrder::BE>
 class UTF16
 {
 private:
