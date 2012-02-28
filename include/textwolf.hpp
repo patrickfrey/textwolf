@@ -42,6 +42,7 @@
 #include <exception>
 #include <limits>
 #include <cstddef>
+#include <cstring>
 
 #ifdef BOOST_VERSION
 #include <boost/cstdint.hpp>
@@ -59,7 +60,7 @@ namespace textwolf {
 	///\typedef UChar
 	///\brief Unicode character type
 	typedef DWORD32 UChar;
-	typedef DWORD62 UChar;
+	typedef DWORD64 EChar;
 }//namespace
 #else
 #include <stdint.h>
@@ -183,9 +184,23 @@ public:
 		}
 	}
 
+	///\brief Append an array of characters
+	///\param[in] cc the characters to append
+	///\param[in] ccsize the number of characters to append
+	void append( const char* cc, std::size_t ccsize)
+	{
+		if (m_pos+ccsize > m_size)
+		{
+			m_overflow = true;
+			ccsize = m_size - m_pos;
+		}
+		std::memcpy( m_ar+m_pos, cc, ccsize);
+		m_pos += ccsize;
+	}
+
 	///\brief Return the number of characters in the buffer
 	///\return the number of characters (bytes)
-	std::size_t size() const			{return m_pos;}
+	std::size_t size() const		{return m_pos;}
 
 	///\brief Return the buffer content as 0-terminated string
 	///\return the C-string
@@ -289,6 +304,10 @@ namespace charset {
 
 struct Encoder
 {
+	///\brief Write the character 'chr' in encoded form  as nul-terminated string to a buffer
+	///\param[in] chr unicode character to encode
+	///\param[out] bufptr buffer to write to
+	///\param[in] bufsize allocation size of buffer pointer by 'bufptr'
 	static bool encode( UChar chr, char* bufptr, std::size_t bufsize)
 	{
 		static const char* HEX = "0123456789abcdef";
@@ -312,25 +331,85 @@ struct Encoder
 	}
 };
 
-///\class IsoLatin1
-///\brief Character set IsoLatin-1
-struct IsoLatin1
+///\class Interface
+///\brief Interface that has to be implemented for a character set encoding
+struct Interface
 {
-	enum {HeadSize=1,Size=1,MaxChar=0xFF};
+	///\brief Skip to start of the next character
+	///\param [in] buf buffer for the character data
+	///\param [in,out] bufpos position in 'buf'
+	///\param [in,out] itr iterator to skip
+	template <class Iterator>
+	static void skip( char* buf, unsigned int& bufpos, Iterator& itr);
 
-	static unsigned int asize()							{return HeadSize;}
-	static unsigned int size( const char*)						{return Size;}
-	static char achar( const char* buf)						{return buf[0];}
+	///\brief Fetches the ascii char representation of the current character
+	///\param [in] buf buffer for the parses character data
+	///\param [in,out] bufpos position in 'buf'
+	///\param [in,out] itr iterator on the source
+	///\return the value of the ascii character or -1
+	template <class Iterator>
+	static char asciichar( char* buf, unsigned int& bufpos, Iterator& itr);
 
-	///\brief parses a unicode character from its serialization in a buffer
-	///\param [in] buf buffer to parse the character from
+	///\brief Fetches the unicode character representation of the current character
+	///\param [in] buf buffer for the parses character data
+	///\param [in,out] bufpos position in 'buf'
+	///\param [in,out] itr iterator on the source
 	///\return the value of the unicode character
-	static UChar value( const char* buf)						{return (unsigned char)buf[0];}
+	template <class Iterator>
+	static UChar value( char* buf, unsigned int& bufpos, Iterator& itr);
 
-	///\brief prints a unicode character to a buffer
+	///\brief Prints a unicode character to a buffer
 	///\tparam Buffer_ STL back insertion sequence
 	///\param [in] chr character to print
 	///\param [out] buf buffer to print to
+	template <class Buffer_>
+	static void print( UChar chr, Buffer_& buf);
+};
+
+///\class IsoLatin1
+///\brief Character set IsoLatin-1 (ISO-8859-1)
+struct IsoLatin1
+{
+	enum {MaxChar=0xFF};
+
+	///\brief See template<class Iterator>Interface::skip(char*,unsigned int&,Iterator&)
+	template <class Iterator>
+	static void skip( char*, unsigned int& bufpos, Iterator& itr)
+	{
+		if (bufpos==0)
+		{
+			++itr;
+			++bufpos;
+		}
+	}
+
+	///\brief See template<class Iterator>Interface::asciichar(char*,unsigned int&,Iterator&)
+	template <class Iterator>
+	static char asciichar( char* buf, unsigned int& bufpos, Iterator& itr)
+	{
+		if (bufpos==0)
+		{
+			buf[0] = *itr;
+			++itr;
+			++bufpos;
+		}
+		return ((unsigned char)(buf[0])>127)?-1:buf[0];
+	}
+
+	///\brief See template<class Iterator>Interface::value(char*,unsigned int&,Iterator&)
+	template <class Iterator>
+	static UChar value( char* buf, unsigned int& bufpos, Iterator& itr)
+	{
+		if (bufpos == 0)
+		{
+			buf[0] = *itr;
+			++itr;
+			++bufpos;
+		}
+		return (unsigned char)buf[0];
+	}
+
+	///\brief See template<class Buffer>Interface::print(UChar,Buffer&)
 	template <class Buffer_>
 	static void print( UChar chr, Buffer_& buf)
 	{
@@ -359,7 +438,7 @@ struct ByteOrder
 
 ///\class UCS2
 ///\brief Character set UCS-2 (little/big endian)
-///\tparam encoding ByteOrder::LE or ByteOrder::BE
+///\tparam encoding charset::ByteOrder::LE or charset::ByteOrder::BE
 ///\remark UCS-2 encoding is defined to be big-endian only. Although the similar designations UCS-2BE and UCS-2LE 
 ///  imitate the UTF-16 labels, they do not represent official encoding schemes. (http://en.wikipedia.org/wiki/UTF-16/UCS-2)
 ///  therefore we take encoding=ByteOrder::BE as default.
@@ -372,28 +451,48 @@ struct UCS2
 		MSB=(encoding==ByteOrder::LE),			///< most significant byte index (0 or 1)
 		Print1shift=(encoding==ByteOrder::BE)?8:0,	///< value to shift with to get the 1st character to print
 		Print2shift=(encoding==ByteOrder::LE)?8:0,	///< value to shift with to get the 2nd character to print
-		HeadSize=2,
-		Size=2,
 		MaxChar=0xFFFF
 	};
 
-	static unsigned int asize()				{return HeadSize;}
-	static unsigned int size( const char*)			{return Size;}
-	static char achar( const char* buf)			{return (buf[MSB])?(char)-1:buf[LSB];}
-
-	///\brief parses a unicode character from its serialization in a buffer
-	///\param [in] buf buffer to parse the character from
-	///\return the value of the unicode character
-	static UChar value( const char* buf)
+	///\brief See template<class Iterator>Interface::skip(char*,unsigned int&,Iterator&)
+	template <class Iterator>
+	static void skip( char*, unsigned int& bufpos, Iterator& itr)
 	{
+		for (;bufpos < 2; ++bufpos)
+		{
+			++itr;
+		}
+	}
+
+	///\brief See template<class Iterator>Interface::value(char*,unsigned int&,Iterator&)
+	template <class Iterator>
+	static UChar value( char* buf, unsigned int& bufpos, Iterator& itr)
+	{
+		if (bufpos<2)
+		{
+			if (bufpos<1)
+			{
+				buf[0] = *itr;
+				++itr;
+				++bufpos;
+			}
+			buf[1] = *itr;
+			++itr;
+			++bufpos;
+		}
 		UChar res = (unsigned char)buf[MSB];
 		return (res << 8) + (unsigned char)buf[LSB];
 	}
 
-	///\brief prints a unicode character to a buffer
-	///\tparam Buffer_ STL back insertion sequence
-	///\param [in] chr character to print
-	///\param [out] buf buffer to print to
+	///\brief See template<class Iterator>Interface::value(char*,unsigned int&,Iterator&)
+	template <class Iterator>
+	static char asciichar( char* buf, unsigned int& bufpos, Iterator& itr)
+	{
+		UChar ch = value( buf, bufpos, itr);
+		return (ch > 127)?-1:(char)ch;
+	}
+
+	///\brief See template<class Buffer>Interface::print(UChar,Buffer&)
 	template <class Buffer_>
 	static void print( UChar chr, Buffer_& buf)
 	{
@@ -433,30 +532,43 @@ struct UCS4
 		Print2shift=(encoding==ByteOrder::BE)?16:8,	///< value to shift with to get the 2nd character to print
 		Print3shift=(encoding==ByteOrder::BE)?8:16,	///< value to shift with to get the 3rd character to print
 		Print4shift=(encoding==ByteOrder::BE)?0:24,	///< value to shift with to get the 4th character to print
-		HeadSize=4,
-		Size=4,
 		MaxChar=0xFFFFFFFF
 	};
 
-	static unsigned int asize()			{return HeadSize;}
-	static unsigned int size( const char*)		{return Size;}
-	static char achar( const char* buf)		{return (buf[B3]|buf[B2]|buf[B1])?(char)-1:buf[B0];}
-
-	///\brief parses a unicode character from its serialization in a buffer
-	///\param [in] buf buffer to parse the character from
-	///\return the value of the unicode character
-	static UChar value( const char* buf)
+	///\brief See template<class Iterator>Interface::value(char*,unsigned int&,Iterator&)
+	template <class Iterator>
+	static UChar value( char* buf, unsigned int& bufpos, Iterator& itr)
 	{
+		for (;bufpos < 4; ++bufpos)
+		{
+			buf[ bufpos] = *itr;
+			++itr;
+		}
 		UChar res = (unsigned char)buf[B3];
 		res = (res << 8) + (unsigned char)buf[B2];
 		res = (res << 8) + (unsigned char)buf[B1];
 		return (res << 8) + (unsigned char)buf[B0];
 	}
 
-	///\brief prints a unicode character to a buffer
-	///\tparam Buffer_ STL back insertion sequence
-	///\param [in] chr character to print
-	///\param [out] buf buffer to print to
+	///\brief See template<class Iterator>Interface::skip(char*,unsigned int&,Iterator&)
+	template <class Iterator>
+	static void skip( char*, unsigned int& bufpos, Iterator& itr)
+	{
+		for (;bufpos < 4; ++bufpos)
+		{
+			++itr;
+		}
+	}
+
+	///\brief See template<class Iterator>Interface::asciichar(char*,unsigned int&,Iterator&)
+	template <class Iterator>
+	static char asciichar( char* buf, unsigned int& bufpos, Iterator& itr)
+	{
+		UChar ch = value( buf, bufpos, itr);
+		return (ch > 127)?-1:(char)ch;
+	}
+
+	///\brief See template<class Buffer>Interface::print(UChar,Buffer&)
 	template <class Buffer_>
 	static void print( UChar chr, Buffer_& buf)
 	{
@@ -510,8 +622,6 @@ struct UTF8
 		B11111101=B11111100|B00000001
 	};
 
-	enum {HeadSize=1};
-
 	struct CharLengthTab	:public CharMap<unsigned char, 0>
 	{
 		CharLengthTab()
@@ -528,43 +638,84 @@ struct UTF8
 		};
 	};
 
-	static unsigned int asize()			{return HeadSize;}
-	static char achar( const char* buf)		{return buf[0];}
-	static unsigned int size( const char* buf)	{static CharLengthTab charLengthTab; return charLengthTab[ (unsigned char)buf[ 0]];}
-
-	///\brief parses a unicode character from its serialization in a buffer
-	///\param [in] buf buffer to parse the character from
-	///\return the value of the unicode character
-	static UChar value( const char* buf)
+	///\brief Get the size of the current character in bytes (variable length encoding)
+	///\param [in] buf buffer for the character data
+	///\param [in,out] bufpos position in 'buf'
+	///\param [in,out] itr iterator to skip
+	template <class Iterator>
+	static unsigned int size( char* buf, unsigned int& bufpos, Iterator& itr)
 	{
-		const UChar invalid = std::numeric_limits<UChar>::max();
-		UChar res;
-		int gg;
-		int ii;
-		unsigned char ch = (unsigned char)*buf;
-
-		if (ch < 128) return ch;
-
-		gg = size(buf)-2;
-		if (gg < 0) return invalid;
-
-		res = (ch)&(B00011111>>gg);
-		for (ii=0; ii<=gg; ii++)
+		static CharLengthTab charLengthTab;
+		if (bufpos==0)
 		{
-			unsigned char xx = (unsigned char)buf[ii+1];
-			res = (res<<6) | (xx & B00111111);
-			if ((unsigned char)(xx & B11000000) != B10000000)
+			buf[0] = *itr;
+			++itr;
+			++bufpos;
+		}
+		return charLengthTab[ (unsigned char)buf[ 0]];
+	}
+
+	///\brief See template<class Iterator>Interface::skip(char*,unsigned int&,Iterator&)
+	template <class Iterator>
+	static void skip( char* buf, unsigned int& bufpos, Iterator& itr)
+	{
+		unsigned int bufsize = size( buf, bufpos, itr);
+		for (;bufpos < bufsize; ++bufpos)
+		{
+			++itr;
+		}
+	}
+
+	///\brief See template<class Iterator>Interface::asciichar(char*,unsigned int&,Iterator&)
+	template <class Iterator>
+	static char asciichar( char* buf, unsigned int& bufpos, Iterator& itr)
+	{
+		if (bufpos==0)
+		{
+			buf[0] = *itr;
+			++itr;
+			++bufpos;
+		}
+		return ((unsigned char)(buf[0])>127)?-1:buf[0];
+	}
+
+	///\brief See template<class Iterator>Interface::value(char*,unsigned int&,Iterator&)
+	template <class Iterator>
+	static UChar value( char* buf, unsigned int& bufpos, Iterator& itr)
+	{
+		if (bufpos==0)
+		{
+			buf[0] = *itr;
+			++itr;
+			++bufpos;
+		}
+		unsigned int bufsize = size( buf, bufpos, itr);
+		for (;bufpos < bufsize; ++bufpos)
+		{
+			buf[ bufpos] = *itr;
+			++itr;
+		}
+		UChar res = (unsigned char)buf[0];
+		if (res > 127)
+		{
+			int gg = bufsize-2;
+			if (gg < 0) return MaxChar;
+
+			res = ((unsigned char)buf[0])&(B00011111>>gg);
+			for (int ii=0; ii<=gg; ii++)
 			{
-				return invalid;
+				unsigned char xx = (unsigned char)buf[ii+1];
+				res = (res<<6) | (xx & B00111111);
+				if ((unsigned char)(xx & B11000000) != B10000000)
+				{
+					return MaxChar;
+				}
 			}
 		}
 		return res;
 	}
 
-	///\brief prints a unicode character to a buffer
-	///\tparam Buffer_ STL back insertion sequence
-	///\param [in] chr character to print
-	///\param [out] buf buffer to print to
+	///\brief See template<class Buffer>Interface::print(UChar,Buffer&)
 	template <class Buffer_>
 	static void print( UChar chr, Buffer_& buf)
 	{
@@ -601,7 +752,7 @@ struct UTF8
 ///	interprets the BOM as the non-character value U+FFFE reserved for this purpose. This incorrect
 ///	result provides a hint to perform byte-swapping for the remaining values. If the BOM is missing,
 ///	the standard says that big-endian encoding should be assumed....
-template <int encoding>
+template <int encoding=ByteOrder::BE>
 class UTF16
 {
 private:
@@ -610,46 +761,87 @@ private:
 		LSB=(encoding==ByteOrder::BE),			///< least significant byte index (0 or 1)
 		MSB=(encoding==ByteOrder::LE),			///< most significant byte index (0 or 1)
 		Print1shift=(encoding==ByteOrder::BE)?8:0,	///< value to shift with to get the 1st character to print
-		Print2shift=(encoding==ByteOrder::LE)?8:0	///< value to shift with to get the 2nd character to print
+		Print2shift=(encoding==ByteOrder::LE)?8:0,	///< value to shift with to get the 2nd character to print
+		MaxChar=0x10FFFF
 	};
-
 public:
-	static unsigned int asize()				{return 2;}
-	static unsigned int size( const char* buf)		{return ((buf[ MSB]&0xD8) == 0xD8)?4:2;}
-	static char achar( const char* buf)
+	///\brief Get the size of the current character in bytes (variable length encoding)
+	///\param [in] buf buffer for the character data
+	///\param [in,out] bufpos position in 'buf'
+	///\param [in,out] itr iterator to skip
+	template <class Iterator>
+	static unsigned int size( char* buf, unsigned int& bufpos, Iterator& itr)
 	{
-		char rt = (buf[MSB])?(char)-1:buf[LSB];
-		return rt;
-	}
-
-	///\brief parses a unicode character from its serialization in a buffer
-	///\param [in] buf buffer to parse the character from
-	///\return the value of the unicode character
-	static UChar value( const char* buf)
-	{
-		unsigned short hi = (unsigned char)buf[ MSB];
-		hi = (hi << 8) + (unsigned char)buf[ LSB];
-		if ((hi & 0xD800) == 0xD800)
+		if (bufpos<2)
 		{
-			unsigned short lo = (unsigned char)buf[ 2+MSB];
-			lo = (lo << 8) + (unsigned char)buf[ 2+LSB];
-			if ((lo & 0xDC00) != 0xDC00) return 0xFFFF;
-			hi ^= 0xD800;
-			lo ^= 0xDC00;
-			UChar rt = hi;
-			return (rt << 10) + lo;
+			if (bufpos<1)
+			{
+				buf[0] = *itr;
+				++itr;
+				++bufpos;
+			}
+			buf[1] = *itr;
+			++itr;
+			++bufpos;
+		}
+		UChar rt = (unsigned char)buf[ MSB];
+		if ((rt - 0xD8) > 0x03)
+		{
+			return 2;
 		}
 		else
 		{
-			UChar rt = (unsigned char)buf[ MSB];
-			return (rt << 8) + (unsigned char)buf[ LSB];
+			return 4;
 		}
-		return 0xFFFF;
 	}
-	///\brief prints a unicode character to a buffer
-	///\tparam Buffer_ STL back insertion sequence
-	///\param [in] ch character to print
-	///\param [out] buf buffer to print to
+
+	///\brief See template<class Iterator>Interface::skip(char*,unsigned int&,Iterator&)
+	template <class Iterator>
+	static void skip( char* buf, unsigned int& bufpos, Iterator& itr)
+	{
+		unsigned int bufsize = size( buf, bufpos, itr);
+		for (;bufpos < bufsize; ++bufpos)
+		{
+			++itr;
+		}
+	}
+
+	///\brief See template<class Iterator>Interface::asciichar(char*,unsigned int&,Iterator&)
+	template <class Iterator>
+	static char asciichar( char* buf, unsigned int& bufpos, Iterator& itr)
+	{
+		UChar ch = value( buf, bufpos, itr);
+		return (ch > 127)?-1:(char)ch;
+	}
+
+	///\brief See template<class Iterator>Interface::value(char*,unsigned int&,Iterator&)
+	template <class Iterator>
+	static UChar value( char* buf, unsigned int& bufpos, Iterator& itr)
+	{
+		unsigned int bufsize = size( buf, bufpos, itr);
+		UChar rt = (unsigned char)buf[ MSB];
+		rt = (rt << 8) + (unsigned char)buf[ LSB];
+
+		if (bufsize == 4)
+		{
+			// 2 teilig
+			while (bufpos < bufsize)
+			{
+				buf[bufpos] = *itr;
+				++itr;
+				++bufpos;
+			}
+			rt -= 0xD800;
+			rt *= 0x400;
+			unsigned short lo = (unsigned char)buf[ 2+MSB];
+			if ((lo - 0xD8) > 0x03) return 0xFFFF;
+			lo = (lo << 8) + (unsigned char)buf[ 2+LSB];
+			return rt + lo - 0xDC00 + 0x010000;
+		}
+		return rt;
+	}
+
+	///\brief See template<class Buffer>Interface::print(UChar,Buffer&)
 	template <class Buffer_>
 	static void print( UChar ch, Buffer_& buf)
 	{
@@ -661,8 +853,8 @@ public:
 		else if (ch <= 0x10FFFF)
 		{
 			ch -= 0x10000;
-			unsigned short hi = (ch >> 10) + 0xD800;
-			unsigned short lo = (1 & ((1 << 10) -1)) + 0xDC00;
+			unsigned short hi = (ch / 0x400) + 0xD800;
+			unsigned short lo = (ch % 0x400) + 0xDC00;
 			buf.push_back( (char)(unsigned char)((hi >> Print1shift) & 0xFF));
 			buf.push_back( (char)(unsigned char)((hi >> Print2shift) & 0xFF));
 			buf.push_back( (char)(unsigned char)((lo >> Print1shift) & 0xFF));
@@ -815,13 +1007,7 @@ public:
 	{
 		if (val == 0)
 		{
-			while (state < CharSet::size(buf))
-			{
-				buf[state] = *input;
-				++input;
-				++state;
-			}
-			val = CharSet::value(buf);
+			val = CharSet::value( buf, state, input);
 		}
 		return val;
 	}
@@ -829,13 +1015,7 @@ public:
 	///\brief Fill the internal buffer with as many current character bytes needed for reading the ASCII representation
 	void getcur()
 	{
-		while (state < CharSet::asize())
-		{
-			buf[state] = *input;
-			++input;
-			++state;
-		}
-		cur = CharSet::achar(buf);
+		cur = CharSet::asciichar( buf, state, input);
 	}
 
 	///\brief Get the control character representation of the current character 
@@ -859,17 +1039,7 @@ public:
 	///\return *this
 	TextScanner& skip()
 	{
-		while (state < CharSet::asize())
-		{
-			buf[state] = *input;
-			++input;
-			++state;
-		}
-		while (state < CharSet::size( buf))
-		{
-			++input;
-			++state;
-		}
+		CharSet::skip( buf, state, input);
 		state = 0;
 		cur = 0;
 		val = 0;
@@ -1120,9 +1290,9 @@ public:
 	///\brief Enumeration of states of the XML scanner state machine
 	enum STMState
 	{
-		START, STARTTAG, XTAG, XTAGEND, XTAGEOLN, XTAGDONE, XTAGAISK, XTAGANAM, XTAGAESK, XTAGAVSK, XTAGAVID, XTAGAVSQ, XTAGAVDQ, XTAGAVQE,
+		START, STARTTAG, XTAG, PITAG, PITAGEND, XTAGEND, XTAGEOLN, XTAGDONE, XTAGAISK, XTAGANAM, XTAGAESK, XTAGAVSK, XTAGAVID, XTAGAVSQ, XTAGAVDQ, XTAGAVQE,
 		CONTENT, TOKEN, XMLTAG, OPENTAG, CLOSETAG, TAGCLSK, TAGAISK, TAGANAM, TAGAESK, TAGAVSK, TAGAVID, TAGAVSQ, TAGAVDQ, TAGAVQE,
-		TAGCLIM, ENTITYSL, ENTITY, CDATA, CDATA1, CDATA2, CDATA3, EXIT
+		TAGCLIM, ENTITYSL, ENTITY, ENTITYLC, CDATA, CDATA1, CDATA2, CDATA3, EXIT
 	};
 
 	///\brief Get the scanner state machine state as string
@@ -1130,12 +1300,17 @@ public:
 	///\return the state as string
 	static const char* getStateString( STMState s)
 	{
-		enum Constant {NofStates=36};
+		enum Constant {NofStates=39};
 		static const char* sState[NofStates]
 		= {
-			"START", "STARTTAG", "XTAG", "XTAGEND", "XTAGEOLN", "XTAGDONE", "XTAGAISK", "XTAGANAM", "XTAGAESK", "XTAGAVSK", "XTAGAVID", "XTAGAVSQ", "XTAGAVDQ", "XTAGAVQE",
-			"CONTENT", "TOKEN", "XMLTAG", "OPENTAG", "CLOSETAG", "TAGCLSK", "TAGAISK", "TAGANAM", "TAGAESK", "TAGAVSK", "TAGAVID", "TAGAVSQ", "TAGAVDQ", "TAGAVQE",
-			"TAGCLIM", "ENTITYSL", "ENTITY", "CDATA", "CDATA1", "CDATA2", "CDATA3", "EXIT"
+			"START", "STARTTAG", "XTAG", "PITAG", "PITAGEND",
+			"XTAGEND", "XTAGEOLN", "XTAGDONE", "XTAGAISK", "XTAGANAM",
+			"XTAGAESK", "XTAGAVSK", "XTAGAVID", "XTAGAVSQ", "XTAGAVDQ",
+			"XTAGAVQE", "CONTENT", "TOKEN", "XMLTAG", "OPENTAG",
+			"CLOSETAG", "TAGCLSK", "TAGAISK", "TAGANAM", "TAGAESK",
+			"TAGAVSK", "TAGAVID", "TAGAVSQ", "TAGAVDQ", "TAGAVQE",
+			"TAGCLIM", "ENTITYSL", "ENTITY", "ENTITYLC", "CDATA",
+			"CDATA1", "CDATA2", "CDATA3", "EXIT"
 		};
 		return sState[(unsigned int)s];
 	}
@@ -1168,6 +1343,8 @@ public:
 			[ START    ](EndOfText,EXIT)(EndOfLine)(Cntrl)(Space)(Lt,STARTTAG).miss(ErrExpectedOpenTag)
 			[ STARTTAG ](EndOfLine)(Cntrl)(Space)(Questm,XTAG )(Exclam,ENTITYSL).fallback(OPENTAG)
 			[ XTAG     ].action(ExpectIdentifierXML)(EndOfLine,Cntrl,Space,XTAGAISK)(Questm,XTAGEND).miss(ErrExpectedXMLTag)
+			[ PITAG    ](Questm,PITAGEND).other(PITAG)
+			[ PITAGEND ](Gt,CONTENT).miss(ErrExpectedTagEnd)
 			[ XTAGEND  ](Gt,XTAGEOLN)(EndOfLine)(Cntrl)(Space).miss(ErrExpectedTagEnd)
 			[ XTAGEOLN ](EndOfLine,XTAGDONE)(Cntrl)(Space).miss(ErrExpectedEndOfLine)
 			[ XTAGDONE ].action(Return,HeaderEnd).fallback(CONTENT)
@@ -1192,7 +1369,7 @@ public:
 				[ TOKEN    ].action(ReturnContent,Content)(EndOfText,EXIT)(EndOfLine,Cntrl,Space,CONTENT)(Lt,XMLTAG).fallback(CONTENT);
 			}
 			(*this)
-			[ XMLTAG   ](EndOfLine)(Cntrl)(Space)(Questm,XTAG)(Slash,CLOSETAG).fallback(OPENTAG)
+			[ XMLTAG   ](EndOfLine)(Cntrl)(Space)(Questm,PITAG)(Slash,CLOSETAG).fallback(OPENTAG)
 			[ OPENTAG  ].action(ReturnIdentifier,OpenTag)(EndOfLine,Cntrl,Space,TAGAISK)(Slash,TAGCLIM)(Gt,CONTENT).miss(ErrExpectedTagAttribute)
 			[ CLOSETAG ].action(ReturnIdentifier,CloseTag)(EndOfLine,Cntrl,Space,TAGCLSK)(Gt,CONTENT).miss(ErrExpectedTagEnd)
 			[ TAGCLSK  ](EndOfLine)(Cntrl)(Space)(Gt,CONTENT).miss(ErrExpectedTagEnd)
@@ -1206,7 +1383,8 @@ public:
 			[ TAGAVQE  ](EndOfLine,Cntrl,Space,TAGAISK)(Slash,TAGCLIM)(Gt,CONTENT).miss(ErrExpectedTagAttribute)
 			[ TAGCLIM  ].action(Return,CloseTagIm)(EndOfLine)(Cntrl)(Space)(Gt,CONTENT).miss(ErrExpectedTagEnd)
 			[ ENTITYSL ](Osb,CDATA).fallback(ENTITY)
-			[ ENTITY   ](Exclam,TAGCLSK).other( ENTITY)
+			[ ENTITY   ](Gt,CONTENT)(Osb,ENTITYLC).other( ENTITY)
+			[ ENTITYLC ](Csb,ENTITY).other( ENTITYLC)
 			[ CDATA    ].action(ExpectIdentifierCDATA)(Osb,CDATA1).miss(ErrExpectedCDATATag)
 			[ CDATA1   ](Csb,CDATA2).other(CDATA1)
 			[ CDATA2   ](Csb,CDATA3).other(CDATA1)
@@ -1326,6 +1504,7 @@ private:
 
 		///\brief Reset this state variables (after succesful exit with a new token parsed)
 		///\param [in] id_ the new entity parse state
+		///\param [in] eolnState_ the end of line mapping state
 		void init(Id id_=Start, EolnState eolnState_=SRC)
 		{
 			id=id_;eolnState=eolnState_;pos=0;base=0;value=0;curchr_saved=0;
@@ -3330,3 +3509,4 @@ public:
 
 } //namespace textwolf
 #endif
+
