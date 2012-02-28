@@ -198,23 +198,41 @@ for (Scan::iterator itr = xs.begin(); itr != xs.end(); itr++)
 <h3>How to Define Your Own</h3>
 <div class="description">You can define your own character set encodings. The following structure is passed to a textwolf iterator as a character set encoding definition. Textwolf assumes some form of a single Unicode character (UChar) to be able to map them to each other.
 <pre>
+///\class Interface
+///\brief Interface that has to be implemented for a character set encoding
 struct MyCharSet
 {
-	static unsigned int asize();
-	static unsigned int size( const char*);
-	static char achar( const char* buf);
-	static UChar value( const char* buf);
-	static unsigned int print( UChar c, char* b, unsigned int n);
+	///\brief Skip to start of the next character
+	///\param [in] buf buffer for the character data
+	///\param [in,out] bufpos position in 'buf'
+	///\param [in,out] itr iterator to skip
+	template <class Iterator>
+	static void skip( char* buf, unsigned int& bufpos, Iterator& itr);
+
+	///\brief Fetches the ascii char representation of the current character
+	///\param [in] buf buffer for the parses character data
+	///\param [in,out] bufpos position in 'buf'
+	///\param [in,out] itr iterator on the source
+	///\return the value of the ascii character or -1
+	template <class Iterator>
+	static char asciichar( char* buf, unsigned int& bufpos, Iterator& itr);
+
+	///\brief Fetches the unicode character representation of the current character
+	///\param [in] buf buffer for the parses character data
+	///\param [in,out] bufpos position in 'buf'
+	///\param [in,out] itr iterator on the source
+	///\return the value of the unicode character
+	template <class Iterator>
+	static UChar value( char* buf, unsigned int& bufpos, Iterator& itr);
+
+	///\brief Prints a unicode character to a buffer
+	///\tparam Buffer_ STL back insertion sequence
+	///\param [in] chr character to print
+	///\param [out] buf buffer to print to
+	template <class Buffer_>
+	static void print( UChar chr, Buffer_& buf);
 };
 </pre>
-
-<UL>
-<li> asize = return number of bytes that have to be read to identify an ascii character (XML control character). For fixed length character formats it equals 'size'. For variable length formats like UTF not.</li>
-<li> size = return number of bytes that have to be read for the whole character</li>
-<li> achar = return the ascii character or 0xFF for any other character or 0 for EOF</li>
-<li> value = return the decoded unicode character</li>
-<li> print = print the unicode character 'chr' to 'buf' with byte length 'bufsize' and return the length of the character printed in bytes.</li>
-</UL>
 </div>
 
 
