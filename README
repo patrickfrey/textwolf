@@ -2,7 +2,7 @@ Documentation
 * For using textwolf just include "include/textwolf.hpp".
 * The textwolf home is at at http://textwolf.net
 * A textwolf tutorial can be found at http://textwolf.net/tutorial.html
-* A doxygen interface documentation is at http://patrickfrey.github.com/textwolf/doxygen/html/index.html
+* A doxygen interface documentation is at http://patrickfrey.github.com/textwolf/html/index.html
 
 Examples
 * See the examples in tests:
@@ -22,11 +22,7 @@ Project Schedule
 	Release Version 0.1.0 (done)
 * 2011/8/16
 	UTF-16 support (done)
-<<<<<<< HEAD
-* 2012/06/30
-=======
 * 2012/06/30 (postponed because of work on Wolframe)
->>>>>>> f10003a98307f7d90a7dccbcc079c4bf21387ce3
 	Planned Version 1.0.0
 	* Intrusive character set ecoding definition
 	* Native handling of wchar_t iterators
