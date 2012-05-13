@@ -5,7 +5,7 @@
     STL conforming input iterator as source. It does no buffering
     or read ahead and is dedicated for stream processing of XML
     for a small set of XML queries.
-    Stream processing in this context refers to processing the
+    Stream processing in this Object refers to processing the
     document without buffering anything but the current result token
     processed with its tag hierarchy information.
 
@@ -35,8 +35,8 @@
 ///\file textwolf/xmlparser.hpp
 ///\brief textwolf XML parser interface hiding character encoding properties
 
-#ifndef __TEXTWOLF_XMLPARSER_HPP__
-#define __TEXTWOLF_XMLPARSER_HPP__
+#ifndef __TEXTWOLF_XML_PARSER_HPP__
+#define __TEXTWOLF_XML_PARSER_HPP__
 #include "textwolf.hpp"
 #include <cstring>
 #include <cstdlib>
@@ -45,18 +45,29 @@
 ///\brief Toplevel namespace of the library
 namespace textwolf {
 
+///\class HdrSrcIterator
+///\tparam SrcIterator
+///\brief Iterator wrapper that parses the header only
 template <class SrcIterator>
 class HdrSrcIterator
 {
 public:
 	///\brief Constructor
-	HdrSrcIterator( SrcIterator& src_)
-		:m_state(Left0),m_src(src_),m_restc(0),m_cnt0(0),m_error(false){}
+	HdrSrcIterator( const SrcIterator& src_)
+		:m_state(Left0)
+		,m_src(src_)
+		,m_restc(0)
+		,m_cnt0(0)
+		,m_error(Ok){}
 
 	///\brief Copy constructor
 	///\brief param[in] o iterator to copy
 	HdrSrcIterator( HdrSrcIterator& o)
-		:m_state(o.m_state),m_src(o.m_src),m_restc(o.m_restc),m_cnt0(o.m_cnt0),m_error(o.m_error){}
+		:m_state(o.m_state)
+		,m_src(o.m_src)
+		,m_restc(o.m_restc)
+		,m_cnt0(o.m_cnt0)
+		,m_error(o.m_error){}
 
 	///\brief Element access
 	///\return current character
@@ -95,13 +106,7 @@ public:
 					}
 
 				case Rest:
-					while (m_restc > 0)
-					{
-						char ch = *m_src;
-						if (!ch) m_error = true;
-						++src;
-						--m_restc;
-					}
+					complete();
 					return 0;
 			}
 			++m_cnt0;
@@ -118,8 +123,21 @@ public:
 		return *this;
 	}
 
+	enum Error
+	{
+		Ok,
+		ErrIllegalState,
+		ErrIllegalCharacterAtEndOfHeader
+	};
+
+	const char* getError()
+	{
+		static const char ar[] = {"", "illegal xml header", "broken character in header"};
+		return ar[(int)m_error];
+	}
+
 	///\brief Get the error state
-	bool error() const			{return m_error;}
+	bool hasError() const			{return m_error!=Ok;}
 
 	///\brief Initialize a new source iterator while keeping the state
 	///\param [in] p_iterator source iterator
@@ -129,6 +147,21 @@ public:
 	}
 
 	const SrcIterator& src() const		{return m_src;}
+
+	void complete()
+	{
+		if (m_state != Rest)
+		{
+			m_error = ErrIllegalState;
+		}
+		while (m_restc > 0)
+		{
+			char ch = *m_src;
+			if (!ch) m_error = ErrIllegalCharacterAtEndOfHeader;
+			++src;
+			--m_restc;
+		}
+	}
 
 private:
 	enum State
@@ -145,52 +178,127 @@ private:
 	bool m_error;			//< error encountered (0 expected at end of header)
 };
 
-template <class SrcIterator>
+///\brief Class for XML parsing independent of the character set
+///\tparam BufferType type to use as buffer (STL back insertion interface)
+///\tparam SrcIterator iterator on the scanned source
+template <class SrcIterator, class BufferType>
 class XMLParser
 {
 private:
-	typedef XMLScannerBase::ElementType (*GetNextProc)( void* ctx, const char*& elemptr, std::size_t& elemsize);
-	typedef void (*deleteCtx)( void* ctx);
+	typedef XMLScannerBase::ElementType (*GetNextProc)( void* obj, const char*& elemptr, std::size_t& elemsize);
+	typedef void (*DeleteObj)( void* obj);
+	typedef void (*SetFlag)( void* obj);
+
+	struct MethodTable
+	{
+		GetNextProc m_proc;
+		DeleteObj m_del;
+		SetFlag m_setflag;
+
+		MethodTable() :m_proc(0),m_del(0),m_setflag(0){}
+	};
 
 	template <class SrcIterator, class IOCharset, class AppCharset>
-	struct Context
+	struct Object
 	{
-		static void* createCtx( SrcIterator& src, std::string& buf)
+		static void* createObj( SrcIterator& src, BufferType& buf)
 		{
-			return new XMLScanner<SrcIterator,IOCharset,AppCharset,std::string>( src, buf);
+			return new XMLScanner<SrcIterator,IOCharset,AppCharset,BufferType>( src, buf);
 		}
 
-		static void deleteCtx( void* ctx)
+		static void* copyObj( void* obj_, SrcIterator& src, BufferType& buf)
 		{
-			delete (XMLScanner<SrcIterator,IOCharset,AppCharset,std::string>*)ctx;
-		}
-
-		static XMLScannerBase::ElementType getNextProc( void* ctx, const char*& elemptr, std::size_t& elemsize)
-		{
-			XMLScanner<SrcIterator,IOCharset,AppCharset,std::string>* ctxi = (XMLScanner<SrcIterator,IOCharset,AppCharset,std::string>*)ctx;
-			XMLScannerBase::ElementType rt = ctxi->nextItem();
-			elemptr = ctxi->getItem();
-			elemsize = ctxi->getItemSize();
+			XMLScanner<SrcIterator,IOCharset,AppCharset,BufferType>* obj = (XMLScanner<SrcIterator,IOCharset,AppCharset,BufferType>*)obj_;
+			XMLScanner<SrcIterator,IOCharset,AppCharset,BufferType>* obj;
+			rt = new XMLScanner<SrcIterator,IOCharset,AppCharset,BufferType>( *obj);
+			rt->seSource( src);
+			rt->setOutputBuffer( buf);
 			return rt;
 		}
 
-		static void create( SrcIterator& src, std::string& buf, GetNextProc& proc, deleteCtx del, void* ctx)
+		static void deleteObj( void* obj)
 		{
-			proc = getNextProc;
-			del = deleteCtx;
-			ctx = createCtx( src, buf);
+			delete (XMLScanner<SrcIterator,IOCharset,AppCharset,BufferType>*)obj;
+		}
+
+		enum Flag
+		{
+			doTokenize
+		};
+
+		static bool setFlag( void* obj_, Flag flag, bool value)
+		{
+			XMLScanner<SrcIterator,IOCharset,AppCharset,BufferType>* obj = (XMLScanner<SrcIterator,IOCharset,AppCharset,BufferType>*)obj_;
+			switch (flag)
+			{
+				obj->doTokenize( value);
+			}
+		}
+
+		static XMLScannerBase::ElementType getNextProc( void* obj_, const char*& elemptr, std::size_t& elemsize)
+		{
+			XMLScanner<SrcIterator,IOCharset,AppCharset,BufferType>* obj = (XMLScanner<SrcIterator,IOCharset,AppCharset,BufferType>*)obj_;
+			XMLScannerBase::ElementType rt = obj->nextItem();
+			elemptr = obj->getItem();
+			elemsize = obj->getItemSize();
+			return rt;
+		}
+
+		static void create( SrcIterator& src, BufferType& buf, MethodTable& mt, void*& obj)
+		{
+			mt.m_proc = getNextProc;
+			mt.m_del = deleteObj;
+			mt.m_setflag = setFlag;
+			obj = createObj( src, buf);
+		}
+
+		static void copy( SrcIterator& src, BufferType& buf, MethodTable& mt, void*& obj)
+		{
+			mt.m_proc = getNextProc;
+			mt.m_del = deleteObj;
+			mt.m_setflag = setFlag;
+			obj = copyObj( obj, src, buf);
 		}
 	};
 public:
-	XMLParser( SrcIterator& src, std::string& buf)
-		:m_state(ParseHeader),m_hdrsrc(src),m_src(src),m_buf(&buf),m_proc(0),m_del(0),m_ctx(0),m_attrEncoding(false)
+	struct CharsetEncodingCallBack
 	{
-		Context<HdrSrcIterator,charset::UTF8,charset::UTF8>::create( m_hdrsrc, *m_buf, m_proc, m_del, m_ctx);
+		virtual bool setEncoding( const std::string&){}
+	};
+
+public:
+	XMLParser( SrcIterator* src, CharsetEncodingCallBack* encodingCallBack=0)
+		:m_state(ParseHeader)
+		,m_hdrsrc(src)
+		,m_src(src)
+		,m_obj(0)
+		,m_attrEncoding(false)
+		,m_withEmpty(true)
+		,m_doTokenize(false)
+		,m_interrupted(false)
+		,m_encodingCallBack(encodingCallBack)
+	{
+		m_obj = Object<HdrSrcIterator,charset::UTF8,charset::UTF8>::create( m_hdrsrc, m_buf, m_mt);
+	}
+
+	XMLParser( const XMLParser& o)
+		:m_state(o.m_state)
+		,m_hdrsrc(o.m_hdrsrc)
+		,m_src(o.m_src)
+		,m_buf(o.m_buf)
+		,m_obj(0)
+		,m_attrEncoding(o.m_attrEncoding)
+		,m_withEmpty(o.m_withEmpty)
+		,m_doTokenize(o.m_doTokenize)
+		,m_interrupted(o.m_interrupted)
+		,m_encodingCallBack(o.m_encodingCallBack)
+	{
+		m_obj = Object<HdrSrcIterator,charset::UTF8,charset::UTF8>::copy( m_hdrsrc, m_buf, m_mt, o.m_obj);
 	}
 
 	~XMLParser()
 	{
-		m_del( m_ctx);
+		m_del( m_obj);
 	}
 
 	void setSource( const SrcIterator& src_)
@@ -206,98 +314,179 @@ public:
 		}
 	}
 
+	const std::string& encoding() const
+	{
+		return m_encoding;
+	}
+
+	bool withEmpty()
+	{
+		return m_withEmpty;
+	}
+
+	bool doTokenize()
+	{
+		return m_doTokenize;
+	}
+
+	bool withEmpty( bool val)
+	{
+		bool rt = m_withEmpty;
+		m_withEmpty = val;
+		return rt;
+	}
+
+	bool doTokenize( bool val)
+	{
+		bool rt = m_doTokenize;
+		if (m_mt) m_mt->setFlag( m_obj, Object::doTokenize, m_doTokenize = val);
+		return rt;
+	}
+
 	XMLScannerBase::ElementType getNext( const char*& elemptr, std::size_t& elemsize)
 	{
-		XMLScannerBase::ElementType elemtype = m_proc( m_ctx, elemptr, elemsize);
-		switch (m_state)
+		if (!m_interrupted)
 		{
-			case ParseHeader:
-				switch (elemtype)
-				{
-					case HeaderStart:
-					break;
-					case HeaderAttribName:
-						m_attrEncoding = (elemsize == 8 && std::memcmp( elemptr, "encoding", 8) == 0);
-					break;
-					case HeaderAttribValue:
-						if (m_attrEncoding) parseEncoding( elemptr, elemsize);
-					break;
-					case HeaderEnd:
-						if (m_encoding.size() >= 8 && std::memcmp( m_encoding.c_str(), "isolatin")
-						||  m_encoding.size() >= 7 && std::memcmp( m_encoding.c_str(), "iso8859"))
-						{
-							Context<SrcIterator,charset::IsoLatin1,charset::UTF8>::create( m_src, *m_buf, m_proc, m_del, m_ctx);
-						}
-						else if (m_encoding.size() == "utf8")
-						{
-							Context<SrcIterator,charset::UTF8,charset::UTF8>::create( m_src, *m_buf, m_proc, m_del, m_ctx);
-						}
-						else if (m_encoding.size() == "utf16" || m_encoding.size() == "utf16be")
-						{
-							Context<SrcIterator,charset::UTF16BE,charset::UTF8>::create( m_src, *m_buf, m_proc, m_del, m_ctx);
-						}
-						else if (m_encoding.size() == "utf16le")
-						{
-							Context<SrcIterator,charset::UTF16LE,charset::UTF8>::create( m_src, *m_buf, m_proc, m_del, m_ctx);
-						}
-						else if (m_encoding.size() == "ucs2" || m_encoding.size() == "ucs2be")
-						{
-							Context<SrcIterator,charset::UCS2BE,charset::UTF8>::create( m_src, *m_buf, m_proc, m_del, m_ctx);
-						}
-						else if (m_encoding.size() == "ucs2le")
-						{
-							Context<SrcIterator,charset::UCS2LE,charset::UTF8>::create( m_src, *m_buf, m_proc, m_del, m_ctx);
-						}
-						else if (m_encoding.size() == "ucs4" || m_encoding.size() == "ucs4be")
-						{
-							Context<SrcIterator,charset::UCS4BE,charset::UTF8>::create( m_src, *m_buf, m_proc, m_del, m_ctx);
-						}
-						else if (m_encoding.size() == "ucs4le")
-						{
-							Context<SrcIterator,charset::UCS4LE,charset::UTF8>::create( m_src, *m_buf, m_proc, m_del, m_ctx);
-						}
-						m_src.setSource( m_hdr.src());
-						m_state = ParseSource;
-					break;
-					default:
-						elemptr = "unexpected element in xml header";
-						elemsize = std::strlen( elemptr);
-						elemtype = ErrorOccurred;
-				}
-			break;
-			case ParseSource:
-			break;
+			m_buf.clear();
 		}
-		return elemtype;
+		else
+		{
+			m_interrupted = true;
+		}
+		for(;;)
+		{
+			XMLScannerBase::ElementType elemtype = m_proc( m_obj, elemptr, elemsize);
+			switch (m_state)
+			{
+				case ParseHeader:
+					switch (elemtype)
+					{
+						case HeaderStart:
+						break;
+						case HeaderAttribName:
+							m_attrEncoding = (elemsize == 8 && std::memcmp( elemptr, "encoding", 8) == 0);
+						break;
+						case HeaderAttribValue:
+							m_encoding.clear();
+							m_encoding.append( elemptr, elemsize);
+						break;
+						case HeaderEnd:
+						{
+							std::string enc;
+							parseEncoding( enc, m_encoding);
+
+							m_hdrsrc.complete();
+
+							if (m_hdrsrc.hasError())
+							{
+								elemptr = m_hdrsrc.getError();
+								elemsize = std::strlen( elemptr);
+								elemtype = ErrorOccurred;
+							}
+							if (m_encodingCallBack)
+							{
+								m_encodingCallBack->setEncoding( m_encoding);
+							}
+							if (enc.size() >= 8 && std::memcmp( enc.c_str(), "isolatin")
+							||  enc.size() >= 7 && std::memcmp( enc.c_str(), "iso8859"))
+							{
+								Object<SrcIterator,charset::IsoLatin1,charset::UTF8>::create( m_src, *m_buf, m_proc, m_del, m_obj);
+							}
+							else if (enc.size() == 0 || enc == "utf8")
+							{
+								Object<SrcIterator,charset::UTF8,charset::UTF8>::create( m_src, *m_buf, m_proc, m_del, m_obj);
+							}
+							else if (enc == "utf16" || enc == "utf16be")
+							{
+								Object<SrcIterator,charset::UTF16BE,charset::UTF8>::create( m_src, *m_buf, m_proc, m_del, m_obj);
+							}
+							else if (enc == "utf16le")
+							{
+								Object<SrcIterator,charset::UTF16LE,charset::UTF8>::create( m_src, *m_buf, m_proc, m_del, m_obj);
+							}
+							else if (enc == "ucs2" || enc == "ucs2be")
+							{
+								Object<SrcIterator,charset::UCS2BE,charset::UTF8>::create( m_src, *m_buf, m_proc, m_del, m_obj);
+							}
+							else if (enc == "ucs2le")
+							{
+								Object<SrcIterator,charset::UCS2LE,charset::UTF8>::create( m_src, *m_buf, m_proc, m_del, m_obj);
+							}
+							else if (enc == "ucs4" || enc == "ucs4be")
+							{
+								Object<SrcIterator,charset::UCS4BE,charset::UTF8>::create( m_src, *m_buf, m_proc, m_del, m_obj);
+							}
+							else if (enc == "ucs4le")
+							{
+								Object<SrcIterator,charset::UCS4LE,charset::UTF8>::create( m_src, *m_buf, m_proc, m_del, m_obj);
+							}
+							else
+							{
+								elemptr = "unknown charset encoding";
+								elemsize = std::strlen( elemptr);
+								elemtype = ErrorOccurred;
+							}
+							m_src.setSource( m_hdr.src());
+							m_state = ParseSource;
+						}
+						break;
+						default:
+							elemptr = "unexpected element in xml header";
+							elemsize = std::strlen( elemptr);
+							elemtype = ErrorOccurred;
+					}
+				break;
+				case ParseSource:
+					if (elemtype == Content && !m_withEmpty)
+					{
+						std::size_t ii=0;
+						const unsigned char* cc = (const unsigned char*)elemptr;
+						for (;ii<elemsize && cc[ii] <= ' '; ++ii);
+						if (ii==elemsize)
+						{
+							m_buf.clear();
+							continue;
+						}
+					}
+				break;
+			}
+			m_interrupted = false;
+			return elemtype;
+		}
 	}
 
 private:
-	void parseEncoding( const char* av, std::size_t avsize)
+	static void parseEncoding( std::string& dest, const std::string& src)
 	{
 		std::size_t kk;
-		for (kk=0; kk<avsize; kk++)
+		dest.clear();
+		std::string::const_iterator cc=src.begin();
+		for (; cc != src.end(); ++cc)
 		{
-			if (av[kk] <= ' ') continue;
-			if (av[kk] == '-') continue;
-			if (av[kk] == ' ') continue;
-			m_encoding.push_back( ::tolower( av[kk]));
+			if (*cc <= ' ') continue;
+			if (*cc == '-') continue;
+			if (*cc == ' ') continue;
+			dest.push_back( ::tolower( *cc));
 		}
 	}
 private:
 	enum State
 	{
-		ParseHeader,
-		ParseSource
+		ParseHeader,				//< parsing the XML header section
+		ParseSource				//< parsing the XML content section
 	};
-	State m_state;
-	HdrSrcIterator m_hdrsrc;
-	SrcIterator m_src;
-	std::string* m_buf;
-	GetNextProc m_proc;
-	deleteCtx m_del;
-	void* m_ctx;
-	bool m_attrEncoding;
-	std::string m_encoding;
+	State m_state;					//< parser section parsing state
+	HdrSrcIterator m_hdrsrc;			//< source iterator for header
+	SrcIterator m_src;				//< source iterator for content
+	BufferType m_buf;				//< element buffer
+	MethodTable m_mt;				//< method table of m_obj
+	void* m_obj;					//< pointer to parser objecct
+	bool m_attrEncoding;				//< flag used in state 'ParseHeader': true, if last atrribute parsed was 'encoding'
+	std::string m_encoding;				//< xml encoding
+	bool m_withEmpty;				//< do produce empty tokens (containing only spaces)
+	bool m_doTokenize;				//< do tokenize (whitespace sequences as delimiters)
+	bool m_interrupted;				//< true, if getNext hat been interrupted by an end of message last time
+	CharsetEncodingCallBack* m_encodingCallBack;	//< defines a method to call when the XML encoding has been detected
 };
 
 } //namespace
