@@ -66,7 +66,7 @@ public:
 		std::memcpy( m_ptr, o.m_ptr, m_pos);
 	}
 
-	void push( const char* pp, std::size_t nn, std::size_t ofs)
+	void push( const char* pp, std::size_t nn)
 	{
 		std::size_t align = getAlign( nn);
 		std::size_t ofs = nn + align + sizeof( std::size_t);
@@ -87,22 +87,22 @@ public:
 
 	bool top( const void*& element, std::size_t& elementsize)
 	{
-		std::size_t oo = ofs(elementsize);
-		if (!oo) return false;
-		element = m_ptr + m_pos - oo;
+		std::size_t ofs = topofs(elementsize);
+		if (!ofs) return false;
+		element = m_ptr + m_pos - ofs;
 		return true;
 	}
 
 	void pop()
 	{
 		std::size_t elementsize=0;
-		std::size_t oo = ofs(elementsize);
-		if (m_pos < oo) throw std::runtime_error( "corrupt tag stack");
-		m_pos -= oo;
+		std::size_t ofs = topofs(elementsize);
+		if (m_pos < ofs) throw std::runtime_error( "corrupt tag stack");
+		m_pos -= ofs;
 	}
 
 private:
-	std::size_t ofs( std::size_t& elementsize)
+	std::size_t topofs( std::size_t& elementsize)
 	{
 		if (m_pos < sizeof( std::size_t)) return false;
 		void* tt = m_ptr + (m_pos - sizeof( std::size_t));

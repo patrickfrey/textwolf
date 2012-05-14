@@ -38,9 +38,11 @@
 #ifndef __TEXTWOLF_XML_PRINTER_HPP__
 #define __TEXTWOLF_XML_PRINTER_HPP__
 #include "textwolf.hpp"
+#include "textwolf/textscanner.hpp"
 #include "textwolf/xmlparser.hpp"
 #include "textwolf/xmltagstack.hpp"
-#include "textwolf/striterator.hpp"
+#include "textwolf/xmlattributes.hpp"
+#include "textwolf/cstringiterator.hpp"
 #include <cstring>
 #include <cstdlib>
 
@@ -48,286 +50,28 @@
 ///\brief Toplevel namespace of the library
 namespace textwolf {
 
-///\brief Class for XML printing to a buffer
-///\tparam BufferType type to use as buffer (STL back insertion interface)
 template <class BufferType>
-class XMLPrinter :public CharsetEncodingCallBack
+struct XMLPrinterBase
 {
-private:
-	///\class FilterBase
-	///\brief Filter base template
-	///\tparam IOCharset Character set encoding of input and output
-	///\tparam AppCharset Character set encoding of the application processor
-	///\tparam BufferType STL back insertion sequence to use for printing output
-	template <class IOCharset, class AppCharset, class BufferType>
-	struct Base
-	{
-		Base()
-			:m_state(Content){}
-
-		Base( const Base& o)
-			:m_state(o.m_state),m_buf(o.m_buf),m_tagstack(o.m_tagstack){}
-
-		///\brief Prints a character string to an STL back insertion sequence buffer in the IO character set encoding
-		///\param [in] src pointer to string to print
-		///\param [in] srcsize size of src in bytes
-		void printToBuffer( const char* src, std::size_t srcsize, BufferType& buf)
-		{
-			StrIterator itr( src, srcsize);
-			textwolf::TextScanner<StrIterator,AppCharset> ts( itr);
-
-			textwolf::UChar ch;
-			while ((ch = ts.chr()) != 0)
-			{
-				IOCharset::print( ch, buf);
-				++ts;
-			}
-		}
-
-		void printHeader( BufferType& buf)
-		{
-			printToBuffer( "<?xml version=\"1.0\" encoding=\"", 30, buf);
-			printToBuffer( m_encoding.c_str(), m_encoding.size(), buf);
-			printToBuffer( "\" standalone=\"yes\"?>", 20, buf);
-		}
-
-		void printOpenTag( const char* src, std::size_t srcsize, BufferType& buf)
-		{
-			if (m_pendingOpenTag == true)
-			{
-				printToBuffer( '>', buf);
-			}
-			printToBuffer( '<', buf);
-			printToBuffer( (const char*)element, elementsize, buf);
-
-			m_tagstack.push( element, elementsize);
-			m_pendingOpenTag = true;
-		}
-
-		bool printAttribute( const char* src, std::size_t srcsize, BufferType& buf)
-		{
-			if (m_pendingOpenTag)
-			{
-				printToBuffer( ' ', buf);
-				printToBuffer( (const char*)element, elementsize, buf);
-				printToBuffer( '=', buf);
-				m_attributeContext = true;
-				return true;
-			}
-			else
-			{
-				return false;
-			}
-		 }
-
-		bool printAttributeValue( const char* src, std::size_t srcsize, BufferType& buf)
-		{
-			if (m_pendingOpenTag)
-			{
-				printToBuffer( ' ', buf);
-				printToBufferAttributeValue( (const char*)element, elementsize, buf);
-				m_attributeContext = false;
-				return true;
-			}
-			else
-			{
-				return false;
-			}
-		 }
-
-		void printValue( const char* src, std::size_t srcsize, BufferType& buf)
-		{
-			if (m_pendingOpenTag == true)
-			{
-				printToBuffer( '>', buf);
-			}
-			printToBuffer( ' ', buf);
-			printToBuffer( (const char*)element, elementsize, buf);
-			m_attributeContext = false;
-			m_pendingOpenTag = false;
-		 }
-
-		bool printCloseTag( BufferType& buf)
-		{
-			if (topTag( cltag, cltagsize) || !cltagsize)
-			{
-				return false;
-			}
-			if (m_pendingOpenTag == true)
-			{
-				printToBuffer( '/', buf);
-				printToBuffer( '>', buf);
-			}
-			else
-			{
-				printToBuffer( '<', buf);
-				printToBuffer( '/', buf);
-				printToBuffer( (const char*)cltag, cltagsize, buf);
-				printToBuffer( '>', buf);
-			}
-			m_pendingOpenTag = false;
-			m_attributeContext = false;
-			popTag();
-			return true;
-		}
-
-		///\brief Prints an end of line marker (EOL) to an STL back insertion sequence buffer in the IO character set encoding
-		///\param [in,out] buf buffer to print to
-		void printToBufferEOL()
-		{
-			static const char* str =  protocol::EndOfLineMarker::value();
-			static unsigned int len = protocol::EndOfLineMarker::size();
-			printToBuffer( str, len, m_buf);
-		}
-
-		///\brief Prints a character to an STL back insertion sequence buffer in the IO character set encoding
-		///\param [in] ch character to print
-		///\param [in,out] buf buffer to print to
-		void printToBuffer( char ch)
-		{
-			IOCharset::print( (textwolf::UChar)(unsigned char)ch, m_buf);
-		}
-	private:
-		enum State
-		{
-			Content,
-			TagAttribute,
-			TagValue
-		};
-		State m_state;
-		BufferType m_buf;
-		TagStack m_tagstack;
-	};
-
-	typedef bool (*PrintProc)( void* obj, XMLScannerBase::ElementType elemtype, const char* elemptr, std::size_t elemsize);
+	typedef bool (*PrintProc)( void* obj, const char* elemptr, std::size_t elemsize, BufferType& buf);
+	typedef bool (*PrintProcEmpty)( void* obj, BufferType& buf);
+	typedef void* (*CopyObj)( void* obj);
 	typedef void (*DeleteObj)( void* obj);
 
 	struct MethodTable
 	{
-		PrintProc m_proc;
+		PrintProc m_printOpenTag;
+		PrintProcEmpty m_printCloseTag;
+		PrintProc m_printAttribute;
+		PrintProc m_printValue;
+		CopyObj m_copy;
 		DeleteObj m_del;
 
-		MethodTable() :m_proc(0),m_del(0){}
+		MethodTable() :m_printOpenTag(0),m_printCloseTag(0),m_printAttribute(0),m_printValue(0),m_copy(0),m_del(0){}
 	};
 
-	template <class IOCharset, class AppCharset>
-	struct Object
-	{
-		typedef Base<IOCharset,AppCharset,BufferType> This;
-		static void* createObj()
-		{
-			return new This();
-		}
-
-		static void* copyObj()
-		{
-			This* obj = (This*)obj_;
-			rt = new This( *obj);
-			return rt;
-		}
-
-		static void* printProc( void* obj_, BufferType& buf)
-		{
-			This* obj = (This*)obj_;
-		}
-
-		static void deleteObj( void* obj)
-		{
-			delete (This*)obj;
-		}
-
-		static XMLScannerBase::ElementType getNextProc( void* obj_, const char*& elemptr, std::size_t& elemsize)
-		{
-			XMLScanner<SrcIterator,IOCharset,AppCharset,BufferType>* obj = (XMLScanner<SrcIterator,IOCharset,AppCharset,BufferType>*)obj_;
-			XMLScannerBase::ElementType rt = obj->nextItem();
-			elemptr = obj->getItem();
-			elemsize = obj->getItemSize();
-			return rt;
-		}
-
-		static void create( SrcIterator& src, BufferType& buf, MethodTable& mt, void*& obj)
-		{
-			mt.m_proc = printProc;
-			mt.m_del = deleteObj;
-			obj = createObj( src, buf);
-		}
-
-		static void copy( SrcIterator& src, BufferType& buf, MethodTable& mt, void*& obj)
-		{
-			mt.m_proc = printProc;
-			mt.m_del = deleteObj;
-			obj = copyObj( obj, src, buf);
-		}
-	};
-public:
-	XMLPrinter()
-	{
-	}
-
-	XMLPrinter( const XMLParser& o)
-	{
-	}
-
-	~XMLPrinter()
-	{
-		m_del( m_obj);
-	}
-
-	virtual bool setEncoding( const std::string& encoding)
-	{
-		m_encoding = encoding;
-		std::string enc;
-		parseEncoding( enc, m_encoding);
-
-		if (enc.size() >= 8 && std::memcmp( enc.c_str(), "isolatin")
-		||  enc.size() >= 7 && std::memcmp( enc.c_str(), "iso8859"))
-		{
-			Object<charset::IsoLatin1,charset::UTF8>::create( m_proc, m_del, m_obj);
-		}
-			else if (enc.size() == 0 || enc == "utf8")
-			{
-				Object<SrcIterator,charset::UTF8,charset::UTF8>::create( m_src, *m_buf, m_proc, m_del, m_obj);
-			}
-			else if (enc == "utf16" || enc == "utf16be")
-			{
-				Object<SrcIterator,charset::UTF16BE,charset::UTF8>::create( m_src, *m_buf, m_proc, m_del, m_obj);
-			}
-			else if (enc == "utf16le")
-			{
-				Object<SrcIterator,charset::UTF16LE,charset::UTF8>::create( m_src, *m_buf, m_proc, m_del, m_obj);
-			}
-			else if (enc == "ucs2" || enc == "ucs2be")
-			{
-				Object<SrcIterator,charset::UCS2BE,charset::UTF8>::create( m_src, *m_buf, m_proc, m_del, m_obj);
-			}
-			else if (enc == "ucs2le")
-			{
-				Object<SrcIterator,charset::UCS2LE,charset::UTF8>::create( m_src, *m_buf, m_proc, m_del, m_obj);
-			}
-			else if (enc == "ucs4" || enc == "ucs4be")
-			{
-				Object<SrcIterator,charset::UCS4BE,charset::UTF8>::create( m_src, *m_buf, m_proc, m_del, m_obj);
-			}
-			else if (enc == "ucs4le")
-			{
-				Object<SrcIterator,charset::UCS4LE,charset::UTF8>::create( m_src, *m_buf, m_proc, m_del, m_obj);
-			}
-			else
-			{
-				return false;
-			}
-		}
-	}
-
-	const std::string& getEncoding() const
-	{
-		return m_encoding;
-	}
-
-private:
 	static void parseEncoding( std::string& dest, const std::string& src)
 	{
-		std::size_t kk;
 		dest.clear();
 		std::string::const_iterator cc=src.begin();
 		for (; cc != src.end(); ++cc)
@@ -338,13 +82,397 @@ private:
 			dest.push_back( ::tolower( *cc));
 		}
 	}
+};
+
+///\class XMLPrinterObject
+///\brief Character encoding dependent printing object
+///\tparam IOCharset Character set encoding of input and output
+///\tparam AppCharset Character set encoding of the application processor
+///\tparam BufferType STL back insertion sequence to use for printing output
+template <class BufferType, class IOCharset, class AppCharset, class XMLAttributes>
+class XMLPrinterObject
+{
+private:
+	typedef typename XMLPrinterBase<BufferType>::MethodTable MethodTable;
+
+	///\class This
+	struct This
+	{
+		This( const XMLAttributes& a)
+			:m_state(Init),m_attributes(a){}
+
+		This( const This& o)
+			:m_state(o.m_state),m_buf(o.m_buf),m_tagstack(o.m_tagstack),m_attributes(o.m_attributes){}
+
+		///\brief Prints a character string to an STL back insertion sequence buffer in the IO character set encoding
+		///\param [in] src pointer to string to print
+		///\param [in] srcsize size of src in bytes
+		static void printToBuffer( const char* src, std::size_t srcsize, BufferType& buf)
+		{
+			CStringIterator itr( src, srcsize);
+			TextScanner<CStringIterator,AppCharset> ts( itr);
+
+			UChar ch;
+			while ((ch = ts.chr()) != 0)
+			{
+				IOCharset::print( ch, buf);
+				++ts;
+			}
+		}
+
+		///\brief print a character substitute or the character itself
+		///\param [in,out] buf buffer to print to
+		///\param [in] nof_echr number of elements in echr and estr
+		///\param [in] echr ASCII characters to substitute
+		///\param [in] estr ASCII strings to substitute with (array parallel to echr)
+		static void printEsc( char ch, BufferType& buf, unsigned int nof_echr, const char* echr, const char** estr)
+		{
+			const char* cc = (const char*)memchr( echr, ch, nof_echr);
+			if (cc)
+			{
+				unsigned int ii = 0;
+				const char* tt = estr[ cc-echr];
+				while (tt[ii]) IOCharset::print( tt[ii++], buf);
+			}
+			else
+			{
+				IOCharset::print( ch, buf);
+			}
+		}
+
+		///\brief print a value with some characters replaced by a string
+		///\param [in] src pointer to attribute value string to print
+		///\param [in] srcsize size of src in bytes
+		///\param [in,out] buf buffer to print to
+		///\param [in] nof_echr number of elements in echr and estr
+		///\param [in] echr ASCII characters to substitute
+		///\param [in] estr ASCII strings to substitute with (array parallel to echr)
+		static void printToBufferSubstChr( const char* src, std::size_t srcsize, BufferType& buf, unsigned int nof_echr, const char* echr, const char** estr)
+		{
+			CStringIterator itr( src, srcsize);
+			textwolf::TextScanner<CStringIterator,AppCharset> ts( itr);
+
+			textwolf::UChar ch;
+			while ((ch = ts.chr()) != 0)
+			{
+				if (ch < 128)
+				{
+					printEsc( (char)ch, buf, nof_echr, echr, estr);
+				}
+				else
+				{
+					IOCharset::print( ch, buf);
+				}
+				++ts;
+			}
+		}
+
+		///\brief print attribute value string
+		///\param [in] src pointer to attribute value string to print
+		///\param [in] srcsize size of src in bytes
+		///\param [in,out] buf buffer to print to
+		static void printToBufferAttributeValue( const char* src, std::size_t srcsize, BufferType& buf)
+		{
+			enum {nof_echr = 12};
+			static const char* estr[nof_echr] = {"&lt;", "&gt;", "&apos;", "&quot;", "&amp;", "&#0;", "&#8;", "&#9;", "&#10;", "&#13;"};
+			static const char echr[nof_echr+1] = "<>'\"&\0\b\t\n\r";
+			IOCharset::print( '"', buf);
+			printToBufferSubstChr( src, srcsize, buf, nof_echr, echr, estr);
+			IOCharset::print( '"', buf);
+		}
+
+		///\brief print content value string
+		///\param [in] src pointer to content string to print
+		///\param [in] srcsize size of src in bytes
+		///\param [in,out] buf buffer to print to
+		static void printToBufferContent( const char* src, std::size_t srcsize, BufferType& buf)
+		{
+			enum {nof_echr = 6};
+			static const char* estr[nof_echr] = {"&lt;", "&gt;", "&amp;", "&#0;", "&#8;"};
+			static const char echr[nof_echr+1] = "<>&\0\b";
+			printToBufferSubstChr( src, srcsize, buf, nof_echr, echr, estr);
+		}
+
+		///\brief Prints a character to an STL back insertion sequence buffer in the IO character set encoding
+		///\param [in] ch character to print
+		///\param [in,out] buf buffer to print to
+		static void printToBuffer( char ch, BufferType& buf)
+		{
+			IOCharset::print( (textwolf::UChar)(unsigned char)ch, buf);
+		}
+
+		void printHeader( BufferType& buf)
+		{
+			std::string enc = m_attributes.getEncoding();
+			printToBuffer( "<?xml version=\"1.0\" encoding=\"", 30, buf);
+			printToBuffer( enc.c_str(), enc.size(), buf);
+			printToBuffer( "\" standalone=\"yes\"?>\n", 21, buf);
+			m_state = Content;
+		}
+
+		void exitTagContext( BufferType& buf)
+		{
+			if (m_state != Content)
+			{
+				if (m_state == Init)
+				{
+					printHeader( buf);
+				}
+				printToBuffer( '>', buf);
+				m_state = Content;
+			}
+		}
+
+		bool printOpenTag( const char* src, std::size_t srcsize, BufferType& buf)
+		{
+			exitTagContext( buf);
+			printToBuffer( '<', buf);
+			printToBuffer( (const char*)src, srcsize, buf);
+
+			m_tagstack.push( src, srcsize);
+			m_state = TagElement;
+			return true;
+		}
+
+		bool printAttribute( const char* src, std::size_t srcsize, BufferType& buf)
+		{
+			if (m_state == TagElement)
+			{
+				printToBuffer( ' ', buf);
+				printToBuffer( (const char*)src, srcsize, buf);
+				printToBuffer( '=', buf);
+				m_state = TagAttribute;
+				return true;
+			}
+			return false;
+		}
+
+		bool printValue( const char* src, std::size_t srcsize, BufferType& buf)
+		{
+			if (m_state == TagAttribute)
+			{
+				printToBuffer( ' ', buf);
+				printToBufferAttributeValue( (const char*)src, srcsize, buf);
+				m_state = TagElement;
+				return true;
+			}
+			else
+			{
+				exitTagContext( buf);
+				printToBufferContent( (const char*)src, srcsize, buf);
+			}
+			return false;
+		}
+
+		bool printCloseTag( BufferType& buf)
+		{
+			const void* cltag;
+			std::size_t cltagsize;
+
+			if (m_tagstack.top( cltag, cltagsize) || !cltagsize)
+			{
+				return false;
+			}
+			if (m_state == TagElement)
+			{
+				printToBuffer( '/', buf);
+				printToBuffer( '>', buf);
+				m_state = Content;
+			}
+			else if (m_state != Content)
+			{
+				return false;
+			}
+			else
+			{
+				printToBuffer( '<', buf);
+				printToBuffer( '/', buf);
+				printToBuffer( (const char*)cltag, cltagsize, buf);
+				printToBuffer( '>', buf);
+			}
+			m_tagstack.pop();
+			return true;
+		}
+
+	private:
+		enum State
+		{
+			Init,
+			Content,
+			TagAttribute,
+			TagElement
+		};
+		State m_state;					//< output state
+		BufferType m_buf;				//< element output  buffer
+		TagStack m_tagstack;				//< tag name stack of open tags
+		XMLAttributes m_attributes;			//< xml encoding
+	};
+
+public:
+	static void* createObj( const XMLAttributes& a)
+	{
+		return new This( a);
+	}
+
+	static void* copyObj( void* obj_)
+	{
+		This* obj = (This*)obj_;
+		This* rt = new This( *obj);
+		return rt;
+	}
+
+	static bool printOpenTag( void* obj_, const char* src, std::size_t srcsize, BufferType& buf)
+	{
+		This* obj = (This*)obj_;
+		return obj->printOpenTag( src, srcsize, buf);
+	}
+
+	static bool printCloseTag( void* obj_, BufferType& buf)
+	{
+		This* obj = (This*)obj_;
+		return obj->printCloseTag( buf);
+	}
+
+	static bool printAttribute( void* obj_, const char* src, std::size_t srcsize, BufferType& buf)
+	{
+		This* obj = (This*)obj_;
+		return obj->printAttribute( src, srcsize, buf);
+	}
+
+	static bool printValue( void* obj_, const char* src, std::size_t srcsize, BufferType& buf)
+	{
+		This* obj = (This*)obj_;
+		return obj->printValue( src, srcsize, buf);
+	}
+
+	static void deleteObj( void* obj)
+	{
+		delete (This*)obj;
+	}
+
+	static void* create( MethodTable& mt, const XMLAttributes& a)
+	{
+		mt.m_printOpenTag = printOpenTag;
+		mt.m_printCloseTag = printCloseTag;
+		mt.m_printAttribute = printAttribute;
+		mt.m_printValue = printValue;
+		mt.m_copy = copyObj;
+		mt.m_del = deleteObj;
+		return createObj( a);
+	}
+
+	static void* copy( MethodTable& mt, void* obj)
+	{
+		mt.m_printOpenTag = printOpenTag;
+		mt.m_printCloseTag = printCloseTag;
+		mt.m_printAttribute = printAttribute;
+		mt.m_printValue = printValue;
+		mt.m_del = deleteObj;
+		return copyObj( obj);
+	}
+};
+
+
+///\brief Class for XML printing to a buffer
+///\tparam BufferType type to use as buffer (STL back insertion interface)
+template <class BufferType, class XMLAttributes=DefaultXMLAttributes>
+class XMLPrinter :public XMLPrinterBase<BufferType>
+{
+public:
+	XMLPrinter( const XMLAttributes& a)
+		:m_obj(0),m_attributes(a){}
+
+	XMLPrinter( const XMLPrinter& o)
+		:m_mt(o.m_mt),m_obj(0),m_attributes(o.m_attributes)
+	{
+		m_obj = m_mt.m_copy( m_obj);
+	}
+
+	~XMLPrinter()
+	{
+		m_mt.m_del( m_obj);
+	}
+
+	bool printOpenTag( const char* src, std::size_t srcsize, BufferType& buf)
+	{
+		if (!m_obj && !createPrinter()) return false;
+		return m_mt.m_printOpenTag( m_obj, src, srcsize, buf);
+	}
+
+	bool printCloseTag( const char* src, std::size_t srcsize, BufferType& buf)
+	{
+		if (!m_obj && !createPrinter()) return false;
+		return m_mt.m_printCloseTag( m_obj, buf);
+	}
+
+	bool printAttribute( const char* src, std::size_t srcsize, BufferType& buf)
+	{
+		if (!m_obj && !createPrinter()) return false;
+		return m_mt.m_printAttribute( m_obj, src, srcsize, buf);
+	}
+
+	bool printValue( const char* src, std::size_t srcsize, BufferType& buf)
+	{
+		if (!m_obj && !createPrinter()) return false;
+		return m_mt.m_printValue( m_obj, src, srcsize, buf);
+	}
+
+	bool createPrinter()
+	{
+		std::string enc;
+		parseEncoding( enc, m_attributes.getEncoding());
+
+		if (m_obj)
+		{
+			m_mt.m_del( m_obj);
+			m_obj = 0;
+		}
+
+		if ((enc.size() >= 8 && std::memcmp( enc.c_str(), "isolatin", enc.size())== 0)
+		||  (enc.size() >= 7 && std::memcmp( enc.c_str(), "iso8859", enc.size()) == 0))
+		{
+			m_obj = XMLPrinterObject<BufferType, charset::IsoLatin1, charset::UTF8, XMLAttributes>::create( m_mt, m_attributes);
+		}
+		else if (enc.size() == 0 || enc == "utf8")
+		{
+			m_obj = XMLPrinterObject<BufferType, charset::UTF8, charset::UTF8, XMLAttributes>::create( m_mt, m_attributes);
+		}
+		else if (enc == "utf16" || enc == "utf16be")
+		{
+			m_obj = XMLPrinterObject<BufferType, charset::UTF16BE, charset::UTF8, XMLAttributes>::create( m_mt, m_attributes);
+		}
+		else if (enc == "utf16le")
+		{
+			m_obj = XMLPrinterObject<BufferType, charset::UTF16LE, charset::UTF8, XMLAttributes>::create( m_mt, m_attributes);
+		}
+		else if (enc == "ucs2" || enc == "ucs2be")
+		{
+			m_obj = XMLPrinterObject<BufferType, charset::UCS2BE, charset::UTF8, XMLAttributes>::create( m_mt, m_attributes);
+		}
+		else if (enc == "ucs2le")
+		{
+			m_obj = XMLPrinterObject<BufferType, charset::UCS2LE, charset::UTF8, XMLAttributes>::create( m_mt, m_attributes);
+		}
+		else if (enc == "ucs4" || enc == "ucs4be")
+		{
+			m_obj = XMLPrinterObject<BufferType, charset::UCS4BE, charset::UTF8, XMLAttributes>::create( m_mt, m_attributes);
+		}
+		else if (enc == "ucs4le")
+		{
+			m_obj = XMLPrinterObject<BufferType, charset::UCS4LE, charset::UTF8, XMLAttributes>::create( m_mt, m_attributes);
+		}
+		else
+		{
+			return false;
+		}
+	}
 
 private:
-	bool m_headerPrinted;				//< true, if header has already been printed
-	BufferType m_buf;				//< element buffer
+	typedef typename XMLPrinterBase<BufferType>::MethodTable MethodTable;
+
 	MethodTable m_mt;				//< method table of m_obj
 	void* m_obj;					//< pointer to parser objecct
-	std::string m_encoding;				//< xml encoding
+	XMLAttributes m_attributes;			//< xml encoding
 };
 
 } //namespace

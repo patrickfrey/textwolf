@@ -5,7 +5,7 @@
     STL conforming input iterator as source. It does no buffering
     or read ahead and is dedicated for stream processing of XML
     for a small set of XML queries.
-    Stream processing in this Object refers to processing the
+    Stream processing in this context refers to processing the
     document without buffering anything but the current result token
     processed with its tag hierarchy information.
 
@@ -32,55 +32,29 @@
 
 --------------------------------------------------------------------
 */
-///\file textwolf/cstringiterator.hpp
-///\brief textwolf XML parser interface hiding character encoding properties
+///\file textwolf/xmlattributes.hpp
+///\brief textwolf XML attributes that may be shared by parser and printer
 
-#ifndef __TEXTWOLF_CSTRING_ITERATOR_HPP__
-#define __TEXTWOLF_CSTRING_ITERATOR_HPP__
-#include "textwolf.hpp"
-#include <cstring>
-#include <cstdlib>
+#ifndef __TEXTWOLF_XML_ATTRIBUTES_HPP__
+#define __TEXTWOLF_XML_ATTRIBUTES_HPP__
+#include <string>
 
 ///\namespace textwolf
 ///\brief Toplevel namespace of the library
 namespace textwolf {
 
-///\class CStringIterator
-///\brief input iterator on a constant string returning null characters after EOF as required by textwolf scanners
-class CStringIterator
+///\class TagStack
+///\brief stack of tag names
+class DefaultXMLAttributes
 {
 public:
-	///\brief Constructor
-	///\param [in] src string to iterate on
-	///\param [in] size number of char in the string to iterate on
-	CStringIterator( const char* src, unsigned int size)
-		:m_src(src)
-		,m_size(size)
-		,m_pos(0){}
-
-	///\brief Element access
-	///\return current character
-	char operator* ()
-	{
-		return (m_pos < m_size)?m_src[m_pos]:0;
-	}
-
-	///\brief Preincrement
-	CStringIterator& operator++()
-	{
-		m_pos++;
-		return *this;
-	}
-
-	///\brief Return current char position
-	unsigned int pos() const {return m_pos;}
-
+	void setEncoding( const std::string& e)		{m_encoding = e;}
+	const std::string& getEncoding() const		{return m_encoding;}
 private:
-	const char* m_src;
-	unsigned int m_size;
-	unsigned int m_pos;
+	std::string m_encoding;
 };
 
-}
-//namespace
+}//namespace
 #endif
+
+
