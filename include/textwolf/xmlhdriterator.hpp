@@ -54,16 +54,14 @@ public:
 	HdrSrcIterator( const WrapIterator& src_)
 		:m_state(Left0)
 		,m_src(src_)
-		,m_cnt0(0)
-		,m_error(Ok){}
+		,m_cnt0(0){}
 
 	///\brief Copy constructor
 	///\brief param[in] o iterator to copy
 	HdrSrcIterator( const HdrSrcIterator& o)
 		:m_state(o.m_state)
 		,m_src(o.m_src)
-		,m_cnt0(o.m_cnt0)
-		,m_error(o.m_error){}
+		,m_cnt0(o.m_cnt0){}
 
 	///\brief Element access
 	///\return current character
@@ -151,22 +149,6 @@ public:
 		return *this;
 	}
 
-	enum Error
-	{
-		Ok,
-		ErrIllegalState,
-		ErrIllegalCharacterAtEndOfHeader
-	};
-
-	const char* getError()
-	{
-		static const char* ar[] = {"", "illegal xml header", "broken character in header"};
-		return ar[(int)m_error];
-	}
-
-	///\brief Get the error state
-	bool hasError() const			{return m_error!=Ok;}
-
 	///\brief Initialize a new source iterator while keeping the state
 	///\param [in] p_iterator source iterator
 	void setSource( const WrapIterator& src_)
@@ -176,19 +158,21 @@ public:
 
 	const WrapIterator& src() const		{return m_src;}
 
-	void complete()
+	bool complete()
 	{
 		if (m_state < Rest)
 		{
-			m_error = ErrIllegalState;
+			return false;
 		}
 		while (m_cnt0 > 0)
 		{
 			--m_cnt0;
 			++m_src;
 			char ch = *m_src;
-			if (!ch) m_error = ErrIllegalCharacterAtEndOfHeader;
+			if (!ch) return false;
 		}
+		m_state = End;
+		return true;
 	}
 
 private:
@@ -203,7 +187,6 @@ private:
 	State m_state;
 	WrapIterator m_src;		//< source iterator
 	std::size_t m_cnt0;		//< counter of 0
-	bool m_error;			//< error encountered (0 expected at end of header)
 };
 
 }//namespace
