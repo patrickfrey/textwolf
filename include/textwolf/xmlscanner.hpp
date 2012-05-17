@@ -499,7 +499,7 @@ public:
 	///\param [in] ch unicode character to print
 	void push( UChar ch)
 	{
-		OutputCharSet::print( ch, *m_outputBuf);
+		OutputCharSet::print( ch, m_outputBuf);
 	}
 
 	///\brief Map a hexadecimal digit to its value
@@ -722,7 +722,7 @@ public:
 		if (tokstate.id == TokState::Start)
 		{
 			tokstate.id = TokState::ParsingToken;
-			m_outputBuf->clear();
+			m_outputBuf.clear();
 		}
 		else if (tokstate.id != TokState::ParsingToken)
 		{
@@ -959,32 +959,25 @@ private:
 	Error error;			//< last error code
 	InputReader m_src;		//< source input iterator
 	const EntityMap* m_entityMap;	//< map with entities defined by the caller
-	OutputBuffer* m_outputBuf;	//< buffer to use for output
+	OutputBuffer m_outputBuf;	//< buffer to use for output
 
 public:
 	///\brief Constructor
 	///\param [in] p_src source iterator
 	///\param [in] p_outputBuf buffer to use for output
 	///\param [in] p_entityMap read only map of named entities defined by the user
-	XMLScanner( InputIterator& p_src, OutputBuffer& p_outputBuf, const EntityMap& p_entityMap)
-			:state(START),m_doTokenize(false),error(Ok),m_src(p_src),m_entityMap(&p_entityMap),m_outputBuf(&p_outputBuf)
+	XMLScanner( const InputIterator& p_src, const EntityMap& p_entityMap)
+			:state(START),m_doTokenize(false),error(Ok),m_src(p_src),m_entityMap(&p_entityMap)
 	{}
-	XMLScanner( InputIterator& p_src, OutputBuffer& p_outputBuf)
-			:state(START),m_doTokenize(false),error(Ok),m_src(p_src),m_entityMap(0),m_outputBuf(&p_outputBuf)
+	XMLScanner( const InputIterator& p_src)
+			:state(START),m_doTokenize(false),error(Ok),m_src(p_src),m_entityMap(0)
 	{}
 
 	///\brief Copy constructor
 	///\param [in] o scanner to copy
-	XMLScanner( XMLScanner& o)
+	XMLScanner( const XMLScanner& o)
 			:state(o.state),m_doTokenize(o.m_doTokenize),error(o.error),m_src(o.m_src),m_entityMap(o.m_entityMap),m_outputBuf(o.m_outputBuf)
 	{}
-
-	///\brief Redefine the buffer to use for output
-	///\param [in] p_outputBuf buffer to use for output
-	void setOutputBuffer( OutputBuffer& p_outputBuf)
-	{
-		m_outputBuf = &p_outputBuf;
-	}
 
 	///\brief Initialize a new source iterator while keeping the state
 	///\param [in] itr source iterator
@@ -995,11 +988,11 @@ public:
 
 	///\brief Get the current parsed XML element string, if it was not masked out, see nextItem(unsigned short)
 	///\return the item string
-	const char* getItem() const {return m_outputBuf->size()?&m_outputBuf->at(0):"\0\0\0\0";}
+	const char* getItem() const {return m_outputBuf.size()?&m_outputBuf.at(0):"\0\0\0\0";}
 
 	///\brief Get the size of the current parsed YML element string in bytes
 	///\return the item string
-	std::size_t getItemSize() const {return m_outputBuf->size();}
+	std::size_t getItemSize() const {return m_outputBuf.size();}
 
 	///\brief Get the current XML scanner state machine state
 	///\return pointer to the state variables

@@ -54,7 +54,6 @@ public:
 	HdrSrcIterator( const WrapIterator& src_)
 		:m_state(Left0)
 		,m_src(src_)
-		,m_restc(0)
 		,m_cnt0(0)
 		,m_error(Ok){}
 
@@ -63,7 +62,6 @@ public:
 	HdrSrcIterator( const HdrSrcIterator& o)
 		:m_state(o.m_state)
 		,m_src(o.m_src)
-		,m_restc(o.m_restc)
 		,m_cnt0(o.m_cnt0)
 		,m_error(o.m_error){}
 
@@ -72,52 +70,84 @@ public:
 	char operator* ()
 	{
 		char ch;
+
 		for (;;)
 		{
+			if (m_cnt0 >= 4) return 0;
 			ch = *m_src;
 			switch (m_state)
 			{
 				case Left0:
 					if (ch)
 					{
-						m_state = m_cnt0?Src:Right0;
-						m_cnt0 = 0;
+						if (m_cnt0)
+						{
+							m_state = Src;
+							m_cnt0 = 0;
+						}
+						else
+						{
+							m_state = Right0;
+						}
 						return ch;
 					}
-					break;
+					else
+					{
+						++m_cnt0;
+						++m_src;
+						continue;
+					}
 
 				case Right0:
 					if (ch)
 					{
 						m_state = Src;
-						m_restc = m_cnt0;
-						m_cnt0 = 0;
 						return ch;
 					}
-					break;
+					else
+					{
+						++m_cnt0;
+						++m_src;
+						continue;
+					}
 
 				case Src:
 					if (ch)
 					{
-						if (ch == '>') m_state = Rest;
+						if (ch == '\n')
+						{
+							m_state = Rest;
+							++m_src;
+							complete();
+						}
+/*[-]*/std::cout << "CHAR '" << ch << "'" << std::endl;
 						return ch;
+					}
+					else
+					{
+						++m_src;
+						continue;
 					}
 
 				case Rest:
 					complete();
+				case End:
 					return 0;
 			}
-			++m_cnt0;
-			if (m_cnt0 == 4) return 0;
-			++m_src;
 		}
-
 	}
 
 	///\brief Preincrement
 	HdrSrcIterator& operator++()
 	{
-		++m_src;
+		if (m_state != End)
+		{
+			if (m_state == Rest)
+			{
+				m_state = End;
+			}
+			++m_src;
+		}
 		return *this;
 	}
 
@@ -148,16 +178,16 @@ public:
 
 	void complete()
 	{
-		if (m_state != Rest)
+		if (m_state < Rest)
 		{
 			m_error = ErrIllegalState;
 		}
-		while (m_restc > 0)
+		while (m_cnt0 > 0)
 		{
+			--m_cnt0;
+			++m_src;
 			char ch = *m_src;
 			if (!ch) m_error = ErrIllegalCharacterAtEndOfHeader;
-			++m_src;
-			--m_restc;
 		}
 	}
 
@@ -167,11 +197,11 @@ private:
 		Left0,
 		Right0,
 		Src,
-		Rest
+		Rest,
+		End
 	};
 	State m_state;
 	WrapIterator m_src;		//< source iterator
-	std::size_t m_restc;		//< rest zero-bytes after header to consume
 	std::size_t m_cnt0;		//< counter of 0
 	bool m_error;			//< error encountered (0 expected at end of header)
 };

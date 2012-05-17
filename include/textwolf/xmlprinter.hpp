@@ -390,7 +390,7 @@ public:
 
 	~XMLPrinter()
 	{
-		m_mt.m_del( m_obj);
+		if (m_obj) m_mt.m_del( m_obj);
 	}
 
 	bool printOpenTag( const char* src, std::size_t srcsize, BufferType& buf)
@@ -399,7 +399,7 @@ public:
 		return m_mt.m_printOpenTag( m_obj, src, srcsize, buf);
 	}
 
-	bool printCloseTag( const char* src, std::size_t srcsize, BufferType& buf)
+	bool printCloseTag( BufferType& buf)
 	{
 		if (!m_obj && !createPrinter()) return false;
 		return m_mt.m_printCloseTag( m_obj, buf);
@@ -461,10 +461,7 @@ public:
 		{
 			m_obj = XMLPrinterObject<BufferType, charset::UCS4LE, charset::UTF8, XMLAttributes>::create( m_mt, m_attributes);
 		}
-		else
-		{
-			return false;
-		}
+		return m_obj;
 	}
 
 private:
