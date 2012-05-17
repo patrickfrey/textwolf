@@ -46,7 +46,6 @@
 #include "textwolf/xmlattributes.hpp"
 #include <cstring>
 #include <cstdlib>
-/*[-]*/#include <iostream>
 
 ///\namespace textwolf
 ///\brief Toplevel namespace of the library
@@ -260,8 +259,6 @@ public:
 					}
 					break;
 			}
-/*[-]*/std::string xx( elemptr, elemsize);
-/*[-]*/std::cout << "TYPE " << XMLScannerBase::getElementTypeName(elemtype) << ": '" << xx << "'" << std::endl;
 			return elemtype;
 		}
 	}

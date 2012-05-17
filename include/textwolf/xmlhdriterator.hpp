@@ -118,7 +118,6 @@ public:
 							++m_src;
 							complete();
 						}
-/*[-]*/std::cout << "CHAR '" << ch << "'" << std::endl;
 						return ch;
 					}
 					else

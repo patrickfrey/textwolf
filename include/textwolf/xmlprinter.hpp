@@ -395,25 +395,25 @@ public:
 
 	bool printOpenTag( const char* src, std::size_t srcsize, BufferType& buf)
 	{
-		if (!m_obj && !createPrinter()) return false;
+		if (!m_obj) if (!createPrinter()) return false;
 		return m_mt.m_printOpenTag( m_obj, src, srcsize, buf);
 	}
 
 	bool printCloseTag( BufferType& buf)
 	{
-		if (!m_obj && !createPrinter()) return false;
+		if (!m_obj) if (!createPrinter()) return false;
 		return m_mt.m_printCloseTag( m_obj, buf);
 	}
 
 	bool printAttribute( const char* src, std::size_t srcsize, BufferType& buf)
 	{
-		if (!m_obj && !createPrinter()) return false;
+		if (!m_obj) if (!createPrinter()) return false;
 		return m_mt.m_printAttribute( m_obj, src, srcsize, buf);
 	}
 
 	bool printValue( const char* src, std::size_t srcsize, BufferType& buf)
 	{
-		if (!m_obj && !createPrinter()) return false;
+		if (!m_obj) if (!createPrinter()) return false;
 		return m_mt.m_printValue( m_obj, src, srcsize, buf);
 	}
 
