@@ -269,7 +269,7 @@ private:
 			const void* cltag;
 			std::size_t cltagsize;
 
-			if (m_tagstack.top( cltag, cltagsize) || !cltagsize)
+			if (!m_tagstack.top( cltag, cltagsize) || !cltagsize)
 			{
 				return false;
 			}
