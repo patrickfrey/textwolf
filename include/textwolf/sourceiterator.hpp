@@ -32,66 +32,92 @@
 
 --------------------------------------------------------------------
 */
-///\file textwolf/cstringiterator.hpp
-///\brief textwolf XML parser interface hiding character encoding properties
+///\file textwolf/sourceiterator.hpp
+///\brief textwolf byte source iterator template
 
-#ifndef __TEXTWOLF_CSTRING_ITERATOR_HPP__
-#define __TEXTWOLF_CSTRING_ITERATOR_HPP__
-#include <cstring>
+#ifndef __TEXTWOLF_SOURCE_ITERATOR_HPP__
+#define __TEXTWOLF_SOURCE_ITERATOR_HPP__
 #include <cstdlib>
+#include <stdexcept>
 
 ///\namespace textwolf
 ///\brief Toplevel namespace of the library
 namespace textwolf {
 
-///\class CStringIterator
-///\brief input iterator on a constant string returning null characters after EOF as required by textwolf scanners
-class CStringIterator
+///\class SrcIterator
+///\brief Input iterator as source for the XML scanner (throws EoM on end of message)
+class SrcIterator
 {
 public:
-	///\brief Default constructor
-	CStringIterator()
-		:m_src(0)
-		,m_size(0)
-		,m_pos(0){}
+	///\class EoM
+	///\brief End of message exception
+	struct EoM{};
 
-	///\brief Constructor
-	///\param [in] src string to iterate on
-	///\param [in] size number of char in the string to iterate on
-	CStringIterator( const char* src, unsigned int size)
-		:m_src(src)
-		,m_size(size)
-		,m_pos(0){}
+	///\brief Empty constructor
+	SrcIterator()
+		:m_itr(0)
+		,m_end(0)
+		,m_eof(false) {}
 
 	///\brief Copy constructor
 	///\param [in] o iterator to copy
-	CStringIterator( const CStringIterator& o)
-		:m_src(o.m_src)
-		,m_size(o.m_size)
-		,m_pos(o.m_pos){}
+	SrcIterator( const SrcIterator& o)
+		:m_itr(o.m_itr)
+		,m_end(o.m_end)
+		,m_eof(o.m_eof) {}
 
-	///\brief Element access
-	///\return current character
-	char operator* ()
+	///\brief Constructor
+	///\param [in] buf source chunk to iterate on
+	///\param [in] size size of source chunk to iterate on in bytes
+	///\param [in] eof true, if end of data has been reached (no next chunk anymore)
+	SrcIterator( const char* buf, std::size_t size, bool eof)
+		:m_itr(const_cast<char*>(buf))
+		,m_end(m_itr+size)
+		,m_eof(eof){}
+
+	///\brief access operator (required by textwolf for an input iterator)
+	char operator*()
 	{
-		return (m_pos < m_size)?m_src[m_pos]:0;
+		if (m_itr >= m_end)
+		{
+			if (m_eof) return 0;
+			throw EoM();
+		}
+		return *m_itr;
 	}
 
-	///\brief Preincrement
-	CStringIterator& operator++()
+	///\brief prefix increment operator (required by textwolf for an input iterator)
+	SrcIterator& operator++()
 	{
-		m_pos++;
+		++m_itr;
 		return *this;
 	}
 
-	///\brief Return current char position
-	unsigned int pos() const {return m_pos;}
+	std::size_t operator-( const SrcIterator& b) const
+	{
+		if (b.m_end != m_end || m_itr < b.m_itr) throw std::logic_error( "illegal operation");
+		return m_itr - b.m_itr;
+	}
+
+	void putInput( const char* buf, std::size_t size, bool eof)
+	{
+		m_itr = const_cast<char*>(buf);
+		m_end = m_itr+size;
+		m_eof = eof;
+	}
+
+	std::size_t getPosition() const
+	{
+		return (m_end >= m_itr)?(m_end-m_itr):0;
+	}
 
 private:
-	const char* m_src;
-	unsigned int m_size;
-	unsigned int m_pos;
+	char* m_itr;
+	char* m_end;
+	bool m_eof;
 };
 
 }//namespace
 #endif
+
+

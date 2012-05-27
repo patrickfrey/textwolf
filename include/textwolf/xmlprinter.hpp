@@ -37,12 +37,11 @@
 
 #ifndef __TEXTWOLF_XML_PRINTER_HPP__
 #define __TEXTWOLF_XML_PRINTER_HPP__
-#include "textwolf.hpp"
+#include "textwolf/cstringiterator.hpp"
 #include "textwolf/textscanner.hpp"
 #include "textwolf/xmlparser.hpp"
 #include "textwolf/xmltagstack.hpp"
 #include "textwolf/xmlattributes.hpp"
-#include "textwolf/cstringiterator.hpp"
 #include <cstring>
 #include <cstdlib>
 
@@ -64,10 +63,11 @@ struct XMLPrinterBase
 		PrintProcEmpty m_printCloseTag;
 		PrintProc m_printAttribute;
 		PrintProc m_printValue;
-		CopyObj m_copy;
 		DeleteObj m_del;
+		CopyObj m_copy;
 
-		MethodTable() :m_printOpenTag(0),m_printCloseTag(0),m_printAttribute(0),m_printValue(0),m_copy(0),m_del(0){}
+		MethodTable()				:m_printOpenTag(0),m_printCloseTag(0),m_printAttribute(0),m_printValue(0),m_del(0),m_copy(0){}
+		MethodTable( const MethodTable& o)	:m_printOpenTag(o.m_printOpenTag),m_printCloseTag(o.m_printCloseTag),m_printAttribute(o.m_printAttribute),m_printValue(o.m_printValue),m_del(o.m_del),m_copy(o.m_copy){}
 	};
 
 	static void parseEncoding( std::string& dest, const std::string& src)
@@ -218,7 +218,10 @@ private:
 				{
 					printHeader( buf);
 				}
-				printToBuffer( '>', buf);
+				else
+				{
+					printToBuffer( '>', buf);
+				}
 				m_state = Content;
 			}
 		}
@@ -251,17 +254,15 @@ private:
 		{
 			if (m_state == TagAttribute)
 			{
-				printToBuffer( ' ', buf);
 				printToBufferAttributeValue( (const char*)src, srcsize, buf);
 				m_state = TagElement;
-				return true;
 			}
 			else
 			{
 				exitTagContext( buf);
 				printToBufferContent( (const char*)src, srcsize, buf);
 			}
-			return false;
+			return true;
 		}
 
 		bool printCloseTag( BufferType& buf)
@@ -291,6 +292,10 @@ private:
 				printToBuffer( '>', buf);
 			}
 			m_tagstack.pop();
+			if (m_tagstack.empty())
+			{
+				printToBuffer( '\n', buf);
+			}
 			return true;
 		}
 
@@ -385,7 +390,10 @@ public:
 	XMLPrinter( const XMLPrinter& o)
 		:m_mt(o.m_mt),m_obj(0),m_attributes(o.m_attributes)
 	{
-		m_obj = m_mt.m_copy( m_obj);
+		if (o.m_obj)
+		{
+			m_obj = m_mt.m_copy( o.m_obj);
+		}
 	}
 
 	~XMLPrinter()

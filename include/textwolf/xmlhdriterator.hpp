@@ -38,30 +38,35 @@
 #ifndef __TEXTWOLF_XML_HEADER_ITERATOR_HPP__
 #define __TEXTWOLF_XML_HEADER_ITERATOR_HPP__
 #include <cstdlib>
+#include "textwolf/sourceiterator.hpp"
 
 ///\namespace textwolf
 ///\brief Toplevel namespace of the library
 namespace textwolf {
 
-///\class HdrSrcIterator
-///\tparam WrapIterator
-///\brief Iterator wrapper that parses the header only
-template <class WrapIterator>
-class HdrSrcIterator
+///\class XmlHdrIterator
+///\brief Iterator that parses the header character stream without the NUL characters
+class XmlHdrSrcIterator :public SrcIterator
 {
 public:
 	///\brief Constructor
-	HdrSrcIterator( const WrapIterator& src_)
+	XmlHdrSrcIterator()
 		:m_state(Left0)
-		,m_src(src_)
 		,m_cnt0(0){}
 
 	///\brief Copy constructor
 	///\brief param[in] o iterator to copy
-	HdrSrcIterator( const HdrSrcIterator& o)
-		:m_state(o.m_state)
-		,m_src(o.m_src)
+	XmlHdrSrcIterator( const XmlHdrSrcIterator& o)
+		:SrcIterator(o)
+		,m_state(o.m_state)
 		,m_cnt0(o.m_cnt0){}
+
+	///\brief Constructor
+	///\param [in] buf source chunk to iterate on
+	///\param [in] size size of source chunk to iterate on in bytes
+	///\param [in] eof true, if end of data has been reached (no next chunk anymore)
+	XmlHdrSrcIterator( const char* buf, std::size_t size, bool eof)
+		:SrcIterator(buf,size,eof){}
 
 	///\brief Element access
 	///\return current character
@@ -72,7 +77,7 @@ public:
 		for (;;)
 		{
 			if (m_cnt0 >= 4) return 0;
-			ch = *m_src;
+			ch = cur();
 			switch (m_state)
 			{
 				case Left0:
@@ -92,7 +97,7 @@ public:
 					else
 					{
 						++m_cnt0;
-						++m_src;
+						skip();
 						continue;
 					}
 
@@ -105,7 +110,7 @@ public:
 					else
 					{
 						++m_cnt0;
-						++m_src;
+						skip();
 						continue;
 					}
 
@@ -115,14 +120,14 @@ public:
 						if (ch == '\n')
 						{
 							m_state = Rest;
-							++m_src;
+							skip();
 							complete();
 						}
 						return ch;
 					}
 					else
 					{
-						++m_src;
+						skip();
 						continue;
 					}
 
@@ -135,7 +140,7 @@ public:
 	}
 
 	///\brief Preincrement
-	HdrSrcIterator& operator++()
+	XmlHdrSrcIterator& operator++()
 	{
 		if (m_state != End)
 		{
@@ -143,19 +148,10 @@ public:
 			{
 				m_state = End;
 			}
-			++m_src;
+			skip();
 		}
 		return *this;
 	}
-
-	///\brief Initialize a new source iterator while keeping the state
-	///\param [in] p_iterator source iterator
-	void setSource( const WrapIterator& src_)
-	{
-		m_src = src;
-	}
-
-	const WrapIterator& src() const		{return m_src;}
 
 	bool complete()
 	{
@@ -165,16 +161,19 @@ public:
 		}
 		while (m_cnt0 > 0)
 		{
+			char ch = cur();
+			if (ch) return false;
 			--m_cnt0;
-			++m_src;
-			char ch = *m_src;
-			if (!ch) return false;
+			skip();
 		}
 		m_state = End;
 		return true;
 	}
 
 private:
+	char cur()	{return SrcIterator::operator*();}
+	void skip()	{SrcIterator::operator++();}
+
 	enum State
 	{
 		Left0,
@@ -183,8 +182,7 @@ private:
 		Rest,
 		End
 	};
-	State m_state;
-	WrapIterator m_src;		//< source iterator
+	State m_state;			//< header parsing state
 	std::size_t m_cnt0;		//< counter of 0
 };
 

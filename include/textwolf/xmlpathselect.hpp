@@ -1004,17 +1004,32 @@ public:
 	///\param[in] p_src source input iterator to process
 	///\param[in] obuf reference to buffer to use for the output elements (STL back insertion sequence interface)
 	///\param[in] entityMap read only map of named entities to expand
-	XMLPathSelect( const ThisXMLPathSelectAutomaton* p_atm, InputIterator& p_src, OutputBuffer& obuf, const EntityMap& entityMap)
-		:scan(p_src,obuf,entityMap),atm(p_atm),scopestk(p_atm->maxScopeStackSize),follows(p_atm->maxFollows),triggers(p_atm->maxTriggers),tokens(p_atm->maxTokens)
+	XMLPathSelect( const ThisXMLPathSelectAutomaton* p_atm, InputIterator& p_src, const EntityMap& entityMap)
+		:scan(p_src,entityMap),atm(p_atm),scopestk(p_atm->maxScopeStackSize),follows(p_atm->maxFollows),triggers(p_atm->maxTriggers),tokens(p_atm->maxTokens)
+	{
+		if (atm->states.size() > 0) expand(0);
+	}
+	///\brief Constructor
+	///\param[in] p_atm read only ML path select automaton reference
+	///\param[in] obuf reference to buffer to use for the output elements (STL back insertion sequence interface)
+	///\param[in] entityMap read only map of named entities to expand
+	XMLPathSelect( const ThisXMLPathSelectAutomaton* p_atm, const EntityMap& entityMap)
+		:scan(entityMap),atm(p_atm),scopestk(p_atm->maxScopeStackSize),follows(p_atm->maxFollows),triggers(p_atm->maxTriggers),tokens(p_atm->maxTokens)
 	{
 		if (atm->states.size() > 0) expand(0);
 	}
 	///\brief Constructor
 	///\param[in] p_atm read only ML path select automaton reference
 	///\param[in] p_src source input iterator to process
-	///\param[in] obuf reference to buffer to use for the output elements (STL back insertion sequence interface)
-	XMLPathSelect( const ThisXMLPathSelectAutomaton* p_atm, InputIterator& p_src, OutputBuffer& obuf)
-		:scan(p_src,obuf),atm(p_atm),scopestk(p_atm->maxScopeStackSize),follows(p_atm->maxFollows),triggers(p_atm->maxTriggers),tokens(p_atm->maxTokens)
+	XMLPathSelect( const ThisXMLPathSelectAutomaton* p_atm, InputIterator& p_src)
+		:scan(p_src),atm(p_atm),scopestk(p_atm->maxScopeStackSize),follows(p_atm->maxFollows),triggers(p_atm->maxTriggers),tokens(p_atm->maxTokens)
+	{
+		if (atm->states.size() > 0) expand(0);
+	}
+	///\brief Constructor
+	///\param[in] p_atm read only ML path select automaton reference
+	XMLPathSelect( const ThisXMLPathSelectAutomaton* p_atm)
+		:atm(p_atm),scopestk(p_atm->maxScopeStackSize),follows(p_atm->maxFollows),triggers(p_atm->maxTriggers),tokens(p_atm->maxTokens)
 	{
 		if (atm->states.size() > 0) expand(0);
 	}
@@ -1023,11 +1038,18 @@ public:
 	XMLPathSelect( const XMLPathSelect& o)
 		:scan(o.scan),atm(o.atm),scopestk(o.maxScopeStackSize),follows(o.maxFollows),follows(o.maxTriggers),tokens(o.maxTokens){}
 
-	///\brief Redefine the buffer to use for output
-	///\param [in] p_outputBuf buffer to use for output
-	void setOutputBuffer( OutputBuffer& p_outputBuf)
+	///\brief Initialize a new source iterator while keeping the state
+	///\param [in] itr source iterator
+	void setSource( const InputIterator& itr)
 	{
-		scan.setOutputBuffer( p_outputBuf);
+		scan.setSource( itr);
+	}
+
+	///\brief Get the current source iterator position
+	///\return source iterator position in character words (usually bytes)
+	std::size_t getPosition() const
+	{
+		return scan.getPosition();
 	}
 
 	///\brief Set the tokenization behaviour

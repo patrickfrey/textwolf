@@ -969,8 +969,14 @@ public:
 	XMLScanner( const InputIterator& p_src, const EntityMap& p_entityMap)
 			:state(START),m_doTokenize(false),error(Ok),m_src(p_src),m_entityMap(&p_entityMap)
 	{}
+	XMLScanner( const EntityMap& p_entityMap)
+			:state(START),m_doTokenize(false),error(Ok),m_entityMap(&p_entityMap)
+	{}
 	XMLScanner( const InputIterator& p_src)
 			:state(START),m_doTokenize(false),error(Ok),m_src(p_src),m_entityMap(0)
+	{}
+	XMLScanner()
+			:state(START),m_doTokenize(false),error(Ok),m_entityMap(0)
 	{}
 
 	///\brief Copy constructor
@@ -984,6 +990,13 @@ public:
 	void setSource( const InputIterator& itr)
 	{
 		m_src.setSource( itr);
+	}
+
+	///\brief Get the current source iterator position
+	///\return source iterator position in character words (usually bytes)
+	std::size_t getPosition() const
+	{
+		return m_src.getPosition();
 	}
 
 	///\brief Get the current parsed XML element string, if it was not masked out, see nextItem(unsigned short)

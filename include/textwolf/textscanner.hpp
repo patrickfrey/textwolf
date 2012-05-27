@@ -49,6 +49,7 @@ template <class Iterator, class CharSet>
 class TextScanner
 {
 private:
+	Iterator start;			//< source iterator start of current chunk
 	Iterator input;			//< source iterator
 	char buf[8];			//< buffer for one character (the current character parsed)
 	UChar val;			//< Unicode character representation of the current character parsed
@@ -111,7 +112,14 @@ public:
 	///\param [in] p_iterator source iterator
 	void setSource( const Iterator& p_iterator)
 	{
-		input = p_iterator;
+		input = start = p_iterator;
+	}
+
+	///\brief Get the current source iterator position
+	///\return source iterator position in character words (usually bytes)
+	std::size_t getPosition() const
+	{
+		return input - start;
 	}
 
 	///\brief Get the unicode character of the current character

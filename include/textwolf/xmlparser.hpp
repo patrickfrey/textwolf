@@ -33,15 +33,13 @@
 --------------------------------------------------------------------
 */
 ///\file textwolf/xmlparser.hpp
-///\brief textwolf XML parser interface hiding character encoding properties
+///\brief textwolf XML parser interface hiding character encoding properties and using a chunk wise feedable iterator on characters
 
 #ifndef __TEXTWOLF_XML_PARSER_HPP__
 #define __TEXTWOLF_XML_PARSER_HPP__
-#include "textwolf/charset_utf8.hpp"
-#include "textwolf/charset_utf16.hpp"
-#include "textwolf/charset_ucs.hpp"
-#include "textwolf/charset_isolatin.hpp"
+#include "textwolf/charset.hpp"
 #include "textwolf/xmlscanner.hpp"
+#include "textwolf/sourceiterator.hpp"
 #include "textwolf/xmlhdriterator.hpp"
 #include "textwolf/xmlattributes.hpp"
 #include <cstring>
@@ -63,16 +61,20 @@ struct XMLParserBase
 	typedef void (*ClearObj)( void* obj);
 	typedef void* (*CopyObj)( void* obj);
 	typedef void (*SetFlag)( void* obj, Flag f, bool value);
+	typedef void (*PutInput)( void* obj, const char* ptr, std::size_t size, bool end);
+	typedef std::size_t (*GetPosition)( const void* obj);
 
 	struct MethodTable
 	{
 		GetNextProc m_getNext;
 		DeleteObj m_del;
 		CopyObj m_copy;
-		SetFlag m_setflag;
+		SetFlag m_setFlag;
+		PutInput m_putInput;
+		GetPosition m_getPosition;
 
-		MethodTable() :m_getNext(0),m_del(0),m_copy(0),m_setflag(0){}
-		MethodTable( const MethodTable& o) :m_getNext(o.m_getNext),m_del(o.m_del),m_copy(o.m_copy),m_setflag(o.m_setflag){}
+		MethodTable()				:m_getNext(0),m_del(0),m_copy(0),m_setFlag(0),m_putInput(0),m_getPosition(0){}
+		MethodTable( const MethodTable& o)	:m_getNext(o.m_getNext),m_del(o.m_del),m_copy(o.m_copy),m_setFlag(o.m_setFlag),m_putInput(o.m_putInput),m_getPosition(o.m_getPosition){}
 	};
 
 	static void parseEncoding( std::string& dest, const std::string& src)
@@ -93,11 +95,6 @@ template <class ObjSrcIterator, class BufferType, class IOCharset, class AppChar
 struct XMLParserObject
 {
 	typedef XMLScanner<ObjSrcIterator,IOCharset,AppCharset,BufferType> This;
-
-	static void* createObj( const ObjSrcIterator& src)
-	{
-		return new This( src);
-	}
 
 	static void* copyObj( void* obj_)
 	{
@@ -129,60 +126,77 @@ struct XMLParserObject
 		return rt;
 	}
 
-	static void* create( const ObjSrcIterator& src, XMLParserBase::MethodTable& mt)
+	static void putInput( void* obj_, const char* ptr, std::size_t size, bool end)
+	{
+		This* obj = (This*)obj_;
+		obj->setSource( ObjSrcIterator( ptr, size, end));
+	}
+
+	static std::size_t getPosition( const void* obj_)
+	{
+		const This* obj = (const This*)obj_;
+		return obj->getPosition();
+	}
+
+	static void* create( XMLParserBase::MethodTable& mt)
 	{
 		mt.m_getNext = getNextProc;
 		mt.m_del = deleteObj;
 		mt.m_copy = copyObj;
-		mt.m_setflag = setFlag;
-		return createObj( src);
+		mt.m_setFlag = setFlag;
+		mt.m_putInput = putInput;
+		mt.m_getPosition = getPosition;
+		return new This();
 	}
-
 };
 
 ///\brief Class for XML parsing independent of the character set
-///\tparam SrcIterator iterator on the scanned source
 ///\tparam BufferType type to use as buffer (STL back insertion interface)
 ///\tparam XMLAttributes setter/getter class for document attributes
-template <class SrcIterator, class BufferType, class XMLAttributes=DefaultXMLAttributes>
+template <class BufferType, class XMLAttributes=DefaultXMLAttributes>
 class XMLParser :public XMLParserBase
 {
 public:
-	XMLParser( const SrcIterator& src, const XMLAttributes& a)
+	XMLParser( const XMLAttributes& a)
 		:m_state(ParseHeader)
-		,m_src(src)
+		,m_src(0)
+		,m_srcsize(0)
+		,m_srceof(false)
 		,m_obj(0)
 		,m_attrEncoding(false)
 		,m_withEmpty(true)
 		,m_doTokenize(false)
 		,m_attributes(a)
 	{
-		m_obj = XMLParserObject<HdrSrcIterator<SrcIterator>,BufferType,charset::UTF8,charset::UTF8>::create( HdrSrcIterator<SrcIterator>(src), m_mt);
+		m_obj = XMLParserObject<XmlHdrSrcIterator,BufferType,charset::UTF8,charset::UTF8>::create( m_mt);
 	}
 
 	XMLParser( const XMLParser& o)
 		:m_state(o.m_state)
 		,m_src(o.m_src)
+		,m_srcsize(o.m_srcsize)
+		,m_srceof(o.m_srceof)
 		,m_mt(o.m_mt)
-		,m_obj(m_mt.m_copy(o.m_obj))
+		,m_obj(0)
 		,m_attrEncoding(o.m_attrEncoding)
 		,m_withEmpty(o.m_withEmpty)
 		,m_doTokenize(o.m_doTokenize)
-		,m_attributes(o.m_attributes){}
+		,m_attributes(o.m_attributes)
+	{
+		if (o.m_obj)
+		{
+			m_obj = m_mt.m_copy( o.m_obj);
+		}
+	}
 
 	~XMLParser()
 	{
 		if (m_obj) m_mt.m_del( m_obj);
 	}
 
-	bool withEmpty()
+	bool withEmpty() const
 	{
 		return m_withEmpty;
-	}
-
-	bool doTokenize()
-	{
-		return m_doTokenize;
 	}
 
 	bool withEmpty( bool val)
@@ -192,11 +206,29 @@ public:
 		return rt;
 	}
 
+	bool doTokenize() const
+	{
+		return m_doTokenize;
+	}
+
 	bool doTokenize( bool val)
 	{
 		bool rt = m_doTokenize;
-		if (m_obj) m_mt.m_setflag( m_obj, DoTokenize, m_doTokenize = val);
+		if (m_obj) m_mt.m_setFlag( m_obj, DoTokenize, m_doTokenize = val);
 		return rt;
+	}
+
+	void putInput( const char* ptr, std::size_t size, bool end)
+	{
+		m_src = ptr;
+		m_srcsize = size;
+		m_srceof = end;
+		if (m_obj) m_mt.m_putInput( m_obj, ptr, size, end);
+	}
+
+	std::size_t getPosition() const
+	{
+		return m_obj?m_mt.m_getPosition( m_obj):0;
 	}
 
 	XMLScannerBase::ElementType getNext( const char*& elemptr, std::size_t& elemsize)
@@ -268,45 +300,48 @@ private:
 	{
 		std::string enc;
 		parseEncoding( enc, m_attributes.getEncoding());
+		std::size_t pos = 0;
 
 		if (m_obj)
 		{
+			pos = getPosition();
 			m_mt.m_del( m_obj);
 			m_obj = 0;
 		}
 		if ((enc.size() >= 8 && std::memcmp( enc.c_str(), "isolatin", enc.size())== 0)
 		||  (enc.size() >= 7 && std::memcmp( enc.c_str(), "iso8859", enc.size()) == 0))
 		{
-			m_obj = XMLParserObject<SrcIterator,BufferType,charset::IsoLatin1,charset::UTF8>::create( m_src, m_mt);
+			m_obj = XMLParserObject<SrcIterator,BufferType,charset::IsoLatin1,charset::UTF8>::create( m_mt);
 		}
 		else if (enc.size() == 0 || enc == "utf8")
 		{
-			m_obj = XMLParserObject<SrcIterator,BufferType,charset::UTF8,charset::UTF8>::create( m_src, m_mt);
+			m_obj = XMLParserObject<SrcIterator,BufferType,charset::UTF8,charset::UTF8>::create( m_mt);
 		}
 		else if (enc == "utf16" || enc == "utf16be")
 		{
-			m_obj = XMLParserObject<SrcIterator,BufferType,charset::UTF16BE,charset::UTF8>::create( m_src, m_mt);
+			m_obj = XMLParserObject<SrcIterator,BufferType,charset::UTF16BE,charset::UTF8>::create( m_mt);
 		}
 		else if (enc == "utf16le")
 		{
-			m_obj = XMLParserObject<SrcIterator,BufferType,charset::UTF16LE,charset::UTF8>::create( m_src, m_mt);
+			m_obj = XMLParserObject<SrcIterator,BufferType,charset::UTF16LE,charset::UTF8>::create( m_mt);
 		}
 		else if (enc == "ucs2" || enc == "ucs2be")
 		{
-			m_obj = XMLParserObject<SrcIterator,BufferType,charset::UCS2BE,charset::UTF8>::create( m_src, m_mt);
+			m_obj = XMLParserObject<SrcIterator,BufferType,charset::UCS2BE,charset::UTF8>::create( m_mt);
 		}
 		else if (enc == "ucs2le")
 		{
-			m_obj = XMLParserObject<SrcIterator,BufferType,charset::UCS2LE,charset::UTF8>::create( m_src, m_mt);
+			m_obj = XMLParserObject<SrcIterator,BufferType,charset::UCS2LE,charset::UTF8>::create( m_mt);
 		}
 		else if (enc == "ucs4" || enc == "ucs4be")
 		{
-			m_obj = XMLParserObject<SrcIterator,BufferType,charset::UCS4BE,charset::UTF8>::create( m_src, m_mt);
+			m_obj = XMLParserObject<SrcIterator,BufferType,charset::UCS4BE,charset::UTF8>::create( m_mt);
 		}
 		else if (enc == "ucs4le")
 		{
-			m_obj = XMLParserObject<SrcIterator,BufferType,charset::UCS4LE,charset::UTF8>::create( m_src, m_mt);
+			m_obj = XMLParserObject<SrcIterator,BufferType,charset::UCS4LE,charset::UTF8>::create( m_mt);
 		}
+		if (m_obj) putInput( m_src+pos, m_srcsize-pos, m_srceof);
 		return m_obj;
 	}
 private:
@@ -316,7 +351,9 @@ private:
 		ParseSource			//< parsing the XML content section
 	};
 	State m_state;				//< parser section parsing state
-	SrcIterator m_src;			//< source iterator for content
+	const char* m_src;			//< pointer to source chunk
+	std::size_t m_srcsize;			//< size of source chunk
+	bool m_srceof;				//< end of input reached
 	MethodTable m_mt;			//< method table of m_obj
 	void* m_obj;				//< pointer to parser objecct
 	bool m_attrEncoding;			//< flag used in state 'ParseHeader': true, if last atrribute parsed was 'encoding'

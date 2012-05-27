@@ -43,8 +43,6 @@
 ///\brief Toplevel namespace of the library
 namespace textwolf {
 
-///\class TagStack
-///\brief stack of tag names
 class DefaultXMLAttributes
 {
 public:

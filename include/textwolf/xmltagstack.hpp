@@ -101,6 +101,11 @@ public:
 		m_pos -= ofs;
 	}
 
+	bool empty() const
+	{
+		return (m_pos == 0);
+	}
+
 private:
 	std::size_t topofs( std::size_t& elementsize)
 	{
