@@ -1038,11 +1038,12 @@ public:
 	XMLPathSelect( const XMLPathSelect& o)
 		:scan(o.scan),atm(o.atm),scopestk(o.maxScopeStackSize),follows(o.maxFollows),follows(o.maxTriggers),tokens(o.maxTokens){}
 
-	///\brief Initialize a new source iterator while keeping the state
-	///\param [in] itr source iterator
-	void setSource( const InputIterator& itr)
+	///\brief Assign something to the source iterator while keeping the state
+	///\param [in] a source iterator assignment
+	template <class IteratorAssignment>
+	void setSource( const IteratorAssignment& a)
 	{
-		scan.setSource( itr);
+		scan.setSource( a);
 	}
 
 	///\brief Get the current source iterator position

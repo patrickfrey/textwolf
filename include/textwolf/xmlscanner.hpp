@@ -985,11 +985,12 @@ public:
 			:state(o.state),m_doTokenize(o.m_doTokenize),error(o.error),m_src(o.m_src),m_entityMap(o.m_entityMap),m_outputBuf(o.m_outputBuf)
 	{}
 
-	///\brief Initialize a new source iterator while keeping the state
-	///\param [in] itr source iterator
-	void setSource( const InputIterator& itr)
+	///\brief Assign something to the source iterator while keeping the state
+	///\param [in] a source iterator assignment
+	template <class IteratorAssignment>
+	void setSource( const IteratorAssignment& a)
 	{
-		m_src.setSource( itr);
+		m_src.setSource( a);
 	}
 
 	///\brief Get the current source iterator position

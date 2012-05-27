@@ -61,12 +61,15 @@ public:
 		,m_state(o.m_state)
 		,m_cnt0(o.m_cnt0){}
 
-	///\brief Constructor
+	///\brief Assingment of new chunk
 	///\param [in] buf source chunk to iterate on
 	///\param [in] size size of source chunk to iterate on in bytes
 	///\param [in] eof true, if end of data has been reached (no next chunk anymore)
-	XmlHdrSrcIterator( const char* buf, std::size_t size, bool eof)
-		:SrcIterator(buf,size,eof){}
+	XmlHdrSrcIterator& operator=( const SrcIterator& o)
+	{
+		SrcIterator::operator=(o);
+		return *this;
+	}
 
 	///\brief Element access
 	///\return current character

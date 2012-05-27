@@ -129,7 +129,7 @@ struct XMLParserObject
 	static void putInput( void* obj_, const char* ptr, std::size_t size, bool end)
 	{
 		This* obj = (This*)obj_;
-		obj->setSource( ObjSrcIterator( ptr, size, end));
+		obj->setSource( SrcIterator( ptr, size, end));
 	}
 
 	static std::size_t getPosition( const void* obj_)
