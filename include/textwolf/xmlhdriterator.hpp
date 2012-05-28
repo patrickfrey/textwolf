@@ -99,8 +99,8 @@ public:
 					}
 					else
 					{
-						++m_cnt0;
 						skip();
+						++m_cnt0;
 						continue;
 					}
 
@@ -112,8 +112,8 @@ public:
 					}
 					else
 					{
-						++m_cnt0;
 						skip();
+						++m_cnt0;
 						continue;
 					}
 
@@ -122,9 +122,9 @@ public:
 					{
 						if (ch == '\n')
 						{
-							m_state = Rest;
 							skip();
-							complete();
+							m_state = Rest;
+							continue;
 						}
 						return ch;
 					}
@@ -135,7 +135,15 @@ public:
 					}
 
 				case Rest:
-					complete();
+					while (m_cnt0 > 0)
+					{
+						if (cur()) throw std::runtime_error( "illegal xml header");
+						skip();
+						--m_cnt0;
+					}
+					m_state = End;
+					return '\n';
+
 				case End:
 					return 0;
 			}
@@ -145,32 +153,8 @@ public:
 	///\brief Preincrement
 	XmlHdrSrcIterator& operator++()
 	{
-		if (m_state != End)
-		{
-			if (m_state == Rest)
-			{
-				m_state = End;
-			}
-			skip();
-		}
+		if (m_state != End) skip();
 		return *this;
-	}
-
-	bool complete()
-	{
-		if (m_state < Rest)
-		{
-			return false;
-		}
-		while (m_cnt0 > 0)
-		{
-			char ch = cur();
-			if (ch) return false;
-			--m_cnt0;
-			skip();
-		}
-		m_state = End;
-		return true;
 	}
 
 private:

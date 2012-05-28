@@ -436,8 +436,8 @@ public:
 			m_obj = 0;
 		}
 
-		if ((enc.size() >= 8 && std::memcmp( enc.c_str(), "isolatin", enc.size())== 0)
-		||  (enc.size() >= 7 && std::memcmp( enc.c_str(), "iso8859", enc.size()) == 0))
+		if ((enc.size() >= 8 && std::memcmp( enc.c_str(), "isolatin", 8)== 0)
+		||  (enc.size() >= 7 && std::memcmp( enc.c_str(), "iso8859", 7) == 0))
 		{
 			m_obj = XMLPrinterObject<BufferType, charset::IsoLatin1, charset::UTF8, XMLAttributes>::create( m_mt, m_attributes);
 		}
