@@ -26,3 +26,6 @@ Project Schedule
 	* Split header file and add a non templatish library interface 
 
 
+CURRENTLY WORKING ON A SPLIT OF THE HEADER FILES.
+TRUNK NOT WORKING. USE Tag version 0.1
+
