@@ -428,7 +428,7 @@ public:
 	bool createPrinter()
 	{
 		std::string enc;
-		parseEncoding( enc, m_attributes.getEncoding());
+		XMLPrinterBase<BufferType>::parseEncoding( enc, m_attributes.getEncoding());
 
 		if (m_obj)
 		{
