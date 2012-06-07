@@ -85,7 +85,7 @@ int main( int argc, const char** argv)
 		}
 
 		//[4] iterating through the produced elements and printing them
-		Input::iterator itr=input->begin(),end=input->end();
+		Input::iterator itr=input->begin();
 		for (; *itr!=0; itr++);
 	}
 	catch (exception ee)

@@ -18,10 +18,9 @@ int main( int, const char**)
 {
 	static const char* xmlstr = "<?xml charset=isolatin-1?>\r\n<note id=1 t=2 g=\"zu\"><stag value='500'/> \n<to>Frog</to>\n<from>Bird</from><body>Hello world!</body>\n</note>";
 	typedef XMLScanner<char*,charset::IsoLatin1,charset::IsoLatin1,std::string> MyXMLScanner;
-	std::string outputbuf;
 	char* xmlitr = const_cast<char*>(xmlstr);
 
-	MyXMLScanner xs( xmlitr, outputbuf);
+	MyXMLScanner xs( xmlitr);
 	xs.doTokenize(false);
 
 	MyXMLScanner::iterator itr,end;
