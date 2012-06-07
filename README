@@ -23,9 +23,6 @@ Project Schedule
 	* Native handling of wchar_t iterators
 	* XML grep like shell program as demo application
 	* BOM character support
-	* Split header file and add a non templatish library interface 
 
 
-CURRENTLY WORKING ON A SPLIT OF THE HEADER FILES.
-TRUNK NOT WORKING. USE Tag version 0.1
 

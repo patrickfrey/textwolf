@@ -71,8 +71,7 @@ int main( int, const char**)
 
 		//[3] define the XML Path selection by the automaton over the source iterator
 		typedef XMLPathSelect<char*,charset::UTF8,charset::UTF8,std::string> MyXMLPathSelect;
-		std::string outputbuf;
-		MyXMLPathSelect xs( &atm, src, outputbuf);
+		MyXMLPathSelect xs( &atm, src);
 		xs.doTokenize(true);
 
 		//[4] iterating through the produced elements and printing them
