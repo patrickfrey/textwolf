@@ -235,7 +235,7 @@ private:
 					printToBuffer( publicid, std::strlen( publicid), buf);
 					printToBuffer( "\" \"", 3, buf);
 					printToBuffer( systemid, std::strlen( systemid), buf);
-					printToBuffer( "\"!>\n", 4, buf);
+					printToBuffer( "\">\n", 3, buf);
 				}
 				else if (systemid)
 				{
@@ -243,13 +243,13 @@ private:
 					printToBuffer( rootid, std::strlen( rootid), buf);
 					printToBuffer( " SYSTEM \"", 9, buf);
 					printToBuffer( systemid, std::strlen( systemid), buf);
-					printToBuffer( "\"!>\n", 4, buf);
+					printToBuffer( "\">\n", 3, buf);
 				}
 				else
 				{
 					printToBuffer( "<!DOCTYPE \"", 11, buf);
 					printToBuffer( rootid, std::strlen( rootid), buf);
-					printToBuffer( "\"!>\n", 4, buf);
+					printToBuffer( "\">\n", 3, buf);
 				}
 			}
 		}
