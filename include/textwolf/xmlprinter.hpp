@@ -233,7 +233,7 @@ private:
 					printToBuffer( rootid, std::strlen( rootid), buf);
 					printToBuffer( "\" PUBLIC \"", 10, buf);
 					printToBuffer( publicid, std::strlen( publicid), buf);
-					printToBuffer( "\" SYSTEM \"", 10, buf);
+					printToBuffer( "\" \"", 3, buf);
 					printToBuffer( systemid, std::strlen( systemid), buf);
 					printToBuffer( "\"!>\n", 4, buf);
 				}
