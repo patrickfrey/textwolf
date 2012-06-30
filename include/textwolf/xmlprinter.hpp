@@ -229,9 +229,9 @@ private:
 				if (publicid)
 				{
 					if (!systemid) throw std::logic_error("defined DOCTYPE with PUBLIC id but no SYSTEM id");
-					printToBuffer( "<!DOCTYPE \"", 11, buf);
+					printToBuffer( "<!DOCTYPE ", 10, buf);
 					printToBuffer( rootid, std::strlen( rootid), buf);
-					printToBuffer( "\" PUBLIC \"", 10, buf);
+					printToBuffer( " PUBLIC \"", 9, buf);
 					printToBuffer( publicid, std::strlen( publicid), buf);
 					printToBuffer( "\" \"", 3, buf);
 					printToBuffer( systemid, std::strlen( systemid), buf);
@@ -239,9 +239,9 @@ private:
 				}
 				else if (systemid)
 				{
-					printToBuffer( "<!DOCTYPE \"", 11, buf);
+					printToBuffer( "<!DOCTYPE ", 10, buf);
 					printToBuffer( rootid, std::strlen( rootid), buf);
-					printToBuffer( "\" SYSTEM \"", 10, buf);
+					printToBuffer( " SYSTEM \"", 9, buf);
 					printToBuffer( systemid, std::strlen( systemid), buf);
 					printToBuffer( "\"!>\n", 4, buf);
 				}
