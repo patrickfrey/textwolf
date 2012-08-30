@@ -70,21 +70,27 @@ int main( int, const char**)
 		(*atm)["Y"]--(0,"2")() = 18;
 
 		//[3] define the XML Path selection by the automaton over the source iterator
-		typedef XMLPathSelect<char*,charset::UTF8,charset::UTF8,std::string> MyXMLPathSelect;
-		MyXMLPathSelect xs( &atm, src);
-		xs.doTokenize(true);
+		typedef XMLPathSelect<charset::UTF8> MyXMLPathSelect;
+		typedef XMLScanner<char*,charset::IsoLatin1,charset::IsoLatin1,std::string> MyXMLScanner;
+
+		MyXMLScanner xc( src);
+		MyXMLPathSelect xs( &atm);
+		xc.doTokenize(true);
 
 		//[4] iterating through the produced elements and printing them
-		MyXMLPathSelect::iterator itr=xs.begin(),end=xs.end();
-		for (; itr!=end; itr++)
+		MyXMLScanner::iterator ci,ce;
+		for (ci=xc.begin(),ce=xc.end(); ci!=ce; ci++)
 		{
-			std::cout << "Element " << itr->type() << ": " << itr->content() << std::endl;
+			MyXMLPathSelect::iterator itr=xs.find( ci->type(), ci->content(), ci->size()),end=xs.end();
+			for (; itr!=end; itr++)
+			{
+				std::cout << "Element " << *itr << ": " << ci->content() << std::endl;
+			}
 		}
-
 		//[5] handle a possible error
-		if ((int)itr->state() != MyXMLPathSelect::iterator::Element::EndOfInput)
+		if ((int)ci->type() == MyXMLScanner::ErrorOccurred)
 		{
-			std::cerr << "FAILED " << itr->content() << std::endl;
+			std::cerr << "FAILED " << ci->content() << std::endl;
 			return 1;
 		}
 		else
