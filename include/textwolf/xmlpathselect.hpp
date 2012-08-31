@@ -377,10 +377,6 @@ public:
 	XMLPathSelect( const XMLPathSelect& o)
 		:atm(o.atm),scopestk(o.scopestk),follows(o.follows),triggers(o.triggers),tokens(o.tokens){}
 
-	///\class End
-	///\brief end of input iterator for the output of this XMLScanner
-	struct End {};
-
 	///\class iterator
 	///\brief input iterator for the output of this XMLScanner
 	class iterator
@@ -446,10 +442,8 @@ public:
 
 		///\brief Constructor
 		///\param [in] et end of input tag
-		iterator( const End& et)	:element(0),input(0) {}
-
-		///\brief Constructor
-		iterator()			:element(0),input(0) {}
+		iterator()
+			:element(0),input(0) {}
 
 		///\brief Assignement
 		///\param [in] orig iterator to copy
@@ -462,7 +456,7 @@ public:
 
 		///\brief Element acceess
 		///\return read only element reference
-		const int operator*() const
+		int operator*() const
 		{
 			return element;
 		}
@@ -502,7 +496,7 @@ public:
 	///\return iterator as end of content marker
 	iterator end()
 	{
-		return iterator( End());
+		return iterator();
 	}
 };
 
