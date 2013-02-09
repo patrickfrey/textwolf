@@ -18,7 +18,7 @@ Bugreports
 * textwolf bug reports are for the time beeing collected as CSV file in BUGS.
 
 Project Schedule
-* 2012/08/30 
+* 2013/08/01
 	Planned Version 0.2.0
 	* Native handling of wchar_t iterators
 	* XML grep like shell program as demo application
