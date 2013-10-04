@@ -46,7 +46,6 @@
 #include "textwolf/xmlhdriterator.hpp"
 #include "textwolf/cstringiterator.hpp"
 #include "textwolf/sourceiterator.hpp"
-#include "textwolf/xmlattributes.hpp"
 #include "textwolf/xmltagstack.hpp"
 #include "textwolf/xmlprinter.hpp"
 #include "textwolf/xmlparser.hpp"
