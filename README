@@ -18,11 +18,14 @@ Bugreports
 * textwolf bug reports are for the time beeing collected as CSV file in BUGS.
 
 Project Schedule
-* 2013/08/01
-	Planned Version 0.2.0
-	* Native handling of wchar_t iterators
-	* XML grep like shell program as demo application
-	* BOM character support
+* 2014/06/12
+	Version 0.2.0
+	* Support of IsoLatin codepages besides UTF/UCS encodings
+	* Chunk by chunk feeding reimplementation (using longjmp instead of exceptions)
+
+
+
+
 
 
 

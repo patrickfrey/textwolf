@@ -35,6 +35,8 @@
 
 #ifndef __TEXTWOLF_HPP__
 #define __TEXTWOLF_HPP__
+/// \file textwolf.hpp
+/// \brief Main include file
 
 #include "textwolf/char.hpp"
 #include "textwolf/exception.hpp"

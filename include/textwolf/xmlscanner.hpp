@@ -1044,6 +1044,14 @@ public:
 		return m_src.getPosition();
 	}
 
+	/// \brief Get the current parsed XML element pointer, if it was not masked out, see nextItem(unsigned short)
+	/// \return the item string
+	const char* getItemPtr() const {return m_outputBuf.size()?&m_outputBuf.at(0):"\0\0\0\0";}
+
+	/// \brief Get the size of the current parsed XML element in bytes
+	/// \return the item string
+	std::size_t getItemSize() const {return m_outputBuf.size();}
+
 	/// \brief Get the current parsed XML element, if it was not masked out, see nextItem(unsigned short)
 	/// \return the item string
 	const OutputBuffer& getItem() const
@@ -1235,7 +1243,7 @@ public:
 			if (input != 0)
 			{
 				element.m_type = input->nextItem(mask);
-				element.m_content = input->getItem();
+				element.m_content = input->getItemPtr();
 				element.m_size = input->getItemSize();
 			}
 			return *this;
@@ -1275,7 +1283,7 @@ public:
 			if (doSkipToFirst)
 			{
 				element.m_type = input->nextItem();
-				element.m_content = input->getItem();
+				element.m_content = input->getItemPtr();
 				element.m_size = input->getItemSize();
 			}
 		}
