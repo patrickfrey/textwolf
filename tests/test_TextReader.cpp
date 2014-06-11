@@ -40,6 +40,7 @@ public:
 	unsigned int ii;
 	unsigned int pos;
 	StaticBuffer buf;
+	CharSet encoding;
 
 public:
 	bool eof() const
@@ -61,7 +62,7 @@ public:
 			{
 				buf.clear();
 				unsigned int tt = character( ++ii, CharSet::MaxChar);
-				CharSet::print( tt, buf);
+				encoding.print( tt, buf);
 				pos = 0;
 			}
 		}
@@ -174,7 +175,7 @@ static const char* testAll()
 	};
 	static Error error;
 	if (error.get( "UTF8",		*TextScannerTest< charset::UTF8>( "UTF-8"))
-	||  error.get( "IsoLatin1",	*TextScannerTest< charset::IsoLatin1>( "Isolatin"))
+	||  error.get( "IsoLatin",	*TextScannerTest< charset::IsoLatin>( "Isolatin"))
 	||  error.get( "UCS2BE",	*TextScannerTest< charset::UCS2BE>( "UCS-2BE"))
 	||  error.get( "UCS2LE",	*TextScannerTest< charset::UCS2LE>( "UCS-2LE"))
 	||  error.get( "UCS4BE",	*TextScannerTest< charset::UCS4BE>( "UCS-4BE"))

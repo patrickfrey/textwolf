@@ -71,7 +71,7 @@ int main( int, const char**)
 
 		//[3] define the XML Path selection by the automaton over the source iterator
 		typedef XMLPathSelect<charset::UTF8> MyXMLPathSelect;
-		typedef XMLScanner<char*,charset::IsoLatin1,charset::IsoLatin1,std::string> MyXMLScanner;
+		typedef XMLScanner<char*,charset::IsoLatin,charset::IsoLatin,std::string> MyXMLScanner;
 
 		MyXMLScanner xc( src);
 		MyXMLPathSelect xs( &atm);
