@@ -41,6 +41,8 @@
 #include "textwolf/staticbuffer.hpp"
 
 namespace textwolf {
+/// \namespace textwolf::charset
+/// \brief namespace of character set encoding definitions
 namespace charset {
 
 /// \class Encoder

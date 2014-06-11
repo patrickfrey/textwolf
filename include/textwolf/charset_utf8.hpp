@@ -49,6 +49,7 @@ namespace charset {
 /// \brief character set encoding UTF-8
 struct UTF8
 {
+	/// \brief Maximum character that can be represented by this encoding implementation
 	enum {MaxChar=0x7FFFFFFF};
 	enum {
 		B11111111=0xFF,
@@ -75,6 +76,8 @@ struct UTF8
 		B11111101=B11111100|B00000001
 	};
 
+	/// \class CharLengthTab
+	/// \brief Table that maps the first UTF-8 character byte to the length of the character in bytes
 	struct CharLengthTab	:public CharMap<unsigned char, 0>
 	{
 		CharLengthTab()

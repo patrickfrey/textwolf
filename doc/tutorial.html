@@ -76,15 +76,11 @@ by calling the "doTokenize(bool)" method of the scanner or XML path parser. You 
 </div>
 
 <h2>Wide Character Set Encodings</h2>
-<div class="description">textwolf defines the encoding as template parameter. 
-For parsing wide character set encodings like UTF-16 you have to scan the XML header with one iterator and then
-continue scanning with another iterator. This is possible because textwolf does no buffering and no read ahead.
-Parsing an arbitrary XML needs the following steps:</div>
-<ol>
-<li>Parse the header with an XMLScanner iterator to get the encoding attribute of the header.</li>
-<li>Create an XMLPathSelect or XMLScanner and its iterator with the input character set encoding defined in the encoding header attribute value.</li>
-<li>Process the XML body read from the input stream</li>
-</ol>
+<div class="description">textwolf is a template library that is instantiated with and encoding type
+as template parameter. If you want to parse the character set encoding according to what is in the
+XML header, you have to parse the XML header first to determine the character set encoding. Then
+you can use the rigth instance of textwolf.
+</div>
 
 <h2>Definitions</h2>
 <div class="description">textwolf defines the following templates and types</div>
@@ -269,44 +265,31 @@ struct Interface
 </pre>
 </li>
 <li> It implements one byte access, that returns a sequence of 0 (zeros)
- after reaching end of data and that throws an exception if it reaches 
-end of message:
+ after reaching end of data:
 <pre>char operator*() const
 </pre>
 </li>
 </ul>
-
 <div class="description">
-The exception thrown by the input iterator is caught by the caller of 
-textwolf. Textwolf just ensures to save its state and that it can be 
-called again, if it has data again and can continue.
-To use it with a pair of STL iterators (begin,end), you have to define 
+The following example defines a simple textwolf iterator
+to use it with a pair of STL iterators (begin,end), you have to define 
 and pass a structure like this:
+</div>
 
 <pre>template &lt;typename iterator&gt;
 struct twiterator
 {
 	iterator m_itr;
 	iterator m_end;
-	bool m_eof;
 
-	struct EndOfMessage {};
-
-	twiterator( const iterator&amp; b, const iterator&amp; e, bool eof)
-			:m_itr(b),m_end(e),m_eof(eof) {}
+	twiterator( const iterator&amp; b, const iterator&amp; e)
+			:m_itr(b),m_end(e) {}
 
 	char operator*() const
 	{
 		if (m_itr &gt;= m_end)
 		{
-			if (m_eof)
-			{
-				return 0;
-			}
-			else
-			{
-				throw( EndOfMessage());
-			}
+			return 0;
 		}
 		else
 		{
@@ -319,10 +302,78 @@ struct twiterator
 	}
 };
 </pre>
-</div><div class="description">It depends very much on your environment 
-where you use textwolf how this structure looks like. So it is left to 
-the user how to define this. It is not part of textwolf.
+<h3>Chunkwise processing of Input</h3>
+<div class="description">
+For chunk by chunk feeding of input a longjmp structure can be defined and passed 
+to the source iterator. The iterator can issue a longjump if it reaches the end
+of the current chunk processed.
+The longjmp structure has to be initialized by the caller of textwolf.
+textwolf just ensures to save its state and that it can be 
+called again, if it has data again and can continue.
+Because textwolf is completely table driven it has no problem to save its state in a stable way.
+The caller can continue iteration
+when the next chunk is prepared and has been passed to the source iterator.
+If no such longjmp structure is defined then the end of chunk is also seen as 
+the end of the data.
+The following example shows the iterator from the example above with a longjmp structure 
+declared for handling end of data in chunkwise processing of input:
 </div>
+
+<pre>template &lt;typename iterator&gt;
+struct twiterator
+{
+	iterator m_itr;
+	iterator m_end;
+	jmp_buf* m_eom;
+
+	twiterator( const iterator&amp; b, const iterator&amp; e, jmp_buf* eom=0)
+			:m_itr(b),m_end(e),m_eom(eom) {}
+
+	char operator*() const
+	{
+		if (m_itr &gt;= m_end)
+		{
+			if (m_eom) longjmp(*m_eom,1);
+			return 0;
+		}
+		else
+		{
+			return *m_itr;
+		}
+	}
+	twiterator&amp; operator++()
+	{
+		++m_itr; return *this;
+	}
+};
+</pre>
+<div class="description">
+Using the iterator example for chunk by chunk data processing:
+</div>
+		
+<pre>jmp_buf eom;
+typedef twiterator<std::string::const_iterator> ItrType;
+std::string outputbuf;
+typedef textwolf::XMLScanner
+	&lt;
+		ItrType,
+		charset::IsoLatin1,
+		charset::IsoLatin1,
+		std::string
+	&gt; Scan;
+std::string chunk = &lt;first chunk&gt;;
+ItrType itr;
+if (setjmp(eom) != 0)
+{
+	//... the iterator processed the whole chunk and needs a new one
+	chunk = &lt;call for getting the next chunk&gt;;
+}
+Scan xs( ItrType( chunk.begin(), chunk.end(), &eom), outputbuf);
+for (Scan::iterator itr = xs.begin(); itr != xs.end(); itr++)
+{
+	...
+}
+</pre>
 
 <h3>Output</h3>
 <div class="description">The following iterators refer to InputIterator as the required input iterator type (see input):
@@ -591,7 +642,7 @@ A--["ter"]("name",0) = 202;
 </div>
 
 <br><br>
-<div class="description"><b><i></i>Copyright &copy; Patrick Frey, 2010</b></div>
+<div class="description"><b><i></i>Copyright &copy; Patrick Frey, 2010-2014</b></div>
 </div>
 
 

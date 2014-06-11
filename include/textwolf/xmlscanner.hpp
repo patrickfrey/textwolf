@@ -523,6 +523,7 @@ public:
 	typedef std::map<const char*,UChar> EntityMap;
 	typedef OutputBuffer_ OutputBuffer;
 
+private:
 	/// \brief Print a character to the output token buffer
 	/// \param [in] ch unicode character to print
 	void push( UChar ch)
@@ -815,6 +816,7 @@ public:
 		return false;
 	}
 
+public:
 	/// \brief Static version of parse a token for parsing table definition elements
 	/// \tparam OutputBufferType type buffer for output
 	/// \param [in] isTok set of valid token characters
@@ -850,6 +852,7 @@ public:
 		}
 	}
 
+private:
 	/// \brief Skip a token defined by the set of valid token characters (same as parseToken but nothing written to the output buffer)
 	/// \param [in] isTok set of valid token characters
 	/// \return true on success
