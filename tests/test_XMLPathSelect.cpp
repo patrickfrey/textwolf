@@ -81,7 +81,9 @@ int main( int, const char**)
 		MyXMLScanner::iterator ci,ce;
 		for (ci=xc.begin(),ce=xc.end(); ci!=ce; ci++)
 		{
-			MyXMLPathSelect::iterator itr=xs.find( ci->type(), ci->content(), ci->size()),end=xs.end();
+			MyXMLPathSelect::iterator
+				itr = xs.push( ci->type(), ci->content(), ci->size()),end=xs.end();
+
 			for (; itr!=end; itr++)
 			{
 				std::cout << "Element " << *itr << ": " << ci->content() << std::endl;

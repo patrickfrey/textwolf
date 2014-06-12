@@ -70,7 +70,9 @@ by calling the "doTokenize(bool)" method of the scanner or XML path parser. You 
 </li>
 <li>Commands of the form "&lt;? ..." like PI (process instructions) are ignored (skipped over).
 </li>
-<li>Namespace definitions are handled as ordinary tag attributes. The "xmlns" prefix is not interpreted or handled specially.
+<li>Context information given by namespaces is not treated specially. A namespace prefix with colon 
+is treated as part of the tag name and not as context information. For example an attribute 
+"xmlns:xsi" will be treated as an attribute with name "xmlns:xsi". 
 </li>
 </ul>
 </div>
@@ -363,15 +365,18 @@ typedef textwolf::XMLScanner
 	&gt; Scan;
 std::string chunk = &lt;first chunk&gt;;
 ItrType itr;
+Scan xs( ItrType( chunk.begin(), chunk.end(), &eom), outputbuf);
+Scan::iterator itr = xs.begin();
+
 if (setjmp(eom) != 0)
 {
 	//... the iterator processed the whole chunk and needs a new one
 	chunk = &lt;call for getting the next chunk&gt;;
+	xs.setSource( ItrType( chunk.begin(), chunk.end(), &eom));
 }
-Scan xs( ItrType( chunk.begin(), chunk.end(), &eom), outputbuf);
-for (Scan::iterator itr = xs.begin(); itr != xs.end(); itr++)
+for (; itr != xs.end(); itr++)
 {
-	...
+	... &lt; processing the found elements &gt; ...
 }
 </pre>
 
@@ -414,6 +419,10 @@ for (itr=xs.begin(); itr != xs.end(); itr++)
 			throw std::runtime_error( itr-&gt;content());
 		case MyXMLScanner::HeaderEnd:
 			typestr = "end of header"; break;
+		case MyXMLScanner::DocAttribValue:
+			typestr = "entity token"; break;
+		case MyXMLScanner::DocAttribEnd:
+			typestr = "end of entity definition"; break;
 		case MyXMLScanner::TagAttribName:
 		case MyXMLScanner::HeaderAttribName:
 			typestr = "attribute name"; break;
@@ -453,26 +462,26 @@ Automaton atm;
 (*atm)["doc"]() = 2;
 
 // define the selection on the source by an automaton:
-typedef XMLPathSelect
-	&lt;
-		char,
-		charset::UTF8,
-		charset::UTF8,
-		std::string
-	&gt; MyXMLPathSelect;
-std::string outputbuf;
-MyXMLPathSelect xs( &amp;atm, src, outputbuf);
+typedef XMLPathSelect&lt;charset::UTF8> PathSelect;
+typedef XMLScanner&lt;char*,charset::UTF8,charset::UTF8,std::string&gt; Scanner;
 
-// iterating through the produced elements and printing them
-MyXMLPathSelect::iterator itr=xs.begin(),end=xs.end();
-for (; itr!=end; itr++)
+Scanner xc( src);
+PathSelect xs( &atm);
+
+// iterating through the source tokens
+Scanner::iterator ci,ce;
+for (ci=xc.begin(),ce=xc.end(); ci!=ce; ci++)
 {
-	std::cout
-		&lt;&lt; "Element "
-		&lt;&lt; itr-&gt;type()
-		&lt;&lt; ": "
-		&lt;&lt; itr-&gt;content()
-		&lt;&lt; std::endl;
+	// feed the automaton with each token encountered
+	MyXMLPathSelect::iterator
+		itr = xs.push( ci-&gt;type(), ci-&gt;content(), ci-&gt;size()),
+		end=xs.end();
+
+	// iterate through the result elements of the last token fed
+	for (; itr!=end; itr++)
+	{
+		...
+	}
 }
 </pre>
 </li>
