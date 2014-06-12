@@ -45,7 +45,7 @@
 <body>
 <div id="container">
 
-<h1>Introduction textwolf</h1>
+<h1>Introduction to textwolf</h1>
 
 <h2>How to Use textwolf</h2>
 <div class="description">To use textwolf you have to include include/textwolf.hpp
@@ -96,12 +96,11 @@ you can use the right instance of textwolf.
 </ul>
 </div>
 
-<div class="description">It has two template arguments
+<h4>Template parameters</h4>
 <ol>
 <li> InputIterator  (explained in the section iterator)</li>
 <li> Charset = character set encoding of the input (explained in the section character set encodings)</li>
 </ol>
-</div>
 
 <h4>Example</h4>
 <pre>char* input = ...;
@@ -114,12 +113,6 @@ while (itr-&gt;chr()) itr++;
  of a parser scanning the XML elements like 
 tags,atrributes,values,content,etc.. on a source defined with an input 
 iterator.
-It is constructed by passing
-<ul>
-<li>InputIterator&amp; src = an input iterator reference</li>
-<li>OutputBuffer outbuf = the buffer to use for output</li>
-<li>EntityMap* emap = pointer to a read only map of entities (optional)</li>
-</ul>
 </div>
 
 <h4>Template parameters</h4>
@@ -129,6 +122,13 @@ It is constructed by passing
 <li>OutputCharSet = character set encoding of the output (explained in the section character set encodings)</li>
 <li>OutputBuffer = buffer type to use for the tokens parsed (STL back insertion sequence interface)</li>
 </ol>
+
+<h4>Constructor arguments</h4>
+<ul>
+<li>InputIterator&amp; src = an input iterator reference</li>
+<li>OutputBuffer outbuf = the buffer to use for output</li>
+<li>EntityMap* emap = pointer to a read only map of entities (optional)</li>
+</ul>
 
 <h4>Example</h4>
 <pre>char* input = ...;
