@@ -47,12 +47,10 @@
 
 	<h2>Description</h2>
 	<div class="description">
-	textwolf is a C++ (strict C++98) template library that implements an input iterator on a set of XML path expressions without
-	backward references on an STL conforming input iterator as source. It does no buffering or read ahead and is
-	dedicated for stream processing of XML for a small set (<10000) of XML path queries. Stream processing in this
-	context means processing the document without buffering anything but the current result token processed
-	with its tag hierarchy information. The processing  is fully  table driven and aims in future to make
-	use of SSE or similar SIMD extensions in modern hardware and to have a small memory print.
+	textwolf is a C++ (C++98) template library for processing XML (input/output) in various
+	character set encodings. It has interfaces for iterating on unicode characters, XML elements 
+	and elements typed by xml path selection expression matches. It supports chunk-wise processing 
+	of input and has a peformance competitive among the fastest XML processors available.
 	</div>
 
 	<h2>Licence</h2>
@@ -97,7 +95,7 @@
 	</div>
 
 	<br/><br/>
-	<div class="description"><b><i></i>Copyright &copy; Patrick Frey, 2010</i></b></div>
+	<div class="description"><b><i></i>Copyright &copy; Patrick Frey, 2010,2011,2012,2013,2014</i></b></div>
 	</div>
 
 </div>
