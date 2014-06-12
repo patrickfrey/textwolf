@@ -104,10 +104,10 @@ Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#a5980bc82641f036ff178ac7c226bdf6b"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLPathSelect.html#ab5d28e0d90a20df7f050b005d3be6c44">XMLPathSelect</a> (const <a class="el" href="classtextwolf_1_1XMLPathSelect.html">XMLPathSelect</a> &amp;o)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy constructor.  <a href="#ab5d28e0d90a20df7f050b005d3be6c44"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html">iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLPathSelect.html#a3b28edaa07649820b7f635329fc725c0">find</a> (<a class="el" href="classtextwolf_1_1XMLScannerBase.html#aae4f0cdb7e16aca5fdee271fa60e1329">XMLScannerBase::ElementType</a> type, const char *key, int keysize)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the start iterator.  <a href="#a3b28edaa07649820b7f635329fc725c0"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html">iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLPathSelect.html#a6381cc0a5705d0ec40c3b23eb98ff618">push</a> (<a class="el" href="classtextwolf_1_1XMLScannerBase.html#aae4f0cdb7e16aca5fdee271fa60e1329">XMLScannerBase::ElementType</a> type, const char *key, int keysize)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Feed the path selector with the next token and get the start iterator for the results.  <a href="#a6381cc0a5705d0ec40c3b23eb98ff618"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html">iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLPathSelect.html#a3e1af67ffe496c625d9ae36310054d8e">end</a> ()</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the end of content marker.  <a href="#a3e1af67ffe496c625d9ae36310054d8e"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the end of results returned by '<a class="el" href="classtextwolf_1_1XMLPathSelect.html#a6381cc0a5705d0ec40c3b23eb98ff618" title="Feed the path selector with the next token and get the start iterator for the results.">push(XMLScannerBase::ElementType,const char*, int)</a>'.  <a href="#a3e1af67ffe496c625d9ae36310054d8e"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><h3>template&lt;class CharSet_&gt;<br/>
@@ -223,19 +223,19 @@ template&lt;class CharSet_ &gt; </div>
 </div>
 <div class="memdoc">
 
-<p>Get the end of content marker. </p>
-<dl class="return"><dt><b>Returns:</b></dt><dd>iterator as end of content marker </dd></dl>
+<p>Get the end of results returned by '<a class="el" href="classtextwolf_1_1XMLPathSelect.html#a6381cc0a5705d0ec40c3b23eb98ff618" title="Feed the path selector with the next token and get the start iterator for the results.">push(XMLScannerBase::ElementType,const char*, int)</a>'. </p>
+<dl class="return"><dt><b>Returns:</b></dt><dd>the end iterator </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="a3b28edaa07649820b7f635329fc725c0"></a><!-- doxytag: member="textwolf::XMLPathSelect::find" ref="a3b28edaa07649820b7f635329fc725c0" args="(XMLScannerBase::ElementType type, const char *key, int keysize)" -->
+<a class="anchor" id="a6381cc0a5705d0ec40c3b23eb98ff618"></a><!-- doxytag: member="textwolf::XMLPathSelect::push" ref="a6381cc0a5705d0ec40c3b23eb98ff618" args="(XMLScannerBase::ElementType type, const char *key, int keysize)" -->
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class CharSet_ &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html">iterator</a> <a class="el" href="classtextwolf_1_1XMLPathSelect.html">textwolf::XMLPathSelect</a>&lt; CharSet_ &gt;::<a class="el" href="classtextwolf_1_1XMLPathSelect.html#a3b28edaa07649820b7f635329fc725c0">find</a> </td>
+          <td class="memname"><a class="el" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html">iterator</a> <a class="el" href="classtextwolf_1_1XMLPathSelect.html">textwolf::XMLPathSelect</a>&lt; CharSet_ &gt;::<a class="el" href="classtextwolf_1_1XMLPathSelect.html#a6381cc0a5705d0ec40c3b23eb98ff618">push</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classtextwolf_1_1XMLScannerBase.html#aae4f0cdb7e16aca5fdee271fa60e1329">XMLScannerBase::ElementType</a>&#160;</td>
           <td class="paramname"><em>type</em>, </td>
@@ -261,7 +261,7 @@ template&lt;class CharSet_ &gt; </div>
 </div>
 <div class="memdoc">
 
-<p>Get the start iterator. </p>
+<p>Feed the path selector with the next token and get the start iterator for the results. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>iterator pointing to the first of the selected XML path elements </dd></dl>
 
 </div>
@@ -273,7 +273,7 @@ template&lt;class CharSet_ &gt; </div>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jun 12 2014 00:20:41 for textwolf by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Jun 12 2014 11:55:34 for textwolf by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

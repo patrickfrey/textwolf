@@ -188,7 +188,6 @@
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html#a9e098fe6f4a84b25db51fcfe61f4cbd0a53895f21307d917b63c62c5a683f99f0"><param name="Name" value="ExpectIdentifierXML"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1ScannerStatemachine.html#a67e8bbbb6b0e10b4dbbf33a74294a146"><param name="Name" value="fallback"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1ScannerStatemachine_1_1Element.html#a9ff96e6ea03b5e1ad0695339926e0f9d"><param name="Name" value="fallbackState"></OBJECT>
-  <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLPathSelect.html#a3b28edaa07649820b7f635329fc725c0"><param name="Name" value="find"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1Core.html#af8b25acda2921a276fca46902cb20e0e"><param name="Name" value="follow"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1Scope_1_1Range.html#a9261cc79a6c6948762e49ab0495d951d"><param name="Name" value="followidx"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1Scope.html#a15bfc86b152b1434027d3a9dd49f0d2b"><param name="Name" value="followMask"></OBJECT>
@@ -427,6 +426,10 @@
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLPrinter.html#a28ff1950e162e84d3170bbd5cf612d03"><param name="Name" value="printValue"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1StaticBuffer.html#aa214f742efe32498abf682a072e0bc87"><param name="Name" value="ptr"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1TagStack.html#aa324cc660e87f4463f9bb724506fcb11"><param name="Name" value="push"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1TagStack.html#aa324cc660e87f4463f9bb724506fcb11"><param name="Name" value="textwolf::TagStack"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLPathSelect.html#a6381cc0a5705d0ec40c3b23eb98ff618"><param name="Name" value="textwolf::XMLPathSelect"></OBJECT>
+  </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1StaticBuffer.html#a744e280227bef7ac70662a8f320b7379"><param name="Name" value="push_back"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1SrcIterator.html#a4184363bc11e6de251d3ae6c5324b59a"><param name="Name" value="putInput"></OBJECT>
   <UL>
@@ -653,8 +656,8 @@
   </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1exception.html"><param name="Name" value="textwolf::exception"></OBJECT>
   <UL>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1exception.html#a3dcdb1567ac4c92789054d85038c5afe"><param name="Name" value="Cause"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1exception.html#af5fab81bf1bee4f9bb9a712989e6b6aa"><param name="Name" value="cause"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1exception.html#a3dcdb1567ac4c92789054d85038c5afe"><param name="Name" value="Cause"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1exception.html#a63e03b8d8d2188a6f51b7cfbb17fbc92"><param name="Name" value="operator="></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1exception.html#a29ff8e91a847b22adad60e37636decab"><param name="Name" value="throw"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1exception.html#a8c370e435f32a3b7a37f569243f47702"><param name="Name" value="what"></OBJECT>
@@ -791,7 +794,7 @@
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLPathSelect.html"><param name="Name" value="textwolf::XMLPathSelect"></OBJECT>
   <UL>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLPathSelect.html#a3e1af67ffe496c625d9ae36310054d8e"><param name="Name" value="end"></OBJECT>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLPathSelect.html#a3b28edaa07649820b7f635329fc725c0"><param name="Name" value="find"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLPathSelect.html#a6381cc0a5705d0ec40c3b23eb98ff618"><param name="Name" value="push"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLPathSelect.html#a35310daa69c0b8650df3bda0327d6b1f"><param name="Name" value="ThisXMLPathSelect"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLPathSelect.html#a57b5d8d0fe852a02a34b25d8c5417ef8"><param name="Name" value="ThisXMLPathSelectAutomaton"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLPathSelect.html#a5980bc82641f036ff178ac7c226bdf6b"><param name="Name" value="XMLPathSelect"></OBJECT>
