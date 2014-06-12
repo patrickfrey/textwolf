@@ -81,7 +81,7 @@ is treated as part of the tag name and not as context information. For example a
 <div class="description">textwolf is a template library that is instantiated with and encoding type
 as template parameter. If you want to parse the character set encoding according to what is in the
 XML header, you have to parse the XML header first to determine the character set encoding. Then
-you can use the rigth instance of textwolf.
+you can use the right instance of textwolf.
 </div>
 
 <h2>Definitions</h2>
@@ -491,9 +491,11 @@ for (ci=xc.begin(),ce=xc.end(); ci!=ce; ci++)
 
 <h2>How to define an XML path expression automaton</h2>
 <div class="description">An XML Path expression automaton in defined as 
-tree. With every expression defined we select first the root node and 
-describe for follow node on the expression path. For the nodes we have 
-defined operators to declare the type of the follow node.
+tree. Every expression defines a set containing the root node as start of the selection.
+Subsequent node selections in the expression refer to the previously selected
+nodes and create a new set of selected nodes. The set of nodes you get at the end
+of the selection defines the set of nodes selected by the expression.
+The following operators are defined for building node selection expressions.
 <br>For a node 'A'</div>
 <ul>
 <li> select the tag with the name "doc" following node A
