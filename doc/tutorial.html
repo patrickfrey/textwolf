@@ -137,8 +137,8 @@ std::string outputbuf;
 typedef textwolf::XMLScanner
 	&lt;
 		char*,
-		charset::IsoLatin1,
-		charset::IsoLatin1,
+		charset::IsoLatin,
+		charset::IsoLatin,
 		std::string
 	&gt; Scan;
 Scan xs( input, outputbuf);
@@ -201,7 +201,7 @@ to the expressions instead of the predefined XML element enum ids.
 <li> UTF8 = utf-8</li>
 <li> UTF16LE = utf-16 Litle Endian</li>
 <li> UTF16BE = utf-16 (Big Endian = default for utf-16)</li>
-<li> IsoLatin1 = Iso-Latin-1</li>
+<li> IsoLatin = Iso-Latin-1 .. Iso-Latin-9 (depending on codepage) </li>
 <li> UCS2LE = UCS2 Little Endian</li>
 <li> UCS2BE = UCS2 Big Endian</li>
 <li> UCS4LE = UCS4 Little Endian</li>
@@ -302,7 +302,7 @@ struct twiterator
 	}
 };
 </pre>
-<h3>Chunkwise processing of Input</h3>
+<h3>Chunkwise Processing of Input</h3>
 <div class="description">
 For chunk by chunk feeding of input a longjmp structure can be defined and passed 
 to the source iterator. The iterator can issue a longjump if it reaches the end
@@ -357,8 +357,8 @@ std::string outputbuf;
 typedef textwolf::XMLScanner
 	&lt;
 		ItrType,
-		charset::IsoLatin1,
-		charset::IsoLatin1,
+		charset::IsoLatin,
+		charset::IsoLatin,
 		std::string
 	&gt; Scan;
 std::string chunk = &lt;first chunk&gt;;
@@ -396,8 +396,8 @@ for (; itr.control() != textwolf::EndOfText; itr++)
 <pre>typedef XMLScanner
 	&lt;
 		InputIterator,
-		charset::IsoLatin1,
-		charset::IsoLatin1,
+		charset::IsoLatin,
+		charset::IsoLatin,
 		std::string
 	&gt; MyXMLScanner;
 std::string outputbuf;
