@@ -5,7 +5,7 @@
     STL conforming input iterator as source. It does no buffering
     or read ahead and is dedicated for stream processing of XML
     for a small set of XML queries.
-    Stream processing in this context refers to processing the
+    Stream processing in this Object refers to processing the
     document without buffering anything but the current result token
     processed with its tag hierarchy information.
 
@@ -14,7 +14,7 @@
     This library is free software; you can redistribute it and/or
     modify it under the terms of the GNU Lesser General Public
     License as published by the Free Software Foundation; either
-    version 2.1 of the License, or (at your option) any later version.
+    version 3.0 of the License, or (at your option) any later version.
 
     This library is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -32,24 +32,14 @@
 
 --------------------------------------------------------------------
 */
+/// \file textwolf/charset.hpp
+/// \brief Character set encodings already implemented in textwolf
 
-#ifndef __TEXTWOLF_HPP__
-#define __TEXTWOLF_HPP__
-/// \file textwolf.hpp
-/// \brief Main include file
-
-#include "textwolf/char.hpp"
-#include "textwolf/exception.hpp"
-#include "textwolf/staticbuffer.hpp"
-#include "textwolf/charset_interface.hpp"
-#include "textwolf/charset.hpp"
-#include "textwolf/textscanner.hpp"
-#include "textwolf/xmlscanner.hpp"
-#include "textwolf/cstringiterator.hpp"
-#include "textwolf/sourceiterator.hpp"
-#include "textwolf/xmltagstack.hpp"
-#include "textwolf/xmlprinter.hpp"
-#include "textwolf/xmlhdrparser.hpp"
-#include "textwolf/xmlpathselect.hpp"
-
+#ifndef __TEXTWOLF_XML_CHARSET_HPP__
+#define __TEXTWOLF_XML_CHARSET_HPP__
+#include "textwolf/charset_utf8.hpp"
+#include "textwolf/charset_utf16.hpp"
+#include "textwolf/charset_ucs.hpp"
+#include "textwolf/charset_isolatin.hpp"
 #endif
+

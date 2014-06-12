@@ -17,11 +17,10 @@ using namespace textwolf;
 int main( int, const char**)
 {
 	static const char* xmlstr = "<?xml charset=isolatin-1?>\r\n<note id=1 t=2 g=\"zu\"><stag value='500'/> \n<to>Frog</to>\n<from>Bird</from><body>Hello world!</body>\n</note>";
-	typedef XMLScanner<char*,charset::IsoLatin1,charset::IsoLatin1,std::string> MyXMLScanner;
-	std::string outputbuf;
+	typedef XMLScanner<char*,charset::IsoLatin,charset::IsoLatin,std::string> MyXMLScanner;
 	char* xmlitr = const_cast<char*>(xmlstr);
 
-	MyXMLScanner xs( xmlitr, outputbuf);
+	MyXMLScanner xs( xmlitr);
 	xs.doTokenize(false);
 
 	MyXMLScanner::iterator itr,end;
@@ -38,6 +37,8 @@ int main( int, const char**)
 				case MyXMLScanner::HeaderAttribName: typestr = "attribute name"; break;
 				case MyXMLScanner::HeaderAttribValue: typestr = "attribute value"; break;
 				case MyXMLScanner::HeaderEnd: typestr = "end of header"; break;
+				case MyXMLScanner::DocAttribValue: typestr = "document attribute value"; break;
+				case MyXMLScanner::DocAttribEnd: typestr = "end of entity declaration"; break;
 				case MyXMLScanner::TagAttribName: typestr = "attribute name"; break;
 				case MyXMLScanner::TagAttribValue: typestr = "attribute value"; break;
 				case MyXMLScanner::OpenTag: typestr = "open tag"; break;

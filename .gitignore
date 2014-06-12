@@ -1,0 +1,9 @@
+src/
+tests/readStdinIterator
+tests/readStdinIterator.o
+tests/test_TextReader
+tests/test_TextReader.o
+tests/test_XMLPathSelect
+tests/test_XMLPathSelect.o
+tests/test_XMLScanner
+tests/test_XMLScanner.o

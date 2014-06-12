@@ -5,7 +5,7 @@
     STL conforming input iterator as source. It does no buffering
     or read ahead and is dedicated for stream processing of XML
     for a small set of XML queries.
-    Stream processing in this context refers to processing the
+    Stream processing in this Object refers to processing the
     document without buffering anything but the current result token
     processed with its tag hierarchy information.
 
@@ -14,7 +14,7 @@
     This library is free software; you can redistribute it and/or
     modify it under the terms of the GNU Lesser General Public
     License as published by the Free Software Foundation; either
-    version 2.1 of the License, or (at your option) any later version.
+    version 3.0 of the License, or (at your option) any later version.
 
     This library is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -32,24 +32,58 @@
 
 --------------------------------------------------------------------
 */
+/// \file textwolf/istreamiterator.hpp
+/// \brief Definition of iterators for textwolf on STL input streams (std::istream)
 
-#ifndef __TEXTWOLF_HPP__
-#define __TEXTWOLF_HPP__
-/// \file textwolf.hpp
-/// \brief Main include file
+#ifndef __TEXTWOLF_ISTREAM_ITERATOR_HPP__
+#define __TEXTWOLF_ISTREAM_ITERATOR_HPP__
+#include <iostream>
+#include <iterator>
 
-#include "textwolf/char.hpp"
-#include "textwolf/exception.hpp"
-#include "textwolf/staticbuffer.hpp"
-#include "textwolf/charset_interface.hpp"
-#include "textwolf/charset.hpp"
-#include "textwolf/textscanner.hpp"
-#include "textwolf/xmlscanner.hpp"
-#include "textwolf/cstringiterator.hpp"
-#include "textwolf/sourceiterator.hpp"
-#include "textwolf/xmltagstack.hpp"
-#include "textwolf/xmlprinter.hpp"
-#include "textwolf/xmlhdrparser.hpp"
-#include "textwolf/xmlpathselect.hpp"
+/// \namespace textwolf
+/// \brief Toplevel namespace of the library
+namespace textwolf {
 
+/// \class IStreamIterator
+/// \brief Input iterator on an STL input stream
+class IStreamIterator
+{
+public:
+	/// \brief Default constructor
+	IStreamIterator(){}
+
+	/// \brief Constructor
+	/// \param [in] input input to iterate on
+	IStreamIterator( std::istream& input)
+		:m_itr(input)
+	{
+		input.unsetf( std::ios::skipws);
+	}
+
+	/// \brief Copy constructor
+	/// \param [in] o iterator to copy
+	IStreamIterator( const IStreamIterator& o)
+		:m_itr(o.m_itr)
+		,m_end(o.m_end){}
+
+	/// \brief Element access
+	/// \return current character
+	char operator* ()
+	{
+		return (m_itr != m_end)?*m_itr:0;
+	}
+
+	/// \brief Pre increment
+	IStreamIterator& operator++()
+	{
+		++m_itr;
+		return *this;
+	}
+
+private:
+	std::istream_iterator<unsigned char> m_itr;
+	std::istream_iterator<unsigned char> m_end;
+};
+
+}//namespace
 #endif
