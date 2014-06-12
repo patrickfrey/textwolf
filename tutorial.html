@@ -116,9 +116,9 @@ tags,atrributes,values,content,etc.. on a source defined with an input
 iterator.
 It is constructed by passing
 <ul>
-<li>InputIterator&amp; src = an input iterator reference (template argument)</li>
+<li>InputIterator&amp; src = an input iterator reference</li>
 <li>OutputBuffer outbuf = the buffer to use for output</li>
-<li>EntityMap* emap = pointer to a read only map of entities (template argument, optional)</li>
+<li>EntityMap* emap = pointer to a read only map of entities (optional)</li>
 </ul>
 </div>
 
@@ -128,9 +128,6 @@ It is constructed by passing
 <li>InputCharSet = character set encoding of the input (explained in the section character set encodings)</li>
 <li>OutputCharSet = character set encoding of the output (explained in the section character set encodings)</li>
 <li>OutputBuffer = buffer type to use for the tokens parsed (STL back insertion sequence interface)</li>
-<li>EntityMap = read only map from ASCII const char* to UChar that 
-describes the mapping of named entities to unicode characters. (default 
-is std::map)</li>
 </ol>
 
 <h4>Example</h4>
@@ -170,30 +167,22 @@ filtered tokens. It has one template argument:
 
 <h3>XMLPathSelect</h3>
 <div class="description">The XMLPathSelect class template defines the 
-state of a set of XML path selections filtered on an input iterator. It 
-is constructed by passing
+state of a set of XML path selections to filter the output of an XMLScanner
+iterator. It is constructed by passing
 <ol>
 <li> textwolf::Automaton* atm = the pointer to an XML path selection automaton</li>
-<li> InputIterator&amp; src = an input iterator reference (template argument)</li>
-<li> OutputBuffer outbuf = the buffer to use for output</li>
-<li> EntityMap* emap = pointer to a read only map of entities (template argument, optional)</li>
 </ol>
 </div>
 
 <div class="description">The class template definition has the following parameters
 <ol>
-<li> InputIterator = input iterator type (explained in the section iterator)</li>
-<li> InputCharSet = character set encoding of the input (explained in the section character set encodings)</li>
-<li> OutputCharSet = character set encoding of the output (explained in the section character set encodings)</li>
-<li> OutputBuffer = buffer type to use for the tokens parsed (STL back insertion sequence interface)</li>
-<li> EntityMap = read only map from ASCII const char* to UChar that 
-describes the mapping of named entities to unicode characters. (default 
-is std::map) </li>
+<li> CharSet = character set encoding used for processing</li>
 </ol>
 </div>
-<div class="description">It looks very similar to XMLScanner except that
- we pass an automaton and the iterator elements get the types assigned 
-to the expressions instead of the predefined XML element enum ids.
+<div class="description">The XMLPathSelect class is fed with the output
+of an XMLScanner. The idea is to iterate on an input with XMLScanner
+and to push every element fetched to the XMLPathSelect. After every
+push you can iterate on the new results you got with this push.
 </div>
 
 <h2>Character Set Encodings</h2>
@@ -223,6 +212,10 @@ to map them to each other.
 ///\brief Interface that has to be implemented for a character set encoding
 struct Interface
 {
+	///\brief Defines the highest unicode character representation 
+	///	of a character in this encoding.
+	enum {MaxChar=0xFF};
+
 	///\brief Skip to start of the next character
 	///\param [in] buf buffer for the character data
 	///\param [in,out] bufpos position in 'buf'
@@ -259,7 +252,8 @@ struct Interface
 
 <h2>Iterators</h2>
 <h3>Input</h3>
-<div class="description">The textwolf scanners,parsers and filters expect an input iterator on a sequence of bytes with the following properties:
+<div class="description">The TextScanner and XMLScanner template classes expect an input 
+iterator on a sequence of bytes with the following properties:
 </div>
 <ul>
 <li> It implements pre increment:
@@ -273,9 +267,18 @@ struct Interface
 </li>
 </ul>
 <div class="description">
-The following example defines a simple textwolf iterator
-to use it with a pair of STL iterators (begin,end), you have to define 
-and pass a structure like this:
+The following iterators for various purposes are already defined:
+<ul>
+<li>CStringIterator (cstringiterator.hpp): Defines an iterator on a complete C string</li>
+<li>IStreamIterator (istreamiterator.hpp): Defines an iterator on a std::istream</li>
+<li>SrcIterator (sourceiterator.hpp): Defines an iterator on C buffers for chunk-wise processing</li>
+</ul>
+</div>
+
+<div class="description">
+The following example shows how you can define your own input iterator.
+It shows a simple textwolf iterator based on an STL iterator.
+You have to define a structure like this:
 </div>
 
 <pre>template &lt;typename iterator&gt;
