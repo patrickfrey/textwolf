@@ -75,7 +75,6 @@ int main( int, const char**)
 
 		MyXMLScanner xc( src);
 		MyXMLPathSelect xs( &atm);
-		xc.doTokenize(true);
 
 		//[4] iterating through the produced elements and printing them
 		MyXMLScanner::iterator ci,ce;

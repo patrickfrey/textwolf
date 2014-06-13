@@ -21,8 +21,6 @@ int main( int, const char**)
 	char* xmlitr = const_cast<char*>(xmlstr);
 
 	MyXMLScanner xs( xmlitr);
-	xs.doTokenize(false);
-
 	MyXMLScanner::iterator itr,end;
 	try
 	{
