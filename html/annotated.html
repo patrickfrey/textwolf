@@ -39,6 +39,7 @@
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
@@ -65,6 +66,7 @@
   <tr><td class="indexkey"><a class="el" href="classtextwolf_1_1CharMap.html">textwolf::CharMap&lt; RESTYPE, nullvalue_, RANGE &gt;</a></td><td class="indexvalue">Character map for fast typing of a character byte </td></tr>
   <tr><td class="indexkey"><a class="el" href="structtextwolf_1_1ControlCharacterM.html">textwolf::ControlCharacterM</a></td><td class="indexvalue">Map of the enumeration of control characters to their names for debug messages </td></tr>
   <tr><td class="indexkey"><a class="el" href="structtextwolf_1_1TextScanner_1_1ControlCharMap.html">textwolf::TextScanner&lt; Iterator, CharSet &gt;::ControlCharMap</a></td><td class="indexvalue">Map of ASCII characters to control character identifiers used in the XML scanner automaton </td></tr>
+  <tr><td class="indexkey"><a class="el" href="classcopychar.html">copychar</a></td><td class="indexvalue">Direct copy of a character from input to output without encoding/decoding it </td></tr>
   <tr><td class="indexkey"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1Core.html">textwolf::XMLPathSelectAutomaton&lt; CharSet_ &gt;::Core</a></td><td class="indexvalue"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1Core.html" title="Core of an automaton state definition that is used during XML processing.">Core</a> of an automaton state definition that is used during XML processing </td></tr>
   <tr><td class="indexkey"><a class="el" href="classtextwolf_1_1CStringIterator.html">textwolf::CStringIterator</a></td><td class="indexvalue">Input iterator on a constant string returning null characters after EOF as required by textwolf scanners </td></tr>
   <tr><td class="indexkey"><a class="el" href="structtextwolf_1_1ScannerStatemachine_1_1Element.html">textwolf::ScannerStatemachine::Element</a></td><td class="indexvalue">One state in the state machine </td></tr>
@@ -72,7 +74,9 @@
   <tr><td class="indexkey"><a class="el" href="structtextwolf_1_1charset_1_1Encoder.html">textwolf::charset::Encoder</a></td><td class="indexvalue">Collection of functions for encode/decode XML character entities </td></tr>
   <tr><td class="indexkey"><a class="el" href="structtextwolf_1_1XMLScanner_1_1End.html">textwolf::XMLScanner&lt; InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_ &gt;::End</a></td><td class="indexvalue"><a class="el" href="structtextwolf_1_1XMLScanner_1_1End.html" title="end of input tag">End</a> of input tag </td></tr>
   <tr><td class="indexkey"><a class="el" href="structtextwolf_1_1exception.html">textwolf::exception</a></td><td class="indexvalue">Textwolf exception class </td></tr>
-  <tr><td class="indexkey"><a class="el" href="structtextwolf_1_1charset_1_1Interface.html">textwolf::charset::Interface</a></td><td class="indexvalue"><a class="el" href="structtextwolf_1_1charset_1_1Interface.html" title="Interface that has to be implemented for a character set encoding.">Interface</a> that has to be implemented for a character set encoding </td></tr>
+  <tr><td class="indexkey"><a class="el" href="structtextwolf_1_1charset_1_1Interface.html">textwolf::charset::Interface</a></td><td class="indexvalue">This interface has to be implemented for a character set encoding </td></tr>
+  <tr><td class="indexkey"><a class="el" href="structtextwolf_1_1traits_1_1TypeCheck_1_1is__same.html">textwolf::traits::TypeCheck::is_same&lt; T, U &gt;</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey"><a class="el" href="structtextwolf_1_1traits_1_1TypeCheck_1_1is__same_3_01T_00_01T_01_4.html">textwolf::traits::TypeCheck::is_same&lt; T, T &gt;</a></td><td class="indexvalue"></td></tr>
   <tr><td class="indexkey"><a class="el" href="structtextwolf_1_1XMLScannerBase_1_1IsContentCharMap.html">textwolf::XMLScannerBase::IsContentCharMap</a></td><td class="indexvalue">Defines the set of content token characters </td></tr>
   <tr><td class="indexkey"><a class="el" href="structtextwolf_1_1XMLScannerBase_1_1IsDQStringCharMap.html">textwolf::XMLScannerBase::IsDQStringCharMap</a></td><td class="indexvalue">Defines the set characters belonging to a double quoted string </td></tr>
   <tr><td class="indexkey"><a class="el" href="structtextwolf_1_1charset_1_1IsoLatin.html">textwolf::charset::IsoLatin</a></td><td class="indexvalue">Character set IsoLatin-1,..IsoLatin-9 (ISO-8859-1,...ISO-8859-9) </td></tr>
@@ -80,10 +84,11 @@
   <tr><td class="indexkey"><a class="el" href="structtextwolf_1_1XMLScannerBase_1_1IsSQStringCharMap.html">textwolf::XMLScannerBase::IsSQStringCharMap</a></td><td class="indexvalue">Defines the set characters belonging to a single quoted string </td></tr>
   <tr><td class="indexkey"><a class="el" href="structtextwolf_1_1XMLScannerBase_1_1IsTagCharMap.html">textwolf::XMLScannerBase::IsTagCharMap</a></td><td class="indexvalue">Defines the set of tag characters </td></tr>
   <tr><td class="indexkey"><a class="el" href="classtextwolf_1_1IStreamIterator.html">textwolf::IStreamIterator</a></td><td class="indexvalue">Input iterator on an STL input stream </td></tr>
-  <tr><td class="indexkey"><a class="el" href="structtextwolf_1_1XMLScannerBase_1_1IsWordCharMap.html">textwolf::XMLScannerBase::IsWordCharMap</a></td><td class="indexvalue">Defines the set of content word characters (tokenization switched on) </td></tr>
+  <tr><td class="indexkey"><a class="el" href="structtextwolf_1_1XMLScannerBase_1_1IsWordCharMap.html">textwolf::XMLScannerBase::IsWordCharMap</a></td><td class="indexvalue">Defines the set of content word characters (for tokenization) </td></tr>
   <tr><td class="indexkey"><a class="el" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html">textwolf::XMLPathSelect&lt; CharSet_ &gt;::iterator</a></td><td class="indexvalue">Input iterator for the output of this <a class="el" href="classtextwolf_1_1XMLScanner.html" title="XML scanner template that adds the functionality to the statemachine base definition.">XMLScanner</a> </td></tr>
   <tr><td class="indexkey"><a class="el" href="classtextwolf_1_1XMLScanner_1_1iterator.html">textwolf::XMLScanner&lt; InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_ &gt;::iterator</a></td><td class="indexvalue">Input iterator for iterating on the output of an XML scanner </td></tr>
   <tr><td class="indexkey"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1Mask.html">textwolf::XMLPathSelectAutomaton&lt; CharSet_ &gt;::Mask</a></td><td class="indexvalue"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1Mask.html" title="Mask to query for element types, if they match or not.">Mask</a> to query for element types, if they match or not </td></tr>
+  <tr><td class="indexkey"><a class="el" href="structtextwolf_1_1traits_1_1TypeCheck_1_1NO.html">textwolf::traits::TypeCheck::NO</a></td><td class="indexvalue"></td></tr>
   <tr><td class="indexkey"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html">textwolf::XMLPathSelectAutomaton&lt; CharSet_ &gt;::PathElement</a></td><td class="indexvalue">Defines one node in the XML Path element tree in the construction phase </td></tr>
   <tr><td class="indexkey"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1Scope_1_1Range.html">textwolf::XMLPathSelectAutomaton&lt; CharSet_ &gt;::Scope::Range</a></td><td class="indexvalue"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1Scope_1_1Range.html" title="Range on the token stack with all tokens that belong to this scope.">Range</a> on the token stack with all tokens that belong to this scope </td></tr>
   <tr><td class="indexkey"><a class="el" href="classtextwolf_1_1ScannerStatemachine.html">textwolf::ScannerStatemachine</a></td><td class="indexvalue">Class to build up the XML element scanner state machine in a descriptive way </td></tr>
@@ -96,10 +101,11 @@
   <tr><td class="indexkey"><a class="el" href="classtextwolf_1_1TextScanner.html">textwolf::TextScanner&lt; Iterator, CharSet &gt;</a></td><td class="indexvalue">Reader for scanning the input character by character </td></tr>
   <tr><td class="indexkey"><a class="el" href="structtextwolf_1_1throws__exception.html">textwolf::throws_exception</a></td><td class="indexvalue">Base class for structures that can throw exceptions for non recoverable errors </td></tr>
   <tr><td class="indexkey"><a class="el" href="structtextwolf_1_1XMLPathSelectAutomaton_1_1Token.html">textwolf::XMLPathSelectAutomaton&lt; CharSet_ &gt;::Token</a></td><td class="indexvalue">Active or passive but still valid token of the XML processing (this is a trigger waiting to match) </td></tr>
-  <tr><td class="indexkey"><a class="el" href="structtextwolf_1_1charset_1_1UCS2.html">textwolf::charset::UCS2&lt; encoding &gt;</a></td><td class="indexvalue">Character set UCS-2 (little/big endian) </td></tr>
+  <tr><td class="indexkey"><a class="el" href="classtextwolf_1_1traits_1_1TypeCheck.html">textwolf::traits::TypeCheck</a></td><td class="indexvalue">Test structure to stear the compiler </td></tr>
+  <tr><td class="indexkey"><a class="el" href="structtextwolf_1_1charset_1_1UCS2.html">textwolf::charset::UCS2&lt; byteorder &gt;</a></td><td class="indexvalue">Character set UCS-2 (little/big endian) </td></tr>
   <tr><td class="indexkey"><a class="el" href="structtextwolf_1_1charset_1_1UCS2BE.html">textwolf::charset::UCS2BE</a></td><td class="indexvalue">UCS-2 big endian character set encoding </td></tr>
   <tr><td class="indexkey"><a class="el" href="structtextwolf_1_1charset_1_1UCS2LE.html">textwolf::charset::UCS2LE</a></td><td class="indexvalue">UCS-2 little endian character set encoding </td></tr>
-  <tr><td class="indexkey"><a class="el" href="structtextwolf_1_1charset_1_1UCS4.html">textwolf::charset::UCS4&lt; encoding &gt;</a></td><td class="indexvalue">Character set UCS-4 (little/big endian) </td></tr>
+  <tr><td class="indexkey"><a class="el" href="structtextwolf_1_1charset_1_1UCS4.html">textwolf::charset::UCS4&lt; byteorder &gt;</a></td><td class="indexvalue">Character set UCS-4 (little/big endian) </td></tr>
   <tr><td class="indexkey"><a class="el" href="structtextwolf_1_1charset_1_1UCS4BE.html">textwolf::charset::UCS4BE</a></td><td class="indexvalue">UCS-4 big endian character set encoding </td></tr>
   <tr><td class="indexkey"><a class="el" href="structtextwolf_1_1charset_1_1UCS4LE.html">textwolf::charset::UCS4LE</a></td><td class="indexvalue">UCS-4 little endian character set encoding </td></tr>
   <tr><td class="indexkey"><a class="el" href="classtextwolf_1_1charset_1_1UTF16.html">textwolf::charset::UTF16&lt; encoding &gt;</a></td><td class="indexvalue">Character set <a class="el" href="classtextwolf_1_1charset_1_1UTF16.html" title="Character set UTF16 (little/big endian)">UTF16</a> (little/big endian) </td></tr>
@@ -113,12 +119,13 @@
   <tr><td class="indexkey"><a class="el" href="classtextwolf_1_1XMLPrinter.html">textwolf::XMLPrinter&lt; IOCharset, AppCharset, BufferType &gt;</a></td><td class="indexvalue">Character encoding dependent XML printer </td></tr>
   <tr><td class="indexkey"><a class="el" href="classtextwolf_1_1XMLScanner.html">textwolf::XMLScanner&lt; InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_ &gt;</a></td><td class="indexvalue">XML scanner template that adds the functionality to the statemachine base definition </td></tr>
   <tr><td class="indexkey"><a class="el" href="classtextwolf_1_1XMLScannerBase.html">textwolf::XMLScannerBase</a></td><td class="indexvalue">XML scanner base class for things common for all XML scanners </td></tr>
+  <tr><td class="indexkey"><a class="el" href="structtextwolf_1_1traits_1_1TypeCheck_1_1YES.html">textwolf::traits::TypeCheck::YES</a></td><td class="indexvalue"></td></tr>
 </table>
 </div><!-- contents -->
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jun 12 2014 11:55:34 for textwolf by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Jun 14 2014 16:44:38 for textwolf by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

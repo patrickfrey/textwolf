@@ -39,6 +39,7 @@
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
@@ -47,6 +48,7 @@
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
+      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
 </div>
@@ -111,7 +113,7 @@
 <a name="l00058"></a>00058                 :<a class="code" href="classtextwolf_1_1charset_1_1IsoLatinCodePage.html" title="IsoLatin code page.">IsoLatinCodePage</a>(codePageIdx){}
 <a name="l00059"></a>00059 
 <a name="l00061"></a>00061         <span class="keyword">template</span> &lt;<span class="keyword">class</span> Iterator&gt;
-<a name="l00062"></a><a class="code" href="structtextwolf_1_1charset_1_1IsoLatin.html#a08bc1e4d44dd25e1d1eb92e9ebe76739">00062</a>         <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="structtextwolf_1_1charset_1_1IsoLatin.html#a08bc1e4d44dd25e1d1eb92e9ebe76739" title="See template&lt;class Iterator&gt;Interface::skip(char*,unsigned int&amp;,Iterator&amp;)">skip</a>( <span class="keywordtype">char</span>*, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>&amp; bufpos, Iterator&amp; itr)
+<a name="l00062"></a><a class="code" href="structtextwolf_1_1charset_1_1IsoLatin.html#a08bc1e4d44dd25e1d1eb92e9ebe76739">00062</a>         <span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="structtextwolf_1_1charset_1_1IsoLatin.html#a08bc1e4d44dd25e1d1eb92e9ebe76739" title="See template&lt;class Iterator&gt;Interface::skip(char*,unsigned int&amp;,Iterator&amp;)">skip</a>( <span class="keywordtype">char</span>*, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>&amp; bufpos, <a class="code" href="classtextwolf_1_1SrcIterator.html" title="Input iterator as source for the XML scanner with the possibility of being fed chunk by chunk...">Iterator</a>&amp; itr)
 <a name="l00063"></a>00063         {
 <a name="l00064"></a>00064                 <span class="keywordflow">if</span> (bufpos==0)
 <a name="l00065"></a>00065                 {
@@ -121,7 +123,7 @@
 <a name="l00069"></a>00069         }
 <a name="l00070"></a>00070 
 <a name="l00072"></a>00072         <span class="keyword">template</span> &lt;<span class="keyword">class</span> Iterator&gt;
-<a name="l00073"></a><a class="code" href="structtextwolf_1_1charset_1_1IsoLatin.html#aa3ce1ae216923c337f31fc4f3f19bcdb">00073</a>         <span class="keyword">static</span> <span class="keywordtype">signed</span> <span class="keywordtype">char</span> <a class="code" href="structtextwolf_1_1charset_1_1IsoLatin.html#aa3ce1ae216923c337f31fc4f3f19bcdb" title="See template&lt;class Iterator&gt;Interface::asciichar(char*,unsigned int&amp;,Iterator&amp;)">asciichar</a>( <span class="keywordtype">char</span>* buf, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>&amp; bufpos, Iterator&amp; itr)
+<a name="l00073"></a><a class="code" href="structtextwolf_1_1charset_1_1IsoLatin.html#a34efbe0d57ae73d1a595c0d49e029d27">00073</a>         <span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="structtextwolf_1_1charset_1_1IsoLatin.html#a34efbe0d57ae73d1a595c0d49e029d27" title="See template&lt;class Iterator&gt;Interface::fetchbytes(char*,unsigned int&amp;,Iterator&amp;)">fetchbytes</a>( <span class="keywordtype">char</span>* buf, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>&amp; bufpos, <a class="code" href="classtextwolf_1_1SrcIterator.html" title="Input iterator as source for the XML scanner with the possibility of being fed chunk by chunk...">Iterator</a>&amp; itr)
 <a name="l00074"></a>00074         {
 <a name="l00075"></a>00075                 <span class="keywordflow">if</span> (bufpos==0)
 <a name="l00076"></a>00076                 {
@@ -129,47 +131,53 @@
 <a name="l00078"></a>00078                         ++itr;
 <a name="l00079"></a>00079                         ++bufpos;
 <a name="l00080"></a>00080                 }
-<a name="l00081"></a>00081                 <span class="keywordflow">return</span> ((<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>)(buf[0])&gt;127)?-1:buf[0];
-<a name="l00082"></a>00082         }
-<a name="l00083"></a>00083 
-<a name="l00085"></a>00085         <span class="keyword">template</span> &lt;<span class="keyword">class</span> Iterator&gt;
-<a name="l00086"></a><a class="code" href="structtextwolf_1_1charset_1_1IsoLatin.html#a987c15e1da081f55a8d2cf88a722fc4d">00086</a>         <a class="code" href="namespacetextwolf.html#a3eb8d6733d6737825026b2e41b8c3f9c" title="Unicode character type.">UChar</a> <a class="code" href="structtextwolf_1_1charset_1_1IsoLatin.html#a987c15e1da081f55a8d2cf88a722fc4d" title="See template&lt;class Iterator&gt;Interface::value(char*,unsigned int&amp;,Iterator&amp;)">value</a>( <span class="keywordtype">char</span>* buf, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>&amp; bufpos, Iterator&amp; itr)<span class="keyword"> const</span>
-<a name="l00087"></a>00087 <span class="keyword">        </span>{
-<a name="l00088"></a>00088                 <span class="keywordflow">if</span> (bufpos == 0)
-<a name="l00089"></a>00089                 {
-<a name="l00090"></a>00090                         buf[0] = *itr;
-<a name="l00091"></a>00091                         ++itr;
-<a name="l00092"></a>00092                         ++bufpos;
-<a name="l00093"></a>00093                 }
-<a name="l00094"></a>00094                 <span class="keywordflow">return</span> <a class="code" href="classtextwolf_1_1charset_1_1IsoLatinCodePage.html#a4f357be4c032c7062b5cf55848aa52e8" title="Get the unicode character representation of the character ch in this codepage.">ucharcode</a>( buf[0]);
-<a name="l00095"></a>00095         }
-<a name="l00096"></a>00096 
-<a name="l00098"></a>00098         <span class="keyword">template</span> &lt;<span class="keyword">class</span> Buffer_&gt;
-<a name="l00099"></a><a class="code" href="structtextwolf_1_1charset_1_1IsoLatin.html#af0ff607d3d8821bfa1561470b1e79889">00099</a>         <span class="keywordtype">void</span> <a class="code" href="structtextwolf_1_1charset_1_1IsoLatin.html#af0ff607d3d8821bfa1561470b1e79889" title="See template&lt;class Buffer&gt;Interface::print(UChar,Buffer&amp;)">print</a>( <a class="code" href="namespacetextwolf.html#a3eb8d6733d6737825026b2e41b8c3f9c" title="Unicode character type.">UChar</a> chr, Buffer_&amp; buf)<span class="keyword"> const</span>
-<a name="l00100"></a>00100 <span class="keyword">        </span>{
-<a name="l00101"></a>00101                 <span class="keywordtype">char</span> chr_ = <a class="code" href="classtextwolf_1_1charset_1_1IsoLatinCodePage.html#a4b760321d0f75110587f26d5e72c1fbf" title="Get the character representation of a unicode character in this codepage.">invcode</a>( chr);
-<a name="l00102"></a>00102                 <span class="keywordflow">if</span> (chr_ == 0)
-<a name="l00103"></a>00103                 {
-<a name="l00104"></a>00104                         <span class="keywordtype">char</span> tb[ 32];
-<a name="l00105"></a>00105                         <span class="keywordtype">char</span>* cc = tb;
-<a name="l00106"></a>00106                         <a class="code" href="structtextwolf_1_1charset_1_1Encoder.html#ad083232a041e2309b9d22af40b2c7502" title="Write the character &#39;chr&#39; in encoded form as nul-terminated string to a buffer.">Encoder::encode</a>( chr, tb, <span class="keyword">sizeof</span>(tb));
-<a name="l00107"></a>00107                         <span class="keywordflow">while</span> (*cc) buf.push_back( *cc++);
-<a name="l00108"></a>00108                 }
-<a name="l00109"></a>00109                 <span class="keywordflow">else</span>
-<a name="l00110"></a>00110                 {
-<a name="l00111"></a>00111                         buf.push_back( chr_);
-<a name="l00112"></a>00112                 }
-<a name="l00113"></a>00113         }
-<a name="l00114"></a>00114 };
-<a name="l00115"></a>00115 
-<a name="l00116"></a>00116 }<span class="comment">//namespace</span>
-<a name="l00117"></a>00117 }<span class="comment">//namespace</span>
-<a name="l00118"></a>00118 <span class="preprocessor">#endif</span>
+<a name="l00081"></a>00081         }
+<a name="l00082"></a>00082 
+<a name="l00084"></a>00084         <span class="keyword">template</span> &lt;<span class="keyword">class</span> Iterator&gt;
+<a name="l00085"></a><a class="code" href="structtextwolf_1_1charset_1_1IsoLatin.html#aa3ce1ae216923c337f31fc4f3f19bcdb">00085</a>         <span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">signed</span> <span class="keywordtype">char</span> <a class="code" href="structtextwolf_1_1charset_1_1IsoLatin.html#aa3ce1ae216923c337f31fc4f3f19bcdb" title="See template&lt;class Iterator&gt;Interface::asciichar(char*,unsigned int&amp;,Iterator&amp;)">asciichar</a>( <span class="keywordtype">char</span>* buf, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>&amp; bufpos, <a class="code" href="classtextwolf_1_1SrcIterator.html" title="Input iterator as source for the XML scanner with the possibility of being fed chunk by chunk...">Iterator</a>&amp; itr)
+<a name="l00086"></a>00086         {
+<a name="l00087"></a>00087                 <a class="code" href="structtextwolf_1_1charset_1_1IsoLatin.html#a34efbe0d57ae73d1a595c0d49e029d27" title="See template&lt;class Iterator&gt;Interface::fetchbytes(char*,unsigned int&amp;,Iterator&amp;)">fetchbytes</a>( buf, bufpos, itr);
+<a name="l00088"></a>00088                 <span class="keywordflow">return</span> ((<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>)(buf[0])&gt;127)?-1:buf[0];
+<a name="l00089"></a>00089         }
+<a name="l00090"></a>00090 
+<a name="l00092"></a>00092         <span class="keyword">template</span> &lt;<span class="keyword">class</span> Iterator&gt;
+<a name="l00093"></a><a class="code" href="structtextwolf_1_1charset_1_1IsoLatin.html#a987c15e1da081f55a8d2cf88a722fc4d">00093</a>         <span class="keyword">inline</span> <a class="code" href="namespacetextwolf.html#a3eb8d6733d6737825026b2e41b8c3f9c" title="Unicode character type.">UChar</a> <a class="code" href="structtextwolf_1_1charset_1_1IsoLatin.html#a987c15e1da081f55a8d2cf88a722fc4d" title="See template&lt;class Iterator&gt;Interface::value(char*,unsigned int&amp;,Iterator&amp;)">value</a>( <span class="keywordtype">char</span>* buf, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>&amp; bufpos, <a class="code" href="classtextwolf_1_1SrcIterator.html" title="Input iterator as source for the XML scanner with the possibility of being fed chunk by chunk...">Iterator</a>&amp; itr)<span class="keyword"> const</span>
+<a name="l00094"></a>00094 <span class="keyword">        </span>{
+<a name="l00095"></a>00095                 <a class="code" href="structtextwolf_1_1charset_1_1IsoLatin.html#a34efbe0d57ae73d1a595c0d49e029d27" title="See template&lt;class Iterator&gt;Interface::fetchbytes(char*,unsigned int&amp;,Iterator&amp;)">fetchbytes</a>( buf, bufpos, itr);
+<a name="l00096"></a>00096                 <span class="keywordflow">return</span> <a class="code" href="classtextwolf_1_1charset_1_1IsoLatinCodePage.html#a4f357be4c032c7062b5cf55848aa52e8" title="Get the unicode character representation of the character ch in this codepage.">ucharcode</a>( buf[0]);
+<a name="l00097"></a>00097         }
+<a name="l00098"></a>00098 
+<a name="l00100"></a>00100         <span class="keyword">template</span> &lt;<span class="keyword">class</span> Buffer_&gt;
+<a name="l00101"></a><a class="code" href="structtextwolf_1_1charset_1_1IsoLatin.html#af0ff607d3d8821bfa1561470b1e79889">00101</a>         <span class="keywordtype">void</span> <a class="code" href="structtextwolf_1_1charset_1_1IsoLatin.html#af0ff607d3d8821bfa1561470b1e79889" title="See template&lt;class Buffer&gt;Interface::print(UChar,Buffer&amp;)">print</a>( <a class="code" href="namespacetextwolf.html#a3eb8d6733d6737825026b2e41b8c3f9c" title="Unicode character type.">UChar</a> chr, Buffer_&amp; buf)<span class="keyword"> const</span>
+<a name="l00102"></a>00102 <span class="keyword">        </span>{
+<a name="l00103"></a>00103                 <span class="keywordtype">char</span> chr_ = <a class="code" href="classtextwolf_1_1charset_1_1IsoLatinCodePage.html#a4b760321d0f75110587f26d5e72c1fbf" title="Get the character representation of a unicode character in this codepage.">invcode</a>( chr);
+<a name="l00104"></a>00104                 <span class="keywordflow">if</span> (chr_ == 0)
+<a name="l00105"></a>00105                 {
+<a name="l00106"></a>00106                         <span class="keywordtype">char</span> tb[ 32];
+<a name="l00107"></a>00107                         <span class="keywordtype">char</span>* cc = tb;
+<a name="l00108"></a>00108                         <a class="code" href="structtextwolf_1_1charset_1_1Encoder.html#ad083232a041e2309b9d22af40b2c7502" title="Write the character &#39;chr&#39; in encoded form as nul-terminated string to a buffer.">Encoder::encode</a>( chr, tb, <span class="keyword">sizeof</span>(tb));
+<a name="l00109"></a>00109                         <span class="keywordflow">while</span> (*cc) buf.push_back( *cc++);
+<a name="l00110"></a>00110                 }
+<a name="l00111"></a>00111                 <span class="keywordflow">else</span>
+<a name="l00112"></a>00112                 {
+<a name="l00113"></a>00113                         buf.push_back( chr_);
+<a name="l00114"></a>00114                 }
+<a name="l00115"></a>00115         }
+<a name="l00116"></a>00116 
+<a name="l00118"></a><a class="code" href="structtextwolf_1_1charset_1_1IsoLatin.html#aaaa26a739cf22dd6ea9c9b6ad3442e0f">00118</a>         <span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code" href="structtextwolf_1_1charset_1_1IsoLatin.html#aaaa26a739cf22dd6ea9c9b6ad3442e0f" title="See template&lt;class Buffer&gt;Interface::is_equal( const Interface&amp;, const Interface&amp;)">is_equal</a>( <span class="keyword">const</span> <a class="code" href="structtextwolf_1_1charset_1_1IsoLatin.html" title="Character set IsoLatin-1,..IsoLatin-9 (ISO-8859-1,...ISO-8859-9)">IsoLatin</a>&amp; a, <span class="keyword">const</span> <a class="code" href="structtextwolf_1_1charset_1_1IsoLatin.html" title="Character set IsoLatin-1,..IsoLatin-9 (ISO-8859-1,...ISO-8859-9)">IsoLatin</a>&amp; b)
+<a name="l00119"></a>00119         {
+<a name="l00120"></a>00120                 <span class="keywordflow">return</span> <a class="code" href="structtextwolf_1_1charset_1_1IsoLatin.html#aaaa26a739cf22dd6ea9c9b6ad3442e0f" title="See template&lt;class Buffer&gt;Interface::is_equal( const Interface&amp;, const Interface&amp;)">IsoLatinCodePage::is_equal</a>( a, b);
+<a name="l00121"></a>00121         }
+<a name="l00122"></a>00122 };
+<a name="l00123"></a>00123 
+<a name="l00124"></a>00124 }<span class="comment">//namespace</span>
+<a name="l00125"></a>00125 }<span class="comment">//namespace</span>
+<a name="l00126"></a>00126 <span class="preprocessor">#endif</span>
 </pre></div></div><!-- contents -->
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jun 12 2014 11:55:33 for textwolf by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Jun 14 2014 16:44:38 for textwolf by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

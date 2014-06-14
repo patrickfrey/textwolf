@@ -39,6 +39,7 @@
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
@@ -47,6 +48,7 @@
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
+      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
 </div>
@@ -122,9 +124,9 @@
 <a name="l00073"></a><a class="code" href="structtextwolf_1_1exception.html#af5fab81bf1bee4f9bb9a712989e6b6aa">00073</a>         <a class="code" href="structtextwolf_1_1throws__exception.html#aa2ca687050bf21caa57936fe400f59f0" title="Enumeration of error cases.">Cause</a> <a class="code" href="structtextwolf_1_1exception.html#af5fab81bf1bee4f9bb9a712989e6b6aa">cause</a>;                                    <span class="comment">//&lt; exception cause tag</span>
 <a name="l00074"></a>00074 
 <a name="l00077"></a><a class="code" href="structtextwolf_1_1exception.html#a29ff8e91a847b22adad60e37636decab">00077</a>         <a class="code" href="structtextwolf_1_1exception.html" title="textwolf exception class">exception</a> (<a class="code" href="structtextwolf_1_1throws__exception.html#aa2ca687050bf21caa57936fe400f59f0" title="Enumeration of error cases.">Cause</a> p_cause) <span class="keywordflow">throw</span>()
-<a name="l00078"></a>00078                         :std::exception( ), <a class="code" href="structtextwolf_1_1exception.html#af5fab81bf1bee4f9bb9a712989e6b6aa">cause</a>(p_cause) {}
+<a name="l00078"></a>00078                 :std::runtime_error(<span class="stringliteral">&quot;textwolf error in XML&quot;</span>), <a class="code" href="structtextwolf_1_1exception.html#af5fab81bf1bee4f9bb9a712989e6b6aa">cause</a>(p_cause) {}
 <a name="l00080"></a><a class="code" href="structtextwolf_1_1exception.html#ac9f594685b1a4452158e557ec1ceb40c">00080</a>         <a class="code" href="structtextwolf_1_1exception.html" title="textwolf exception class">exception</a> (<span class="keyword">const</span> <a class="code" href="structtextwolf_1_1exception.html" title="textwolf exception class">exception</a>&amp; orig) <span class="keywordflow">throw</span>()
-<a name="l00081"></a>00081                         :std::exception( ), <a class="code" href="structtextwolf_1_1exception.html#af5fab81bf1bee4f9bb9a712989e6b6aa">cause</a>(orig.cause) {}
+<a name="l00081"></a>00081                 :std::runtime_error(<span class="stringliteral">&quot;textwolf error in XML&quot;</span>), <a class="code" href="structtextwolf_1_1exception.html#af5fab81bf1bee4f9bb9a712989e6b6aa">cause</a>(orig.cause) {}
 <a name="l00083"></a><a class="code" href="structtextwolf_1_1exception.html#a62609ba07d8e6220cdf554789dd4b7f7">00083</a>         <span class="keyword">virtual</span> <a class="code" href="structtextwolf_1_1exception.html#a62609ba07d8e6220cdf554789dd4b7f7" title="Destructor.">~exception</a>() <a class="code" href="structtextwolf_1_1exception.html#a29ff8e91a847b22adad60e37636decab" title="Constructor.">throw</a>() {}
 <a name="l00084"></a>00084 
 <a name="l00088"></a><a class="code" href="structtextwolf_1_1exception.html#a63e03b8d8d2188a6f51b7cfbb17fbc92">00088</a>         <a class="code" href="structtextwolf_1_1exception.html" title="textwolf exception class">exception</a>&amp; <a class="code" href="structtextwolf_1_1exception.html#a63e03b8d8d2188a6f51b7cfbb17fbc92" title="Assignement.">operator= </a>(<span class="keyword">const</span> <a class="code" href="structtextwolf_1_1exception.html" title="textwolf exception class">exception</a>&amp; orig) <span class="keywordflow">throw</span>()
@@ -148,7 +150,7 @@
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jun 12 2014 11:55:33 for textwolf by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Jun 14 2014 16:44:38 for textwolf by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

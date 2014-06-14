@@ -20,8 +20,8 @@
   <UL>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1Interface.html#a45bee64e0e1c86e8dfdbeedddab878f6"><param name="Name" value="textwolf::charset::Interface"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1IsoLatin.html#aa3ce1ae216923c337f31fc4f3f19bcdb"><param name="Name" value="textwolf::charset::IsoLatin"></OBJECT>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS2.html#a955131159612bbd9dae5e12da1322e0c"><param name="Name" value="textwolf::charset::UCS2"></OBJECT>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS4.html#a9213ddaa4d63c1a72caf9654b8bd71f5"><param name="Name" value="textwolf::charset::UCS4"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS2.html#ab2625c706b7e1fec2d27fd9f8b88ee77"><param name="Name" value="textwolf::charset::UCS2"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS4.html#a09b4766773472e88456850386506b40b"><param name="Name" value="textwolf::charset::UCS4"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1charset_1_1UTF16.html#a06a66ca00a897dec366429bcd61bbbc6"><param name="Name" value="textwolf::charset::UTF16"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UTF8.html#a7a08b35589811dc83e87abf194e6fd3a"><param name="Name" value="textwolf::charset::UTF8"></OBJECT>
   </UL>
@@ -42,7 +42,7 @@
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UTF8.html#ac09d12f9d49499314638af385de8c384a53e86e9d09d9039d3557f0d47e59fd0a"><param name="Name" value="B00011111"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UTF8.html#ac09d12f9d49499314638af385de8c384ae55c1a27d22a3fc28818a42231091558"><param name="Name" value="B00111111"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UTF8.html#ac09d12f9d49499314638af385de8c384a3e1ee893b4b3fdab921fed4386b92803"><param name="Name" value="B01111111"></OBJECT>
-  <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS4.html#a97065cf86a0cf61d846f15c5487af24aae90f07d298337306eafe4888e08363ae"><param name="Name" value="B0"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS4.html#a97065cf86a0cf61d846f15c5487af24aa957c1aecd704115682046b8d7166dad7"><param name="Name" value="B0"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UTF8.html#ac09d12f9d49499314638af385de8c384a6ee3e653f4c18bb2612bdaa483585e7c"><param name="Name" value="B10000000"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UTF8.html#ac09d12f9d49499314638af385de8c384aa3f8856e90b16f05129add9d72220f10"><param name="Name" value="B11000000"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UTF8.html#ac09d12f9d49499314638af385de8c384acb18c6cf254d2bedbe06fd06e7c17eca"><param name="Name" value="B11011111"></OBJECT>
@@ -56,9 +56,9 @@
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UTF8.html#ac09d12f9d49499314638af385de8c384a71856a434b1e8814058352baeaeacd51"><param name="Name" value="B11111101"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UTF8.html#ac09d12f9d49499314638af385de8c384a51e77e20518be0734de18d159eb3d245"><param name="Name" value="B11111110"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UTF8.html#ac09d12f9d49499314638af385de8c384af1514b0467e8764d595ce63bf960e16a"><param name="Name" value="B11111111"></OBJECT>
-  <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS4.html#a97065cf86a0cf61d846f15c5487af24aa70b0ebc15ba07c9448adf56f758c0c6f"><param name="Name" value="B1"></OBJECT>
-  <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS4.html#a97065cf86a0cf61d846f15c5487af24aa5990877bc50abbaae20db1a53a7f5384"><param name="Name" value="B2"></OBJECT>
-  <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS4.html#a97065cf86a0cf61d846f15c5487af24aac948695ef6a04464303fa892d1efe6f2"><param name="Name" value="B3"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS4.html#a97065cf86a0cf61d846f15c5487af24aa9a548fa93284cbfa632c02cdd7ce281f"><param name="Name" value="B1"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS4.html#a97065cf86a0cf61d846f15c5487af24aa6564c3b7eed024e8119015c963c179a3"><param name="Name" value="B2"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS4.html#a97065cf86a0cf61d846f15c5487af24aadefc079d7bf69a6320a5c74b5d1d1a5b"><param name="Name" value="B3"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1ByteOrder.html#aa5778ba8d37956ea12adfc3f68ad1304a150aacfe80288a1a57d23ae3f860f65c"><param name="Name" value="BE"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScanner.html#a2fa61ddab30002d7ced93764066b2a05"><param name="Name" value="begin"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1exception.html#af5fab81bf1bee4f9bb9a712989e6b6aa"><param name="Name" value="cause"></OBJECT>
@@ -104,6 +104,10 @@
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLPathSelectAutomaton.html#acd770d474c93c3fa4b3db53e612b8710ae6c3437409a158fa8b59efed43a5e19e"><param name="Name" value="ContentStart"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1TextScanner.html#a24fd9e888680e46835e9c6f2d4be3f71"><param name="Name" value="control"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1TextScanner_1_1ControlCharMap.html#ab364d07cc568f9cd2c911ddb18d6b7ed"><param name="Name" value="ControlCharMap"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="classcopychar.html"><param name="Name" value="copychar"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1TextScanner.html#a512818227d9d98531a9f4c175a13b444"><param name="Name" value="textwolf::TextScanner"></OBJECT>
+  </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1Core.html#a90f238fae8b4f8a2c0ee7f5cf97619cc"><param name="Name" value="Core"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1State.html#a34a8f9a881d756323734744bcfd6f1aa"><param name="Name" value="core"></OBJECT>
   <UL>
@@ -119,6 +123,7 @@
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1State.html#addff11d276a281351140ea8924526720"><param name="Name" value="defineNext"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1State.html#a82330cdb9807bd3145fd601d8d2c9b45"><param name="Name" value="defineOutput"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1State.html#a82becfe2f2a1ad6f6cc0398f7c83cd6b"><param name="Name" value="defLink"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="deprecated.html"><param name="Name" value="Deprecated List"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLPathSelect_1_1iterator.html#ae369f995d2edf3e418be854060ac3ec2"><param name="Name" value="difference_type"></OBJECT>
   <UL>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLPathSelect_1_1iterator.html#ae369f995d2edf3e418be854060ac3ec2"><param name="Name" value="textwolf::XMLPathSelect::iterator"></OBJECT>
@@ -128,7 +133,6 @@
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html#aae4f0cdb7e16aca5fdee271fa60e1329a20fd8bcefc427654d0b3375a519aa312"><param name="Name" value="DocAttribEnd"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html#aae4f0cdb7e16aca5fdee271fa60e1329a56a4b1fb6c1d5ed4ddb166c262f8832b"><param name="Name" value="DocAttribValue"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html#acf32f993fc533aa138e44a9b1afc8d1ca5d04c838dd06fd5b78600a0291a2fd09"><param name="Name" value="DOCSTART"></OBJECT>
-  <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScanner.html#a9c4df662ff637c00768cefe1dbffa5d9"><param name="Name" value="doTokenize"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="namespacetextwolf.html#a4650ba8f3f0f0c953ab1dad55efc6ee3a56d418b20b8e5ca1153ea40da03b9898"><param name="Name" value="Dq"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1throws__exception.html#aa2ca687050bf21caa57936fe400f59f0a288cf8fc52a18d1226730acde0cc1764"><param name="Name" value="DuplicateStateTransition"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="namespacetextwolf.html#a55e848f8c9806a7a32da0527a6801eca"><param name="Name" value="EChar"></OBJECT>
@@ -148,6 +152,7 @@
   </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1Encoder.html#ad083232a041e2309b9d22af40b2c7502"><param name="Name" value="encode"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XmlHdrParser.html#aaa3e4f347f1292dda0dfa7221a0c13f6"><param name="Name" value="encoding"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="XMLScanner__chunkwise_8cpp.html#a6b5f94c96386e389a4f841bdd62d6632"><param name="Name" value="Encoding"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLPathSelect.html#a3e1af67ffe496c625d9ae36310054d8e"><param name="Name" value="end"></OBJECT>
   <UL>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLPathSelect.html#a3e1af67ffe496c625d9ae36310054d8e"><param name="Name" value="textwolf::XMLPathSelect"></OBJECT>
@@ -188,6 +193,15 @@
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html#a9e098fe6f4a84b25db51fcfe61f4cbd0a53895f21307d917b63c62c5a683f99f0"><param name="Name" value="ExpectIdentifierXML"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1ScannerStatemachine.html#a67e8bbbb6b0e10b4dbbf33a74294a146"><param name="Name" value="fallback"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1ScannerStatemachine_1_1Element.html#a9ff96e6ea03b5e1ad0695339926e0f9d"><param name="Name" value="fallbackState"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1Interface.html#a2bff8413aafdfbe83384c6b98005663f"><param name="Name" value="fetchbytes"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1Interface.html#a2bff8413aafdfbe83384c6b98005663f"><param name="Name" value="textwolf::charset::Interface"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1IsoLatin.html#a34efbe0d57ae73d1a595c0d49e029d27"><param name="Name" value="textwolf::charset::IsoLatin"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS2.html#a73246f945ece3c41d6950f2a66a9d1e1"><param name="Name" value="textwolf::charset::UCS2"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS4.html#abd70a8938c6ceac376291f096f77bed2"><param name="Name" value="textwolf::charset::UCS4"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1charset_1_1UTF16.html#a3fab005bc9abcec0330276653a3efb67"><param name="Name" value="textwolf::charset::UTF16"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UTF8.html#a691cfeda6f94bd918265a2b7b286c7db"><param name="Name" value="textwolf::charset::UTF8"></OBJECT>
+  </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1Core.html#af8b25acda2921a276fca46902cb20e0e"><param name="Name" value="follow"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1Scope_1_1Range.html#a9261cc79a6c6948762e49ab0495d951d"><param name="Name" value="followidx"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1Scope.html#a15bfc86b152b1434027d3a9dd49f0d2b"><param name="Name" value="followMask"></OBJECT>
@@ -228,6 +242,16 @@
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1throws__exception.html#aa2ca687050bf21caa57936fe400f59f0a0cc4f4612ab2861490795026e69ca7e1"><param name="Name" value="InvalidParamState"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1throws__exception.html#aa2ca687050bf21caa57936fe400f59f0a57912bf55209910fd35e1ac83937c964"><param name="Name" value="InvalidState"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1charset_1_1IsoLatinCodePage.html#a4b760321d0f75110587f26d5e72c1fbf"><param name="Name" value="invcode"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1Interface.html#a2da10b77315b14328cf1bd03a5fa2802"><param name="Name" value="is_equal"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1Interface.html#a2da10b77315b14328cf1bd03a5fa2802"><param name="Name" value="textwolf::charset::Interface"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1IsoLatin.html#aaaa26a739cf22dd6ea9c9b6ad3442e0f"><param name="Name" value="textwolf::charset::IsoLatin"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1charset_1_1IsoLatinCodePage.html#a400cf92ed5f8fc9aa9c705ab08ddca9d"><param name="Name" value="textwolf::charset::IsoLatinCodePage"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS2.html#ae8b677f43d746e0080cfac8f57119449"><param name="Name" value="textwolf::charset::UCS2"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS4.html#a6dad33c98c219ff268500c9441508405"><param name="Name" value="textwolf::charset::UCS4"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1charset_1_1UTF16.html#a8d9acc21f29c4af12efd153689b7b5d3"><param name="Name" value="textwolf::charset::UTF16"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UTF8.html#a8de7f2a182a0753f518cd3669d63000f"><param name="Name" value="textwolf::charset::UTF8"></OBJECT>
+  </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1XMLScannerBase_1_1IsContentCharMap.html#a23d2696e5a2e6f21fa0ee6c74e45df49"><param name="Name" value="IsContentCharMap"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1XMLScannerBase_1_1IsDQStringCharMap.html#ae4208ce9a47380bc0145b1ec0c19826c"><param name="Name" value="IsDQStringCharMap"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1State.html#a393333d6e415258ab047a6c33c5bfbf2"><param name="Name" value="isempty"></OBJECT>
@@ -244,6 +268,7 @@
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScanner_1_1iterator.html#a330b9dd5eccf294aca01db2763771269"><param name="Name" value="textwolf::XMLScanner::iterator"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScanner_1_1iterator_1_1Element.html#a67171474c4da6cc8efe0c7fafefd2b2d"><param name="Name" value="textwolf::XMLScanner::iterator::Element"></OBJECT>
   </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="XMLScanner__chunkwise_8cpp.html#a758b9ff9e6df178bc98b411e2dc96bb7"><param name="Name" value="Iterator"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLPathSelect_1_1iterator.html#adbd48c1ef59b7980cffafadf4a0e3e46"><param name="Name" value="iterator_category"></OBJECT>
   <UL>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLPathSelect_1_1iterator.html#adbd48c1ef59b7980cffafadf4a0e3e46"><param name="Name" value="textwolf::XMLPathSelect::iterator"></OBJECT>
@@ -259,7 +284,7 @@
   </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1ByteOrder.html#aa5778ba8d37956ea12adfc3f68ad1304af68b62c75bbcb72f1a3b1db5f9471304"><param name="Name" value="LE"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1State.html#a1fda78d8f5c8bd1300469182074bc94a"><param name="Name" value="link"></OBJECT>
-  <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS2.html#ad3b8056c2a5cafc1585d841da687c395a4482f10af94d0206e308a4739ebbcee4"><param name="Name" value="LSB"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS2.html#ad3b8056c2a5cafc1585d841da687c395a872abe46a14697bbc88b7e79e184110e"><param name="Name" value="LSB"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="namespacetextwolf.html#a4650ba8f3f0f0c953ab1dad55efc6ee3aceaac57c7b267c8b4b75390c7df5adf3"><param name="Name" value="Lt"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1Core.html#a05fe946d03996a478c72e9369948f0ad"><param name="Name" value="mask"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1Mask.html#a93f64eb289c591fb1615a0469a45c592"><param name="Name" value="Mask"></OBJECT>
@@ -270,8 +295,8 @@
   <UL>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1Interface.html#a668b68452c5eb98190d82a50a973e006a32405d5db7e80cdb8e3529bd5df307ac"><param name="Name" value="textwolf::charset::Interface"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1IsoLatin.html#a7aff88d7d1249bf1d50c44b546a9e6fea4a4a6ec540c58521df3fbb18fdb8c2b5"><param name="Name" value="textwolf::charset::IsoLatin"></OBJECT>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS2.html#ad3b8056c2a5cafc1585d841da687c395ad9c173b3afe065fbbba184cb86a71a01"><param name="Name" value="textwolf::charset::UCS2"></OBJECT>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS4.html#a97065cf86a0cf61d846f15c5487af24aaa1b6781b3a8a54bfa179decf6a798563"><param name="Name" value="textwolf::charset::UCS4"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS2.html#ad3b8056c2a5cafc1585d841da687c395a7ea11e3b6e08c43d4a64a036dcb5833d"><param name="Name" value="textwolf::charset::UCS2"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS4.html#a97065cf86a0cf61d846f15c5487af24aa92eaa35112269730f8651cc7dc3de17f"><param name="Name" value="textwolf::charset::UCS4"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1charset_1_1UTF16.html#a2d07da44e8b38f8530acd568fbb2ac37a310fd412df4910359f7649539145ebca"><param name="Name" value="textwolf::charset::UTF16"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UTF8.html#aa1e0b6396b33c84e76110b7419f90ef8abf6139c20446c8d4413d6e34640fb0b4"><param name="Name" value="textwolf::charset::UTF8"></OBJECT>
   </UL>
@@ -284,7 +309,7 @@
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLPathSelectAutomaton.html#a73a9e096d87be7a56ff203c5d03160f2"><param name="Name" value="memUsage"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1ScannerStatemachine.html#acf604ba6fa94f5b9e27222d71ba3fa60"><param name="Name" value="miss"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1ScannerStatemachine_1_1Element.html#a122cbb1073604605c3d37169cbfce07a"><param name="Name" value="missError"></OBJECT>
-  <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS2.html#ad3b8056c2a5cafc1585d841da687c395acb70eea43ddfdd34d543a0b09c7b91d6"><param name="Name" value="MSB"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS2.html#ad3b8056c2a5cafc1585d841da687c395afcce013e0b389961e25b382521899f80"><param name="Name" value="MSB"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1ControlCharacterM.html#a9da2e5fd67218e73c6ac69ac9c86988f"><param name="Name" value="name"></OBJECT>
   <UL>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1ControlCharacterM.html#a9da2e5fd67218e73c6ac69ac9c86988f"><param name="Name" value="textwolf::ControlCharacterM"></OBJECT>
@@ -374,6 +399,13 @@
   <LI><OBJECT type="text/sitemap"><param name="Local" value="namespacetextwolf.html#a4650ba8f3f0f0c953ab1dad55efc6ee3a31e3cc3b586fb4fe2158cf7af11fe7ac"><param name="Name" value="Osb"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1ScannerStatemachine.html#a37dfd9112d64556daa4d3d42a4565051"><param name="Name" value="other"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1throws__exception.html#aa2ca687050bf21caa57936fe400f59f0ad473be4c50602dc67e3be6d629b212f1"><param name="Name" value="OutOfMem"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="TextScanner_8cpp.html#a28bd102e9eb60edf07c5c994ee0ce755"><param name="Name" value="output"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="TextScanner_8cpp.html#a28bd102e9eb60edf07c5c994ee0ce755"><param name="Name" value="TextScanner.cpp"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="XMLPathSelect_8cpp.html#a28bd102e9eb60edf07c5c994ee0ce755"><param name="Name" value="XMLPathSelect.cpp"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="XMLScanner_8cpp.html#a28bd102e9eb60edf07c5c994ee0ce755"><param name="Name" value="XMLScanner.cpp"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="XMLScanner__chunkwise_8cpp.html#a4efc78a6feaaa96e69f86c0098b566e1"><param name="Name" value="XMLScanner_chunkwise.cpp"></OBJECT>
+  </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScanner.html#aefb227bbb9ff06f9c4c86d25a16ad235"><param name="Name" value="OutputBuffer"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScanner.html#afdf169a81150c8cc4eb8b5d34aa8b67f"><param name="Name" value="OutputCharSet"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1StaticBuffer.html#adeb1952e21a6a5f8e0d4c0b5fd9cee40"><param name="Name" value="overflow"></OBJECT>
@@ -397,24 +429,24 @@
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1CStringIterator.html#afa90d4d28d246bfb956669099cd1b07e"><param name="Name" value="textwolf::CStringIterator"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1Mask.html#ac3831dfe60fe44ad591a893aca494d13"><param name="Name" value="textwolf::XMLPathSelectAutomaton::Mask"></OBJECT>
   </UL>
-  <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS2.html#ad3b8056c2a5cafc1585d841da687c395ada66158f47e40054ce391f3ee94f0e81"><param name="Name" value="Print1shift"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS2.html#ad3b8056c2a5cafc1585d841da687c395a6c0268d3679b1809404d54052461f46a"><param name="Name" value="Print1shift"></OBJECT>
   <UL>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS2.html#ad3b8056c2a5cafc1585d841da687c395ada66158f47e40054ce391f3ee94f0e81"><param name="Name" value="textwolf::charset::UCS2"></OBJECT>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS4.html#a97065cf86a0cf61d846f15c5487af24aad5643dfe21cb53b9db5fb4c349865f4f"><param name="Name" value="textwolf::charset::UCS4"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS2.html#ad3b8056c2a5cafc1585d841da687c395a6c0268d3679b1809404d54052461f46a"><param name="Name" value="textwolf::charset::UCS2"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS4.html#a97065cf86a0cf61d846f15c5487af24aa664a6371a2022dccf8d823752996ee2d"><param name="Name" value="textwolf::charset::UCS4"></OBJECT>
   </UL>
-  <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS2.html#ad3b8056c2a5cafc1585d841da687c395a8e8193bb787bced47d7d289ab5426b61"><param name="Name" value="Print2shift"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS2.html#ad3b8056c2a5cafc1585d841da687c395a7d89870a0df534d760492d8af46def12"><param name="Name" value="Print2shift"></OBJECT>
   <UL>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS2.html#ad3b8056c2a5cafc1585d841da687c395a8e8193bb787bced47d7d289ab5426b61"><param name="Name" value="textwolf::charset::UCS2"></OBJECT>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS4.html#a97065cf86a0cf61d846f15c5487af24aab14522fe59b25db699cdab74f3119fce"><param name="Name" value="textwolf::charset::UCS4"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS2.html#ad3b8056c2a5cafc1585d841da687c395a7d89870a0df534d760492d8af46def12"><param name="Name" value="textwolf::charset::UCS2"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS4.html#a97065cf86a0cf61d846f15c5487af24aa0fab260c0219a5552f3dedeba22f0117"><param name="Name" value="textwolf::charset::UCS4"></OBJECT>
   </UL>
-  <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS4.html#a97065cf86a0cf61d846f15c5487af24aa152f397e1a72de38d353f7042ffc3b64"><param name="Name" value="Print3shift"></OBJECT>
-  <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS4.html#a97065cf86a0cf61d846f15c5487af24aa39f8dc92e4c8a6cab6026c06a6c6de3f"><param name="Name" value="Print4shift"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS4.html#a97065cf86a0cf61d846f15c5487af24aa15fde1d1da7a24dc722221ef1f6ac69c"><param name="Name" value="Print3shift"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS4.html#a97065cf86a0cf61d846f15c5487af24aadcd06ba0a2d5c69481675b27a6bfef1b"><param name="Name" value="Print4shift"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1Interface.html#ac041bc21ad51134f30613384dd65097f"><param name="Name" value="print"></OBJECT>
   <UL>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1Interface.html#ac041bc21ad51134f30613384dd65097f"><param name="Name" value="textwolf::charset::Interface"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1IsoLatin.html#af0ff607d3d8821bfa1561470b1e79889"><param name="Name" value="textwolf::charset::IsoLatin"></OBJECT>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS2.html#a43cc34b2fd67a0779f633e605359a403"><param name="Name" value="textwolf::charset::UCS2"></OBJECT>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS4.html#ae810c04700c34c4fb94b255d3103349d"><param name="Name" value="textwolf::charset::UCS4"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS2.html#a90180f2e2aa6a58e5e9d1f504d2aef56"><param name="Name" value="textwolf::charset::UCS2"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS4.html#a5c0413e72c02907c02840a4ace3815d0"><param name="Name" value="textwolf::charset::UCS4"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1charset_1_1UTF16.html#a5bc0a5d516803ee36778793a30106644"><param name="Name" value="textwolf::charset::UTF16"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UTF8.html#a10fa66629fb65423f2a23691ab49af98"><param name="Name" value="textwolf::charset::UTF8"></OBJECT>
   </UL>
@@ -431,9 +463,9 @@
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLPathSelect.html#a6381cc0a5705d0ec40c3b23eb98ff618"><param name="Name" value="textwolf::XMLPathSelect"></OBJECT>
   </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1StaticBuffer.html#a744e280227bef7ac70662a8f320b7379"><param name="Name" value="push_back"></OBJECT>
-  <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1SrcIterator.html#a4184363bc11e6de251d3ae6c5324b59a"><param name="Name" value="putInput"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1SrcIterator.html#a5b11387c525288193dbf43471583d3d1"><param name="Name" value="putInput"></OBJECT>
   <UL>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1SrcIterator.html#a4184363bc11e6de251d3ae6c5324b59a"><param name="Name" value="textwolf::SrcIterator"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1SrcIterator.html#a5b11387c525288193dbf43471583d3d1"><param name="Name" value="textwolf::SrcIterator"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XmlHdrParser.html#ae7f74a994e2b0bddde34fc69fd5536e7"><param name="Name" value="textwolf::XmlHdrParser"></OBJECT>
   </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="namespacetextwolf.html#a4650ba8f3f0f0c953ab1dad55efc6ee3a5070024b2674d19bd9de21db0074373d"><param name="Name" value="Questm"></OBJECT>
@@ -456,6 +488,7 @@
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html#a9e098fe6f4a84b25db51fcfe61f4cbd0a7d453a452a831f094330902d9d711fdf"><param name="Name" value="ReturnIdentifier"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html#a9e098fe6f4a84b25db51fcfe61f4cbd0a7e641503769fc02f6c26022aacf98b50"><param name="Name" value="ReturnSQString"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html#a9e098fe6f4a84b25db51fcfe61f4cbd0a8af97c19f4d8262e8dd71f5d0a703a50"><param name="Name" value="ReturnWord"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="XMLScanner__chunkwise_8cpp.html#afb40694b6503fea09f1c92509c6409a7"><param name="Name" value="Scanner"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1ScannerStatemachine.html#a73d74d419e668ac55fc7aff5300afc38"><param name="Name" value="ScannerStatemachine"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1Scope.html#a90bf0d16b45ce5fe489532aeb72a0742"><param name="Name" value="Scope"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1Mask.html#a662d02b08f55eb15b1176444a1182556"><param name="Name" value="seekop"></OBJECT>
@@ -482,8 +515,8 @@
   <UL>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1Interface.html#a0b9704d10b6d30465e2ef333730d1c96"><param name="Name" value="textwolf::charset::Interface"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1IsoLatin.html#a08bc1e4d44dd25e1d1eb92e9ebe76739"><param name="Name" value="textwolf::charset::IsoLatin"></OBJECT>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS2.html#afe0eb739859cfb548b70ed5105ad6253"><param name="Name" value="textwolf::charset::UCS2"></OBJECT>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS4.html#afdf6a71bfbba13d0d5919c8971f5e3f6"><param name="Name" value="textwolf::charset::UCS4"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS2.html#aeae52d32499e136fa4c23c1a53ea9aa9"><param name="Name" value="textwolf::charset::UCS2"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS4.html#ac4acd8c3bc29731ae882b9f1a7b7c5c2"><param name="Name" value="textwolf::charset::UCS4"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1charset_1_1UTF16.html#af53ad1ea1ca9d1638d51fd6adf891f99"><param name="Name" value="textwolf::charset::UTF16"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UTF8.html#aeed6befb901952daef926215d3d04171"><param name="Name" value="textwolf::charset::UTF8"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1TextScanner.html#ac0b6d4734280a45a14c3d93d068b248f"><param name="Name" value="textwolf::TextScanner"></OBJECT>
@@ -499,7 +532,7 @@
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1State.html#a7b80a3993a1364ce174b1bd6b00b0072"><param name="Name" value="State"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLPrinter.html#a3970ef15ae1e927baeae3fe704f39c3a"><param name="Name" value="state"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1Token.html#ae110776d8c9381a05c76a62e99d8018f"><param name="Name" value="stateidx"></OBJECT>
-  <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1XMLScannerBase_1_1Statemachine.html#a9cdd589236b67b647b9cf80fd9f1a071"><param name="Name" value="Statemachine"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1XMLScannerBase_1_1Statemachine.html#a1f62694e5536b5c5f4c2e239802fa60c"><param name="Name" value="Statemachine"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1throws__exception.html#aa2ca687050bf21caa57936fe400f59f0a349c2185d387d7c45abe47aca0bcdea8"><param name="Name" value="StateNumbersNotAscending"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLPathSelectAutomaton.html#abec1aa88802bed73ab343c5da34bea03"><param name="Name" value="states"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1StaticBuffer.html#a41a69d93713ad796badc258c1944dfef"><param name="Name" value="StaticBuffer"></OBJECT>
@@ -519,6 +552,7 @@
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html#acf32f993fc533aa138e44a9b1afc8d1ca9930e036a6486301833ce77841e0427a"><param name="Name" value="TAGCLSK"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLPrinter.html#a315a99d2cd5b1fd30e48898066b4323baca24d78674042a5e698ea9ba85c5d82d"><param name="Name" value="TagElement"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1TagStack.html#a9aaf9bd3b3fce8197a30acb6214692b8"><param name="Name" value="TagStack"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="TextScanner_8cpp.html"><param name="Name" value="TextScanner.cpp"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1TextScanner.html#aee5ff87e78c05f729912cd2cbbb7610d"><param name="Name" value="TextScanner"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="namespacetextwolf.html"><param name="Name" value="textwolf"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1CharMap.html"><param name="Name" value="textwolf::CharMap"></OBJECT>
@@ -542,6 +576,8 @@
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1Interface.html"><param name="Name" value="textwolf::charset::Interface"></OBJECT>
   <UL>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1Interface.html#a45bee64e0e1c86e8dfdbeedddab878f6"><param name="Name" value="asciichar"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1Interface.html#a2bff8413aafdfbe83384c6b98005663f"><param name="Name" value="fetchbytes"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1Interface.html#a2da10b77315b14328cf1bd03a5fa2802"><param name="Name" value="is_equal"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1Interface.html#a668b68452c5eb98190d82a50a973e006a32405d5db7e80cdb8e3529bd5df307ac"><param name="Name" value="MaxChar"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1Interface.html#ac041bc21ad51134f30613384dd65097f"><param name="Name" value="print"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1Interface.html#a0b9704d10b6d30465e2ef333730d1c96"><param name="Name" value="skip"></OBJECT>
@@ -550,6 +586,8 @@
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1IsoLatin.html"><param name="Name" value="textwolf::charset::IsoLatin"></OBJECT>
   <UL>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1IsoLatin.html#aa3ce1ae216923c337f31fc4f3f19bcdb"><param name="Name" value="asciichar"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1IsoLatin.html#a34efbe0d57ae73d1a595c0d49e029d27"><param name="Name" value="fetchbytes"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1IsoLatin.html#aaaa26a739cf22dd6ea9c9b6ad3442e0f"><param name="Name" value="is_equal"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1IsoLatin.html#aad64b0942261661da0155cd07a8ba5f0"><param name="Name" value="IsoLatin"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1IsoLatin.html#a7aff88d7d1249bf1d50c44b546a9e6fea4a4a6ec540c58521df3fbb18fdb8c2b5"><param name="Name" value="MaxChar"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1IsoLatin.html#af0ff607d3d8821bfa1561470b1e79889"><param name="Name" value="print"></OBJECT>
@@ -559,45 +597,52 @@
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1charset_1_1IsoLatinCodePage.html"><param name="Name" value="textwolf::charset::IsoLatinCodePage"></OBJECT>
   <UL>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1charset_1_1IsoLatinCodePage.html#a4b760321d0f75110587f26d5e72c1fbf"><param name="Name" value="invcode"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1charset_1_1IsoLatinCodePage.html#a400cf92ed5f8fc9aa9c705ab08ddca9d"><param name="Name" value="is_equal"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1charset_1_1IsoLatinCodePage.html#acf0fe2c16d2eaa056262181ad5d93dbe"><param name="Name" value="IsoLatinCodePage"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1charset_1_1IsoLatinCodePage.html#a4f357be4c032c7062b5cf55848aa52e8"><param name="Name" value="ucharcode"></OBJECT>
   </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS2.html"><param name="Name" value="textwolf::charset::UCS2"></OBJECT>
   <UL>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS2.html#a955131159612bbd9dae5e12da1322e0c"><param name="Name" value="asciichar"></OBJECT>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS2.html#ad3b8056c2a5cafc1585d841da687c395a4482f10af94d0206e308a4739ebbcee4"><param name="Name" value="LSB"></OBJECT>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS2.html#ad3b8056c2a5cafc1585d841da687c395ad9c173b3afe065fbbba184cb86a71a01"><param name="Name" value="MaxChar"></OBJECT>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS2.html#ad3b8056c2a5cafc1585d841da687c395acb70eea43ddfdd34d543a0b09c7b91d6"><param name="Name" value="MSB"></OBJECT>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS2.html#a43cc34b2fd67a0779f633e605359a403"><param name="Name" value="print"></OBJECT>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS2.html#ad3b8056c2a5cafc1585d841da687c395ada66158f47e40054ce391f3ee94f0e81"><param name="Name" value="Print1shift"></OBJECT>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS2.html#ad3b8056c2a5cafc1585d841da687c395a8e8193bb787bced47d7d289ab5426b61"><param name="Name" value="Print2shift"></OBJECT>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS2.html#afe0eb739859cfb548b70ed5105ad6253"><param name="Name" value="skip"></OBJECT>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS2.html#a473f5b37c496cc8ab9ff7e6804d96dbb"><param name="Name" value="value"></OBJECT>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS2.html#a03e4e25d137cfcc21922b68267f6a262"><param name="Name" value="value_impl"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS2.html#ab2625c706b7e1fec2d27fd9f8b88ee77"><param name="Name" value="asciichar"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS2.html#a73246f945ece3c41d6950f2a66a9d1e1"><param name="Name" value="fetchbytes"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS2.html#ae8b677f43d746e0080cfac8f57119449"><param name="Name" value="is_equal"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS2.html#ad3b8056c2a5cafc1585d841da687c395a872abe46a14697bbc88b7e79e184110e"><param name="Name" value="LSB"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS2.html#ad3b8056c2a5cafc1585d841da687c395a7ea11e3b6e08c43d4a64a036dcb5833d"><param name="Name" value="MaxChar"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS2.html#ad3b8056c2a5cafc1585d841da687c395afcce013e0b389961e25b382521899f80"><param name="Name" value="MSB"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS2.html#a90180f2e2aa6a58e5e9d1f504d2aef56"><param name="Name" value="print"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS2.html#ad3b8056c2a5cafc1585d841da687c395a6c0268d3679b1809404d54052461f46a"><param name="Name" value="Print1shift"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS2.html#ad3b8056c2a5cafc1585d841da687c395a7d89870a0df534d760492d8af46def12"><param name="Name" value="Print2shift"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS2.html#aeae52d32499e136fa4c23c1a53ea9aa9"><param name="Name" value="skip"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS2.html#a26decf1b55b45709e2acad0f32614b4c"><param name="Name" value="value"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS2.html#aa5932b7e78a03a35e1f11565a833cb24"><param name="Name" value="value_impl"></OBJECT>
   </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS2BE.html"><param name="Name" value="textwolf::charset::UCS2BE"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS2LE.html"><param name="Name" value="textwolf::charset::UCS2LE"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS4.html"><param name="Name" value="textwolf::charset::UCS4"></OBJECT>
   <UL>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS4.html#a9213ddaa4d63c1a72caf9654b8bd71f5"><param name="Name" value="asciichar"></OBJECT>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS4.html#a97065cf86a0cf61d846f15c5487af24aae90f07d298337306eafe4888e08363ae"><param name="Name" value="B0"></OBJECT>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS4.html#a97065cf86a0cf61d846f15c5487af24aa70b0ebc15ba07c9448adf56f758c0c6f"><param name="Name" value="B1"></OBJECT>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS4.html#a97065cf86a0cf61d846f15c5487af24aa5990877bc50abbaae20db1a53a7f5384"><param name="Name" value="B2"></OBJECT>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS4.html#a97065cf86a0cf61d846f15c5487af24aac948695ef6a04464303fa892d1efe6f2"><param name="Name" value="B3"></OBJECT>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS4.html#a97065cf86a0cf61d846f15c5487af24aaa1b6781b3a8a54bfa179decf6a798563"><param name="Name" value="MaxChar"></OBJECT>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS4.html#ae810c04700c34c4fb94b255d3103349d"><param name="Name" value="print"></OBJECT>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS4.html#a97065cf86a0cf61d846f15c5487af24aad5643dfe21cb53b9db5fb4c349865f4f"><param name="Name" value="Print1shift"></OBJECT>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS4.html#a97065cf86a0cf61d846f15c5487af24aab14522fe59b25db699cdab74f3119fce"><param name="Name" value="Print2shift"></OBJECT>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS4.html#a97065cf86a0cf61d846f15c5487af24aa152f397e1a72de38d353f7042ffc3b64"><param name="Name" value="Print3shift"></OBJECT>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS4.html#a97065cf86a0cf61d846f15c5487af24aa39f8dc92e4c8a6cab6026c06a6c6de3f"><param name="Name" value="Print4shift"></OBJECT>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS4.html#afdf6a71bfbba13d0d5919c8971f5e3f6"><param name="Name" value="skip"></OBJECT>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS4.html#a4badd1de4199bc593ce45d15cd757d4d"><param name="Name" value="value"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS4.html#a09b4766773472e88456850386506b40b"><param name="Name" value="asciichar"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS4.html#a97065cf86a0cf61d846f15c5487af24aa957c1aecd704115682046b8d7166dad7"><param name="Name" value="B0"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS4.html#a97065cf86a0cf61d846f15c5487af24aa9a548fa93284cbfa632c02cdd7ce281f"><param name="Name" value="B1"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS4.html#a97065cf86a0cf61d846f15c5487af24aa6564c3b7eed024e8119015c963c179a3"><param name="Name" value="B2"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS4.html#a97065cf86a0cf61d846f15c5487af24aadefc079d7bf69a6320a5c74b5d1d1a5b"><param name="Name" value="B3"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS4.html#abd70a8938c6ceac376291f096f77bed2"><param name="Name" value="fetchbytes"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS4.html#a6dad33c98c219ff268500c9441508405"><param name="Name" value="is_equal"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS4.html#a97065cf86a0cf61d846f15c5487af24aa92eaa35112269730f8651cc7dc3de17f"><param name="Name" value="MaxChar"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS4.html#a5c0413e72c02907c02840a4ace3815d0"><param name="Name" value="print"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS4.html#a97065cf86a0cf61d846f15c5487af24aa664a6371a2022dccf8d823752996ee2d"><param name="Name" value="Print1shift"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS4.html#a97065cf86a0cf61d846f15c5487af24aa0fab260c0219a5552f3dedeba22f0117"><param name="Name" value="Print2shift"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS4.html#a97065cf86a0cf61d846f15c5487af24aa15fde1d1da7a24dc722221ef1f6ac69c"><param name="Name" value="Print3shift"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS4.html#a97065cf86a0cf61d846f15c5487af24aadcd06ba0a2d5c69481675b27a6bfef1b"><param name="Name" value="Print4shift"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS4.html#ac4acd8c3bc29731ae882b9f1a7b7c5c2"><param name="Name" value="skip"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS4.html#a82296b1c0d41f0feb585be4abce57746"><param name="Name" value="value"></OBJECT>
   </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS4BE.html"><param name="Name" value="textwolf::charset::UCS4BE"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS4LE.html"><param name="Name" value="textwolf::charset::UCS4LE"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1charset_1_1UTF16.html"><param name="Name" value="textwolf::charset::UTF16"></OBJECT>
   <UL>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1charset_1_1UTF16.html#a06a66ca00a897dec366429bcd61bbbc6"><param name="Name" value="asciichar"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1charset_1_1UTF16.html#a3fab005bc9abcec0330276653a3efb67"><param name="Name" value="fetchbytes"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1charset_1_1UTF16.html#a8d9acc21f29c4af12efd153689b7b5d3"><param name="Name" value="is_equal"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1charset_1_1UTF16.html#a2d07da44e8b38f8530acd568fbb2ac37a310fd412df4910359f7649539145ebca"><param name="Name" value="MaxChar"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1charset_1_1UTF16.html#a5bc0a5d516803ee36778793a30106644"><param name="Name" value="print"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1charset_1_1UTF16.html#ae74ab4ecd1b649f0809375eafe7c09cd"><param name="Name" value="size"></OBJECT>
@@ -636,6 +681,8 @@
     <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UTF8.html#ac09d12f9d49499314638af385de8c384a71856a434b1e8814058352baeaeacd51"><param name="Name" value="B11111101"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UTF8.html#ac09d12f9d49499314638af385de8c384a51e77e20518be0734de18d159eb3d245"><param name="Name" value="B11111110"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UTF8.html#ac09d12f9d49499314638af385de8c384af1514b0467e8764d595ce63bf960e16a"><param name="Name" value="B11111111"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UTF8.html#a691cfeda6f94bd918265a2b7b286c7db"><param name="Name" value="fetchbytes"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UTF8.html#a8de7f2a182a0753f518cd3669d63000f"><param name="Name" value="is_equal"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UTF8.html#aa1e0b6396b33c84e76110b7419f90ef8abf6139c20446c8d4413d6e34640fb0b4"><param name="Name" value="MaxChar"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UTF8.html#a10fa66629fb65423f2a23691ab49af98"><param name="Name" value="print"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UTF8.html#aec37940fcde645be089af3d462e87af4"><param name="Name" value="size"></OBJECT>
@@ -656,8 +703,8 @@
   </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1exception.html"><param name="Name" value="textwolf::exception"></OBJECT>
   <UL>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1exception.html#af5fab81bf1bee4f9bb9a712989e6b6aa"><param name="Name" value="cause"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1exception.html#a3dcdb1567ac4c92789054d85038c5afe"><param name="Name" value="Cause"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1exception.html#af5fab81bf1bee4f9bb9a712989e6b6aa"><param name="Name" value="cause"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1exception.html#a63e03b8d8d2188a6f51b7cfbb17fbc92"><param name="Name" value="operator="></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1exception.html#a29ff8e91a847b22adad60e37636decab"><param name="Name" value="throw"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1exception.html#a8c370e435f32a3b7a37f569243f47702"><param name="Name" value="what"></OBJECT>
@@ -704,7 +751,7 @@
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1SrcIterator.html#af75bb1fce758fc1aa9c274af5df2f6c3"><param name="Name" value="operator++"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1SrcIterator.html#a03268cda9d1f3e539c09ab389479a018"><param name="Name" value="operator-"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1SrcIterator.html#a4e3dec276e87fc72aa7c099921ed4ab2"><param name="Name" value="operator="></OBJECT>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1SrcIterator.html#a4184363bc11e6de251d3ae6c5324b59a"><param name="Name" value="putInput"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1SrcIterator.html#a5b11387c525288193dbf43471583d3d1"><param name="Name" value="putInput"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1SrcIterator.html#a9890ece57938c67fb4f948aa22d0c6f5"><param name="Name" value="SrcIterator"></OBJECT>
   </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1StaticBuffer.html"><param name="Name" value="textwolf::StaticBuffer"></OBJECT>
@@ -740,6 +787,7 @@
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1TextScanner.html#a382bea605a53ce8523cbd3c8777c5666"><param name="Name" value="ascii"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1TextScanner.html#a783b195912d79ed958f7f9b0660f156a"><param name="Name" value="chr"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1TextScanner.html#a24fd9e888680e46835e9c6f2d4be3f71"><param name="Name" value="control"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1TextScanner.html#a512818227d9d98531a9f4c175a13b444"><param name="Name" value="copychar"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1TextScanner.html#ad8d2e73575e69cf8b86034da6db0fcc4"><param name="Name" value="getcur"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1TextScanner.html#a4fbfffaf166e17e18043b31c2e489072"><param name="Name" value="getPosition"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1TextScanner.html#a2e65d1f0a4ab1ca3264ca10aa6ee04c6"><param name="Name" value="operator*"></OBJECT>
@@ -763,6 +811,16 @@
     <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1throws__exception.html#aa2ca687050bf21caa57936fe400f59f0a349c2185d387d7c45abe47aca0bcdea8"><param name="Name" value="StateNumbersNotAscending"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1throws__exception.html#aa2ca687050bf21caa57936fe400f59f0a7da6bf2f451b1cdd0c9394af0a8bd7cf"><param name="Name" value="Unknown"></OBJECT>
   </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="namespacetextwolf_1_1traits.html"><param name="Name" value="textwolf::traits"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1traits_1_1TypeCheck.html"><param name="Name" value="textwolf::traits::TypeCheck"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1traits_1_1TypeCheck_1_1is__same.html"><param name="Name" value="textwolf::traits::TypeCheck::is_same"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1traits_1_1TypeCheck_1_1is__same_3_01T_00_01T_01_4.html"><param name="Name" value="textwolf::traits::TypeCheck::is_same< T, T >"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1traits_1_1TypeCheck_1_1is__same_3_01T_00_01T_01_4.html#a03f041f22683b1b1fb2f2cc38029198c"><param name="Name" value="type"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1traits_1_1TypeCheck_1_1is__same.html"><param name="Name" value="textwolf::traits::TypeCheck::is_same"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1traits_1_1TypeCheck_1_1NO.html"><param name="Name" value="textwolf::traits::TypeCheck::NO"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1traits_1_1TypeCheck_1_1YES.html"><param name="Name" value="textwolf::traits::TypeCheck::YES"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XmlHdrParser.html"><param name="Name" value="textwolf::XmlHdrParser"></OBJECT>
   <UL>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XmlHdrParser.html#a6f6b2a2daabe854367eed3701f90694a"><param name="Name" value="charsConsumed"></OBJECT>
@@ -968,7 +1026,6 @@
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScanner.html"><param name="Name" value="textwolf::XMLScanner"></OBJECT>
   <UL>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScanner.html#a2fa61ddab30002d7ced93764066b2a05"><param name="Name" value="begin"></OBJECT>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScanner.html#a9c4df662ff637c00768cefe1dbffa5d9"><param name="Name" value="doTokenize"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScanner.html#a5c83c190269593de0aa7426449db149f"><param name="Name" value="end"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScanner.html#a1e47411251de5b7155f5b8ef9d5e322e"><param name="Name" value="EntityMap"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScanner.html#a43ca63e969a66349b5b009b90e91ab57"><param name="Name" value="getError"></OBJECT>
@@ -1010,7 +1067,7 @@
   </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1XMLScannerBase_1_1Statemachine.html"><param name="Name" value="textwolf::XMLScannerBase::Statemachine"></OBJECT>
   <UL>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1XMLScannerBase_1_1Statemachine.html#a9cdd589236b67b647b9cf80fd9f1a071"><param name="Name" value="Statemachine"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1XMLScannerBase_1_1Statemachine.html#a1f62694e5536b5c5f4c2e239802fa60c"><param name="Name" value="Statemachine"></OBJECT>
   </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html"><param name="Name" value="textwolf::XMLScannerBase"></OBJECT>
   <UL>
@@ -1018,8 +1075,8 @@
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html#acf32f993fc533aa138e44a9b1afc8d1caa465389dd6fad21e436df80aebf8c8c6"><param name="Name" value="CDATA1"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html#acf32f993fc533aa138e44a9b1afc8d1cabe5b112645434a0e66a842e984da57df"><param name="Name" value="CDATA2"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html#acf32f993fc533aa138e44a9b1afc8d1ca1e0626b244240a37b15f4ed44239ee10"><param name="Name" value="CDATA3"></OBJECT>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html#acf32f993fc533aa138e44a9b1afc8d1ca9c34cbc9e4d81e1fcd3953347a7ca40f"><param name="Name" value="CLOSETAG"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html#aae4f0cdb7e16aca5fdee271fa60e1329aab57b42674c0f6ee8e92c3cf7c702cec"><param name="Name" value="CloseTag"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html#acf32f993fc533aa138e44a9b1afc8d1ca9c34cbc9e4d81e1fcd3953347a7ca40f"><param name="Name" value="CLOSETAG"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html#aae4f0cdb7e16aca5fdee271fa60e1329a97df16f73186fd52ddcfc240189a72d7"><param name="Name" value="CloseTagIm"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html#acf32f993fc533aa138e44a9b1afc8d1caa195b01defcdb304c89218f2f0fdc07e"><param name="Name" value="COMDASH2"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html#acf32f993fc533aa138e44a9b1afc8d1ca36a050d67f057d00ecd7618f076eb8b0"><param name="Name" value="COMENDCL"></OBJECT>
@@ -1053,8 +1110,8 @@
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html#ae26e6510c822ee35e041ab2dab70e78ba80ae9361aa81f3ecce19acd0690e4aad"><param name="Name" value="ErrUndefinedCharacterEntity"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html#ae26e6510c822ee35e041ab2dab70e78ba52fec157b20cde2c69433fc3b705bafa"><param name="Name" value="ErrUnexpectedEndOfInput"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html#ae26e6510c822ee35e041ab2dab70e78baaba73f646d7a3b6a5428d2ffa35c7956"><param name="Name" value="ErrUnexpectedEndOfText"></OBJECT>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html#acf32f993fc533aa138e44a9b1afc8d1ca61928f501bfa1739fb10e5f4af757e3b"><param name="Name" value="EXIT"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html#aae4f0cdb7e16aca5fdee271fa60e1329ad5a3d0d15f37c3483fdc5321f5baf2b7"><param name="Name" value="Exit"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html#acf32f993fc533aa138e44a9b1afc8d1ca61928f501bfa1739fb10e5f4af757e3b"><param name="Name" value="EXIT"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html#a9e098fe6f4a84b25db51fcfe61f4cbd0ae5bd27b5e2b4acef656229e45f357149"><param name="Name" value="ExpectIdentifierCDATA"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html#a9e098fe6f4a84b25db51fcfe61f4cbd0a53895f21307d917b63c62c5a683f99f0"><param name="Name" value="ExpectIdentifierXML"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html#aa0bd625fc24362b945dcd6a167eabe7b"><param name="Name" value="getActionString"></OBJECT>
@@ -1146,6 +1203,7 @@
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScanner.html#a054a9596bf4fc0998fff0902e5982ae2"><param name="Name" value="ThisXMLScanner"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1exception.html#a29ff8e91a847b22adad60e37636decab"><param name="Name" value="throw"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html#a5b420d4df5eb3dc3eacfce5d77625a89"><param name="Name" value="TO"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="todo.html"><param name="Name" value="Todo List"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1Token.html#a7a536fe50cfe35c6b3bc6ccef0a1fd2e"><param name="Name" value="Token"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html#acf32f993fc533aa138e44a9b1afc8d1ca0cc39f2f603dc2a6e799e40ba2b5119d"><param name="Name" value="TOKEN"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1Scope_1_1Range.html#a46e4c558b43e1a68174b4c6178ca8dfa"><param name="Name" value="tokenidx_from"></OBJECT>
@@ -1156,7 +1214,12 @@
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLPathSelectAutomaton.html#ad837785e1c091dca35c01ba3bf6cbd6e"><param name="Name" value="textwolf::XMLPathSelectAutomaton"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1State.html#a12e709ee319f984e761cb8e540823c93"><param name="Name" value="textwolf::XMLPathSelectAutomaton::State"></OBJECT>
   </UL>
-  <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScanner_1_1iterator_1_1Element.html#aafcf583ea1902e0069110c6eb8668ae8"><param name="Name" value="type"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1traits_1_1TypeCheck_1_1is__same.html#a513f4d62968d25f3e4a728180575700e"><param name="Name" value="type"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1traits_1_1TypeCheck_1_1is__same.html#a513f4d62968d25f3e4a728180575700e"><param name="Name" value="textwolf::traits::TypeCheck::is_same"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1traits_1_1TypeCheck_1_1is__same_3_01T_00_01T_01_4.html#a03f041f22683b1b1fb2f2cc38029198c"><param name="Name" value="textwolf::traits::TypeCheck::is_same< T, T >"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScanner_1_1iterator_1_1Element.html#aafcf583ea1902e0069110c6eb8668ae8"><param name="Name" value="textwolf::XMLScanner::iterator::Element"></OBJECT>
+  </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1Core.html#a4cd11b4d6f0e244fb46ae0ebe387c7cd"><param name="Name" value="typeidx"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="namespacetextwolf.html#a3eb8d6733d6737825026b2e41b8c3f9c"><param name="Name" value="UChar"></OBJECT>
   <UL>
@@ -1170,14 +1233,14 @@
   <UL>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1Interface.html#a041a5bdfcba4879f98101deed549141c"><param name="Name" value="textwolf::charset::Interface"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1IsoLatin.html#a987c15e1da081f55a8d2cf88a722fc4d"><param name="Name" value="textwolf::charset::IsoLatin"></OBJECT>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS2.html#a473f5b37c496cc8ab9ff7e6804d96dbb"><param name="Name" value="textwolf::charset::UCS2"></OBJECT>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS4.html#a4badd1de4199bc593ce45d15cd757d4d"><param name="Name" value="textwolf::charset::UCS4"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS2.html#a26decf1b55b45709e2acad0f32614b4c"><param name="Name" value="textwolf::charset::UCS2"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS4.html#a82296b1c0d41f0feb585be4abce57746"><param name="Name" value="textwolf::charset::UCS4"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1charset_1_1UTF16.html#a285856dc8c0f871dd9959d733a108c18"><param name="Name" value="textwolf::charset::UTF16"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UTF8.html#ab0554c1eae77123f436acbe3d8e3daec"><param name="Name" value="textwolf::charset::UTF8"></OBJECT>
   </UL>
-  <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS2.html#a03e4e25d137cfcc21922b68267f6a262"><param name="Name" value="value_impl"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS2.html#aa5932b7e78a03a35e1f11565a833cb24"><param name="Name" value="value_impl"></OBJECT>
   <UL>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS2.html#a03e4e25d137cfcc21922b68267f6a262"><param name="Name" value="textwolf::charset::UCS2"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1UCS2.html#aa5932b7e78a03a35e1f11565a833cb24"><param name="Name" value="textwolf::charset::UCS2"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1charset_1_1UTF16.html#aec49e67246a79dfc971bbfe0341e7ed9"><param name="Name" value="textwolf::charset::UTF16"></OBJECT>
   </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLPathSelect_1_1iterator.html#adf7fea5eabd0adc27e97457292be4439"><param name="Name" value="value_type"></OBJECT>
@@ -1188,11 +1251,20 @@
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1CharMap.html#ae511e679434350d8c3b0ad651b0879a7"><param name="Name" value="valuetype"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1exception.html#a8c370e435f32a3b7a37f569243f47702"><param name="Name" value="what"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XmlHdrParser.html#a567aad14083bba711977a20171a56a2e"><param name="Name" value="XmlHdrParser"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="XMLPathSelect_8cpp.html"><param name="Name" value="XMLPathSelect.cpp"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLPathSelect.html#a5980bc82641f036ff178ac7c226bdf6b"><param name="Name" value="XMLPathSelect"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLPathSelectAutomaton.html#a024f64dd49aaee2758a4fdf6dff5a2c9"><param name="Name" value="XMLPathSelectAutomaton"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLPathSelectAutomatonParser.html#af2acd8be491d70f6e3127678394a3716"><param name="Name" value="XMLPathSelectAutomatonParser"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLPrinter.html#ae5b4d380b9659c6ec2398727f081e49c"><param name="Name" value="XMLPrinter"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="XMLScanner_8cpp.html"><param name="Name" value="XMLScanner.cpp"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScanner.html#a51ec6495cbbdf609760098b45d6e66ad"><param name="Name" value="XMLScanner"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="XMLScanner__chunkwise_8cpp.html"><param name="Name" value="XMLScanner_chunkwise.cpp"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="XMLScanner__chunkwise_8cpp.html#a6b5f94c96386e389a4f841bdd62d6632"><param name="Name" value="Encoding"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="XMLScanner__chunkwise_8cpp.html#a758b9ff9e6df178bc98b411e2dc96bb7"><param name="Name" value="Iterator"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="XMLScanner__chunkwise_8cpp.html#a4efc78a6feaaa96e69f86c0098b566e1"><param name="Name" value="output"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="XMLScanner__chunkwise_8cpp.html#afb40694b6503fea09f1c92509c6409a7"><param name="Name" value="Scanner"></OBJECT>
+  </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html#acf32f993fc533aa138e44a9b1afc8d1caf093834846e19f4ccd84ebb44475cc95"><param name="Name" value="XMLTAG"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html#acf32f993fc533aa138e44a9b1afc8d1caf473e5c78ea972b6425cc94b545513ea"><param name="Name" value="XTAG"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html#acf32f993fc533aa138e44a9b1afc8d1ca9337297cefa6a545b0573cf4d2be492e"><param name="Name" value="XTAGAESK"></OBJECT>

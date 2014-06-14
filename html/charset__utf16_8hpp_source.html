@@ -39,6 +39,7 @@
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
@@ -47,6 +48,7 @@
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
+      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
 </div>
@@ -111,139 +113,153 @@
 <a name="l00066"></a>00066                 Print1shift=(encoding==<a class="code" href="structtextwolf_1_1charset_1_1ByteOrder.html#aa5778ba8d37956ea12adfc3f68ad1304a150aacfe80288a1a57d23ae3f860f65c">ByteOrder::BE</a>)?8:0,      <span class="comment">//&lt; value to shift with to get the 1st character to print</span>
 <a name="l00067"></a>00067                 Print2shift=(encoding==<a class="code" href="structtextwolf_1_1charset_1_1ByteOrder.html#aa5778ba8d37956ea12adfc3f68ad1304af68b62c75bbcb72f1a3b1db5f9471304">ByteOrder::LE</a>)?8:0       <span class="comment">//&lt; value to shift with to get the 2nd character to print</span>
 <a name="l00068"></a>00068         };
-<a name="l00069"></a>00069 <span class="keyword">public</span>:
-<a name="l00070"></a>00070         <span class="keyword">enum</span>
-<a name="l00071"></a>00071         {
-<a name="l00072"></a><a class="code" href="classtextwolf_1_1charset_1_1UTF16.html#a2d07da44e8b38f8530acd568fbb2ac37a310fd412df4910359f7649539145ebca">00072</a>                 <a class="code" href="classtextwolf_1_1charset_1_1UTF16.html#a2d07da44e8b38f8530acd568fbb2ac37a310fd412df4910359f7649539145ebca">MaxChar</a>=0x10FFFF                                <span class="comment">//&lt; maximum character in alphabet</span>
-<a name="l00073"></a>00073         };
-<a name="l00074"></a>00074 <span class="keyword">public</span>:
-<a name="l00079"></a>00079         <span class="keyword">template</span> &lt;<span class="keyword">class</span> Iterator&gt;
-<a name="l00080"></a><a class="code" href="classtextwolf_1_1charset_1_1UTF16.html#ae74ab4ecd1b649f0809375eafe7c09cd">00080</a>         <span class="keyword">static</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classtextwolf_1_1charset_1_1UTF16.html#ae74ab4ecd1b649f0809375eafe7c09cd" title="Get the size of the current character in bytes (variable length encoding)">size</a>( <span class="keywordtype">char</span>* buf, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>&amp; bufpos, Iterator&amp; itr)
-<a name="l00081"></a>00081         {
-<a name="l00082"></a>00082                 <span class="keywordflow">if</span> (bufpos&lt;2)
-<a name="l00083"></a>00083                 {
-<a name="l00084"></a>00084                         <span class="keywordflow">if</span> (bufpos&lt;1)
-<a name="l00085"></a>00085                         {
-<a name="l00086"></a>00086                                 buf[0] = *itr;
-<a name="l00087"></a>00087                                 ++itr;
-<a name="l00088"></a>00088                                 ++bufpos;
-<a name="l00089"></a>00089                         }
-<a name="l00090"></a>00090                         buf[1] = *itr;
-<a name="l00091"></a>00091                         ++itr;
-<a name="l00092"></a>00092                         ++bufpos;
-<a name="l00093"></a>00093                 }
-<a name="l00094"></a>00094                 <a class="code" href="namespacetextwolf.html#a3eb8d6733d6737825026b2e41b8c3f9c" title="Unicode character type.">UChar</a> rt = (<span class="keywordtype">unsigned</span> char)buf[ MSB];
-<a name="l00095"></a>00095                 <span class="keywordflow">if</span> ((rt - 0xD8) &gt; 0x03)
-<a name="l00096"></a>00096                 {
-<a name="l00097"></a>00097                         <span class="keywordflow">return</span> 2;
-<a name="l00098"></a>00098                 }
-<a name="l00099"></a>00099                 <span class="keywordflow">else</span>
-<a name="l00100"></a>00100                 {
-<a name="l00101"></a>00101                         <span class="keywordflow">return</span> 4;
-<a name="l00102"></a>00102                 }
-<a name="l00103"></a>00103         }
-<a name="l00104"></a>00104 
-<a name="l00106"></a>00106         <span class="keyword">template</span> &lt;<span class="keyword">class</span> Iterator&gt;
-<a name="l00107"></a><a class="code" href="classtextwolf_1_1charset_1_1UTF16.html#af53ad1ea1ca9d1638d51fd6adf891f99">00107</a>         <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="classtextwolf_1_1charset_1_1UTF16.html#af53ad1ea1ca9d1638d51fd6adf891f99" title="See template&lt;class Iterator&gt;Interface::skip(char*,unsigned int&amp;,Iterator&amp;)">skip</a>( <span class="keywordtype">char</span>* buf, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>&amp; bufpos, Iterator&amp; itr)
-<a name="l00108"></a>00108         {
-<a name="l00109"></a>00109                 <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> bufsize = <a class="code" href="classtextwolf_1_1charset_1_1UTF16.html#ae74ab4ecd1b649f0809375eafe7c09cd" title="Get the size of the current character in bytes (variable length encoding)">size</a>( buf, bufpos, itr);
-<a name="l00110"></a>00110                 <span class="keywordflow">for</span> (;bufpos &lt; bufsize; ++bufpos)
-<a name="l00111"></a>00111                 {
-<a name="l00112"></a>00112                         ++itr;
-<a name="l00113"></a>00113                 }
-<a name="l00114"></a>00114         }
-<a name="l00115"></a>00115 
-<a name="l00117"></a>00117         <span class="keyword">template</span> &lt;<span class="keyword">class</span> Iterator&gt;
-<a name="l00118"></a><a class="code" href="classtextwolf_1_1charset_1_1UTF16.html#a06a66ca00a897dec366429bcd61bbbc6">00118</a>         <span class="keyword">static</span> <span class="keywordtype">signed</span> <span class="keywordtype">char</span> <a class="code" href="classtextwolf_1_1charset_1_1UTF16.html#a06a66ca00a897dec366429bcd61bbbc6" title="See template&lt;class Iterator&gt;Interface::asciichar(char*,unsigned int&amp;,Iterator&amp;)">asciichar</a>( <span class="keywordtype">char</span>* buf, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>&amp; bufpos, Iterator&amp; itr)
-<a name="l00119"></a>00119         {
-<a name="l00120"></a>00120                 <a class="code" href="namespacetextwolf.html#a3eb8d6733d6737825026b2e41b8c3f9c" title="Unicode character type.">UChar</a> ch = <a class="code" href="classtextwolf_1_1charset_1_1UTF16.html#aec49e67246a79dfc971bbfe0341e7ed9" title="See template&lt;class Iterator&gt;Interface::value(char*,unsigned int&amp;,Iterator&amp;)">value_impl</a>( buf, bufpos, itr);
-<a name="l00121"></a>00121                 <span class="keywordflow">return</span> (ch &gt; 127)?-1:(char)ch;
-<a name="l00122"></a>00122         }
-<a name="l00123"></a>00123 
-<a name="l00125"></a>00125         <span class="keyword">template</span> &lt;<span class="keyword">class</span> Iterator&gt;
-<a name="l00126"></a><a class="code" href="classtextwolf_1_1charset_1_1UTF16.html#aec49e67246a79dfc971bbfe0341e7ed9">00126</a>         <span class="keyword">static</span> <a class="code" href="namespacetextwolf.html#a3eb8d6733d6737825026b2e41b8c3f9c" title="Unicode character type.">UChar</a> <a class="code" href="classtextwolf_1_1charset_1_1UTF16.html#aec49e67246a79dfc971bbfe0341e7ed9" title="See template&lt;class Iterator&gt;Interface::value(char*,unsigned int&amp;,Iterator&amp;)">value_impl</a>( <span class="keywordtype">char</span>* buf, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>&amp; bufpos, Iterator&amp; itr)
-<a name="l00127"></a>00127         {
-<a name="l00128"></a>00128                 <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> bufsize = <a class="code" href="classtextwolf_1_1charset_1_1UTF16.html#ae74ab4ecd1b649f0809375eafe7c09cd" title="Get the size of the current character in bytes (variable length encoding)">size</a>( buf, bufpos, itr);
-<a name="l00129"></a>00129 
-<a name="l00130"></a>00130                 <a class="code" href="namespacetextwolf.html#a3eb8d6733d6737825026b2e41b8c3f9c" title="Unicode character type.">UChar</a> rt = (<span class="keywordtype">unsigned</span> char)buf[ MSB];
-<a name="l00131"></a>00131                 rt = (rt &lt;&lt; 8) + (<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>)buf[ LSB];
-<a name="l00132"></a>00132 
-<a name="l00133"></a>00133                 <span class="keywordflow">if</span> (bufsize == 4)
-<a name="l00134"></a>00134                 {
-<a name="l00135"></a>00135                         <span class="comment">// 2 teilig</span>
-<a name="l00136"></a>00136                         <span class="keywordflow">while</span> (bufpos &lt; bufsize)
-<a name="l00137"></a>00137                         {
-<a name="l00138"></a>00138                                 buf[bufpos] = *itr;
-<a name="l00139"></a>00139                                 ++itr;
-<a name="l00140"></a>00140                                 ++bufpos;
-<a name="l00141"></a>00141                         }
-<a name="l00142"></a>00142                         rt -= 0xD800;
-<a name="l00143"></a>00143                         rt *= 0x400;
-<a name="l00144"></a>00144                         <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> lo = (<span class="keywordtype">unsigned</span> char)buf[ 2+MSB];
-<a name="l00145"></a>00145                         <span class="keywordflow">if</span> ((lo - 0xDC) &gt; 0x03) <span class="keywordflow">return</span> 0xFFFF;
-<a name="l00146"></a>00146                         lo = (lo &lt;&lt; 8) + (<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>)buf[ 2+LSB];
-<a name="l00147"></a>00147                         <span class="keywordflow">return</span> rt + lo - 0xDC00 + 0x010000;
-<a name="l00148"></a>00148                 }
-<a name="l00149"></a>00149                 <span class="keywordflow">return</span> rt;
-<a name="l00150"></a>00150         }
-<a name="l00151"></a>00151 
-<a name="l00152"></a>00152         <span class="keyword">template</span> &lt;<span class="keyword">class</span> Iterator&gt;
-<a name="l00153"></a><a class="code" href="classtextwolf_1_1charset_1_1UTF16.html#a285856dc8c0f871dd9959d733a108c18">00153</a>         <a class="code" href="namespacetextwolf.html#a3eb8d6733d6737825026b2e41b8c3f9c" title="Unicode character type.">UChar</a> <a class="code" href="classtextwolf_1_1charset_1_1UTF16.html#a285856dc8c0f871dd9959d733a108c18">value</a>( <span class="keywordtype">char</span>* buf, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>&amp; bufpos, Iterator&amp; itr)<span class="keyword"> const</span>
-<a name="l00154"></a>00154 <span class="keyword">        </span>{
-<a name="l00155"></a>00155                 <span class="keywordflow">return</span> <a class="code" href="classtextwolf_1_1charset_1_1UTF16.html#aec49e67246a79dfc971bbfe0341e7ed9" title="See template&lt;class Iterator&gt;Interface::value(char*,unsigned int&amp;,Iterator&amp;)">value_impl</a>( buf, bufpos, itr);
-<a name="l00156"></a>00156         }
-<a name="l00157"></a>00157 
-<a name="l00159"></a>00159         <span class="keyword">template</span> &lt;<span class="keyword">class</span> Buffer_&gt;
-<a name="l00160"></a><a class="code" href="classtextwolf_1_1charset_1_1UTF16.html#a5bc0a5d516803ee36778793a30106644">00160</a>         <span class="keywordtype">void</span> <a class="code" href="classtextwolf_1_1charset_1_1UTF16.html#a5bc0a5d516803ee36778793a30106644" title="See template&lt;class Buffer&gt;Interface::print(UChar,Buffer&amp;)">print</a>( <a class="code" href="namespacetextwolf.html#a3eb8d6733d6737825026b2e41b8c3f9c" title="Unicode character type.">UChar</a> ch, Buffer_&amp; buf)<span class="keyword"> const</span>
-<a name="l00161"></a>00161 <span class="keyword">        </span>{
-<a name="l00162"></a>00162                 <span class="keywordflow">if</span> (ch &lt;= 0xFFFF)
-<a name="l00163"></a>00163                 {
-<a name="l00164"></a>00164                         <span class="keywordflow">if</span> ((ch - 0xD800) &lt; 0x400)
-<a name="l00165"></a>00165                         {
-<a name="l00166"></a>00166                                 <span class="comment">//... reserved for encoding of characters in range [0xFFFF..0x10FFFF]</span>
-<a name="l00167"></a>00167                         }
-<a name="l00168"></a>00168                         <span class="keywordflow">else</span>
-<a name="l00169"></a>00169                         {
-<a name="l00170"></a>00170                                 buf.push_back( (<span class="keywordtype">char</span>)(<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>)((ch &gt;&gt; Print1shift) &amp; 0xFF));
-<a name="l00171"></a>00171                                 buf.push_back( (<span class="keywordtype">char</span>)(<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>)((ch &gt;&gt; Print2shift) &amp; 0xFF));
-<a name="l00172"></a>00172                                 <span class="keywordflow">return</span>;
-<a name="l00173"></a>00173                         }
-<a name="l00174"></a>00174                 }
-<a name="l00175"></a>00175                 <span class="keywordflow">else</span> <span class="keywordflow">if</span> (ch &lt;= 0x10FFFF)
-<a name="l00176"></a>00176                 {
-<a name="l00177"></a>00177                         ch -= 0x10000;
-<a name="l00178"></a>00178                         <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> hi = (ch / 0x400) + 0xD800;
-<a name="l00179"></a>00179                         <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> lo = (ch % 0x400) + 0xDC00;
-<a name="l00180"></a>00180                         buf.push_back( (<span class="keywordtype">char</span>)(<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>)((hi &gt;&gt; Print1shift) &amp; 0xFF));
-<a name="l00181"></a>00181                         buf.push_back( (<span class="keywordtype">char</span>)(<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>)((hi &gt;&gt; Print2shift) &amp; 0xFF));
-<a name="l00182"></a>00182                         buf.push_back( (<span class="keywordtype">char</span>)(<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>)((lo &gt;&gt; Print1shift) &amp; 0xFF));
-<a name="l00183"></a>00183                         buf.push_back( (<span class="keywordtype">char</span>)(<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>)((lo &gt;&gt; Print2shift) &amp; 0xFF));
-<a name="l00184"></a>00184                         <span class="keywordflow">return</span>;
-<a name="l00185"></a>00185                 }
-<a name="l00186"></a>00186                 <span class="keywordtype">char</span> tb[ 32];
-<a name="l00187"></a>00187                 <span class="keywordtype">char</span>* cc = tb;
-<a name="l00188"></a>00188                 <a class="code" href="structtextwolf_1_1charset_1_1Encoder.html#ad083232a041e2309b9d22af40b2c7502" title="Write the character &#39;chr&#39; in encoded form as nul-terminated string to a buffer.">Encoder::encode</a>( ch, tb, <span class="keyword">sizeof</span>(tb));
-<a name="l00189"></a>00189                 <span class="keywordflow">while</span> (*cc)
-<a name="l00190"></a>00190                 {
-<a name="l00191"></a>00191                         buf.push_back( (<span class="keywordtype">char</span>)(<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>)(((<a class="code" href="namespacetextwolf.html#a3eb8d6733d6737825026b2e41b8c3f9c" title="Unicode character type.">UChar</a>)*cc &gt;&gt; Print1shift) &amp; 0xFF));
-<a name="l00192"></a>00192                         buf.push_back( (<span class="keywordtype">char</span>)(<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>)(((<a class="code" href="namespacetextwolf.html#a3eb8d6733d6737825026b2e41b8c3f9c" title="Unicode character type.">UChar</a>)*cc &gt;&gt; Print2shift) &amp; 0xFF));
-<a name="l00193"></a>00193                         ++cc;
-<a name="l00194"></a>00194                 }
-<a name="l00195"></a>00195         }
-<a name="l00196"></a>00196 };
-<a name="l00197"></a>00197 
-<a name="l00200"></a><a class="code" href="structtextwolf_1_1charset_1_1UTF16LE.html">00200</a> <span class="keyword">struct </span><a class="code" href="structtextwolf_1_1charset_1_1UTF16LE.html" title="UTF-16 little endian character set encoding.">UTF16LE</a> :<span class="keyword">public</span> <a class="code" href="classtextwolf_1_1charset_1_1UTF16.html" title="Character set UTF16 (little/big endian)">UTF16</a>&lt;ByteOrder::LE&gt; {};
-<a name="l00203"></a><a class="code" href="structtextwolf_1_1charset_1_1UTF16BE.html">00203</a> <span class="keyword">struct </span><a class="code" href="structtextwolf_1_1charset_1_1UTF16BE.html" title="UTF-16 big endian character set encoding.">UTF16BE</a> :<span class="keyword">public</span> <a class="code" href="classtextwolf_1_1charset_1_1UTF16.html" title="Character set UTF16 (little/big endian)">UTF16</a>&lt;ByteOrder::BE&gt; {};
-<a name="l00204"></a>00204 
-<a name="l00205"></a>00205 }<span class="comment">//namespace</span>
-<a name="l00206"></a>00206 }<span class="comment">//namespace</span>
-<a name="l00207"></a>00207 <span class="preprocessor">#endif</span>
-<a name="l00208"></a>00208 <span class="preprocessor"></span>
+<a name="l00069"></a>00069 
+<a name="l00070"></a>00070 <span class="keyword">public</span>:
+<a name="l00071"></a>00071         <span class="keyword">enum</span>
+<a name="l00072"></a>00072         {
+<a name="l00073"></a><a class="code" href="classtextwolf_1_1charset_1_1UTF16.html#a2d07da44e8b38f8530acd568fbb2ac37a310fd412df4910359f7649539145ebca">00073</a>                 <a class="code" href="classtextwolf_1_1charset_1_1UTF16.html#a2d07da44e8b38f8530acd568fbb2ac37a310fd412df4910359f7649539145ebca">MaxChar</a>=0x10FFFF                                <span class="comment">//&lt; maximum character in alphabet</span>
+<a name="l00074"></a>00074         };
+<a name="l00075"></a>00075 
+<a name="l00076"></a>00076 <span class="keyword">public</span>:
+<a name="l00078"></a>00078         <span class="keyword">template</span> &lt;<span class="keyword">class</span> Iterator&gt;
+<a name="l00079"></a><a class="code" href="classtextwolf_1_1charset_1_1UTF16.html#a3fab005bc9abcec0330276653a3efb67">00079</a>         <span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="classtextwolf_1_1charset_1_1UTF16.html#a3fab005bc9abcec0330276653a3efb67" title="See template&lt;class Iterator&gt;Interface::fetchbytes(char*,unsigned int&amp;,Iterator&amp;)">fetchbytes</a>( <span class="keywordtype">char</span>* buf, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>&amp; bufpos, <a class="code" href="classtextwolf_1_1SrcIterator.html" title="Input iterator as source for the XML scanner with the possibility of being fed chunk by chunk...">Iterator</a>&amp; itr)
+<a name="l00080"></a>00080         {
+<a name="l00081"></a>00081                 <span class="keywordflow">if</span> (bufpos&lt;2)
+<a name="l00082"></a>00082                 {
+<a name="l00083"></a>00083                         <span class="keywordflow">if</span> (bufpos&lt;1)
+<a name="l00084"></a>00084                         {
+<a name="l00085"></a>00085                                 buf[0] = *itr;
+<a name="l00086"></a>00086                                 ++itr;
+<a name="l00087"></a>00087                                 ++bufpos;
+<a name="l00088"></a>00088                         }
+<a name="l00089"></a>00089                         buf[1] = *itr;
+<a name="l00090"></a>00090                         ++itr;
+<a name="l00091"></a>00091                         ++bufpos;
+<a name="l00092"></a>00092                 }
+<a name="l00093"></a>00093         }
+<a name="l00094"></a>00094 
+<a name="l00099"></a>00099         <span class="keyword">template</span> &lt;<span class="keyword">class</span> Iterator&gt;
+<a name="l00100"></a><a class="code" href="classtextwolf_1_1charset_1_1UTF16.html#ae74ab4ecd1b649f0809375eafe7c09cd">00100</a>         <span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classtextwolf_1_1charset_1_1UTF16.html#ae74ab4ecd1b649f0809375eafe7c09cd" title="Get the size of the current character in bytes (variable length encoding)">size</a>( <span class="keywordtype">char</span>* buf, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>&amp; bufpos, <a class="code" href="classtextwolf_1_1SrcIterator.html" title="Input iterator as source for the XML scanner with the possibility of being fed chunk by chunk...">Iterator</a>&amp; itr)
+<a name="l00101"></a>00101         {
+<a name="l00102"></a>00102                 <a class="code" href="classtextwolf_1_1charset_1_1UTF16.html#a3fab005bc9abcec0330276653a3efb67" title="See template&lt;class Iterator&gt;Interface::fetchbytes(char*,unsigned int&amp;,Iterator&amp;)">fetchbytes</a>( buf, bufpos, itr);
+<a name="l00103"></a>00103 
+<a name="l00104"></a>00104                 <a class="code" href="namespacetextwolf.html#a3eb8d6733d6737825026b2e41b8c3f9c" title="Unicode character type.">UChar</a> rt = (<span class="keywordtype">unsigned</span> char)buf[ MSB];
+<a name="l00105"></a>00105                 <span class="keywordflow">if</span> ((rt - 0xD8) &gt; 0x03)
+<a name="l00106"></a>00106                 {
+<a name="l00107"></a>00107                         <span class="keywordflow">return</span> 2;
+<a name="l00108"></a>00108                 }
+<a name="l00109"></a>00109                 <span class="keywordflow">else</span>
+<a name="l00110"></a>00110                 {
+<a name="l00111"></a>00111                         <span class="keywordflow">return</span> 4;
+<a name="l00112"></a>00112                 }
+<a name="l00113"></a>00113         }
+<a name="l00114"></a>00114 
+<a name="l00116"></a>00116         <span class="keyword">template</span> &lt;<span class="keyword">class</span> Iterator&gt;
+<a name="l00117"></a><a class="code" href="classtextwolf_1_1charset_1_1UTF16.html#af53ad1ea1ca9d1638d51fd6adf891f99">00117</a>         <span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="classtextwolf_1_1charset_1_1UTF16.html#af53ad1ea1ca9d1638d51fd6adf891f99" title="See template&lt;class Iterator&gt;Interface::skip(char*,unsigned int&amp;,Iterator&amp;)">skip</a>( <span class="keywordtype">char</span>* buf, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>&amp; bufpos, <a class="code" href="classtextwolf_1_1SrcIterator.html" title="Input iterator as source for the XML scanner with the possibility of being fed chunk by chunk...">Iterator</a>&amp; itr)
+<a name="l00118"></a>00118         {
+<a name="l00119"></a>00119                 <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> bufsize = <a class="code" href="classtextwolf_1_1charset_1_1UTF16.html#ae74ab4ecd1b649f0809375eafe7c09cd" title="Get the size of the current character in bytes (variable length encoding)">size</a>( buf, bufpos, itr);
+<a name="l00120"></a>00120                 <span class="keywordflow">for</span> (;bufpos &lt; bufsize; ++bufpos)
+<a name="l00121"></a>00121                 {
+<a name="l00122"></a>00122                         ++itr;
+<a name="l00123"></a>00123                 }
+<a name="l00124"></a>00124         }
+<a name="l00125"></a>00125 
+<a name="l00127"></a>00127         <span class="keyword">template</span> &lt;<span class="keyword">class</span> Iterator&gt;
+<a name="l00128"></a><a class="code" href="classtextwolf_1_1charset_1_1UTF16.html#a06a66ca00a897dec366429bcd61bbbc6">00128</a>         <span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">signed</span> <span class="keywordtype">char</span> <a class="code" href="classtextwolf_1_1charset_1_1UTF16.html#a06a66ca00a897dec366429bcd61bbbc6" title="See template&lt;class Iterator&gt;Interface::asciichar(char*,unsigned int&amp;,Iterator&amp;)">asciichar</a>( <span class="keywordtype">char</span>* buf, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>&amp; bufpos, <a class="code" href="classtextwolf_1_1SrcIterator.html" title="Input iterator as source for the XML scanner with the possibility of being fed chunk by chunk...">Iterator</a>&amp; itr)
+<a name="l00129"></a>00129         {
+<a name="l00130"></a>00130                 <a class="code" href="namespacetextwolf.html#a3eb8d6733d6737825026b2e41b8c3f9c" title="Unicode character type.">UChar</a> ch = <a class="code" href="classtextwolf_1_1charset_1_1UTF16.html#aec49e67246a79dfc971bbfe0341e7ed9" title="See template&lt;class Iterator&gt;Interface::value(char*,unsigned int&amp;,Iterator&amp;)">value_impl</a>( buf, bufpos, itr);
+<a name="l00131"></a>00131                 <span class="keywordflow">return</span> (ch &gt; 127)?-1:(char)ch;
+<a name="l00132"></a>00132         }
+<a name="l00133"></a>00133 
+<a name="l00135"></a>00135         <span class="keyword">template</span> &lt;<span class="keyword">class</span> Iterator&gt;
+<a name="l00136"></a><a class="code" href="classtextwolf_1_1charset_1_1UTF16.html#aec49e67246a79dfc971bbfe0341e7ed9">00136</a>         <span class="keyword">static</span> <a class="code" href="namespacetextwolf.html#a3eb8d6733d6737825026b2e41b8c3f9c" title="Unicode character type.">UChar</a> <a class="code" href="classtextwolf_1_1charset_1_1UTF16.html#aec49e67246a79dfc971bbfe0341e7ed9" title="See template&lt;class Iterator&gt;Interface::value(char*,unsigned int&amp;,Iterator&amp;)">value_impl</a>( <span class="keywordtype">char</span>* buf, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>&amp; bufpos, <a class="code" href="classtextwolf_1_1SrcIterator.html" title="Input iterator as source for the XML scanner with the possibility of being fed chunk by chunk...">Iterator</a>&amp; itr)
+<a name="l00137"></a>00137         {
+<a name="l00138"></a>00138                 <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> bufsize = <a class="code" href="classtextwolf_1_1charset_1_1UTF16.html#ae74ab4ecd1b649f0809375eafe7c09cd" title="Get the size of the current character in bytes (variable length encoding)">size</a>( buf, bufpos, itr);
+<a name="l00139"></a>00139 
+<a name="l00140"></a>00140                 <a class="code" href="namespacetextwolf.html#a3eb8d6733d6737825026b2e41b8c3f9c" title="Unicode character type.">UChar</a> rt = (<span class="keywordtype">unsigned</span> char)buf[ MSB];
+<a name="l00141"></a>00141                 rt = (rt &lt;&lt; 8) + (<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>)buf[ LSB];
+<a name="l00142"></a>00142 
+<a name="l00143"></a>00143                 <span class="keywordflow">if</span> (bufsize == 4)
+<a name="l00144"></a>00144                 {
+<a name="l00145"></a>00145                         <span class="comment">// 2 teilig</span>
+<a name="l00146"></a>00146                         <span class="keywordflow">while</span> (bufpos &lt; bufsize)
+<a name="l00147"></a>00147                         {
+<a name="l00148"></a>00148                                 buf[bufpos] = *itr;
+<a name="l00149"></a>00149                                 ++itr;
+<a name="l00150"></a>00150                                 ++bufpos;
+<a name="l00151"></a>00151                         }
+<a name="l00152"></a>00152                         rt -= 0xD800;
+<a name="l00153"></a>00153                         rt *= 0x400;
+<a name="l00154"></a>00154                         <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> lo = (<span class="keywordtype">unsigned</span> char)buf[ 2+MSB];
+<a name="l00155"></a>00155                         <span class="keywordflow">if</span> ((lo - 0xDC) &gt; 0x03) <span class="keywordflow">return</span> 0xFFFF;
+<a name="l00156"></a>00156                         lo = (lo &lt;&lt; 8) + (<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>)buf[ 2+LSB];
+<a name="l00157"></a>00157                         <span class="keywordflow">return</span> rt + lo - 0xDC00 + 0x010000;
+<a name="l00158"></a>00158                 }
+<a name="l00159"></a>00159                 <span class="keywordflow">return</span> rt;
+<a name="l00160"></a>00160         }
+<a name="l00161"></a>00161 
+<a name="l00162"></a>00162         <span class="keyword">template</span> &lt;<span class="keyword">class</span> Iterator&gt;
+<a name="l00163"></a><a class="code" href="classtextwolf_1_1charset_1_1UTF16.html#a285856dc8c0f871dd9959d733a108c18">00163</a>         <span class="keyword">inline</span> <a class="code" href="namespacetextwolf.html#a3eb8d6733d6737825026b2e41b8c3f9c" title="Unicode character type.">UChar</a> <a class="code" href="classtextwolf_1_1charset_1_1UTF16.html#a285856dc8c0f871dd9959d733a108c18">value</a>( <span class="keywordtype">char</span>* buf, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>&amp; bufpos, <a class="code" href="classtextwolf_1_1SrcIterator.html" title="Input iterator as source for the XML scanner with the possibility of being fed chunk by chunk...">Iterator</a>&amp; itr)<span class="keyword"> const</span>
+<a name="l00164"></a>00164 <span class="keyword">        </span>{
+<a name="l00165"></a>00165                 <span class="keywordflow">return</span> <a class="code" href="classtextwolf_1_1charset_1_1UTF16.html#aec49e67246a79dfc971bbfe0341e7ed9" title="See template&lt;class Iterator&gt;Interface::value(char*,unsigned int&amp;,Iterator&amp;)">value_impl</a>( buf, bufpos, itr);
+<a name="l00166"></a>00166         }
+<a name="l00167"></a>00167 
+<a name="l00169"></a>00169         <span class="keyword">template</span> &lt;<span class="keyword">class</span> Buffer_&gt;
+<a name="l00170"></a><a class="code" href="classtextwolf_1_1charset_1_1UTF16.html#a5bc0a5d516803ee36778793a30106644">00170</a>         <span class="keywordtype">void</span> <a class="code" href="classtextwolf_1_1charset_1_1UTF16.html#a5bc0a5d516803ee36778793a30106644" title="See template&lt;class Buffer&gt;Interface::print(UChar,Buffer&amp;)">print</a>( <a class="code" href="namespacetextwolf.html#a3eb8d6733d6737825026b2e41b8c3f9c" title="Unicode character type.">UChar</a> ch, Buffer_&amp; buf)<span class="keyword"> const</span>
+<a name="l00171"></a>00171 <span class="keyword">        </span>{
+<a name="l00172"></a>00172                 <span class="keywordflow">if</span> (ch &lt;= 0xFFFF)
+<a name="l00173"></a>00173                 {
+<a name="l00174"></a>00174                         <span class="keywordflow">if</span> ((ch - 0xD800) &lt; 0x400)
+<a name="l00175"></a>00175                         {
+<a name="l00176"></a>00176                                 <span class="comment">//... reserved for encoding of characters in range [0xFFFF..0x10FFFF]</span>
+<a name="l00177"></a>00177                         }
+<a name="l00178"></a>00178                         <span class="keywordflow">else</span>
+<a name="l00179"></a>00179                         {
+<a name="l00180"></a>00180                                 buf.push_back( (<span class="keywordtype">char</span>)(<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>)((ch &gt;&gt; Print1shift) &amp; 0xFF));
+<a name="l00181"></a>00181                                 buf.push_back( (<span class="keywordtype">char</span>)(<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>)((ch &gt;&gt; Print2shift) &amp; 0xFF));
+<a name="l00182"></a>00182                                 <span class="keywordflow">return</span>;
+<a name="l00183"></a>00183                         }
+<a name="l00184"></a>00184                 }
+<a name="l00185"></a>00185                 <span class="keywordflow">else</span> <span class="keywordflow">if</span> (ch &lt;= 0x10FFFF)
+<a name="l00186"></a>00186                 {
+<a name="l00187"></a>00187                         ch -= 0x10000;
+<a name="l00188"></a>00188                         <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> hi = (ch / 0x400) + 0xD800;
+<a name="l00189"></a>00189                         <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> lo = (ch % 0x400) + 0xDC00;
+<a name="l00190"></a>00190                         buf.push_back( (<span class="keywordtype">char</span>)(<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>)((hi &gt;&gt; Print1shift) &amp; 0xFF));
+<a name="l00191"></a>00191                         buf.push_back( (<span class="keywordtype">char</span>)(<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>)((hi &gt;&gt; Print2shift) &amp; 0xFF));
+<a name="l00192"></a>00192                         buf.push_back( (<span class="keywordtype">char</span>)(<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>)((lo &gt;&gt; Print1shift) &amp; 0xFF));
+<a name="l00193"></a>00193                         buf.push_back( (<span class="keywordtype">char</span>)(<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>)((lo &gt;&gt; Print2shift) &amp; 0xFF));
+<a name="l00194"></a>00194                         <span class="keywordflow">return</span>;
+<a name="l00195"></a>00195                 }
+<a name="l00196"></a>00196                 <span class="keywordtype">char</span> tb[ 32];
+<a name="l00197"></a>00197                 <span class="keywordtype">char</span>* cc = tb;
+<a name="l00198"></a>00198                 <a class="code" href="structtextwolf_1_1charset_1_1Encoder.html#ad083232a041e2309b9d22af40b2c7502" title="Write the character &#39;chr&#39; in encoded form as nul-terminated string to a buffer.">Encoder::encode</a>( ch, tb, <span class="keyword">sizeof</span>(tb));
+<a name="l00199"></a>00199                 <span class="keywordflow">while</span> (*cc)
+<a name="l00200"></a>00200                 {
+<a name="l00201"></a>00201                         buf.push_back( (<span class="keywordtype">char</span>)(<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>)(((<a class="code" href="namespacetextwolf.html#a3eb8d6733d6737825026b2e41b8c3f9c" title="Unicode character type.">UChar</a>)*cc &gt;&gt; Print1shift) &amp; 0xFF));
+<a name="l00202"></a>00202                         buf.push_back( (<span class="keywordtype">char</span>)(<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>)(((<a class="code" href="namespacetextwolf.html#a3eb8d6733d6737825026b2e41b8c3f9c" title="Unicode character type.">UChar</a>)*cc &gt;&gt; Print2shift) &amp; 0xFF));
+<a name="l00203"></a>00203                         ++cc;
+<a name="l00204"></a>00204                 }
+<a name="l00205"></a>00205         }
+<a name="l00206"></a>00206 
+<a name="l00208"></a><a class="code" href="classtextwolf_1_1charset_1_1UTF16.html#a8d9acc21f29c4af12efd153689b7b5d3">00208</a>         <span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code" href="classtextwolf_1_1charset_1_1UTF16.html#a8d9acc21f29c4af12efd153689b7b5d3" title="See template&lt;class Buffer&gt;Interface::is_equal( const Interface&amp;, const Interface&amp;)">is_equal</a>( <span class="keyword">const</span> <a class="code" href="classtextwolf_1_1charset_1_1UTF16.html" title="Character set UTF16 (little/big endian)">UTF16</a>&amp;, <span class="keyword">const</span> <a class="code" href="classtextwolf_1_1charset_1_1UTF16.html" title="Character set UTF16 (little/big endian)">UTF16</a>&amp;)
+<a name="l00209"></a>00209         {
+<a name="l00210"></a>00210                 <span class="keywordflow">return</span> <span class="keyword">true</span>;
+<a name="l00211"></a>00211         }
+<a name="l00212"></a>00212 };
+<a name="l00213"></a>00213 
+<a name="l00216"></a><a class="code" href="structtextwolf_1_1charset_1_1UTF16LE.html">00216</a> <span class="keyword">struct </span><a class="code" href="structtextwolf_1_1charset_1_1UTF16LE.html" title="UTF-16 little endian character set encoding.">UTF16LE</a> :<span class="keyword">public</span> <a class="code" href="classtextwolf_1_1charset_1_1UTF16.html" title="Character set UTF16 (little/big endian)">UTF16</a>&lt;ByteOrder::LE&gt; {};
+<a name="l00219"></a><a class="code" href="structtextwolf_1_1charset_1_1UTF16BE.html">00219</a> <span class="keyword">struct </span><a class="code" href="structtextwolf_1_1charset_1_1UTF16BE.html" title="UTF-16 big endian character set encoding.">UTF16BE</a> :<span class="keyword">public</span> <a class="code" href="classtextwolf_1_1charset_1_1UTF16.html" title="Character set UTF16 (little/big endian)">UTF16</a>&lt;ByteOrder::BE&gt; {};
+<a name="l00220"></a>00220 
+<a name="l00221"></a>00221 }<span class="comment">//namespace</span>
+<a name="l00222"></a>00222 }<span class="comment">//namespace</span>
+<a name="l00223"></a>00223 <span class="preprocessor">#endif</span>
+<a name="l00224"></a>00224 <span class="preprocessor"></span>
 </pre></div></div><!-- contents -->
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jun 12 2014 11:55:33 for textwolf by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Jun 14 2014 16:44:38 for textwolf by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

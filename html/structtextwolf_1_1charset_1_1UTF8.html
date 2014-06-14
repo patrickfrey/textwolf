@@ -39,6 +39,7 @@
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
@@ -119,7 +120,7 @@ Public Types</h2></td></tr>
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr><td class="memTemplParams" colspan="2">template&lt;class Iterator &gt; </td></tr>
-<tr><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="namespacetextwolf.html#a3eb8d6733d6737825026b2e41b8c3f9c">UChar</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1charset_1_1UTF8.html#ab0554c1eae77123f436acbe3d8e3daec">value</a> (char *buf, unsigned int &amp;bufpos, Iterator &amp;itr) const </td></tr>
+<tr><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="namespacetextwolf.html#a3eb8d6733d6737825026b2e41b8c3f9c">UChar</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1charset_1_1UTF8.html#ab0554c1eae77123f436acbe3d8e3daec">value</a> (char *buf, unsigned int &amp;bufpos, <a class="el" href="XMLScanner__chunkwise_8cpp.html#a758b9ff9e6df178bc98b411e2dc96bb7">Iterator</a> &amp;itr) const </td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">See template&lt;class Iterator&gt;Interface::value(char*,unsigned int&amp;,Iterator&amp;)  <a href="#ab0554c1eae77123f436acbe3d8e3daec"></a><br/></td></tr>
 <tr><td class="memTemplParams" colspan="2">template&lt;class Buffer_ &gt; </td></tr>
 <tr><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1charset_1_1UTF8.html#a10fa66629fb65423f2a23691ab49af98">print</a> (<a class="el" href="namespacetextwolf.html#a3eb8d6733d6737825026b2e41b8c3f9c">UChar</a> chr, Buffer_ &amp;buf) const </td></tr>
@@ -127,14 +128,19 @@ Public Member Functions</h2></td></tr>
 <tr><td colspan="2"><h2><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr><td class="memTemplParams" colspan="2">template&lt;class Iterator &gt; </td></tr>
-<tr><td class="memTemplItemLeft" align="right" valign="top">static unsigned int&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1charset_1_1UTF8.html#aec37940fcde645be089af3d462e87af4">size</a> (char *buf, unsigned int &amp;bufpos, Iterator &amp;itr)</td></tr>
+<tr><td class="memTemplItemLeft" align="right" valign="top">static unsigned int&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1charset_1_1UTF8.html#aec37940fcde645be089af3d462e87af4">size</a> (char *buf, unsigned int &amp;bufpos, <a class="el" href="XMLScanner__chunkwise_8cpp.html#a758b9ff9e6df178bc98b411e2dc96bb7">Iterator</a> &amp;itr)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the size of the current character in bytes (variable length encoding)  <a href="#aec37940fcde645be089af3d462e87af4"></a><br/></td></tr>
 <tr><td class="memTemplParams" colspan="2">template&lt;class Iterator &gt; </td></tr>
-<tr><td class="memTemplItemLeft" align="right" valign="top">static void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1charset_1_1UTF8.html#aeed6befb901952daef926215d3d04171">skip</a> (char *buf, unsigned int &amp;bufpos, Iterator &amp;itr)</td></tr>
+<tr><td class="memTemplItemLeft" align="right" valign="top">static void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1charset_1_1UTF8.html#aeed6befb901952daef926215d3d04171">skip</a> (char *buf, unsigned int &amp;bufpos, <a class="el" href="XMLScanner__chunkwise_8cpp.html#a758b9ff9e6df178bc98b411e2dc96bb7">Iterator</a> &amp;itr)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">See template&lt;class Iterator&gt;<a class="el" href="structtextwolf_1_1charset_1_1Interface.html#a0b9704d10b6d30465e2ef333730d1c96" title="Skip to start of the next character.">Interface::skip(char*,unsigned int&amp;,Iterator&amp;)</a>  <a href="#aeed6befb901952daef926215d3d04171"></a><br/></td></tr>
 <tr><td class="memTemplParams" colspan="2">template&lt;class Iterator &gt; </td></tr>
-<tr><td class="memTemplItemLeft" align="right" valign="top">static signed char&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1charset_1_1UTF8.html#a7a08b35589811dc83e87abf194e6fd3a">asciichar</a> (char *buf, unsigned int &amp;bufpos, Iterator &amp;itr)</td></tr>
+<tr><td class="memTemplItemLeft" align="right" valign="top">static signed char&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1charset_1_1UTF8.html#a7a08b35589811dc83e87abf194e6fd3a">asciichar</a> (char *buf, unsigned int &amp;bufpos, <a class="el" href="XMLScanner__chunkwise_8cpp.html#a758b9ff9e6df178bc98b411e2dc96bb7">Iterator</a> &amp;itr)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">See template&lt;class Iterator&gt;<a class="el" href="structtextwolf_1_1charset_1_1Interface.html#a45bee64e0e1c86e8dfdbeedddab878f6" title="Fetches the ascii char representation of the current character.">Interface::asciichar(char*,unsigned int&amp;,Iterator&amp;)</a>  <a href="#a7a08b35589811dc83e87abf194e6fd3a"></a><br/></td></tr>
+<tr><td class="memTemplParams" colspan="2">template&lt;class Iterator &gt; </td></tr>
+<tr><td class="memTemplItemLeft" align="right" valign="top">static void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1charset_1_1UTF8.html#a691cfeda6f94bd918265a2b7b286c7db">fetchbytes</a> (char *buf, unsigned int &amp;bufpos, <a class="el" href="XMLScanner__chunkwise_8cpp.html#a758b9ff9e6df178bc98b411e2dc96bb7">Iterator</a> &amp;itr)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">See template&lt;class Iterator&gt;Interface::fetch(char*,unsigned int&amp;,Iterator&amp;)  <a href="#a691cfeda6f94bd918265a2b7b286c7db"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1charset_1_1UTF8.html#a8de7f2a182a0753f518cd3669d63000f">is_equal</a> (const <a class="el" href="structtextwolf_1_1charset_1_1UTF8.html">UTF8</a> &amp;, const <a class="el" href="structtextwolf_1_1charset_1_1UTF8.html">UTF8</a> &amp;)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">See template&lt;class Buffer&gt;<a class="el" href="structtextwolf_1_1charset_1_1Interface.html#a2da10b77315b14328cf1bd03a5fa2802" title="Evaluate if two character set encodings of the same type are equal in all properties (code page...">Interface::is_equal( const Interface&amp;, const Interface&amp;)</a>  <a href="#a8de7f2a182a0753f518cd3669d63000f"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>character set encoding UTF-8 </p>
@@ -241,7 +247,7 @@ template&lt;class Iterator &gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">Iterator &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="XMLScanner__chunkwise_8cpp.html#a758b9ff9e6df178bc98b411e2dc96bb7">Iterator</a> &amp;&#160;</td>
           <td class="paramname"><em>itr</em>&#160;</td>
         </tr>
         <tr>
@@ -254,6 +260,72 @@ template&lt;class Iterator &gt; </div>
 <div class="memdoc">
 
 <p>See template&lt;class Iterator&gt;<a class="el" href="structtextwolf_1_1charset_1_1Interface.html#a45bee64e0e1c86e8dfdbeedddab878f6" title="Fetches the ascii char representation of the current character.">Interface::asciichar(char*,unsigned int&amp;,Iterator&amp;)</a> </p>
+
+</div>
+</div>
+<a class="anchor" id="a691cfeda6f94bd918265a2b7b286c7db"></a><!-- doxytag: member="textwolf::charset::UTF8::fetchbytes" ref="a691cfeda6f94bd918265a2b7b286c7db" args="(char *buf, unsigned int &amp;bufpos, Iterator &amp;itr)" -->
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Iterator &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">static void <a class="el" href="structtextwolf_1_1charset_1_1UTF8.html#a691cfeda6f94bd918265a2b7b286c7db">textwolf::charset::UTF8::fetchbytes</a> </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int &amp;&#160;</td>
+          <td class="paramname"><em>bufpos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="XMLScanner__chunkwise_8cpp.html#a758b9ff9e6df178bc98b411e2dc96bb7">Iterator</a> &amp;&#160;</td>
+          <td class="paramname"><em>itr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [inline, static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>See template&lt;class Iterator&gt;Interface::fetch(char*,unsigned int&amp;,Iterator&amp;) </p>
+
+</div>
+</div>
+<a class="anchor" id="a8de7f2a182a0753f518cd3669d63000f"></a><!-- doxytag: member="textwolf::charset::UTF8::is_equal" ref="a8de7f2a182a0753f518cd3669d63000f" args="(const UTF8 &amp;, const UTF8 &amp;)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static bool <a class="el" href="structtextwolf_1_1charset_1_1UTF8.html#a8de7f2a182a0753f518cd3669d63000f">textwolf::charset::UTF8::is_equal</a> </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structtextwolf_1_1charset_1_1UTF8.html">UTF8</a> &amp;&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structtextwolf_1_1charset_1_1UTF8.html">UTF8</a> &amp;&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [inline, static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>See template&lt;class Buffer&gt;<a class="el" href="structtextwolf_1_1charset_1_1Interface.html#a2da10b77315b14328cf1bd03a5fa2802" title="Evaluate if two character set encodings of the same type are equal in all properties (code page...">Interface::is_equal( const Interface&amp;, const Interface&amp;)</a> </p>
 
 </div>
 </div>
@@ -309,7 +381,7 @@ template&lt;class Iterator &gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">Iterator &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="XMLScanner__chunkwise_8cpp.html#a758b9ff9e6df178bc98b411e2dc96bb7">Iterator</a> &amp;&#160;</td>
           <td class="paramname"><em>itr</em>&#160;</td>
         </tr>
         <tr>
@@ -354,7 +426,7 @@ template&lt;class Iterator &gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">Iterator &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="XMLScanner__chunkwise_8cpp.html#a758b9ff9e6df178bc98b411e2dc96bb7">Iterator</a> &amp;&#160;</td>
           <td class="paramname"><em>itr</em>&#160;</td>
         </tr>
         <tr>
@@ -391,7 +463,7 @@ template&lt;class Iterator &gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">Iterator &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="XMLScanner__chunkwise_8cpp.html#a758b9ff9e6df178bc98b411e2dc96bb7">Iterator</a> &amp;&#160;</td>
           <td class="paramname"><em>itr</em>&#160;</td>
         </tr>
         <tr>
@@ -414,7 +486,7 @@ template&lt;class Iterator &gt; </div>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jun 12 2014 11:55:34 for textwolf by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Jun 14 2014 16:44:38 for textwolf by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

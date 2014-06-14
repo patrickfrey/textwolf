@@ -39,6 +39,7 @@
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
@@ -47,6 +48,7 @@
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
+      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
 </div>
@@ -430,64 +432,69 @@
 <a name="l00427"></a>00427                         element = orig.element;
 <a name="l00428"></a>00428                 }
 <a name="l00429"></a>00429 
-<a name="l00432"></a><a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html#abfb84400838b5d4725879ae32f44beed">00432</a>                 <a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html#a77fe2598cfe61e69def409fd5849b9e1" title="Constructor.">iterator</a>( <span class="keyword">const</span> <a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html" title="input iterator for the output of this XMLScanner">iterator</a>&amp; orig)
+<a name="l00432"></a><a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html#abfb84400838b5d4725879ae32f44beed">00432</a>                 <a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html#a77fe2598cfe61e69def409fd5849b9e1" title="Default constructor.">iterator</a>( <span class="keyword">const</span> <a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html" title="input iterator for the output of this XMLScanner">iterator</a>&amp; orig)
 <a name="l00433"></a>00433                 {
 <a name="l00434"></a>00434                         <a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html#a6b9f0113e4548f51f66e9dd239a22106" title="Assign iterator.">assign</a>( orig);
 <a name="l00435"></a>00435                 }
 <a name="l00436"></a>00436 
-<a name="l00439"></a><a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html#a3780861a13d9c25af04f4132d240bc71">00439</a>                 <a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html#a77fe2598cfe61e69def409fd5849b9e1" title="Constructor.">iterator</a>( <a class="code" href="classtextwolf_1_1XMLPathSelect.html" title="XML path select template.">ThisXMLPathSelect</a>&amp; p_input, <a class="code" href="classtextwolf_1_1XMLScannerBase.html#aae4f0cdb7e16aca5fdee271fa60e1329" title="Enumeration of XML element types returned by an XML scanner.">XMLScannerBase::ElementType</a> type, <span class="keyword">const</span> <span class="keywordtype">char</span>* key, <span class="keywordtype">int</span> keysize)
-<a name="l00440"></a>00440                                 :input( &amp;p_input)
-<a name="l00441"></a>00441                 {
-<a name="l00442"></a>00442                         input-&gt;initProcessElement( type, key, keysize);
-<a name="l00443"></a>00443                         skip();
-<a name="l00444"></a>00444                 }
-<a name="l00445"></a>00445 
-<a name="l00448"></a><a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html#a77fe2598cfe61e69def409fd5849b9e1">00448</a>                 <a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html#a77fe2598cfe61e69def409fd5849b9e1" title="Constructor.">iterator</a>()
-<a name="l00449"></a>00449                         :element(0),input(0) {}
-<a name="l00450"></a>00450 
-<a name="l00454"></a><a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html#a571af55553eeef5fd6b0efcebd7e5b35">00454</a>                 <a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html" title="input iterator for the output of this XMLScanner">iterator</a>&amp; <a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html#a571af55553eeef5fd6b0efcebd7e5b35" title="Assignement.">operator = </a>(<span class="keyword">const</span> <a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html" title="input iterator for the output of this XMLScanner">iterator</a>&amp; orig)
-<a name="l00455"></a>00455                 {
-<a name="l00456"></a>00456                         <a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html#a6b9f0113e4548f51f66e9dd239a22106" title="Assign iterator.">assign</a>( orig);
-<a name="l00457"></a>00457                         <span class="keywordflow">return</span> *<span class="keyword">this</span>;
-<a name="l00458"></a>00458                 }
-<a name="l00459"></a>00459 
-<a name="l00462"></a><a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html#a018df69335f2628fb70fec440b707178">00462</a>                 <span class="keywordtype">int</span> <a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html#a018df69335f2628fb70fec440b707178" title="Element acceess.">operator*</a>()<span class="keyword"> const</span>
-<a name="l00463"></a>00463 <span class="keyword">                </span>{
-<a name="l00464"></a>00464                         <span class="keywordflow">return</span> element;
-<a name="l00465"></a>00465                 }
-<a name="l00466"></a>00466 
-<a name="l00469"></a><a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html#acce20a66aedc59c673259bb3d36d6e00">00469</a>                 <span class="keyword">const</span> <span class="keywordtype">int</span>* <a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html#acce20a66aedc59c673259bb3d36d6e00" title="Element acceess.">operator-&gt;</a>()<span class="keyword"> const</span>
-<a name="l00470"></a>00470 <span class="keyword">                </span>{
-<a name="l00471"></a>00471                         <span class="keywordflow">return</span> &amp;element;
-<a name="l00472"></a>00472                 }
-<a name="l00473"></a>00473 
-<a name="l00476"></a><a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html#af71eb33535d84200f45669aaf4ab926d">00476</a>                 <a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html" title="input iterator for the output of this XMLScanner">iterator</a>&amp; <a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html#af71eb33535d84200f45669aaf4ab926d" title="Preincrement.">operator++</a>()          {<span class="keywordflow">return</span> skip();}
-<a name="l00477"></a>00477 
-<a name="l00480"></a><a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html#a8dc249e54670ad2eeb47c84fa13dfcd6">00480</a>                 <a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html" title="input iterator for the output of this XMLScanner">iterator</a> <a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html#a8dc249e54670ad2eeb47c84fa13dfcd6" title="Postincrement.">operator++</a>(<span class="keywordtype">int</span>)        {<a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html" title="input iterator for the output of this XMLScanner">iterator</a> tmp(*<span class="keyword">this</span>); skip(); <span class="keywordflow">return</span> tmp;}
-<a name="l00481"></a>00481 
-<a name="l00484"></a><a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html#a7e0bef8cd27bffe77cbd83895fb79b21">00484</a>                 <span class="keywordtype">bool</span> <a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html#a7e0bef8cd27bffe77cbd83895fb79b21" title="Compare elements for equality.">operator==</a>( <span class="keyword">const</span> <a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html" title="input iterator for the output of this XMLScanner">iterator</a>&amp; iter)<span class="keyword"> const    </span>{<span class="keywordflow">return</span> compare( iter);}
-<a name="l00485"></a>00485 
-<a name="l00488"></a><a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html#a383ad8a13aa4b07fa9c4d11d69164715">00488</a>                 <span class="keywordtype">bool</span> <a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html#a383ad8a13aa4b07fa9c4d11d69164715" title="Compare elements for inequality.">operator!=</a>( <span class="keyword">const</span> <a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html" title="input iterator for the output of this XMLScanner">iterator</a>&amp; iter)<span class="keyword"> const    </span>{<span class="keywordflow">return</span> !compare( iter);}
-<a name="l00489"></a>00489         };
-<a name="l00490"></a>00490 
-<a name="l00493"></a><a class="code" href="classtextwolf_1_1XMLPathSelect.html#a6381cc0a5705d0ec40c3b23eb98ff618">00493</a>         <a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html" title="input iterator for the output of this XMLScanner">iterator</a> <a class="code" href="classtextwolf_1_1XMLPathSelect.html#a6381cc0a5705d0ec40c3b23eb98ff618" title="Feed the path selector with the next token and get the start iterator for the results.">push</a>( <a class="code" href="classtextwolf_1_1XMLScannerBase.html#aae4f0cdb7e16aca5fdee271fa60e1329" title="Enumeration of XML element types returned by an XML scanner.">XMLScannerBase::ElementType</a> type, <span class="keyword">const</span> <span class="keywordtype">char</span>* key, <span class="keywordtype">int</span> keysize)
-<a name="l00494"></a>00494         {
-<a name="l00495"></a>00495                 <span class="keywordflow">return</span> <a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html" title="input iterator for the output of this XMLScanner">iterator</a>( *<span class="keyword">this</span>, type, key, keysize);
-<a name="l00496"></a>00496         }
-<a name="l00497"></a>00497 
-<a name="l00500"></a><a class="code" href="classtextwolf_1_1XMLPathSelect.html#a3e1af67ffe496c625d9ae36310054d8e">00500</a>         <a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html" title="input iterator for the output of this XMLScanner">iterator</a> <a class="code" href="classtextwolf_1_1XMLPathSelect.html#a3e1af67ffe496c625d9ae36310054d8e" title="Get the end of results returned by &#39;push(XMLScannerBase::ElementType,const char*, int)&#39;...">end</a>()
-<a name="l00501"></a>00501         {
-<a name="l00502"></a>00502                 <span class="keywordflow">return</span> <a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html" title="input iterator for the output of this XMLScanner">iterator</a>();
-<a name="l00503"></a>00503         }
-<a name="l00504"></a>00504 };
-<a name="l00505"></a>00505 
-<a name="l00506"></a>00506 }<span class="comment">//namespace</span>
-<a name="l00507"></a>00507 <span class="preprocessor">#endif</span>
+<a name="l00442"></a><a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html#ad42b58d78e1b50f8467e4fef78ef498c">00442</a>                 <a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html#a77fe2598cfe61e69def409fd5849b9e1" title="Default constructor.">iterator</a>( <a class="code" href="classtextwolf_1_1XMLPathSelect.html" title="XML path select template.">ThisXMLPathSelect</a>&amp; p_input, <a class="code" href="classtextwolf_1_1XMLScannerBase.html#aae4f0cdb7e16aca5fdee271fa60e1329" title="Enumeration of XML element types returned by an XML scanner.">XMLScannerBase::ElementType</a> p_type, <span class="keyword">const</span> <span class="keywordtype">char</span>* p_key, <span class="keywordtype">int</span> p_keysize)
+<a name="l00443"></a>00443                                 :input( &amp;p_input)
+<a name="l00444"></a>00444                 {
+<a name="l00445"></a>00445                         input-&gt;initProcessElement( p_type, p_key, p_keysize);
+<a name="l00446"></a>00446                         skip();
+<a name="l00447"></a>00447                 }
+<a name="l00448"></a>00448 
+<a name="l00450"></a><a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html#a77fe2598cfe61e69def409fd5849b9e1">00450</a>                 <a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html#a77fe2598cfe61e69def409fd5849b9e1" title="Default constructor.">iterator</a>()
+<a name="l00451"></a>00451                         :element(0),input(0) {}
+<a name="l00452"></a>00452 
+<a name="l00456"></a><a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html#a571af55553eeef5fd6b0efcebd7e5b35">00456</a>                 <a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html" title="input iterator for the output of this XMLScanner">iterator</a>&amp; <a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html#a571af55553eeef5fd6b0efcebd7e5b35" title="Assignement.">operator = </a>(<span class="keyword">const</span> <a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html" title="input iterator for the output of this XMLScanner">iterator</a>&amp; orig)
+<a name="l00457"></a>00457                 {
+<a name="l00458"></a>00458                         <a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html#a6b9f0113e4548f51f66e9dd239a22106" title="Assign iterator.">assign</a>( orig);
+<a name="l00459"></a>00459                         <span class="keywordflow">return</span> *<span class="keyword">this</span>;
+<a name="l00460"></a>00460                 }
+<a name="l00461"></a>00461 
+<a name="l00464"></a><a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html#a018df69335f2628fb70fec440b707178">00464</a>                 <span class="keywordtype">int</span> <a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html#a018df69335f2628fb70fec440b707178" title="Element acceess.">operator*</a>()<span class="keyword"> const</span>
+<a name="l00465"></a>00465 <span class="keyword">                </span>{
+<a name="l00466"></a>00466                         <span class="keywordflow">return</span> element;
+<a name="l00467"></a>00467                 }
+<a name="l00468"></a>00468 
+<a name="l00471"></a><a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html#acce20a66aedc59c673259bb3d36d6e00">00471</a>                 <span class="keyword">const</span> <span class="keywordtype">int</span>* <a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html#acce20a66aedc59c673259bb3d36d6e00" title="Element acceess.">operator-&gt;</a>()<span class="keyword"> const</span>
+<a name="l00472"></a>00472 <span class="keyword">                </span>{
+<a name="l00473"></a>00473                         <span class="keywordflow">return</span> &amp;element;
+<a name="l00474"></a>00474                 }
+<a name="l00475"></a>00475 
+<a name="l00478"></a><a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html#af71eb33535d84200f45669aaf4ab926d">00478</a>                 <a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html" title="input iterator for the output of this XMLScanner">iterator</a>&amp; <a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html#af71eb33535d84200f45669aaf4ab926d" title="Preincrement.">operator++</a>()          {<span class="keywordflow">return</span> skip();}
+<a name="l00479"></a>00479 
+<a name="l00482"></a><a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html#a8dc249e54670ad2eeb47c84fa13dfcd6">00482</a>                 <a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html" title="input iterator for the output of this XMLScanner">iterator</a> <a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html#a8dc249e54670ad2eeb47c84fa13dfcd6" title="Postincrement.">operator++</a>(<span class="keywordtype">int</span>)        {<a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html" title="input iterator for the output of this XMLScanner">iterator</a> tmp(*<span class="keyword">this</span>); skip(); <span class="keywordflow">return</span> tmp;}
+<a name="l00483"></a>00483 
+<a name="l00486"></a><a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html#a7e0bef8cd27bffe77cbd83895fb79b21">00486</a>                 <span class="keywordtype">bool</span> <a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html#a7e0bef8cd27bffe77cbd83895fb79b21" title="Compare elements for equality.">operator==</a>( <span class="keyword">const</span> <a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html" title="input iterator for the output of this XMLScanner">iterator</a>&amp; iter)<span class="keyword"> const    </span>{<span class="keywordflow">return</span> compare( iter);}
+<a name="l00487"></a>00487 
+<a name="l00490"></a><a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html#a383ad8a13aa4b07fa9c4d11d69164715">00490</a>                 <span class="keywordtype">bool</span> <a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html#a383ad8a13aa4b07fa9c4d11d69164715" title="Compare elements for inequality.">operator!=</a>( <span class="keyword">const</span> <a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html" title="input iterator for the output of this XMLScanner">iterator</a>&amp; iter)<span class="keyword"> const    </span>{<span class="keywordflow">return</span> !compare( iter);}
+<a name="l00491"></a>00491         };
+<a name="l00492"></a>00492 
+<a name="l00495"></a><a class="code" href="classtextwolf_1_1XMLPathSelect.html#a6381cc0a5705d0ec40c3b23eb98ff618">00495</a>         <a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html" title="input iterator for the output of this XMLScanner">iterator</a> <a class="code" href="classtextwolf_1_1XMLPathSelect.html#a6381cc0a5705d0ec40c3b23eb98ff618" title="Feed the path selector with the next token and get the start iterator for the results.">push</a>( <a class="code" href="classtextwolf_1_1XMLScannerBase.html#aae4f0cdb7e16aca5fdee271fa60e1329" title="Enumeration of XML element types returned by an XML scanner.">XMLScannerBase::ElementType</a> type, <span class="keyword">const</span> <span class="keywordtype">char</span>* key, <span class="keywordtype">int</span> keysize)
+<a name="l00496"></a>00496         {
+<a name="l00497"></a>00497                 <span class="keywordflow">return</span> <a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html" title="input iterator for the output of this XMLScanner">iterator</a>( *<span class="keyword">this</span>, type, key, keysize);
+<a name="l00498"></a>00498         }
+<a name="l00499"></a>00499 
+<a name="l00502"></a><a class="code" href="classtextwolf_1_1XMLPathSelect.html#ad60a142d105e14660bbda9e90f487642">00502</a>         <a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html" title="input iterator for the output of this XMLScanner">iterator</a> <a class="code" href="classtextwolf_1_1XMLPathSelect.html#a6381cc0a5705d0ec40c3b23eb98ff618" title="Feed the path selector with the next token and get the start iterator for the results.">push</a>( <a class="code" href="classtextwolf_1_1XMLScannerBase.html#aae4f0cdb7e16aca5fdee271fa60e1329" title="Enumeration of XML element types returned by an XML scanner.">XMLScannerBase::ElementType</a> type, <span class="keyword">const</span> std::string&amp; key)
+<a name="l00503"></a>00503         {
+<a name="l00504"></a>00504                 <span class="keywordflow">return</span> <a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html" title="input iterator for the output of this XMLScanner">iterator</a>( *<span class="keyword">this</span>, type, key.c_str(), key.size);
+<a name="l00505"></a>00505         }
+<a name="l00506"></a>00506 
+<a name="l00509"></a><a class="code" href="classtextwolf_1_1XMLPathSelect.html#a3e1af67ffe496c625d9ae36310054d8e">00509</a>         <a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html" title="input iterator for the output of this XMLScanner">iterator</a> <a class="code" href="classtextwolf_1_1XMLPathSelect.html#a3e1af67ffe496c625d9ae36310054d8e" title="Get the end of results returned by &#39;push(XMLScannerBase::ElementType,const char*, int)&#39;...">end</a>()
+<a name="l00510"></a>00510         {
+<a name="l00511"></a>00511                 <span class="keywordflow">return</span> <a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html" title="input iterator for the output of this XMLScanner">iterator</a>();
+<a name="l00512"></a>00512         }
+<a name="l00513"></a>00513 };
+<a name="l00514"></a>00514 
+<a name="l00515"></a>00515 }<span class="comment">//namespace</span>
+<a name="l00516"></a>00516 <span class="preprocessor">#endif</span>
 </pre></div></div><!-- contents -->
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jun 12 2014 11:55:33 for textwolf by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Jun 14 2014 16:44:38 for textwolf by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

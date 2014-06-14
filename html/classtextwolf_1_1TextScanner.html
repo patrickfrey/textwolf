@@ -39,6 +39,7 @@
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
@@ -83,8 +84,8 @@ Classes</h2></td></tr>
 Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1TextScanner.html#aee5ff87e78c05f729912cd2cbbb7610d">TextScanner</a> (const CharSet &amp;charset_)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#aee5ff87e78c05f729912cd2cbbb7610d"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1TextScanner.html#aaf7ec9ab96af883583366eb9f3f078ad">TextScanner</a> (const CharSet &amp;charset_, const Iterator &amp;p_iterator)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1TextScanner.html#a81f6b27b76253b700d00a630298ff1d3">TextScanner</a> (const Iterator &amp;p_iterator)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1TextScanner.html#aaf7ec9ab96af883583366eb9f3f078ad">TextScanner</a> (const CharSet &amp;charset_, const <a class="el" href="XMLScanner__chunkwise_8cpp.html#a758b9ff9e6df178bc98b411e2dc96bb7">Iterator</a> &amp;p_iterator)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1TextScanner.html#a81f6b27b76253b700d00a630298ff1d3">TextScanner</a> (const <a class="el" href="XMLScanner__chunkwise_8cpp.html#a758b9ff9e6df178bc98b411e2dc96bb7">Iterator</a> &amp;p_iterator)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1TextScanner.html#ab253b7395490d044f9befb8545851d40">TextScanner</a> (const <a class="el" href="classtextwolf_1_1TextScanner.html">TextScanner</a> &amp;orig)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy constructor.  <a href="#ab253b7395490d044f9befb8545851d40"></a><br/></td></tr>
 <tr><td class="memTemplParams" colspan="2">template&lt;class IteratorAssignment &gt; </td></tr>
@@ -93,9 +94,11 @@ Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1TextScanner.html#a4fbfffaf166e17e18043b31c2e489072">getPosition</a> () const </td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current source iterator position.  <a href="#a4fbfffaf166e17e18043b31c2e489072"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacetextwolf.html#a3eb8d6733d6737825026b2e41b8c3f9c">UChar</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1TextScanner.html#a783b195912d79ed958f7f9b0660f156a">chr</a> ()</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the unicode character of the current character.  <a href="#a783b195912d79ed958f7f9b0660f156a"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the unicode representation of the current character.  <a href="#a783b195912d79ed958f7f9b0660f156a"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1TextScanner.html#ad8d2e73575e69cf8b86034da6db0fcc4">getcur</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Fill the internal buffer with as many current character bytes needed for reading the ASCII representation.  <a href="#ad8d2e73575e69cf8b86034da6db0fcc4"></a><br/></td></tr>
+<tr><td class="memTemplParams" colspan="2">template&lt;class Buffer &gt; </td></tr>
+<tr><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1TextScanner.html#a512818227d9d98531a9f4c175a13b444">copychar</a> (CharSet &amp;output_, Buffer &amp;buf_)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacetextwolf.html#a4650ba8f3f0f0c953ab1dad55efc6ee3">ControlCharacter</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1TextScanner.html#a24fd9e888680e46835e9c6f2d4be3f71">control</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the control character representation of the current character.  <a href="#a24fd9e888680e46835e9c6f2d4be3f71"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1TextScanner.html#a382bea605a53ce8523cbd3c8777c5666">ascii</a> ()</td></tr>
@@ -103,7 +106,7 @@ Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtextwolf_1_1TextScanner.html">TextScanner</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1TextScanner.html#ac0b6d4734280a45a14c3d93d068b248f">skip</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Skip to the next character of the source.  <a href="#ac0b6d4734280a45a14c3d93d068b248f"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacetextwolf.html#a3eb8d6733d6737825026b2e41b8c3f9c">UChar</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1TextScanner.html#a2e65d1f0a4ab1ca3264ca10aa6ee04c6">operator*</a> ()</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">see <a class="el" href="classtextwolf_1_1TextScanner.html#a783b195912d79ed958f7f9b0660f156a" title="Get the unicode character of the current character.">TextScanner::chr()</a>  <a href="#a2e65d1f0a4ab1ca3264ca10aa6ee04c6"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">see <a class="el" href="classtextwolf_1_1TextScanner.html#a783b195912d79ed958f7f9b0660f156a" title="Get the unicode representation of the current character.">TextScanner::chr()</a>  <a href="#a2e65d1f0a4ab1ca3264ca10aa6ee04c6"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtextwolf_1_1TextScanner.html">TextScanner</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1TextScanner.html#abab7abef27e2745c4464a793b518d896">operator++</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Preincrement: Skip to the next character of the source.  <a href="#abab7abef27e2745c4464a793b518d896"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtextwolf_1_1TextScanner.html">TextScanner</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1TextScanner.html#ab18e833d8e155673e5e096b1ccbe0128">operator++</a> (int)</td></tr>
@@ -129,7 +132,7 @@ class textwolf::TextScanner&lt; Iterator, CharSet &gt;</h3>
 template&lt;class Iterator, class CharSet&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classtextwolf_1_1TextScanner.html">textwolf::TextScanner</a>&lt; Iterator, CharSet &gt;::<a class="el" href="classtextwolf_1_1TextScanner.html">TextScanner</a> </td>
+          <td class="memname"><a class="el" href="classtextwolf_1_1TextScanner.html">textwolf::TextScanner</a>&lt; <a class="el" href="XMLScanner__chunkwise_8cpp.html#a758b9ff9e6df178bc98b411e2dc96bb7">Iterator</a>, CharSet &gt;::<a class="el" href="classtextwolf_1_1TextScanner.html">TextScanner</a> </td>
           <td>(</td>
           <td class="paramtype">const CharSet &amp;&#160;</td>
           <td class="paramname"><em>charset_</em></td><td>)</td>
@@ -150,7 +153,7 @@ template&lt;class Iterator, class CharSet&gt; </div>
 template&lt;class Iterator, class CharSet&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classtextwolf_1_1TextScanner.html">textwolf::TextScanner</a>&lt; Iterator, CharSet &gt;::<a class="el" href="classtextwolf_1_1TextScanner.html">TextScanner</a> </td>
+          <td class="memname"><a class="el" href="classtextwolf_1_1TextScanner.html">textwolf::TextScanner</a>&lt; <a class="el" href="XMLScanner__chunkwise_8cpp.html#a758b9ff9e6df178bc98b411e2dc96bb7">Iterator</a>, CharSet &gt;::<a class="el" href="classtextwolf_1_1TextScanner.html">TextScanner</a> </td>
           <td>(</td>
           <td class="paramtype">const CharSet &amp;&#160;</td>
           <td class="paramname"><em>charset_</em>, </td>
@@ -158,7 +161,7 @@ template&lt;class Iterator, class CharSet&gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const Iterator &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="XMLScanner__chunkwise_8cpp.html#a758b9ff9e6df178bc98b411e2dc96bb7">Iterator</a> &amp;&#160;</td>
           <td class="paramname"><em>p_iterator</em>&#160;</td>
         </tr>
         <tr>
@@ -179,9 +182,9 @@ template&lt;class Iterator, class CharSet&gt; </div>
 template&lt;class Iterator, class CharSet&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classtextwolf_1_1TextScanner.html">textwolf::TextScanner</a>&lt; Iterator, CharSet &gt;::<a class="el" href="classtextwolf_1_1TextScanner.html">TextScanner</a> </td>
+          <td class="memname"><a class="el" href="classtextwolf_1_1TextScanner.html">textwolf::TextScanner</a>&lt; <a class="el" href="XMLScanner__chunkwise_8cpp.html#a758b9ff9e6df178bc98b411e2dc96bb7">Iterator</a>, CharSet &gt;::<a class="el" href="classtextwolf_1_1TextScanner.html">TextScanner</a> </td>
           <td>(</td>
-          <td class="paramtype">const Iterator &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="XMLScanner__chunkwise_8cpp.html#a758b9ff9e6df178bc98b411e2dc96bb7">Iterator</a> &amp;&#160;</td>
           <td class="paramname"><em>p_iterator</em></td><td>)</td>
           <td><code> [inline]</code></td>
         </tr>
@@ -198,9 +201,9 @@ template&lt;class Iterator, class CharSet&gt; </div>
 template&lt;class Iterator, class CharSet&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classtextwolf_1_1TextScanner.html">textwolf::TextScanner</a>&lt; Iterator, CharSet &gt;::<a class="el" href="classtextwolf_1_1TextScanner.html">TextScanner</a> </td>
+          <td class="memname"><a class="el" href="classtextwolf_1_1TextScanner.html">textwolf::TextScanner</a>&lt; <a class="el" href="XMLScanner__chunkwise_8cpp.html#a758b9ff9e6df178bc98b411e2dc96bb7">Iterator</a>, CharSet &gt;::<a class="el" href="classtextwolf_1_1TextScanner.html">TextScanner</a> </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="classtextwolf_1_1TextScanner.html">TextScanner</a>&lt; Iterator, CharSet &gt; &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="classtextwolf_1_1TextScanner.html">TextScanner</a>&lt; <a class="el" href="XMLScanner__chunkwise_8cpp.html#a758b9ff9e6df178bc98b411e2dc96bb7">Iterator</a>, CharSet &gt; &amp;&#160;</td>
           <td class="paramname"><em>orig</em></td><td>)</td>
           <td><code> [inline]</code></td>
         </tr>
@@ -226,7 +229,7 @@ template&lt;class Iterator, class CharSet&gt; </div>
 template&lt;class Iterator, class CharSet&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">unsigned char <a class="el" href="classtextwolf_1_1TextScanner.html">textwolf::TextScanner</a>&lt; Iterator, CharSet &gt;::<a class="el" href="classtextwolf_1_1TextScanner.html#a382bea605a53ce8523cbd3c8777c5666">ascii</a> </td>
+          <td class="memname">unsigned char <a class="el" href="classtextwolf_1_1TextScanner.html">textwolf::TextScanner</a>&lt; <a class="el" href="XMLScanner__chunkwise_8cpp.html#a758b9ff9e6df178bc98b411e2dc96bb7">Iterator</a>, CharSet &gt;::<a class="el" href="classtextwolf_1_1TextScanner.html#a382bea605a53ce8523cbd3c8777c5666">ascii</a> </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td><code> [inline]</code></td>
@@ -247,7 +250,7 @@ template&lt;class Iterator, class CharSet&gt; </div>
 template&lt;class Iterator, class CharSet&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="namespacetextwolf.html#a3eb8d6733d6737825026b2e41b8c3f9c">UChar</a> <a class="el" href="classtextwolf_1_1TextScanner.html">textwolf::TextScanner</a>&lt; Iterator, CharSet &gt;::<a class="el" href="classtextwolf_1_1TextScanner.html#a783b195912d79ed958f7f9b0660f156a">chr</a> </td>
+          <td class="memname"><a class="el" href="namespacetextwolf.html#a3eb8d6733d6737825026b2e41b8c3f9c">UChar</a> <a class="el" href="classtextwolf_1_1TextScanner.html">textwolf::TextScanner</a>&lt; <a class="el" href="XMLScanner__chunkwise_8cpp.html#a758b9ff9e6df178bc98b411e2dc96bb7">Iterator</a>, CharSet &gt;::<a class="el" href="classtextwolf_1_1TextScanner.html#a783b195912d79ed958f7f9b0660f156a">chr</a> </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td><code> [inline]</code></td>
@@ -256,7 +259,7 @@ template&lt;class Iterator, class CharSet&gt; </div>
 </div>
 <div class="memdoc">
 
-<p>Get the unicode character of the current character. </p>
+<p>Get the unicode representation of the current character. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>the unicode character </dd></dl>
 
 </div>
@@ -268,7 +271,7 @@ template&lt;class Iterator, class CharSet&gt; </div>
 template&lt;class Iterator, class CharSet&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="namespacetextwolf.html#a4650ba8f3f0f0c953ab1dad55efc6ee3">ControlCharacter</a> <a class="el" href="classtextwolf_1_1TextScanner.html">textwolf::TextScanner</a>&lt; Iterator, CharSet &gt;::<a class="el" href="classtextwolf_1_1TextScanner.html#a24fd9e888680e46835e9c6f2d4be3f71">control</a> </td>
+          <td class="memname"><a class="el" href="namespacetextwolf.html#a4650ba8f3f0f0c953ab1dad55efc6ee3">ControlCharacter</a> <a class="el" href="classtextwolf_1_1TextScanner.html">textwolf::TextScanner</a>&lt; <a class="el" href="XMLScanner__chunkwise_8cpp.html#a758b9ff9e6df178bc98b411e2dc96bb7">Iterator</a>, CharSet &gt;::<a class="el" href="classtextwolf_1_1TextScanner.html#a24fd9e888680e46835e9c6f2d4be3f71">control</a> </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td><code> [inline]</code></td>
@@ -282,6 +285,39 @@ template&lt;class Iterator, class CharSet&gt; </div>
 
 </div>
 </div>
+<a class="anchor" id="a512818227d9d98531a9f4c175a13b444"></a><!-- doxytag: member="textwolf::TextScanner::copychar" ref="a512818227d9d98531a9f4c175a13b444" args="(CharSet &amp;output_, Buffer &amp;buf_)" -->
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Iterator, class CharSet&gt; </div>
+<div class="memtemplate">
+template&lt;class Buffer &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classtextwolf_1_1TextScanner.html">textwolf::TextScanner</a>&lt; <a class="el" href="XMLScanner__chunkwise_8cpp.html#a758b9ff9e6df178bc98b411e2dc96bb7">Iterator</a>, CharSet &gt;::<a class="el" href="classcopychar.html">copychar</a> </td>
+          <td>(</td>
+          <td class="paramtype">CharSet &amp;&#160;</td>
+          <td class="paramname"><em>output_</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Buffer &amp;&#160;</td>
+          <td class="paramname"><em>buf_</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo:</a></b></dt><dd>more efficient solution of copy character to sink with same encoding here </dd></dl>
+<dl class="remark"><dt><b>Remarks:</b></dt><dd>a check if the character sets fulfill is_equal(..) (IsoLatin code page !) </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="ad8d2e73575e69cf8b86034da6db0fcc4"></a><!-- doxytag: member="textwolf::TextScanner::getcur" ref="ad8d2e73575e69cf8b86034da6db0fcc4" args="()" -->
 <div class="memitem">
 <div class="memproto">
@@ -289,7 +325,7 @@ template&lt;class Iterator, class CharSet&gt; </div>
 template&lt;class Iterator, class CharSet&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="classtextwolf_1_1TextScanner.html">textwolf::TextScanner</a>&lt; Iterator, CharSet &gt;::<a class="el" href="classtextwolf_1_1TextScanner.html#ad8d2e73575e69cf8b86034da6db0fcc4">getcur</a> </td>
+          <td class="memname">void <a class="el" href="classtextwolf_1_1TextScanner.html">textwolf::TextScanner</a>&lt; <a class="el" href="XMLScanner__chunkwise_8cpp.html#a758b9ff9e6df178bc98b411e2dc96bb7">Iterator</a>, CharSet &gt;::<a class="el" href="classtextwolf_1_1TextScanner.html#ad8d2e73575e69cf8b86034da6db0fcc4">getcur</a> </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td><code> [inline]</code></td>
@@ -309,7 +345,7 @@ template&lt;class Iterator, class CharSet&gt; </div>
 template&lt;class Iterator, class CharSet&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">std::size_t <a class="el" href="classtextwolf_1_1TextScanner.html">textwolf::TextScanner</a>&lt; Iterator, CharSet &gt;::<a class="el" href="classtextwolf_1_1TextScanner.html#a4fbfffaf166e17e18043b31c2e489072">getPosition</a> </td>
+          <td class="memname">std::size_t <a class="el" href="classtextwolf_1_1TextScanner.html">textwolf::TextScanner</a>&lt; <a class="el" href="XMLScanner__chunkwise_8cpp.html#a758b9ff9e6df178bc98b411e2dc96bb7">Iterator</a>, CharSet &gt;::<a class="el" href="classtextwolf_1_1TextScanner.html#a4fbfffaf166e17e18043b31c2e489072">getPosition</a> </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const<code> [inline]</code></td>
@@ -330,7 +366,7 @@ template&lt;class Iterator, class CharSet&gt; </div>
 template&lt;class Iterator, class CharSet&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="namespacetextwolf.html#a3eb8d6733d6737825026b2e41b8c3f9c">UChar</a> <a class="el" href="classtextwolf_1_1TextScanner.html">textwolf::TextScanner</a>&lt; Iterator, CharSet &gt;::operator* </td>
+          <td class="memname"><a class="el" href="namespacetextwolf.html#a3eb8d6733d6737825026b2e41b8c3f9c">UChar</a> <a class="el" href="classtextwolf_1_1TextScanner.html">textwolf::TextScanner</a>&lt; <a class="el" href="XMLScanner__chunkwise_8cpp.html#a758b9ff9e6df178bc98b411e2dc96bb7">Iterator</a>, CharSet &gt;::operator* </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td><code> [inline]</code></td>
@@ -339,7 +375,7 @@ template&lt;class Iterator, class CharSet&gt; </div>
 </div>
 <div class="memdoc">
 
-<p>see <a class="el" href="classtextwolf_1_1TextScanner.html#a783b195912d79ed958f7f9b0660f156a" title="Get the unicode character of the current character.">TextScanner::chr()</a> </p>
+<p>see <a class="el" href="classtextwolf_1_1TextScanner.html#a783b195912d79ed958f7f9b0660f156a" title="Get the unicode representation of the current character.">TextScanner::chr()</a> </p>
 
 </div>
 </div>
@@ -350,7 +386,7 @@ template&lt;class Iterator, class CharSet&gt; </div>
 template&lt;class Iterator, class CharSet&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classtextwolf_1_1TextScanner.html">TextScanner</a>&amp; <a class="el" href="classtextwolf_1_1TextScanner.html">textwolf::TextScanner</a>&lt; Iterator, CharSet &gt;::operator++ </td>
+          <td class="memname"><a class="el" href="classtextwolf_1_1TextScanner.html">TextScanner</a>&amp; <a class="el" href="classtextwolf_1_1TextScanner.html">textwolf::TextScanner</a>&lt; <a class="el" href="XMLScanner__chunkwise_8cpp.html#a758b9ff9e6df178bc98b411e2dc96bb7">Iterator</a>, CharSet &gt;::operator++ </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td><code> [inline]</code></td>
@@ -371,7 +407,7 @@ template&lt;class Iterator, class CharSet&gt; </div>
 template&lt;class Iterator, class CharSet&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classtextwolf_1_1TextScanner.html">TextScanner</a> <a class="el" href="classtextwolf_1_1TextScanner.html">textwolf::TextScanner</a>&lt; Iterator, CharSet &gt;::operator++ </td>
+          <td class="memname"><a class="el" href="classtextwolf_1_1TextScanner.html">TextScanner</a> <a class="el" href="classtextwolf_1_1TextScanner.html">textwolf::TextScanner</a>&lt; <a class="el" href="XMLScanner__chunkwise_8cpp.html#a758b9ff9e6df178bc98b411e2dc96bb7">Iterator</a>, CharSet &gt;::operator++ </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -395,7 +431,7 @@ template&lt;class Iterator, class CharSet&gt; </div>
 template&lt;class IteratorAssignment &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="classtextwolf_1_1TextScanner.html">textwolf::TextScanner</a>&lt; Iterator, CharSet &gt;::<a class="el" href="classtextwolf_1_1TextScanner.html#a2cfc6414e0b33f860af0b271fb3a2772">setSource</a> </td>
+          <td class="memname">void <a class="el" href="classtextwolf_1_1TextScanner.html">textwolf::TextScanner</a>&lt; <a class="el" href="XMLScanner__chunkwise_8cpp.html#a758b9ff9e6df178bc98b411e2dc96bb7">Iterator</a>, CharSet &gt;::<a class="el" href="classtextwolf_1_1TextScanner.html#a2cfc6414e0b33f860af0b271fb3a2772">setSource</a> </td>
           <td>(</td>
           <td class="paramtype">const IteratorAssignment &amp;&#160;</td>
           <td class="paramname"><em>a</em></td><td>)</td>
@@ -422,7 +458,7 @@ template&lt;class IteratorAssignment &gt; </div>
 template&lt;class Iterator, class CharSet&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classtextwolf_1_1TextScanner.html">TextScanner</a>&amp; <a class="el" href="classtextwolf_1_1TextScanner.html">textwolf::TextScanner</a>&lt; Iterator, CharSet &gt;::<a class="el" href="classtextwolf_1_1TextScanner.html#ac0b6d4734280a45a14c3d93d068b248f">skip</a> </td>
+          <td class="memname"><a class="el" href="classtextwolf_1_1TextScanner.html">TextScanner</a>&amp; <a class="el" href="classtextwolf_1_1TextScanner.html">textwolf::TextScanner</a>&lt; <a class="el" href="XMLScanner__chunkwise_8cpp.html#a758b9ff9e6df178bc98b411e2dc96bb7">Iterator</a>, CharSet &gt;::<a class="el" href="classtextwolf_1_1TextScanner.html#ac0b6d4734280a45a14c3d93d068b248f">skip</a> </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td><code> [inline]</code></td>
@@ -443,7 +479,7 @@ template&lt;class Iterator, class CharSet&gt; </div>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jun 12 2014 11:55:34 for textwolf by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Jun 14 2014 16:44:38 for textwolf by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

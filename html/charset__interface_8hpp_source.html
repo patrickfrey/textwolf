@@ -39,6 +39,7 @@
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
@@ -47,6 +48,7 @@
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
+      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
 </div>
@@ -123,41 +125,49 @@
 <a name="l00077"></a>00077         }
 <a name="l00078"></a>00078 };
 <a name="l00079"></a>00079 
-<a name="l00082"></a><a class="code" href="structtextwolf_1_1charset_1_1Interface.html">00082</a> <span class="keyword">struct </span><a class="code" href="structtextwolf_1_1charset_1_1Interface.html" title="Interface that has to be implemented for a character set encoding.">Interface</a>
+<a name="l00082"></a><a class="code" href="structtextwolf_1_1charset_1_1Interface.html">00082</a> <span class="keyword">struct </span><a class="code" href="structtextwolf_1_1charset_1_1Interface.html" title="This interface has to be implemented for a character set encoding.">Interface</a>
 <a name="l00083"></a>00083 {
 <a name="l00085"></a><a class="code" href="structtextwolf_1_1charset_1_1Interface.html#a668b68452c5eb98190d82a50a973e006a32405d5db7e80cdb8e3529bd5df307ac">00085</a>         <span class="keyword">enum</span> {<a class="code" href="structtextwolf_1_1charset_1_1Interface.html#a668b68452c5eb98190d82a50a973e006a32405d5db7e80cdb8e3529bd5df307ac">MaxChar</a>=0xFF};
 <a name="l00086"></a>00086 
 <a name="l00091"></a>00091         <span class="keyword">template</span> &lt;<span class="keyword">class</span> Iterator&gt;
-<a name="l00092"></a>00092         <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="structtextwolf_1_1charset_1_1Interface.html#a0b9704d10b6d30465e2ef333730d1c96" title="Skip to start of the next character.">skip</a>( <span class="keywordtype">char</span>* buf, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>&amp; bufpos, Iterator&amp; itr);
+<a name="l00092"></a>00092         <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="structtextwolf_1_1charset_1_1Interface.html#a0b9704d10b6d30465e2ef333730d1c96" title="Skip to start of the next character.">skip</a>( <span class="keywordtype">char</span>* buf, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>&amp; bufpos, <a class="code" href="classtextwolf_1_1SrcIterator.html" title="Input iterator as source for the XML scanner with the possibility of being fed chunk by chunk...">Iterator</a>&amp; itr);
 <a name="l00093"></a>00093 
 <a name="l00099"></a>00099         <span class="keyword">template</span> &lt;<span class="keyword">class</span> Iterator&gt;
-<a name="l00100"></a>00100         <span class="keyword">static</span> <span class="keywordtype">signed</span> <span class="keywordtype">char</span> <a class="code" href="structtextwolf_1_1charset_1_1Interface.html#a45bee64e0e1c86e8dfdbeedddab878f6" title="Fetches the ascii char representation of the current character.">asciichar</a>( <span class="keywordtype">char</span>* buf, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>&amp; bufpos, Iterator&amp; itr);
+<a name="l00100"></a>00100         <span class="keyword">static</span> <span class="keywordtype">signed</span> <span class="keywordtype">char</span> <a class="code" href="structtextwolf_1_1charset_1_1Interface.html#a45bee64e0e1c86e8dfdbeedddab878f6" title="Fetches the ascii char representation of the current character.">asciichar</a>( <span class="keywordtype">char</span>* buf, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>&amp; bufpos, <a class="code" href="classtextwolf_1_1SrcIterator.html" title="Input iterator as source for the XML scanner with the possibility of being fed chunk by chunk...">Iterator</a>&amp; itr);
 <a name="l00101"></a>00101 
-<a name="l00107"></a>00107         <span class="keyword">template</span> &lt;<span class="keyword">class</span> Iterator&gt;
-<a name="l00108"></a>00108         <a class="code" href="namespacetextwolf.html#a3eb8d6733d6737825026b2e41b8c3f9c" title="Unicode character type.">UChar</a> <a class="code" href="structtextwolf_1_1charset_1_1Interface.html#a041a5bdfcba4879f98101deed549141c" title="Fetches the unicode character representation of the current character.">value</a>( <span class="keywordtype">char</span>* buf, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>&amp; bufpos, Iterator&amp; itr) <span class="keyword">const</span>;
-<a name="l00109"></a>00109 
-<a name="l00114"></a>00114         <span class="keyword">template</span> &lt;<span class="keyword">class</span> Buffer_&gt;
-<a name="l00115"></a>00115         <span class="keywordtype">void</span> <a class="code" href="structtextwolf_1_1charset_1_1Interface.html#ac041bc21ad51134f30613384dd65097f" title="Prints a unicode character to a buffer.">print</a>( <a class="code" href="namespacetextwolf.html#a3eb8d6733d6737825026b2e41b8c3f9c" title="Unicode character type.">UChar</a> chr, Buffer_&amp; buf) <span class="keyword">const</span>;
-<a name="l00116"></a>00116 };
-<a name="l00117"></a>00117 
-<a name="l00120"></a><a class="code" href="structtextwolf_1_1charset_1_1ByteOrder.html">00120</a> <span class="keyword">struct </span><a class="code" href="structtextwolf_1_1charset_1_1ByteOrder.html" title="Order of bytes for wide char character sets.">ByteOrder</a>
-<a name="l00121"></a>00121 {
-<a name="l00122"></a>00122         <span class="keyword">enum</span>
-<a name="l00123"></a>00123         {
-<a name="l00124"></a><a class="code" href="structtextwolf_1_1charset_1_1ByteOrder.html#aa5778ba8d37956ea12adfc3f68ad1304af68b62c75bbcb72f1a3b1db5f9471304">00124</a>                 <a class="code" href="structtextwolf_1_1charset_1_1ByteOrder.html#aa5778ba8d37956ea12adfc3f68ad1304af68b62c75bbcb72f1a3b1db5f9471304">LE</a>=0,           <span class="comment">//&lt; little endian</span>
-<a name="l00125"></a><a class="code" href="structtextwolf_1_1charset_1_1ByteOrder.html#aa5778ba8d37956ea12adfc3f68ad1304a150aacfe80288a1a57d23ae3f860f65c">00125</a>                 <a class="code" href="structtextwolf_1_1charset_1_1ByteOrder.html#aa5778ba8d37956ea12adfc3f68ad1304a150aacfe80288a1a57d23ae3f860f65c">BE</a>=1            <span class="comment">//&lt; big endian</span>
-<a name="l00126"></a>00126         };
-<a name="l00127"></a>00127 };
-<a name="l00128"></a>00128 
-<a name="l00129"></a>00129 }<span class="comment">//namespace</span>
-<a name="l00130"></a>00130 }<span class="comment">//namespace</span>
-<a name="l00131"></a>00131 <span class="preprocessor">#endif</span>
-<a name="l00132"></a>00132 <span class="preprocessor"></span>
+<a name="l00106"></a>00106         <span class="keyword">template</span> &lt;<span class="keyword">class</span> Iterator&gt;
+<a name="l00107"></a>00107         <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="structtextwolf_1_1charset_1_1Interface.html#a2bff8413aafdfbe83384c6b98005663f" title="Fetches the bytes of the current character into a buffer.">fetchbytes</a>( <span class="keywordtype">char</span>* buf, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>&amp; bufpos, <a class="code" href="classtextwolf_1_1SrcIterator.html" title="Input iterator as source for the XML scanner with the possibility of being fed chunk by chunk...">Iterator</a>&amp; itr);
+<a name="l00108"></a>00108 
+<a name="l00114"></a>00114         <span class="keyword">template</span> &lt;<span class="keyword">class</span> Iterator&gt;
+<a name="l00115"></a>00115         <a class="code" href="namespacetextwolf.html#a3eb8d6733d6737825026b2e41b8c3f9c" title="Unicode character type.">UChar</a> <a class="code" href="structtextwolf_1_1charset_1_1Interface.html#a041a5bdfcba4879f98101deed549141c" title="Fetches the unicode character representation of the current character.">value</a>( <span class="keywordtype">char</span>* buf, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>&amp; bufpos, <a class="code" href="classtextwolf_1_1SrcIterator.html" title="Input iterator as source for the XML scanner with the possibility of being fed chunk by chunk...">Iterator</a>&amp; itr) <span class="keyword">const</span>;
+<a name="l00116"></a>00116 
+<a name="l00121"></a>00121         <span class="keyword">template</span> &lt;<span class="keyword">class</span> Buffer_&gt;
+<a name="l00122"></a>00122         <span class="keywordtype">void</span> <a class="code" href="structtextwolf_1_1charset_1_1Interface.html#ac041bc21ad51134f30613384dd65097f" title="Prints a unicode character to a buffer.">print</a>( <a class="code" href="namespacetextwolf.html#a3eb8d6733d6737825026b2e41b8c3f9c" title="Unicode character type.">UChar</a> chr, Buffer_&amp; buf) <span class="keyword">const</span>;
+<a name="l00123"></a>00123 
+<a name="l00126"></a><a class="code" href="structtextwolf_1_1charset_1_1Interface.html#a2da10b77315b14328cf1bd03a5fa2802">00126</a>         <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code" href="structtextwolf_1_1charset_1_1Interface.html#a2da10b77315b14328cf1bd03a5fa2802" title="Evaluate if two character set encodings of the same type are equal in all properties (code page...">is_equal</a>( <span class="keyword">const</span> <a class="code" href="structtextwolf_1_1charset_1_1Interface.html" title="This interface has to be implemented for a character set encoding.">Interface</a>&amp;, <span class="keyword">const</span> <a class="code" href="structtextwolf_1_1charset_1_1Interface.html" title="This interface has to be implemented for a character set encoding.">Interface</a>&amp;)
+<a name="l00127"></a>00127         {
+<a name="l00128"></a>00128                 <span class="keywordflow">return</span> <span class="keyword">true</span>;
+<a name="l00129"></a>00129         }
+<a name="l00130"></a>00130 };
+<a name="l00131"></a>00131 
+<a name="l00134"></a><a class="code" href="structtextwolf_1_1charset_1_1ByteOrder.html">00134</a> <span class="keyword">struct </span><a class="code" href="structtextwolf_1_1charset_1_1ByteOrder.html" title="Order of bytes for wide char character sets.">ByteOrder</a>
+<a name="l00135"></a>00135 {
+<a name="l00136"></a>00136         <span class="keyword">enum</span>
+<a name="l00137"></a>00137         {
+<a name="l00138"></a><a class="code" href="structtextwolf_1_1charset_1_1ByteOrder.html#aa5778ba8d37956ea12adfc3f68ad1304af68b62c75bbcb72f1a3b1db5f9471304">00138</a>                 <a class="code" href="structtextwolf_1_1charset_1_1ByteOrder.html#aa5778ba8d37956ea12adfc3f68ad1304af68b62c75bbcb72f1a3b1db5f9471304">LE</a>=0,           <span class="comment">//&lt; little endian</span>
+<a name="l00139"></a><a class="code" href="structtextwolf_1_1charset_1_1ByteOrder.html#aa5778ba8d37956ea12adfc3f68ad1304a150aacfe80288a1a57d23ae3f860f65c">00139</a>                 <a class="code" href="structtextwolf_1_1charset_1_1ByteOrder.html#aa5778ba8d37956ea12adfc3f68ad1304a150aacfe80288a1a57d23ae3f860f65c">BE</a>=1            <span class="comment">//&lt; big endian</span>
+<a name="l00140"></a>00140         };
+<a name="l00141"></a>00141 };
+<a name="l00142"></a>00142 
+<a name="l00143"></a>00143 }<span class="comment">//namespace</span>
+<a name="l00144"></a>00144 }<span class="comment">//namespace</span>
+<a name="l00145"></a>00145 <span class="preprocessor">#endif</span>
+<a name="l00146"></a>00146 <span class="preprocessor"></span>
 </pre></div></div><!-- contents -->
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jun 12 2014 11:55:33 for textwolf by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Jun 14 2014 16:44:38 for textwolf by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

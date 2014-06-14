@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>textwolf: textwolf::charset::UCS4&lt; encoding &gt; Class Template Reference</title>
+<title>textwolf: textwolf::charset::UCS4&lt; byteorder &gt; Class Template Reference</title>
 
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -39,6 +39,7 @@
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
@@ -65,7 +66,7 @@
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a>  </div>
   <div class="headertitle">
-<div class="title">textwolf::charset::UCS4&lt; encoding &gt; Class Template Reference</div>  </div>
+<div class="title">textwolf::charset::UCS4&lt; byteorder &gt; Class Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 <!-- doxytag: class="textwolf::charset::UCS4" -->
@@ -79,42 +80,47 @@
 <tr><td colspan="2"><h2><a name="pub-types"></a>
 Public Types</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <br/>
-&#160;&#160;<a class="el" href="structtextwolf_1_1charset_1_1UCS4.html#a97065cf86a0cf61d846f15c5487af24aae90f07d298337306eafe4888e08363ae">B0</a> = (encoding==ByteOrder::BE)?3:0, 
-<a class="el" href="structtextwolf_1_1charset_1_1UCS4.html#a97065cf86a0cf61d846f15c5487af24aa70b0ebc15ba07c9448adf56f758c0c6f">B1</a> = (encoding==ByteOrder::BE)?2:1, 
-<a class="el" href="structtextwolf_1_1charset_1_1UCS4.html#a97065cf86a0cf61d846f15c5487af24aa5990877bc50abbaae20db1a53a7f5384">B2</a> = (encoding==ByteOrder::BE)?1:2, 
-<a class="el" href="structtextwolf_1_1charset_1_1UCS4.html#a97065cf86a0cf61d846f15c5487af24aac948695ef6a04464303fa892d1efe6f2">B3</a> = (encoding==ByteOrder::BE)?0:3, 
+&#160;&#160;<a class="el" href="structtextwolf_1_1charset_1_1UCS4.html#a97065cf86a0cf61d846f15c5487af24aa957c1aecd704115682046b8d7166dad7">B0</a> = (byteorder==ByteOrder::BE)?3:0, 
+<a class="el" href="structtextwolf_1_1charset_1_1UCS4.html#a97065cf86a0cf61d846f15c5487af24aa9a548fa93284cbfa632c02cdd7ce281f">B1</a> = (byteorder==ByteOrder::BE)?2:1, 
+<a class="el" href="structtextwolf_1_1charset_1_1UCS4.html#a97065cf86a0cf61d846f15c5487af24aa6564c3b7eed024e8119015c963c179a3">B2</a> = (byteorder==ByteOrder::BE)?1:2, 
+<a class="el" href="structtextwolf_1_1charset_1_1UCS4.html#a97065cf86a0cf61d846f15c5487af24aadefc079d7bf69a6320a5c74b5d1d1a5b">B3</a> = (byteorder==ByteOrder::BE)?0:3, 
 <br/>
-&#160;&#160;<a class="el" href="structtextwolf_1_1charset_1_1UCS4.html#a97065cf86a0cf61d846f15c5487af24aad5643dfe21cb53b9db5fb4c349865f4f">Print1shift</a> = (encoding==ByteOrder::BE)?24:0, 
-<a class="el" href="structtextwolf_1_1charset_1_1UCS4.html#a97065cf86a0cf61d846f15c5487af24aab14522fe59b25db699cdab74f3119fce">Print2shift</a> = (encoding==ByteOrder::BE)?16:8, 
-<a class="el" href="structtextwolf_1_1charset_1_1UCS4.html#a97065cf86a0cf61d846f15c5487af24aa152f397e1a72de38d353f7042ffc3b64">Print3shift</a> = (encoding==ByteOrder::BE)?8:16, 
-<a class="el" href="structtextwolf_1_1charset_1_1UCS4.html#a97065cf86a0cf61d846f15c5487af24aa39f8dc92e4c8a6cab6026c06a6c6de3f">Print4shift</a> = (encoding==ByteOrder::BE)?0:24, 
+&#160;&#160;<a class="el" href="structtextwolf_1_1charset_1_1UCS4.html#a97065cf86a0cf61d846f15c5487af24aa664a6371a2022dccf8d823752996ee2d">Print1shift</a> = (byteorder==ByteOrder::BE)?24:0, 
+<a class="el" href="structtextwolf_1_1charset_1_1UCS4.html#a97065cf86a0cf61d846f15c5487af24aa0fab260c0219a5552f3dedeba22f0117">Print2shift</a> = (byteorder==ByteOrder::BE)?16:8, 
+<a class="el" href="structtextwolf_1_1charset_1_1UCS4.html#a97065cf86a0cf61d846f15c5487af24aa15fde1d1da7a24dc722221ef1f6ac69c">Print3shift</a> = (byteorder==ByteOrder::BE)?8:16, 
+<a class="el" href="structtextwolf_1_1charset_1_1UCS4.html#a97065cf86a0cf61d846f15c5487af24aadcd06ba0a2d5c69481675b27a6bfef1b">Print4shift</a> = (byteorder==ByteOrder::BE)?0:24, 
 <br/>
-&#160;&#160;<a class="el" href="structtextwolf_1_1charset_1_1UCS4.html#a97065cf86a0cf61d846f15c5487af24aaa1b6781b3a8a54bfa179decf6a798563">MaxChar</a> = 0xFFFFFFFF
+&#160;&#160;<a class="el" href="structtextwolf_1_1charset_1_1UCS4.html#a97065cf86a0cf61d846f15c5487af24aa92eaa35112269730f8651cc7dc3de17f">MaxChar</a> = 0xFFFFFFFF
 <br/>
  }</td></tr>
 <tr><td colspan="2"><h2><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr><td class="memTemplParams" colspan="2">template&lt;class Iterator &gt; </td></tr>
-<tr><td class="memTemplItemLeft" align="right" valign="top">static <a class="el" href="namespacetextwolf.html#a3eb8d6733d6737825026b2e41b8c3f9c">UChar</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1charset_1_1UCS4.html#a4badd1de4199bc593ce45d15cd757d4d">value</a> (char *buf, unsigned int &amp;bufpos, Iterator &amp;itr)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">See template&lt;class Iterator&gt;Interface::value(char*,unsigned int&amp;,Iterator&amp;)  <a href="#a4badd1de4199bc593ce45d15cd757d4d"></a><br/></td></tr>
+<tr><td class="memTemplItemLeft" align="right" valign="top">static void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1charset_1_1UCS4.html#abd70a8938c6ceac376291f096f77bed2">fetchbytes</a> (char *buf, unsigned int &amp;bufpos, <a class="el" href="XMLScanner__chunkwise_8cpp.html#a758b9ff9e6df178bc98b411e2dc96bb7">Iterator</a> &amp;itr)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">See template&lt;class Iterator&gt;<a class="el" href="structtextwolf_1_1charset_1_1Interface.html#a2bff8413aafdfbe83384c6b98005663f" title="Fetches the bytes of the current character into a buffer.">Interface::fetchbytes(char*,unsigned int&amp;,Iterator&amp;)</a>  <a href="#abd70a8938c6ceac376291f096f77bed2"></a><br/></td></tr>
 <tr><td class="memTemplParams" colspan="2">template&lt;class Iterator &gt; </td></tr>
-<tr><td class="memTemplItemLeft" align="right" valign="top">static void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1charset_1_1UCS4.html#afdf6a71bfbba13d0d5919c8971f5e3f6">skip</a> (char *, unsigned int &amp;bufpos, Iterator &amp;itr)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">See template&lt;class Iterator&gt;<a class="el" href="structtextwolf_1_1charset_1_1Interface.html#a0b9704d10b6d30465e2ef333730d1c96" title="Skip to start of the next character.">Interface::skip(char*,unsigned int&amp;,Iterator&amp;)</a>  <a href="#afdf6a71bfbba13d0d5919c8971f5e3f6"></a><br/></td></tr>
+<tr><td class="memTemplItemLeft" align="right" valign="top">static <a class="el" href="namespacetextwolf.html#a3eb8d6733d6737825026b2e41b8c3f9c">UChar</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1charset_1_1UCS4.html#a82296b1c0d41f0feb585be4abce57746">value</a> (char *buf, unsigned int &amp;bufpos, <a class="el" href="XMLScanner__chunkwise_8cpp.html#a758b9ff9e6df178bc98b411e2dc96bb7">Iterator</a> &amp;itr)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">See template&lt;class Iterator&gt;Interface::value(char*,unsigned int&amp;,Iterator&amp;)  <a href="#a82296b1c0d41f0feb585be4abce57746"></a><br/></td></tr>
 <tr><td class="memTemplParams" colspan="2">template&lt;class Iterator &gt; </td></tr>
-<tr><td class="memTemplItemLeft" align="right" valign="top">static signed char&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1charset_1_1UCS4.html#a9213ddaa4d63c1a72caf9654b8bd71f5">asciichar</a> (char *buf, unsigned int &amp;bufpos, Iterator &amp;itr)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">See template&lt;class Iterator&gt;<a class="el" href="structtextwolf_1_1charset_1_1Interface.html#a45bee64e0e1c86e8dfdbeedddab878f6" title="Fetches the ascii char representation of the current character.">Interface::asciichar(char*,unsigned int&amp;,Iterator&amp;)</a>  <a href="#a9213ddaa4d63c1a72caf9654b8bd71f5"></a><br/></td></tr>
+<tr><td class="memTemplItemLeft" align="right" valign="top">static void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1charset_1_1UCS4.html#ac4acd8c3bc29731ae882b9f1a7b7c5c2">skip</a> (char *, unsigned int &amp;bufpos, <a class="el" href="XMLScanner__chunkwise_8cpp.html#a758b9ff9e6df178bc98b411e2dc96bb7">Iterator</a> &amp;itr)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">See template&lt;class Iterator&gt;<a class="el" href="structtextwolf_1_1charset_1_1Interface.html#a0b9704d10b6d30465e2ef333730d1c96" title="Skip to start of the next character.">Interface::skip(char*,unsigned int&amp;,Iterator&amp;)</a>  <a href="#ac4acd8c3bc29731ae882b9f1a7b7c5c2"></a><br/></td></tr>
+<tr><td class="memTemplParams" colspan="2">template&lt;class Iterator &gt; </td></tr>
+<tr><td class="memTemplItemLeft" align="right" valign="top">static signed char&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1charset_1_1UCS4.html#a09b4766773472e88456850386506b40b">asciichar</a> (char *buf, unsigned int &amp;bufpos, <a class="el" href="XMLScanner__chunkwise_8cpp.html#a758b9ff9e6df178bc98b411e2dc96bb7">Iterator</a> &amp;itr)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">See template&lt;class Iterator&gt;<a class="el" href="structtextwolf_1_1charset_1_1Interface.html#a45bee64e0e1c86e8dfdbeedddab878f6" title="Fetches the ascii char representation of the current character.">Interface::asciichar(char*,unsigned int&amp;,Iterator&amp;)</a>  <a href="#a09b4766773472e88456850386506b40b"></a><br/></td></tr>
 <tr><td class="memTemplParams" colspan="2">template&lt;class Buffer_ &gt; </td></tr>
-<tr><td class="memTemplItemLeft" align="right" valign="top">static void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1charset_1_1UCS4.html#ae810c04700c34c4fb94b255d3103349d">print</a> (<a class="el" href="namespacetextwolf.html#a3eb8d6733d6737825026b2e41b8c3f9c">UChar</a> chr, Buffer_ &amp;buf)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">See template&lt;class Buffer&gt;Interface::print(UChar,Buffer&amp;)  <a href="#ae810c04700c34c4fb94b255d3103349d"></a><br/></td></tr>
+<tr><td class="memTemplItemLeft" align="right" valign="top">static void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1charset_1_1UCS4.html#a5c0413e72c02907c02840a4ace3815d0">print</a> (<a class="el" href="namespacetextwolf.html#a3eb8d6733d6737825026b2e41b8c3f9c">UChar</a> chr, Buffer_ &amp;buf)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">See template&lt;class Buffer&gt;Interface::print(UChar,Buffer&amp;)  <a href="#a5c0413e72c02907c02840a4ace3815d0"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtextwolf_1_1charset_1_1UCS4.html#a6dad33c98c219ff268500c9441508405">is_equal</a> (const <a class="el" href="structtextwolf_1_1charset_1_1UCS4.html">UCS4</a> &amp;, const <a class="el" href="structtextwolf_1_1charset_1_1UCS4.html">UCS4</a> &amp;)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">See template&lt;class Buffer&gt;<a class="el" href="structtextwolf_1_1charset_1_1Interface.html#a2da10b77315b14328cf1bd03a5fa2802" title="Evaluate if two character set encodings of the same type are equal in all properties (code page...">Interface::is_equal( const Interface&amp;, const Interface&amp;)</a>  <a href="#a6dad33c98c219ff268500c9441508405"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
-<div class="textblock"><h3>template&lt;int encoding&gt;<br/>
-class textwolf::charset::UCS4&lt; encoding &gt;</h3>
+<div class="textblock"><h3>template&lt;int byteorder&gt;<br/>
+class textwolf::charset::UCS4&lt; byteorder &gt;</h3>
 
 <p>Character set UCS-4 (little/big endian) </p>
 <dl class=""><dt><b>Template Parameters:</b></dt><dd>
   <table class="">
-    <tr><td class="paramname">encoding</td><td><a class="el" href="structtextwolf_1_1charset_1_1ByteOrder.html#aa5778ba8d37956ea12adfc3f68ad1304af68b62c75bbcb72f1a3b1db5f9471304">ByteOrder::LE</a> or <a class="el" href="structtextwolf_1_1charset_1_1ByteOrder.html#aa5778ba8d37956ea12adfc3f68ad1304a150aacfe80288a1a57d23ae3f860f65c">ByteOrder::BE</a> </td></tr>
+    <tr><td class="paramname">byteorder</td><td><a class="el" href="structtextwolf_1_1charset_1_1ByteOrder.html#aa5778ba8d37956ea12adfc3f68ad1304af68b62c75bbcb72f1a3b1db5f9471304">ByteOrder::LE</a> or <a class="el" href="structtextwolf_1_1charset_1_1ByteOrder.html#aa5778ba8d37956ea12adfc3f68ad1304a150aacfe80288a1a57d23ae3f860f65c">ByteOrder::BE</a> </td></tr>
   </table>
   </dd>
 </dl>
@@ -123,7 +129,7 @@ class textwolf::charset::UCS4&lt; encoding &gt;</h3>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;int encoding&gt; </div>
+template&lt;int byteorder&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">anonymous enum</td>
@@ -132,23 +138,23 @@ template&lt;int encoding&gt; </div>
 </div>
 <div class="memdoc">
 <dl><dt><b>Enumerator: </b></dt><dd><table border="0" cellspacing="2" cellpadding="0">
-<tr><td valign="top"><em><a class="anchor" id="a97065cf86a0cf61d846f15c5487af24aae90f07d298337306eafe4888e08363ae"></a><!-- doxytag: member="B0" ref="a97065cf86a0cf61d846f15c5487af24aae90f07d298337306eafe4888e08363ae" args="" -->B0</em>&nbsp;</td><td>
+<tr><td valign="top"><em><a class="anchor" id="a97065cf86a0cf61d846f15c5487af24aa957c1aecd704115682046b8d7166dad7"></a><!-- doxytag: member="B0" ref="a97065cf86a0cf61d846f15c5487af24aa957c1aecd704115682046b8d7166dad7" args="" -->B0</em>&nbsp;</td><td>
 </td></tr>
-<tr><td valign="top"><em><a class="anchor" id="a97065cf86a0cf61d846f15c5487af24aa70b0ebc15ba07c9448adf56f758c0c6f"></a><!-- doxytag: member="B1" ref="a97065cf86a0cf61d846f15c5487af24aa70b0ebc15ba07c9448adf56f758c0c6f" args="" -->B1</em>&nbsp;</td><td>
+<tr><td valign="top"><em><a class="anchor" id="a97065cf86a0cf61d846f15c5487af24aa9a548fa93284cbfa632c02cdd7ce281f"></a><!-- doxytag: member="B1" ref="a97065cf86a0cf61d846f15c5487af24aa9a548fa93284cbfa632c02cdd7ce281f" args="" -->B1</em>&nbsp;</td><td>
 </td></tr>
-<tr><td valign="top"><em><a class="anchor" id="a97065cf86a0cf61d846f15c5487af24aa5990877bc50abbaae20db1a53a7f5384"></a><!-- doxytag: member="B2" ref="a97065cf86a0cf61d846f15c5487af24aa5990877bc50abbaae20db1a53a7f5384" args="" -->B2</em>&nbsp;</td><td>
+<tr><td valign="top"><em><a class="anchor" id="a97065cf86a0cf61d846f15c5487af24aa6564c3b7eed024e8119015c963c179a3"></a><!-- doxytag: member="B2" ref="a97065cf86a0cf61d846f15c5487af24aa6564c3b7eed024e8119015c963c179a3" args="" -->B2</em>&nbsp;</td><td>
 </td></tr>
-<tr><td valign="top"><em><a class="anchor" id="a97065cf86a0cf61d846f15c5487af24aac948695ef6a04464303fa892d1efe6f2"></a><!-- doxytag: member="B3" ref="a97065cf86a0cf61d846f15c5487af24aac948695ef6a04464303fa892d1efe6f2" args="" -->B3</em>&nbsp;</td><td>
+<tr><td valign="top"><em><a class="anchor" id="a97065cf86a0cf61d846f15c5487af24aadefc079d7bf69a6320a5c74b5d1d1a5b"></a><!-- doxytag: member="B3" ref="a97065cf86a0cf61d846f15c5487af24aadefc079d7bf69a6320a5c74b5d1d1a5b" args="" -->B3</em>&nbsp;</td><td>
 </td></tr>
-<tr><td valign="top"><em><a class="anchor" id="a97065cf86a0cf61d846f15c5487af24aad5643dfe21cb53b9db5fb4c349865f4f"></a><!-- doxytag: member="Print1shift" ref="a97065cf86a0cf61d846f15c5487af24aad5643dfe21cb53b9db5fb4c349865f4f" args="" -->Print1shift</em>&nbsp;</td><td>
+<tr><td valign="top"><em><a class="anchor" id="a97065cf86a0cf61d846f15c5487af24aa664a6371a2022dccf8d823752996ee2d"></a><!-- doxytag: member="Print1shift" ref="a97065cf86a0cf61d846f15c5487af24aa664a6371a2022dccf8d823752996ee2d" args="" -->Print1shift</em>&nbsp;</td><td>
 </td></tr>
-<tr><td valign="top"><em><a class="anchor" id="a97065cf86a0cf61d846f15c5487af24aab14522fe59b25db699cdab74f3119fce"></a><!-- doxytag: member="Print2shift" ref="a97065cf86a0cf61d846f15c5487af24aab14522fe59b25db699cdab74f3119fce" args="" -->Print2shift</em>&nbsp;</td><td>
+<tr><td valign="top"><em><a class="anchor" id="a97065cf86a0cf61d846f15c5487af24aa0fab260c0219a5552f3dedeba22f0117"></a><!-- doxytag: member="Print2shift" ref="a97065cf86a0cf61d846f15c5487af24aa0fab260c0219a5552f3dedeba22f0117" args="" -->Print2shift</em>&nbsp;</td><td>
 </td></tr>
-<tr><td valign="top"><em><a class="anchor" id="a97065cf86a0cf61d846f15c5487af24aa152f397e1a72de38d353f7042ffc3b64"></a><!-- doxytag: member="Print3shift" ref="a97065cf86a0cf61d846f15c5487af24aa152f397e1a72de38d353f7042ffc3b64" args="" -->Print3shift</em>&nbsp;</td><td>
+<tr><td valign="top"><em><a class="anchor" id="a97065cf86a0cf61d846f15c5487af24aa15fde1d1da7a24dc722221ef1f6ac69c"></a><!-- doxytag: member="Print3shift" ref="a97065cf86a0cf61d846f15c5487af24aa15fde1d1da7a24dc722221ef1f6ac69c" args="" -->Print3shift</em>&nbsp;</td><td>
 </td></tr>
-<tr><td valign="top"><em><a class="anchor" id="a97065cf86a0cf61d846f15c5487af24aa39f8dc92e4c8a6cab6026c06a6c6de3f"></a><!-- doxytag: member="Print4shift" ref="a97065cf86a0cf61d846f15c5487af24aa39f8dc92e4c8a6cab6026c06a6c6de3f" args="" -->Print4shift</em>&nbsp;</td><td>
+<tr><td valign="top"><em><a class="anchor" id="a97065cf86a0cf61d846f15c5487af24aadcd06ba0a2d5c69481675b27a6bfef1b"></a><!-- doxytag: member="Print4shift" ref="a97065cf86a0cf61d846f15c5487af24aadcd06ba0a2d5c69481675b27a6bfef1b" args="" -->Print4shift</em>&nbsp;</td><td>
 </td></tr>
-<tr><td valign="top"><em><a class="anchor" id="a97065cf86a0cf61d846f15c5487af24aaa1b6781b3a8a54bfa179decf6a798563"></a><!-- doxytag: member="MaxChar" ref="a97065cf86a0cf61d846f15c5487af24aaa1b6781b3a8a54bfa179decf6a798563" args="" -->MaxChar</em>&nbsp;</td><td>
+<tr><td valign="top"><em><a class="anchor" id="a97065cf86a0cf61d846f15c5487af24aa92eaa35112269730f8651cc7dc3de17f"></a><!-- doxytag: member="MaxChar" ref="a97065cf86a0cf61d846f15c5487af24aa92eaa35112269730f8651cc7dc3de17f" args="" -->MaxChar</em>&nbsp;</td><td>
 </td></tr>
 </table>
 </dd>
@@ -157,16 +163,16 @@ template&lt;int encoding&gt; </div>
 </div>
 </div>
 <hr/><h2>Member Function Documentation</h2>
-<a class="anchor" id="a9213ddaa4d63c1a72caf9654b8bd71f5"></a><!-- doxytag: member="textwolf::charset::UCS4::asciichar" ref="a9213ddaa4d63c1a72caf9654b8bd71f5" args="(char *buf, unsigned int &amp;bufpos, Iterator &amp;itr)" -->
+<a class="anchor" id="a09b4766773472e88456850386506b40b"></a><!-- doxytag: member="textwolf::charset::UCS4::asciichar" ref="a09b4766773472e88456850386506b40b" args="(char *buf, unsigned int &amp;bufpos, Iterator &amp;itr)" -->
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;int encoding&gt; </div>
+template&lt;int byteorder&gt; </div>
 <div class="memtemplate">
 template&lt;class Iterator &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">static signed char <a class="el" href="structtextwolf_1_1charset_1_1UCS4.html">textwolf::charset::UCS4</a>&lt; encoding &gt;::<a class="el" href="structtextwolf_1_1charset_1_1UCS4.html#a9213ddaa4d63c1a72caf9654b8bd71f5">asciichar</a> </td>
+          <td class="memname">static signed char <a class="el" href="structtextwolf_1_1charset_1_1UCS4.html">textwolf::charset::UCS4</a>&lt; byteorder &gt;::<a class="el" href="structtextwolf_1_1charset_1_1UCS4.html#a09b4766773472e88456850386506b40b">asciichar</a> </td>
           <td>(</td>
           <td class="paramtype">char *&#160;</td>
           <td class="paramname"><em>buf</em>, </td>
@@ -180,7 +186,7 @@ template&lt;class Iterator &gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">Iterator &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="XMLScanner__chunkwise_8cpp.html#a758b9ff9e6df178bc98b411e2dc96bb7">Iterator</a> &amp;&#160;</td>
           <td class="paramname"><em>itr</em>&#160;</td>
         </tr>
         <tr>
@@ -196,16 +202,86 @@ template&lt;class Iterator &gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="ae810c04700c34c4fb94b255d3103349d"></a><!-- doxytag: member="textwolf::charset::UCS4::print" ref="ae810c04700c34c4fb94b255d3103349d" args="(UChar chr, Buffer_ &amp;buf)" -->
+<a class="anchor" id="abd70a8938c6ceac376291f096f77bed2"></a><!-- doxytag: member="textwolf::charset::UCS4::fetchbytes" ref="abd70a8938c6ceac376291f096f77bed2" args="(char *buf, unsigned int &amp;bufpos, Iterator &amp;itr)" -->
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;int encoding&gt; </div>
+template&lt;int byteorder&gt; </div>
+<div class="memtemplate">
+template&lt;class Iterator &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">static void <a class="el" href="structtextwolf_1_1charset_1_1UCS4.html">textwolf::charset::UCS4</a>&lt; byteorder &gt;::<a class="el" href="structtextwolf_1_1charset_1_1UCS4.html#abd70a8938c6ceac376291f096f77bed2">fetchbytes</a> </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int &amp;&#160;</td>
+          <td class="paramname"><em>bufpos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="XMLScanner__chunkwise_8cpp.html#a758b9ff9e6df178bc98b411e2dc96bb7">Iterator</a> &amp;&#160;</td>
+          <td class="paramname"><em>itr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [inline, static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>See template&lt;class Iterator&gt;<a class="el" href="structtextwolf_1_1charset_1_1Interface.html#a2bff8413aafdfbe83384c6b98005663f" title="Fetches the bytes of the current character into a buffer.">Interface::fetchbytes(char*,unsigned int&amp;,Iterator&amp;)</a> </p>
+
+</div>
+</div>
+<a class="anchor" id="a6dad33c98c219ff268500c9441508405"></a><!-- doxytag: member="textwolf::charset::UCS4::is_equal" ref="a6dad33c98c219ff268500c9441508405" args="(const UCS4 &amp;, const UCS4 &amp;)" -->
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int byteorder&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">static bool <a class="el" href="structtextwolf_1_1charset_1_1UCS4.html">textwolf::charset::UCS4</a>&lt; byteorder &gt;::<a class="el" href="structtextwolf_1_1charset_1_1UCS4.html#a6dad33c98c219ff268500c9441508405">is_equal</a> </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structtextwolf_1_1charset_1_1UCS4.html">UCS4</a>&lt; byteorder &gt; &amp;&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structtextwolf_1_1charset_1_1UCS4.html">UCS4</a>&lt; byteorder &gt; &amp;&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [inline, static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>See template&lt;class Buffer&gt;<a class="el" href="structtextwolf_1_1charset_1_1Interface.html#a2da10b77315b14328cf1bd03a5fa2802" title="Evaluate if two character set encodings of the same type are equal in all properties (code page...">Interface::is_equal( const Interface&amp;, const Interface&amp;)</a> </p>
+
+</div>
+</div>
+<a class="anchor" id="a5c0413e72c02907c02840a4ace3815d0"></a><!-- doxytag: member="textwolf::charset::UCS4::print" ref="a5c0413e72c02907c02840a4ace3815d0" args="(UChar chr, Buffer_ &amp;buf)" -->
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int byteorder&gt; </div>
 <div class="memtemplate">
 template&lt;class Buffer_ &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">static void <a class="el" href="structtextwolf_1_1charset_1_1UCS4.html">textwolf::charset::UCS4</a>&lt; encoding &gt;::<a class="el" href="structtextwolf_1_1charset_1_1UCS4.html#ae810c04700c34c4fb94b255d3103349d">print</a> </td>
+          <td class="memname">static void <a class="el" href="structtextwolf_1_1charset_1_1UCS4.html">textwolf::charset::UCS4</a>&lt; byteorder &gt;::<a class="el" href="structtextwolf_1_1charset_1_1UCS4.html#a5c0413e72c02907c02840a4ace3815d0">print</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="namespacetextwolf.html#a3eb8d6733d6737825026b2e41b8c3f9c">UChar</a>&#160;</td>
           <td class="paramname"><em>chr</em>, </td>
@@ -229,16 +305,16 @@ template&lt;class Buffer_ &gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="afdf6a71bfbba13d0d5919c8971f5e3f6"></a><!-- doxytag: member="textwolf::charset::UCS4::skip" ref="afdf6a71bfbba13d0d5919c8971f5e3f6" args="(char *, unsigned int &amp;bufpos, Iterator &amp;itr)" -->
+<a class="anchor" id="ac4acd8c3bc29731ae882b9f1a7b7c5c2"></a><!-- doxytag: member="textwolf::charset::UCS4::skip" ref="ac4acd8c3bc29731ae882b9f1a7b7c5c2" args="(char *, unsigned int &amp;bufpos, Iterator &amp;itr)" -->
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;int encoding&gt; </div>
+template&lt;int byteorder&gt; </div>
 <div class="memtemplate">
 template&lt;class Iterator &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">static void <a class="el" href="structtextwolf_1_1charset_1_1UCS4.html">textwolf::charset::UCS4</a>&lt; encoding &gt;::<a class="el" href="structtextwolf_1_1charset_1_1UCS4.html#afdf6a71bfbba13d0d5919c8971f5e3f6">skip</a> </td>
+          <td class="memname">static void <a class="el" href="structtextwolf_1_1charset_1_1UCS4.html">textwolf::charset::UCS4</a>&lt; byteorder &gt;::<a class="el" href="structtextwolf_1_1charset_1_1UCS4.html#ac4acd8c3bc29731ae882b9f1a7b7c5c2">skip</a> </td>
           <td>(</td>
           <td class="paramtype">char *&#160;</td>
           <td class="paramname">, </td>
@@ -252,7 +328,7 @@ template&lt;class Iterator &gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">Iterator &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="XMLScanner__chunkwise_8cpp.html#a758b9ff9e6df178bc98b411e2dc96bb7">Iterator</a> &amp;&#160;</td>
           <td class="paramname"><em>itr</em>&#160;</td>
         </tr>
         <tr>
@@ -268,16 +344,16 @@ template&lt;class Iterator &gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a4badd1de4199bc593ce45d15cd757d4d"></a><!-- doxytag: member="textwolf::charset::UCS4::value" ref="a4badd1de4199bc593ce45d15cd757d4d" args="(char *buf, unsigned int &amp;bufpos, Iterator &amp;itr)" -->
+<a class="anchor" id="a82296b1c0d41f0feb585be4abce57746"></a><!-- doxytag: member="textwolf::charset::UCS4::value" ref="a82296b1c0d41f0feb585be4abce57746" args="(char *buf, unsigned int &amp;bufpos, Iterator &amp;itr)" -->
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;int encoding&gt; </div>
+template&lt;int byteorder&gt; </div>
 <div class="memtemplate">
 template&lt;class Iterator &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">static <a class="el" href="namespacetextwolf.html#a3eb8d6733d6737825026b2e41b8c3f9c">UChar</a> <a class="el" href="structtextwolf_1_1charset_1_1UCS4.html">textwolf::charset::UCS4</a>&lt; encoding &gt;::<a class="el" href="structtextwolf_1_1charset_1_1UCS4.html#a4badd1de4199bc593ce45d15cd757d4d">value</a> </td>
+          <td class="memname">static <a class="el" href="namespacetextwolf.html#a3eb8d6733d6737825026b2e41b8c3f9c">UChar</a> <a class="el" href="structtextwolf_1_1charset_1_1UCS4.html">textwolf::charset::UCS4</a>&lt; byteorder &gt;::<a class="el" href="structtextwolf_1_1charset_1_1UCS4.html#a82296b1c0d41f0feb585be4abce57746">value</a> </td>
           <td>(</td>
           <td class="paramtype">char *&#160;</td>
           <td class="paramname"><em>buf</em>, </td>
@@ -291,7 +367,7 @@ template&lt;class Iterator &gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">Iterator &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="XMLScanner__chunkwise_8cpp.html#a758b9ff9e6df178bc98b411e2dc96bb7">Iterator</a> &amp;&#160;</td>
           <td class="paramname"><em>itr</em>&#160;</td>
         </tr>
         <tr>
@@ -314,7 +390,7 @@ template&lt;class Iterator &gt; </div>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jun 12 2014 11:55:34 for textwolf by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Jun 14 2014 16:44:38 for textwolf by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

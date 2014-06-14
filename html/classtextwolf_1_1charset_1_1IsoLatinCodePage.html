@@ -39,6 +39,7 @@
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
@@ -63,7 +64,8 @@
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
-<a href="#pub-methods">Public Member Functions</a>  </div>
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a>  </div>
   <div class="headertitle">
 <div class="title">textwolf::charset::IsoLatinCodePage Class Reference</div>  </div>
 </div><!--header-->
@@ -98,6 +100,10 @@ Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the unicode character representation of the character ch in this codepage.  <a href="#a4f357be4c032c7062b5cf55848aa52e8"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1charset_1_1IsoLatinCodePage.html#a4b760321d0f75110587f26d5e72c1fbf">invcode</a> (<a class="el" href="namespacetextwolf.html#a3eb8d6733d6737825026b2e41b8c3f9c">UChar</a> ch) const </td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the character representation of a unicode character in this codepage.  <a href="#a4b760321d0f75110587f26d5e72c1fbf"></a><br/></td></tr>
+<tr><td colspan="2"><h2><a name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1charset_1_1IsoLatinCodePage.html#a400cf92ed5f8fc9aa9c705ab08ddca9d">is_equal</a> (const <a class="el" href="classtextwolf_1_1charset_1_1IsoLatinCodePage.html">IsoLatinCodePage</a> &amp;a, const <a class="el" href="classtextwolf_1_1charset_1_1IsoLatinCodePage.html">IsoLatinCodePage</a> &amp;b)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Evaluate if two code pages are equal.  <a href="#a400cf92ed5f8fc9aa9c705ab08ddca9d"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="structtextwolf_1_1charset_1_1IsoLatin.html" title="Character set IsoLatin-1,..IsoLatin-9 (ISO-8859-1,...ISO-8859-9)">IsoLatin</a> code page. </p>
@@ -139,7 +145,7 @@ Public Member Functions</h2></td></tr>
 <p>Constructor. </p>
 <dl class="params"><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname"><a class="el" href="structtextwolf_1_1charset_1_1IsoLatin.html" title="Character set IsoLatin-1,..IsoLatin-9 (ISO-8859-1,...ISO-8859-9)">IsoLatin</a></td><td>code page index, 1 for "IsoLatin-1" </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">idx</td><td><a class="el" href="structtextwolf_1_1charset_1_1IsoLatin.html" title="Character set IsoLatin-1,..IsoLatin-9 (ISO-8859-1,...ISO-8859-9)">IsoLatin</a> code page index, 1 for "IsoLatin-1" </td></tr>
   </table>
   </dd>
 </dl>
@@ -170,6 +176,35 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>the representation of the passed unicode character in this codepage </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a400cf92ed5f8fc9aa9c705ab08ddca9d"></a><!-- doxytag: member="textwolf::charset::IsoLatinCodePage::is_equal" ref="a400cf92ed5f8fc9aa9c705ab08ddca9d" args="(const IsoLatinCodePage &amp;a, const IsoLatinCodePage &amp;b)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static bool <a class="el" href="classtextwolf_1_1charset_1_1IsoLatinCodePage.html#a400cf92ed5f8fc9aa9c705ab08ddca9d">textwolf::charset::IsoLatinCodePage::is_equal</a> </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classtextwolf_1_1charset_1_1IsoLatinCodePage.html">IsoLatinCodePage</a> &amp;&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classtextwolf_1_1charset_1_1IsoLatinCodePage.html">IsoLatinCodePage</a> &amp;&#160;</td>
+          <td class="paramname"><em>b</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [inline, static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Evaluate if two code pages are equal. </p>
 
 </div>
 </div>
@@ -206,7 +241,7 @@ Public Member Functions</h2></td></tr>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jun 12 2014 11:55:34 for textwolf by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Jun 14 2014 16:44:38 for textwolf by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>
