@@ -78,7 +78,7 @@ struct Encoder
 };
 
 /// \class Interface
-/// \brief Interface that has to be implemented for a character set encoding
+/// \brief This interface has to be implemented for a character set encoding
 struct Interface
 {
 	/// \brief Maximum character this characer set encoding can represent
