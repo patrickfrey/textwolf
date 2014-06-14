@@ -208,41 +208,48 @@ textwolf iterator as a character set encoding definition. Textwolf
 assumes some form of a single Unicode character (UChar) to be able
 to map them to each other.
 <pre>
-///\class Interface
-///\brief Interface that has to be implemented for a character set encoding
+/// \class Interface
+/// \brief Interface that has to be implemented for a character set encoding
 struct Interface
 {
-	///\brief Defines the highest unicode character representation 
+	/// \brief Defines the highest unicode character representation 
 	///	of a character in this encoding.
 	enum {MaxChar=0xFF};
 
-	///\brief Skip to start of the next character
-	///\param [in] buf buffer for the character data
-	///\param [in,out] bufpos position in 'buf'
-	///\param [in,out] itr iterator to skip
+	/// \brief Skip to start of the next character
+	/// \param [in] buf buffer for the character data
+	/// \param [in,out] bufpos position in 'buf'
+	/// \param [in,out] itr iterator to skip
 	template &lt;class Iterator&gt;
 	static void skip( char* buf, unsigned int& bufpos, Iterator& itr);
 
-	///\brief Fetches the ascii char representation of the current character
-	///\param [in] buf buffer for the parses character data
-	///\param [in,out] bufpos position in 'buf'
-	///\param [in,out] itr iterator on the source
-	///\return the value of the ascii character or -1
+	/// \brief Fetches the ascii char representation of the current character
+	/// \param [in] buf buffer for the parses character data
+	/// \param [in,out] bufpos position in 'buf'
+	/// \param [in,out] itr iterator on the source
+	/// \return the value of the ascii character or -1
 	template &lt;class Iterator&gt;
 	static char asciichar( char* buf, unsigned int& bufpos, Iterator& itr);
 
-	///\brief Fetches the unicode character representation of the current character
-	///\param [in] buf buffer for the parses character data
-	///\param [in,out] bufpos position in 'buf'
-	///\param [in,out] itr iterator on the source
-	///\return the value of the unicode character
+	/// \brief Fetches the bytes of the current character into a buffer
+	/// \param [in] buf buffer for the parses character data
+	/// \param [in,out] bufpos position in 'buf'
+	/// \param [in,out] itr iterator on the source
+	template <class Iterator>
+	static void fetchbytes( char* buf, unsigned int& bufpos, Iterator& itr);
+
+	/// \brief Fetches the unicode character representation of the current character
+	/// \param [in] buf buffer for the parses character data
+	/// \param [in,out] bufpos position in 'buf'
+	/// \param [in,out] itr iterator on the source
+	/// \return the value of the unicode character
 	template &lt;class Iterator&gt;
 	static UChar value( char* buf, unsigned int& bufpos, Iterator& itr);
 
-	///\brief Prints a unicode character to a buffer
-	///\tparam Buffer STL back insertion sequence
-	///\param [in] chr character to print
-	///\param [out] buf buffer to print to
+	/// \brief Prints a unicode character to a buffer
+	/// \tparam Buffer STL back insertion sequence
+	/// \param [in] chr character to print
+	/// \param [out] buf buffer to print to
 	template &lt;class Buffer&gt;_
 	static void print( UChar chr, Buffer& buf);
 };
