@@ -86,7 +86,7 @@ struct Interface
 
 	/// \brief Skip to start of the next character
 	/// \tparam Iterator source iterator used
-	/// \remark bufpos is used as state of the iterator 'itr' passed. Therefore it is strictly forbidden to use the class by two clients simultaneously wihtout sharing the buffer 'buf' and the state 'bufpos'.
+	/// \remark 'bufpos' is used as state of the iterator 'itr' passed. Therefore it is strictly forbidden to use the class by two clients simultaneously wihtout sharing the buffer 'buf' and the state 'bufpos'.
 	/// \param [in] buf buffer for the character data
 	/// \param [in,out] bufpos position in 'buf'
 	/// \param [in,out] itr iterator to skip
@@ -95,7 +95,7 @@ struct Interface
 
 	/// \brief Fetches the ascii char representation of the current character
 	/// \tparam Iterator source iterator used
-	/// \remark bufpos is used as state of the iterator 'itr' passed. Therefore it is strictly forbidden to use the class by two clients simultaneously wihtout sharing the buffer 'buf' and the state 'bufpos'.
+	/// \remark 'bufpos' is used as state of the iterator 'itr' passed. Therefore it is strictly forbidden to use the class by two clients simultaneously wihtout sharing the buffer 'buf' and the state 'bufpos'.
 	/// \param [in] buf buffer for the parses character data
 	/// \param [in,out] bufpos position in 'buf'
 	/// \param [in,out] itr iterator on the source
@@ -105,7 +105,7 @@ struct Interface
 
 	/// \brief Fetches the bytes of the current character into a buffer
 	/// \tparam Iterator source iterator used
-	/// \remark bufpos is used as state of the iterator 'itr' passed. Therefore it is strictly forbidden to use the class by two clients simultaneously wihtout sharing the buffer 'buf' and the state 'bufpos'.
+	/// \remark 'bufpos' is used as state of the iterator 'itr' passed. Therefore it is strictly forbidden to use the class by two clients simultaneously wihtout sharing the buffer 'buf' and the state 'bufpos'.
 	/// \param [in] buf buffer for the parses character data
 	/// \param [in,out] bufpos position in 'buf'
 	/// \param [in,out] itr iterator on the source
@@ -114,7 +114,7 @@ struct Interface
 
 	/// \brief Fetches the unicode character representation of the current character
 	/// \tparam Iterator source iterator used
-	/// \remark bufpos is used as state of the iterator 'itr' passed. Therefore it is strictly forbidden to use the class by two clients simultaneously wihtout sharing the buffer 'buf' and the state 'bufpos'.
+	/// \remark 'bufpos' is used as state of the iterator 'itr' passed. Therefore it is strictly forbidden to use the class by two clients simultaneously wihtout sharing the buffer 'buf' and the state 'bufpos'.
 	/// \param [in] buf buffer for the parses character data
 	/// \param [in,out] bufpos position in 'buf'
 	/// \param [in,out] itr iterator on the source
