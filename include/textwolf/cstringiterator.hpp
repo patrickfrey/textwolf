@@ -68,7 +68,7 @@ public:
 	/// \param [in] src string to iterate on
 	CStringIterator( const char* src)
 		:m_src(src)
-		,m_size(std::strlen(stc))
+		,m_size(std::strlen(src))
 		,m_pos(0){}
 
 	/// \brief Constructor

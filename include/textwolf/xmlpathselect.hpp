@@ -475,11 +475,11 @@ public:
 
 		/// \brief Preincrement
 		/// \return *this
-		iterator& operator++()		{return skip();}
+		iterator& operator++()				{return skip();}
 
 		/// \brief Postincrement
 		/// \return *this
-		iterator operator++(int)	{iterator tmp(*this); skip(); return tmp;}
+		iterator operator++(int)			{iterator tmp(*this); skip(); return tmp;}
 
 		/// \brief Compare elements for equality
 		/// \return true, if they are equal
@@ -501,7 +501,7 @@ public:
 	/// \return iterator pointing to the first of the selected XML path elements
 	iterator push( XMLScannerBase::ElementType type, const std::string& key)
 	{
-		return iterator( *this, type, key.c_str(), key.size);
+		return iterator( *this, type, key.c_str(), key.size());
 	}
 
 	/// \brief Get the end of results returned by 'push(XMLScannerBase::ElementType,const char*, int)'

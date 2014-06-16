@@ -1,5 +1,6 @@
 #include "textwolf/xmlscanner.hpp"
 #include "textwolf/xmlpathselect.hpp"
+#include "textwolf/cstringiterator.hpp"
 #include "textwolf/charset.hpp"
 #include <iostream>
 #include <string>
@@ -19,15 +20,20 @@ void output( const std::string& str)
 	Selector selector( &atm);
 
 	// Fetch the input elements, feed them to the selector and iterate on the result dropping out:
-	Scanner::iterator ci,ce;
-	for (ci=scanner.begin(),ce=scanner.end(); ci!=ce; ci++)
+	Scanner::iterator itr = scanner.begin(), end = scanner.end();
+	for (; itr != end; itr++)
 	{
-		std::string elem = std::string( itr->content(), itr->size());
-		Selector::iterator itr = selector.push( ci->type(), elem), end = selector.end();
-
-		for (; itr!=end; itr++)
+		if (itr->error())
 		{
-			std::cout << *itr << ": " << itr->name() << elem << std::endl;
+			throw std::runtime_error( std::string("xml error: ") + itr->error());
+		}
+		std::string elem = std::string( itr->content(), itr->size());
+		Selector::iterator si = selector.push( itr->type(), elem), se = selector.end();
+
+		for (; si!=se; si++)
+		{
+			std::cout << *si << ": " << itr->name() << elem << std::endl;
 		}
 	}
 }
+

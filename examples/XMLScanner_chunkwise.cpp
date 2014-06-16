@@ -1,7 +1,9 @@
 #include "textwolf/xmlscanner.hpp"
 #include "textwolf/charset.hpp"
+#include "textwolf/sourceiterator.hpp"
 #include <iostream>
 #include <string>
+#include <setjmp.h>
 
 typedef textwolf::charset::UTF8 Encoding;
 typedef textwolf::SrcIterator Iterator;
@@ -16,10 +18,16 @@ bool output( Scanner& scan, const char* chunk, std::size_t chunksize)
 	{
 		return false; //... do call the function with the next chunk
 	}
-	for (; *scan; ++scan)
+	Scanner::iterator itr = scan.begin(), end = scan.end();
+
+	for (; itr != end; ++itr)
 	{
-		std::string elem = std::string(scan->content(),scan->size());
-		std::cout << scan->name() << " " << elem << std::endl;
+		if (itr->error())
+		{
+			throw std::runtime_error( std::string("xml error: ") + itr->error());
+		}
+		std::string elem = std::string( itr->content(),itr->size());
+		std::cout << itr->name() << " " << elem << std::endl;
 	}
 	return true;
 }
