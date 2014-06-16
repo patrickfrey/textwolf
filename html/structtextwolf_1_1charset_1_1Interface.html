@@ -164,6 +164,13 @@ template&lt;class Iterator &gt; </div>
 <div class="memdoc">
 
 <p>Fetches the ascii char representation of the current character. </p>
+<dl class=""><dt><b>Template Parameters:</b></dt><dd>
+  <table class="">
+    <tr><td class="paramname">Iterator</td><td>source iterator used </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="remark"><dt><b>Remarks:</b></dt><dd>bufpos is used as state of the iterator 'itr' passed. Therefore it is strictly forbidden to use the class by two clients simultaneously wihtout sharing the buffer 'buf' and the state 'bufpos'. </dd></dl>
 <dl class="params"><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">buf</td><td>buffer for the parses character data </td></tr>
@@ -210,6 +217,13 @@ template&lt;class Iterator &gt; </div>
 <div class="memdoc">
 
 <p>Fetches the bytes of the current character into a buffer. </p>
+<dl class=""><dt><b>Template Parameters:</b></dt><dd>
+  <table class="">
+    <tr><td class="paramname">Iterator</td><td>source iterator used </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="remark"><dt><b>Remarks:</b></dt><dd>bufpos is used as state of the iterator 'itr' passed. Therefore it is strictly forbidden to use the class by two clients simultaneously wihtout sharing the buffer 'buf' and the state 'bufpos'. </dd></dl>
 <dl class="params"><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">buf</td><td>buffer for the parses character data </td></tr>
@@ -329,6 +343,13 @@ template&lt;class Iterator &gt; </div>
 <div class="memdoc">
 
 <p>Skip to start of the next character. </p>
+<dl class=""><dt><b>Template Parameters:</b></dt><dd>
+  <table class="">
+    <tr><td class="paramname">Iterator</td><td>source iterator used </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="remark"><dt><b>Remarks:</b></dt><dd>bufpos is used as state of the iterator 'itr' passed. Therefore it is strictly forbidden to use the class by two clients simultaneously wihtout sharing the buffer 'buf' and the state 'bufpos'. </dd></dl>
 <dl class="params"><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">buf</td><td>buffer for the character data </td></tr>
@@ -374,6 +395,13 @@ template&lt;class Iterator &gt; </div>
 <div class="memdoc">
 
 <p>Fetches the unicode character representation of the current character. </p>
+<dl class=""><dt><b>Template Parameters:</b></dt><dd>
+  <table class="">
+    <tr><td class="paramname">Iterator</td><td>source iterator used </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="remark"><dt><b>Remarks:</b></dt><dd>bufpos is used as state of the iterator 'itr' passed. Therefore it is strictly forbidden to use the class by two clients simultaneously wihtout sharing the buffer 'buf' and the state 'bufpos'. </dd></dl>
 <dl class="params"><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">buf</td><td>buffer for the parses character data </td></tr>
@@ -393,7 +421,7 @@ template&lt;class Iterator &gt; </div>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Jun 16 2014 12:16:33 for textwolf by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jun 16 2014 12:56:13 for textwolf by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>
