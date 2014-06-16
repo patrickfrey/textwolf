@@ -6,6 +6,7 @@
  * The template class textwolf::TextScanner defines a character by character iterator on a text source.
  * \code
 #include "textwolf/xmlscanner.hpp"
+#include "textwolf/cstringiterator.hpp"
 #include "textwolf/charset.hpp"
 #include <iostream>
 #include <string>
@@ -13,7 +14,7 @@
 void output( const std::string& str)
 {
 	typedef textwolf::TextScanner<textwolf::CStringIterator,textwolf::charset::UTF8> Scanner;
-	Scanner itr(src);
+	Scanner itr(str);
 	
 	for (; *itr; ++itr)
 	{
@@ -28,18 +29,26 @@ void output( const std::string& str)
  * \code
 #include "textwolf/xmlscanner.hpp"
 #include "textwolf/charset.hpp"
+#include "textwolf/cstringiterator.hpp"
 #include <iostream>
 #include <string>
 
 void output( const std::string& str)
 {
-	typedef textwolf::charset::UTF8 Encoding;
-	typedef textwolf::CStringIterator Iterator;
-	typedef textwolf::XMLScanner<Iterator,Encoding,Encoding,std::string> Scanner;
+	typedef textwolf::charset::UTF8 MyEncoding;
+	typedef textwolf::CStringIterator MyIterator;
+	typedef textwolf::XMLScanner<MyIterator,MyEncoding,MyEncoding,std::string> MyScanner;
 
-	Scanner itr( Iterator( m_src));
-	for (; *itr; ++itr)
+	textwolf::CStringIterator si( str);
+	MyScanner scan( si);
+	MyScanner::iterator itr = scan.begin(), end = scan.end();
+
+	for (; itr != end; ++itr)
 	{
+		if (itr->error())
+		{
+			throw std::runtime_error( std::string("xml error: ") + itr->error());
+		}
 		std::string elem = std::string(itr->content(),itr->size());
 		std::cout << itr->name() << " " << elem << std::endl;
 	}
@@ -50,6 +59,7 @@ void output( const std::string& str)
  * \code
 #include "textwolf/xmlscanner.hpp"
 #include "textwolf/xmlpathselect.hpp"
+#include "textwolf/cstringiterator.hpp"
 #include "textwolf/charset.hpp"
 #include <iostream>
 #include <string>
@@ -69,15 +79,19 @@ void output( const std::string& str)
 	Selector selector( &atm);
 
 	// Fetch the input elements, feed them to the selector and iterate on the result dropping out:
-	Scanner::iterator ci,ce;
-	for (ci=scanner.begin(),ce=scanner.end(); ci!=ce; ci++)
+	Scanner::iterator itr = scanner.begin(), end = scanner.end();
+	for (; itr != end; itr++)
 	{
-		std::string elem = std::string( itr->content(), itr->size());
-		Selector::iterator itr = selector.push( ci->type(), elem), end = selector.end();
-
-		for (; itr!=end; itr++)
+		if (itr->error())
 		{
-			std::cout << *itr << ": " << itr->name() << elem << std::endl;
+			throw std::runtime_error( std::string("xml error: ") + itr->error());
+		}
+		std::string elem = std::string( itr->content(), itr->size());
+		Selector::iterator si = selector.push( itr->type(), elem), se = selector.end();
+
+		for (; si!=se; si++)
+		{
+			std::cout << *si << ": " << itr->name() << elem << std::endl;
 		}
 	}
 }
@@ -88,9 +102,14 @@ void output( const std::string& str)
  * \code
 #include "textwolf/xmlscanner.hpp"
 #include "textwolf/charset.hpp"
+#include "textwolf/sourceiterator.hpp"
 #include <iostream>
 #include <string>
-
+#include <setjmp.h>
+#ifdef _WIN32
+#pragma warning (disable:4611)
+//... on Windows you have on to disable warning C4611 (we know what we are doing)
+#endif
 typedef textwolf::charset::UTF8 Encoding;
 typedef textwolf::SrcIterator Iterator;
 typedef textwolf::XMLScanner<Iterator,Encoding,Encoding,std::string> Scanner;
@@ -104,10 +123,16 @@ bool output( Scanner& scan, const char* chunk, std::size_t chunksize)
 	{
 		return false; //... do call the function with the next chunk
 	}
-	for (; *scan; ++scan)
+	Scanner::iterator itr = scan.begin(), end = scan.end();
+
+	for (; itr != end; ++itr)
 	{
-		std::string elem = std::string(scan->content(),scan->size());
-		std::cout << scan->name() << " " << elem << std::endl;
+		if (itr->error())
+		{
+			throw std::runtime_error( std::string("xml error: ") + itr->error());
+		}
+		std::string elem = std::string( itr->content(),itr->size());
+		std::cout << itr->name() << " " << elem << std::endl;
 	}
 	return true;
 }
