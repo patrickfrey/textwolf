@@ -61,7 +61,7 @@ public:
 			else
 			{
 				buf.clear();
-				unsigned int tt = character( ++ii, CharSet::MaxChar);
+				unsigned int tt = character( ++ii, (unsigned int)CharSet::MaxChar);
 				encoding.print( tt, buf);
 				pos = 0;
 			}
@@ -119,7 +119,7 @@ struct TextScannerTest
 
 		for (ii=start; tr.control() != EndOfText && ii<NOF_TESTS; ++ii,++tr)
 		{
-			UChar echr = character( ii+1, CharSet::MaxChar);
+			UChar echr = character( ii+1, (unsigned int)CharSet::MaxChar);
 			unsigned int rr;
 			do
 			{
@@ -165,8 +165,17 @@ static const char* testAll()
 		}
 		const char* get( const char* testname, unsigned int pos)
 		{
-			if (pos) snprintf( buf, sizeof(buf), "test %s failed at character pos %u", testname, pos);
-			return buf[0]==0?0:buf;
+			if (pos)
+			{
+				std::ostringstream msg;
+				msg << "test " << testname << " failed at character pos " << pos;
+				std::string msgstr = msg.str();
+				std::size_t msgsize = msgstr.size() >= sizeof(buf) ? (sizeof(buf)-1) : msgstr.size();
+				std::memcpy( buf, msgstr.c_str(), msgsize);
+				buf[ msgsize] = 0;
+				return buf;
+			}
+			return 0;
 		}
 		const char* operator*()
 		{

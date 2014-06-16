@@ -55,7 +55,7 @@ struct Input
 		void skip()			{ch=input->getchar();};
 		iterator& operator++()		{skip(); return *this;};
 		iterator operator++(int)	{iterator tmp(*this); skip(); return tmp;};
-		char operator*()		{return ch;};
+		char operator*()		{return (char)(unsigned char)ch;};
 	};
 	iterator begin()			{iterator rt(this); rt.skip(); return rt;};
 	iterator end()				{return iterator();};
