@@ -23,9 +23,24 @@ struct Input
 	unsigned int bufpos;
 	FILE* file;
 
-	Input()				:bufsize(0),bufpos(0),file(stdin) {};
-	Input( const char* fname)	:bufsize(0),bufpos(0),file(fopen(fname,"rb")) {};
-	~Input()			{if (file != stdin) fclose(file);};
+	Input()
+		:bufsize(0),bufpos(0),file(stdin)
+	{}
+	Input( const char* fname)
+		:bufsize(0),bufpos(0),file(0)
+	{
+#if defined(_WIN32)
+		errno_t err = fopen_s( &file, fname, "rb");
+		if (err != 0) throw std::runtime_error(std::string("failed to open file '") + fname + "'");
+#else
+		file = fopen( fname, "rb");
+		if (file == NULL) throw std::runtime_error(std::string("failed to open file '") + fname + "'");
+#endif
+	}
+	~Input()
+	{
+		if (file != stdin) fclose(file);
+	}
 
 	char getchar()
 	{
@@ -41,7 +56,7 @@ struct Input
 			bufpos = 0;
 		}
 		return buf[ bufpos++];
-	};
+	}
 
 	struct iterator
 	{

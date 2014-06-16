@@ -9,12 +9,12 @@
     document without buffering anything but the current result token
     processed with its tag hierarchy information.
 
-    Copyright (C) 2010 Patrick Frey
+    Copyright (C) 2010,2011,2012,2013,2014 Patrick Frey
 
     This library is free software; you can redistribute it and/or
     modify it under the terms of the GNU Lesser General Public
     License as published by the Free Software Foundation; either
-    version 2.1 of the License, or (at your option) any later version.
+    version 3.0 of the License, or (at your option) any later version.
 
     This library is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -32,27 +32,17 @@
 
 --------------------------------------------------------------------
 */
+/// \file textwolf/version.hpp
+/// \brief textwolf API version definition
 
-#ifndef __TEXTWOLF_HPP__
-#define __TEXTWOLF_HPP__
-/// \file textwolf.hpp
-/// \brief Main include file
+#ifndef __TEXTWOLF_VERSION_HPP__
+#define __TEXTWOLF_VERSION_HPP__
 
-#include "textwolf/version.hpp"
-#include "textwolf/char.hpp"
-#include "textwolf/exception.hpp"
-#include "textwolf/staticbuffer.hpp"
-#include "textwolf/charset_interface.hpp"
-#include "textwolf/charset.hpp"
-#include "textwolf/textscanner.hpp"
-#include "textwolf/xmlscanner.hpp"
-#include "textwolf/cstringiterator.hpp"
-#include "textwolf/sourceiterator.hpp"
-#include "textwolf/xmltagstack.hpp"
-#include "textwolf/xmlprinter.hpp"
-#include "textwolf/xmlhdrparser.hpp"
-#include "textwolf/xmlpathselect.hpp"
+#define _TEXTWOLF_VERSION_MAJOR		0
+#define _TEXTWOLF_VERSION_MINOR		2
+#define _TEXTWOLF_VERSION_REVISION	0
+
+#define _TEXTWOLF_VERSION_NUM		((_TEXTWOLF_VERSION_MAJOR*10000)+(_TEXTWOLF_VERSION_MINOR*100)+(_TEXTWOLF_VERSION_REVISION*1))
 
 #endif
-
 

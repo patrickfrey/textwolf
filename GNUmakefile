@@ -1,6 +1,6 @@
 
 CCINCLUDES= -Iinclude/
-CCFLAGS= -g -Wall -O4 
+CCFLAGS= -g -Wall -O4 -Werror -Wall
 CC= gcc
 LINK= g++ -lc
 LINKFLAGS=

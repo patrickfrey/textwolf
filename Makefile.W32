@@ -1,5 +1,5 @@
 CCINCLUDES= /Iinclude
-CCFLAGS= /wd4996 /wd4611 /Ob2 /O2 /EHsc /MT /W4 /nologo /c /D "WIN32" /D "_WINDOWS"
+CCFLAGS= /Ob2 /O2 /EHsc /MT /W4 /nologo /c /D "WIN32" /D "_WINDOWS"
 CC= cl.exe
 LINK= link.exe
 LINKFLAGS=

@@ -5,13 +5,6 @@ Documentation
 * A textwolf introduction can be found at http://textwolf.net/tutorial.html
 * A doxygen interface documentation is at http://patrickfrey.github.com/textwolf/html/index.html
 
-Examples
-* See the examples in tests:
-** readStdinIterator.cpp     :Echoing stdin for all character sets
-** test_TextReader.cpp       :Iterating on a set of generated characters and test if read/write works for all characters
-** test_XMLPathSelect.cpp    :Iterating on the XML Path selected elements
-** test_XMLScanner.cpp       :Iterating on the XML elements
-
 Projects using textwolf
 * textwolf is used in the wolframe project (see http://wolframe.net or http://github.com/Wolframe/Wolframe)
 
@@ -19,7 +12,7 @@ Bugreports
 * textwolf bug reports are in the github issue management of the textwolf project
 
 Project Schedule
-* 2014/06/12
+* 2014/06/16
 	Version 0.2.0
 	* Support of IsoLatin codepages besides UTF/UCS encodings
 	* Chunk by chunk feeding reimplementation (using longjmp instead of exceptions)

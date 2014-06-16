@@ -4,7 +4,10 @@
 #include <iostream>
 #include <string>
 #include <setjmp.h>
-
+#ifdef _WIN32
+#pragma warning (disable:4611)
+//... on Windows you have on to disable warning C4611 (we know what we are doing)
+#endif
 typedef textwolf::charset::UTF8 Encoding;
 typedef textwolf::SrcIterator Iterator;
 typedef textwolf::XMLScanner<Iterator,Encoding,Encoding,std::string> Scanner;
