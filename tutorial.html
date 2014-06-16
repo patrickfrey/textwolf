@@ -64,15 +64,16 @@ but does not implement all of it. The following list shows the exceptions:
 <li>Only entity mappings to single characters are supported.
 </li>
 <li>ENTITY definitions in the XML are ignored. Entity definitions have to be passed as read only table.
+Only named entities substituting one unicode character are allowed.
 </li>
-<li>Declarative "&lt;! ... &gt;" definitions like DOCTYPE, ELEMENT and ATTLIST are ignored (skipped over). Changing of tokenization (ATTLIST) has to be done 
-by calling the "doTokenize(bool)" method of the scanner or XML path parser. You can do this at any point when you are iterating through the document.
+<li>Declarative "&lt;! ... &gt;" definitions like DOCTYPE, ELEMENT and ATTLIST are fetched as elements
+but their content has no effect on the parsing engine.
 </li>
 <li>Commands of the form "&lt;? ..." like PI (process instructions) are ignored (skipped over).
 </li>
 <li>Context information given by namespaces is not treated specially. A namespace prefix with colon 
 is treated as part of the tag name and not as context information. For example an attribute 
-"xmlns:xsi" will be treated as an attribute with name "xmlns:xsi". 
+"xmlns:xsi" will be treated as an attribute with name "xmlns:xsi".
 </li>
 </ul>
 </div>
