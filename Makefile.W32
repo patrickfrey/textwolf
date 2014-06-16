@@ -1,0 +1,30 @@
+CCINCLUDES= /Iinclude
+CCFLAGS= /wd4996 /Ob2 /O2 /EHsc /MT /W4 /nologo /c /D "WIN32" /D "_WINDOWS" 
+CC= cl.exe
+LINK= link.exe
+LINKFLAGS=
+LIBS=
+OBJS=\
+	examples/TextScanner.o\
+	examples/XMLPathSelect.o\
+	examples/XMLScanner.o\
+	examples/XMLScanner_chunkwise.o
+
+PRGS=\
+	tests/readStdinIterator.o\
+	tests/test_TextReader.o\
+	tests/test_XMLPathSelect.o\
+	tests/test_XMLScanner.o
+
+.obj.exe:
+	$(LINK) $(LINKFLAGS) $(LIBS) /out:$@ $(OBJS) $**
+
+.cpp.obj:
+	$(CC) $(CCFLAGS) /Fo$@ $<
+
+all: $(PRGS) $(OBJS)
+
+clean:
+	-@erase $(OBJS) $(PRGS) $(PRGS)
+
+
