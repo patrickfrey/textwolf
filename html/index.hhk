@@ -4,6 +4,10 @@
 <param name="FrameName" value="right">
 </OBJECT>
 <UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="version_8hpp.html#ab220bad13e1255c798a0ef31bdda916d"><param name="Name" value="_TEXTWOLF_VERSION_MAJOR"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="version_8hpp.html#a2979114ad83424ce83651d402f845ba9"><param name="Name" value="_TEXTWOLF_VERSION_MINOR"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="version_8hpp.html#ab9c6079dcf480ccc94148b1ee500d759"><param name="Name" value="_TEXTWOLF_VERSION_NUM"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="version_8hpp.html#a601ed26b577a8af89fea48d626b8c3fe"><param name="Name" value="_TEXTWOLF_VERSION_REVISION"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1ScannerStatemachine.html#a7969f2c8d8d4f10e63f2a6eafb68659f"><param name="Name" value="action"></OBJECT>
   <UL>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1ScannerStatemachine.html#a7969f2c8d8d4f10e63f2a6eafb68659f"><param name="Name" value="textwolf::ScannerStatemachine"></OBJECT>
@@ -179,6 +183,7 @@
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html#ae26e6510c822ee35e041ab2dab70e78badecb7183a28538a158f99e8c87f2f7c6"><param name="Name" value="ErrExpectedXMLTag"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html#ae26e6510c822ee35e041ab2dab70e78ba5806f756d74a3f5a8cf2cc41b3fdf6da"><param name="Name" value="ErrIllegalDocumentAttributeDef"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html#ae26e6510c822ee35e041ab2dab70e78ba12d0da8dca8d95268c6038211489014d"><param name="Name" value="ErrInternal"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScanner_1_1iterator_1_1Element.html#ae651c73e0fcf5d2787ad69b0d7284805"><param name="Name" value="error"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html#aae4f0cdb7e16aca5fdee271fa60e1329add5d6b79ae0dd25f900d4a3bc4463152"><param name="Name" value="ErrorOccurred"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html#ae26e6510c822ee35e041ab2dab70e78ba56c44481ec43cb1c867d0a76560ab411"><param name="Name" value="ErrStringNotTerminated"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html#ae26e6510c822ee35e041ab2dab70e78ba457ff1c0d02518e32d4e1a3da4758918"><param name="Name" value="ErrSyntaxToken"></OBJECT>
@@ -703,8 +708,8 @@
   </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1exception.html"><param name="Name" value="textwolf::exception"></OBJECT>
   <UL>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1exception.html#a3dcdb1567ac4c92789054d85038c5afe"><param name="Name" value="Cause"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1exception.html#af5fab81bf1bee4f9bb9a712989e6b6aa"><param name="Name" value="cause"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1exception.html#a3dcdb1567ac4c92789054d85038c5afe"><param name="Name" value="Cause"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1exception.html#a63e03b8d8d2188a6f51b7cfbb17fbc92"><param name="Name" value="operator="></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1exception.html#a29ff8e91a847b22adad60e37636decab"><param name="Name" value="throw"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1exception.html#a8c370e435f32a3b7a37f569243f47702"><param name="Name" value="what"></OBJECT>
@@ -1001,10 +1006,12 @@
   <UL>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScanner_1_1iterator_1_1Element.html#a78656ff71a3070194b38a5ebca1511a9"><param name="Name" value="content"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScanner_1_1iterator_1_1Element.html#aef2b89dda98ec6bfd5b6995b757a506f"><param name="Name" value="Element"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScanner_1_1iterator_1_1Element.html#ae651c73e0fcf5d2787ad69b0d7284805"><param name="Name" value="error"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScanner_1_1iterator_1_1Element.html#a67171474c4da6cc8efe0c7fafefd2b2d"><param name="Name" value="iterator"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScanner_1_1iterator_1_1Element.html#a74443b15cdad5188fbfece6c22bf4aea"><param name="Name" value="name"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScanner_1_1iterator_1_1Element.html#aa4abb5884ced96b5172793b2a26b472d"><param name="Name" value="size"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScanner_1_1iterator_1_1Element.html#aafcf583ea1902e0069110c6eb8668ae8"><param name="Name" value="type"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScanner_1_1iterator_1_1Element.html#ae2920081556077ea943e0137518c0462"><param name="Name" value="valid"></OBJECT>
   </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScanner_1_1iterator.html"><param name="Name" value="textwolf::XMLScanner::iterator"></OBJECT>
   <UL>
@@ -1075,15 +1082,15 @@
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html#acf32f993fc533aa138e44a9b1afc8d1caa465389dd6fad21e436df80aebf8c8c6"><param name="Name" value="CDATA1"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html#acf32f993fc533aa138e44a9b1afc8d1cabe5b112645434a0e66a842e984da57df"><param name="Name" value="CDATA2"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html#acf32f993fc533aa138e44a9b1afc8d1ca1e0626b244240a37b15f4ed44239ee10"><param name="Name" value="CDATA3"></OBJECT>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html#aae4f0cdb7e16aca5fdee271fa60e1329aab57b42674c0f6ee8e92c3cf7c702cec"><param name="Name" value="CloseTag"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html#acf32f993fc533aa138e44a9b1afc8d1ca9c34cbc9e4d81e1fcd3953347a7ca40f"><param name="Name" value="CLOSETAG"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html#aae4f0cdb7e16aca5fdee271fa60e1329aab57b42674c0f6ee8e92c3cf7c702cec"><param name="Name" value="CloseTag"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html#aae4f0cdb7e16aca5fdee271fa60e1329a97df16f73186fd52ddcfc240189a72d7"><param name="Name" value="CloseTagIm"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html#acf32f993fc533aa138e44a9b1afc8d1caa195b01defcdb304c89218f2f0fdc07e"><param name="Name" value="COMDASH2"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html#acf32f993fc533aa138e44a9b1afc8d1ca36a050d67f057d00ecd7618f076eb8b0"><param name="Name" value="COMENDCL"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html#acf32f993fc533aa138e44a9b1afc8d1ca85d31af694a5a8984a33425e0116477a"><param name="Name" value="COMENDD2"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html#acf32f993fc533aa138e44a9b1afc8d1ca61741d6aa3e2fb62dec513e535c058cd"><param name="Name" value="COMSEEKE"></OBJECT>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html#acf32f993fc533aa138e44a9b1afc8d1ca1bd66bb19198a33e83bf140e389073f3"><param name="Name" value="CONTENT"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html#aae4f0cdb7e16aca5fdee271fa60e1329a63af29540f5188467ecb666899849957"><param name="Name" value="Content"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html#acf32f993fc533aa138e44a9b1afc8d1ca1bd66bb19198a33e83bf140e389073f3"><param name="Name" value="CONTENT"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html#aae4f0cdb7e16aca5fdee271fa60e1329a20fd8bcefc427654d0b3375a519aa312"><param name="Name" value="DocAttribEnd"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html#aae4f0cdb7e16aca5fdee271fa60e1329a56a4b1fb6c1d5ed4ddb166c262f8832b"><param name="Name" value="DocAttribValue"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html#acf32f993fc533aa138e44a9b1afc8d1ca5d04c838dd06fd5b78600a0291a2fd09"><param name="Name" value="DOCSTART"></OBJECT>
@@ -1110,8 +1117,8 @@
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html#ae26e6510c822ee35e041ab2dab70e78ba80ae9361aa81f3ecce19acd0690e4aad"><param name="Name" value="ErrUndefinedCharacterEntity"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html#ae26e6510c822ee35e041ab2dab70e78ba52fec157b20cde2c69433fc3b705bafa"><param name="Name" value="ErrUnexpectedEndOfInput"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html#ae26e6510c822ee35e041ab2dab70e78baaba73f646d7a3b6a5428d2ffa35c7956"><param name="Name" value="ErrUnexpectedEndOfText"></OBJECT>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html#aae4f0cdb7e16aca5fdee271fa60e1329ad5a3d0d15f37c3483fdc5321f5baf2b7"><param name="Name" value="Exit"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html#acf32f993fc533aa138e44a9b1afc8d1ca61928f501bfa1739fb10e5f4af757e3b"><param name="Name" value="EXIT"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html#aae4f0cdb7e16aca5fdee271fa60e1329ad5a3d0d15f37c3483fdc5321f5baf2b7"><param name="Name" value="Exit"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html#a9e098fe6f4a84b25db51fcfe61f4cbd0ae5bd27b5e2b4acef656229e45f357149"><param name="Name" value="ExpectIdentifierCDATA"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html#a9e098fe6f4a84b25db51fcfe61f4cbd0a53895f21307d917b63c62c5a683f99f0"><param name="Name" value="ExpectIdentifierXML"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html#aa0bd625fc24362b945dcd6a167eabe7b"><param name="Name" value="getActionString"></OBJECT>
@@ -1127,8 +1134,8 @@
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html#a9e098fe6f4a84b25db51fcfe61f4cbd0a3a1ebd575361be30218f32daa1a9a31f"><param name="Name" value="NofSTMActions"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html#aae4f0cdb7e16aca5fdee271fa60e1329afcd280f8a20da3408a1efcf7ab770e62"><param name="Name" value="None"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html#ae26e6510c822ee35e041ab2dab70e78ba13c32869c2a8c9039545270d1ef1c8f2"><param name="Name" value="Ok"></OBJECT>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html#acf32f993fc533aa138e44a9b1afc8d1cadd47a88e440f901b574ef8469f0a3d8b"><param name="Name" value="OPENTAG"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html#aae4f0cdb7e16aca5fdee271fa60e1329aa94cf1e86e5ba4b6db24b51681b15fb2"><param name="Name" value="OpenTag"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html#acf32f993fc533aa138e44a9b1afc8d1cadd47a88e440f901b574ef8469f0a3d8b"><param name="Name" value="OPENTAG"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html#acf32f993fc533aa138e44a9b1afc8d1caf4b83177020ecbac86bde3b23de0a655"><param name="Name" value="PITAG"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html#acf32f993fc533aa138e44a9b1afc8d1caf8b517e12470e6c1cc7a3a30d371bb1b"><param name="Name" value="PITAGEND"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html#a9e098fe6f4a84b25db51fcfe61f4cbd0a2a7498be29d92a479557c0830bdde030"><param name="Name" value="Return"></OBJECT>
@@ -1229,6 +1236,7 @@
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1charset_1_1IsoLatinCodePage.html#a4f357be4c032c7062b5cf55848aa52e8"><param name="Name" value="ucharcode"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="namespacetextwolf.html#a4650ba8f3f0f0c953ab1dad55efc6ee3ade85243a1cbc6c24c0e568517e36362d"><param name="Name" value="Undef"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1throws__exception.html#aa2ca687050bf21caa57936fe400f59f0a7da6bf2f451b1cdd0c9394af0a8bd7cf"><param name="Name" value="Unknown"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScanner_1_1iterator_1_1Element.html#ae2920081556077ea943e0137518c0462"><param name="Name" value="valid"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1Interface.html#a041a5bdfcba4879f98101deed549141c"><param name="Name" value="value"></OBJECT>
   <UL>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1charset_1_1Interface.html#a041a5bdfcba4879f98101deed549141c"><param name="Name" value="textwolf::charset::Interface"></OBJECT>
@@ -1249,6 +1257,13 @@
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XMLScanner_1_1iterator.html#a3bd3a31e23d1bfead685267b94f8b917"><param name="Name" value="textwolf::XMLScanner::iterator"></OBJECT>
   </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1CharMap.html#ae511e679434350d8c3b0ad651b0879a7"><param name="Name" value="valuetype"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="version_8hpp.html"><param name="Name" value="version.hpp"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="version_8hpp.html#ab220bad13e1255c798a0ef31bdda916d"><param name="Name" value="_TEXTWOLF_VERSION_MAJOR"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="version_8hpp.html#a2979114ad83424ce83651d402f845ba9"><param name="Name" value="_TEXTWOLF_VERSION_MINOR"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="version_8hpp.html#ab9c6079dcf480ccc94148b1ee500d759"><param name="Name" value="_TEXTWOLF_VERSION_NUM"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="version_8hpp.html#a601ed26b577a8af89fea48d626b8c3fe"><param name="Name" value="_TEXTWOLF_VERSION_REVISION"></OBJECT>
+  </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structtextwolf_1_1exception.html#a8c370e435f32a3b7a37f569243f47702"><param name="Name" value="what"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classtextwolf_1_1XmlHdrParser.html#a567aad14083bba711977a20171a56a2e"><param name="Name" value="XmlHdrParser"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="XMLPathSelect_8cpp.html"><param name="Name" value="XMLPathSelect.cpp"></OBJECT>

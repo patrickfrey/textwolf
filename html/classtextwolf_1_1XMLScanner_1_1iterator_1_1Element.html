@@ -80,6 +80,10 @@
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLScanner_1_1iterator_1_1Element.html#ae2920081556077ea943e0137518c0462">valid</a> () const </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the element does neither mark the end of document nor reports an error occurred.  <a href="#ae2920081556077ea943e0137518c0462"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLScanner_1_1iterator_1_1Element.html#ae651c73e0fcf5d2787ad69b0d7284805">error</a> () const </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the current error.  <a href="#ae651c73e0fcf5d2787ad69b0d7284805"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLScanner_1_1iterator_1_1Element.html#a74443b15cdad5188fbfece6c22bf4aea">name</a> () const </td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of the current element as string.  <a href="#a74443b15cdad5188fbfece6c22bf4aea"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtextwolf_1_1XMLScannerBase.html#aae4f0cdb7e16aca5fdee271fa60e1329">ElementType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtextwolf_1_1XMLScanner_1_1iterator_1_1Element.html#aafcf583ea1902e0069110c6eb8668ae8">type</a> () const </td></tr>
@@ -190,6 +194,28 @@ template&lt;class InputIterator , class InputCharSet_ , class OutputCharSet_ , c
 <div class="memdoc">
 
 <p>Value of the current element. </p>
+<dl class="return"><dt><b>Returns:</b></dt><dd>the value as C string </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ae651c73e0fcf5d2787ad69b0d7284805"></a><!-- doxytag: member="textwolf::XMLScanner::iterator::Element::error" ref="ae651c73e0fcf5d2787ad69b0d7284805" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class InputIterator , class InputCharSet_ , class OutputCharSet_ , class OutputBuffer_ &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* <a class="el" href="classtextwolf_1_1XMLScanner.html">textwolf::XMLScanner</a>&lt; InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_ &gt;::<a class="el" href="classtextwolf_1_1XMLScanner_1_1iterator_1_1Element.html#ae651c73e0fcf5d2787ad69b0d7284805">iterator::Element::error</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const<code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Return the current error. </p>
+<dl class="return"><dt><b>Returns:</b></dt><dd>the error string or NULL, if no error occurred </dd></dl>
 
 </div>
 </div>
@@ -210,6 +236,7 @@ template&lt;class InputIterator , class InputCharSet_ , class OutputCharSet_ , c
 <div class="memdoc">
 
 <p>Type of the current element as string. </p>
+<dl class="return"><dt><b>Returns:</b></dt><dd>the name as C string </dd></dl>
 
 </div>
 </div>
@@ -230,6 +257,7 @@ template&lt;class InputIterator , class InputCharSet_ , class OutputCharSet_ , c
 <div class="memdoc">
 
 <p>Size of the value of the current element in bytes. </p>
+<dl class="return"><dt><b>Returns:</b></dt><dd>the size in bytes </dd></dl>
 
 </div>
 </div>
@@ -250,6 +278,28 @@ template&lt;class InputIterator , class InputCharSet_ , class OutputCharSet_ , c
 <div class="memdoc">
 
 <p>Type of the current element. </p>
+<dl class="return"><dt><b>Returns:</b></dt><dd>the type </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ae2920081556077ea943e0137518c0462"></a><!-- doxytag: member="textwolf::XMLScanner::iterator::Element::valid" ref="ae2920081556077ea943e0137518c0462" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class InputIterator , class InputCharSet_ , class OutputCharSet_ , class OutputBuffer_ &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classtextwolf_1_1XMLScanner.html">textwolf::XMLScanner</a>&lt; InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_ &gt;::<a class="el" href="classtextwolf_1_1XMLScanner_1_1iterator_1_1Element.html#ae2920081556077ea943e0137518c0462">iterator::Element::valid</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const<code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Check if the element does neither mark the end of document nor reports an error occurred. </p>
+<dl class="return"><dt><b>Returns:</b></dt><dd>true, if the element is a valid document element </dd></dl>
 
 </div>
 </div>
@@ -276,7 +326,7 @@ template&lt;class InputIterator , class InputCharSet_ , class OutputCharSet_ , c
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Jun 14 2014 16:44:38 for textwolf by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jun 16 2014 12:16:33 for textwolf by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

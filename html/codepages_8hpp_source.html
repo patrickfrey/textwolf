@@ -199,37 +199,38 @@
 <a name="l00153"></a><a class="code" href="classtextwolf_1_1charset_1_1IsoLatinCodePage.html#a4b760321d0f75110587f26d5e72c1fbf">00153</a>         <span class="keyword">inline</span> <span class="keywordtype">char</span> <a class="code" href="classtextwolf_1_1charset_1_1IsoLatinCodePage.html#a4b760321d0f75110587f26d5e72c1fbf" title="Get the character representation of a unicode character in this codepage.">invcode</a>( <a class="code" href="namespacetextwolf.html#a3eb8d6733d6737825026b2e41b8c3f9c" title="Unicode character type.">UChar</a> ch)<span class="keyword"> const</span>
 <a name="l00154"></a>00154 <span class="keyword">        </span>{
 <a name="l00155"></a>00155                 <span class="keywordtype">char</span> rt = 0;
-<a name="l00156"></a>00156                 <span class="keywordflow">if</span> (ch &lt;= 128) <span class="keywordflow">return</span> ch;
-<a name="l00157"></a>00157                 <span class="keywordflow">if</span> (ch &lt;= 255) rt = m_invcd[ ch - 128];
+<a name="l00156"></a>00156                 <span class="keywordflow">if</span> (ch &lt;= 128) <span class="keywordflow">return</span> (<span class="keywordtype">char</span>)ch;
+<a name="l00157"></a>00157                 <span class="keywordflow">if</span> (ch &lt;= 255) rt = (<span class="keywordtype">unsigned</span> char)m_invcd[ ch - 128];
 <a name="l00158"></a>00158                 <span class="keywordflow">if</span> (rt == 0)
 <a name="l00159"></a>00159                 {
-<a name="l00160"></a>00160                         std::map&lt;unsigned short, unsigned char&gt;::const_iterator fi = m_invovlcd-&gt;find( ch);
-<a name="l00161"></a>00161                         <span class="keywordflow">if</span> (fi == m_invovlcd-&gt;end()) <span class="keywordflow">return</span> 0;
-<a name="l00162"></a>00162                         rt = fi-&gt;second;
-<a name="l00163"></a>00163                 }
-<a name="l00164"></a>00164                 <span class="keywordflow">return</span> rt;
-<a name="l00165"></a>00165         }
-<a name="l00166"></a>00166 
-<a name="l00168"></a><a class="code" href="classtextwolf_1_1charset_1_1IsoLatinCodePage.html#a400cf92ed5f8fc9aa9c705ab08ddca9d">00168</a>         <span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code" href="classtextwolf_1_1charset_1_1IsoLatinCodePage.html#a400cf92ed5f8fc9aa9c705ab08ddca9d" title="Evaluate if two code pages are equal.">is_equal</a>( <span class="keyword">const</span> <a class="code" href="classtextwolf_1_1charset_1_1IsoLatinCodePage.html" title="IsoLatin code page.">IsoLatinCodePage</a>&amp; a, <span class="keyword">const</span> <a class="code" href="classtextwolf_1_1charset_1_1IsoLatinCodePage.html" title="IsoLatin code page.">IsoLatinCodePage</a>&amp; b)
-<a name="l00169"></a>00169         {
-<a name="l00170"></a>00170                 <span class="keywordflow">return</span> a.m_cd == b.m_cd;
-<a name="l00171"></a>00171         }
-<a name="l00172"></a>00172 
-<a name="l00173"></a>00173 <span class="keyword">private</span>:
-<a name="l00174"></a>00174         <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span>* m_cd;
-<a name="l00175"></a>00175         <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span>* m_invcd;
-<a name="l00176"></a>00176         <span class="keyword">const</span> std::map&lt;unsigned short, unsigned char&gt;* m_invovlcd;
-<a name="l00177"></a>00177 };
-<a name="l00178"></a>00178 
-<a name="l00179"></a>00179 }}
-<a name="l00180"></a>00180 <span class="preprocessor">#endif</span>
-<a name="l00181"></a>00181 <span class="preprocessor"></span>
-<a name="l00182"></a>00182 
+<a name="l00160"></a>00160                         <span class="keywordflow">if</span> (ch &gt;= (1&lt;&lt;<span class="keyword">sizeof</span>(<span class="keywordtype">unsigned</span> <span class="keywordtype">short</span>))) <span class="keywordflow">return</span> 0;
+<a name="l00161"></a>00161                         std::map&lt;unsigned short, unsigned char&gt;::const_iterator fi = m_invovlcd-&gt;find( (<span class="keywordtype">unsigned</span> <span class="keywordtype">short</span>)ch);
+<a name="l00162"></a>00162                         <span class="keywordflow">if</span> (fi == m_invovlcd-&gt;end()) <span class="keywordflow">return</span> 0;
+<a name="l00163"></a>00163                         rt = fi-&gt;second;
+<a name="l00164"></a>00164                 }
+<a name="l00165"></a>00165                 <span class="keywordflow">return</span> rt;
+<a name="l00166"></a>00166         }
+<a name="l00167"></a>00167 
+<a name="l00169"></a><a class="code" href="classtextwolf_1_1charset_1_1IsoLatinCodePage.html#a400cf92ed5f8fc9aa9c705ab08ddca9d">00169</a>         <span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code" href="classtextwolf_1_1charset_1_1IsoLatinCodePage.html#a400cf92ed5f8fc9aa9c705ab08ddca9d" title="Evaluate if two code pages are equal.">is_equal</a>( <span class="keyword">const</span> <a class="code" href="classtextwolf_1_1charset_1_1IsoLatinCodePage.html" title="IsoLatin code page.">IsoLatinCodePage</a>&amp; a, <span class="keyword">const</span> <a class="code" href="classtextwolf_1_1charset_1_1IsoLatinCodePage.html" title="IsoLatin code page.">IsoLatinCodePage</a>&amp; b)
+<a name="l00170"></a>00170         {
+<a name="l00171"></a>00171                 <span class="keywordflow">return</span> a.m_cd == b.m_cd;
+<a name="l00172"></a>00172         }
+<a name="l00173"></a>00173 
+<a name="l00174"></a>00174 <span class="keyword">private</span>:
+<a name="l00175"></a>00175         <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span>* m_cd;
+<a name="l00176"></a>00176         <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span>* m_invcd;
+<a name="l00177"></a>00177         <span class="keyword">const</span> std::map&lt;unsigned short, unsigned char&gt;* m_invovlcd;
+<a name="l00178"></a>00178 };
+<a name="l00179"></a>00179 
+<a name="l00180"></a>00180 }}
+<a name="l00181"></a>00181 <span class="preprocessor">#endif</span>
+<a name="l00182"></a>00182 <span class="preprocessor"></span>
+<a name="l00183"></a>00183 
 </pre></div></div><!-- contents -->
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Jun 14 2014 16:44:38 for textwolf by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jun 16 2014 12:16:32 for textwolf by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

@@ -111,7 +111,7 @@
 <a name="l00060"></a><a class="code" href="structtextwolf_1_1charset_1_1UCS2.html#ad3b8056c2a5cafc1585d841da687c395afcce013e0b389961e25b382521899f80">00060</a>                 <a class="code" href="structtextwolf_1_1charset_1_1UCS2.html#ad3b8056c2a5cafc1585d841da687c395afcce013e0b389961e25b382521899f80">MSB</a>=(byteorder==<a class="code" href="structtextwolf_1_1charset_1_1ByteOrder.html#aa5778ba8d37956ea12adfc3f68ad1304af68b62c75bbcb72f1a3b1db5f9471304">ByteOrder::LE</a>),                 <span class="comment">//&lt; most significant byte index (0 or 1)</span>
 <a name="l00061"></a><a class="code" href="structtextwolf_1_1charset_1_1UCS2.html#ad3b8056c2a5cafc1585d841da687c395a6c0268d3679b1809404d54052461f46a">00061</a>                 <a class="code" href="structtextwolf_1_1charset_1_1UCS2.html#ad3b8056c2a5cafc1585d841da687c395a6c0268d3679b1809404d54052461f46a">Print1shift</a>=(byteorder==<a class="code" href="structtextwolf_1_1charset_1_1ByteOrder.html#aa5778ba8d37956ea12adfc3f68ad1304a150aacfe80288a1a57d23ae3f860f65c">ByteOrder::BE</a>)?8:0,     <span class="comment">//&lt; value to shift with to get the 1st character to print</span>
 <a name="l00062"></a><a class="code" href="structtextwolf_1_1charset_1_1UCS2.html#ad3b8056c2a5cafc1585d841da687c395a7d89870a0df534d760492d8af46def12">00062</a>                 <a class="code" href="structtextwolf_1_1charset_1_1UCS2.html#ad3b8056c2a5cafc1585d841da687c395a7d89870a0df534d760492d8af46def12">Print2shift</a>=(byteorder==<a class="code" href="structtextwolf_1_1charset_1_1ByteOrder.html#aa5778ba8d37956ea12adfc3f68ad1304af68b62c75bbcb72f1a3b1db5f9471304">ByteOrder::LE</a>)?8:0,     <span class="comment">//&lt; value to shift with to get the 2nd character to print</span>
-<a name="l00063"></a><a class="code" href="structtextwolf_1_1charset_1_1UCS2.html#ad3b8056c2a5cafc1585d841da687c395a7ea11e3b6e08c43d4a64a036dcb5833d">00063</a>                 <a class="code" href="structtextwolf_1_1charset_1_1UCS2.html#ad3b8056c2a5cafc1585d841da687c395a7ea11e3b6e08c43d4a64a036dcb5833d">MaxChar</a>=0xFFFF
+<a name="l00063"></a><a class="code" href="structtextwolf_1_1charset_1_1UCS2.html#ad3b8056c2a5cafc1585d841da687c395a7ea11e3b6e08c43d4a64a036dcb5833d">00063</a>                 <a class="code" href="structtextwolf_1_1charset_1_1UCS2.html#ad3b8056c2a5cafc1585d841da687c395a7ea11e3b6e08c43d4a64a036dcb5833d">MaxChar</a>=0xFFFFU
 <a name="l00064"></a>00064         };
 <a name="l00065"></a>00065 
 <a name="l00067"></a>00067         <span class="keyword">template</span> &lt;<span class="keyword">class</span> Iterator&gt;
@@ -178,8 +178,8 @@
 <a name="l00132"></a>00132                 }
 <a name="l00133"></a>00133                 <span class="keywordflow">else</span>
 <a name="l00134"></a>00134                 {
-<a name="l00135"></a>00135                         buf.push_back( chr &gt;&gt; <a class="code" href="structtextwolf_1_1charset_1_1UCS2.html#ad3b8056c2a5cafc1585d841da687c395a6c0268d3679b1809404d54052461f46a">Print1shift</a>);
-<a name="l00136"></a>00136                         buf.push_back( chr &gt;&gt; <a class="code" href="structtextwolf_1_1charset_1_1UCS2.html#ad3b8056c2a5cafc1585d841da687c395a7d89870a0df534d760492d8af46def12">Print2shift</a>);
+<a name="l00135"></a>00135                         buf.push_back( (<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>)(chr &gt;&gt; <a class="code" href="structtextwolf_1_1charset_1_1UCS2.html#ad3b8056c2a5cafc1585d841da687c395a6c0268d3679b1809404d54052461f46a">Print1shift</a>));
+<a name="l00136"></a>00136                         buf.push_back( (<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>)(chr &gt;&gt; <a class="code" href="structtextwolf_1_1charset_1_1UCS2.html#ad3b8056c2a5cafc1585d841da687c395a7d89870a0df534d760492d8af46def12">Print2shift</a>));
 <a name="l00137"></a>00137                 }
 <a name="l00138"></a>00138         }
 <a name="l00139"></a>00139 
@@ -202,7 +202,7 @@
 <a name="l00160"></a><a class="code" href="structtextwolf_1_1charset_1_1UCS4.html#a97065cf86a0cf61d846f15c5487af24aa0fab260c0219a5552f3dedeba22f0117">00160</a>                 <a class="code" href="structtextwolf_1_1charset_1_1UCS4.html#a97065cf86a0cf61d846f15c5487af24aa0fab260c0219a5552f3dedeba22f0117">Print2shift</a>=(byteorder==<a class="code" href="structtextwolf_1_1charset_1_1ByteOrder.html#aa5778ba8d37956ea12adfc3f68ad1304a150aacfe80288a1a57d23ae3f860f65c">ByteOrder::BE</a>)?16:8,    <span class="comment">//&lt; value to shift with to get the 2nd character to print</span>
 <a name="l00161"></a><a class="code" href="structtextwolf_1_1charset_1_1UCS4.html#a97065cf86a0cf61d846f15c5487af24aa15fde1d1da7a24dc722221ef1f6ac69c">00161</a>                 <a class="code" href="structtextwolf_1_1charset_1_1UCS4.html#a97065cf86a0cf61d846f15c5487af24aa15fde1d1da7a24dc722221ef1f6ac69c">Print3shift</a>=(byteorder==<a class="code" href="structtextwolf_1_1charset_1_1ByteOrder.html#aa5778ba8d37956ea12adfc3f68ad1304a150aacfe80288a1a57d23ae3f860f65c">ByteOrder::BE</a>)?8:16,    <span class="comment">//&lt; value to shift with to get the 3rd character to print</span>
 <a name="l00162"></a><a class="code" href="structtextwolf_1_1charset_1_1UCS4.html#a97065cf86a0cf61d846f15c5487af24aadcd06ba0a2d5c69481675b27a6bfef1b">00162</a>                 <a class="code" href="structtextwolf_1_1charset_1_1UCS4.html#a97065cf86a0cf61d846f15c5487af24aadcd06ba0a2d5c69481675b27a6bfef1b">Print4shift</a>=(byteorder==<a class="code" href="structtextwolf_1_1charset_1_1ByteOrder.html#aa5778ba8d37956ea12adfc3f68ad1304a150aacfe80288a1a57d23ae3f860f65c">ByteOrder::BE</a>)?0:24,    <span class="comment">//&lt; value to shift with to get the 4th character to print</span>
-<a name="l00163"></a><a class="code" href="structtextwolf_1_1charset_1_1UCS4.html#a97065cf86a0cf61d846f15c5487af24aa92eaa35112269730f8651cc7dc3de17f">00163</a>                 <a class="code" href="structtextwolf_1_1charset_1_1UCS4.html#a97065cf86a0cf61d846f15c5487af24aa92eaa35112269730f8651cc7dc3de17f">MaxChar</a>=0xFFFFFFFF
+<a name="l00163"></a><a class="code" href="structtextwolf_1_1charset_1_1UCS4.html#a97065cf86a0cf61d846f15c5487af24aa92eaa35112269730f8651cc7dc3de17f">00163</a>                 <a class="code" href="structtextwolf_1_1charset_1_1UCS4.html#a97065cf86a0cf61d846f15c5487af24aa92eaa35112269730f8651cc7dc3de17f">MaxChar</a>=0xFFFFFFFFU
 <a name="l00164"></a>00164         };
 <a name="l00165"></a>00165 
 <a name="l00167"></a>00167         <span class="keyword">template</span> &lt;<span class="keyword">class</span> Iterator&gt;
@@ -268,7 +268,7 @@
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Jun 14 2014 16:44:38 for textwolf by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jun 16 2014 12:16:32 for textwolf by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

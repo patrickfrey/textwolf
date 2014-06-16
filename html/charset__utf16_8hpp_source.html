@@ -117,7 +117,7 @@
 <a name="l00070"></a>00070 <span class="keyword">public</span>:
 <a name="l00071"></a>00071         <span class="keyword">enum</span>
 <a name="l00072"></a>00072         {
-<a name="l00073"></a><a class="code" href="classtextwolf_1_1charset_1_1UTF16.html#a2d07da44e8b38f8530acd568fbb2ac37a310fd412df4910359f7649539145ebca">00073</a>                 <a class="code" href="classtextwolf_1_1charset_1_1UTF16.html#a2d07da44e8b38f8530acd568fbb2ac37a310fd412df4910359f7649539145ebca">MaxChar</a>=0x10FFFF                                <span class="comment">//&lt; maximum character in alphabet</span>
+<a name="l00073"></a><a class="code" href="classtextwolf_1_1charset_1_1UTF16.html#a2d07da44e8b38f8530acd568fbb2ac37a310fd412df4910359f7649539145ebca">00073</a>                 <a class="code" href="classtextwolf_1_1charset_1_1UTF16.html#a2d07da44e8b38f8530acd568fbb2ac37a310fd412df4910359f7649539145ebca">MaxChar</a>=0x10FFFFU                               <span class="comment">//&lt; maximum character in alphabet</span>
 <a name="l00074"></a>00074         };
 <a name="l00075"></a>00075 
 <a name="l00076"></a>00076 <span class="keyword">public</span>:
@@ -223,8 +223,8 @@
 <a name="l00185"></a>00185                 <span class="keywordflow">else</span> <span class="keywordflow">if</span> (ch &lt;= 0x10FFFF)
 <a name="l00186"></a>00186                 {
 <a name="l00187"></a>00187                         ch -= 0x10000;
-<a name="l00188"></a>00188                         <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> hi = (ch / 0x400) + 0xD800;
-<a name="l00189"></a>00189                         <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> lo = (ch % 0x400) + 0xDC00;
+<a name="l00188"></a>00188                         <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> hi = (<span class="keywordtype">unsigned</span> short )((ch / 0x400) + 0xD800);
+<a name="l00189"></a>00189                         <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> lo = (<span class="keywordtype">unsigned</span> short )((ch % 0x400) + 0xDC00);
 <a name="l00190"></a>00190                         buf.push_back( (<span class="keywordtype">char</span>)(<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>)((hi &gt;&gt; Print1shift) &amp; 0xFF));
 <a name="l00191"></a>00191                         buf.push_back( (<span class="keywordtype">char</span>)(<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>)((hi &gt;&gt; Print2shift) &amp; 0xFF));
 <a name="l00192"></a>00192                         buf.push_back( (<span class="keywordtype">char</span>)(<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>)((lo &gt;&gt; Print1shift) &amp; 0xFF));
@@ -259,7 +259,7 @@
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Jun 14 2014 16:44:38 for textwolf by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jun 16 2014 12:16:32 for textwolf by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

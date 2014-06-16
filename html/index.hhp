@@ -30,6 +30,7 @@ sourceiterator_8hpp_source.html
 staticbuffer_8hpp_source.html
 textscanner_8hpp_source.html
 traits_8hpp_source.html
+version_8hpp_source.html
 xmlhdrparser_8hpp_source.html
 xmlpathautomaton_8hpp_source.html
 xmlpathautomatonparse_8hpp_source.html
@@ -58,6 +59,7 @@ sourceiterator_8hpp.html
 staticbuffer_8hpp.html
 textscanner_8hpp.html
 traits_8hpp.html
+version_8hpp.html
 xmlhdrparser_8hpp.html
 xmlpathautomaton_8hpp.html
 xmlpathautomatonparse_8hpp.html
@@ -251,6 +253,7 @@ files.html
 globals.html
 globals_func.html
 globals_type.html
+globals_defs.html
 tab_a.png
 tab_b.png
 tab_h.png

@@ -463,9 +463,9 @@
 <a name="l00473"></a>00473                         <span class="keywordflow">return</span> &amp;element;
 <a name="l00474"></a>00474                 }
 <a name="l00475"></a>00475 
-<a name="l00478"></a><a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html#af71eb33535d84200f45669aaf4ab926d">00478</a>                 <a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html" title="input iterator for the output of this XMLScanner">iterator</a>&amp; <a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html#af71eb33535d84200f45669aaf4ab926d" title="Preincrement.">operator++</a>()          {<span class="keywordflow">return</span> skip();}
+<a name="l00478"></a><a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html#af71eb33535d84200f45669aaf4ab926d">00478</a>                 <a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html" title="input iterator for the output of this XMLScanner">iterator</a>&amp; <a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html#af71eb33535d84200f45669aaf4ab926d" title="Preincrement.">operator++</a>()                          {<span class="keywordflow">return</span> skip();}
 <a name="l00479"></a>00479 
-<a name="l00482"></a><a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html#a8dc249e54670ad2eeb47c84fa13dfcd6">00482</a>                 <a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html" title="input iterator for the output of this XMLScanner">iterator</a> <a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html#a8dc249e54670ad2eeb47c84fa13dfcd6" title="Postincrement.">operator++</a>(<span class="keywordtype">int</span>)        {<a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html" title="input iterator for the output of this XMLScanner">iterator</a> tmp(*<span class="keyword">this</span>); skip(); <span class="keywordflow">return</span> tmp;}
+<a name="l00482"></a><a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html#a8dc249e54670ad2eeb47c84fa13dfcd6">00482</a>                 <a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html" title="input iterator for the output of this XMLScanner">iterator</a> <a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html#a8dc249e54670ad2eeb47c84fa13dfcd6" title="Postincrement.">operator++</a>(<span class="keywordtype">int</span>)                        {<a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html" title="input iterator for the output of this XMLScanner">iterator</a> tmp(*<span class="keyword">this</span>); skip(); <span class="keywordflow">return</span> tmp;}
 <a name="l00483"></a>00483 
 <a name="l00486"></a><a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html#a7e0bef8cd27bffe77cbd83895fb79b21">00486</a>                 <span class="keywordtype">bool</span> <a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html#a7e0bef8cd27bffe77cbd83895fb79b21" title="Compare elements for equality.">operator==</a>( <span class="keyword">const</span> <a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html" title="input iterator for the output of this XMLScanner">iterator</a>&amp; iter)<span class="keyword"> const    </span>{<span class="keywordflow">return</span> compare( iter);}
 <a name="l00487"></a>00487 
@@ -479,7 +479,7 @@
 <a name="l00499"></a>00499 
 <a name="l00502"></a><a class="code" href="classtextwolf_1_1XMLPathSelect.html#ad60a142d105e14660bbda9e90f487642">00502</a>         <a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html" title="input iterator for the output of this XMLScanner">iterator</a> <a class="code" href="classtextwolf_1_1XMLPathSelect.html#a6381cc0a5705d0ec40c3b23eb98ff618" title="Feed the path selector with the next token and get the start iterator for the results.">push</a>( <a class="code" href="classtextwolf_1_1XMLScannerBase.html#aae4f0cdb7e16aca5fdee271fa60e1329" title="Enumeration of XML element types returned by an XML scanner.">XMLScannerBase::ElementType</a> type, <span class="keyword">const</span> std::string&amp; key)
 <a name="l00503"></a>00503         {
-<a name="l00504"></a>00504                 <span class="keywordflow">return</span> <a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html" title="input iterator for the output of this XMLScanner">iterator</a>( *<span class="keyword">this</span>, type, key.c_str(), key.size);
+<a name="l00504"></a>00504                 <span class="keywordflow">return</span> <a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html" title="input iterator for the output of this XMLScanner">iterator</a>( *<span class="keyword">this</span>, type, key.c_str(), key.size());
 <a name="l00505"></a>00505         }
 <a name="l00506"></a>00506 
 <a name="l00509"></a><a class="code" href="classtextwolf_1_1XMLPathSelect.html#a3e1af67ffe496c625d9ae36310054d8e">00509</a>         <a class="code" href="classtextwolf_1_1XMLPathSelect_1_1iterator.html" title="input iterator for the output of this XMLScanner">iterator</a> <a class="code" href="classtextwolf_1_1XMLPathSelect.html#a3e1af67ffe496c625d9ae36310054d8e" title="Get the end of results returned by &#39;push(XMLScannerBase::ElementType,const char*, int)&#39;...">end</a>()
@@ -494,7 +494,7 @@
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Jun 14 2014 16:44:38 for textwolf by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jun 16 2014 12:16:33 for textwolf by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>
