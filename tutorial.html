@@ -47,43 +47,43 @@
 
 <h1>Introduction to textwolf</h1>
 
-<h2>How to Use textwolf</h2>
-<div class="description">To use textwolf you have to include include/textwolf.hpp
+<h2>How to use textwolf</h2>
+<div class="description">To use textwolf we have to include include/textwolf.hpp
 <pre>#include "textwolf.hpp"
 </pre>
 </div>
 <div class="description">The namespace textwolf is defined there for all templates introduced here.
 </div>
 
-<h2>W3C Standards and textwolf</h2>
+<h2>W3C standards and textwolf</h2>
 <div class="description">textwolf follows the standard of <a href="http://www.w3.org/TR/xml/">W3C XML 1.0</a>
 but does not implement all of it. The following list shows the exceptions:
 <ul>
-<li>Documents are not validated against any schema definition and they are assumed to be well formed.
+<li>An input document is not validated against any schema definition. It is assumed to be well formed.
 </li>
 <li>Only entity mappings to single characters are supported.
 </li>
-<li>ENTITY definitions in the XML are ignored. Entity definitions have to be passed as read only table.
-Only named entities substituting one unicode character are allowed.
+<li>ENTITY definitions in the XML are ignored. Entity definitions have to be passed as read-only table.
+Only named entities substituting a single Unicode character are allowed.
 </li>
 <li>Declarative "&lt;! ... &gt;" definitions like DOCTYPE, ELEMENT and ATTLIST are fetched as elements
 but their content has no effect on the parsing engine.
 </li>
 <li>Commands of the form "&lt;? ..." like PI (process instructions) are ignored (skipped over).
 </li>
-<li>Context information given by namespaces is not treated specially. A namespace prefix with colon 
-is treated as part of the tag name and not as context information. For example an attribute 
-"xmlns:xsi" will be treated as an attribute with name "xmlns:xsi".
+<li>Context information given by namespaces is not handled. A namespace prefix with colon 
+is handled as part of the tag name and not as context information. For example an attribute 
+"xmlns:xsi" is treated as attribute with name "xmlns:xsi".
 </li>
 </ul>
 </div>
 
-<h2>Wide Character Set Encodings</h2>
+<h2>Wide character set encodings</h2>
 <div class="description">textwolf is a template library that is instantiated with and encoding type
-as template parameter. If you want to parse the character set encoding according to what is in the
-XML header, you have to parse the XML header first to determine the character set encoding. Then
-you can use the right instance of textwolf. In textwolf/xmlhdrparser.hpp There is a helper class 
-provided by textwolf to parse the XML header and find out the encoding of the document:
+as template parameter. If we want to parse the encoding according to what is in the
+XML header, we have to parse the XML header first to determine the encoding. Then
+we can use the right instance of textwolf. In textwolf/xmlhdrparser.hpp is a helper class 
+to parse the XML header and find out the encoding of the document:
 <a href="http://patrickfrey.github.io/textwolf/html/classtextwolf_1_1XmlHdrParser.html">XmlHdrParser</a>.
 </div>
 
@@ -102,7 +102,7 @@ provided by textwolf to parse the XML header and find out the encoding of the do
 <h4>Template parameters</h4>
 <ol>
 <li> InputIterator  (explained in the section iterator)</li>
-<li> Charset = character set encoding of the input (explained in the section character set encodings)</li>
+<li> Charset = encoding of the input (explained in the section "Character set encodings")</li>
 </ol>
 
 <h4>Example</h4>
@@ -121,8 +121,8 @@ iterator.
 <h4>Template parameters</h4>
 <ol>
 <li>InputIterator = input iterator type (explained in the section iterator)</li>
-<li>InputCharSet = character set encoding of the input (explained in the section character set encodings)</li>
-<li>OutputCharSet = character set encoding of the output (explained in the section character set encodings)</li>
+<li>InputCharSet = character set encoding of the input (explained in the section "Character set encodings")</li>
+<li>OutputCharSet = character set encoding of the output (explained in the section "Character set encodings")</li>
 <li>OutputBuffer = buffer type to use for the tokens parsed (STL back insertion sequence interface)</li>
 </ol>
 
@@ -130,7 +130,7 @@ iterator.
 <ul>
 <li>InputIterator&amp; src = an input iterator reference</li>
 <li>OutputBuffer outbuf = the buffer to use for output</li>
-<li>EntityMap* emap = pointer to a read only map of entities (optional)</li>
+<li>EntityMap* emap = pointer to a read-only map of entities (optional)</li>
 </ul>
 
 <h4>Example</h4>
@@ -162,7 +162,7 @@ for (Scan::iterator itr = xs.begin(); itr != xs.end(); itr++)
 selecting XML path expression and to assign a type as integer to the 
 filtered tokens. It has one template argument:
 <ol>
-<li>OutputCharSet = the character set in which the tokens are stored and therefore in which format they are processed. </li>
+<li>OutputCharSet = the encoding in which the tokens are stored and therefore in which format they are processed. </li>
 </ol>
 </div>
 <div class="description">The automaton construction is described in the section "how to define an XML path expression automaton".
@@ -179,18 +179,18 @@ iterator. It is constructed by passing
 
 <div class="description">The class template definition has the following parameters
 <ol>
-<li> CharSet = character set encoding used for processing</li>
+<li> CharSet = encoding used for processing</li>
 </ol>
 </div>
 <div class="description">The XMLPathSelect class is fed with the output
 of an XMLScanner. The idea is to iterate on an input with XMLScanner
 and to push every element fetched to the XMLPathSelect. After every
-push you can iterate on the new results you got with this push.
+push we can iterate on the new results we got with this push.
 </div>
 
-<h2>Character Set Encodings</h2>
+<h2>Character set encodings</h2>
 <h3>Predefined</h3>
-<div class="description">The following character set encodings are defined in the textwolf::charset namespace as examples:
+<div class="description">The following encodings are defined in the textwolf::charset namespace as examples:
 <ul>
 <li> UTF8 = utf-8</li>
 <li> UTF16LE = utf-16 Litle Endian</li>
@@ -203,10 +203,10 @@ push you can iterate on the new results you got with this push.
 </ul>
 </div>
 
-<h3>How to Define Your Own</h3>
+<h3>How to define our own</h3>
 <div class="description">
-You can define your own character set 
-encodings. A structure with the following interface is passed to a
+We can define our own character set encodings. 
+A structure with the following interface is passed to a
 textwolf iterator as a character set encoding definition. Textwolf 
 assumes some form of a single Unicode character (UChar) to be able
 to map them to each other.
@@ -215,7 +215,7 @@ to map them to each other.
 /// \brief Interface that has to be implemented for a character set encoding
 struct Interface
 {
-	/// \brief Defines the highest unicode character representation 
+	/// \brief Defines the highest Unicode character representation 
 	///	of a character in this encoding.
 	enum {MaxChar=0xFF};
 
@@ -241,15 +241,15 @@ struct Interface
 	template &lt;class Iterator&gt;
 	static void fetchbytes( char* buf, unsigned int& bufpos, Iterator& itr);
 
-	/// \brief Fetches the unicode character representation of the current character
+	/// \brief Fetches the Unicode character representation of the current character
 	/// \param [in] buf buffer for the parses character data
 	/// \param [in,out] bufpos position in 'buf'
 	/// \param [in,out] itr iterator on the source
-	/// \return the value of the unicode character
+	/// \return the value of the Unicode character
 	template &lt;class Iterator&gt;
 	static UChar value( char* buf, unsigned int& bufpos, Iterator& itr);
 
-	/// \brief Prints a unicode character to a buffer
+	/// \brief Prints a Unicode character to a buffer
 	/// \tparam Buffer STL back insertion sequence
 	/// \param [in] chr character to print
 	/// \param [out] buf buffer to print to
@@ -266,7 +266,7 @@ struct Interface
 iterator on a sequence of bytes with the following properties:
 </div>
 <ul>
-<li> It implements pre increment:
+<li> It implements pre-increment:
 <pre>iterator&amp; operator++()
 </pre>
 </li>
@@ -286,9 +286,9 @@ The following iterators for various purposes are already defined:
 </div>
 
 <div class="description">
-The following example shows how you can define your own input iterator.
+The following example shows how we can define our own input iterator.
 It shows a simple textwolf iterator based on an STL iterator.
-You have to define a structure like this:
+We have to define a structure like this:
 </div>
 
 <pre>template &lt;typename iterator&gt;
@@ -317,7 +317,7 @@ struct twiterator
 	}
 };
 </pre>
-<h3>Chunkwise Processing of Input</h3>
+<h3>Chunkwise processing of input</h3>
 <div class="description">
 For chunk by chunk feeding of input a longjmp structure can be defined and passed 
 to the source iterator. The iterator can issue a longjump if it reaches the end
@@ -405,7 +405,7 @@ textwolf::TextScanner
 	&gt; itr( in);
 for (; itr.control() != textwolf::EndOfText; itr++)
 {
-	UChar chr = *itr; // parse the unicode character
+	UChar chr = *itr; // parse the Unicode character
 }
 </pre>
 </li>
@@ -505,8 +505,8 @@ for (ci=xc.begin(),ce=xc.end(); ci!=ce; ci++)
 <h2>How to define an XML path expression automaton</h2>
 <div class="description">An XML Path expression automaton in defined as 
 tree. Every expression defines a set containing the root node as start of the selection.
-Subsequent node selections in the expression refer to the previously selected
-nodes and create a new set of selected nodes. The set of nodes you get at the end
+Subsequent node selections in the expression reference the previously selected
+nodes and create a new set of selected nodes. The set of nodes we get at the end
 of the selection defines the set of nodes selected by the expression.
 The following operators are defined for building node selection expressions.
 <br>For a node 'A'</div>
@@ -616,11 +616,11 @@ Automaton atm;
 <h2>textwolf and XPath</h2>
 <div class="description">
 textwolf has not the power of XPath and it does not aim to. It does not 
-buffer than the currently processed token so it can't detect patterns 
+buffer more than the currently processed token. Therefore it can't detect patterns 
 that require buffering. It can't even cope with the fact that tag 
 attributes in XML have no order. For expressions that are not 
-expressible in this model, you have to build the logic around textwolf.
-textwolf is not XPath, but with some addional effort you get an engine 
+expressible in this model, we have to build the logic around textwolf.
+textwolf is not XPath, but with some additional effort we get an engine 
 that is able to process at least 'abbreviated syntax of XPath' without 
 parent references and content conditions.
 </div>
@@ -645,8 +645,8 @@ to
 A--["ter"]("name","kaspar")
 </pre>
 </div>
-<div class="description">Some cases are even worse. If you select 
-attribute values where you have attribute conditions, then you can solve
+<div class="description">Some cases are even worse. If we select 
+attribute values where we have attribute conditions, then we can solve
  it only in the filter functions on the iterator after calling textwolf.
  Selections have to be at the end, because they are not buffered. 
 Therefore something like
