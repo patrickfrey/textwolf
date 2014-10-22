@@ -1,5 +1,5 @@
 Documentation
-* For using textwolf just include "include/textwolf.hpp".
+* textwolf is a header only library. For using it, copy the header files and include "include/textwolf.hpp".
 * textwolf can be compiled with the highest optimization level, specially with deep inline expansion
 * The textwolf home is at at http://textwolf.net
 * A textwolf introduction can be found at http://textwolf.net/tutorial.html
