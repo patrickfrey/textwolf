@@ -87,10 +87,16 @@ public:
 					if (*pp == 0) return pp.getPosition()+1;
 					++pp;
 					continue;
+				case '(':
+					while (*pp != 0 && *pp != ')') pp++;
+					if (*pp == 0) return pp.getPosition()+1;
+					++pp;
+					continue;
 				default:
 					if (pp.control() == Undef || pp.control() == Any)
 					{
-						idref.push_back( parseIdentifier( pp, idstrings));
+						std::size_t id = parseIdentifier( pp, idstrings);
+						idref.push_back( id);
 					}
 					else
 					{
@@ -113,26 +119,27 @@ public:
 					if (di == de) return src.getPosition()+1;
 					++src;
 					skipIdentifier( src);
-					expr( getIdentifier( *di, idstrings) );
+					expr.selectAttribute( getIdentifier( *di++, idstrings));
 				}
 				case '/':
 				{
 					++src;
 					if (*src == '/')
 					{
+						expr --;
 						++src;
 						if (*src == '@')
 						{
 							if (di == de) return src.getPosition()+1;
 							++src;
 							skipIdentifier( src);
-							expr -- ( getIdentifier( *di, idstrings) );
+							expr.selectAttribute( getIdentifier( *di++, idstrings));
 						}
 						else
 						{
 							if (di == de) return src.getPosition()+1;
 							skipIdentifier( src);
-							expr -- [ getIdentifier( *di, idstrings) ];
+							expr.selectTag( getIdentifier( *di++, idstrings));
 						}
 					}
 					else
@@ -142,13 +149,13 @@ public:
 							if (di == de) return src.getPosition()+1;
 							++src;
 							skipIdentifier( src);
-							expr ( getIdentifier( *di, idstrings) );
+							expr.selectAttribute( getIdentifier( *di++, idstrings));
 						}
 						else
 						{
 							if (di == de) return src.getPosition()+1;
 							skipIdentifier( src);
-							expr [ getIdentifier( *di, idstrings) ];
+							expr.selectTag( getIdentifier( *di++, idstrings));
 						}
 					}
 					continue;
@@ -196,10 +203,8 @@ public:
 				case '(':
 					++src;
 					skipSpaces( src);
-					if (*src != ')')
-					{
-						throw std::runtime_error( "expected ')' after '(' for content selection");
-					}
+					if (*src != ')') return src.getPosition()+1;
+					++src;
 					expr.selectContent();
 					break;
 				default:
@@ -227,7 +232,7 @@ private:
 	std::size_t parseIdentifier( SrcScanner& src, std::string& idstrings)
 	{
 		std::size_t rt = idstrings.size();
-		for (; src.control() == Undef || src.control() == Any; ++src)
+		for (; (src.control() == Undef || src.control() == Any) && *src != (unsigned char)'('; ++src)
 		{
 			m_atmcharset.print( *src, idstrings);
 		}
@@ -237,7 +242,7 @@ private:
 
 	static void skipIdentifier( SrcScanner& src)
 	{
-		for (; src.control() == Undef || src.control() == Any; ++src);
+		for (; (src.control() == Undef || src.control() == Any) && *src != (unsigned char)'('; ++src);
 	}
 
 	const char* getIdentifier( std::size_t idx, const std::string& idstrings) const
