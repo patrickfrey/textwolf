@@ -193,6 +193,15 @@ public:
 					}
 					continue;
 				}
+				case '(':
+					++src;
+					skipSpaces( src);
+					if (*src != ')')
+					{
+						throw std::runtime_error( "expected ')' after '(' for content selection");
+					}
+					expr.selectContent();
+					break;
 				default:
 					return src.getPosition()+1;
 			}

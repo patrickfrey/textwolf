@@ -100,7 +100,7 @@ int main( int, const char**)
 			return 0;
 		}
 	}
-	catch (exception ee)
+	catch (const std::runtime_error& ee)
 	{
 		std::cerr << "ERROR " << ee.what() << std::endl;
 		return 1;
