@@ -79,6 +79,7 @@ public:
 			switch (*pp)
 			{
 				case '/':
+				case '*':
 				case '@':
 					++pp;
 					continue;
@@ -109,7 +110,6 @@ public:
 		CStringIterator itr( esrc, esrcsize);
 		SrcScanner src( m_srccharset, itr);
 		PathElement expr( this);
-
 		for (; *src; skipSpaces( src))
 		{
 			switch (*src)
@@ -130,32 +130,64 @@ public:
 						++src;
 						if (*src == '@')
 						{
-							if (di == de) return src.getPosition()+1;
 							++src;
-							skipIdentifier( src);
-							expr.selectAttribute( getIdentifier( *di++, idstrings));
+							if (*src == '*')
+							{
+								++src;
+								expr.selectAttribute( 0);
+							}
+							else
+							{
+								if (di == de) return src.getPosition()+1;
+								skipIdentifier( src);
+								expr.selectAttribute( getIdentifier( *di++, idstrings));
+							}
 						}
 						else
 						{
-							if (di == de) return src.getPosition()+1;
-							skipIdentifier( src);
-							expr.selectTag( getIdentifier( *di++, idstrings));
+							if (*src == '*')
+							{
+								++src;
+								expr.selectTag( 0);
+							}
+							else
+							{		
+								if (di == de) return src.getPosition()+1;
+								skipIdentifier( src);
+								expr.selectTag( getIdentifier( *di++, idstrings));
+							}
 						}
 					}
 					else
 					{
 						if (*src == '@')
 						{
-							if (di == de) return src.getPosition()+1;
 							++src;
-							skipIdentifier( src);
-							expr.selectAttribute( getIdentifier( *di++, idstrings));
+							if (*src == '*')
+							{
+								++src;
+								expr.selectAttribute( 0);
+							}
+							else
+							{
+								if (di == de) return src.getPosition()+1;
+								skipIdentifier( src);
+								expr.selectAttribute( getIdentifier( *di++, idstrings));
+							}
 						}
 						else
 						{
-							if (di == de) return src.getPosition()+1;
-							skipIdentifier( src);
-							expr.selectTag( getIdentifier( *di++, idstrings));
+							if (*src == '*')
+							{
+								++src;
+								expr.selectTag( 0);
+							}
+							else
+							{
+								if (di == de) return src.getPosition()+1;
+								skipIdentifier( src);
+								expr.selectTag( getIdentifier( *di++, idstrings));
+							}
 						}
 					}
 					continue;
@@ -206,6 +238,8 @@ public:
 					if (*src != ')') return src.getPosition()+1;
 					++src;
 					expr.selectContent();
+					skipSpaces( src);
+					if (*src) return src.getPosition()+1;
 					break;
 				default:
 					return src.getPosition()+1;

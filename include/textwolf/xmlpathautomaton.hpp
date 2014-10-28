@@ -130,9 +130,6 @@ public:
 		///\param[in] orig mask to copy
 		Mask( const Mask& orig)								:pos(orig.pos),neg(orig.neg) {}
 
-		///\brief Constructor by operation type
-		Mask( Operation op)								:pos(0),neg(0) {this->match(op);}
-
 		///\brief Reset operation (deactivate)
 		void reset()									{pos=0; neg=0;}
 
@@ -143,6 +140,11 @@ public:
 		///\brief Declare an operation to match on an element type
 		void match( XMLScannerBase::ElementType e)					{pos |= (1<<(unsigned short)e);}
 		bool hasMatch( XMLScannerBase::ElementType e) const				{return (pos & (1<<(unsigned short)e)) != 0;}
+
+		bool operator==( const Mask& o)
+		{
+			return (o.pos == pos) && (o.neg == neg);
+		}
 
 		///\brief Declare an operation as seek operation
 		void seekop( Operation op)
@@ -278,7 +280,7 @@ public:
 
 		///\brief Check it the state definition is empty
 		///\return true for an empty state
-		bool isempty()				{return key==0&&core.typeidx==0;}
+		bool isempty()				{return key==0&&core.typeidx==0&&next==0&&link==0&&core.mask.empty();}
 
 		///\brief Define the matching key of this state
 		///\param[in] p_keysize size of the key in bytes
@@ -486,18 +488,26 @@ private:
 				stateidx = states.size();
 				states.push_back( state);
 			}
+			Mask mask;
+			mask.seekop( op);
+
 			for (int ee=stateidx; ee != -1; stateidx=ee,ee=states[ee].link)
 			{
-				if (states[ee].key != 0 && keysize == states[ee].keysize && states[ee].core.follow == follow)
+				if ((states[ee].key != 0) && (keysize == states[ee].keysize) && (states[ee].core.follow == follow) && (mask == states[ee].core.mask))
 				{
 					unsigned int ii;
 					for (ii=0; ii<keysize && states[ee].key[ii]==key[ii]; ii++);
 					if (ii == keysize) return states[ee].next;
 				}
 			}
-			if (!states[stateidx].isempty())
+			if (!states[ stateidx].isempty())
 			{
-				stateidx = states[stateidx].link = states.size();
+				while (states[ stateidx].link >= 0)
+				{
+					stateidx = states[ stateidx].link;
+				}
+				states[ stateidx].link = states.size();
+				stateidx = states.size();
 				states.push_back( state);
 			}
 			states.push_back( state);
@@ -537,8 +547,14 @@ private:
 
 			if (!states[stateidx].isempty())
 			{
-				stateidx = states[stateidx].link = states.size();
+				while (states[ stateidx].link >= 0)
+				{
+					stateidx = states[stateidx].link;
+				}
+				states[ stateidx].link = states.size();
+				stateidx = states.size();
 				states.push_back( state);
+				
 			}
 			states[ stateidx].defineOutput( printOpMask, typeidx, follow, start, end);
 			return stateidx;
