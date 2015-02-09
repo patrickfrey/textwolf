@@ -367,6 +367,37 @@ private:
 	}
 
 public:
+	/// \brief Get the next states states that match to an element of a type
+	/// \tparam Buffer buffer type for the result (back insertion sequence)
+	/// \param[in] type element type to check
+	/// \param[out] buf where to append the result to
+	/// \remark This function works only if called after iterating through the result with the iterator created with XMLPathSelect::push(..)
+	/// \note This function is a helper function for inspecting follow states that match a given type with an arbitrary value
+	template <class Buffer>
+	void getTokenTypeMatchingStates( XMLScannerBase::ElementType type, bool withFollows, Buffer& buf)
+	{
+		unsigned int ti = context.scope.range.tokenidx_to, te = tokens.size();
+		for (; ti<te; ++ti)
+		{
+			if (tokens[ ti].core.mask.matches( type))
+			{
+				buf.push_back( tokens[ti].stateidx);
+			}
+		}
+		if (withFollows)
+		{
+			ti=0; te = context.scope.range.followidx;
+			for (; ti<te; ++ti)
+			{
+				if (tokens[ follows[ ti]].core.mask.matches( type))
+				{
+					buf.push_back( tokens[ follows[ ti]].stateidx);
+				}
+			}
+		}
+	}
+
+public:
 	/// \brief Constructor
 	/// \param[in] p_atm read only ML path select automaton reference
 	XMLPathSelect( const ThisXMLPathSelectAutomaton* p_atm)

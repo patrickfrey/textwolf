@@ -182,6 +182,7 @@ public:
 			}
 		}
 
+		///\brief Get the name of a seek operation
 		const char* seekopName() const
 		{
 			if (this->hasMatch( XMLScannerBase::OpenTag)
@@ -393,6 +394,26 @@ public:
 			rt << (int)(ii-states.begin()) << ": " << ii->tostring() << std::endl;
 		}
 		return rt.str();
+	}
+
+	/// \brief Get the emmitted results for a successor state that match to an element of a type
+	/// \tparam Buffer buffer type for the result (back insertion sequence)
+	/// \param[in] stateidx state to check
+	/// \param[in] e follow element type to check
+	/// \param[out] buf where to append the result to
+	/// \note This function is a helper function for inspecting the follow nodes for a state 
+	template <class Buffer>
+	void getEmmitedTokens( unsigned int stateidx, XMLScannerBase::ElementType e, Buffer& buf)
+	{
+		int si = states[ stateidx].next;
+		while (si >= 0)
+		{
+			if (states[ si].core.typeidx && states[ si].core.mask.matches( e))
+			{
+				buf.push_back( states[ si].core.typeidx);
+			}
+			si = states[ si].link;
+		}
 	}
 
 	///\class Token

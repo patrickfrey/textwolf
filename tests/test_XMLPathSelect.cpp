@@ -69,6 +69,7 @@ int main( int, const char**)
 		(*atm)["Y"]--("q","1")() = 17;
 		(*atm)["Y"]--(0,"2")() = 18;
 
+		std::cout << "AUTOMATON:" << std::endl << atm.tostring() << std::endl;
 		//[3] define the XML Path selection by the automaton over the source iterator
 		typedef XMLPathSelect<charset::UTF8> MyXMLPathSelect;
 		typedef XMLScanner<char*,charset::IsoLatin,charset::IsoLatin,std::string> MyXMLScanner;
@@ -80,6 +81,8 @@ int main( int, const char**)
 		MyXMLScanner::iterator ci,ce;
 		for (ci=xc.begin(),ce=xc.end(); ci!=ce; ci++)
 		{
+			std::cout << "Try " << XMLScannerBase::getElementTypeName( ci->type())
+					<< " '" << ci->content() << "'" << std::endl;
 			MyXMLPathSelect::iterator
 				itr = xs.push( ci->type(), ci->content(), ci->size()),end=xs.end();
 
