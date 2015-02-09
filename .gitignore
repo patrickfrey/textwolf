@@ -7,3 +7,7 @@ tests/test_XMLPathSelect
 tests/test_XMLPathSelect.o
 tests/test_XMLScanner
 tests/test_XMLScanner.o
+examples/TextScanner.o
+examples/XMLPathSelect.o
+examples/XMLScanner.o
+examples/XMLScanner_chunkwise.o

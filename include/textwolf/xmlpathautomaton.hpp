@@ -403,7 +403,7 @@ public:
 	/// \param[out] buf where to append the result to
 	/// \note This function is a helper function for inspecting the follow nodes for a state 
 	template <class Buffer>
-	void getEmmitedTokens( unsigned int stateidx, XMLScannerBase::ElementType e, Buffer& buf)
+	void getEmmitedTokens( unsigned int stateidx, XMLScannerBase::ElementType e, Buffer& buf) const
 	{
 		int si = states[ stateidx].next;
 		while (si >= 0)

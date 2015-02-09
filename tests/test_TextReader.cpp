@@ -71,7 +71,7 @@ public:
 
 public:
 	EnumCharIterator( const EnumCharIterator& o)
-		:ii(o.ii),pos(o.pos),buf(o.buf){}
+		:ii(o.ii),pos(o.pos),buf(o.buf),encoding(o.encoding){}
 
 	explicit EnumCharIterator( unsigned int start=0)
 		:pos(0),buf(16)
@@ -101,7 +101,7 @@ struct TextScannerTest
 	unsigned int rndSeed;
 	const char* name;
 
-	TextScannerTest( const char* nam)
+	explicit TextScannerTest( const char* nam)
 		:start(0),rndSeed(0),name(nam) {};
 
 	unsigned int rnd()

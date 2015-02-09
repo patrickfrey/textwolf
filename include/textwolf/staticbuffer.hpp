@@ -52,7 +52,7 @@ class StaticBuffer :public throws_exception
 public:
 	/// \brief Constructor
 	explicit StaticBuffer( std::size_t n)
-		:m_pos(0),m_size(n),m_ar(0),m_allocated(true)
+		:m_pos(0),m_size(n),m_ar(0),m_allocated(true),m_overflow(false)
 	{
 		m_ar = (char*)std::calloc( n, sizeof(char));
 		if (!m_ar) throw std::bad_alloc();

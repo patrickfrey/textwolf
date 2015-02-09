@@ -374,7 +374,7 @@ public:
 	/// \remark This function works only if called after iterating through the result with the iterator created with XMLPathSelect::push(..)
 	/// \note This function is a helper function for inspecting follow states that match a given type with an arbitrary value
 	template <class Buffer>
-	void getTokenTypeMatchingStates( XMLScannerBase::ElementType type, bool withFollows, Buffer& buf)
+	void getTokenTypeMatchingStates( XMLScannerBase::ElementType type, bool withFollows, Buffer& buf) const
 	{
 		unsigned int ti = context.scope.range.tokenidx_to, te = tokens.size();
 		for (; ti<te; ++ti)
