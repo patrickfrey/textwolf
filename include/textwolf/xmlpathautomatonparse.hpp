@@ -120,6 +120,7 @@ public:
 					++src;
 					skipIdentifier( src);
 					expr.selectAttribute( getIdentifier( *di++, idstrings));
+					continue;
 				}
 				case '/':
 				{
@@ -240,7 +241,8 @@ public:
 					expr.selectContent();
 					skipSpaces( src);
 					if (*src) return src.getPosition()+1;
-					break;
+					continue;
+
 				default:
 					return src.getPosition()+1;
 			}
@@ -263,10 +265,24 @@ private:
 		return std::atoi( num.c_str());
 	}
 
+	static bool isIdentifierChar( SrcScanner& src)
+	{
+		if (src.control() == Undef || src.control() == Any)
+		{
+			if (*src == (unsigned char)'*') return false;
+			if (*src == (unsigned char)'/') return false;
+			if (*src == (unsigned char)'(') return false;
+			if (*src == (unsigned char)')') return false;
+			if (*src == (unsigned char)'@') return false;
+			return true;
+		}
+		return false;
+	}
+
 	std::size_t parseIdentifier( SrcScanner& src, std::string& idstrings)
 	{
 		std::size_t rt = idstrings.size();
-		for (; (src.control() == Undef || src.control() == Any) && *src != (unsigned char)'('; ++src)
+		for (; isIdentifierChar(src); ++src)
 		{
 			m_atmcharset.print( *src, idstrings);
 		}
@@ -276,7 +292,7 @@ private:
 
 	static void skipIdentifier( SrcScanner& src)
 	{
-		for (; (src.control() == Undef || src.control() == Any) && *src != (unsigned char)'('; ++src);
+		for (; isIdentifierChar(src); ++src);
 	}
 
 	const char* getIdentifier( std::size_t idx, const std::string& idstrings) const

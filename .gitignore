@@ -11,3 +11,4 @@ examples/TextScanner.o
 examples/XMLPathSelect.o
 examples/XMLScanner.o
 examples/XMLScanner_chunkwise.o
+doc/doxygen
