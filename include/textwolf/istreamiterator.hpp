@@ -81,8 +81,8 @@ public:
 	}
 
 private:
-	std::istream_iterator<unsigned char> m_itr;
-	std::istream_iterator<unsigned char> m_end;
+	std::istreambuf_iterator<unsigned char> m_itr;
+	std::istreambuf_iterator<unsigned char> m_end;
 };
 
 }//namespace
