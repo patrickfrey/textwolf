@@ -125,6 +125,7 @@ private:
 		{
 			if (m_input->eof())
 			{
+				m_abspos += m_readsize;
 				m_readsize = m_input->gcount();
 				m_readpos = 0;
 				return (m_readsize > 0);
