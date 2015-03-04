@@ -95,7 +95,8 @@ public:
 	enum Operation
 	{
 		Content,			//< searching content token
-		Tag,				//< searching a tag
+		OpenTag,			//< searching an open tag
+		CloseTag,			//< searching a close tag
 		Attribute,			//< searching an attribute
 		ThisAttributeValue,		//< checking the value of the attribute just parsed (not an arbitrary but this one)
 		AttributeValue,			//< searching a value of an attribute
@@ -106,7 +107,7 @@ public:
 	///\return the operation as string
 	static const char* operationName( Operation op)
 	{
-		static const char* name[ 6] = {"Content", "Tag", "Attribute", "ThisAttributeValue", "AttributeValue", "ContentStart"};
+		static const char* name[ 7] = {"Content", "OpenTag", "CloseTag", "Attribute", "ThisAttributeValue", "AttributeValue", "ContentStart"};
 		return name[ (unsigned int)op];
 	}
 
@@ -151,9 +152,14 @@ public:
 		{
 			switch (op)
 			{
-				case Tag:
+				case OpenTag:
 					this->match( XMLScannerBase::OpenTag);
 					this->match( XMLScannerBase::HeaderStart);
+					break;
+				case CloseTag:
+					this->match( XMLScannerBase::CloseTag);
+					this->match( XMLScannerBase::CloseTagIm);
+					this->match( XMLScannerBase::HeaderEnd);
 					break;
 				case Attribute:
 					this->match( XMLScannerBase::TagAttribName);
@@ -187,7 +193,12 @@ public:
 		{
 			if (this->hasMatch( XMLScannerBase::OpenTag)
 			&&  this->hasMatch( XMLScannerBase::HeaderStart))
-				return "Tag";
+				return "OpenTag";
+
+			if (this->hasMatch( XMLScannerBase::CloseTag)
+			&&  this->hasMatch( XMLScannerBase::CloseTagIm)
+			&&  this->hasMatch( XMLScannerBase::HeaderEnd))
+				return "CloseTag";
 
 			if (this->hasMatch( XMLScannerBase::TagAttribName)
 			&&  this->hasMatch( XMLScannerBase::HeaderAttribName)
@@ -737,11 +748,14 @@ public:
 		///\param [in] name name of the tag
 		///\return *this
 		///\remark same as selectTag(const char*)
-		PathElement& operator []( const char* name) throw(exception)			{return doSelect( Tag, name);}
+		PathElement& operator []( const char* name) throw(exception)			{return doSelect( OpenTag, name);}
 		///\brief Find tag by name
 		///\param [in] name name of the tag
 		///\return *this
-		PathElement& selectTag( const char* name) throw(exception)			{return doSelect( Tag, name);}
+		PathElement& selectTag( const char* name) throw(exception)			{return doSelect( OpenTag, name);}
+		///\brief Find close tag of current tag selected
+		///\return *this
+		PathElement& selectCloseTag() throw(exception)					{return doSelect( CloseTag, 0);}
 
 		///\brief Find tag with one attribute
 		///\param [in] name name of the attribute

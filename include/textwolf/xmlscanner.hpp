@@ -199,21 +199,21 @@ public:
 	/// \brief Enumeration of XML element types returned by an XML scanner
 	enum ElementType
 	{
-		None,					///< empty (NULL)
-		ErrorOccurred,				///< XML scanning error error reported
-		HeaderStart,				///< open XML header tag
-		HeaderAttribName,			///< tag attribute name in the XML header
-		HeaderAttribValue,			///< tag attribute value in the XML header
-		HeaderEnd,				///< end of XML header event (after parsing '?&gt;')
-		DocAttribValue,				///< document attribute value in a DOCTYPE or ENTITY definition
-		DocAttribEnd,				///< end of a document attribute definition <! .. !>
-		TagAttribName,				///< tag attribute name (e.g. "id" in &lt;person id='5'&gt;
-		TagAttribValue,				///< tag attribute value (e.g. "5" in &lt;person id='5'&gt;
-		OpenTag,				///< open tag (e.g. "bla" for "&lt;bla...")
-		CloseTag,				///< close tag (e.g. "bla" for "&lt;/bla&gt;")
-		CloseTagIm,				///< immediate close tag (e.g. "bla" for "&lt;bla /&gt;")
-		Content,				///< content element string (separated by spaces or end of line)
-		Exit					///< end of document
+		None,					///<  [0] empty (NULL)
+		ErrorOccurred,				///<  [1] XML scanning error error reported
+		HeaderStart,				///<  [2] open XML header tag
+		HeaderAttribName,			///<  [3] tag attribute name in the XML header
+		HeaderAttribValue,			///<  [4] tag attribute value in the XML header
+		HeaderEnd,				///<  [5] end of XML header event (after parsing '?&gt;')
+		DocAttribValue,				///<  [6] document attribute value in a DOCTYPE or ENTITY definition
+		DocAttribEnd,				///<  [7] end of a document attribute definition <! .. !>
+		TagAttribName,				///<  [8] tag attribute name (e.g. "id" in &lt;person id='5'&gt;
+		TagAttribValue,				///<  [9] tag attribute value (e.g. "5" in &lt;person id='5'&gt;
+		OpenTag,				///< [10] open tag (e.g. "bla" for "&lt;bla...")
+		CloseTag,				///< [11] close tag (e.g. "bla" for "&lt;/bla&gt;")
+		CloseTagIm,				///< [12] immediate close tag (e.g. "bla" for "&lt;bla /&gt;")
+		Content,				///< [13] content element string (separated by spaces or end of line)
+		Exit					///< [14] end of document
 	};
 	enum
 	{
@@ -1096,6 +1096,12 @@ public:
 		error = Ok;
 		if (str) *str=getErrorString(rt);
 		return rt;
+	}
+
+	/// \brief Get the iterator pointing to the current source position
+	const InputIterator& getIterator() const
+	{
+		return m_src.getIterator();
 	}
 
 	/// \brief Scan the next XML element

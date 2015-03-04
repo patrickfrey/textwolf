@@ -81,6 +81,7 @@ public:
 				case '/':
 				case '*':
 				case '@':
+				case '~':
 					++pp;
 					continue;
 				case '[':
@@ -193,6 +194,12 @@ public:
 					}
 					continue;
 				}
+				case '~':
+				{
+					++src;
+					expr.selectCloseTag();
+					continue;
+				}
 				case '[':
 				{
 					// Range
@@ -270,6 +277,7 @@ private:
 		if (src.control() == Undef || src.control() == Any)
 		{
 			if (*src == (unsigned char)'*') return false;
+			if (*src == (unsigned char)'~') return false;
 			if (*src == (unsigned char)'/') return false;
 			if (*src == (unsigned char)'(') return false;
 			if (*src == (unsigned char)')') return false;

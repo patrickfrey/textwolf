@@ -228,16 +228,19 @@ private:
 		context.scope.range.tokenidx_to = tokens.size();
 		context.scope.range.followidx = follows.size();
 		context.init( type, key, keysize);
-
-		if (type == XMLScannerBase::OpenTag)
+		if (context.type == XMLScannerBase::OpenTag)
 		{
-			//first step of open scope saves the context context on stack
+			// first step of open scope saves the context context on stack
 			scopestk.push_back( context.scope);
 			context.scope.mask = context.scope.followMask;
 			context.scope.mask.match( XMLScannerBase::OpenTag);
 			//... we reset the mask but ensure that this 'OpenTag' is processed for sure
 		}
-		else if (type == XMLScannerBase::CloseTag || type == XMLScannerBase::CloseTagIm)
+	}
+
+	void closeProcessElement()
+	{
+		if (context.type == XMLScannerBase::CloseTag || context.type == XMLScannerBase::CloseTagIm)
 		{
 			if (!scopestk.empty())
 			{
@@ -497,6 +500,11 @@ public:
 		{
 			input->initProcessElement( p_type, p_key, p_keysize);
 			skip();
+		}
+
+		~iterator()
+		{
+			if (input) input->closeProcessElement();
 		}
 
 		/// \brief Default constructor

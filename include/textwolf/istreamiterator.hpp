@@ -38,7 +38,11 @@
 #ifndef __TEXTWOLF_ISTREAM_ITERATOR_HPP__
 #define __TEXTWOLF_ISTREAM_ITERATOR_HPP__
 #include <iostream>
+#include <fstream>
 #include <iterator>
+#include <cstdlib>
+#include <stdexcept>
+#include <stdint.h>
 
 /// \namespace textwolf
 /// \brief Toplevel namespace of the library
@@ -51,38 +55,99 @@ class IStreamIterator
 public:
 	/// \brief Default constructor
 	IStreamIterator(){}
+	/// \brief Destructor
+	~IStreamIterator()
+	{
+		std::free(m_buf);
+	}
 
 	/// \brief Constructor
 	/// \param [in] input input to iterate on
-	IStreamIterator( std::istream& input)
-		:m_itr(input)
+	IStreamIterator( std::istream& input, std::size_t bufsize=4096)
+		:m_input(&input),m_buf((char*)std::malloc(bufsize)),m_bufsize(bufsize),m_readsize(0),m_readpos(0),m_abspos(0)
 	{
 		input.unsetf( std::ios::skipws);
+		input.exceptions ( std::ifstream::failbit | std::ifstream::badbit | std::ifstream::eofbit );
+		fillbuf();
 	}
 
 	/// \brief Copy constructor
 	/// \param [in] o iterator to copy
 	IStreamIterator( const IStreamIterator& o)
-		:m_itr(o.m_itr)
-		,m_end(o.m_end){}
+		:m_input(o.m_input),m_buf((char*)std::malloc(o.m_bufsize)),m_bufsize(o.m_bufsize),m_readsize(o.m_readsize),m_readpos(o.m_readpos),m_abspos(o.m_abspos)
+	{
+		std::memcpy( m_buf, o.m_buf, o.m_readsize);
+	}
 
 	/// \brief Element access
 	/// \return current character
 	inline char operator* ()
 	{
-		return (m_itr != m_end)?*m_itr:0;
+		return (m_readpos < m_readsize)?m_buf[m_readpos]:0;
 	}
 
 	/// \brief Pre increment
 	inline IStreamIterator& operator++()
 	{
-		++m_itr;
+		if (m_readpos+1 >= m_readsize)
+		{
+			fillbuf();
+		}
+		else
+		{
+			++m_readpos;
+		}
 		return *this;
 	}
 
+	int operator - (const IStreamIterator& o) const
+	{
+		return (int)m_readpos - o.m_readpos;
+	}
+
+	uint64_t position() const
+	{
+		return m_abspos + m_readpos;
+	}
+
 private:
-	std::istreambuf_iterator<unsigned char> m_itr;
-	std::istreambuf_iterator<unsigned char> m_end;
+	bool fillbuf()
+	{
+		try
+		{
+			m_input->read( m_buf, m_bufsize);
+			m_abspos += m_readsize;
+			m_readsize = m_input->gcount();
+			m_readpos = 0;
+			return true;
+		}
+		catch (const std::istream::failure& err)
+		{
+			if (m_input->eof())
+			{
+				m_readsize = m_input->gcount();
+				m_readpos = 0;
+				return (m_readsize > 0);
+			}
+			throw std::runtime_error( std::string( "file read error: ") + err.what());
+		}
+		catch (const std::exception& err)
+		{
+			throw std::runtime_error( std::string( "file read error: ") + err.what());
+		}
+		catch (...)
+		{
+			throw std::runtime_error( std::string( "file read error"));
+		}
+	}
+
+private:
+	std::istream* m_input;
+	char* m_buf;
+	std::size_t m_bufsize;
+	std::size_t m_readsize;
+	std::size_t m_readpos;
+	uint64_t m_abspos;
 };
 
 }//namespace

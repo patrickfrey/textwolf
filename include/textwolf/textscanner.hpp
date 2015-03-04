@@ -157,6 +157,12 @@ public:
 		cur = CharSet::asciichar( buf, state, input);
 	}
 
+	/// \brief Get the iterator pointing to the current source position
+	inline const Iterator& getIterator() const
+	{
+		return input;
+	}
+
 	/// \class copychar
 	/// \brief Direct copy of a character from input to output without encoding/decoding it
 	/// \remark Assumes the character set encodings to be of the same class
