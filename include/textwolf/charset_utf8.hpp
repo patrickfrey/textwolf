@@ -91,7 +91,7 @@ struct UTF8
 			(B11111100,B11111101,6)
 			(B11111110,B11111110,7)
 			(B11111111,B11111111,8);
-		};
+		}
 	};
 
 	/// \brief Get the size of the current character in bytes (variable length encoding)

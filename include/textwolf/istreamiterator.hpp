@@ -41,6 +41,7 @@
 #include <fstream>
 #include <iterator>
 #include <cstdlib>
+#include <cstring>
 #include <stdexcept>
 #include <stdint.h>
 
@@ -63,7 +64,7 @@ public:
 
 	/// \brief Constructor
 	/// \param [in] input input to iterate on
-	IStreamIterator( std::istream& input, std::size_t bufsize=4096)
+	IStreamIterator( std::istream& input, std::size_t bufsize=8192)
 		:m_input(&input),m_buf((char*)std::malloc(bufsize)),m_bufsize(bufsize),m_readsize(0),m_readpos(0),m_abspos(0)
 	{
 		input.unsetf( std::ios::skipws);
