@@ -126,6 +126,11 @@ public:
 		return (m_end >= m_itr)?(m_end-m_itr):0;
 	}
 
+	bool endOfChunk() const
+	{
+		return (m_itr >= m_end);
+	}
+
 private:
 	char* m_itr;
 	char* m_end;
