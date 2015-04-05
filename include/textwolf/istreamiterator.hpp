@@ -152,7 +152,7 @@ private:
 	std::size_t m_bufsize;
 	std::size_t m_readsize;
 	std::size_t m_readpos;
-	textwolf::PositionIndex m_abspos;
+	PositionIndex m_abspos;
 };
 
 }//namespace
