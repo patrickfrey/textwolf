@@ -138,7 +138,7 @@ public:
 
 	PositionIndex position() const
 	{
-		m_abspos - (m_end - m_itr);
+		return m_abspos - (m_end - m_itr);
 	}
 
 	bool endOfChunk() const
