@@ -175,7 +175,6 @@ public:
 	template <class Buffer>
 	inline void copychar( CharSet& output_, Buffer& buf_)
 	{
-		/// \todo more efficient solution of copy character to sink with same encoding here
 		/// \remark a check if the character sets fulfill is_equal(..) (IsoLatin code page !)
 		if (CharSet::is_equal( charset, output_))
 		{
