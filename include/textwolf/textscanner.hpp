@@ -181,10 +181,7 @@ public:
 			// ... if the character sets are equal and of the same subclass (code pages)
 			//	then we do not decode/encode the character but copy it directly to the output
 			charset.fetchbytes( buf, state, input);
-			for (std::size_t ii=0; ii<state; ++ii)
-			{
-				buf_.push_back( buf[ ii]);
-			}
+			for (unsigned int ii=0; ii<state; ++ii) buf_.push_back(buf[ii]);
 		}
 		else
 		{
