@@ -75,6 +75,16 @@ public:
 		std::vector<std::size_t> idref;
 		std::size_t id;
 
+		char const* xx = (char const*)std::memchr( esrc, ':', esrcsize);
+		while (xx)
+		{
+			std::size_t xpos = xx - esrc;
+			if (xpos + 1 < esrcsize && xx[1] == ':')
+			{
+				return xpos+1;
+			}
+			xx = (char const*)std::memchr( xx+1, ':', esrcsize - (xpos+1));
+		}
 		for (; *pp; skipSpaces( pp))
 		{
 			switch (*pp)
