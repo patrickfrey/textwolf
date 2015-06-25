@@ -181,7 +181,15 @@ public:
 			// ... if the character sets are equal and of the same subclass (code pages)
 			//	then we do not decode/encode the character but copy it directly to the output
 			charset.fetchbytes( buf, state, input);
+#ifdef __GNUC__
+#if (__GNUC__ >= 5 && __GNUC_MINOR__ >= 0)
+			for (unsigned int ii=0; ii<8 && ii<state; ++ii) buf_.push_back(buf[ii]);
+#else
 			for (unsigned int ii=0; ii<state; ++ii) buf_.push_back(buf[ii]);
+#endif
+#else
+			for (unsigned int ii=0; ii<state; ++ii) buf_.push_back(buf[ii]);
+#endif
 		}
 		else
 		{
