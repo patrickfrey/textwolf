@@ -160,6 +160,10 @@ public:
 								expr.selectAttribute( getIdentifier( *di++, idstrings));
 							}
 						}
+						else if (*src == '(')
+						{
+							continue;
+						}
 						else
 						{
 							if (*src == '*')
@@ -191,6 +195,10 @@ public:
 								skipIdentifier( src);
 								expr.selectAttribute( getIdentifier( *di++, idstrings));
 							}
+						}
+						else if (*src == '(')
+						{
+							continue;
 						}
 						else
 						{
