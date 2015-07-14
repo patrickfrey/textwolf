@@ -89,7 +89,7 @@ public:
 			('\"',Dq)
 			('[',Osb)
 			(']',Csb);
-		};
+		}
 	};
 
 	/// \brief Constructor
