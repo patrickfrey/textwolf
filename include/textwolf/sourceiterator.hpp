@@ -129,6 +129,13 @@ public:
 		m_eom = eom;
 	}
 
+	/// \brief Initialize the error exit longjump for new iteration
+	/// \param[in] eom longjmp to call with parameter 1, if the end of data has been reached before EOF (null termination), eom=null, if the chunk passed contains the complete reset of the input and eof (null) can be returned if we reach the end
+	void setErrorExit( jmp_buf* eom)
+	{
+		m_eom = eom;
+	}
+
 	/// \brief Get the current position in the current chunk parsed
 	/// \remark Does not return the absolute position in the source parsed but the position in the chunk
 	std::size_t getPosition() const
