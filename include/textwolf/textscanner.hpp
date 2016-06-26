@@ -80,7 +80,7 @@ struct Traits<IStreamIterator>
 template <>
 struct Traits<CStringIterator>
 {
-	std::size_t getPosition( const CStringIterator&, const CStringIterator& itr)
+	static inline std::size_t getPosition( const CStringIterator&, const CStringIterator& itr)
 	{
 		return itr.pos();
 	}
