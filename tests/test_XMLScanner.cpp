@@ -1,6 +1,7 @@
 #include "textwolf.hpp"
 #include <iostream>
 #include <string>
+#include <cstring>
 #include <map>
 #include <stdexcept>
 
@@ -14,6 +15,24 @@
 
 using namespace textwolf;
 
+static std::string encodeString( char const* xi, unsigned int nn)
+{
+	std::string rt;
+	unsigned int ii=0;
+	for (; ii<nn; ++ii)
+	{
+		if ((unsigned char)xi[ii] < 32)
+		{
+			rt.push_back( '.');
+		}
+		else
+		{
+			rt.push_back( xi[ii]);
+		}
+	}
+	return rt;
+}
+
 int main( int, const char**)
 {
 	static const char* xmlstr = "<?xml charset=isolatin-1?>\r\n<note id=1 t=2 g=\"zu\"><stag value='500'/> \n<to>Frog</to>\n<from>Bird</from><body>Hello world!</body>\n</note>";
@@ -24,6 +43,14 @@ int main( int, const char**)
 	MyXMLScanner::iterator itr,end;
 	try
 	{
+		char const* xi = xmlstr;
+		const char* xe = xi + std::strlen( xi);
+		for (int xidx=0; xi < xe; xi+=10,xidx+=10)
+		{
+			std::cout << xidx << ": [" << encodeString( xi, 10) << "]" << std::endl;
+		}
+		std::cout << std::endl;
+
 		for (itr=xs.begin(),end=xs.end(); itr!=end; itr++)
 		{
 			const char* typestr = 0;
@@ -45,7 +72,7 @@ int main( int, const char**)
 				case MyXMLScanner::Content: typestr = "content"; break;
 				case MyXMLScanner::Exit: typestr = "end of document"; break;
 			}
-			std::cout << "Element (" << itr->name() << ")" << typestr << ": " << itr->content() << std::endl;
+			std::cout << xs.getTokenPosition() << ":" << (xs.getPosition()-xs.getTokenPosition()) << " element (" << itr->name() << ")" << typestr << ": " << itr->content() << std::endl;
 		}
 	}
 	catch (const std::runtime_error& e)
