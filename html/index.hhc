@@ -1,0 +1,827 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML><HEAD></HEAD><BODY>
+<OBJECT type="text/site properties">
+<param name="FrameName" value="right">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf C++ template library for iterating on XML content"><param name="Local" value="index.html"><param name="ImageNumber" value="11"></OBJECT>
+<LI><OBJECT type="text/sitemap"><param name="Name" value="Related Pages"><param name="ImageNumber" value="1"></OBJECT>
+  <UL>
+  <LI><OBJECT type="text/sitemap"><param name="Name" value="Todo List"><param name="Local" value="todo.html"><param name="ImageNumber" value="11"></OBJECT>
+    <UL>
+    </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Name" value="Deprecated List"><param name="Local" value="deprecated.html"><param name="ImageNumber" value="11"></OBJECT>
+    <UL>
+    </UL>
+  </UL>
+<LI><OBJECT type="text/sitemap"><param name="Name" value="Namespaces"><param name="ImageNumber" value="1"></OBJECT>
+  <UL>
+  <LI><OBJECT type="text/sitemap"><param name="Name" value="Namespace List"><param name="ImageNumber" value="1"></OBJECT>
+    <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf"><param name="ImageNumber" value="1"></OBJECT>
+      <UL>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="CharMap"><param name="Local" value="classtextwolf_1_1CharMap.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="ControlCharacterM"><param name="Local" value="structtextwolf_1_1ControlCharacterM.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="CStringIterator"><param name="Local" value="classtextwolf_1_1CStringIterator.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="throws_exception"><param name="Local" value="structtextwolf_1_1throws__exception.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="exception"><param name="Local" value="structtextwolf_1_1exception.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="IStreamIterator"><param name="Local" value="classtextwolf_1_1IStreamIterator.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="SrcIterator"><param name="Local" value="classtextwolf_1_1SrcIterator.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="StaticBuffer"><param name="Local" value="classtextwolf_1_1StaticBuffer.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="TextScanner"><param name="Local" value="classtextwolf_1_1TextScanner.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="XmlHdrParser"><param name="Local" value="classtextwolf_1_1XmlHdrParser.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="XMLPathSelectAutomaton"><param name="Local" value="classtextwolf_1_1XMLPathSelectAutomaton.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="XMLPathSelectAutomatonParser"><param name="Local" value="classtextwolf_1_1XMLPathSelectAutomatonParser.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="XMLPathSelect"><param name="Local" value="classtextwolf_1_1XMLPathSelect.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="XMLPrinter"><param name="Local" value="classtextwolf_1_1XMLPrinter.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="ScannerStatemachine"><param name="Local" value="classtextwolf_1_1ScannerStatemachine.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="XMLScannerBase"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="XMLScanner"><param name="Local" value="classtextwolf_1_1XMLScanner.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="TagStack"><param name="Local" value="classtextwolf_1_1TagStack.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="EChar"><param name="Local" value="namespacetextwolf.html#a55e848f8c9806a7a32da0527a6801eca"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="UChar"><param name="Local" value="namespacetextwolf.html#a3eb8d6733d6737825026b2e41b8c3f9c"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="ControlCharacter"><param name="Local" value="namespacetextwolf.html#a4650ba8f3f0f0c953ab1dad55efc6ee3"><param name="ImageNumber" value="11"></OBJECT>
+      </UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::charset"><param name="ImageNumber" value="1"></OBJECT>
+      <UL>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="Encoder"><param name="Local" value="structtextwolf_1_1charset_1_1Encoder.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="Interface"><param name="Local" value="structtextwolf_1_1charset_1_1Interface.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="ByteOrder"><param name="Local" value="structtextwolf_1_1charset_1_1ByteOrder.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="IsoLatin"><param name="Local" value="structtextwolf_1_1charset_1_1IsoLatin.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="UCS2"><param name="Local" value="structtextwolf_1_1charset_1_1UCS2.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="UCS4"><param name="Local" value="structtextwolf_1_1charset_1_1UCS4.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="UCS2LE"><param name="Local" value="structtextwolf_1_1charset_1_1UCS2LE.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="UCS2BE"><param name="Local" value="structtextwolf_1_1charset_1_1UCS2BE.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="UCS4LE"><param name="Local" value="structtextwolf_1_1charset_1_1UCS4LE.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="UCS4BE"><param name="Local" value="structtextwolf_1_1charset_1_1UCS4BE.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="UTF16"><param name="Local" value="classtextwolf_1_1charset_1_1UTF16.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="UTF16LE"><param name="Local" value="structtextwolf_1_1charset_1_1UTF16LE.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="UTF16BE"><param name="Local" value="structtextwolf_1_1charset_1_1UTF16BE.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="UTF8"><param name="Local" value="structtextwolf_1_1charset_1_1UTF8.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="IsoLatinCodePage"><param name="Local" value="classtextwolf_1_1charset_1_1IsoLatinCodePage.html"><param name="ImageNumber" value="11"></OBJECT>
+      </UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::traits"><param name="ImageNumber" value="1"></OBJECT>
+      <UL>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="TypeCheck"><param name="Local" value="classtextwolf_1_1traits_1_1TypeCheck.html"><param name="ImageNumber" value="11"></OBJECT>
+      </UL>
+    </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Name" value="Namespace Members"><param name="Local" value="namespacemembers.html"><param name="ImageNumber" value="11"></OBJECT>
+    <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="All"><param name="Local" value="namespacemembers.html"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="Typedefs"><param name="Local" value="namespacemembers_type.html"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="Enumerations"><param name="Local" value="namespacemembers_enum.html"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="Enumerator"><param name="Local" value="namespacemembers_eval.html"><param name="ImageNumber" value="11"></OBJECT>
+    </UL>
+  </UL>
+<LI><OBJECT type="text/sitemap"><param name="Name" value="Classes"><param name="ImageNumber" value="1"></OBJECT>
+  <UL>
+  <LI><OBJECT type="text/sitemap"><param name="Name" value="Class List"><param name="ImageNumber" value="1"></OBJECT>
+    <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::ScannerStatemachine::Element::Action"><param name="ImageNumber" value="1"></OBJECT>
+      <UL>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="arg"><param name="Local" value="structtextwolf_1_1ScannerStatemachine_1_1Element_1_1Action.html#a93670d0acdda877bf6049ae93ce9e833"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="op"><param name="Local" value="structtextwolf_1_1ScannerStatemachine_1_1Element_1_1Action.html#a77fac25bd5bfd337efe32b84c2ff38d2"><param name="ImageNumber" value="11"></OBJECT>
+      </UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::charset::ByteOrder"><param name="ImageNumber" value="1"></OBJECT>
+      <UL>
+      </UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::charset::UTF8::CharLengthTab"><param name="ImageNumber" value="1"></OBJECT>
+      <UL>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="CharLengthTab"><param name="Local" value="structtextwolf_1_1charset_1_1UTF8_1_1CharLengthTab.html#a03b4466074fb1c624e7ed1e4a1c35e05"><param name="ImageNumber" value="11"></OBJECT>
+      </UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::CharMap< RESTYPE, nullvalue_, RANGE >"><param name="ImageNumber" value="1"></OBJECT>
+      <UL>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="valuetype"><param name="Local" value="classtextwolf_1_1CharMap.html#ae511e679434350d8c3b0ad651b0879a7"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="Constant"><param name="Local" value="classtextwolf_1_1CharMap.html#a281d1e138754a873b823fa3dd6ba873a"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="CharMap"><param name="Local" value="classtextwolf_1_1CharMap.html#a1578f6cd80edcd9b539f6a064f5bc28c"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="operator()"><param name="Local" value="classtextwolf_1_1CharMap.html#a937c325abaa8f773b303aca580fa9ff6"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="operator()"><param name="Local" value="classtextwolf_1_1CharMap.html#a23d7483ba027e61846af5dc780253a2e"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="operator[]"><param name="Local" value="classtextwolf_1_1CharMap.html#ae3ba4879d86b5bf0663d06886ee3629a"><param name="ImageNumber" value="11"></OBJECT>
+      </UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::ControlCharacterM"><param name="ImageNumber" value="1"></OBJECT>
+      <UL>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="name"><param name="Local" value="structtextwolf_1_1ControlCharacterM.html#a9da2e5fd67218e73c6ac69ac9c86988f"><param name="ImageNumber" value="11"></OBJECT>
+      </UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::TextScanner< Iterator, CharSet >::ControlCharMap"><param name="ImageNumber" value="1"></OBJECT>
+      <UL>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="ControlCharMap"><param name="Local" value="structtextwolf_1_1TextScanner_1_1ControlCharMap.html#ab364d07cc568f9cd2c911ddb18d6b7ed"><param name="ImageNumber" value="11"></OBJECT>
+      </UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="copychar"><param name="Local" value="classcopychar.html"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::XMLPathSelectAutomaton< CharSet_ >::Core"><param name="ImageNumber" value="1"></OBJECT>
+      <UL>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="Core"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1Core.html#a90f238fae8b4f8a2c0ee7f5cf97619cc"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="Core"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1Core.html#a71577dd05a050c4f3f9e07532c893abf"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="cnt_end"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1Core.html#a75b6e50f82cd599ff263762f22307f66"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="cnt_start"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1Core.html#a19dd0adfb359c1fe387e67f09c9f9a2c"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="follow"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1Core.html#af8b25acda2921a276fca46902cb20e0e"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="mask"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1Core.html#a05fe946d03996a478c72e9369948f0ad"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="typeidx"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1Core.html#a4cd11b4d6f0e244fb46ae0ebe387c7cd"><param name="ImageNumber" value="11"></OBJECT>
+      </UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::CStringIterator"><param name="ImageNumber" value="1"></OBJECT>
+      <UL>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="CStringIterator"><param name="Local" value="classtextwolf_1_1CStringIterator.html#ab3b9e1c37030115c10e3b5786778c739"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="CStringIterator"><param name="Local" value="classtextwolf_1_1CStringIterator.html#ac067d9a3a373fb775751c9f5a04eb2af"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="CStringIterator"><param name="Local" value="classtextwolf_1_1CStringIterator.html#a517dc18e9a641ed2b9f29cb5e2e10569"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="CStringIterator"><param name="Local" value="classtextwolf_1_1CStringIterator.html#ad4f913153835d3fee137505f42e91627"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="CStringIterator"><param name="Local" value="classtextwolf_1_1CStringIterator.html#a1cd775025b2b53d367459da2d701d0f8"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="operator*"><param name="Local" value="classtextwolf_1_1CStringIterator.html#a5280af053bb12dcbd69d2acd8d672d73"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="operator++"><param name="Local" value="classtextwolf_1_1CStringIterator.html#aba66e6b42a0aa3e300b5174407677f6c"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="operator-"><param name="Local" value="classtextwolf_1_1CStringIterator.html#a21e867049ffa44028765f21c039a11aa"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="pos"><param name="Local" value="classtextwolf_1_1CStringIterator.html#afa90d4d28d246bfb956669099cd1b07e"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="pos"><param name="Local" value="classtextwolf_1_1CStringIterator.html#a6b7aa99163c888db5068a1994b626417"><param name="ImageNumber" value="11"></OBJECT>
+      </UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::ScannerStatemachine::Element"><param name="ImageNumber" value="1"></OBJECT>
+      <UL>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="Element"><param name="Local" value="structtextwolf_1_1ScannerStatemachine_1_1Element.html#abb74a3321654798452a22582f760092e"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="action"><param name="Local" value="structtextwolf_1_1ScannerStatemachine_1_1Element.html#a8495c95a6764d2cd6586cee0aca1ee71"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="fallbackState"><param name="Local" value="structtextwolf_1_1ScannerStatemachine_1_1Element.html#a9ff96e6ea03b5e1ad0695339926e0f9d"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="missError"><param name="Local" value="structtextwolf_1_1ScannerStatemachine_1_1Element.html#a122cbb1073604605c3d37169cbfce07a"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="next"><param name="Local" value="structtextwolf_1_1ScannerStatemachine_1_1Element.html#acac4d5cc01f9f1863f63dd84a9a28d6f"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="nofnext"><param name="Local" value="structtextwolf_1_1ScannerStatemachine_1_1Element.html#ac92301cb94c38156c7abb2210a74ccee"><param name="ImageNumber" value="11"></OBJECT>
+      </UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::XMLScanner< InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_ >::iterator::Element"><param name="ImageNumber" value="1"></OBJECT>
+      <UL>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="Element"><param name="Local" value="classtextwolf_1_1XMLScanner_1_1iterator_1_1Element.html#aef2b89dda98ec6bfd5b6995b757a506f"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="Element"><param name="Local" value="classtextwolf_1_1XMLScanner_1_1iterator_1_1Element.html#ab4a483be77309aec698734def0e1c57b"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="Element"><param name="Local" value="classtextwolf_1_1XMLScanner_1_1iterator_1_1Element.html#aba1d01b7b1817f062b1c74666575c1e1"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="content"><param name="Local" value="classtextwolf_1_1XMLScanner_1_1iterator_1_1Element.html#a78656ff71a3070194b38a5ebca1511a9"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="error"><param name="Local" value="classtextwolf_1_1XMLScanner_1_1iterator_1_1Element.html#ae651c73e0fcf5d2787ad69b0d7284805"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="name"><param name="Local" value="classtextwolf_1_1XMLScanner_1_1iterator_1_1Element.html#a74443b15cdad5188fbfece6c22bf4aea"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="size"><param name="Local" value="classtextwolf_1_1XMLScanner_1_1iterator_1_1Element.html#aa4abb5884ced96b5172793b2a26b472d"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="type"><param name="Local" value="classtextwolf_1_1XMLScanner_1_1iterator_1_1Element.html#aafcf583ea1902e0069110c6eb8668ae8"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="valid"><param name="Local" value="classtextwolf_1_1XMLScanner_1_1iterator_1_1Element.html#ae2920081556077ea943e0137518c0462"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="iterator"><param name="Local" value="classtextwolf_1_1XMLScanner_1_1iterator_1_1Element.html#a67171474c4da6cc8efe0c7fafefd2b2d"><param name="ImageNumber" value="11"></OBJECT>
+      </UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::charset::Encoder"><param name="ImageNumber" value="1"></OBJECT>
+      <UL>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="encode"><param name="Local" value="structtextwolf_1_1charset_1_1Encoder.html#ad083232a041e2309b9d22af40b2c7502"><param name="ImageNumber" value="11"></OBJECT>
+      </UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::XMLScanner< InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_ >::End"><param name="Local" value="structtextwolf_1_1XMLScanner_1_1End.html"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::exception"><param name="ImageNumber" value="1"></OBJECT>
+      <UL>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="Cause"><param name="Local" value="structtextwolf_1_1exception.html#a3dcdb1567ac4c92789054d85038c5afe"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="~exception"><param name="Local" value="structtextwolf_1_1exception.html#a62609ba07d8e6220cdf554789dd4b7f7"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="operator="><param name="Local" value="structtextwolf_1_1exception.html#a63e03b8d8d2188a6f51b7cfbb17fbc92"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="throw"><param name="Local" value="structtextwolf_1_1exception.html#a29ff8e91a847b22adad60e37636decab"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="throw"><param name="Local" value="structtextwolf_1_1exception.html#ac9f594685b1a4452158e557ec1ceb40c"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="what"><param name="Local" value="structtextwolf_1_1exception.html#a8c370e435f32a3b7a37f569243f47702"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="cause"><param name="Local" value="structtextwolf_1_1exception.html#af5fab81bf1bee4f9bb9a712989e6b6aa"><param name="ImageNumber" value="11"></OBJECT>
+      </UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::charset::Interface"><param name="ImageNumber" value="1"></OBJECT>
+      <UL>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="asciichar"><param name="Local" value="structtextwolf_1_1charset_1_1Interface.html#a45bee64e0e1c86e8dfdbeedddab878f6"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="fetchbytes"><param name="Local" value="structtextwolf_1_1charset_1_1Interface.html#a2bff8413aafdfbe83384c6b98005663f"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="is_equal"><param name="Local" value="structtextwolf_1_1charset_1_1Interface.html#a2da10b77315b14328cf1bd03a5fa2802"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="print"><param name="Local" value="structtextwolf_1_1charset_1_1Interface.html#ac041bc21ad51134f30613384dd65097f"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="skip"><param name="Local" value="structtextwolf_1_1charset_1_1Interface.html#a0b9704d10b6d30465e2ef333730d1c96"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="value"><param name="Local" value="structtextwolf_1_1charset_1_1Interface.html#a041a5bdfcba4879f98101deed549141c"><param name="ImageNumber" value="11"></OBJECT>
+      </UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::traits::TypeCheck::is_same< T, U >"><param name="ImageNumber" value="1"></OBJECT>
+      <UL>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="type"><param name="Local" value="structtextwolf_1_1traits_1_1TypeCheck_1_1is__same.html#a513f4d62968d25f3e4a728180575700e"><param name="ImageNumber" value="11"></OBJECT>
+      </UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::traits::TypeCheck::is_same< T, T >"><param name="ImageNumber" value="1"></OBJECT>
+      <UL>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="type"><param name="Local" value="structtextwolf_1_1traits_1_1TypeCheck_1_1is__same_3_01T_00_01T_01_4.html#a03f041f22683b1b1fb2f2cc38029198c"><param name="ImageNumber" value="11"></OBJECT>
+      </UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::XMLScannerBase::IsContentCharMap"><param name="ImageNumber" value="1"></OBJECT>
+      <UL>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="IsContentCharMap"><param name="Local" value="structtextwolf_1_1XMLScannerBase_1_1IsContentCharMap.html#a23d2696e5a2e6f21fa0ee6c74e45df49"><param name="ImageNumber" value="11"></OBJECT>
+      </UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::XMLScannerBase::IsDQStringCharMap"><param name="ImageNumber" value="1"></OBJECT>
+      <UL>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="IsDQStringCharMap"><param name="Local" value="structtextwolf_1_1XMLScannerBase_1_1IsDQStringCharMap.html#ae4208ce9a47380bc0145b1ec0c19826c"><param name="ImageNumber" value="11"></OBJECT>
+      </UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::charset::IsoLatin"><param name="ImageNumber" value="1"></OBJECT>
+      <UL>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="IsoLatin"><param name="Local" value="structtextwolf_1_1charset_1_1IsoLatin.html#aad64b0942261661da0155cd07a8ba5f0"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="IsoLatin"><param name="Local" value="structtextwolf_1_1charset_1_1IsoLatin.html#a18503cdce077baa15a4362578295abb2"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="asciichar"><param name="Local" value="structtextwolf_1_1charset_1_1IsoLatin.html#aa3ce1ae216923c337f31fc4f3f19bcdb"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="fetchbytes"><param name="Local" value="structtextwolf_1_1charset_1_1IsoLatin.html#a34efbe0d57ae73d1a595c0d49e029d27"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="is_equal"><param name="Local" value="structtextwolf_1_1charset_1_1IsoLatin.html#aaaa26a739cf22dd6ea9c9b6ad3442e0f"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="print"><param name="Local" value="structtextwolf_1_1charset_1_1IsoLatin.html#af0ff607d3d8821bfa1561470b1e79889"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="skip"><param name="Local" value="structtextwolf_1_1charset_1_1IsoLatin.html#a08bc1e4d44dd25e1d1eb92e9ebe76739"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="value"><param name="Local" value="structtextwolf_1_1charset_1_1IsoLatin.html#a987c15e1da081f55a8d2cf88a722fc4d"><param name="ImageNumber" value="11"></OBJECT>
+      </UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::charset::IsoLatinCodePage"><param name="ImageNumber" value="1"></OBJECT>
+      <UL>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="IsoLatinCodePage"><param name="Local" value="classtextwolf_1_1charset_1_1IsoLatinCodePage.html#acf0fe2c16d2eaa056262181ad5d93dbe"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="IsoLatinCodePage"><param name="Local" value="classtextwolf_1_1charset_1_1IsoLatinCodePage.html#a8fba3ceab4fbd88300fb7d6dbf786938"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="invcode"><param name="Local" value="classtextwolf_1_1charset_1_1IsoLatinCodePage.html#a4b760321d0f75110587f26d5e72c1fbf"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="is_equal"><param name="Local" value="classtextwolf_1_1charset_1_1IsoLatinCodePage.html#a400cf92ed5f8fc9aa9c705ab08ddca9d"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="ucharcode"><param name="Local" value="classtextwolf_1_1charset_1_1IsoLatinCodePage.html#a4f357be4c032c7062b5cf55848aa52e8"><param name="ImageNumber" value="11"></OBJECT>
+      </UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::XMLScannerBase::IsSQStringCharMap"><param name="ImageNumber" value="1"></OBJECT>
+      <UL>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="IsSQStringCharMap"><param name="Local" value="structtextwolf_1_1XMLScannerBase_1_1IsSQStringCharMap.html#afd905a2e884c5c95b62c25edc126e152"><param name="ImageNumber" value="11"></OBJECT>
+      </UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::XMLScannerBase::IsTagCharMap"><param name="ImageNumber" value="1"></OBJECT>
+      <UL>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="IsTagCharMap"><param name="Local" value="structtextwolf_1_1XMLScannerBase_1_1IsTagCharMap.html#a597bbd2bd69f298f3b2103ae64837c39"><param name="ImageNumber" value="11"></OBJECT>
+      </UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::IStreamIterator"><param name="ImageNumber" value="1"></OBJECT>
+      <UL>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="IStreamIterator"><param name="Local" value="classtextwolf_1_1IStreamIterator.html#aeed7bb974aa540714778866b79c1b008"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="IStreamIterator"><param name="Local" value="classtextwolf_1_1IStreamIterator.html#a12ecd3aa7a0cdabe9fc0ad83b252206a"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="IStreamIterator"><param name="Local" value="classtextwolf_1_1IStreamIterator.html#af96f933d042d5db08cf654b4c10a9cb7"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="operator*"><param name="Local" value="classtextwolf_1_1IStreamIterator.html#aaf66280ecce8a8e1101e1b9a1725d133"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="operator++"><param name="Local" value="classtextwolf_1_1IStreamIterator.html#a7a22ef786bcfa1e61c2fe94085073d16"><param name="ImageNumber" value="11"></OBJECT>
+      </UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::XMLScannerBase::IsWordCharMap"><param name="ImageNumber" value="1"></OBJECT>
+      <UL>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="IsWordCharMap"><param name="Local" value="structtextwolf_1_1XMLScannerBase_1_1IsWordCharMap.html#ad239b080831ae206915170619ecec5e0"><param name="ImageNumber" value="11"></OBJECT>
+      </UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::XMLPathSelect< CharSet_ >::iterator"><param name="ImageNumber" value="1"></OBJECT>
+      <UL>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="difference_type"><param name="Local" value="classtextwolf_1_1XMLPathSelect_1_1iterator.html#ae369f995d2edf3e418be854060ac3ec2"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="iterator_category"><param name="Local" value="classtextwolf_1_1XMLPathSelect_1_1iterator.html#adbd48c1ef59b7980cffafadf4a0e3e46"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="pointer"><param name="Local" value="classtextwolf_1_1XMLPathSelect_1_1iterator.html#a64b550ef5bc52a8006858bf47eb708c5"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="reference"><param name="Local" value="classtextwolf_1_1XMLPathSelect_1_1iterator.html#a76aeae42f2f72af6a6279bbb81d62eef"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="value_type"><param name="Local" value="classtextwolf_1_1XMLPathSelect_1_1iterator.html#adf7fea5eabd0adc27e97457292be4439"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="iterator"><param name="Local" value="classtextwolf_1_1XMLPathSelect_1_1iterator.html#abfb84400838b5d4725879ae32f44beed"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="iterator"><param name="Local" value="classtextwolf_1_1XMLPathSelect_1_1iterator.html#ad42b58d78e1b50f8467e4fef78ef498c"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="iterator"><param name="Local" value="classtextwolf_1_1XMLPathSelect_1_1iterator.html#a77fe2598cfe61e69def409fd5849b9e1"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="assign"><param name="Local" value="classtextwolf_1_1XMLPathSelect_1_1iterator.html#a6b9f0113e4548f51f66e9dd239a22106"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="operator!="><param name="Local" value="classtextwolf_1_1XMLPathSelect_1_1iterator.html#a383ad8a13aa4b07fa9c4d11d69164715"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="operator*"><param name="Local" value="classtextwolf_1_1XMLPathSelect_1_1iterator.html#a018df69335f2628fb70fec440b707178"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="operator++"><param name="Local" value="classtextwolf_1_1XMLPathSelect_1_1iterator.html#af71eb33535d84200f45669aaf4ab926d"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="operator++"><param name="Local" value="classtextwolf_1_1XMLPathSelect_1_1iterator.html#a8dc249e54670ad2eeb47c84fa13dfcd6"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="operator->"><param name="Local" value="classtextwolf_1_1XMLPathSelect_1_1iterator.html#acce20a66aedc59c673259bb3d36d6e00"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="operator="><param name="Local" value="classtextwolf_1_1XMLPathSelect_1_1iterator.html#a571af55553eeef5fd6b0efcebd7e5b35"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="operator=="><param name="Local" value="classtextwolf_1_1XMLPathSelect_1_1iterator.html#a7e0bef8cd27bffe77cbd83895fb79b21"><param name="ImageNumber" value="11"></OBJECT>
+      </UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::XMLScanner< InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_ >::iterator"><param name="ImageNumber" value="1"></OBJECT>
+      <UL>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="difference_type"><param name="Local" value="classtextwolf_1_1XMLScanner_1_1iterator.html#ade0c1c84031ef3fd9acb1ead97bd292e"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="iterator_category"><param name="Local" value="classtextwolf_1_1XMLScanner_1_1iterator.html#a69e386199b59d5031733469d981e6dae"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="pointer"><param name="Local" value="classtextwolf_1_1XMLScanner_1_1iterator.html#aa5b9f32926e9d15a7e9b600afb854156"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="reference"><param name="Local" value="classtextwolf_1_1XMLScanner_1_1iterator.html#a5800ee29899ba380428902adc74ccf46"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="size_type"><param name="Local" value="classtextwolf_1_1XMLScanner_1_1iterator.html#ad65dc22aff3a9830a1ee9545568bca3a"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="value_type"><param name="Local" value="classtextwolf_1_1XMLScanner_1_1iterator.html#a3bd3a31e23d1bfead685267b94f8b917"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="iterator"><param name="Local" value="classtextwolf_1_1XMLScanner_1_1iterator.html#a330b9dd5eccf294aca01db2763771269"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="iterator"><param name="Local" value="classtextwolf_1_1XMLScanner_1_1iterator.html#a3aca8bfb9c53896d570334bc153d0a26"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="iterator"><param name="Local" value="classtextwolf_1_1XMLScanner_1_1iterator.html#aadd672da1d425de684ff34a2c7ea5f39"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="iterator"><param name="Local" value="classtextwolf_1_1XMLScanner_1_1iterator.html#a4e7cdd28a34ead659f9bd13e35421e57"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="assign"><param name="Local" value="classtextwolf_1_1XMLScanner_1_1iterator.html#add5faeb60351fcbd544e191789504dfb"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="operator!="><param name="Local" value="classtextwolf_1_1XMLScanner_1_1iterator.html#a282520dcd3a854ff0303526d608d16e9"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="operator*"><param name="Local" value="classtextwolf_1_1XMLScanner_1_1iterator.html#a1f0fef277c2d9dd34f493b0a1d7f6f39"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="operator++"><param name="Local" value="classtextwolf_1_1XMLScanner_1_1iterator.html#a0e8b19912b12cf3a70c6991c796c1086"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="operator++"><param name="Local" value="classtextwolf_1_1XMLScanner_1_1iterator.html#a7ca6ffedbfcbc28eb50ccdb5aa22ac17"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="operator->"><param name="Local" value="classtextwolf_1_1XMLScanner_1_1iterator.html#ae940c9ef1f3ecdc458da5c3889111049"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="operator="><param name="Local" value="classtextwolf_1_1XMLScanner_1_1iterator.html#a9d2abc83267d33bd5bb2bfcd9eb71426"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="operator=="><param name="Local" value="classtextwolf_1_1XMLScanner_1_1iterator.html#a8408ef2f8a72e601ec925c590dfb276e"><param name="ImageNumber" value="11"></OBJECT>
+      </UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::XMLPathSelectAutomaton< CharSet_ >::Mask"><param name="ImageNumber" value="1"></OBJECT>
+      <UL>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="Mask"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1Mask.html#a93f64eb289c591fb1615a0469a45c592"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="Mask"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1Mask.html#a78bf4dd6196efa3995f2afc97230cf91"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="Mask"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1Mask.html#a701bb8cb3ecba4b450f4ef7f7251ae99"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="empty"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1Mask.html#a729b7f6dc0f8b5313ab11436d3b7ac7d"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="hasMatch"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1Mask.html#a9f2d9743743c9f717657e4fdb07e9a9e"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="hasReject"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1Mask.html#adeaafb99e7b408bd8c69258060dd8ce3"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="join"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1Mask.html#a14cdec6f9747b30d80dee2b36c176697"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="match"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1Mask.html#a09c5317667def85993299fbdbd33a769"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="matches"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1Mask.html#a26c7aceefd9d251e7a1f6201dc3ec808"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="reject"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1Mask.html#a06e532a6bcba6560a71817a0dd8957b8"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="rejects"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1Mask.html#a0661275862c65b5d8e0bf8659e345e58"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="reset"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1Mask.html#a10f1773c95555592f0770bdf807319c5"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="seekop"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1Mask.html#a662d02b08f55eb15b1176444a1182556"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="seekopName"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1Mask.html#aad68519af4acdcd307829e4a7048bde8"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="neg"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1Mask.html#a4718902448ec02d527c439c89347241b"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="pos"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1Mask.html#ac3831dfe60fe44ad591a893aca494d13"><param name="ImageNumber" value="11"></OBJECT>
+      </UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::traits::TypeCheck::NO"><param name="Local" value="structtextwolf_1_1traits_1_1TypeCheck_1_1NO.html"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::XMLPathSelectAutomaton< CharSet_ >::PathElement"><param name="ImageNumber" value="1"></OBJECT>
+      <UL>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="PathElement"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html#aa8c049c2f4475f8b3174c65847a18cae"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="PathElement"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html#a2eeed2a03b4f3d2573cedc63eb97b835"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="PathElement"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html#a10e50655d69afd06bd3b2c033832c880"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="assignType"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html#ae8490ad7317a223fb78eed63c08f6043"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="FROM"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html#a99eb059ff6bd4c3de4012a4ce1592b9c"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="ifAttribute"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html#af96504c45c031438ed10d0a5a87d6791"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="INDEX"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html#ab9c880aef5ccbf34b5d837a73e267983"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="operator()"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html#ab14cd2ec72e3ddd112de496f1e48799e"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="operator()"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html#aa6dacf97513b073d51523c5f3758e437"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="operator()"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html#aca3c2565217340d157229046a84f0e4f"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="operator--"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html#ada9ade6ffcf8992e791e9f4be3bb59ee"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="operator="><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html#a1df5f4e08567f94e416d2378b4e2a96f"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="operator[]"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html#a01a803134a5993278df409756be4e3ac"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="RANGE"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html#a1a993d49933ab346cdc75ff26594ba73"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="selectAttribute"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html#a7794f5c86d07abfc558255f25eb150c0"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="selectContent"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html#a7c4bf49a3d12219a60e07f49df046112"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="selectTag"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html#a8615937fad5766436c8fa0f5545716c9"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="TO"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html#a5b420d4df5eb3dc3eacfce5d77625a89"><param name="ImageNumber" value="11"></OBJECT>
+      </UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::XMLPathSelectAutomaton< CharSet_ >::Scope::Range"><param name="ImageNumber" value="1"></OBJECT>
+      <UL>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="Range"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1Scope_1_1Range.html#a66a5d462b0674eec1cbfe2bea351592d"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="Range"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1Scope_1_1Range.html#a39512f5467c53af5a20143f1d2d13ecb"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="followidx"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1Scope_1_1Range.html#a9261cc79a6c6948762e49ab0495d951d"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="tokenidx_from"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1Scope_1_1Range.html#a46e4c558b43e1a68174b4c6178ca8dfa"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="tokenidx_to"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1Scope_1_1Range.html#a0a7b2315dc821ae38399c73e2e812c03"><param name="ImageNumber" value="11"></OBJECT>
+      </UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::ScannerStatemachine"><param name="ImageNumber" value="1"></OBJECT>
+      <UL>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="ScannerStatemachine"><param name="Local" value="classtextwolf_1_1ScannerStatemachine.html#a73d74d419e668ac55fc7aff5300afc38"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="action"><param name="Local" value="classtextwolf_1_1ScannerStatemachine.html#a7969f2c8d8d4f10e63f2a6eafb68659f"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="fallback"><param name="Local" value="classtextwolf_1_1ScannerStatemachine.html#a67e8bbbb6b0e10b4dbbf33a74294a146"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="get"><param name="Local" value="classtextwolf_1_1ScannerStatemachine.html#ab5046746e910318e1a3a4e944dbbfcde"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="miss"><param name="Local" value="classtextwolf_1_1ScannerStatemachine.html#acf604ba6fa94f5b9e27222d71ba3fa60"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="operator()"><param name="Local" value="classtextwolf_1_1ScannerStatemachine.html#ad56d00ee0ae6d7da7743a53ba390a7df"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="operator()"><param name="Local" value="classtextwolf_1_1ScannerStatemachine.html#a2ec157f6b57694e6b93ee90d3b15fbd7"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="operator()"><param name="Local" value="classtextwolf_1_1ScannerStatemachine.html#a562fffd2be34ef9b8ebb964831a4840f"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="operator()"><param name="Local" value="classtextwolf_1_1ScannerStatemachine.html#a418f6b66519f551113a190479ae6f43b"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="operator[]"><param name="Local" value="classtextwolf_1_1ScannerStatemachine.html#ab23081b09f34671af1662aec3c1c66fd"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="other"><param name="Local" value="classtextwolf_1_1ScannerStatemachine.html#a37dfd9112d64556daa4d3d42a4565051"><param name="ImageNumber" value="11"></OBJECT>
+      </UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::XMLPathSelectAutomaton< CharSet_ >::Scope"><param name="ImageNumber" value="1"></OBJECT>
+      <UL>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="Scope"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1Scope.html#a90bf0d16b45ce5fe489532aeb72a0742"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="Scope"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1Scope.html#a839df6db665f50b42680c6163734e0b3"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="operator="><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1Scope.html#a185120e26af580874e8635fb66f1334d"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="followMask"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1Scope.html#a15bfc86b152b1434027d3a9dd49f0d2b"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="mask"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1Scope.html#a34ef9882f804e2c9cbf54c918cff7edb"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="range"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1Scope.html#add232810fa1e7af8beea57d7955b3f5e"><param name="ImageNumber" value="11"></OBJECT>
+      </UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::SrcIterator"><param name="ImageNumber" value="1"></OBJECT>
+      <UL>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="SrcIterator"><param name="Local" value="classtextwolf_1_1SrcIterator.html#a9890ece57938c67fb4f948aa22d0c6f5"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="SrcIterator"><param name="Local" value="classtextwolf_1_1SrcIterator.html#a49deea6625d3eddf3091013618c7c990"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="SrcIterator"><param name="Local" value="classtextwolf_1_1SrcIterator.html#a5433d4f1d56733e36c989efe351d48e4"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="getPosition"><param name="Local" value="classtextwolf_1_1SrcIterator.html#ac559d466fcf7bfa8577e817ba8805148"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="operator*"><param name="Local" value="classtextwolf_1_1SrcIterator.html#a64adeb04830df3868ae98fcf05cbb715"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="operator++"><param name="Local" value="classtextwolf_1_1SrcIterator.html#af75bb1fce758fc1aa9c274af5df2f6c3"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="operator-"><param name="Local" value="classtextwolf_1_1SrcIterator.html#a03268cda9d1f3e539c09ab389479a018"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="operator="><param name="Local" value="classtextwolf_1_1SrcIterator.html#a4e3dec276e87fc72aa7c099921ed4ab2"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="putInput"><param name="Local" value="classtextwolf_1_1SrcIterator.html#a5b11387c525288193dbf43471583d3d1"><param name="ImageNumber" value="11"></OBJECT>
+      </UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::XMLPathSelectAutomaton< CharSet_ >::State"><param name="ImageNumber" value="1"></OBJECT>
+      <UL>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="State"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1State.html#a7b80a3993a1364ce174b1bd6b00b0072"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="State"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1State.html#ae1f588865f3a0376af07d2d0552e2c89"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="~State"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1State.html#a8af83f08b75c409c4d31ff834fdfc6b5"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="defineKey"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1State.html#a0030c51fa24d0a63c1da1cf4be0cb7d0"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="defineNext"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1State.html#addff11d276a281351140ea8924526720"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="defineOutput"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1State.html#a82330cdb9807bd3145fd601d8d2c9b45"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="defLink"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1State.html#a82becfe2f2a1ad6f6cc0398f7c83cd6b"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="isempty"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1State.html#a393333d6e415258ab047a6c33c5bfbf2"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="tostring"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1State.html#a12e709ee319f984e761cb8e540823c93"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="core"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1State.html#a34a8f9a881d756323734744bcfd6f1aa"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="key"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1State.html#a96ca8fc3d57eb03ec5fbe1d7f04d430d"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="keysize"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1State.html#a09add5bcd12d31ac51afcea19bbe8102"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="link"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1State.html#a1fda78d8f5c8bd1300469182074bc94a"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="next"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1State.html#ac175a5be7244fae19e5161ec1252e29c"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="srckey"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1State.html#a9fecc3dccc25cfaf4f5485887c347bb5"><param name="ImageNumber" value="11"></OBJECT>
+      </UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::XMLScannerBase::Statemachine"><param name="ImageNumber" value="1"></OBJECT>
+      <UL>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="Statemachine"><param name="Local" value="structtextwolf_1_1XMLScannerBase_1_1Statemachine.html#a1f62694e5536b5c5f4c2e239802fa60c"><param name="ImageNumber" value="11"></OBJECT>
+      </UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::StaticBuffer"><param name="ImageNumber" value="1"></OBJECT>
+      <UL>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="StaticBuffer"><param name="Local" value="classtextwolf_1_1StaticBuffer.html#a41a69d93713ad796badc258c1944dfef"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="StaticBuffer"><param name="Local" value="classtextwolf_1_1StaticBuffer.html#a24fa76c4ca1a2a6110de2612b0138b10"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="StaticBuffer"><param name="Local" value="classtextwolf_1_1StaticBuffer.html#a850b3acfa04ead5589ab1f41f0b13287"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="~StaticBuffer"><param name="Local" value="classtextwolf_1_1StaticBuffer.html#a0313cf220118dd96201bca4fee569621"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="append"><param name="Local" value="classtextwolf_1_1StaticBuffer.html#ae840dae38932133a6fff8fcb09a8319d"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="at"><param name="Local" value="classtextwolf_1_1StaticBuffer.html#a1c91c6be0f3a691b6c810909de9e749c"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="clear"><param name="Local" value="classtextwolf_1_1StaticBuffer.html#a830095cb9c0dd1342c261e520d29a8e7"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="operator[]"><param name="Local" value="classtextwolf_1_1StaticBuffer.html#abfa9e048aac11031646ab8e0449fc718"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="overflow"><param name="Local" value="classtextwolf_1_1StaticBuffer.html#adeb1952e21a6a5f8e0d4c0b5fd9cee40"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="ptr"><param name="Local" value="classtextwolf_1_1StaticBuffer.html#aa214f742efe32498abf682a072e0bc87"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="push_back"><param name="Local" value="classtextwolf_1_1StaticBuffer.html#a744e280227bef7ac70662a8f320b7379"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="resize"><param name="Local" value="classtextwolf_1_1StaticBuffer.html#a32f8010fc07d29beaf1adb8571406527"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="size"><param name="Local" value="classtextwolf_1_1StaticBuffer.html#a17dfe1ed87855240c11e95128dc7fb3e"><param name="ImageNumber" value="11"></OBJECT>
+      </UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::TagStack"><param name="ImageNumber" value="1"></OBJECT>
+      <UL>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="~TagStack"><param name="Local" value="classtextwolf_1_1TagStack.html#a7da99f19c0ae77e4a1269ea9b3dd5761"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="TagStack"><param name="Local" value="classtextwolf_1_1TagStack.html#a9aaf9bd3b3fce8197a30acb6214692b8"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="TagStack"><param name="Local" value="classtextwolf_1_1TagStack.html#a47ed21cab0bb9bbb436a884f0796bbca"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="empty"><param name="Local" value="classtextwolf_1_1TagStack.html#a5e3111f1b768016776f7961bd6126bec"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="pop"><param name="Local" value="classtextwolf_1_1TagStack.html#a76430e0bf68d29147d2e6877ce116d95"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="push"><param name="Local" value="classtextwolf_1_1TagStack.html#aa324cc660e87f4463f9bb724506fcb11"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="top"><param name="Local" value="classtextwolf_1_1TagStack.html#a1fea6fd37e279524a73c73ba9139de4e"><param name="ImageNumber" value="11"></OBJECT>
+      </UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::TextScanner< Iterator, CharSet >"><param name="ImageNumber" value="1"></OBJECT>
+      <UL>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="TextScanner"><param name="Local" value="classtextwolf_1_1TextScanner.html#aee5ff87e78c05f729912cd2cbbb7610d"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="TextScanner"><param name="Local" value="classtextwolf_1_1TextScanner.html#aaf7ec9ab96af883583366eb9f3f078ad"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="TextScanner"><param name="Local" value="classtextwolf_1_1TextScanner.html#a81f6b27b76253b700d00a630298ff1d3"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="TextScanner"><param name="Local" value="classtextwolf_1_1TextScanner.html#ab253b7395490d044f9befb8545851d40"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="ascii"><param name="Local" value="classtextwolf_1_1TextScanner.html#a382bea605a53ce8523cbd3c8777c5666"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="chr"><param name="Local" value="classtextwolf_1_1TextScanner.html#a783b195912d79ed958f7f9b0660f156a"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="control"><param name="Local" value="classtextwolf_1_1TextScanner.html#a24fd9e888680e46835e9c6f2d4be3f71"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="copychar"><param name="Local" value="classtextwolf_1_1TextScanner.html#a512818227d9d98531a9f4c175a13b444"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="getcur"><param name="Local" value="classtextwolf_1_1TextScanner.html#ad8d2e73575e69cf8b86034da6db0fcc4"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="getPosition"><param name="Local" value="classtextwolf_1_1TextScanner.html#a4fbfffaf166e17e18043b31c2e489072"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="operator*"><param name="Local" value="classtextwolf_1_1TextScanner.html#a2e65d1f0a4ab1ca3264ca10aa6ee04c6"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="operator++"><param name="Local" value="classtextwolf_1_1TextScanner.html#abab7abef27e2745c4464a793b518d896"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="operator++"><param name="Local" value="classtextwolf_1_1TextScanner.html#ab18e833d8e155673e5e096b1ccbe0128"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="setSource"><param name="Local" value="classtextwolf_1_1TextScanner.html#a2cfc6414e0b33f860af0b271fb3a2772"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="skip"><param name="Local" value="classtextwolf_1_1TextScanner.html#ac0b6d4734280a45a14c3d93d068b248f"><param name="ImageNumber" value="11"></OBJECT>
+      </UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::throws_exception"><param name="ImageNumber" value="1"></OBJECT>
+      <UL>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="Cause"><param name="Local" value="structtextwolf_1_1throws__exception.html#aa2ca687050bf21caa57936fe400f59f0"><param name="ImageNumber" value="11"></OBJECT>
+      </UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::XMLPathSelectAutomaton< CharSet_ >::Token"><param name="ImageNumber" value="1"></OBJECT>
+      <UL>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="Token"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1Token.html#a7a536fe50cfe35c6b3bc6ccef0a1fd2e"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="Token"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1Token.html#a8be8e8b900f01a245b78a29a41a68f38"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="Token"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1Token.html#a13ea6c136791dda7eb46729c3c524814"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="core"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1Token.html#a93e2a6d96fbfb7f41c18b29d568a9670"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="stateidx"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1Token.html#ae110776d8c9381a05c76a62e99d8018f"><param name="ImageNumber" value="11"></OBJECT>
+      </UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::traits::TypeCheck"><param name="Local" value="classtextwolf_1_1traits_1_1TypeCheck.html"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::charset::UCS2< byteorder >"><param name="ImageNumber" value="1"></OBJECT>
+      <UL>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="asciichar"><param name="Local" value="structtextwolf_1_1charset_1_1UCS2.html#ab2625c706b7e1fec2d27fd9f8b88ee77"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="fetchbytes"><param name="Local" value="structtextwolf_1_1charset_1_1UCS2.html#a73246f945ece3c41d6950f2a66a9d1e1"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="is_equal"><param name="Local" value="structtextwolf_1_1charset_1_1UCS2.html#ae8b677f43d746e0080cfac8f57119449"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="print"><param name="Local" value="structtextwolf_1_1charset_1_1UCS2.html#a90180f2e2aa6a58e5e9d1f504d2aef56"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="skip"><param name="Local" value="structtextwolf_1_1charset_1_1UCS2.html#aeae52d32499e136fa4c23c1a53ea9aa9"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="value"><param name="Local" value="structtextwolf_1_1charset_1_1UCS2.html#a26decf1b55b45709e2acad0f32614b4c"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="value_impl"><param name="Local" value="structtextwolf_1_1charset_1_1UCS2.html#aa5932b7e78a03a35e1f11565a833cb24"><param name="ImageNumber" value="11"></OBJECT>
+      </UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::charset::UCS2BE"><param name="Local" value="structtextwolf_1_1charset_1_1UCS2BE.html"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::charset::UCS2LE"><param name="Local" value="structtextwolf_1_1charset_1_1UCS2LE.html"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::charset::UCS4< byteorder >"><param name="ImageNumber" value="1"></OBJECT>
+      <UL>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="asciichar"><param name="Local" value="structtextwolf_1_1charset_1_1UCS4.html#a09b4766773472e88456850386506b40b"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="fetchbytes"><param name="Local" value="structtextwolf_1_1charset_1_1UCS4.html#abd70a8938c6ceac376291f096f77bed2"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="is_equal"><param name="Local" value="structtextwolf_1_1charset_1_1UCS4.html#a6dad33c98c219ff268500c9441508405"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="print"><param name="Local" value="structtextwolf_1_1charset_1_1UCS4.html#a5c0413e72c02907c02840a4ace3815d0"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="skip"><param name="Local" value="structtextwolf_1_1charset_1_1UCS4.html#ac4acd8c3bc29731ae882b9f1a7b7c5c2"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="value"><param name="Local" value="structtextwolf_1_1charset_1_1UCS4.html#a82296b1c0d41f0feb585be4abce57746"><param name="ImageNumber" value="11"></OBJECT>
+      </UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::charset::UCS4BE"><param name="Local" value="structtextwolf_1_1charset_1_1UCS4BE.html"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::charset::UCS4LE"><param name="Local" value="structtextwolf_1_1charset_1_1UCS4LE.html"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::charset::UTF16< encoding >"><param name="ImageNumber" value="1"></OBJECT>
+      <UL>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="asciichar"><param name="Local" value="classtextwolf_1_1charset_1_1UTF16.html#a06a66ca00a897dec366429bcd61bbbc6"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="fetchbytes"><param name="Local" value="classtextwolf_1_1charset_1_1UTF16.html#a3fab005bc9abcec0330276653a3efb67"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="is_equal"><param name="Local" value="classtextwolf_1_1charset_1_1UTF16.html#a8d9acc21f29c4af12efd153689b7b5d3"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="print"><param name="Local" value="classtextwolf_1_1charset_1_1UTF16.html#a5bc0a5d516803ee36778793a30106644"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="size"><param name="Local" value="classtextwolf_1_1charset_1_1UTF16.html#ae74ab4ecd1b649f0809375eafe7c09cd"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="skip"><param name="Local" value="classtextwolf_1_1charset_1_1UTF16.html#af53ad1ea1ca9d1638d51fd6adf891f99"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="value"><param name="Local" value="classtextwolf_1_1charset_1_1UTF16.html#a285856dc8c0f871dd9959d733a108c18"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="value_impl"><param name="Local" value="classtextwolf_1_1charset_1_1UTF16.html#aec49e67246a79dfc971bbfe0341e7ed9"><param name="ImageNumber" value="11"></OBJECT>
+      </UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::charset::UTF16BE"><param name="Local" value="structtextwolf_1_1charset_1_1UTF16BE.html"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::charset::UTF16LE"><param name="Local" value="structtextwolf_1_1charset_1_1UTF16LE.html"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::charset::UTF8"><param name="ImageNumber" value="1"></OBJECT>
+      <UL>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="asciichar"><param name="Local" value="structtextwolf_1_1charset_1_1UTF8.html#a7a08b35589811dc83e87abf194e6fd3a"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="fetchbytes"><param name="Local" value="structtextwolf_1_1charset_1_1UTF8.html#a691cfeda6f94bd918265a2b7b286c7db"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="is_equal"><param name="Local" value="structtextwolf_1_1charset_1_1UTF8.html#a8de7f2a182a0753f518cd3669d63000f"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="print"><param name="Local" value="structtextwolf_1_1charset_1_1UTF8.html#a10fa66629fb65423f2a23691ab49af98"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="size"><param name="Local" value="structtextwolf_1_1charset_1_1UTF8.html#aec37940fcde645be089af3d462e87af4"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="skip"><param name="Local" value="structtextwolf_1_1charset_1_1UTF8.html#aeed6befb901952daef926215d3d04171"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="value"><param name="Local" value="structtextwolf_1_1charset_1_1UTF8.html#ab0554c1eae77123f436acbe3d8e3daec"><param name="ImageNumber" value="11"></OBJECT>
+      </UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::XmlHdrParser"><param name="ImageNumber" value="1"></OBJECT>
+      <UL>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="XmlHdrParser"><param name="Local" value="classtextwolf_1_1XmlHdrParser.html#a567aad14083bba711977a20171a56a2e"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="XmlHdrParser"><param name="Local" value="classtextwolf_1_1XmlHdrParser.html#a434791f8bbf6ce46d9f1e7c5590b03fa"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="charsConsumed"><param name="Local" value="classtextwolf_1_1XmlHdrParser.html#a6f6b2a2daabe854367eed3701f90694a"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="clear"><param name="Local" value="classtextwolf_1_1XmlHdrParser.html#a90af7e2dc5db97e40089baeb690518b4"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="consumedData"><param name="Local" value="classtextwolf_1_1XmlHdrParser.html#aca8e5cb742dc5b63c01c592f037f30fc"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="encoding"><param name="Local" value="classtextwolf_1_1XmlHdrParser.html#aaa3e4f347f1292dda0dfa7221a0c13f6"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="lasterror"><param name="Local" value="classtextwolf_1_1XmlHdrParser.html#a593f81179640d159400625ad0bb3ddc8"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="parse"><param name="Local" value="classtextwolf_1_1XmlHdrParser.html#a02904106585ffec19e6aa906562a622b"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="putInput"><param name="Local" value="classtextwolf_1_1XmlHdrParser.html#ae7f74a994e2b0bddde34fc69fd5536e7"><param name="ImageNumber" value="11"></OBJECT>
+      </UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::XMLPathSelect< CharSet_ >"><param name="ImageNumber" value="1"></OBJECT>
+      <UL>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="ThisXMLPathSelect"><param name="Local" value="classtextwolf_1_1XMLPathSelect.html#a35310daa69c0b8650df3bda0327d6b1f"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="ThisXMLPathSelectAutomaton"><param name="Local" value="classtextwolf_1_1XMLPathSelect.html#a57b5d8d0fe852a02a34b25d8c5417ef8"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="XMLPathSelect"><param name="Local" value="classtextwolf_1_1XMLPathSelect.html#a5980bc82641f036ff178ac7c226bdf6b"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="XMLPathSelect"><param name="Local" value="classtextwolf_1_1XMLPathSelect.html#ab5d28e0d90a20df7f050b005d3be6c44"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="end"><param name="Local" value="classtextwolf_1_1XMLPathSelect.html#a3e1af67ffe496c625d9ae36310054d8e"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="push"><param name="Local" value="classtextwolf_1_1XMLPathSelect.html#a6381cc0a5705d0ec40c3b23eb98ff618"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="push"><param name="Local" value="classtextwolf_1_1XMLPathSelect.html#ad60a142d105e14660bbda9e90f487642"><param name="ImageNumber" value="11"></OBJECT>
+      </UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::XMLPathSelectAutomaton< CharSet_ >"><param name="ImageNumber" value="1"></OBJECT>
+      <UL>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="CharSet"><param name="Local" value="classtextwolf_1_1XMLPathSelectAutomaton.html#a369d208883763f5fd08046a76a191082"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="Hash"><param name="Local" value="classtextwolf_1_1XMLPathSelectAutomaton.html#aa135cb0cf526860150c5b08febb9eb34"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="ThisXMLPathSelectAutomaton"><param name="Local" value="classtextwolf_1_1XMLPathSelectAutomaton.html#a0b3e802187126a98593bcdaa4ec35534"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="Operation"><param name="Local" value="classtextwolf_1_1XMLPathSelectAutomaton.html#acd770d474c93c3fa4b3db53e612b8710"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="XMLPathSelectAutomaton"><param name="Local" value="classtextwolf_1_1XMLPathSelectAutomaton.html#a024f64dd49aaee2758a4fdf6dff5a2c9"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="~XMLPathSelectAutomaton"><param name="Local" value="classtextwolf_1_1XMLPathSelectAutomaton.html#a8add96a9a6dc76a3b079c8ae79c82ca3"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="operationName"><param name="Local" value="classtextwolf_1_1XMLPathSelectAutomaton.html#a58a3549f008953ee0d29ad154f16a683"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="operator*"><param name="Local" value="classtextwolf_1_1XMLPathSelectAutomaton.html#ab3af9618ce7b58134b25a50435a4da70"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="setMemUsage"><param name="Local" value="classtextwolf_1_1XMLPathSelectAutomaton.html#aa3b25604e8e65c5867e6942857832584"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="tostring"><param name="Local" value="classtextwolf_1_1XMLPathSelectAutomaton.html#ad837785e1c091dca35c01ba3bf6cbd6e"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="maxDepth"><param name="Local" value="classtextwolf_1_1XMLPathSelectAutomaton.html#a1bf0fe2c0e5d799ffa0b3ae8da09c3b3"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="maxFollows"><param name="Local" value="classtextwolf_1_1XMLPathSelectAutomaton.html#a2f3a018f574151efdd5ebf5a2d83a397"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="maxScopeStackSize"><param name="Local" value="classtextwolf_1_1XMLPathSelectAutomaton.html#a18b95c3149dbec9ce7b7e3693db2d2c4"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="maxTokens"><param name="Local" value="classtextwolf_1_1XMLPathSelectAutomaton.html#a1583bb398f4b2bede2d700a533d60285"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="maxTriggers"><param name="Local" value="classtextwolf_1_1XMLPathSelectAutomaton.html#afbf1a8f842eaa120c5882750ee2c14c0"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="memUsage"><param name="Local" value="classtextwolf_1_1XMLPathSelectAutomaton.html#a73a9e096d87be7a56ff203c5d03160f2"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="states"><param name="Local" value="classtextwolf_1_1XMLPathSelectAutomaton.html#abec1aa88802bed73ab343c5da34bea03"><param name="ImageNumber" value="11"></OBJECT>
+      </UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::XMLPathSelectAutomatonParser< SrcCharSet, AtmCharSet >"><param name="ImageNumber" value="1"></OBJECT>
+      <UL>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="PathElement"><param name="Local" value="classtextwolf_1_1XMLPathSelectAutomatonParser.html#a66cda5fb32fbf3447383cab419c80eb4"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="SrcScanner"><param name="Local" value="classtextwolf_1_1XMLPathSelectAutomatonParser.html#a8a9941e85de786c1b6c6f4db9fbdb110"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="This"><param name="Local" value="classtextwolf_1_1XMLPathSelectAutomatonParser.html#ad2dd9fcf0a1265504b2c2084e9e4a2c9"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="ThisAutomaton"><param name="Local" value="classtextwolf_1_1XMLPathSelectAutomatonParser.html#a9c4f433ba5d597ecb5861a68ef46bf76"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="XMLPathSelectAutomatonParser"><param name="Local" value="classtextwolf_1_1XMLPathSelectAutomatonParser.html#af2acd8be491d70f6e3127678394a3716"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="~XMLPathSelectAutomatonParser"><param name="Local" value="classtextwolf_1_1XMLPathSelectAutomatonParser.html#aa8e25b2ddc7b3682c76a4ee10b627a4d"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="addExpression"><param name="Local" value="classtextwolf_1_1XMLPathSelectAutomatonParser.html#afcc2d4763d531f229607746978f0289e"><param name="ImageNumber" value="11"></OBJECT>
+      </UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::XMLPrinter< IOCharset, AppCharset, BufferType >"><param name="ImageNumber" value="1"></OBJECT>
+      <UL>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="State"><param name="Local" value="classtextwolf_1_1XMLPrinter.html#a315a99d2cd5b1fd30e48898066b4323b"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="XMLPrinter"><param name="Local" value="classtextwolf_1_1XMLPrinter.html#ae5b4d380b9659c6ec2398727f081e49c"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="XMLPrinter"><param name="Local" value="classtextwolf_1_1XMLPrinter.html#a4a30d159ef808a2cfab1a9ff27059e47"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="XMLPrinter"><param name="Local" value="classtextwolf_1_1XMLPrinter.html#a7ab8d78dc6852fe13cbc3f4bfaa47595"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="exitTagContext"><param name="Local" value="classtextwolf_1_1XMLPrinter.html#a6360badc75049296ce9ce0eebbe02719"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="lasterror"><param name="Local" value="classtextwolf_1_1XMLPrinter.html#a51968973f7bf2ab31020e36e4f66f27a"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="printAttribute"><param name="Local" value="classtextwolf_1_1XMLPrinter.html#a0db65fd4d649b4a620a6463c9e13a092"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="printCloseTag"><param name="Local" value="classtextwolf_1_1XMLPrinter.html#afb627b302a32c6485a4abfe134df374a"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="printDoctype"><param name="Local" value="classtextwolf_1_1XMLPrinter.html#ada4a5a30b88e7b069826a8cc4405237c"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="printHeader"><param name="Local" value="classtextwolf_1_1XMLPrinter.html#a64f72f60ed075ab045c8a2718f98d537"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="printOpenTag"><param name="Local" value="classtextwolf_1_1XMLPrinter.html#a04000aaf8020b6c7f9e841ad24b43ac9"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="printValue"><param name="Local" value="classtextwolf_1_1XMLPrinter.html#a28ff1950e162e84d3170bbd5cf612d03"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="state"><param name="Local" value="classtextwolf_1_1XMLPrinter.html#a3970ef15ae1e927baeae3fe704f39c3a"><param name="ImageNumber" value="11"></OBJECT>
+      </UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::XMLScanner< InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_ >"><param name="ImageNumber" value="1"></OBJECT>
+      <UL>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="EntityMap"><param name="Local" value="classtextwolf_1_1XMLScanner.html#a1e47411251de5b7155f5b8ef9d5e322e"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="InputCharSet"><param name="Local" value="classtextwolf_1_1XMLScanner.html#ae4e99bbba955f43cb3b2f1d0273632d0"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="InputReader"><param name="Local" value="classtextwolf_1_1XMLScanner.html#a28ff9be34bd659e66b38f3aed35bbf91"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="OutputBuffer"><param name="Local" value="classtextwolf_1_1XMLScanner.html#aefb227bbb9ff06f9c4c86d25a16ad235"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="OutputCharSet"><param name="Local" value="classtextwolf_1_1XMLScanner.html#afdf169a81150c8cc4eb8b5d34aa8b67f"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="ThisXMLScanner"><param name="Local" value="classtextwolf_1_1XMLScanner.html#a054a9596bf4fc0998fff0902e5982ae2"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="XMLScanner"><param name="Local" value="classtextwolf_1_1XMLScanner.html#a51ec6495cbbdf609760098b45d6e66ad"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="XMLScanner"><param name="Local" value="classtextwolf_1_1XMLScanner.html#a44a78da6e055380dfd507a6e58e26537"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="XMLScanner"><param name="Local" value="classtextwolf_1_1XMLScanner.html#a8b3a77190496dc0c10e90436571206b3"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="XMLScanner"><param name="Local" value="classtextwolf_1_1XMLScanner.html#a486978ed1ed857cd8bfc5af06b90ae81"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="XMLScanner"><param name="Local" value="classtextwolf_1_1XMLScanner.html#a2931d2ea0c7b3b9c1b4a700b55790384"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="XMLScanner"><param name="Local" value="classtextwolf_1_1XMLScanner.html#afddb3b3a45bd6d0026594bbe1bb1c06c"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="XMLScanner"><param name="Local" value="classtextwolf_1_1XMLScanner.html#a1b090a09c8a10c68302348373dac99f0"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="begin"><param name="Local" value="classtextwolf_1_1XMLScanner.html#a2fa61ddab30002d7ced93764066b2a05"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="end"><param name="Local" value="classtextwolf_1_1XMLScanner.html#a5c83c190269593de0aa7426449db149f"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="getError"><param name="Local" value="classtextwolf_1_1XMLScanner.html#a43ca63e969a66349b5b009b90e91ab57"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="getItem"><param name="Local" value="classtextwolf_1_1XMLScanner.html#a35747c3d606dde3dc5fc703640eb30c6"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="getItemPtr"><param name="Local" value="classtextwolf_1_1XMLScanner.html#a42dfa2ddc57a62c44b5404bbac299ddd"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="getItemSize"><param name="Local" value="classtextwolf_1_1XMLScanner.html#a37e883ee7a08db5cef658ec92ef6d0e9"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="getPosition"><param name="Local" value="classtextwolf_1_1XMLScanner.html#a222fbd5b8c4b34b0d40556c1c054dd54"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="getState"><param name="Local" value="classtextwolf_1_1XMLScanner.html#a3cc947fdc76a04d8f51719951bbfa8f8"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="nextItem"><param name="Local" value="classtextwolf_1_1XMLScanner.html#aeab418d7488a873d205bbf3fd57a0131"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="parseStaticToken"><param name="Local" value="classtextwolf_1_1XMLScanner.html#a6deb2cb87034c88409243c26cb353eb5"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="setSource"><param name="Local" value="classtextwolf_1_1XMLScanner.html#a8bf316457211f3a7a4b12c4ad1f31ec0"><param name="ImageNumber" value="11"></OBJECT>
+      </UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::XMLScannerBase"><param name="ImageNumber" value="1"></OBJECT>
+      <UL>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="IsTokenCharMap"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html#a0604b6b1ebd2699f677f51dbe816889e"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="ElementType"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html#aae4f0cdb7e16aca5fdee271fa60e1329"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="Error"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html#ae26e6510c822ee35e041ab2dab70e78b"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="STMAction"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html#a9e098fe6f4a84b25db51fcfe61f4cbd0"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="STMState"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html#acf32f993fc533aa138e44a9b1afc8d1c"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="getActionString"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html#aa0bd625fc24362b945dcd6a167eabe7b"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="getElementTypeName"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html#a29eec38bb732d4cc1e759920aec82d7d"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="getErrorString"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html#a583151f1bc3a1b03e0d616618917c866"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="getStateString"><param name="Local" value="classtextwolf_1_1XMLScannerBase.html#aade9b82f45961bb5a5765f823a47a343"><param name="ImageNumber" value="11"></OBJECT>
+      </UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::traits::TypeCheck::YES"><param name="Local" value="structtextwolf_1_1traits_1_1TypeCheck_1_1YES.html"><param name="ImageNumber" value="11"></OBJECT>
+    </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Name" value="Class Index"><param name="ImageNumber" value="1"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Name" value="Class Hierarchy"><param name="ImageNumber" value="1"></OBJECT>
+    <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::ScannerStatemachine::Element::Action"><param name="Local" value="structtextwolf_1_1ScannerStatemachine_1_1Element_1_1Action.html"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::charset::ByteOrder"><param name="Local" value="structtextwolf_1_1charset_1_1ByteOrder.html"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::CharMap< RESTYPE, nullvalue_, RANGE >"><param name="ImageNumber" value="1"></OBJECT>
+      <UL>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::XMLScannerBase::IsContentCharMap"><param name="ImageNumber" value="1"></OBJECT>
+        <UL>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::XMLScannerBase::IsDQStringCharMap"><param name="Local" value="structtextwolf_1_1XMLScannerBase_1_1IsDQStringCharMap.html"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::XMLScannerBase::IsSQStringCharMap"><param name="Local" value="structtextwolf_1_1XMLScannerBase_1_1IsSQStringCharMap.html"><param name="ImageNumber" value="11"></OBJECT>
+        </UL>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::XMLScannerBase::IsTagCharMap"><param name="Local" value="structtextwolf_1_1XMLScannerBase_1_1IsTagCharMap.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::XMLScannerBase::IsWordCharMap"><param name="Local" value="structtextwolf_1_1XMLScannerBase_1_1IsWordCharMap.html"><param name="ImageNumber" value="11"></OBJECT>
+      </UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::CharMap< ControlCharacter, Undef >"><param name="ImageNumber" value="1"></OBJECT>
+      <UL>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::TextScanner< Iterator, CharSet >::ControlCharMap"><param name="Local" value="structtextwolf_1_1TextScanner_1_1ControlCharMap.html"><param name="ImageNumber" value="11"></OBJECT>
+      </UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::CharMap< unsigned char, 0 >"><param name="ImageNumber" value="1"></OBJECT>
+      <UL>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::charset::UTF8::CharLengthTab"><param name="Local" value="structtextwolf_1_1charset_1_1UTF8_1_1CharLengthTab.html"><param name="ImageNumber" value="11"></OBJECT>
+      </UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::ControlCharacterM"><param name="Local" value="structtextwolf_1_1ControlCharacterM.html"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="copychar"><param name="Local" value="classcopychar.html"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::XMLPathSelectAutomaton< CharSet_ >::Core"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1Core.html"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::CStringIterator"><param name="Local" value="classtextwolf_1_1CStringIterator.html"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::ScannerStatemachine::Element"><param name="Local" value="structtextwolf_1_1ScannerStatemachine_1_1Element.html"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::XMLScanner< InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_ >::iterator::Element"><param name="Local" value="classtextwolf_1_1XMLScanner_1_1iterator_1_1Element.html"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::charset::Encoder"><param name="Local" value="structtextwolf_1_1charset_1_1Encoder.html"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::XMLScanner< InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_ >::End"><param name="Local" value="structtextwolf_1_1XMLScanner_1_1End.html"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::exception"><param name="Local" value="structtextwolf_1_1exception.html"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::charset::Interface"><param name="Local" value="structtextwolf_1_1charset_1_1Interface.html"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::traits::TypeCheck::is_same< T, U >"><param name="Local" value="structtextwolf_1_1traits_1_1TypeCheck_1_1is__same.html"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::traits::TypeCheck::is_same< T, T >"><param name="Local" value="structtextwolf_1_1traits_1_1TypeCheck_1_1is__same_3_01T_00_01T_01_4.html"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::charset::IsoLatinCodePage"><param name="ImageNumber" value="1"></OBJECT>
+      <UL>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::charset::IsoLatin"><param name="Local" value="structtextwolf_1_1charset_1_1IsoLatin.html"><param name="ImageNumber" value="11"></OBJECT>
+      </UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::IStreamIterator"><param name="Local" value="classtextwolf_1_1IStreamIterator.html"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::XMLPathSelect< CharSet_ >::iterator"><param name="Local" value="classtextwolf_1_1XMLPathSelect_1_1iterator.html"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::XMLScanner< InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_ >::iterator"><param name="Local" value="classtextwolf_1_1XMLScanner_1_1iterator.html"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::XMLPathSelectAutomaton< CharSet_ >::Mask"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1Mask.html"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::traits::TypeCheck::NO"><param name="Local" value="structtextwolf_1_1traits_1_1TypeCheck_1_1NO.html"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::XMLPathSelectAutomaton< CharSet_ >::Scope::Range"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1Scope_1_1Range.html"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::XMLPathSelectAutomaton< CharSet_ >::Scope"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1Scope.html"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::SrcIterator"><param name="Local" value="classtextwolf_1_1SrcIterator.html"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::XMLPathSelectAutomaton< CharSet_ >::State"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1State.html"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::TagStack"><param name="Local" value="classtextwolf_1_1TagStack.html"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::TextScanner< Iterator, CharSet >"><param name="Local" value="classtextwolf_1_1TextScanner.html"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::throws_exception"><param name="ImageNumber" value="1"></OBJECT>
+      <UL>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::ScannerStatemachine"><param name="ImageNumber" value="1"></OBJECT>
+        <UL>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::XMLScannerBase::Statemachine"><param name="Local" value="structtextwolf_1_1XMLScannerBase_1_1Statemachine.html"><param name="ImageNumber" value="11"></OBJECT>
+        </UL>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::StaticBuffer"><param name="Local" value="classtextwolf_1_1StaticBuffer.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::XMLPathSelect< CharSet_ >"><param name="Local" value="classtextwolf_1_1XMLPathSelect.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::XMLPathSelectAutomaton< CharSet_ >"><param name="Local" value="classtextwolf_1_1XMLPathSelectAutomaton.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::XMLPathSelectAutomaton< CharSet_ >::PathElement"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1PathElement.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::XMLPathSelectAutomaton< AtmCharSet >"><param name="ImageNumber" value="1"></OBJECT>
+        <UL>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::XMLPathSelectAutomatonParser< SrcCharSet, AtmCharSet >"><param name="Local" value="classtextwolf_1_1XMLPathSelectAutomatonParser.html"><param name="ImageNumber" value="11"></OBJECT>
+        </UL>
+      </UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::XMLPathSelectAutomaton< CharSet_ >::Token"><param name="Local" value="structtextwolf_1_1XMLPathSelectAutomaton_1_1Token.html"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::traits::TypeCheck"><param name="Local" value="classtextwolf_1_1traits_1_1TypeCheck.html"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::charset::UCS2< byteorder >"><param name="Local" value="structtextwolf_1_1charset_1_1UCS2.html"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::charset::UCS2< ByteOrder::BE >"><param name="ImageNumber" value="1"></OBJECT>
+      <UL>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::charset::UCS2BE"><param name="Local" value="structtextwolf_1_1charset_1_1UCS2BE.html"><param name="ImageNumber" value="11"></OBJECT>
+      </UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::charset::UCS2< ByteOrder::LE >"><param name="ImageNumber" value="1"></OBJECT>
+      <UL>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::charset::UCS2LE"><param name="Local" value="structtextwolf_1_1charset_1_1UCS2LE.html"><param name="ImageNumber" value="11"></OBJECT>
+      </UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::charset::UCS4< byteorder >"><param name="Local" value="structtextwolf_1_1charset_1_1UCS4.html"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::charset::UCS4< ByteOrder::BE >"><param name="ImageNumber" value="1"></OBJECT>
+      <UL>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::charset::UCS4BE"><param name="Local" value="structtextwolf_1_1charset_1_1UCS4BE.html"><param name="ImageNumber" value="11"></OBJECT>
+      </UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::charset::UCS4< ByteOrder::LE >"><param name="ImageNumber" value="1"></OBJECT>
+      <UL>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::charset::UCS4LE"><param name="Local" value="structtextwolf_1_1charset_1_1UCS4LE.html"><param name="ImageNumber" value="11"></OBJECT>
+      </UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::charset::UTF16< encoding >"><param name="Local" value="classtextwolf_1_1charset_1_1UTF16.html"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::charset::UTF16< ByteOrder::BE >"><param name="ImageNumber" value="1"></OBJECT>
+      <UL>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::charset::UTF16BE"><param name="Local" value="structtextwolf_1_1charset_1_1UTF16BE.html"><param name="ImageNumber" value="11"></OBJECT>
+      </UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::charset::UTF16< ByteOrder::LE >"><param name="ImageNumber" value="1"></OBJECT>
+      <UL>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::charset::UTF16LE"><param name="Local" value="structtextwolf_1_1charset_1_1UTF16LE.html"><param name="ImageNumber" value="11"></OBJECT>
+      </UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::charset::UTF8"><param name="Local" value="structtextwolf_1_1charset_1_1UTF8.html"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::XmlHdrParser"><param name="Local" value="classtextwolf_1_1XmlHdrParser.html"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::XMLPrinter< IOCharset, AppCharset, BufferType >"><param name="Local" value="classtextwolf_1_1XMLPrinter.html"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::XMLScannerBase"><param name="ImageNumber" value="1"></OBJECT>
+      <UL>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::XMLScanner< InputIterator, InputCharSet_, OutputCharSet_, OutputBuffer_ >"><param name="Local" value="classtextwolf_1_1XMLScanner.html"><param name="ImageNumber" value="11"></OBJECT>
+      </UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="textwolf::traits::TypeCheck::YES"><param name="Local" value="structtextwolf_1_1traits_1_1TypeCheck_1_1YES.html"><param name="ImageNumber" value="11"></OBJECT>
+    </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Name" value="Class Members"><param name="ImageNumber" value="1"></OBJECT>
+    <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="All"><param name="ImageNumber" value="1"></OBJECT>
+      <UL>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="a"><param name="Local" value="functions.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="b"><param name="Local" value="functions_0x62.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="c"><param name="Local" value="functions_0x63.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="d"><param name="Local" value="functions_0x64.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="e"><param name="Local" value="functions_0x65.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="f"><param name="Local" value="functions_0x66.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="g"><param name="Local" value="functions_0x67.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="h"><param name="Local" value="functions_0x68.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="i"><param name="Local" value="functions_0x69.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="j"><param name="Local" value="functions_0x6a.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="k"><param name="Local" value="functions_0x6b.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="l"><param name="Local" value="functions_0x6c.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="m"><param name="Local" value="functions_0x6d.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="n"><param name="Local" value="functions_0x6e.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="o"><param name="Local" value="functions_0x6f.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="p"><param name="Local" value="functions_0x70.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="r"><param name="Local" value="functions_0x72.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="s"><param name="Local" value="functions_0x73.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="t"><param name="Local" value="functions_0x74.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="u"><param name="Local" value="functions_0x75.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="v"><param name="Local" value="functions_0x76.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="w"><param name="Local" value="functions_0x77.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="x"><param name="Local" value="functions_0x78.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="~"><param name="Local" value="functions_0x7e.html"><param name="ImageNumber" value="11"></OBJECT>
+      </UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="Functions"><param name="ImageNumber" value="1"></OBJECT>
+      <UL>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="a"><param name="Local" value="functions_func.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="b"><param name="Local" value="functions_func_0x62.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="c"><param name="Local" value="functions_func_0x63.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="d"><param name="Local" value="functions_func_0x64.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="e"><param name="Local" value="functions_func_0x65.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="f"><param name="Local" value="functions_func_0x66.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="g"><param name="Local" value="functions_func_0x67.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="h"><param name="Local" value="functions_func_0x68.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="i"><param name="Local" value="functions_func_0x69.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="j"><param name="Local" value="functions_func_0x6a.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="l"><param name="Local" value="functions_func_0x6c.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="m"><param name="Local" value="functions_func_0x6d.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="n"><param name="Local" value="functions_func_0x6e.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="o"><param name="Local" value="functions_func_0x6f.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="p"><param name="Local" value="functions_func_0x70.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="r"><param name="Local" value="functions_func_0x72.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="s"><param name="Local" value="functions_func_0x73.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="t"><param name="Local" value="functions_func_0x74.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="u"><param name="Local" value="functions_func_0x75.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="v"><param name="Local" value="functions_func_0x76.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="w"><param name="Local" value="functions_func_0x77.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="x"><param name="Local" value="functions_func_0x78.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="~"><param name="Local" value="functions_func_0x7e.html"><param name="ImageNumber" value="11"></OBJECT>
+      </UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="Variables"><param name="Local" value="functions_vars.html"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="Typedefs"><param name="Local" value="functions_type.html"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="Enumerations"><param name="Local" value="functions_enum.html"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="Enumerator"><param name="Local" value="functions_eval.html"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="Related Functions"><param name="Local" value="functions_rela.html"><param name="ImageNumber" value="11"></OBJECT>
+    </UL>
+  </UL>
+<LI><OBJECT type="text/sitemap"><param name="Name" value="Files"><param name="ImageNumber" value="1"></OBJECT>
+  <UL>
+  <LI><OBJECT type="text/sitemap"><param name="Name" value="File List"><param name="ImageNumber" value="1"></OBJECT>
+    <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="doxygen_include/toc.h"><param name="Local" value="toc_8h.html"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="examples/TextScanner.cpp"><param name="ImageNumber" value="1"></OBJECT>
+      <UL>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="output"><param name="Local" value="TextScanner_8cpp.html#a28bd102e9eb60edf07c5c994ee0ce755"><param name="ImageNumber" value="11"></OBJECT>
+      </UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="examples/XMLPathSelect.cpp"><param name="ImageNumber" value="1"></OBJECT>
+      <UL>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="output"><param name="Local" value="XMLPathSelect_8cpp.html#a28bd102e9eb60edf07c5c994ee0ce755"><param name="ImageNumber" value="11"></OBJECT>
+      </UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="examples/XMLScanner.cpp"><param name="ImageNumber" value="1"></OBJECT>
+      <UL>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="output"><param name="Local" value="XMLScanner_8cpp.html#a28bd102e9eb60edf07c5c994ee0ce755"><param name="ImageNumber" value="11"></OBJECT>
+      </UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="examples/XMLScanner_chunkwise.cpp"><param name="ImageNumber" value="1"></OBJECT>
+      <UL>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="Encoding"><param name="Local" value="XMLScanner__chunkwise_8cpp.html#a6b5f94c96386e389a4f841bdd62d6632"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="Iterator"><param name="Local" value="XMLScanner__chunkwise_8cpp.html#a758b9ff9e6df178bc98b411e2dc96bb7"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="Scanner"><param name="Local" value="XMLScanner__chunkwise_8cpp.html#afb40694b6503fea09f1c92509c6409a7"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="output"><param name="Local" value="XMLScanner__chunkwise_8cpp.html#a4efc78a6feaaa96e69f86c0098b566e1"><param name="ImageNumber" value="11"></OBJECT>
+      </UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="include/textwolf.hpp"><param name="Local" value="textwolf_8hpp.html"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="include/textwolf/char.hpp"><param name="ImageNumber" value="1"></OBJECT>
+      <UL>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="EChar"><param name="Local" value="namespacetextwolf.html#a55e848f8c9806a7a32da0527a6801eca"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="UChar"><param name="Local" value="namespacetextwolf.html#a3eb8d6733d6737825026b2e41b8c3f9c"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="ControlCharacter"><param name="Local" value="namespacetextwolf.html#a4650ba8f3f0f0c953ab1dad55efc6ee3"><param name="ImageNumber" value="11"></OBJECT>
+      </UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="include/textwolf/charset.hpp"><param name="Local" value="charset_8hpp.html"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="include/textwolf/charset_interface.hpp"><param name="Local" value="charset__interface_8hpp.html"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="include/textwolf/charset_isolatin.hpp"><param name="Local" value="charset__isolatin_8hpp.html"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="include/textwolf/charset_ucs.hpp"><param name="Local" value="charset__ucs_8hpp.html"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="include/textwolf/charset_utf16.hpp"><param name="Local" value="charset__utf16_8hpp.html"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="include/textwolf/charset_utf8.hpp"><param name="Local" value="charset__utf8_8hpp.html"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="include/textwolf/codepages.hpp"><param name="Local" value="codepages_8hpp.html"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="include/textwolf/cstringiterator.hpp"><param name="Local" value="cstringiterator_8hpp.html"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="include/textwolf/exception.hpp"><param name="Local" value="exception_8hpp.html"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="include/textwolf/istreamiterator.hpp"><param name="Local" value="istreamiterator_8hpp.html"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="include/textwolf/sourceiterator.hpp"><param name="Local" value="sourceiterator_8hpp.html"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="include/textwolf/staticbuffer.hpp"><param name="Local" value="staticbuffer_8hpp.html"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="include/textwolf/textscanner.hpp"><param name="Local" value="textscanner_8hpp.html"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="include/textwolf/traits.hpp"><param name="Local" value="traits_8hpp.html"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="include/textwolf/version.hpp"><param name="ImageNumber" value="1"></OBJECT>
+      <UL>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="_TEXTWOLF_VERSION_MAJOR"><param name="Local" value="version_8hpp.html#ab220bad13e1255c798a0ef31bdda916d"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="_TEXTWOLF_VERSION_MINOR"><param name="Local" value="version_8hpp.html#a2979114ad83424ce83651d402f845ba9"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="_TEXTWOLF_VERSION_NUM"><param name="Local" value="version_8hpp.html#ab9c6079dcf480ccc94148b1ee500d759"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="_TEXTWOLF_VERSION_REVISION"><param name="Local" value="version_8hpp.html#a601ed26b577a8af89fea48d626b8c3fe"><param name="ImageNumber" value="11"></OBJECT>
+      </UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="include/textwolf/xmlhdrparser.hpp"><param name="Local" value="xmlhdrparser_8hpp.html"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="include/textwolf/xmlpathautomaton.hpp"><param name="Local" value="xmlpathautomaton_8hpp.html"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="include/textwolf/xmlpathautomatonparse.hpp"><param name="Local" value="xmlpathautomatonparse_8hpp.html"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="include/textwolf/xmlpathselect.hpp"><param name="Local" value="xmlpathselect_8hpp.html"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="include/textwolf/xmlprinter.hpp"><param name="Local" value="xmlprinter_8hpp.html"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="include/textwolf/xmlscanner.hpp"><param name="Local" value="xmlscanner_8hpp.html"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="include/textwolf/xmltagstack.hpp"><param name="Local" value="xmltagstack_8hpp.html"><param name="ImageNumber" value="11"></OBJECT>
+    </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Name" value="File Members"><param name="Local" value="globals.html"><param name="ImageNumber" value="11"></OBJECT>
+    <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="All"><param name="Local" value="globals.html"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="Functions"><param name="Local" value="globals_func.html"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="Typedefs"><param name="Local" value="globals_type.html"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="Defines"><param name="Local" value="globals_defs.html"><param name="ImageNumber" value="11"></OBJECT>
+    </UL>
+  </UL>
+</UL>
+</BODY>
+</HTML>

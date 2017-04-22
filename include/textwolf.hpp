@@ -26,5 +26,3 @@
 #include "textwolf/xmlpathselect.hpp"
 
 #endif
-
-

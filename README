@@ -6,14 +6,15 @@ Documentation
 * A doxygen interface documentation is at http://patrickfrey.github.com/textwolf/html/index.html
 
 Projects using textwolf
-* textwolf is used in the wolframe project (see http://wolframe.net or http://github.com/Wolframe/Wolframe)
-
-Bugreports
-* textwolf bug reports are in the github issue management of the textwolf project
+* textwolf is used in the project strus (see http://project-strus.net)
 
 Project Schedule
-* 2014/06/16
-	Version 0.2.0
+* 2011/6/16
+	Release Version 0.1.0 (done)
+* 2011/8/16
+	UTF-16 support (done)
+* 2014/06/12
+	Release Version 0.2.0 (done)
 	* Support of IsoLatin codepages besides UTF/UCS encodings
 	* Chunk by chunk feeding reimplementation (using longjmp instead of exceptions)
 
