@@ -52,7 +52,7 @@ public:
 		,m_itr(const_cast<char*>(buf))
 		,m_end(m_itr+size)
 		,m_eom(eom_)
-		,m_abspos(0){}
+		,m_abspos(size){}
 
 	/// \brief Assingment operator
 	SrcIterator& operator=( const SrcIterator& o)
