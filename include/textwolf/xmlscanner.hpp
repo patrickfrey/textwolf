@@ -58,7 +58,7 @@ public:
 	/// \brief Get state addressed by its index
 	/// \param [in] stateIdx index of the state
 	/// \return state defintion reference
-	Element* get( int stateIdx) throw(exception)
+	Element* get( int stateIdx)
 	{
 		if ((unsigned int)stateIdx>size) throw exception(InvalidState);
 		return tab + stateIdx;
@@ -70,7 +70,7 @@ private:
 
 	/// \brief Create a new state
 	/// \param [in] stateIdx index of the state (must be the size of the STM array, so that state identifiers can be named by enumeration constants for better readability)
-	void newState( int stateIdx) throw(exception)
+	void newState( int stateIdx)
 	{
 		if (size != (unsigned int)stateIdx) throw exception( StateNumbersNotAscending);
 		if (size >= MaxNofStates) throw exception( DimOutOfRange);
@@ -79,7 +79,7 @@ private:
 
 	/// \brief Define a transition for all control character types not firing yet in the last state defined
 	/// \param [in] nextState the follow state index defined for these transitions
-	void addOtherTransition( int nextState) throw(exception)
+	void addOtherTransition( int nextState)
 	{
 		if (size == 0) throw exception( InvalidState);
 		if (nextState < 0 || nextState > MaxNofStates) throw exception( InvalidParamState);
@@ -93,7 +93,7 @@ private:
 	/// \brief Define a transition for inputchr in the last state defined
 	/// \param [in] inputchr the firing input control character type
 	/// \param [in] nextState the follow state index defined for this transition
-	void addTransition( ControlCharacter inputchr, int nextState) throw(exception)
+	void addTransition( ControlCharacter inputchr, int nextState)
 	{
 		if (size == 0) throw exception( InvalidState);
 		if ((int)inputchr >= (int)NofControlCharacter) throw exception( InvalidParamChar);
@@ -105,7 +105,7 @@ private:
 
 	/// \brief Define a self directing transition for inputchr in the last state defined (the state remains the same for this input)
 	/// \param [in] inputchr the firing input control character type
-	void addTransition( ControlCharacter inputchr) throw(exception)
+	void addTransition( ControlCharacter inputchr)
 	{
 		addTransition( inputchr, size-1);
 	}
@@ -113,7 +113,7 @@ private:
 	/// \brief Define an action in the last state defined (to be executed when entering the state)
 	/// \param [in] action_op action operand
 	/// \param [in] action_arg action argument
-	void addAction( int action_op, int action_arg=0) throw(exception)
+	void addAction( int action_op, int action_arg=0)
 	{
 		if (size == 0) throw exception( InvalidState);
 		if (tab[ size-1].action.op != -1) throw exception( InvalidState);
@@ -123,7 +123,7 @@ private:
 
 	/// \brief Define an error in the last state defined to be reported when no fallback is defined and no firing input character parsed
 	/// \param [in] error code to be reported
-	void addMiss( int error) throw(exception)
+	void addMiss( int error)
 	{
 		if (size == 0) throw exception( InvalidState);
 		if (tab[ size-1].missError != -1) throw exception( InvalidState);
@@ -132,7 +132,7 @@ private:
 
 	/// \brief Define in the last state defined a fallback state transition that is fired when no firing input character parsed
 	/// \param [in] stateIdx follow state index
-	void addFallback( int stateIdx) throw(exception)
+	void addFallback( int stateIdx)
 	{
 		if (size == 0) throw exception( InvalidState);
 		if (tab[ size-1].fallbackState != -1) throw exception( InvalidState);

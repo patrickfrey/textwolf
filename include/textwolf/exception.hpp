@@ -52,23 +52,23 @@ struct exception	:public std::runtime_error
 
 	/// \brief Constructor
 	/// \return exception object
-	exception (Cause p_cause) throw()
+	exception (Cause p_cause)
 		:std::runtime_error("textwolf error in XML"), cause(p_cause) {}
 	/// \brief Copy constructor
-	exception (const exception& orig) throw()
+	exception (const exception& orig)
 		:std::runtime_error("textwolf error in XML"), cause(orig.cause) {}
 	/// \brief Destructor
-	virtual ~exception() throw() {}
+	virtual ~exception() {}
 
 	/// \brief Assignement
 	/// \param[in] orig exception to copy
 	/// \return *this
-	exception& operator= (const exception& orig) throw()
+	exception& operator= (const exception& orig)
 			{cause=orig.cause; return *this;}
 
 	/// \brief Exception message
 	/// \return exception cause as string
-	virtual const char* what() const throw()
+	virtual const char* what() const
 	{
 		// enumeration of exception causes as strings
 		static const char* nameCause[ 17] = {
