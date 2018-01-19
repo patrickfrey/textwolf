@@ -16,6 +16,7 @@
 #include "textwolf/xmlscanner.hpp"
 #include "textwolf/staticbuffer.hpp"
 #include <limits>
+#include <iostream>
 #include <sstream>
 #include <string>
 #include <vector>
@@ -37,7 +38,6 @@ public:
 	{}
 
 	typedef CharSet_ CharSet;
-	typedef int Hash;
 	typedef XMLPathSelectAutomaton<CharSet> ThisXMLPathSelectAutomaton;
 
 	virtual ~XMLPathSelectAutomaton(){}
@@ -602,6 +602,7 @@ public:
 					stateidx = xs->defineNext( stateidx, op, 0, 0, 0, follow);
 				}
 			}
+			follow = false; //... follow only valid for this state transition
 			return *this;
 		}
 
@@ -673,6 +674,9 @@ public:
 		///\brief Corresponds to "//" in abbreviated syntax of XPath
 		///\return *this
 		PathElement& operator --(int)							{return doFollow();}
+		///\brief Corresponds to "//" in abbreviated syntax of XPath
+		///\return *this
+		PathElement& forAllDescendants()						{return doFollow();}
 		///\brief Find tag by name
 		///\param [in] name name of the tag
 		///\return *this

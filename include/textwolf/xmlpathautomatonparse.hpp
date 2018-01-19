@@ -116,7 +116,7 @@ public:
 					++src;
 					if (*src == '/')
 					{
-						expr --;
+						expr.forAllDescendants();
 						++src;
 						if (*src == '@')
 						{

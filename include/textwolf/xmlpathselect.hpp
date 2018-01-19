@@ -21,6 +21,8 @@
 #include <vector>
 #include <map>
 #include <cstddef>
+#include <iostream>
+#include <sstream>
 
 namespace textwolf {
 
@@ -48,7 +50,6 @@ private:
 	const ThisXMLPathSelectAutomaton* atm;		//< XML select automaton
 	typedef typename ThisXMLPathSelectAutomaton::Mask Mask;
 	typedef typename ThisXMLPathSelectAutomaton::Token Token;
-	typedef typename ThisXMLPathSelectAutomaton::Hash Hash;
 	typedef typename ThisXMLPathSelectAutomaton::State State;
 	typedef typename ThisXMLPathSelectAutomaton::Scope Scope;
 
