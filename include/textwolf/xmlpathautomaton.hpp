@@ -537,9 +537,6 @@ public:
 	struct PathElement :throws_exception
 	{
 	private:
-		XMLPathSelectAutomaton* xs;		//< XML Path select automaton where this node is an element of
-		int stateidx;				//< state of this element in the automaton
-
 		///\class Range
 		///\brief Element counting range defining what are indices of valid elements
 		struct Range
@@ -560,6 +557,8 @@ public:
 			///\brief Constructor
 			Range()				:start(0),end(-1){}
 		};
+		XMLPathSelectAutomaton* xs;	//< XML Path select automaton where this node is an element of
+		int stateidx;			//< state of this element in the automaton
 		Range range;			//< Index range of this XML path element
 		bool follow;			//< true, if this element is active (firing) for all sub scopes of the activation scope
 		Mask pushOpMask;		//< mask for firing element actions
