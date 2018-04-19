@@ -61,84 +61,36 @@ public:
 		CStringIterator itr( esrc, esrcsize);
 		SrcScanner src( m_srccharset, itr);
 		ExprState expr( this);
+		enum State {SelectStart,SelectTag,SelectAttribute,SelectTagId,SelectAttributeId,SelectContent,SelectCondition};
+		State state = SelectStart;
+		std::vector<const char*> alt;
+
 		for (; *src; skipSpaces( src))
 		{
 			switch (*src)
 			{
 				case '@':
 				{
+					if (state != SelectStart && state != SelectTag && state != SelectTagId) return src.getPosition()+1;
 					++src;
-					if (!isIdentifierChar( src)) return src.getPosition()+1;
-					expr.selectAttribute( idbuf.parseIdentifier( src));
-					continue;
+					state = SelectAttribute;
+					break;
 				}
 				case '/':
 				{
+					if (state != SelectStart && state != SelectCondition && state != SelectTagId) return src.getPosition()+1;
 					++src;
 					if (*src == '/')
 					{
 						expr.forAllDescendants();
 						++src;
 					}
-					if (*src == '@')
-					{
-						++src;
-						if (*src == '*')
-						{
-							++src;
-							expr.selectAttribute( 0);
-						}
-						else if (isIdentifierChar( src))
-						{
-							expr.selectAttribute( idbuf.parseIdentifier( src));
-						}
-						else if (*src == '{')
-						{
-							std::vector<const char*> alt = idbuf.parseIdentifierList( src, '{', '}');
-							if (alt.empty()) return src.getPosition()+1;
-							expr.selectAttributeAlt( alt);
-						}
-						else
-						{
-							return src.getPosition()+1;
-						}
-					}
-					else if (*src == '(')
-					{
-						continue;
-					}
-					else
-					{
-						if (*src == '*')
-						{
-							++src;
-							expr.selectTag( 0);
-						}
-						else if (isIdentifierChar( src))
-						{
-							expr.selectTag( idbuf.parseIdentifier( src));
-						}
-						else if (*src == '{')
-						{
-							std::vector<const char*> alt = idbuf.parseIdentifierList( src, '{', '}');
-							if (alt.empty()) return src.getPosition()+1;
-							expr.selectTagAlt( alt);
-						}
-						else
-						{
-							return src.getPosition()+1;
-						}
-					}
-					continue;
-				}
-				case '~':
-				{
-					++src;
-					expr.selectCloseTag();
-					continue;
+					state = SelectTag;
+					break;
 				}
 				case '[':
 				{
+					if (state != SelectStart && state != SelectTag && state != SelectTagId && state != SelectCondition) return src.getPosition()+1;
 					++src; skipSpaces( src);
 					if (*src == '@')
 					{
@@ -192,20 +144,69 @@ public:
 							return src.getPosition()+1;
 						}
 					}
-					continue;
+					state = SelectCondition;
+					break;
 				}
 				case '(':
+					if (state != SelectStart && state != SelectTag && state != SelectTagId && state != SelectCondition) return src.getPosition()+1;
 					++src;
 					skipSpaces( src);
 					if (*src != ')') return src.getPosition()+1;
 					++src;
 					expr.selectContent();
-					skipSpaces( src);
-					if (*src) return src.getPosition()+1;
-					continue;
-
+					state = SelectContent;
+					break;
+				case '*':
+					if (state != SelectStart && state != SelectTag && state != SelectAttribute) return src.getPosition()+1;
+					++src;
+					if (state == SelectAttribute)
+					{
+						expr.selectAttribute( 0);
+						state = SelectAttributeId;
+					}
+					else
+					{
+						expr.selectTag( 0);
+						state = SelectTagId;
+					}
+					break;
+				case '{':
+					if (state != SelectStart && state != SelectTag && state != SelectAttribute) return src.getPosition()+1;
+					alt = idbuf.parseIdentifierList( src, '{', '}');
+					if (alt.empty()) return src.getPosition()+1;
+					expr.selectAttributeAlt( alt);
+					if (state == SelectAttribute)
+					{
+						expr.selectAttributeAlt( alt);
+						state = SelectAttributeId;
+					}
+					else
+					{
+						expr.selectTagAlt( alt);
+						state = SelectTagId;
+					}
+					break;
+				case '~':
+					if (state != SelectTagId) return src.getPosition()+1;
+					++src;
+					expr.selectCloseTag();
+					state = SelectContent;
+					break;
 				default:
-					return src.getPosition()+1;
+					if (state != SelectStart && state != SelectTag && state != SelectAttribute) return src.getPosition()+1;
+					if (!isIdentifierChar( src)) return src.getPosition()+1;
+
+					if (state == SelectAttribute)
+					{
+						expr.selectAttribute( idbuf.parseIdentifier( src));
+						state = SelectAttributeId;
+					}
+					else
+					{
+						expr.selectTag( idbuf.parseIdentifier( src));
+						state = SelectTagId;
+					}
+					break;
 			}
 		}
 		expr.assignType( typeidx);
