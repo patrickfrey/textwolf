@@ -174,7 +174,6 @@ public:
 					if (state != SelectStart && state != SelectTag && state != SelectAttribute) return src.getPosition()+1;
 					alt = idbuf.parseIdentifierList( src, '{', '}');
 					if (alt.empty()) return src.getPosition()+1;
-					expr.selectAttributeAlt( alt);
 					if (state == SelectAttribute)
 					{
 						expr.selectAttributeAlt( alt);
