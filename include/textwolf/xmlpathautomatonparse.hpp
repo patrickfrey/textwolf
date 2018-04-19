@@ -282,13 +282,8 @@ private:
 	{
 		if (src.control() == Undef || src.control() == Any)
 		{
-			if (*src == (unsigned char)'*') return false;
-			if (*src == (unsigned char)'~') return false;
-			if (*src == (unsigned char)'/') return false;
-			if (*src == (unsigned char)'(') return false;
-			if (*src == (unsigned char)')') return false;
-			if (*src == (unsigned char)'@') return false;
-			return true;
+			static const char opchr[] = "*~/(){}[]@,;";
+			return (0==std::strchr( opchr, *src));
 		}
 		return false;
 	}
