@@ -187,7 +187,7 @@ public:
 					}
 					break;
 				case '~':
-					if (state != SelectTagId) return src.getPosition()+1;
+					if (state != SelectTagId && state != SelectStart) return src.getPosition()+1;
 					++src;
 					expr.selectCloseTag();
 					state = SelectContent;
