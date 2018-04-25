@@ -325,7 +325,7 @@ private:
 				return NULL;
 			}
 		}
-		std::vector<const char*> parseIdentifierList( SrcScanner& src, char startBracket, char endBracket)
+		std::vector<const char*> parseIdentifierList( SrcScanner& src, unsigned char startBracket, unsigned char endBracket)
 		{
 			std::vector<const char*> rt;
 			if (*src != startBracket) return std::vector<const char*>();
