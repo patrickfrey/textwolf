@@ -61,8 +61,8 @@ public:
 		CStringIterator itr( esrc, esrcsize);
 		SrcScanner src( m_srccharset, itr);
 		ExprState expr( this);
-		enum State {SelectStart,SelectTag,SelectAttribute,SelectTagId,SelectAttributeId,SelectContent,SelectCondition};
-		State state = SelectStart;
+		enum ParseState {SelectStart,SelectTag,SelectAttribute,SelectTagId,SelectAttributeId,SelectContent,SelectCondition};
+		ParseState state = SelectStart;
 		std::vector<const char*> alt;
 
 		for (; *src; skipSpaces( src))
