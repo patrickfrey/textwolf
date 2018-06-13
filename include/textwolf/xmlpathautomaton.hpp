@@ -476,7 +476,7 @@ private:
 			states[ stateidx].defineNext( op, keysize, key, srckey, lastidx, follow);
 			return stateidx=lastidx;
 		}
-		catch (std::bad_alloc)
+		catch (const std::bad_alloc&)
 		{
 			throw exception( OutOfMem);
 		}
@@ -520,7 +520,7 @@ private:
 			states[ stateidx].defineOutput( printOpMask, typeidx, follow, start, end);
 			return stateidx;
 		}
-		catch (std::bad_alloc)
+		catch (const std::bad_alloc&)
 		{
 			throw exception( OutOfMem);
 		}

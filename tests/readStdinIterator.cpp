@@ -103,7 +103,7 @@ int main( int argc, const char** argv)
 		Input::iterator itr=input->begin();
 		for (; *itr!=0; itr++);
 	}
-	catch (exception ee)
+	catch (const exception& ee)
 	{
 		std::cerr << "ERROR " << ee.what() << std::endl;
 		return 1;
