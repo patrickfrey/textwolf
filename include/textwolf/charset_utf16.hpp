@@ -45,6 +45,9 @@ public:
 	{
 		MaxChar=0x10FFFFU				//< maximum character in alphabet
 	};
+	enum {
+		UnitSize=2					//< size of basic data type unit used for encoding
+	};
 
 public:
 	/// \brief See template<class Iterator>Interface::fetchbytes(char*,unsigned int&,Iterator&)

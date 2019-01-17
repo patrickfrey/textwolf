@@ -35,6 +35,9 @@ struct UCS2
 		Print2shift=(byteorder==ByteOrder::LE)?8:0,	//< value to shift with to get the 2nd character to print
 		MaxChar=0xFFFFU
 	};
+	enum {
+		UnitSize=2					//< size of basic data type unit used for encoding
+	};
 
 	/// \brief See template<class Iterator>Interface::skip(char*,unsigned int&,Iterator&)
 	template <class Iterator>
@@ -134,6 +137,9 @@ struct UCS4
 		Print3shift=(byteorder==ByteOrder::BE)?8:16,	//< value to shift with to get the 3rd character to print
 		Print4shift=(byteorder==ByteOrder::BE)?0:24,	//< value to shift with to get the 4th character to print
 		MaxChar=0xFFFFFFFFU
+	};
+	enum {
+		UnitSize=4					//< size of basic data type unit used for encoding
 	};
 
 	/// \brief See template<class Iterator>Interface::fetchbytes(char*,unsigned int&,Iterator&)

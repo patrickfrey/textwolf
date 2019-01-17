@@ -24,6 +24,9 @@ namespace charset {
 struct IsoLatin :public IsoLatinCodePage
 {
 	enum {MaxChar=0xFFU};
+	enum {
+		UnitSize=1	//< size of basic data type unit used for encoding
+	};
 
 	IsoLatin( const IsoLatin& o)
 		:IsoLatinCodePage(o){}

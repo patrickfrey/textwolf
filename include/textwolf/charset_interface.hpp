@@ -56,6 +56,9 @@ struct Interface
 {
 	/// \brief Maximum character this characer set encoding can represent
 	enum {MaxChar=0xFF};
+	enum {
+		UnitSize=1	//< size of basic data type unit used for encoding
+	};
 
 	/// \brief Skip to start of the next character
 	/// \tparam Iterator source iterator used

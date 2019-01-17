@@ -24,6 +24,9 @@ struct UTF8
 {
 	/// \brief Maximum character that can be represented by this encoding implementation
 	enum {MaxChar=0x7FFFFFFFU};
+	/// \brief Size of basic data type unit used for encoding
+	enum {UnitSize=1};
+
 	enum {
 		B11111111=0xFF,
 		B01111111=0x7F,
