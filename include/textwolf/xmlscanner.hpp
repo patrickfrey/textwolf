@@ -550,8 +550,8 @@ private:
 		}
 		while (ch != ';')
 		{
-			unsigned char chval = HEX(ch);
-			if (value >= base) return 0;
+			unsigned int chval = HEX(ch);
+			if (chval >= base) return 0;
 			value = value * base + chval;
 			if (value >= 0xFFFFFFFF) return 0;
 			ir.skip();
