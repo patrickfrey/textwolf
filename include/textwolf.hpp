@@ -14,6 +14,7 @@
 #include "textwolf/char.hpp"
 #include "textwolf/exception.hpp"
 #include "textwolf/staticbuffer.hpp"
+#include "textwolf/ostreamoutput.hpp"
 #include "textwolf/charset_interface.hpp"
 #include "textwolf/charset.hpp"
 #include "textwolf/textscanner.hpp"

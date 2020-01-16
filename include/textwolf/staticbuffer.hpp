@@ -139,8 +139,7 @@ public:
 	/// \brief check for array bounds write
 	/// \return true if a push_back would have caused an array bounds write
 	bool overflow() const			{return m_overflow;}
-private:
-	StaticBuffer(){}			///< non copyable
+
 private:
 	std::size_t m_pos;			///< current cursor position of the buffer (number of added characters)
 	std::size_t m_size;			///< allocation size of the buffer in bytes
