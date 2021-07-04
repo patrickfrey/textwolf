@@ -5,9 +5,6 @@ Documentation
 * A textwolf introduction can be found at http://textwolf.net/tutorial.html
 * A doxygen interface documentation is at http://patrickfrey.github.com/textwolf/html/index.html
 
-Projects using textwolf
-* textwolf is used in the wolframe project (see http://wolframe.net or http://github.com/Wolframe/Wolframe)
-
 Bugreports
 * textwolf bug reports are in the github issue management of the textwolf project
 
